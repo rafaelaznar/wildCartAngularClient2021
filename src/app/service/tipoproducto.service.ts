@@ -20,10 +20,10 @@ export class TipoproductoService {
     let strFilterUrl: string = "";
     let strOrderUrl: string = "";
     if (filter) {
-      strFilterUrl += "&filter=" + filter;
+      strFilterUrl += "/filter/" + filter;
     }
     if (order) {
-      strOrderUrl += "&order=" + order + "&dir=" + direction;
+      strOrderUrl += "&sort=" + order + "," + direction;
     }
     return this.http.get<IPageTP>(this.sURL + "?page=" + page + "&size=" + rpp  + strFilterUrl + strOrderUrl, httpOptions);
   }
@@ -38,7 +38,7 @@ export class TipoproductoService {
   }
 
   updateOne(dataPost: String): Observable<number> {
-    return this.http.put<number>(this.sURL, dataPost, httpOptions);
+    return this.http.put<number>(this.sURL + "/", dataPost, httpOptions);
   }
 
   removeOne(id: number): Observable<number> {
