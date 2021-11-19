@@ -8,3 +8,9 @@ export interface IUserTypePlist {
 	nombre: string;
 	usuarios: number;
 }
+
+export interface ITipoUsuarioPage {
+	content: IUserTypePlist[];
+	totalElements: number;
+	totalPages: number;
+}

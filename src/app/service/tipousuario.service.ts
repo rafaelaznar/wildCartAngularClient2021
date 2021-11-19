@@ -9,7 +9,7 @@ import {
 	environment,
 	httpOptions,
 } from 'src/environments/environment';
-import { IUserType, IUserTypePlist } from '../model/tipousuario-interfaces';
+import { ITipoUsuarioPage, IUserType } from '../model/tipousuario-interfaces';
 
 @Injectable({
 	providedIn: 'root',
@@ -44,11 +44,11 @@ export class TipousuarioService {
 		size: number,
 		orderBy: string,
 		orderAs: boolean
-	): Observable<IUserTypePlist> {
+	): Observable<ITipoUsuarioPage> {
 		const sort: string = `${orderBy},${orderAs ? 'asc' : 'desc'}`;
 		return this.http
-			.get<IUserTypePlist>(
-				`${this.sURL}/page?page=${page}size=${size}sort=${sort}`,
+			.get<ITipoUsuarioPage>(
+				`${this.sURL}/page?page=${page}&size=${size}&sort=${sort}`,
 				httpOptions
 			)
 			.pipe(catchError(this.handleError));
@@ -59,7 +59,6 @@ export class TipousuarioService {
 			.put<IUserType>(this.sURL, body, httpOptions)
 			.pipe(catchError(this.handleError));
 	}
-
 	postJsonFormater(formPost: FormGroup): string {
 		let data: any = {};
 		Object.keys(formPost.controls).forEach((key) => {
