@@ -17,7 +17,7 @@ export class EditTipousuarioComponent implements OnInit {
 	constructor(
 		private FormBuilder: FormBuilder,
 		private oActivatedRoute: ActivatedRoute,
-		private oUserTypeService: TipousuarioService
+		public oUserTypeService: TipousuarioService
 	) {
 		this.formUpdatePost = <FormGroup>this.FormBuilder.group({
 			id: [''],
