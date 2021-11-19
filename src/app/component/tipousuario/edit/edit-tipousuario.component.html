@@ -22,7 +22,13 @@
 			/>
 		</div>
 		<div class="row gap-2 mt-4">
-			<button type="submit" class="col btn btn-danger">Cancel</button>
+			<button
+				type="submit"
+				(click)="this.oUserTypeService.redirectPlist()"
+				class="col btn btn-danger"
+			>
+				Cancel
+			</button>
 			<button
 				type="submit"
 				(click)="updateUserType()"
