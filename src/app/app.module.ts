@@ -2,7 +2,6 @@ import { PaginationService } from './service/pagination.service';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -11,7 +10,6 @@ import { LogoutComponent } from './component/logout/logout.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { SessionService } from './service/session.service';
 import { HttpClientModule } from "@angular/common/http";
-import { SessionResolver } from './resolve/session.resolve';
 import { PlistPostComponent } from './component/post/plist/plist.component';
 import { PostService } from './service/post.service';
 import { TrimPipe } from './pipe/trim.pipe';
@@ -30,7 +28,6 @@ import { LookPostComponent } from './component/post/look/look.component';
 import { PlistTipousuarioComponent } from './component/tipousuario/plist/plist-tipousuario.component';
 import { EditTipousuarioComponent } from './component/tipousuario/edit/edit-tipousuario.component';
 import { ViewTipousuarioComponent } from './component/tipousuario/view/view-tipousuario.component';
-import { PlistTipoproductoComponent } from './component/tipoproducto/plist/plist-tipoproducto.component';
 import { NewTipoproductoComponent } from './component/tipoproducto/new/new-tipoproducto.component';
 import { EditTipoproductoComponent } from './component/tipoproducto/edit/edit-tipoproducto.component';
 import { RemoveTipoproductoComponent } from './component/tipoproducto/remove/remove-tipoproducto.component';
@@ -67,6 +64,8 @@ import { UsuarioService } from './service/usuario.service';
 import { TipousuarioService } from './service/tipousuario.service';
 import { TipoproductoService } from './service/tipoproducto.service';
 import { FacturaService } from './service/factura.service';
+import { PlistTipoproductoComponent } from './component/tipoproducto/plist/plist-tipoproducto.component';
+import { SessionResolver } from './component/resolve/session.resolve';
 
 
 @NgModule({

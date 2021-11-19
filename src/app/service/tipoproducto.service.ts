@@ -1,4 +1,5 @@
-import { IPost2Send } from './../model/model-interfaces';
+import { ITipoProductoToSend } from './../model/tipoproducto-interfaces';
+import { IPost, IPost2Send } from './../model/model-interfaces';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
@@ -29,21 +30,22 @@ export class TipoproductoService {
   }
 
 
-  getOne(id: number): Observable<IPost> {
-    return this.http.get<IPost>(this.sURL + "?id=" + id, httpOptions);
+  getOne(id: number): Observable<ITipoProducto> {
+    return this.http.get<ITipoProducto>(this.sURL + "?id=" + id, httpOptions);
   }
 
-  newOne(oPost: IPost2Send): Observable<number> {
-    return this.http.post<number>(this.sURL, oPost, httpOptions);
+  newOne(oTipoProducto: ITipoProductoToSend): Observable<number> {
+    return this.http.post<number>(this.sURL, oTipoProducto, httpOptions);
   }
 
-  updateOne(oPost: IPost2Send): Observable<number> {
-    return this.http.put<number>(this.sURL, oPost, httpOptions);
+  updateOne(oTipoProducto: ITipoProductoToSend): Observable<number> {
+    return this.http.put<number>(this.sURL, oTipoProducto, httpOptions);
   }
 
   removeOne(id: number): Observable<number> {
     return this.http.delete<number>(this.sURL + "?id=" + id, httpOptions);
   }
 
+  
 
 }
