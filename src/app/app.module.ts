@@ -49,6 +49,42 @@ import { LookPostComponent } from './component/post/look/look.component';
     TrimPipe,
     showDateTimePipe,
     showBooleanPipe,
+
+    PlistTipousuarioComponent,
+    ViewTipousuarioComponent,
+    EditTipousuarioComponent,
+  
+    PlistUsuarioComponent,
+    NewUsuarioComponent,
+    ViewUsuarioComponent,
+    EditUsuarioComponent,
+    RemoveUsuarioComponent,
+  
+    PlistTipoproductoComponent,
+    NewTipoproductoComponent,
+    ViewTipoproductoComponent,
+    EditTipoproductoComponent,
+    RemoveTipoproductoComponent,
+  
+    PlistProductoComponent,
+    NewProductoComponent,
+    ViewProductoComponent,
+    EditProductoComponent,
+    RemoveProductoComponent,
+  
+    PlistCompraComponent,
+    NewCompraComponent,
+    ViewCompraComponent,
+    EditCompraComponent,
+    RemoveCompraComponent,
+  
+    PlistFacturaComponent,
+    NewFacturaComponent,
+    ViewFacturaComponent,
+    EditFacturaComponent,
+    RemoveFacturaComponent,
+
+
   ],
   imports: [
     HttpClientModule,
