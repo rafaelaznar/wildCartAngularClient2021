@@ -46,7 +46,7 @@ export class TipousuarioService {
 		const sort: string = `${orderBy},${orderAs ? 'asc' : 'desc'}`;
 		return this.http
 			.get<ITipoUsuarioPage>(
-				`${this.sURL}/page?page=${page}size=${size}sort=${sort}`,
+				`${this.sURL}/page?page=${page}&size=${size}&sort=${sort}`,
 				httpOptions
 			)
 			.pipe(catchError(this.handleError));

@@ -2,9 +2,9 @@
 
 <div class="container my-3">
 	<app-header
-		[title]="'Listado de Posts'"
+		[title]="'Listado de Tipos de usuario'"
 		[icon]="'fas fa-file-alt'"
-		[subtitle]="'tipos usuarios'"
+		[subtitle]="totalElements + ' Tipos de usuarios'"
 	>
 	</app-header>
 
@@ -37,7 +37,14 @@
 		<div class="col-md">
 			<nav aria-label="pagination">
 				<ul class="pagination">
-					<li class="page-item" aria-current="page"></li>
+					<li
+						class="page-item"
+						aria-current="page"
+						*ngFor="let p of barraPaginacion"
+						[ngClass]="{ active: page + '' == p }"
+					>
+						<a class="page-link btn" (click)="getPage(+p)" href="#">{{ p }}</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -50,14 +57,14 @@
 					data-bs-toggle="dropdown"
 					aria-expanded="false"
 				>
-					Registros por página: {{ 0 }}
+					Registros por página: {{ pageSize }}
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 					<li>
-						<a class="dropdown-item">1</a>
+						<a class="dropdown-item" (click)="pageSize = 1; getPage(1)">1</a>
 					</li>
 					<li>
-						<a class="dropdown-item">2</a>
+						<a class="dropdown-item" (click)="pageSize = 2; getPage(1)">2</a>
 					</li>
 				</ul>
 			</div>
@@ -69,9 +76,20 @@
 			<table class="table table-bordered table-striped table-hover">
 				<thead>
 					<tr class="text-center">
-						<th>ID</th>
-						<th>Título</th>
-						<th>Usuarios</th>
+						<th *ngFor="let value of headers" class="text-start">
+							<a
+								[class.text-primary]="orderBy == value"
+								(click)="modifyOrder(value)"
+								class="btn"
+								>{{ value }}
+								<i
+									*ngIf="orderBy == value"
+									class="fas fa-caret-{{ orderAs ? 'up' : 'down' }} ms-2"
+								></i>
+							</a>
+						</th>
+
+						<th><a class="btn">usuarios</a></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -86,17 +104,19 @@
 								role="group"
 								aria-label="Basic mixed styles example"
 							>
-								<button type="button" class="btn btn-success">
+								<button
+									type="button"
+									class="btn btn-success"
+									[routerLink]="['/tipousuario/view/' + fila.id]"
+								>
 									<i class="fas fa-eye"></i>
 								</button>
-								<button type="button" class="btn btn-success">
-									<i class="fas fa-search"></i>
-								</button>
-								<button type="button" class="btn btn-warning">
+								<button
+									type="button"
+									class="btn btn-warning"
+									[routerLink]="['/tipousuario/edit/' + fila.id]"
+								>
 									<i class="fas fa-pen"></i>
-								</button>
-								<button type="button" class="btn btn-danger">
-									<i class="fas fa-trash"></i>
 								</button>
 							</div>
 						</td>
