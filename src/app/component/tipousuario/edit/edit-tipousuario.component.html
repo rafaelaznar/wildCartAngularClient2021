@@ -1,1 +1,35 @@
-<p>edit-tipousuario works!</p>
+<app-menu></app-menu>
+<div class="container bg-light mt-4">
+	<h1 class="text-center">Edit User Type</h1>
+	<form
+		[formGroup]="formUpdatePost"
+		class="border mx-auto p-5 border-2 border-dark col-sm-7"
+	>
+		<div class="form-group">
+			<label>Id</label>
+			<input formControlName="id" type="text" class="form-control" readonly />
+		</div>
+		<div class="form-group mt-4">
+			<label>Name</label>
+			<input
+				formControlName="nombre"
+				type="text"
+				class="form-control"
+				[class.is-invalid]="
+					formUpdatePost.get('nombre')!.dirty &&
+					formUpdatePost.get('nombre')!.invalid
+				"
+			/>
+		</div>
+		<div class="row gap-2 mt-4">
+			<button type="submit" class="col btn btn-danger">Cancel</button>
+			<button
+				type="submit"
+				(click)="updateUserType()"
+				class="col btn btn-primary"
+			>
+				Update
+			</button>
+		</div>
+	</form>
+</div>
