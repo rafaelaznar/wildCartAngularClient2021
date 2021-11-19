@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IPage } from 'src/app/model/model-interfaces';
 import {
-	IUserType,
+	ITipoUsuarioPage,
 	IUserTypePlist,
 } from 'src/app/model/tipousuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
@@ -11,12 +12,15 @@ import { TipousuarioService } from 'src/app/service/tipousuario.service';
 	styleUrls: ['./plist-tipousuario.component.css'],
 })
 export class PlistTipousuarioComponent implements OnInit {
-	public userTypes: Array<IUserType>;
+	public userTypes: Array<IUserTypePlist>;
 
 	constructor(private tipoUsuario: TipousuarioService) {
 		this.tipoUsuario
 			.plist(1, 1, 'id', true)
-			.subscribe((data: IUserTypePlist) => {});
+			.subscribe((data: ITipoUsuarioPage) => {
+				console.log(data);
+				this.userTypes = data.content;
+			});
 	}
 
 	ngOnInit(): void {}

@@ -1,1 +1,110 @@
-<p>plist-tipousuario works!</p>
+<app-menu></app-menu>
+
+<div class="container my-3">
+	<app-header
+		[title]="'Listado de Posts'"
+		[icon]="'fas fa-file-alt'"
+		[subtitle]="'tipos usuarios'"
+	>
+	</app-header>
+
+	<div class="row justify-content-center my-3">
+		<div
+			class="col-12 d-grid gap-2 d-md-block d-md-flex justify-content-md-center"
+		>
+			<form style="width: 50%">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<button class="btn-primary btn">
+							<i class="fas fa-search"></i> Filtrar
+						</button>
+					</div>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Buscador de posts"
+						name="buscar"
+					/>
+					<div class="input-group-append">
+						<button class="btn-primary btn">Quitar filtro</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="row justify-content-between">
+		<div class="col-md">
+			<nav aria-label="pagination">
+				<ul class="pagination">
+					<li class="page-item" aria-current="page"></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md text-end">
+			<div class="dropdown mb-3">
+				<button
+					class="btn btn-primary dropdown-toggle"
+					type="button"
+					id="dropdownMenuButton1"
+					data-bs-toggle="dropdown"
+					aria-expanded="false"
+				>
+					Registros por página: {{ 0 }}
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+					<li>
+						<a class="dropdown-item">1</a>
+					</li>
+					<li>
+						<a class="dropdown-item">2</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="row justify-content-center">
+		<div class="col-md table-responsive-md">
+			<table class="table table-bordered table-striped table-hover">
+				<thead>
+					<tr class="text-center">
+						<th>ID</th>
+						<th>Título</th>
+						<th>Usuarios</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let fila of userTypes">
+						<td>{{ fila.id }}</td>
+						<td>{{ fila.nombre | trim: 25 }}</td>
+						<td>{{ fila.usuarios }}</td>
+						<td class="text-center">
+							<div
+								class="btn-group btn-group-sm"
+								role="group"
+								aria-label="Basic mixed styles example"
+							>
+								<button type="button" class="btn btn-success">
+									<i class="fas fa-eye"></i>
+								</button>
+								<button type="button" class="btn btn-success">
+									<i class="fas fa-search"></i>
+								</button>
+								<button type="button" class="btn btn-warning">
+									<i class="fas fa-pen"></i>
+								</button>
+								<button type="button" class="btn btn-danger">
+									<i class="fas fa-trash"></i>
+								</button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<app-footer></app-footer>
