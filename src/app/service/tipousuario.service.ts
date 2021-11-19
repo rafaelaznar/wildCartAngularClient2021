@@ -7,7 +7,7 @@ import {
   environment,
   httpOptions,
 } from 'src/environments/environment';
-import { IUserType } from '../model/tipousuario-interfaces';
+import { IUserType, IUserTypePlist } from '../model/tipousuario-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -42,10 +42,10 @@ export class TipousuarioService {
     size: number,
     orderBy: string,
     orderAs: boolean
-  ): Observable<String> {
+  ): Observable<IUserTypePlist> {
     const sort: string = `${orderBy},${orderAs ? 'asc' : 'desc'}`;
     return this.http
-      .get<String>(
+      .get<IUserTypePlist>(
         `${this.sURL}/page?page=${page}size=${size}sort=${sort}`,
         httpOptions
       )
