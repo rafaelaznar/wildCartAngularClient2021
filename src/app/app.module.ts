@@ -27,6 +27,46 @@ import { DateTimeService } from './service/datetime.service';
 import { HeaderComponent } from './component/header/header.component';
 import { ReadComponent } from './component/post/read/read.component';
 import { LookPostComponent } from './component/post/look/look.component';
+import { PlistTipousuarioComponent } from './component/tipousuario/plist/plist-tipousuario.component';
+import { EditTipousuarioComponent } from './component/tipousuario/edit/edit-tipousuario.component';
+import { ViewTipousuarioComponent } from './component/tipousuario/view/view-tipousuario.component';
+import { PlistTipoproductoComponent } from './component/tipoproducto/plist/plist-tipoproducto.component';
+import { NewTipoproductoComponent } from './component/tipoproducto/new/new-tipoproducto.component';
+import { EditTipoproductoComponent } from './component/tipoproducto/edit/edit-tipoproducto.component';
+import { RemoveTipoproductoComponent } from './component/tipoproducto/remove/remove-tipoproducto.component';
+import { ViewTipoproductoComponent } from './component/tipoproducto/view/view-tipoproducto.component';
+import { PlistProductoComponent } from './component/producto/plist/plist-producto.component';
+import { NewProductoComponent } from './component/producto/new/new-producto.component';
+import { EditProductoComponent } from './component/producto/edit/edit-producto.component';
+import { RemoveProductoComponent } from './component/producto/remove/remove-producto.component';
+import { ViewProductoComponent } from './component/producto/view/view-producto.component';
+import { PlistUsuarioComponent } from './component/usuario/plist/plist-usuario.component';
+import { NewUsuarioComponent } from './component/usuario/new/new-usuario.component';
+import { EditUsuarioComponent } from './component/usuario/edit/edit-usuario.component';
+import { RemoveUsuarioComponent } from './component/usuario/remove/remove-usuario.component';
+import { ViewUsuarioComponent } from './component/usuario/view/view-usuario.component';
+import { PlistCarritoComponent } from './component/carrito/plist/plist-carrito.component';
+import { NewCarritoComponent } from './component/carrito/new/new-carrito.component';
+import { ViewCarritoComponent } from './component/carrito/view/view-carrito.component';
+import { RemoveCarritoComponent } from './component/carrito/remove/remove-carrito.component';
+import { EditCarritoComponent } from './component/carrito/edit/edit-carrito.component';
+import { PlistCompraComponent } from './component/compra/plist/plist-compra.component';
+import { NewCompraComponent } from './component/compra/new/new-compra.component';
+import { ViewCompraComponent } from './component/compra/view/view-compra.component';
+import { RemoveCompraComponent } from './component/compra/remove/remove-compra.component';
+import { EditCompraComponent } from './component/compra/edit/edit-compra.component';
+import { PlistFacturaComponent } from './component/factura/plist/plist-factura.component';
+import { NewFacturaComponent } from './component/factura/new/new-factura.component';
+import { ViewFacturaComponent } from './component/factura/view/view-factura.component';
+import { RemoveFacturaComponent } from './component/factura/remove/remove-factura.component';
+import { EditFacturaComponent } from './component/factura/edit/edit-factura.component';
+import { CompraService } from './service/compra.service';
+import { ProductoService } from './service/producto.service';
+import { CarritoService } from './service/carrito.service';
+import { UsuarioService } from './service/usuario.service';
+import { TipousuarioService } from './service/tipousuario.service';
+import { TipoproductoService } from './service/tipoproducto.service';
+import { FacturaService } from './service/factura.service';
 
 
 @NgModule({
@@ -98,7 +138,14 @@ import { LookPostComponent } from './component/post/look/look.component';
     SessionResolver,
     PostService,
     PaginationService,
-    DateTimeService
+    DateTimeService,
+    CompraService,
+    FacturaService,
+    ProductoService,
+    TipoproductoService,
+    UsuarioService,
+    TipousuarioService,
+    CarritoService
   ],
   bootstrap: [AppComponent]
 })

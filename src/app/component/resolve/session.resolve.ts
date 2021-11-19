@@ -6,7 +6,7 @@ import { of } from 'rxjs/internal/observable/of';
 
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { tap } from 'rxjs/internal/operators/tap';
-import { SessionService } from '../service/session.service';
+import { SessionService } from '../../service/session.service';
 
 
 @Injectable()
