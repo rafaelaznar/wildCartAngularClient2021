@@ -25,7 +25,7 @@ export class TipoproductoService {
     if (order) {
       strOrderUrl += "&sort=" + order + "," + direction;
     }
-    return this.http.get<IPageTP>(this.sURL + "?page=" + page + "&size=" + rpp  + strFilterUrl + strOrderUrl, httpOptions);
+    return this.http.get<IPageTP>(this.sURL + strFilterUrl + "?page=" + page + "&size=" + rpp   + strOrderUrl, httpOptions);
   }
 
 
