@@ -29,20 +29,20 @@ export class TipoproductoService {
   }
 
 
-  getOne(id: number): Observable<IPost> {
-    return this.http.get<IPost>(this.sURL + "?id=" + id, httpOptions);
+  getOne(id: number): Observable<ITipoProducto> {
+    return this.http.get<ITipoProducto>(this.sURL + "/" + id, httpOptions);
   }
 
-  newOne(oPost: IPost2Send): Observable<number> {
-    return this.http.post<number>(this.sURL, oPost, httpOptions);
+  newOne(dataPost: String): Observable<number> {
+    return this.http.post<number>(this.sURL + "/", dataPost, httpOptions);
   }
 
-  updateOne(oPost: IPost2Send): Observable<number> {
-    return this.http.put<number>(this.sURL, oPost, httpOptions);
+  updateOne(dataPost: String): Observable<number> {
+    return this.http.put<number>(this.sURL, dataPost, httpOptions);
   }
 
   removeOne(id: number): Observable<number> {
-    return this.http.delete<number>(this.sURL + "?id=" + id, httpOptions);
+    return this.http.delete<number>(this.sURL + "/" + id, httpOptions);
   }
 
 
