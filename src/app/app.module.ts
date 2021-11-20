@@ -2,7 +2,7 @@ import { PaginationService } from './service/pagination.service';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { SessionResolver } from './component/resolve/session.resolve';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -66,7 +66,7 @@ import { UsuarioService } from './service/usuario.service';
 import { TipousuarioService } from './service/tipousuario.service';
 import { TipoproductoService } from './service/tipoproducto.service';
 import { FacturaService } from './service/factura.service';
-import { SessionResolver } from './component/resolve/session.resolve';
+
 
 
 @NgModule({
