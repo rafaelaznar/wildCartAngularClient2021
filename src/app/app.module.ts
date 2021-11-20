@@ -11,7 +11,6 @@ import { LogoutComponent } from './component/logout/logout.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { SessionService } from './service/session.service';
 import { HttpClientModule } from "@angular/common/http";
-import { SessionResolver } from './resolve/session.resolve';
 import { PlistPostComponent } from './component/post/plist/plist.component';
 import { PostService } from './service/post.service';
 import { TrimPipe } from './pipe/trim.pipe';
@@ -67,6 +66,7 @@ import { UsuarioService } from './service/usuario.service';
 import { TipousuarioService } from './service/tipousuario.service';
 import { TipoproductoService } from './service/tipoproducto.service';
 import { FacturaService } from './service/factura.service';
+import { SessionResolver } from './component/resolve/session.resolve';
 
 
 @NgModule({
