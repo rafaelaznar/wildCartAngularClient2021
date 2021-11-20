@@ -1,4 +1,4 @@
-import { IPost2Send } from './../model/model-interfaces';
+
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
@@ -33,12 +33,12 @@ export class TipoproductoService {
     return this.http.get<ITipoProducto>(this.sURL + "/" + id, httpOptions);
   }
 
-  newOne(dataPost: String): Observable<number> {
-    return this.http.post<number>(this.sURL + "/", dataPost, httpOptions);
+  newOne(oTipoProducto: ITipoProducto): Observable<number> {
+    return this.http.post<number>(this.sURL + "/", oTipoProducto, httpOptions);
   }
 
-  updateOne(dataPost: String): Observable<number> {
-    return this.http.put<number>(this.sURL + "/", dataPost, httpOptions);
+  updateOne(oTipoProducto: ITipoProducto): Observable<number> {
+    return this.http.put<number>(this.sURL + "/", oTipoProducto, httpOptions);
   }
 
   removeOne(id: number): Observable<number> {
