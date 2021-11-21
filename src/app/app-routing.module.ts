@@ -3,22 +3,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
 import { LogoutComponent } from './component/logout/logout.component';
-import { SessionResolver } from './component/resolve/session.resolve';
 import { PlistPostComponent } from './component/post/plist/plist.component';
 import { ViewPostComponent } from './component/post/view/view.component';
 import { NewPostComponent } from './component/post/new/new.component';
 import { EditPostComponent } from './component/post/edit/edit.component';
 import { RemovePostComponent } from './component/post/remove/remove.component';
 import { ReadComponent } from './component/post/read/read.component';
-import { PlistTipousuarioComponent } from './component/tipousuario/plist/plist-tipousuario.component';
-import { ViewTipousuarioComponent } from './component/tipousuario/view/view-tipousuario.component';
-import { EditTipousuarioComponent } from './component/tipousuario/edit/edit-tipousuario.component';
-import { PlistUsuarioComponent } from './component/usuario/plist/plist-usuario.component';
-import { NewUsuarioComponent } from './component/usuario/new/new-usuario.component';
-import { ViewUsuarioComponent } from './component/usuario/view/view-usuario.component';
-import { EditUsuarioComponent } from './component/usuario/edit/edit-usuario.component';
-import { RemoveUsuarioComponent } from './component/usuario/remove/remove-usuario.component';
-import { PlistTipoproductoComponent } from './component/tipoproducto/plist/plist-tipoproducto.component';
 import { EditCompraComponent } from './component/compra/edit/edit-compra.component';
 import { NewCompraComponent } from './component/compra/new/new-compra.component';
 import { PlistCompraComponent } from './component/compra/plist/plist-compra.component';
@@ -36,9 +26,18 @@ import { RemoveProductoComponent } from './component/producto/remove/remove-prod
 import { ViewProductoComponent } from './component/producto/view/view-producto.component';
 import { EditTipoproductoComponent } from './component/tipoproducto/edit/edit-tipoproducto.component';
 import { NewTipoproductoComponent } from './component/tipoproducto/new/new-tipoproducto.component';
+import { PlistTipoproductoComponent } from './component/tipoproducto/plist/plist-tipoproducto.component';
 import { RemoveTipoproductoComponent } from './component/tipoproducto/remove/remove-tipoproducto.component';
 import { ViewTipoproductoComponent } from './component/tipoproducto/view/view-tipoproducto.component';
-
+import { EditTipousuarioComponent } from './component/tipousuario/edit/edit-tipousuario.component';
+import { PlistTipousuarioComponent } from './component/tipousuario/plist/plist-tipousuario.component';
+import { ViewTipousuarioComponent } from './component/tipousuario/view/view-tipousuario.component';
+import { EditUsuarioComponent } from './component/usuario/edit/edit-usuario.component';
+import { NewUsuarioComponent } from './component/usuario/new/new-usuario.component';
+import { PlistUsuarioComponent } from './component/usuario/plist/plist-usuario.component';
+import { RemoveUsuarioComponent } from './component/usuario/remove/remove-usuario.component';
+import { ViewUsuarioComponent } from './component/usuario/view/view-usuario.component';
+import { SessionResolver } from './resolve/session.resolve';
 
 
 const routes: Routes = [

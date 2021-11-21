@@ -1,33 +1,43 @@
 import { ITipoProductoToSend } from './../model/tipoproducto-interfaces';
-import { IPost, IPost2Send } from './../model/model-interfaces';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { API_URL, environment, httpOptions } from 'src/environments/environment';
-import { ITipoProducto, IPageTP} from '../model/tipoproducto-interfaces';
-
-
+import {
+  API_URL,
+  environment,
+  httpOptions,
+} from 'src/environments/environment';
+import { ITipoProducto, IPageTP } from '../model/tipoproducto-interfaces';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TipoproductoService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   sURL = API_URL + '/tipoprod';
 
-  getPage(rpp: number, page: number, filter: string, order: string, direction: string): Observable<IPageTP> {
-    let strFilterUrl: string = "";
-    let strOrderUrl: string = "";
+  getPage(
+    rpp: number,
+    page: number,
+    filter: string,
+    order: string,
+    direction: string
+  ): Observable<IPageTP> {
+    let strFilterUrl: string = '';
+    let strOrderUrl: string = '';
     if (filter) {
-      strFilterUrl += "&filter=" + filter;
+      strFilterUrl += '/filter/' + filter;
     }
     if (order) {
-      strOrderUrl += "&order=" + order + "&dir=" + direction;
+      strOrderUrl += '&sort=' + order + ',' + direction;
     }
-    return this.http.get<IPageTP>(this.sURL + "?page=" + page + "&size=" + rpp  + strFilterUrl + strOrderUrl, httpOptions);
+    return this.http.get<IPageTP>(
+      this.sURL + strFilterUrl + '?page=' + page + '&size=' + rpp + strOrderUrl,
+      httpOptions
+    );
   }
+
 
 
   getOne(id: number): Observable<ITipoProducto> {
@@ -40,12 +50,11 @@ export class TipoproductoService {
 
   updateOne(oTipoProducto: ITipoProductoToSend): Observable<number> {
     return this.http.put<number>(this.sURL, oTipoProducto, httpOptions);
+
   }
 
   removeOne(id: number): Observable<number> {
-    return this.http.delete<number>(this.sURL + "?id=" + id, httpOptions);
+    return this.http.delete<number>(this.sURL + '/' + id, httpOptions);
   }
-
-  
 
 }
