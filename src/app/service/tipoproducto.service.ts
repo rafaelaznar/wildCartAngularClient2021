@@ -1,12 +1,7 @@
-import { ITipoProductoToSend } from './../model/tipoproducto-interfaces';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import {
-  API_URL,
-  environment,
-  httpOptions,
-} from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { API_URL, httpOptions } from 'src/environments/environment';
 import { ITipoProducto, IPageTP } from '../model/tipoproducto-interfaces';
 
 @Injectable({
@@ -33,28 +28,30 @@ export class TipoproductoService {
       strOrderUrl += '&sort=' + order + ',' + direction;
     }
     return this.http.get<IPageTP>(
-      this.sURL + strFilterUrl + '?page=' + page + '&size=' + rpp + strOrderUrl,
+      this.sURL +  strFilterUrl + '/?page=' + (page - 1) +'&size=' +rpp + strOrderUrl, httpOptions);
+  }
+
+  getOne(id: number): Observable<ITipoProducto> {
+    return this.http.get<ITipoProducto>(this.sURL + '/' + id, httpOptions);
+  }
+
+  newOne(oTipoProducto: ITipoProducto): Observable<ITipoProducto> {
+    return this.http.post<ITipoProducto>(
+      this.sURL + '/',
+      oTipoProducto,
       httpOptions
     );
   }
 
-
-
-  getOne(id: number): Observable<ITipoProducto> {
-    return this.http.get<ITipoProducto>(this.sURL + "?id=" + id, httpOptions);
-  }
-
-  newOne(oTipoProducto: ITipoProductoToSend): Observable<number> {
-    return this.http.post<number>(this.sURL, oTipoProducto, httpOptions);
-  }
-
-  updateOne(oTipoProducto: ITipoProductoToSend): Observable<number> {
-    return this.http.put<number>(this.sURL, oTipoProducto, httpOptions);
-
+  updateOne(oTipoProducto: ITipoProducto): Observable<ITipoProducto> {
+    return this.http.put<ITipoProducto>(
+      this.sURL + '/',
+      oTipoProducto,
+      httpOptions
+    );
   }
 
   removeOne(id: number): Observable<number> {
     return this.http.delete<number>(this.sURL + '/' + id, httpOptions);
   }
-
 }

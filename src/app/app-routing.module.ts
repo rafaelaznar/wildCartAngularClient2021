@@ -37,7 +37,8 @@ import { NewUsuarioComponent } from './component/usuario/new/new-usuario.compone
 import { PlistUsuarioComponent } from './component/usuario/plist/plist-usuario.component';
 import { RemoveUsuarioComponent } from './component/usuario/remove/remove-usuario.component';
 import { ViewUsuarioComponent } from './component/usuario/view/view-usuario.component';
-import { SessionResolver } from './resolve/session.resolve';
+import { SessionResolver } from './component/resolve/session.resolve';
+
 
 
 const routes: Routes = [
