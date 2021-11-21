@@ -32,6 +32,14 @@ export class NewCompraComponent implements OnInit {
     private oDateTimeService: DateTimeService
   ) { 
 
+    if (this.oActivatedRoute.snapshot.data.message) {
+      const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message.login;
+      localStorage.setItem("user", strUsuarioSession);
+    } else {
+      localStorage.clear();
+      oRouter.navigate(['/home']);
+    }
+
   }
 
   ngOnInit(): void {
@@ -66,8 +74,12 @@ export class NewCompraComponent implements OnInit {
         fecha: this.oDateTimeService.getStrFecha2Send(this.oForm.value.fecha),
         descuento_usuario: this.oForm.value.descuento_usuario,
         descuento_producto: this.oForm.value.descuento_producto,
-        id_producto: this.oForm.value.id_producto,
-        id_factura: this.oForm.value.id_factura
+        id_producto: {
+          id: this.oForm.value.id_producto
+        },
+        id_factura: {
+          id: this.oForm.value.id_factura
+        }
       }
       this.new();
     }
@@ -77,7 +89,7 @@ export class NewCompraComponent implements OnInit {
     this.oCompraService.new(this.oCompra).subscribe((id: number) => {
       if (id) {
         this.id = id;
-        this.strResult = "El post se ha creado correctamente";
+        this.strResult = "La compra se ha creado correctamente";
       } else {
         this.strResult = "Error en la creación del registro";
       }
@@ -98,7 +110,7 @@ export class NewCompraComponent implements OnInit {
   }
 
   closeModal():void {
-    this.oRouter.navigate(["/view/" + this.id]);
+    this.oRouter.navigate(["compra/view/" + this.id]);
   }
 
 }

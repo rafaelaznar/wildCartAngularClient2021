@@ -33,6 +33,14 @@ export class EditCompraComponent implements OnInit {
     private oDateTimeService: DateTimeService 
   ) {
 
+    if (this.oActivatedRoute.snapshot.data.message) {
+      const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message.login;
+      localStorage.setItem("user", strUsuarioSession);
+    } else {
+      localStorage.clear();
+      oRouter.navigate(['/home']);
+    }
+
     this.id = this.oActivatedRoute.snapshot.params.id
     this.get();
 
@@ -54,7 +62,7 @@ export class EditCompraComponent implements OnInit {
 
   }
 
-  get = ():void => {
+  get = (): void => {
     this.oCompraService.get(this.id).subscribe((oData: ICompra) => {
       this.oCompra = oData;
       this.oForm = this.oFormBuilder.group({
@@ -76,11 +84,15 @@ export class EditCompraComponent implements OnInit {
         id: this.oForm.value.id,
         cantidad: this.oForm.value.cantidad,
         precio: this.oForm.value.precio,        
-        fecha: this.oDateTimeService.getStrFecha2Send(this.oForm.value.fecha), //this.getStrFecha2Send($('#fecha').val()),
+        fecha: this.oDateTimeService.getStrFecha2Send(this.oForm.value.fecha),
         descuento_usuario: this.oForm.value.descuento_usuario,
         descuento_producto: this.oForm.value.descuento_producto,
-        id_producto: this.oForm.value.id_producto,
-        id_factura: this.oForm.value.id_factura
+        id_producto: {
+          id: this.oForm.value.id_producto
+        },
+        id_factura: {
+          id: this.oForm.value.id_factura
+        }
       }
 
       this.update();
@@ -90,9 +102,9 @@ export class EditCompraComponent implements OnInit {
   update = ():void => {
     this.oCompraService.update(this.oCompraToSend).subscribe((result: number) => {
       if (result) {
-        this.strResult = "El post se ha modificado correctamente";
+        this.strResult = "La compra se ha modificado correctamente";
       } else {
-        this.strResult = "Error en la modificación del post";
+        this.strResult = "Error en la modificación de la compra";
       }
       this.openModal();
     })
@@ -111,7 +123,7 @@ export class EditCompraComponent implements OnInit {
   }
 
   closeModal():void {
-    this.oRouter.navigate(["/view/" + this.id]);
+    this.oRouter.navigate(["compra/view/" + this.id]);
   }
 
 }
