@@ -28,5 +28,16 @@ export interface ICompra {
     descuento_producto: number,
     id_producto: any,
     id_factura: any
+}
+
+export interface ICompraToSend {
+    id: number,
+    cantidad: number,
+    precio: number,
+    fecha: string,
+    descuento_usuario: number,
+    descuento_producto: number,
+    id_producto: any,
+    id_factura: any
 
 }
