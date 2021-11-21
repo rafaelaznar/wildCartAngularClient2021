@@ -1,3 +1,4 @@
+import { ITipoProductoToSend } from './../model/tipoproducto-interfaces';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
@@ -37,27 +38,23 @@ export class TipoproductoService {
     );
   }
 
+
+
   getOne(id: number): Observable<ITipoProducto> {
-    return this.http.get<ITipoProducto>(this.sURL + '/' + id, httpOptions);
+    return this.http.get<ITipoProducto>(this.sURL + "?id=" + id, httpOptions);
   }
 
-  newOne(oTipoProducto: ITipoProducto): Observable<ITipoProducto> {
-    return this.http.post<ITipoProducto>(
-      this.sURL + '/',
-      oTipoProducto,
-      httpOptions
-    );
+  newOne(oTipoProducto: ITipoProductoToSend): Observable<number> {
+    return this.http.post<number>(this.sURL, oTipoProducto, httpOptions);
   }
 
-  updateOne(oTipoProducto: ITipoProducto): Observable<ITipoProducto> {
-    return this.http.put<ITipoProducto>(
-      this.sURL + '/',
-      oTipoProducto,
-      httpOptions
-    );
+  updateOne(oTipoProducto: ITipoProductoToSend): Observable<number> {
+    return this.http.put<number>(this.sURL, oTipoProducto, httpOptions);
+
   }
 
   removeOne(id: number): Observable<number> {
     return this.http.delete<number>(this.sURL + '/' + id, httpOptions);
   }
+
 }

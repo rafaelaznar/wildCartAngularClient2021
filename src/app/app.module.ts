@@ -29,7 +29,6 @@ import { LookPostComponent } from './component/post/look/look.component';
 import { PlistTipousuarioComponent } from './component/tipousuario/plist/plist-tipousuario.component';
 import { EditTipousuarioComponent } from './component/tipousuario/edit/edit-tipousuario.component';
 import { ViewTipousuarioComponent } from './component/tipousuario/view/view-tipousuario.component';
-import { PlistTipoproductoComponent } from './component/tipoproducto/plist/plist-tipoproducto.component';
 import { NewTipoproductoComponent } from './component/tipoproducto/new/new-tipoproducto.component';
 import { EditTipoproductoComponent } from './component/tipoproducto/edit/edit-tipoproducto.component';
 import { RemoveTipoproductoComponent } from './component/tipoproducto/remove/remove-tipoproducto.component';
@@ -66,6 +65,8 @@ import { UsuarioService } from './service/usuario.service';
 import { TipousuarioService } from './service/tipousuario.service';
 import { TipoproductoService } from './service/tipoproducto.service';
 import { FacturaService } from './service/factura.service';
+import { PlistTipoproductoComponent } from './component/tipoproducto/plist/plist-tipoproducto.component';
+import { SessionResolver } from './component/resolve/session.resolve';
 
 
 
