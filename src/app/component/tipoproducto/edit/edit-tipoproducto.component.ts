@@ -11,78 +11,81 @@ declare let $: any;
 @Component({
   selector: 'app-edit-tipoproducto',
   templateUrl: './edit-tipoproducto.component.html',
-  styleUrls: ['./edit-tipoproducto.component.css']
+  styleUrls: ['./edit-tipoproducto.component.css'],
 })
-
-
 export class EditTipoproductoComponent implements OnInit {
-
   oTipoProducto: ITipoProducto = null;
   oTipoProductoShow: ITipoProducto = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
 
-  get f() { return this.oForm.controls; }
+  get f() {
+    return this.oForm.controls;
+  }
 
   constructor(
     private oFormBuilder: FormBuilder,
     private oRouter: Router,
     private oTipoProductoService: TipoproductoService,
     private oActivatedRoute: ActivatedRoute,
-    private oLocation: Location,
-    ) {
-
+    private oLocation: Location
+  ) {
     if (this.oActivatedRoute.snapshot.data.message) {
-      const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem("user", strUsuarioSession);
+      const strUsuarioSession: string =
+        this.oActivatedRoute.snapshot.data.message;
+      localStorage.setItem('user', strUsuarioSession);
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
 
-    this.id = this.oActivatedRoute.snapshot.params.id
+    this.id = this.oActivatedRoute.snapshot.params.id;
     this.getOne();
-
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
-  getOne = ():void => {
-    this.oTipoProductoService.getOne(this.id).subscribe((oData: ITipoProducto) => {
-      this.oTipoProductoShow = oData;
-      this.oForm = this.oFormBuilder.group({
-        id: [this.oTipoProductoShow.id],
-        nombre: [this.oTipoProductoShow.nombre, [Validators.required, Validators.minLength(5)]],
+  getOne = (): void => {
+    this.oTipoProductoService
+      .getOne(this.id)
+      .subscribe((oData: ITipoProducto) => {
+        this.oTipoProductoShow = oData;
+        this.oForm = this.oFormBuilder.group({
+          id: [this.oTipoProductoShow.id],
+          nombre: [
+            this.oTipoProductoShow.nombre,
+            [Validators.required, Validators.minLength(5)],
+          ],
+        });
       });
-    })
-  }
+  };
 
   onSubmit(): void {
     if (this.oForm) {
       this.oTipoProducto = {
         id: this.oForm.value.id,
-        nombre: this.oForm.value.nombre
-      }
+        nombre: this.oForm.value.nombre,
+      };
 
       this.update();
     }
   }
 
-  update = ():void => {
-    this.oTipoProductoService.updateOne(this.oTipoProducto).subscribe((result: number) => {
-      if (result) {
-        this.strResult = "El post se ha modificado correctamente";
-      } else {
-        this.strResult = "Error en la modificación del post";
-      }
-      this.openModal();
-    })
-  }
+  update = (): void => {
+    this.oTipoProductoService
+      .updateOne(this.oTipoProducto)
+      .subscribe((oTipoProducto: ITipoProducto) => {
+        if (oTipoProducto.id) {
+          this.strResult = 'El post se ha modificado correctamente';
+        } else {
+          this.strResult = 'Error en la modificación del post';
+        }
+        this.openModal();
+      });
+  };
 
-  goBack():void {
+  goBack(): void {
     this.oLocation.back();
   }
 
@@ -90,12 +93,11 @@ export class EditTipoproductoComponent implements OnInit {
 
   eventsSubject: Subject<void> = new Subject<void>();
 
-  openModal():void {
+  openModal(): void {
     this.eventsSubject.next();
   }
 
-  closeModal():void {
-    this.oRouter.navigate(["tipoproducto/view/" + this.id]);
+  closeModal(): void {
+    this.oRouter.navigate(['tipoproducto/view/' + this.id]);
   }
-
 }
