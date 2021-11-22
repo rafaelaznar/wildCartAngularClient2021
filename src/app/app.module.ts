@@ -67,6 +67,7 @@ import { UsuarioService } from './service/usuario.service';
 import { TipousuarioService } from './service/tipousuario.service';
 import { TipoproductoService } from './service/tipoproducto.service';
 import { FacturaService } from './service/factura.service';
+import { NotFoundComponent } from './component/not-found/not-found.component';
 
 
 @NgModule({
@@ -123,6 +124,7 @@ import { FacturaService } from './service/factura.service';
     ViewFacturaComponent,
     EditFacturaComponent,
     RemoveFacturaComponent,
+    NotFoundComponent,
 
 
   ],
