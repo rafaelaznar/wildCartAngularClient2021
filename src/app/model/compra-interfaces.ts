@@ -1,3 +1,8 @@
+export interface IPageCompra {
+    content: ICompra[];
+    totalElements: number,
+    totalPages: number
+}
 export interface IProducto {
     id: number
 }
@@ -28,6 +33,7 @@ export interface ICompra {
     descuento_producto: number,
     producto: any,
     factura: any
+
 }
 
 export interface ICompraToSend {
