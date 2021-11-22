@@ -71,7 +71,7 @@ export class NewCompraComponent implements OnInit {
         id: null,
         cantidad: this.oForm.value.cantidad,
         precio: this.oForm.value.precio,        
-        fecha: this.oDateTimeService.getStrFecha2Send(this.oForm.value.fecha),
+        fecha: this.oForm.value.fecha,
         descuento_usuario: this.oForm.value.descuento_usuario,
         descuento_producto: this.oForm.value.descuento_producto,
         producto: {
