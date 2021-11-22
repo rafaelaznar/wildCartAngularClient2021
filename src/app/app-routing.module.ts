@@ -38,6 +38,11 @@ import { PlistUsuarioComponent } from './component/usuario/plist/plist-usuario.c
 import { RemoveUsuarioComponent } from './component/usuario/remove/remove-usuario.component';
 import { ViewUsuarioComponent } from './component/usuario/view/view-usuario.component';
 import { SessionResolver } from './resolve/session.resolve';
+import { PlistCarritoComponent } from './component/carrito/plist/plist-carrito.component';
+import { NewCarritoComponent } from './component/carrito/new/new-carrito.component';
+import { ViewCarritoComponent } from './component/carrito/view/view-carrito.component';
+import { EditCarritoComponent } from './component/carrito/edit/edit-carrito.component';
+import { RemoveCarritoComponent } from './component/carrito/remove/remove-carrito.component';
 
 
 const routes: Routes = [
@@ -86,7 +91,13 @@ const routes: Routes = [
   { path: 'factura/new', component: NewFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'factura/view/:id', component: ViewFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'factura/edit/:id', component: EditFacturaComponent, resolve: { message: SessionResolver } },
-  { path: 'factura/remove/:id', component: RemoveFacturaComponent, resolve: { message: SessionResolver } }
+  { path: 'factura/remove/:id', component: RemoveFacturaComponent, resolve: { message: SessionResolver } },
+
+  { path: 'carrito/plist', component: PlistCarritoComponent, resolve: { message: SessionResolver } },
+  { path: 'carrito/new', component: NewCarritoComponent, resolve: { message: SessionResolver } },
+  { path: 'carrito/view/:id', component: ViewCarritoComponent, resolve: { message: SessionResolver } },
+  { path: 'carrito/edit/:id', component: EditCarritoComponent, resolve: { message: SessionResolver } },
+  { path: 'carrito/remove/:id', component: RemoveCarritoComponent, resolve: { message: SessionResolver } }
 
 ];
 
