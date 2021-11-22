@@ -24,5 +24,8 @@ export class CompraService {
   update(oCompraToSend: ICompraToSend): Observable<number> {
     return this.http.put<number>(this.sURL, oCompraToSend, httpOptions);
   }
+  remove(id: number): Observable<number> {
+    return this.http.delete<number>(this.sURL + "/" + id, httpOptions);
+  }
 
 }
