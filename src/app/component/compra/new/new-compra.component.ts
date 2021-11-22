@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DateTimeService } from 'src/app/service/datetime.service';
-import { PostService } from 'src/app/service/post.service';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { ICompra, ICompraToSend } from 'src/app/model/compra-interfaces';
@@ -74,11 +73,11 @@ export class NewCompraComponent implements OnInit {
         fecha: this.oDateTimeService.getStrFecha2Send(this.oForm.value.fecha),
         descuento_usuario: this.oForm.value.descuento_usuario,
         descuento_producto: this.oForm.value.descuento_producto,
-        id_producto: {
-          id: this.oForm.value.id_producto
+        producto: {
+          id: this.oForm.value.producto
         },
-        id_factura: {
-          id: this.oForm.value.id_factura
+        factura: {
+          id: this.oForm.value.factura
         }
       }
       this.new();

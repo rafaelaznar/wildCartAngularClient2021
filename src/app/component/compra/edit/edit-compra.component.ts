@@ -69,11 +69,11 @@ export class EditCompraComponent implements OnInit {
         id: [this.oCompra.id],
         cantidad: [this.oCompra.cantidad, Validators.required],
         precio: [this.oCompra.precio, Validators.required],        
-        fecha: [this.oDateTimeService.getStrFecha2Show(this.oCompra.fecha), Validators.required],
+        fecha: [this.oCompra.fecha, Validators.required],
         descuento_usuario: [this.oCompra.descuento_usuario, Validators.required],
         descuento_producto: [this.oCompra.descuento_producto, Validators.required],
-        id_producto: [this.oCompra.id_producto, Validators.required],
-        id_factura: [this.oCompra.id_factura, Validators.required]
+        id_producto: [this.oCompra.producto, Validators.required],
+        id_factura: [this.oCompra.factura, Validators.required]
       });
     })
   }
@@ -87,10 +87,10 @@ export class EditCompraComponent implements OnInit {
         fecha: this.oDateTimeService.getStrFecha2Send(this.oForm.value.fecha),
         descuento_usuario: this.oForm.value.descuento_usuario,
         descuento_producto: this.oForm.value.descuento_producto,
-        id_producto: {
-          id: this.oForm.value.id_producto
+        producto: {
+          id: this.oForm.value.producto
         },
-        id_factura: {
+        factura: {
           id: this.oForm.value.id_factura
         }
       }

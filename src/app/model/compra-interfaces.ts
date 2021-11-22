@@ -26,8 +26,8 @@ export interface ICompra {
     fecha: IFecha,
     descuento_usuario: number,
     descuento_producto: number,
-    id_producto: any,
-    id_factura: any
+    producto: any,
+    factura: any
 }
 
 export interface ICompraToSend {
@@ -37,7 +37,7 @@ export interface ICompraToSend {
     fecha: string,
     descuento_usuario: number,
     descuento_producto: number,
-    id_producto: any,
-    id_factura: any
+    producto: any,
+    factura: any
 
 }
