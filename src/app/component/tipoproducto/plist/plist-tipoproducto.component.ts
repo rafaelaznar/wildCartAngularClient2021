@@ -38,7 +38,7 @@ export class PlistTipoproductoComponent implements OnInit {
 
     if (this.oRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", this.oRoute.snapshot.data.message);
+      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);

@@ -34,7 +34,7 @@ export class EditTipoproductoComponent implements OnInit {
     if (this.oActivatedRoute.snapshot.data.message) {
       const strUsuarioSession: string =
         this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem('user', strUsuarioSession);
+      localStorage.setItem('user', JSON.stringify(strUsuarioSession));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
