@@ -1,1 +1,77 @@
-<p>new-factura works!</p>
+<div class="container my-3">
+
+    <div class="row justify-content-center my-5">
+        <div class="col-md text-start">
+            <h2><i class="fas fa plus me-3"></i>Nueva Factura</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+
+        <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
+
+            <div class="row mb-3">
+                <label for="fecha" class="col-sm-2 col-form-label">Fecha</label>
+                <div class="col-sm-10">
+                    <input type="text" name="fecha" id="fecha" formControlName="fecha"
+                        class="text ui-widget-content ui-corner-all" />
+                    <div *ngIf="f.fecha.dirty && f.fecha.errors?.required" class="text-danger">
+                        Se debe introducir una fecha correcta
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="iva" class="col-sm-2 col-form-label">IVA</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="iva" formControlName="iva" min="4" max="21"
+                        [ngClass]="{'is-valid' : f.iva.dirty && !(f.iva.errors?.required|| f.iva.errors?.minlength) }">
+                    <div *ngIf="f.iva.dirty && f.iva.errors?.required" class="text-danger">
+                        Se debe introducir un IVA. El mínimo es de un 4% y máximo de 21%.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label for="pagado" class="col-sm-2 col-form-label">Pagado</label>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="pagado" formControlName="pagado">
+                        <label class="form-check-label" for="pagado">
+                            Pagado
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="id_usuario" class="col-sm-2 col-form-label">ID Usuario</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="id_usuario" formControlName="id_usuario" readonly>
+                </div>
+            </div>
+
+            <div class="row mb-3 justify-content-center">
+                <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
+                    <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine">Crear
+                        Nueva Factura</button>
+                </div>
+            </div>
+
+        </form>
+
+        <div class="control-group text-center mt-5">
+            <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
+                <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i> Página
+                    principal</a>
+                <a class="btn btn-primary mx-2" [routerLink]="['/plist']"><i class="fas fa-file-alt"></i> Listado de
+                    Facturas</a>
+                <a class="btn btn-primary mx-2" (click)="goBack()"><i class="fas fa-arrow-circle-left"></i> Volver </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<app-modal [show]="eventsSubject.asObservable()" [body]="strResult" (close)="closeModal()"> </app-modal>
