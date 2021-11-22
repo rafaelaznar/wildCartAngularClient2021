@@ -1,1 +1,160 @@
-<p>plist-usuario works!</p>
+<app-menu></app-menu>
+
+<div class="container my-3">
+
+    <app-header [title]="'Listado de Usuarios'" [icon]="'fas fa-file-alt'" [subtitle]="totalElements + ' usuarios'">
+    </app-header>
+
+    <div class="row justify-content-center my-3">
+        <div class="col-12 d-grid gap-2 d-md-block d-md-flex justify-content-md-center">
+            <form style="width: 50%;">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button class="btn-primary btn" (click)="doFilter()" [disabled]="filtered">
+                            <i class="fas fa-search"></i> Filtrar
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Buscador de usuarios" [(ngModel)]="filterActual"
+                        name="buscar" (keydown)="onKeydownEvent($event)" />
+                    <div class="input-group-append">
+                        <button class="btn-primary btn" (click)="doResetFilter()" [disabled]="!filtered">Quitar
+                            filtro
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col-md">
+            <nav aria-label="pagination">
+                <ul class="pagination">
+                    <li class="page-item" aria-current="page" *ngFor="let p of barraPaginacion"
+                        [ngClass]="{'active': (page+'' == p)}">
+                        <a class="page-link" (click)="page=(+p);jumpToPage()" href="#">{{p}}</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md text-center">
+            <a [routerLink]="['/new']" type="button" class="btn btn-success mb-2">
+                <i class="fas fa-plus"></i> Añadir nuevo Usuario
+            </a>
+        </div>
+        <div class="col-md text-end">
+            <div class="dropdown mb-3">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Registros por página: {{pageSize}}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" (click)="pageSize=10;getPage()">10</a></li>
+                    <li><a class="dropdown-item" (click)="pageSize=50;getPage()">50</a></li>
+                    <li><a class="dropdown-item" (click)="pageSize=100;getPage()">100</a></li>
+                    <li><a class="dropdown-item" (click)="pageSize=1000;getPage()">1000</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md table-responsive-md">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th (click)="doSetOrder('id')">ID
+                            <i class="fas fa-arrow-up" *ngIf="currentSortField=='id'&&currentSortDirection=='asc'"></i>
+                            <i class="fas fa-arrow-down"
+                                *ngIf="currentSortField=='id'&&currentSortDirection=='desc'"></i>
+                        </th>
+                        <th (click)="doSetOrder('dni')">DNI
+                            <i class="fas fa-arrow-up"
+                                *ngIf="currentSortField=='dni'&&currentSortDirection=='asc'"></i>
+                            <i class="fas fa-arrow-down"
+                                *ngIf="currentSortField=='dni'&&currentSortDirection=='desc'"></i>
+
+                        </th>
+                        <th (click)="doSetOrder('nombre')">Nombre
+                            <i class="fas fa-arrow-up"
+                                *ngIf="currentSortField=='nombre'&&currentSortDirection=='asc'"></i>
+                            <i class="fas fa-arrow-down"
+                                *ngIf="currentSortField=='nombre'&&currentSortDirection=='desc'"></i>
+
+                        </th>
+                        <th (click)="doSetOrder('apellido1')">Apellido
+                            <i class="fas fa-arrow-up"
+                                *ngIf="currentSortField=='apellido1'&&currentSortDirection=='asc'"></i>
+                            <i class="fas fa-arrow-down"
+                                *ngIf="currentSortField=='apellido1'&&currentSortDirection=='desc'"></i>
+
+                        </th>
+                        <th (click)="doSetOrder('apellido2')">Apellido 2
+                            <i class="fas fa-arrow-up"
+                                *ngIf="currentSortField=='apellido2'&&currentSortDirection=='asc'"></i>
+                            <i class="fas fa-arrow-down"
+                                *ngIf="currentSortField=='apellido2'&&currentSortDirection=='desc'"></i>
+
+                        </th>
+                        <th (click)="doSetOrder('email')">Email
+                            <i class="fas fa-arrow-up"
+                                *ngIf="currentSortField=='email'&&currentSortDirection=='asc'"></i>
+                            <i class="fas fa-arrow-down"
+                                *ngIf="currentSortField=='email'&&currentSortDirection=='desc'"></i>
+
+                        </th>
+                        <th (click)="doSetOrder('carritos')">Carritos
+                            <i class="fas fa-arrow-up"
+                                *ngIf="currentSortField=='carritos'&&currentSortDirection=='asc'"></i>
+                            <i class="fas fa-arrow-down"
+                                *ngIf="currentSortField=='carritos'&&currentSortDirection=='desc'"></i>
+
+                        </th>
+                        <th (click)="doSetOrder('facturas')">Facturas
+                            <i class="fas fa-arrow-up"
+                                *ngIf="currentSortField=='facturas'&&currentSortDirection=='asc'"></i>
+                            <i class="fas fa-arrow-down"
+                                *ngIf="currentSortField=='facturas'&&currentSortDirection=='desc'"></i>
+
+                        </th>
+                        <th>Validado</th>
+                        <th>Activado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let fila of aPosts">
+                        <td>{{fila.id}}</td>
+                        <td>{{fila.dni}}</td>
+                        <td>{{fila.nombre}}</td>
+                        <td>{{fila.apellido1}}</td>
+                        <td>{{fila.apellido2}}</td>
+                        <td>{{fila.email}}</td>
+                        <td>{{fila.carritos}}</td>
+                        <td>{{fila.facturas}}</td>
+                        <td class="text-center" [innerHTML]="fila.validado | showBoolean"></td>
+                        <td class="text-center" [innerHTML]="fila.activo | showBoolean"></td>
+                        <td class="text-center">
+                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
+                                <button type="button" class="btn btn-success" [routerLink]="['/usuario/view/' + fila.id]"><i
+                                        class="fas fa-eye"></i></button>
+                                <button type="button" class="btn btn-success" (click)="showViewModal(fila.id)"><i
+                                        class="fas fa-search"></i></button>
+                                <button type="button" class="btn btn-warning" [routerLink]="['/usuario/edit/' + fila.id]"><i
+                                        class="fas fa-pen"></i></button>
+                                <button type="button" class="btn btn-danger" [routerLink]="['/usuario/remove/' + fila.id]"><i
+                                        class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+<app-modal [show]="eventsSubjectModal.asObservable()" [body]="strResult" (close)="closeModal()" [size]="'xl'">
+    <app-usuario-look [show]="eventsSubjectView.asObservable()"></app-usuario-look>
+</app-modal>
