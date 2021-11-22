@@ -22,20 +22,21 @@ export class EditCompraComponent implements OnInit {
   oForm: FormGroup = null;
   strResult: string = null;
 
-  get f() { return this.oForm.controls; }
+  get f() { return this.oForm?.controls; }
 
   constructor(
     private oFormBuilder: FormBuilder,
     private oRouter: Router,
     private oCompraService: CompraService,
     private oActivatedRoute: ActivatedRoute,
+    private oRoute: ActivatedRoute,
     private oLocation: Location,
     private oDateTimeService: DateTimeService 
   ) {
 
     if (this.oActivatedRoute.snapshot.data.message) {
       const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message.login;
-      localStorage.setItem("user", strUsuarioSession);
+      localStorage.setItem("user",  JSON.stringify(this.oRoute.snapshot.data.mesaage));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
@@ -72,8 +73,8 @@ export class EditCompraComponent implements OnInit {
         fecha: [this.oCompra.fecha, Validators.required],
         descuento_usuario: [this.oCompra.descuento_usuario, Validators.required],
         descuento_producto: [this.oCompra.descuento_producto, Validators.required],
-        id_producto: [this.oCompra.producto, Validators.required],
-        id_factura: [this.oCompra.factura, Validators.required]
+        producto: [this.oCompra.producto.id, Validators.required],
+        factura: [this.oCompra.factura.id, Validators.required]
       });
     })
   }
@@ -123,7 +124,7 @@ export class EditCompraComponent implements OnInit {
   }
 
   closeModal():void {
-    this.oRouter.navigate(["compra/view/" + this.id]);
+    this.oRouter.navigate(["/compra/view/" + this.id]);
   }
 
 }

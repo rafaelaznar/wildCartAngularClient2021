@@ -26,14 +26,15 @@ export class NewCompraComponent implements OnInit {
     private oFormBuilder: FormBuilder,
     private oRouter: Router,
     private oCompraService: CompraService,
-    private oActivatedRoute: ActivatedRoute,  
+    private oActivatedRoute: ActivatedRoute,
+    private oRoute: ActivatedRoute,  
     private oLocation: Location,
     private oDateTimeService: DateTimeService
   ) { 
 
     if (this.oActivatedRoute.snapshot.data.message) {
       const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message.login;
-      localStorage.setItem("user", strUsuarioSession);
+      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.mesaage));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
@@ -48,8 +49,8 @@ export class NewCompraComponent implements OnInit {
       fecha: ['', Validators.required],
       descuento_usuario: ['', Validators.required],
       descuento_producto: ['', Validators.required],
-      id_producto: ['', Validators.required],
-      id_factura: ['', Validators.required]
+      producto: ['', Validators.required],
+      factura: ['', Validators.required]
     });
     $('#fecha').datetimepicker({
       defaultDate: "+1w",
@@ -80,6 +81,7 @@ export class NewCompraComponent implements OnInit {
           id: this.oForm.value.factura
         }
       }
+      console.log(this.oCompra);
       this.new();
     }
   }
@@ -109,7 +111,7 @@ export class NewCompraComponent implements OnInit {
   }
 
   closeModal():void {
-    this.oRouter.navigate(["compra/view/" + this.id]);
+    this.oRouter.navigate(["/compra/view/" + this.id]);
   }
 
 }
