@@ -6,18 +6,19 @@ import { of } from 'rxjs/internal/observable/of';
 
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { tap } from 'rxjs/internal/operators/tap';
+import { IUsuario } from '../model/usuario-interfaces';
 import { SessionService } from '../service/session.service';
 
 
 @Injectable()
-export class SessionResolver implements Resolve<Observable<String>> {
+export class SessionResolver implements Resolve<Observable<IUsuario>> {
 
     constructor(private oSessionService: SessionService) { }
 
-    resolve(): Observable<String> {        
+    resolve(): Observable<IUsuario> {
         return this.oSessionService.check().pipe(
-            tap((u: String) => console.log("session.service check HTTP request executed: ", u)),            
-            catchError(err => of(null) )
-          );
+            // tap((u: IUsuario) => console.log("session.service check HTTP request executed: ", u.nombre)),
+            catchError(err => of(null))
+        );
     }
 }

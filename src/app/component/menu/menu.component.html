@@ -18,11 +18,26 @@
                     <a class="nav-link" [class.active]="strUrl=='/logout'" [routerLink]="['/logout']"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>
                 <li class="nav-item"  *ngIf="strUsuarioSession">
-                    <a class="nav-link" [class.active]="strUrl=='/plist'" [routerLink]="['/plist']"><i class="fas fa-file-alt"></i> Posts</a>
+                    <a class="nav-link" [class.active]="strUrl=='/usuario/plist'" [routerLink]="['/usuario/plist']"><i class="fas fa-file-alt"></i> Usuario</a>
+                </li>
+                <li class="nav-item"  *ngIf="strUsuarioSession">
+                    <a class="nav-link" [class.active]="strUrl=='/producto/plist'" [routerLink]="['/producto/plist']"><i class="fas fa-file-alt"></i> Producto</a>
+                </li>
+                <li class="nav-item"  *ngIf="strUsuarioSession">
+                    <a class="nav-link" [class.active]="strUrl=='/tipoproducto/plist'" [routerLink]="['/tipoproducto/plist']"><i class="fas fa-file-alt"></i> Tipos de Producto</a>
+                </li>
+                <li class="nav-item"  *ngIf="strUsuarioSession">
+                    <a class="nav-link" [class.active]="strUrl=='/compra/plist'" [routerLink]="['/compra/plist']"><i class="fas fa-file-alt"></i> Compras</a>
+                </li>
+                <li class="nav-item"  *ngIf="strUsuarioSession">
+                    <a class="nav-link" [class.active]="strUrl=='/factura/plist'" [routerLink]="['/factura/plist']"><i class="fas fa-file-alt"></i> Facturas</a>
+                </li>
+                <li class="nav-item"  *ngIf="strUsuarioSession">
+                    <a class="nav-link" [class.active]="strUrl=='/carrito/plist'" [routerLink]="['/carrito/plist']"><i class="fas fa-file-alt"></i> Producto en el carrito</a>
                 </li>
 
             </ul>
-            <span class="navbar-text" *ngIf="strUsuarioSession"><i class="fas fa-user"></i> Usuario: {{strUsuarioSession}} </span>
+            <span class="navbar-text" *ngIf="strUsuarioSession"><i class="fas fa-user"></i> Usuario: {{strUsuarioSession.nombre + " " + strUsuarioSession.apellido1}} </span>
         </div>
     </div>
 </nav>

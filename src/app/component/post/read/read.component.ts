@@ -24,7 +24,7 @@ export class ReadComponent implements OnInit {
     private oLocation: Location
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
-      localStorage.setItem("user", this.oActivatedRoute.snapshot.data.message);
+      localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
     } else {
       localStorage.clear();
     }

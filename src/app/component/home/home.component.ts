@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     private oPostService: PostService,
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
-      localStorage.setItem("user", this.oActivatedRoute.snapshot.data.message);
+      localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
     } else {
       localStorage.clear();
     }
