@@ -1,4 +1,3 @@
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -22,8 +21,12 @@ export class ProductoService {
     return this.http.delete<Iproduct>(this.sURL + "/" + id, httpOptions);
   }
 
-  newOne(IProduct: Iproduct): Observable<Iproduct> {
-    return this.http.post<Iproduct>(this.sURL + "/" , httpOptions);
+  newOne(oProduct: Iproduct): Observable<Iproduct> {
+    return this.http.post<Iproduct>(this.sURL + "/" ,oProduct, httpOptions);
+  }
+
+  update(oProduct: Iproduct): Observable<Iproduct> {
+    return this.http.put<Iproduct>(this.sURL + "/" , oProduct, httpOptions);
   }
 
   getPage(rpp: number, page: number, filter: string, order: string, direction: string): Observable<IPageProduct> {
