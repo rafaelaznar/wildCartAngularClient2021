@@ -64,6 +64,7 @@ export class PlistCompraComponent implements OnInit {
       this.totalElements = oPage.totalElements;
       this.totalPages = oPage.totalPages;
       this.barraPaginacion = this.oPaginationService.pagination(this.totalPages, this.page);
+      console.log(this.pageSize);
     })
   }
 

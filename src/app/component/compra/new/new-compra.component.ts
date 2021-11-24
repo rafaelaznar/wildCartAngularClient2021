@@ -81,7 +81,6 @@ export class NewCompraComponent implements OnInit {
           id: this.oForm.value.factura
         }
       }
-      console.log(this.oCompra);
       this.new();
     }
   }
@@ -90,9 +89,11 @@ export class NewCompraComponent implements OnInit {
     this.oCompraService.new(this.oCompra).subscribe((id: number) => {
       if (id) {
         this.id = id;
+        console.log(this.id);
+
         this.strResult = "La compra se ha creado correctamente";
       } else {
-        this.strResult = "Error en la creación del registro";
+        this.strResult = "Error en la creación de la compra";
       }
       this.openModal();
     })

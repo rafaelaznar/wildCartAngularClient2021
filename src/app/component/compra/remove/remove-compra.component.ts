@@ -72,7 +72,7 @@ export class RemoveCompraComponent implements OnInit {
   }
 
   closeModal() {
-    this.oRouter.navigate(["/plist"]);
+    this.oRouter.navigate(["/compra/plist"]);
   }
 
 }
