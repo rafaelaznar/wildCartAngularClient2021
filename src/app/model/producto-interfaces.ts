@@ -8,7 +8,7 @@ export interface Iproduct {
     precio: number,
     imagen: number,
     descuento: number,
-    id_tipoproducto:ITipoProducto
+    tipoproducto:ITipoProducto
 }
 
 export interface IPageProduct {

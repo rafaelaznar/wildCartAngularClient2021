@@ -1,3 +1,4 @@
+import { ITipoProducto } from 'src/app/model/tipoproducto-interfaces';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,10 +18,11 @@ declare let $: any;
 })
 export class NewProductoComponent implements OnInit {
 
-  oProduct2Send : any;
+  oProduct2Send: Iproduct = null;  
   id: number = 0;
   oForm: FormGroup = null;
   strResult: string = "";
+  oTipoProd:ITipoProducto
 
   get f() { return this.oForm.controls; }
 
@@ -59,23 +61,26 @@ export class NewProductoComponent implements OnInit {
   onSubmit(): void {
     if (this.oForm) {
       this.oProduct2Send = {
+        id: null,
         codigo: this.oForm.value.codigo,
         nombre: this.oForm.value.nombre,
         existencias: this.oForm.value.existencias,
         precio: this.oForm.value.precio,
         imagen: this.oForm.value.imagen,
         descuento: this.oForm.value.descuento,
-        id_tipoproducto: this.oForm.value.id_tipoproducto,
+        tipoproducto: {nombre:null,
+          id:this.oForm.value.id_tipoproducto}
       }
       this.new();
     }
   }
 
   new = ():void => {
-    console.log(this.oProduct2Send)
-    this.oProductoService.newOne(JSON.stringify(this.oProduct2Send)).subscribe((oProduct:Iproduct) => {
+    this.oProductoService.newOne(this.oProduct2Send).subscribe((oProduct:Iproduct) => {
+      console.log("dentro de new");
       if (oProduct.id) {
         this.id = oProduct.id;
+        console.log("El post se ha creado correctamente");
         this.strResult = "El post se ha creado correctamente";
       } else {
         this.strResult = "Error en la creación del registro";
@@ -96,7 +101,7 @@ export class NewProductoComponent implements OnInit {
   }
 
   closeModal() {
-    this.oRouter.navigate(["/plist"]);
+    this.oRouter.navigate(["/producto/plist"]);
   }
 
 }
