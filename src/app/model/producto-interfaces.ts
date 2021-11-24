@@ -1,13 +1,5 @@
-export interface Iproduct2Send {
-    id: number,
-    codigo: string,
-    nombre: string,
-    existencias: number,
-    precio: number,
-    imagen: number,
-    descuento: number,
-    id_tipoproducto: {id:number} //cambiar por Itipoproducto - SERGIO - VIKA
-}
+import { ITipoProducto } from "./tipoproducto-interfaces";
+
 export interface Iproduct {
     id: number,
     codigo: string,
@@ -16,7 +8,7 @@ export interface Iproduct {
     precio: number,
     imagen: number,
     descuento: number,
-    id_tipoproducto:number//cambiar por Itipoproducto - SERGIO - VIKA
+    id_tipoproducto:ITipoProducto
 }
 
 export interface IPageProduct {
