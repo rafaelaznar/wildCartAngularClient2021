@@ -16,7 +16,9 @@ declare let $: any;
 export class NewCompraComponent implements OnInit {
 
   oCompra: ICompraToSend = null;  
-  id: any;
+
+  id: ICompra=null;
+
   oForm: FormGroup = null;
   strResult: string = "";
 
@@ -110,13 +112,17 @@ export class NewCompraComponent implements OnInit {
   new = ():void => {
     this.oCompraService.new(this.oCompra).subscribe((id: any) => {
       if (id) {
-        this.id = id;
-        console.log(this.id);
+        this.id = JSON.parse(JSON.stringify(id));
+        console.log("ASJKJSJnk"+this.id.id);
+        
+        
+        console.log()
 
         this.strResult = "La compra se ha creado correctamente";
       } else {
         this.strResult = "Error en la creación de la compra";
       }
+      
       this.openModal();
     })
   }
