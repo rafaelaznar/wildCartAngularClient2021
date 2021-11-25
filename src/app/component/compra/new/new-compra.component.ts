@@ -16,7 +16,9 @@ declare let $: any;
 export class NewCompraComponent implements OnInit {
 
   oCompra: ICompraToSend = null;  
+
   id: ICompra=null;
+
   oForm: FormGroup = null;
   strResult: string = "";
 
@@ -66,7 +68,27 @@ export class NewCompraComponent implements OnInit {
   }
 
   onSubmit(): void {
+    
     if (this.oForm) {
+
+      if(this.oForm.get("factura")?.value==""){
+
+        this.oCompra = {
+          id: null,
+          cantidad: this.oForm.value.cantidad,
+          precio: this.oForm.value.precio,        
+          fecha: this.oForm.value.fecha,
+          descuento_usuario: this.oForm.value.descuento_usuario,
+          descuento_producto: this.oForm.value.descuento_producto,
+          producto: {
+            id: this.oForm.value.producto
+          },
+          factura: null
+        }
+        console.log(this.oCompra);
+        this.new();
+
+      } else {
       this.oCompra = {
         id: null,
         cantidad: this.oForm.value.cantidad,
@@ -78,15 +100,17 @@ export class NewCompraComponent implements OnInit {
           id: this.oForm.value.producto
         },
         factura: {
-          id: this.oForm.value.factura
+          id: this.oForm.get("factura")?.value
         }
       }
+      console.log(this.oCompra);
       this.new();
+    }
     }
   }
 
   new = ():void => {
-    this.oCompraService.new(this.oCompra).subscribe((id: number) => {
+    this.oCompraService.new(this.oCompra).subscribe((id: any) => {
       if (id) {
         this.id = JSON.parse(JSON.stringify(id));
         console.log("ASJKJSJnk"+this.id.id);
