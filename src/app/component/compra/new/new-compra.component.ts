@@ -36,7 +36,7 @@ export class NewCompraComponent implements OnInit {
 
     if (this.oActivatedRoute.snapshot.data.message) {
       const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message.login;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.mesaage));
+      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);

@@ -28,7 +28,7 @@ export class ViewCompraComponent implements OnInit {
 
     if (this.oRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", this.oActivatedRoute.snapshot.data.message.login);
+      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
@@ -44,6 +44,7 @@ export class ViewCompraComponent implements OnInit {
   getOne = () => {
     this.oPostService.get(this.id).subscribe((oData: ICompra) => {
       this.oCompra = oData;
+      console.log(this.oCompra.id);
     })
   }
 
