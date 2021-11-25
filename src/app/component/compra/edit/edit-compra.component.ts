@@ -65,6 +65,7 @@ export class EditCompraComponent implements OnInit {
 
   get = (): void => {
     this.oCompraService.get(this.id).subscribe((oData: ICompra) => {
+      
       this.oCompra = oData;
       this.oForm = this.oFormBuilder.group({
         id: [this.oCompra.id],
@@ -74,13 +75,30 @@ export class EditCompraComponent implements OnInit {
         descuento_usuario: [this.oCompra.descuento_usuario, Validators.required],
         descuento_producto: [this.oCompra.descuento_producto, Validators.required],
         producto: [this.oCompra.producto.id, Validators.required],
-        factura: [this.oCompra.factura.id, Validators.required]
+        factura: [this.oCompra.factura?.id]
       });
     })
   }
 
   onSubmit(): void {
     if (this.oForm) {
+      if(this.oForm.get("factura")?.value==null){
+
+        this.oCompraToSend = {
+          id: this.oForm.value.id,
+          cantidad: this.oForm.value.cantidad,
+          precio: this.oForm.value.precio,        
+          fecha: this.oForm.value.fecha,
+          descuento_usuario: this.oForm.value.descuento_usuario,
+          descuento_producto: this.oForm.value.descuento_producto,
+          producto: {
+            id: this.oForm.value.producto
+          },
+          factura: null
+        }
+        console.log(this.oCompraToSend);
+        this.update();
+        } else{
       this.oCompraToSend = {
         id: this.oForm.value.id,
         cantidad: this.oForm.value.cantidad,
@@ -91,12 +109,15 @@ export class EditCompraComponent implements OnInit {
         producto: {
           id: this.oForm.value.producto
         },
+        
         factura: {
-          id: this.oForm.value.factura
+          id: this.oForm.get("factura")!.value
         }
       }
-
+    
+      console.log(this.oCompraToSend);
       this.update();
+    }
     }
   }
 

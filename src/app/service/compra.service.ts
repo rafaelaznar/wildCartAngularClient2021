@@ -26,7 +26,7 @@ export class CompraService {
     if (order) {
       strOrderUrl += "&sort=" + order + "," + direction;
     }
-    return this.http.get<IPageCompra>(this.sURL + "/page"+"?rpp=" + rpp + "&page=" + page + strFilterUrl + strOrderUrl, httpOptions);
+    return this.http.get<IPageCompra>(this.sURL + "/page"+"?size=" + rpp + "&page=" + page + strFilterUrl + strOrderUrl, httpOptions);
   }
   
 
