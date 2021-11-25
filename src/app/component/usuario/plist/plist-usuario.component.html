@@ -38,7 +38,7 @@
             </nav>
         </div>
         <div class="col-md text-center">
-            <a [routerLink]="['/new']" type="button" class="btn btn-success mb-2">
+            <a [routerLink]="['/usuario/new']" type="button" class="btn btn-success mb-2">
                 <i class="fas fa-plus"></i> Añadir nuevo Usuario
             </a>
         </div>
@@ -117,6 +117,13 @@
                                 *ngIf="currentSortField=='facturas'&&currentSortDirection=='desc'"></i>
 
                         </th>
+                        <th (click)="doSetOrder('tipousuario')">Tipo Usuario
+                            <i class="fas fa-arrow-up"
+                                *ngIf="currentSortField=='tipousuario'&&currentSortDirection=='asc'"></i>
+                            <i class="fas fa-arrow-down"
+                                *ngIf="currentSortField=='tipousuario'&&currentSortDirection=='desc'"></i>
+
+                        </th>
                         <th>Validado</th>
                         <th>Activado</th>
                         <th>Acciones</th>
@@ -132,6 +139,7 @@
                         <td>{{fila.email}}</td>
                         <td>{{fila.carritos}}</td>
                         <td>{{fila.facturas}}</td>
+                        <td>{{fila.tipousuario.nombre + ' (' + fila.tipousuario.id + ')'}}</td>
                         <td class="text-center" [innerHTML]="fila.validado | showBoolean"></td>
                         <td class="text-center" [innerHTML]="fila.activo | showBoolean"></td>
                         <td class="text-center">
