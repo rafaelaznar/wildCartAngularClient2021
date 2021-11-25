@@ -8,39 +8,70 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" [class.active]="strUrl=='/home'" aria-current="page" [routerLink]="['/home']"><i class="fas fa-home"></i>
-                        Página principal</a>
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/home'" aria-current="page"
+                            [routerLink]="['/home']"><i class="fas fa-home"></i>
+                            Página principal</a>
+                    </small>
                 </li>
                 <li class="nav-item" *ngIf="!strUsuarioSession">
-                    <a class="nav-link" [class.active]="strUrl=='/login'" [routerLink]="['/login']"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/login'" [routerLink]="['/login']"><i
+                                class="fas fa-sign-in-alt"></i> Login</a>
+                    </small>
                 </li>
                 <li class="nav-item" *ngIf="strUsuarioSession">
-                    <a class="nav-link" [class.active]="strUrl=='/logout'" [routerLink]="['/logout']"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/logout'" [routerLink]="['/logout']"><i
+                                class="fas fa-sign-out-alt"></i> Logout</a>
+                    </small>
                 </li>
-                <li class="nav-item"  *ngIf="strUsuarioSession">
-                    <a class="nav-link" [class.active]="strUrl=='/usuario/plist'" [routerLink]="['/usuario/plist']"><i class="fas fa-file-alt"></i> Usuario</a>
+                <li class="nav-item" *ngIf="strUsuarioSession">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/usuario/plist'"
+                            [routerLink]="['/usuario/plist']"><i class="fas fa-file-alt"></i> Usuario</a>
+                    </small>
                 </li>
-                <li class="nav-item"  *ngIf="strUsuarioSession">
-                    <a class="nav-link" [class.active]="strUrl=='/tipousuario/plist'" [routerLink]="['/tipousuario/plist']"><i class="fas fa-file-alt"></i> Tipos de Usuario</a>
+                <li class="nav-item" *ngIf="strUsuarioSession">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/tipousuario/plist'"
+                            [routerLink]="['/tipousuario/plist']"><i class="fas fa-file-alt"></i> Tipos de Usuario</a>
+                    </small>
                 </li>
-                <li class="nav-item"  *ngIf="strUsuarioSession">
-                    <a class="nav-link" [class.active]="strUrl=='/producto/plist'" [routerLink]="['/producto/plist']"><i class="fas fa-file-alt"></i> Producto</a>
+                <li class="nav-item" *ngIf="strUsuarioSession">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/producto/plist'"
+                            [routerLink]="['/producto/plist']"><i class="fas fa-file-alt"></i> Producto</a>
+                    </small>
                 </li>
-                <li class="nav-item"  *ngIf="strUsuarioSession">
-                    <a class="nav-link" [class.active]="strUrl=='/tipoproducto/plist'" [routerLink]="['/tipoproducto/plist']"><i class="fas fa-file-alt"></i> Tipos de Producto</a>
+                <li class="nav-item" *ngIf="strUsuarioSession">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/tipoproducto/plist'"
+                            [routerLink]="['/tipoproducto/plist']"><i class="fas fa-file-alt"></i> Tipos de Producto</a>
+                    </small>
                 </li>
-                <li class="nav-item"  *ngIf="strUsuarioSession">
-                    <a class="nav-link" [class.active]="strUrl=='/compra/plist'" [routerLink]="['/compra/plist']"><i class="fas fa-file-alt"></i> Compras</a>
+                <li class="nav-item" *ngIf="strUsuarioSession">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/compra/plist'" [routerLink]="['/compra/plist']"><i
+                                class="fas fa-file-alt"></i> Compras</a>
+                    </small>
                 </li>
-                <li class="nav-item"  *ngIf="strUsuarioSession">
-                    <a class="nav-link" [class.active]="strUrl=='/factura/plist'" [routerLink]="['/factura/plist']"><i class="fas fa-file-alt"></i> Facturas</a>
+                <li class="nav-item" *ngIf="strUsuarioSession">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/factura/plist'"
+                            [routerLink]="['/factura/plist']"><i class="fas fa-file-alt"></i> Facturas</a>
+                    </small>
                 </li>
-                <li class="nav-item"  *ngIf="strUsuarioSession">
-                    <a class="nav-link" [class.active]="strUrl=='/carrito/plist'" [routerLink]="['/carrito/plist']"><i class="fas fa-file-alt"></i> Producto en el carrito</a>
+                <li class="nav-item" *ngIf="strUsuarioSession">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/carrito/plist'"
+                            [routerLink]="['/carrito/plist']"><i class="fas fa-file-alt"></i> Producto en el carrito</a>
+                    </small>
                 </li>
 
             </ul>
-            <span class="navbar-text" *ngIf="strUsuarioSession"><i class="fas fa-user"></i> Usuario: {{strUsuarioSession.nombre + " " + strUsuarioSession.apellido1}} </span>
+            <span class="navbar-text" *ngIf="strUsuarioSession"><i class="fas fa-user"></i> <small>Usuario:
+                    {{strUsuarioSession.nombre + " " + strUsuarioSession.apellido1}}</small> </span>
         </div>
     </div>
 </nav>
