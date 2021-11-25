@@ -14,18 +14,6 @@
                             Página principal</a>
                     </small>
                 </li>
-                <li class="nav-item" *ngIf="!strUsuarioSession">
-                    <small>
-                        <a class="nav-link" [class.active]="strUrl=='/login'" [routerLink]="['/login']"><i
-                                class="fas fa-sign-in-alt"></i> Login</a>
-                    </small>
-                </li>
-                <li class="nav-item" *ngIf="strUsuarioSession">
-                    <small>
-                        <a class="nav-link" [class.active]="strUrl=='/logout'" [routerLink]="['/logout']"><i
-                                class="fas fa-sign-out-alt"></i> Logout</a>
-                    </small>
-                </li>
                 <li class="nav-item" *ngIf="strUsuarioSession">
                     <small>
                         <a class="nav-link" [class.active]="strUrl=='/usuario/plist'"
@@ -70,8 +58,22 @@
                 </li>
 
             </ul>
-            <span class="navbar-text" *ngIf="strUsuarioSession"><i class="fas fa-user"></i> <small>Usuario:
-                    {{strUsuarioSession.nombre + " " + strUsuarioSession.apellido1}}</small> </span>
+            <span class="navbar-text" *ngIf="strUsuarioSession"><i class="fas fa-user"></i>
+                <small>Usuario: {{strUsuarioSession.nombre + " " + strUsuarioSession.apellido1}}</small>
+            </span>
+            <span class="navbar-text" *ngIf="!strUsuarioSession">
+                <small>
+                    <a class="nav-link" [class.active]="strUrl=='/login'" [routerLink]="['/login']"><i
+                            class="fas fa-sign-in-alt"></i> Login</a>
+                </small>
+            </span>
+            <span class="navbar-text" *ngIf="strUsuarioSession">
+                <small>
+                    <a class="nav-link" [class.active]="strUrl=='/logout'" [routerLink]="['/logout']"><i
+                            class="fas fa-sign-out-alt"></i> Logout</a>
+                </small>
+            </span>
+
         </div>
     </div>
 </nav>
