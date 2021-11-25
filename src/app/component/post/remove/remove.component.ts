@@ -30,7 +30,7 @@ export class RemovePostComponent implements OnInit {
     // control de sesión
     if (this.oRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", this.strUsuarioSession);
+      localStorage.setItem("user", JSON.stringify(this.strUsuarioSession));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ) {
 
     if (oRoute.snapshot.data.message) {
-      localStorage.setItem("user", oRoute.snapshot.data.message);
+      localStorage.setItem("user", JSON.stringify(oRoute.snapshot.data.message));
       oRouter.navigate(['/home']);
     } else {
       localStorage.clear();
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     const loginData = { login: this.formularioLogin.get('login')!.value, password: this.oCryptoService.getSHA256(this.formularioLogin.get('password')!.value) };
     console.log("login:onSubmit: ", loginData);
     this.oSessionService.login(JSON.stringify(loginData)).subscribe(data => {
-      localStorage.setItem("user", data.toString());
+      localStorage.setItem("user", JSON.stringify(data.toString()));
       if (data != null) {
         this.oRouter.navigate(['/home']);
       } else {

@@ -1,1 +1,49 @@
-<p>view-producto works!</p>
+<app-menu></app-menu>
+<div class="container my-3">
+
+    <app-header [title]="'Vista de un Producto'" [icon]="'fas fa-eye'"></app-header>
+
+    <div class="row justify-content-center">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <td>{{oProduct?.id}}</td>
+                </tr>
+                <tr>
+                    <th>Codigo</th>
+                    <td>{{oProduct?.codigo}}</td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{oProduct?.nombre}}</td>
+                </tr>
+                <tr>
+                    <th>Existencias</th>
+                    <td>{{oProduct?.existencias}}</td>
+                </tr>
+                <tr>
+                    <th>Precio</th>
+                    <td>{{oProduct?.precio}}</td>
+                </tr>
+                <tr>
+                    <th>Imagen</th>
+                    <td>{{oProduct?.imagen}}</td>
+                </tr>
+                <tr>
+                    <th>Descuento</th>
+                    <td>{{oProduct?.descuento}}</td>
+                </tr>
+                <tr>
+                    <th>Tipo producto</th>
+                    <td>{{oProduct?.tipoproducto.nombre}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+<app-footer></app-footer>
