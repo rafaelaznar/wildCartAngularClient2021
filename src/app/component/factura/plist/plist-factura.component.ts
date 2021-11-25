@@ -26,6 +26,7 @@ export class PlistFacturaComponent implements OnInit {
   currentSortDirection: string = "";
   filterActual: string = "";
   filtered: boolean = false;
+  oActivatedRoute: any;
 
 
   constructor(
@@ -34,9 +35,10 @@ export class PlistFacturaComponent implements OnInit {
     private oPaginationService: PaginationService,
     private oFacturaService: FacturaService,
   ) {
+    
     if (this.oRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", this.oRoute.snapshot.data.message);
+      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);

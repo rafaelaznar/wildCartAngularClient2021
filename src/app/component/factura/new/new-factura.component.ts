@@ -19,6 +19,7 @@ export class NewFacturaComponent implements OnInit {
   id: number = 0;
   oForm: FormGroup = null;
   strResult: string = "";
+  strUsuarioSession: any;
 
   get f() { return this.oForm.controls; }
 
@@ -29,13 +30,15 @@ export class NewFacturaComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
     private oDateTimeService: DateTimeService
-  ) { if (this.oActivatedRoute.snapshot.data.message) {
-    const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message;
-    localStorage.setItem("user", strUsuarioSession);
-  } else {
-    localStorage.clear();
-    oRouter.navigate(['/home']);
-  }
+  ) { 
+    
+    if (this.oActivatedRoute.snapshot.data.message) {
+      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
+     localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
+   } else {
+     localStorage.clear();
+     oRouter.navigate(['/home']);
+   }
 
   }
 
@@ -58,6 +61,8 @@ export class NewFacturaComponent implements OnInit {
       }
     });
   }
+
+  
 
   onSubmit(): void {
     if (this.oForm) {
