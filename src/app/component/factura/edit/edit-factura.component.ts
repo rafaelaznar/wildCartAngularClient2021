@@ -52,7 +52,7 @@ export class EditFacturaComponent implements OnInit {
     $('#fecha').datetimepicker({
       defaultDate: "+1w",
       numberOfMonths: 1,
-      dateFormat: 'dd-mm-yy',
+      dateFormat: 'dd/mm/yy',
       timeFormat: 'hh:mm',
       showAnim: "fold",
       onClose: (dateText: string, inst: any) => {
@@ -65,14 +65,17 @@ export class EditFacturaComponent implements OnInit {
 
   get = (): void => {
     this.oFacturaService.getOne(this.id).subscribe((oData: IFactura) => {
+      // console.log(oData);
       this.oFactura = oData;
       this.oForm = this.oFormBuilder.group({
         id: [this.oFactura.id],
-        fecha: [this.oDateTimeService.getStrFecha2Show(this.oFactura.fecha), Validators.required],
+        fecha: ['', Validators.required],
         iva: [this.oFactura.iva, Validators.required],
         pagado: [this.oFactura.pagado],
         id_usuario: [this.oFactura.usuario, Validators.required]
       });
+      $('#fecha').val(this.oFactura.fecha);
+
     })
   }
 
@@ -80,10 +83,23 @@ export class EditFacturaComponent implements OnInit {
     if (this.oForm) {
       this.oFactura2Send = {
         id: this.oForm.value.id,
-        fecha: this.oDateTimeService.getStrFecha2Send(this.oForm.value.fecha),
+        fecha: this.oForm.value.fecha,
         iva: this.oForm.value.iva,
         pagado: this.oForm.value.pagado,
-        usuario: this.oForm.value.usuario,
+        id_usuario: {
+          id: this.oForm.value.id_usuario,
+          dni: null,
+          nombre: null,
+          apellido1: null,
+          apellido2: null,
+          login: null,
+          email: null,
+          descuento: null,
+          validado: null,
+          activo: null,
+          tipousuario: null,
+          carritos: null,
+          facturas: null},
       }
 
       this.update();
@@ -91,6 +107,7 @@ export class EditFacturaComponent implements OnInit {
   }
 
   update = (): void => {
+    console.log(this.oFactura2Send);
     this.oFacturaService.Update(this.oFactura2Send).subscribe((result: number) => {
       if (result) {
         this.strResult = "La factura se ha modificado correctamente";

@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IFactura, IFactura2Send } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
+import { ThrowStmt } from '@angular/compiler';
 
 declare let $: any;
 @Component({
@@ -15,7 +16,7 @@ declare let $: any;
 })
 export class NewFacturaComponent implements OnInit {
 
-  oFactura2Send: IFactura2Send = null;
+  oFactura2Send: any;
   id: number = 0;
   oForm: FormGroup = null;
   strResult: string = "";
@@ -47,12 +48,12 @@ export class NewFacturaComponent implements OnInit {
       fecha: ['', Validators.required],
       iva: ['', Validators.required],
       pagado: [''],
-      id_usuario: ['', Validators.required],
+      usuario: ['']
     });
     $('#fecha').datetimepicker({
       defaultDate: "+1w",
       numberOfMonths: 1,
-      dateFormat: 'dd-mm-yy',
+      dateFormat: 'dd/mm/yy',
       timeFormat: 'hh:mm',
       showAnim: "fold",
       onClose: (dateText: string, inst: any) => {
@@ -67,18 +68,18 @@ export class NewFacturaComponent implements OnInit {
   onSubmit(): void {
     if (this.oForm) {
       this.oFactura2Send = {
-        id: null,
         fecha: this.oDateTimeService.getStrFecha2Send(this.oForm.value.fecha),
         iva: this.oForm.value.iva,
         pagado: this.oForm.value.pagado,
-        usuario: this.oForm.value.usuario,
+        usuario:{ id:this.oForm.value.usuario}
       }
-      this.new();
+      this.new()
     }
   }
 
   new = (): void => {
-    this.oFacturaService.Create(this.oFactura2Send).subscribe((id: number) => {
+ 
+    this.oFacturaService.Create(JSON.stringify(this.oFactura2Send)).subscribe((id: number) => {
       if (id) {
         this.id = id;
         this.strResult = "La factura se ha creado correctamente";
@@ -102,7 +103,8 @@ export class NewFacturaComponent implements OnInit {
   }
 
   closeModal(): void {
-    this.oRouter.navigate(["/view/" + this.id]);
+    this.oRouter.navigate(["/factura/plist"]);
+
   }
 
 }

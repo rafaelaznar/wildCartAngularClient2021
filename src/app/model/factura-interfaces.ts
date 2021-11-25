@@ -19,6 +19,6 @@ export interface IFactura2Send {
     fecha: string,
     iva: number,
     pagado: boolean,
-    usuario: IUsuario
+    id_usuario: IUsuario
 
 }

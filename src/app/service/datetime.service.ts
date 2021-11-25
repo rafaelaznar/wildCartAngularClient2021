@@ -19,7 +19,7 @@ export class DateTimeService {
     }
 
     getStrFecha2Show = (oFecha: IFecha): string => {
-        return this.getDoubleDigitStr(oFecha.date.day) + "-" + this.getDoubleDigitStr(oFecha.date.month) + "-" + oFecha.date.year + " " + this.getDoubleDigitStr(oFecha.time.hour) + ":" + this.getDoubleDigitStr(oFecha.time.minute);
+        return this.getDoubleDigitStr(oFecha.date.day) + "/" + this.getDoubleDigitStr(oFecha.date.month) + "/" + oFecha.date.year + " " + this.getDoubleDigitStr(oFecha.time.hour) + ":" + this.getDoubleDigitStr(oFecha.time.minute);
     }
 
     getStrFecha2Send = (oFecha: String): string => {

@@ -55,7 +55,7 @@ export class FacturaService {
   Random(): Observable<IFactura> {
     return this.http.post<IFactura>(this.sURL + "/random" , httpOptions);
   }
-  Create(oFactura: IFactura2Send): Observable<number> {
+  Create(oFactura: String): Observable<number> {
     return this.http.post<number>(this.sURL + '/',oFactura,httpOptions);
   }
 
