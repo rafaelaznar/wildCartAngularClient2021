@@ -139,7 +139,7 @@
                         <td>{{fila.email}}</td>
                         <td>{{fila.carritos}}</td>
                         <td>{{fila.facturas}}</td>
-                        <td>{{fila.tipousuario.id}}</td>
+                        <td>{{fila.tipousuario.nombre + ' (' + fila.tipousuario.id + ')'}}</td>
                         <td class="text-center" [innerHTML]="fila.validado | showBoolean"></td>
                         <td class="text-center" [innerHTML]="fila.activo | showBoolean"></td>
                         <td class="text-center">
