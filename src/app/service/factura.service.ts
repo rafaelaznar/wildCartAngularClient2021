@@ -47,9 +47,9 @@ export class FacturaService {
     let strOrderUrl: string = "";
   
     if (order) {
-      strOrderUrl += "&order=" + order + "&dir=" + direction;
+      strOrderUrl += "&sort=" + order + "," + direction;
     }
-    return this.http.get<IPageFactura>(this.sURL + "?rpp=" + rpp + "&page=" + page + strOrderUrl, httpOptions);
+    return this.http.get<IPageFactura>(this.sURL + "/page" + "?size=" + rpp + "&page=" + page + strOrderUrl, httpOptions);
   }
 
   Random(): Observable<IFactura> {

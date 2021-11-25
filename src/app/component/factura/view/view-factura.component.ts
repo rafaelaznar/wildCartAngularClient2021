@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IFactura } from 'src/app/model/factura-interfaces';
-import { PostService } from 'src/app/service/post.service';
 import { Location } from '@angular/common';
+import { FacturaService } from 'src/app/service/factura.service';
 
 @Component({
   selector: 'app-view-factura',
@@ -14,10 +14,10 @@ export class ViewFacturaComponent implements OnInit {
   id: number = 0;
   oFactura: IFactura;
   strUsuarioSession: string;
-  oFacturaService: any;
+
 
   constructor(
-    private oPostService: PostService,
+    private oFacturaService: FacturaService,
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,

@@ -4,6 +4,7 @@ import { IFactura } from 'src/app/model/factura-interfaces';
 import { PostService } from 'src/app/service/post.service';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
+import { FacturaService } from 'src/app/service/factura.service';
 
 @Component({
   selector: 'app-remove-factura',
@@ -16,10 +17,9 @@ export class RemoveFacturaComponent implements OnInit {
   oFactura: IFactura;
   strUsuarioSession: string;
   strResult: string = null;
-  oFacturaService: any;
 
   constructor(
-    private oPostService: PostService,
+    private oFacturaService: FacturaService,
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
@@ -49,7 +49,7 @@ export class RemoveFacturaComponent implements OnInit {
   }
 
   removeOne() {
-    this.oPostService.removeOne(this.id).subscribe((data: number) => {
+    this.oFacturaService.Delete(this.id).subscribe((data: number) => {
       if (data) {
         this.strResult = "El post con ID=" + this.id + " ha sido borrado con éxito";        
       } else {

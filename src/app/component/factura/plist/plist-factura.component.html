@@ -81,10 +81,10 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let fila of aFacturas">
-                        <td>{{fila.id}}</td>
-                        <td>{{fila.iva }}</td>
-                        <td>{{fila.id_usuario }}</td>
-                        <td>{{fila.fecha | showDateTime }}</td>
+                        <td>{{fila?.id}}</td>
+                        <td>{{fila?.iva }}</td>
+                        <td>{{fila?.id_usuario }}</td>
+                        <td>{{fila?.fecha  }}</td>
                         <td class="text-center" [innerHTML]="fila.pagado | showBoolean"></td>
                         <td class="text-center">
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
