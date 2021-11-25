@@ -22,22 +22,22 @@ export class ProductoService {
   }
 
   newOne(oProduct: Iproduct): Observable<Iproduct> {
-    return this.http.post<Iproduct>(this.sURL + "/" ,oProduct, httpOptions);
+    return this.http.post<Iproduct>(this.sURL + "/", oProduct, httpOptions);
   }
 
   update(oProduct: Iproduct): Observable<Iproduct> {
-    return this.http.put<Iproduct>(this.sURL + "/" , oProduct, httpOptions);
+    return this.http.put<Iproduct>(this.sURL + "/", oProduct, httpOptions);
   }
 
   getPage(rpp: number, page: number, filter: string, order: string, direction: string): Observable<IPageProduct> {
     let strFilterUrl: string = "";
     let strOrderUrl: string = "";
     if (filter) {
-      strFilterUrl += "&filter=" + filter;
+      strFilterUrl += "/filter/" + filter;
     }
     if (order) {
       strOrderUrl += "&sort=" + order + "," + direction;
     }
-    return this.http.get<IPageProduct>(this.sURL + "?size=" + rpp + "&page=" + page + strFilterUrl + strOrderUrl, httpOptions);
+    return this.http.get<IPageProduct>(this.sURL + strFilterUrl + "/?page=" + page + "&size=" + rpp + strOrderUrl, httpOptions);
   }
 }

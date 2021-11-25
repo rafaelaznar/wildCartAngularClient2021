@@ -15,7 +15,7 @@ declare let $: any;
 })
 export class EditProductoComponent implements OnInit {
 
-  oProduct2Send: Iproduct = null; 
+  oProduct2Send: Iproduct = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
@@ -28,7 +28,7 @@ export class EditProductoComponent implements OnInit {
     private oProductoService: ProductoService,
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
-    ) {
+  ) {
 
     if (this.oActivatedRoute.snapshot.data.message) {
       const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message;
@@ -47,17 +47,17 @@ export class EditProductoComponent implements OnInit {
 
   }
 
-  getOne = ():void => {
+  getOne = (): void => {
     this.oProductoService.get(this.id).subscribe((oData: Iproduct) => {
 
       this.oForm = this.oFormBuilder.group({
-      codigo: [oData.codigo, [Validators.required]],
-      nombre: [oData.nombre, Validators.required],
-      existencias: [oData.existencias, Validators.required],
-      precio: [oData.precio, Validators.required],
-      imagen: [oData.imagen],
-      descuento:[oData.descuento],
-      tipoproducto:[oData.tipoproducto.id, Validators.required]
+        codigo: [oData.codigo, [Validators.required]],
+        nombre: [oData.nombre, Validators.required],
+        existencias: [oData.existencias, Validators.required],
+        precio: [oData.precio, Validators.required],
+        imagen: [oData.imagen],
+        descuento: [oData.descuento],
+        tipoproducto: [oData.tipoproducto.id, Validators.required]
       });
     })
   }
@@ -72,14 +72,14 @@ export class EditProductoComponent implements OnInit {
         precio: this.oForm.value.precio,
         imagen: this.oForm.value.imagen,
         descuento: this.oForm.value.descuento,
-        tipoproducto: {id:this.oForm.value.tipoproducto, nombre:null},
+        tipoproducto: { id: this.oForm.value.tipoproducto, nombre: null },
       }
 
       this.update();
     }
   }
 
-  update = ():void => {
+  update = (): void => {
     console.log(this.oProduct2Send)
     this.oProductoService.update(this.oProduct2Send).subscribe((result: Iproduct) => {
       if (result) {
@@ -91,7 +91,7 @@ export class EditProductoComponent implements OnInit {
     })
   }
 
-  goBack():void {
+  goBack(): void {
     this.oLocation.back();
   }
 
@@ -99,11 +99,11 @@ export class EditProductoComponent implements OnInit {
 
   eventsSubject: Subject<void> = new Subject<void>();
 
-  openModal():void {
+  openModal(): void {
     this.eventsSubject.next();
   }
 
-  closeModal():void {
+  closeModal(): void {
     this.oRouter.navigate(["/producto/view/" + this.id]);
   }
 

@@ -6,7 +6,7 @@ import { DateTimeService } from 'src/app/service/datetime.service';
 import { ProductoService } from 'src/app/service/producto.service';
 import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
-import { Iproduct  } from 'src/app/model/producto-interfaces';
+import { Iproduct } from 'src/app/model/producto-interfaces';
 
 declare let $: any;
 
@@ -18,11 +18,11 @@ declare let $: any;
 })
 export class NewProductoComponent implements OnInit {
 
-  oProduct2Send: Iproduct = null;  
+  oProduct2Send: Iproduct = null;
   id: number = 0;
   oForm: FormGroup = null;
   strResult: string = "";
-  oTipoProd:ITipoProducto
+  oTipoProd: ITipoProducto
 
   get f() { return this.oForm.controls; }
 
@@ -30,14 +30,14 @@ export class NewProductoComponent implements OnInit {
     private oFormBuilder: FormBuilder,
     private oRouter: Router,
     private oProductoService: ProductoService,
-    private oActivatedRoute: ActivatedRoute,  
+    private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
     private oDateTimeService: DateTimeService
-    ) {
+  ) {
 
     if (this.oActivatedRoute.snapshot.data.message) {
       const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem("user", strUsuarioSession);
+      localStorage.setItem("user", JSON.stringify(strUsuarioSession));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
@@ -52,10 +52,10 @@ export class NewProductoComponent implements OnInit {
       existencias: ['', Validators.required],
       precio: ['', Validators.required],
       imagen: [''],
-      descuento:[''],
-      id_tipoproducto:['', Validators.required]
+      descuento: [''],
+      id_tipoproducto: ['', Validators.required]
     });
-    
+
   }
 
   onSubmit(): void {
@@ -68,15 +68,17 @@ export class NewProductoComponent implements OnInit {
         precio: this.oForm.value.precio,
         imagen: this.oForm.value.imagen,
         descuento: this.oForm.value.descuento,
-        tipoproducto: {nombre:null,
-          id:this.oForm.value.id_tipoproducto}
+        tipoproducto: {
+          nombre: null,
+          id: this.oForm.value.id_tipoproducto
+        }
       }
       this.new();
     }
   }
 
-  new = ():void => {
-    this.oProductoService.newOne(this.oProduct2Send).subscribe((oProduct:Iproduct) => {
+  new = (): void => {
+    this.oProductoService.newOne(this.oProduct2Send).subscribe((oProduct: Iproduct) => {
       console.log("dentro de new");
       if (oProduct.id) {
         this.id = oProduct.id;
@@ -89,14 +91,14 @@ export class NewProductoComponent implements OnInit {
     })
   }
 
-  goBack():void {
+  goBack(): void {
     this.oLocation.back();
   }
 
   eventsSubject: Subject<void> = new Subject<void>();
 
 
-  openModal():void {
+  openModal(): void {
     this.eventsSubject.next();
   }
 

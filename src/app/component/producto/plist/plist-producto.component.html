@@ -1,7 +1,7 @@
-
+<app-menu></app-menu>
 <div class="container my-3">
 
-    <app-header [title]="'Listado de Productos'" [icon]="'fas fa-file-alt'" [subtitle]="totalElements + ' posts'">
+    <app-header [title]="'Listado de Productos'" [icon]="'fas fa-file-alt'" [subtitle]="totalElements + ' productos'">
     </app-header>
 
     <div class="row justify-content-center my-3">
@@ -13,8 +13,8 @@
                             <i class="fas fa-search"></i> Filtrar
                         </button>
                     </div>
-                    <input type="text" class="form-control" placeholder="Buscador de posts" [(ngModel)]="filterActual"
-                        name="buscar" (keydown)="onKeydownEvent($event)" />
+                    <input type="text" class="form-control" placeholder="Buscador de productos"
+                        [(ngModel)]="filterActual" name="buscar" (keydown)="onKeydownEvent($event)" />
                     <div class="input-group-append">
                         <button class="btn-primary btn" (click)="doResetFilter()" [disabled]="!filtered">Quitar
                             filtro
@@ -67,53 +67,53 @@
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='id'&&currentSortDirection=='desc'"></i>
                         </th>
-                        <th (click)="doSetOrder('titulo')">Código
+                        <th (click)="doSetOrder('codigo')">Código
                             <i class="fas fa-arrow-up"
-                                *ngIf="currentSortField=='titulo'&&currentSortDirection=='asc'"></i>
+                                *ngIf="currentSortField=='codigo'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
-                                *ngIf="currentSortField=='titulo'&&currentSortDirection=='desc'"></i>
+                                *ngIf="currentSortField=='codigo'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('cuerpo')">Nombre
+                        <th (click)="doSetOrder('nombre')">Nombre
                             <i class="fas fa-arrow-up"
-                                *ngIf="currentSortField=='cuerpo'&&currentSortDirection=='asc'"></i>
+                                *ngIf="currentSortField=='nombre'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
-                                *ngIf="currentSortField=='cuerpo'&&currentSortDirection=='desc'"></i>
+                                *ngIf="currentSortField=='nombre'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('fecha')">Existencias
+                        <th (click)="doSetOrder('existencias')">Existencias
                             <i class="fas fa-arrow-up"
-                                *ngIf="currentSortField=='fecha'&&currentSortDirection=='asc'"></i>
+                                *ngIf="currentSortField=='existencias'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
-                                *ngIf="currentSortField=='fecha'&&currentSortDirection=='desc'"></i>
+                                *ngIf="currentSortField=='existencias'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('fecha')">Precio
+                        <th (click)="doSetOrder('precio')">Precio
                             <i class="fas fa-arrow-up"
-                                *ngIf="currentSortField=='fecha'&&currentSortDirection=='asc'"></i>
+                                *ngIf="currentSortField=='precio'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
-                                *ngIf="currentSortField=='fecha'&&currentSortDirection=='desc'"></i>
+                                *ngIf="currentSortField=='precio'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('etiquetas')">Imagen
+                        <th (click)="doSetOrder('imagen')">Imagen
                             <i class="fas fa-arrow-up"
-                                *ngIf="currentSortField=='etiquetas'&&currentSortDirection=='asc'"></i>
+                                *ngIf="currentSortField=='imagen'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
-                                *ngIf="currentSortField=='etiquetas'&&currentSortDirection=='desc'"></i>
+                                *ngIf="currentSortField=='imagen'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('visible')">Descuento
+                        <th (click)="doSetOrder('descuento')">Descuento
                             <i class="fas fa-arrow-up"
-                                *ngIf="currentSortField=='visible'&&currentSortDirection=='asc'"></i>
+                                *ngIf="currentSortField=='descuento'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
-                                *ngIf="currentSortField=='visible'&&currentSortDirection=='desc'"></i>
+                                *ngIf="currentSortField=='descuento'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('visible')">Tipo Producto(id)
+                        <th (click)="doSetOrder('tipoproducto')">Tipo Producto(id)
                             <i class="fas fa-arrow-up"
-                                *ngIf="currentSortField=='visible'&&currentSortDirection=='asc'"></i>
+                                *ngIf="currentSortField=='tipoproducto'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
-                                *ngIf="currentSortField=='visible'&&currentSortDirection=='desc'"></i>
+                                *ngIf="currentSortField=='tipoproducto'&&currentSortDirection=='desc'"></i>
 
                         </th>
                         <th>Acciones</th>
@@ -129,17 +129,16 @@
                         <td>{{fila.imagen}}</td>
                         <td>{{fila.descuento}}</td>
                         <td>{{fila.tipoproducto.id}}</td>
-                       
+
                         <td class="text-center">
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-                                <button type="button" class="btn btn-success" [routerLink]="['/producto/view/' + fila.id]"><i
-                                        class="fas fa-eye"></i></button>
-                                <button type="button" class="btn btn-success" (click)="showViewModal(fila.id)"><i
-                                        class="fas fa-search"></i></button>
-                                <button type="button" class="btn btn-warning" [routerLink]="['/producto/edit/' + fila.id]"><i
-                                        class="fas fa-pen"></i></button>
-                                <button type="button" class="btn btn-danger" [routerLink]="['/producto/remove/' + fila.id]"><i
-                                        class="fas fa-trash"></i></button>
+                                <button type="button" class="btn btn-success"
+                                    [routerLink]="['/producto/view/' + fila.id]"><i class="fas fa-eye"></i></button>
+
+                                <button type="button" class="btn btn-warning"
+                                    [routerLink]="['/producto/edit/' + fila.id]"><i class="fas fa-pen"></i></button>
+                                <button type="button" class="btn btn-danger"
+                                    [routerLink]="['/producto/remove/' + fila.id]"><i class="fas fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>

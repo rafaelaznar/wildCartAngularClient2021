@@ -1,12 +1,12 @@
 <div class="container my-3">
 
-    <app-header [title]="'Actualizar Post'" [icon]="'fas fa-plus'"></app-header>
+    <app-header [title]="'Actualizar Producto'" [icon]="'fas fa-plus'"></app-header>
 
     <div class="row justify-content-center">
 
         <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
 
-            
+
 
             <div class="row mb-3">
                 <label for="codigo" class="col-sm-2 col-form-label">Código</label>
@@ -100,8 +100,9 @@
             <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
                 <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i> Página
                     principal</a>
-                <a class="btn btn-primary mx-2" [routerLink]="['/plist']"><i class="fas fa-file-alt"></i> Listado de
-                    Posts</a>
+                <a class="btn btn-primary mx-2" [routerLink]="['/producto/plist']"><i class="fas fa-file-alt"></i>
+                    Listado de
+                    Productos</a>
                 <a class="btn btn-primary mx-2" (click)="goBack()"><i class="fas fa-arrow-circle-left"></i> Volver </a>
             </div>
         </div>

@@ -27,7 +27,7 @@ export class RemoveProductoComponent implements OnInit {
   ) {
     if (this.oRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", this.strUsuarioSession);
+      localStorage.setItem("user", JSON.stringify(this.strUsuarioSession));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
@@ -36,7 +36,7 @@ export class RemoveProductoComponent implements OnInit {
     this.id = this.oActivatedRoute.snapshot.params.id
     // llamada al servidor
     this.getOne();
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -50,9 +50,9 @@ export class RemoveProductoComponent implements OnInit {
   removeOne() {
     this.oProductoService.removeOne(this.id).subscribe((oData: Iproduct) => {
       if (oData) {
-        this.strResult = "El post con ID=" + this.id + " ha sido borrado con éxito";        
+        this.strResult = "El post con ID=" + this.id + " ha sido borrado con éxito";
       } else {
-        this.strResult = "Error en el borrado del post";        
+        this.strResult = "Error en el borrado del post";
       }
       this.openModal();
     })
@@ -70,7 +70,7 @@ export class RemoveProductoComponent implements OnInit {
   }
 
   closeModal() {
-    this.oRouter.navigate(["/plist"]);
+    this.oRouter.navigate(["/producto/plist"]);
   }
 
 
