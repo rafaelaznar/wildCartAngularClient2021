@@ -71,7 +71,7 @@ export class EditFacturaComponent implements OnInit {
         fecha: [this.oDateTimeService.getStrFecha2Show(this.oFactura.fecha), Validators.required],
         iva: [this.oFactura.iva, Validators.required],
         pagado: [this.oFactura.pagado],
-        id_usuario: [this.oFactura.id_usuario, Validators.required]
+        id_usuario: [this.oFactura.usuario, Validators.required]
       });
     })
   }
@@ -83,7 +83,7 @@ export class EditFacturaComponent implements OnInit {
         fecha: this.oDateTimeService.getStrFecha2Send(this.oForm.value.fecha),
         iva: this.oForm.value.iva,
         pagado: this.oForm.value.pagado,
-        id_usuario: this.oForm.value.id_usuario,
+        usuario: this.oForm.value.usuario,
       }
 
       this.update();

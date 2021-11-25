@@ -71,7 +71,7 @@ export class NewFacturaComponent implements OnInit {
         fecha: this.oDateTimeService.getStrFecha2Send(this.oForm.value.fecha),
         iva: this.oForm.value.iva,
         pagado: this.oForm.value.pagado,
-        id_usuario: this.oForm.value.id_usuario,
+        usuario: this.oForm.value.usuario,
       }
       this.new();
     }
