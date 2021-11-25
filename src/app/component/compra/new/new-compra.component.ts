@@ -16,7 +16,7 @@ declare let $: any;
 export class NewCompraComponent implements OnInit {
 
   oCompra: ICompraToSend = null;  
-  id: number = 0;
+  id: ICompra=null;
   oForm: FormGroup = null;
   strResult: string = "";
 
@@ -50,7 +50,7 @@ export class NewCompraComponent implements OnInit {
       descuento_usuario: ['', Validators.required],
       descuento_producto: ['', Validators.required],
       producto: ['', Validators.required],
-      factura: ['', Validators.required]
+      factura: ['']
     });
     $('#fecha').datetimepicker({
       defaultDate: "+1w",
@@ -88,13 +88,17 @@ export class NewCompraComponent implements OnInit {
   new = ():void => {
     this.oCompraService.new(this.oCompra).subscribe((id: number) => {
       if (id) {
-        this.id = id;
-        console.log(this.id);
+        this.id = JSON.parse(JSON.stringify(id));
+        console.log("ASJKJSJnk"+this.id.id);
+        
+        
+        console.log()
 
         this.strResult = "La compra se ha creado correctamente";
       } else {
         this.strResult = "Error en la creación de la compra";
       }
+      
       this.openModal();
     })
   }
@@ -112,7 +116,7 @@ export class NewCompraComponent implements OnInit {
   }
 
   closeModal():void {
-    this.oRouter.navigate(["/compra/view/" + this.id]);
+    this.oRouter.navigate(["/compra/view/" + this.id.id]);
   }
 
 }
