@@ -15,7 +15,7 @@ declare let $: any;
 })
 export class NewFacturaComponent implements OnInit {
 
-  oFactura: IFactura2Send = null;
+  oFactura2Send: IFactura2Send = null;
   id: number = 0;
   oForm: FormGroup = null;
   strResult: string = "";
@@ -29,7 +29,13 @@ export class NewFacturaComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
     private oDateTimeService: DateTimeService
-  ) {
+  ) { if (this.oActivatedRoute.snapshot.data.message) {
+    const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message;
+    localStorage.setItem("user", strUsuarioSession);
+  } else {
+    localStorage.clear();
+    oRouter.navigate(['/home']);
+  }
 
   }
 
@@ -55,7 +61,7 @@ export class NewFacturaComponent implements OnInit {
 
   onSubmit(): void {
     if (this.oForm) {
-      this.oFactura = {
+      this.oFactura2Send = {
         id: null,
         fecha: this.oDateTimeService.getStrFecha2Send(this.oForm.value.fecha),
         iva: this.oForm.value.iva,
@@ -67,7 +73,7 @@ export class NewFacturaComponent implements OnInit {
   }
 
   new = (): void => {
-    this.oFacturaService.Create(this.oFactura).subscribe((id: IFactura2Send) => {
+    this.oFacturaService.Create(this.oFactura2Send).subscribe((id: number) => {
       if (id) {
         this.id = id;
         this.strResult = "La factura se ha creado correctamente";

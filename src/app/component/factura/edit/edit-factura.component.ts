@@ -33,6 +33,14 @@ export class EditFacturaComponent implements OnInit {
     private oDateTimeService: DateTimeService
   ) {
 
+    if (this.oActivatedRoute.snapshot.data.message) {
+      const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message;
+      localStorage.setItem("user", strUsuarioSession);
+    } else {
+      localStorage.clear();
+      oRouter.navigate(['/home']);
+    }
+
     this.id = this.oActivatedRoute.snapshot.params.id
     this.get();
 
@@ -82,7 +90,7 @@ export class EditFacturaComponent implements OnInit {
   }
 
   update = (): void => {
-    this.oFacturaService.Update(this.oFactura).subscribe((result: IFactura2Send) => {
+    this.oFacturaService.Update(this.oFactura2Send).subscribe((result: number) => {
       if (result) {
         this.strResult = "La factura se ha modificado correctamente";
       } else {

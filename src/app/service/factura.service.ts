@@ -20,20 +20,20 @@ export class FacturaService {
     return this.http.get<IFactura>(this.sURL + "/" + id, httpOptions);
   }
 
-  getAll(): Observable<String> {
-    return this.http.get<String>(this.sURL + "/all" , httpOptions);
+  getAll(): Observable<IFactura> {
+    return this.http.get<IFactura>(this.sURL + "/all" , httpOptions);
   }
 
   //Create(body:string): Observable<IFactura2Send> {
     //return this.http.post<number>(this.sURL ,body , httpOptions);
   //}
 
-  Delete(id: number): Observable<String> {
-    return this.http.delete<String>(this.sURL + "/" + id, httpOptions);
+  Delete(id: number): Observable<number> {
+    return this.http.delete<number>(this.sURL + "/" + id, httpOptions);
   }
 
-  Count(): Observable<String> {
-    return this.http.get<String>(this.sURL + "/count", httpOptions);
+  Count(): Observable<IFactura> {
+    return this.http.get<IFactura>(this.sURL + "/count", httpOptions);
   }
 
  // Update(id: number,body:string): Observable<IFactura2Send> {
@@ -52,25 +52,16 @@ export class FacturaService {
     return this.http.get<IPageFactura>(this.sURL + "?rpp=" + rpp + "&page=" + page + strOrderUrl, httpOptions);
   }
 
-  Random(): Observable<String> {
-    return this.http.post<String>(this.sURL + "/random" , httpOptions);
+  Random(): Observable<IFactura> {
+    return this.http.post<IFactura>(this.sURL + "/random" , httpOptions);
   }
-  Create(oFactura: IFactura): Observable<IFactura2Send> {
-    return this.http.post<IFactura2Send>(
-      this.sURL + '/',
-      oFactura,
-      httpOptions
-    );
+  Create(oFactura: IFactura2Send): Observable<number> {
+    return this.http.post<number>(this.sURL + '/',oFactura,httpOptions);
   }
 
-  Update(oFactura: IFactura): Observable<IFactura2Send> {
-    return this.http.put<IFactura2Send>(
-      this.sURL + '/',
-      oFactura,
-      httpOptions
-    );
+  Update(oFactura: IFactura2Send): Observable<number> {
+    return this.http.put<number>(this.sURL + '/',oFactura,httpOptions);
   }
 
   
 }
-
