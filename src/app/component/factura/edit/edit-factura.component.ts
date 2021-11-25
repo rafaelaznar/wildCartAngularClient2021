@@ -21,6 +21,7 @@ export class EditFacturaComponent implements OnInit {
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
+  strUsuarioSession: string;
 
   get f() { return this.oForm.controls; }
 
@@ -34,8 +35,8 @@ export class EditFacturaComponent implements OnInit {
   ) {
 
     if (this.oActivatedRoute.snapshot.data.message) {
-      const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem("user", strUsuarioSession);
+       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
+      localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
