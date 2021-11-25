@@ -54,7 +54,7 @@ export class PlistUsuarioComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oPostService.getPage(this.pageSize, this.page, this.currentSortField, this.currentSortDirection).subscribe((oPage: IPageUsuario) => {
+    this.oPostService.getPage(this.pageSize, this.page, this.currentSortField, this.currentSortDirection, this.filterActual).subscribe((oPage: IPageUsuario) => {
       if (this.filterActual) {
         this.filtered = true;
       } else {
