@@ -18,13 +18,17 @@ export class UsuarioService {
 
   sURL = API_URL + '/usuario';
 
-  getPage(rpp: number, page: number, order: string, direction: string): Observable<IPageUsuario> {
+  getPage(rpp: number, page: number, order: string, direction: string, filter: string): Observable<IPageUsuario> {
     let strOrderUrl: string = "";
+    let filterStr: string = "";
     if (order) {
       strOrderUrl += "&sort=" + order + "," + direction;
     }
+    if (filter) {
+      filterStr += "&filter=" + filter;
+    }
     page--;
-    return this.http.get<IPageUsuario>(this.sURL + "/page" + "?size=" + rpp + "&page=" + page + strOrderUrl, httpOptions);
+    return this.http.get<IPageUsuario>(this.sURL + "/page" + "?size=" + rpp + "&page=" + page + strOrderUrl + filterStr, httpOptions);
   }
 
 
