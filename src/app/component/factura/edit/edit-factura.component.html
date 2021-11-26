@@ -13,7 +13,7 @@
             <div class="row mb-3">
                 <label for="id" class="col-sm-2 col-form-label">ID</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="text" placeholder="{{id}}" readonly>
+                    <input class="form-control" formControlName="id" type="text" placeholder="{{id}}"readonly >
                 </div>
             </div>
 
@@ -33,7 +33,7 @@
             <div class="row mb-3">
                 <label for="iva" class="col-sm-2 col-form-label">IVA</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="iva" formControlName="iva" min="4" max="21"
+                    <input type="text" class="form-control" id="iva" formControlName="iva" 
                         [ngClass]="{'is-valid' : f.iva.dirty && !(f.iva.errors?.required || f.iva.errors?.minlength) }">
                     <div *ngIf="f.iva.dirty && f.iva.errors?.required" class="text-danger">
                         Se debe introducir un IVA. El mínimo es de un 4% y máximo de 21%.
@@ -58,7 +58,7 @@
             <div class="row mb-3">
                 <label for="id_usuario" class="col-sm-2 col-form-label">ID Usuario</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="id_usuario" formControlName="id_usuario" readonly>
+                    <input type="number" class="form-control" id="id_usuario" formControlName="id_usuario" >
                 </div>
             </div>
 
@@ -75,9 +75,9 @@
             <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
                 <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i> Página
                     principal</a>
-                <a class="btn btn-primary mx-2" [routerLink]="['/plist']"><i class="fas fa-file-alt"></i> Listado de
+                <a class="btn btn-primary mx-2" [routerLink]="['/factura/plist']"><i class="fas fa-file-alt"></i> Listado de
                     Facturas</a>
-                <a class="btn btn-primary mx-2" (click)="goBack()"><i class="fas fa-arrow-circle-left"></i> Volver </a>
+                <a class="btn btn-primary mx-2" (click)="goBack()" ><i class="fas fa-arrow-circle-left"></i> Volver </a>
             </div>
         </div>
 
