@@ -1,4 +1,4 @@
-import { IFecha } from "./model-interfaces";
+import { I2Send, IFecha } from "./model-interfaces";
 import { IUsuario } from "./usuario-interfaces";
 
 export interface IFactura {
@@ -14,11 +14,11 @@ export interface IPageFactura {
     totalElements: number,
     totalPages: number
 }
+
 export interface IFactura2Send {
     id: number,
     fecha: string,
     iva: number,
     pagado: boolean,
-    id_usuario: IUsuario
-
+    usuario: I2Send
 }

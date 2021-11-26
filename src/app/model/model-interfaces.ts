@@ -14,6 +14,10 @@ export interface IFecha {
     time: ITime
 }
 
+export interface I2Send {
+    id: number,
+}
+
 export interface IPost {
     id: number,
     titulo: string,
