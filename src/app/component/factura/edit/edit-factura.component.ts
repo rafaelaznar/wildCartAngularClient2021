@@ -119,7 +119,7 @@ export class EditFacturaComponent implements OnInit {
   }
 
   closeModal(): void {
-    this.oRouter.navigate(["/view/" + this.id]);
+    this.oRouter.navigate(["/factura/view/" + this.id]);
   }
 
 }
