@@ -118,7 +118,7 @@ export class NewCompraComponent implements OnInit {
             totalElements: null,
             id: this.oForm.get("factura")?.value,
             iva: null,
-            id_usuario: null,
+            usuario: null,
             fecha: null,
             pagado: null
 
