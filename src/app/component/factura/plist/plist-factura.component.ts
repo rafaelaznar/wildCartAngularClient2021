@@ -44,7 +44,7 @@ export class PlistFacturaComponent implements OnInit {
       oRouter.navigate(['/home']);
     }
 
-    this.page = 1;
+    this.page = 0;
     this.getPage();
   }
 

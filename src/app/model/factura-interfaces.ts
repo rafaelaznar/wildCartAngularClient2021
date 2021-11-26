@@ -1,10 +1,11 @@
 import { IFecha } from "./model-interfaces";
+import { IUsuario } from "./usuario-interfaces";
 
 export interface IFactura {
     totalElements: number;
     id: number,
     iva: number,
-    id_usuario: object,
+    usuario: IUsuario,
     fecha: IFecha,
     pagado: boolean
 }
@@ -18,6 +19,6 @@ export interface IFactura2Send {
     fecha: string,
     iva: number,
     pagado: boolean,
-    id_usuario: object
+    id_usuario: IUsuario
 
 }
