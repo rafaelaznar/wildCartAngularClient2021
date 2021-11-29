@@ -72,7 +72,12 @@
               <i class="fas fa-arrow-down" *ngIf="currentSortField=='nombre'&&currentSortDirection=='desc'"></i>
 
             </th>
-            <th>Productos</th>
+            <th (click)="doSetOrder('producto')">Productos
+              <i class="fas fa-arrow-up" *ngIf="currentSortField=='nombre'&&currentSortDirection=='asc'"></i>
+              <i class="fas fa-arrow-down" *ngIf="currentSortField=='nombre'&&currentSortDirection=='desc'"></i>
+
+            </th>
+            
             <th (click)="doSetOrder('cuerpo')">Acciones
               <i class="fas fa-arrow-up" *ngIf="currentSortField=='cuerpo'&&currentSortDirection=='asc'"></i>
               <i class="fas fa-arrow-down" *ngIf="currentSortField=='cuerpo'&&currentSortDirection=='desc'"></i>
@@ -86,7 +91,7 @@
           <tr *ngFor="let fila of aTipoProductos">
             <td>{{fila.id}}</td>
             <td>{{fila.nombre}}</td>
-            <td></td>
+            <td style="text-align: center;">{{fila?.productos}}</td>
             <td class="text-center">
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
                 <button type="button" class="btn btn-success" [routerLink]="['/tipoproducto/view/' + fila.id]"><i
