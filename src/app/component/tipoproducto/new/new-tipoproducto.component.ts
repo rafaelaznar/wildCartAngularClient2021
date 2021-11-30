@@ -51,6 +51,7 @@ export class NewTipoproductoComponent implements OnInit {
       this.tipoProducto = {
         id: null,
         nombre: this.oForm.value.nombre,
+        productos: this.oForm.value.productos
       };
       this.new();
     }

@@ -1,7 +1,9 @@
+import { NumberSymbol } from "@angular/common";
 
 export interface ITipoProducto {
     id: number,
     nombre: string,
+    productos: number
 }
 
 

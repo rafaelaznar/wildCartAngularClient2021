@@ -70,7 +70,8 @@ export class NewProductoComponent implements OnInit {
         descuento: this.oForm.value.descuento,
         tipoproducto: {
           nombre: null,
-          id: this.oForm.value.id_tipoproducto
+          id: this.oForm.value.id_tipoproducto,
+          productos: this.oForm.value.productos
         }
       }
       this.new();

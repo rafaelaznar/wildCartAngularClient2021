@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { ITipoProducto } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 
+
 declare let $: any;
 
 @Component({
@@ -66,6 +67,7 @@ export class EditTipoproductoComponent implements OnInit {
       this.oTipoProducto = {
         id: this.oForm.value.id,
         nombre: this.oForm.value.nombre,
+        productos: this.oForm.value.productos
       };
 
       this.update();

@@ -72,7 +72,7 @@ export class EditProductoComponent implements OnInit {
         precio: this.oForm.value.precio,
         imagen: this.oForm.value.imagen,
         descuento: this.oForm.value.descuento,
-        tipoproducto: { id: this.oForm.value.tipoproducto, nombre: null },
+        tipoproducto: { id: this.oForm.value.tipoproducto, nombre: null , productos: this.oForm.value.productos },
       }
 
       this.update();
