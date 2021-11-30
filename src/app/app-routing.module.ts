@@ -76,6 +76,7 @@ const routes: Routes = [
   { path: 'tipoproducto/remove/:id', component: RemoveTipoproductoComponent, resolve: { message: SessionResolver } },
 
   { path: 'producto/plist', component: PlistProductoComponent, resolve: { message: SessionResolver } },
+  { path: 'producto/plist/:id_tipoproducto', component: PlistProductoComponent, resolve: { message: SessionResolver } },
   { path: 'producto/new', component: NewProductoComponent, resolve: { message: SessionResolver } },
   { path: 'producto/view/:id', component: ViewProductoComponent, resolve: { message: SessionResolver } },
   { path: 'producto/edit/:id', component: EditProductoComponent, resolve: { message: SessionResolver } },

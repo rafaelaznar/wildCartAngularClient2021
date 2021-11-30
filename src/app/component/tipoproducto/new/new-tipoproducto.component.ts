@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
-import { ITipoProducto } from 'src/app/model/tipoproducto-interfaces';
+import { ITipoProducto, ITipoProducto2Send } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 
 declare let $: any;
@@ -14,7 +14,7 @@ declare let $: any;
   styleUrls: ['./new-tipoproducto.component.css'],
 })
 export class NewTipoproductoComponent implements OnInit {
-  tipoProducto: ITipoProducto = null;
+  TipoProducto2Send: ITipoProducto2Send = null;
   id: number = 0;
   oForm: FormGroup = null;
   strResult: string = '';
@@ -48,7 +48,7 @@ export class NewTipoproductoComponent implements OnInit {
 
   onSubmit(): void {
     if (this.oForm) {
-      this.tipoProducto = {
+      this.TipoProducto2Send = {
         id: null,
         nombre: this.oForm.value.nombre,
       };
@@ -58,7 +58,7 @@ export class NewTipoproductoComponent implements OnInit {
 
   new = (): void => {
     this.oTipoProductoService
-      .newOne(this.tipoProducto)
+      .newOne(this.TipoProducto2Send)
       .subscribe((oTipoProducto: ITipoProducto) => {
         if (oTipoProducto.id) {
           this.id = oTipoProducto.id;

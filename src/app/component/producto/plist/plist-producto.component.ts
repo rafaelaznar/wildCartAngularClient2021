@@ -1,5 +1,5 @@
 import { ProductoService } from './../../../service/producto.service';
-import { IPageProduct, Iproduct } from 'src/app/model/producto-interfaces';
+import { IPageProduct, IProducto } from 'src/app/model/producto-interfaces';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -14,7 +14,7 @@ import { PostService } from 'src/app/service/post.service';
 })
 export class PlistProductoComponent implements OnInit {
 
-  aProducts: Iproduct[];
+  aProducts: IProducto[];
   totalElements: number;
   totalPages: number;
   page: number;
@@ -27,6 +27,7 @@ export class PlistProductoComponent implements OnInit {
   currentSortField: string = "";
   currentSortDirection: string = "";
   filtered: boolean = false;
+  id_tipoproducto: number = 0;
 
   eventsSubjectView: Subject<number> = new Subject<number>();
   eventsSubjectModal: Subject<void> = new Subject<void>();
@@ -36,6 +37,7 @@ export class PlistProductoComponent implements OnInit {
     private oRouter: Router,
     private oPaginationService: PaginationService,
     private oProductService: ProductoService,
+    private oActivatedRoute: ActivatedRoute
   ) {
 
     if (this.oRoute.snapshot.data.message) {
@@ -45,7 +47,7 @@ export class PlistProductoComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
+    this.id_tipoproducto = this.oActivatedRoute.snapshot.params.id_tipoproducto;
     this.page = 0;
     this.getPage();
   }
@@ -54,7 +56,8 @@ export class PlistProductoComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oProductService.getPage(this.pageSize, this.page, this.filterActual, this.currentSortField, this.currentSortDirection).subscribe((oPageProduct: IPageProduct) => {
+    console.log("id_tipoproducto:",this.id_tipoproducto);
+    this.oProductService.getPage(this.pageSize, this.page, this.filterActual, this.currentSortField, this.currentSortDirection, this.id_tipoproducto).subscribe((oPageProduct: IPageProduct) => {
       if (this.filterActual) {
         this.filtered = true;
       } else {

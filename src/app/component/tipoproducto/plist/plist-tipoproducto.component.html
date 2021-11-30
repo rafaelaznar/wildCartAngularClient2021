@@ -77,7 +77,7 @@
               <i class="fas fa-arrow-down" *ngIf="currentSortField=='nombre'&&currentSortDirection=='desc'"></i>
 
             </th>
-            
+
             <th (click)="doSetOrder('cuerpo')">Acciones
               <i class="fas fa-arrow-up" *ngIf="currentSortField=='cuerpo'&&currentSortDirection=='asc'"></i>
               <i class="fas fa-arrow-down" *ngIf="currentSortField=='cuerpo'&&currentSortDirection=='desc'"></i>
@@ -91,7 +91,7 @@
           <tr *ngFor="let fila of aTipoProductos">
             <td>{{fila.id}}</td>
             <td>{{fila.nombre}}</td>
-            <td style="text-align: center;">{{fila?.productos}}</td>
+            <td style="text-align: center;"><a [routerLink]="['/producto/plist',fila.id]">{{fila?.productos}}</a></td>
             <td class="text-center">
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
                 <button type="button" class="btn btn-success" [routerLink]="['/tipoproducto/view/' + fila.id]"><i

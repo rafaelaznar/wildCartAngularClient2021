@@ -6,10 +6,9 @@ import { DateTimeService } from 'src/app/service/datetime.service';
 import { ProductoService } from 'src/app/service/producto.service';
 import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
-import { Iproduct } from 'src/app/model/producto-interfaces';
+import { IProducto, IProducto2Send } from 'src/app/model/producto-interfaces';
 
 declare let $: any;
-
 
 @Component({
   selector: 'app-new-producto',
@@ -18,7 +17,7 @@ declare let $: any;
 })
 export class NewProductoComponent implements OnInit {
 
-  oProduct2Send: Iproduct = null;
+  oProduct2Send: IProducto2Send = null;
   id: number = 0;
   oForm: FormGroup = null;
   strResult: string = "";
@@ -68,8 +67,7 @@ export class NewProductoComponent implements OnInit {
         precio: this.oForm.value.precio,
         imagen: this.oForm.value.imagen,
         descuento: this.oForm.value.descuento,
-        tipoproducto: {
-          nombre: null,
+        tipoproducto: {          
           id: this.oForm.value.id_tipoproducto
         }
       }
@@ -78,7 +76,7 @@ export class NewProductoComponent implements OnInit {
   }
 
   new = (): void => {
-    this.oProductoService.newOne(this.oProduct2Send).subscribe((oProduct: Iproduct) => {
+    this.oProductoService.newOne(this.oProduct2Send).subscribe((oProduct: IProducto) => {
       console.log("dentro de new");
       if (oProduct.id) {
         this.id = oProduct.id;

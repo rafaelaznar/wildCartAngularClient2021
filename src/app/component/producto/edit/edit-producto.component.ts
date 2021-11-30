@@ -1,4 +1,4 @@
-import { Iproduct } from './../../../model/producto-interfaces';
+import { IProducto, IProducto2Send } from './../../../model/producto-interfaces';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +15,7 @@ declare let $: any;
 })
 export class EditProductoComponent implements OnInit {
 
-  oProduct2Send: Iproduct = null;
+  oProducto2Send: IProducto2Send = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
@@ -48,7 +48,7 @@ export class EditProductoComponent implements OnInit {
   }
 
   getOne = (): void => {
-    this.oProductoService.get(this.id).subscribe((oData: Iproduct) => {
+    this.oProductoService.get(this.id).subscribe((oData: IProducto) => {
 
       this.oForm = this.oFormBuilder.group({
         codigo: [oData.codigo, [Validators.required]],
@@ -64,7 +64,7 @@ export class EditProductoComponent implements OnInit {
 
   onSubmit(): void {
     if (this.oForm) {
-      this.oProduct2Send = {
+      this.oProducto2Send = {
         id: this.id,
         codigo: this.oForm.value.codigo,
         nombre: this.oForm.value.nombre,
@@ -72,7 +72,7 @@ export class EditProductoComponent implements OnInit {
         precio: this.oForm.value.precio,
         imagen: this.oForm.value.imagen,
         descuento: this.oForm.value.descuento,
-        tipoproducto: { id: this.oForm.value.tipoproducto, nombre: null },
+        tipoproducto: { id: this.oForm.value.tipoproducto },
       }
 
       this.update();
@@ -80,8 +80,8 @@ export class EditProductoComponent implements OnInit {
   }
 
   update = (): void => {
-    console.log(this.oProduct2Send)
-    this.oProductoService.update(this.oProduct2Send).subscribe((result: Iproduct) => {
+    console.log(this.oProducto2Send)
+    this.oProductoService.update(this.oProducto2Send).subscribe((result: IProducto) => {
       if (result) {
         this.strResult = "El post se ha modificado correctamente";
       } else {

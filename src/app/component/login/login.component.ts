@@ -56,5 +56,18 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
+  loginAdmin(){
+    this.formularioLogin.setValue({
+      login:"admin",
+      password:"wildcart"
+    })
+  }
+
+  loginUser(){
+    this.formularioLogin.setValue({
+      login:"user",
+      password:"wildcart"
+    })
+  }
 
 }

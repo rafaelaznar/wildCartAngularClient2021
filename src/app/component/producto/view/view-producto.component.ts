@@ -1,6 +1,6 @@
 import { ProductoService } from './../../../service/producto.service';
 import { Component, OnInit } from '@angular/core';
-import { Iproduct } from 'src/app/model/producto-interfaces';
+import { IProducto } from 'src/app/model/producto-interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -13,7 +13,7 @@ import { Location } from '@angular/common';
 export class ViewProductoComponent implements OnInit {
 
   id: number = 0;
-  oProduct: Iproduct;
+  oProduct: IProducto;
   strUsuarioSession: string;
   strResult: string = null;
 
@@ -42,7 +42,7 @@ export class ViewProductoComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oProductoService.get(this.id).subscribe((oData: Iproduct) => {
+    this.oProductoService.get(this.id).subscribe((oData: IProducto) => {
       this.oProduct = oData;
     })
   }

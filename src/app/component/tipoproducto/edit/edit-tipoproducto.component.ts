@@ -3,7 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
-import { ITipoProducto } from 'src/app/model/tipoproducto-interfaces';
+import { ITipoProducto, ITipoProducto2Send } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 
 declare let $: any;
@@ -14,8 +14,8 @@ declare let $: any;
   styleUrls: ['./edit-tipoproducto.component.css'],
 })
 export class EditTipoproductoComponent implements OnInit {
-  oTipoProducto: ITipoProducto = null;
-  oTipoProductoShow: ITipoProducto = null;
+  oTipoProducto2Send: ITipoProducto2Send = null;
+  oTipoProducto2Show: ITipoProducto = null;  
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
@@ -50,11 +50,11 @@ export class EditTipoproductoComponent implements OnInit {
     this.oTipoProductoService
       .getOne(this.id)
       .subscribe((oData: ITipoProducto) => {
-        this.oTipoProductoShow = oData;
+        this.oTipoProducto2Show = oData;
         this.oForm = this.oFormBuilder.group({
-          id: [this.oTipoProductoShow.id],
+          id: [this.oTipoProducto2Show.id],
           nombre: [
-            this.oTipoProductoShow.nombre,
+            this.oTipoProducto2Show.nombre,
             [Validators.required, Validators.minLength(5)],
           ],
         });
@@ -63,9 +63,9 @@ export class EditTipoproductoComponent implements OnInit {
 
   onSubmit(): void {
     if (this.oForm) {
-      this.oTipoProducto = {
+      this.oTipoProducto2Send = {
         id: this.oForm.value.id,
-        nombre: this.oForm.value.nombre,
+        nombre: this.oForm.value.nombre
       };
 
       this.update();
@@ -74,7 +74,7 @@ export class EditTipoproductoComponent implements OnInit {
 
   update = (): void => {
     this.oTipoProductoService
-      .updateOne(this.oTipoProducto)
+      .updateOne(this.oTipoProducto2Send)
       .subscribe((oTipoProducto: ITipoProducto) => {
         if (oTipoProducto.id) {
           this.strResult = 'El post se ha modificado correctamente';

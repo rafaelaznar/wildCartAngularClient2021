@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Iproduct } from 'src/app/model/producto-interfaces';
+import { IProducto } from 'src/app/model/producto-interfaces';
 import { ProductoService } from 'src/app/service/producto.service';
 import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
 export class RemoveProductoComponent implements OnInit {
 
   id: number = 0;
-  oProduct: Iproduct;
+  oProduct: IProducto;
   strUsuarioSession: string;
   strResult: string = null;
 
@@ -42,13 +42,13 @@ export class RemoveProductoComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oProductoService.get(this.id).subscribe((oData: Iproduct) => {
+    this.oProductoService.get(this.id).subscribe((oData: IProducto) => {
       this.oProduct = oData;
     })
   }
 
   removeOne() {
-    this.oProductoService.removeOne(this.id).subscribe((oData: Iproduct) => {
+    this.oProductoService.removeOne(this.id).subscribe((oData: IProducto) => {
       if (oData) {
         this.strResult = "El post con ID=" + this.id + " ha sido borrado con éxito";
       } else {
