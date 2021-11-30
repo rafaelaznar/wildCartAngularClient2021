@@ -29,15 +29,19 @@ export class ProductoService {
     return this.http.put<Iproduct>(this.sURL + "/", oProduct, httpOptions);
   }
 
-  getPage(rpp: number, page: number, filter: string, order: string, direction: string): Observable<IPageProduct> {
-    let strFilterUrl: string = "";
+  getPage(rpp: number, page: number, filter: string, order: string, direction: string, filtertype:number): Observable<IPageProduct> {
+    let strFilterUrl: string = "&filter=";
     let strOrderUrl: string = "";
+    let strFilterNumber: string="&filtertype=0";
     if (filter) {
-      strFilterUrl += "/filter/" + filter;
+      strFilterUrl +=filter;
     }
     if (order) {
       strOrderUrl += "&sort=" + order + "," + direction;
     }
-    return this.http.get<IPageProduct>(this.sURL + strFilterUrl + "/?page=" + page + "&size=" + rpp + strOrderUrl, httpOptions);
+    if(filtertype){
+      strFilterNumber ="&filtertype="+filtertype;
+    }
+    return this.http.get<IPageProduct>(this.sURL  + "?page=" + page + "&size=" + rpp + strOrderUrl+ strFilterUrl+strFilterNumber, httpOptions);
   }
 }

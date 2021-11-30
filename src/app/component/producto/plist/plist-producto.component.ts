@@ -27,6 +27,7 @@ export class PlistProductoComponent implements OnInit {
   currentSortField: string = "";
   currentSortDirection: string = "";
   filtered: boolean = false;
+  filtertype:number=null;
 
   eventsSubjectView: Subject<number> = new Subject<number>();
   eventsSubjectModal: Subject<void> = new Subject<void>();
@@ -54,7 +55,7 @@ export class PlistProductoComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oProductService.getPage(this.pageSize, this.page, this.filterActual, this.currentSortField, this.currentSortDirection).subscribe((oPageProduct: IPageProduct) => {
+    this.oProductService.getPage(this.pageSize, this.page, this.filterActual, this.currentSortField, this.currentSortDirection,this.filtertype).subscribe((oPageProduct: IPageProduct) => {
       if (this.filterActual) {
         this.filtered = true;
       } else {
