@@ -91,7 +91,7 @@
           <tr *ngFor="let fila of aTipoProductos">
             <td>{{fila.id}}</td>
             <td>{{fila.nombre}}</td>
-            <td style="text-align: center;">{{fila?.productos}}</td>
+            <td style="text-align: center;"><a [routerLink]="['/producto/plist/'+ fila.id]"></a>{{fila?.productos}}</td>
             <td class="text-center">
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
                 <button type="button" class="btn btn-success" [routerLink]="['/tipoproducto/view/' + fila.id]"><i
