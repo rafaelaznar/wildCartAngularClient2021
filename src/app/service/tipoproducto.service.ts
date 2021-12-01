@@ -8,7 +8,7 @@ import { ITipoProducto, IPageTP, ITipoProducto2Send } from '../model/tipoproduct
   providedIn: 'root',
 })
 export class TipoproductoService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   sURL = API_URL + '/tipoprod';
 
@@ -19,16 +19,15 @@ export class TipoproductoService {
     order: string,
     direction: string
   ): Observable<IPageTP> {
-    let strFilterUrl: string = '';
-    let strOrderUrl: string = '';
+    let strUrl: string = '';
     if (filter) {
-      strFilterUrl += '/filter/' + filter;
+      strUrl += '&filter=' + filter;
     }
     if (order) {
-      strOrderUrl += '&sort=' + order + ',' + direction;
+      strUrl += '&sort=' + order + ',' + direction;
     }
     return this.http.get<IPageTP>(
-      this.sURL +  strFilterUrl + '/?page=' + (page - 1) +'&size=' +rpp + strOrderUrl, httpOptions);
+      this.sURL + '/?page=' + (page - 1) + '&size=' + rpp + strUrl, httpOptions);
   }
 
   getOne(id: number): Observable<ITipoProducto> {

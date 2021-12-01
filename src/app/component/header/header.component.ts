@@ -9,7 +9,9 @@ export class HeaderComponent implements OnInit {
   
   @Input() title: string = "wildCart";  
   @Input() subtitle: string = "wildCart";  
+  @Input() filter: string = "";
   @Input() icon: string = "";
+  @Input() iconEntity: string = "";
   
   constructor() { }
 
