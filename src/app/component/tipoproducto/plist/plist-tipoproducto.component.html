@@ -15,7 +15,8 @@
             <span class="input-group-text"> <i [ngClass]="oIconService.getIcon('filtro')"></i></span>
           </div>
           <input type="text" class="form-control" placeholder="{{'Filtro de ' + strTitlePlural}}" placeholder="Search"
-            (keyup)="onKeyUpFilter($event)" [(ngModel)]="strFilter" name="buscar"  aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+            (keyup)="onKeyUpFilter($event)" [(ngModel)]="strFilter" name="buscar" aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm" />
         </div>
       </form>
     </div>
@@ -58,7 +59,7 @@
       <table class="table table-bordered table-striped table-hover">
         <thead>
           <tr class="text-center">
-            <th (click)="doSetOrder('id')">ID
+            <th (click)="doSetOrder('id')"><i [ngClass]="oIconService.getIcon('id')"></i> ID
               <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
               <i [ngClass]="oIconService.getIcon('flechaDown')"
                 *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
@@ -78,7 +79,8 @@
             <td>{{fila.id}}</td>
             <td>{{fila.nombre}}</td>
             <td style="text-align: center;"><button class="btn btn-outline-secondary btn-sm"
-                [routerLink]="['/producto/plist',fila.id]">{{fila?.productos}} <i [ngClass]="oIconService.getIcon('producto')"></i></button></td>
+                [routerLink]="['/producto/plist',fila.id]">{{fila?.productos}} <i
+                  [ngClass]="oIconService.getIcon('producto')"></i></button></td>
             <td class="text-center">
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
                 <button type="button" class="btn btn-success" [routerLink]="['/tipoproducto/view/' + fila.id]"><i

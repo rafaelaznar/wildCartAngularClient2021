@@ -36,7 +36,7 @@ export class IconService {
       case strIcon == "login": return "fas fa-sign-in-alt";
       case strIcon == "logout": return "fas fa-sign-out-alt";
       case strIcon == "usuarios": return "fas fa-user-friends";
-      case strIcon == "accesoSistema": return "fas fa-key";
+      case strIcon == "id": return "fas fa-key";
       case strIcon == "entradaSistema": return "fas fa-sign-in";
       case strIcon == "salidaSistema": return "fas fa-sign-in";
       case strIcon == "reset": return "fas fa-brush";

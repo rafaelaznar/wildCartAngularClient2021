@@ -14,9 +14,12 @@ import { IconService } from 'src/app/service/icon.service';
   styleUrls: ['./plist-producto.component.css']
 })
 export class PlistProductoComponent implements OnInit {
-
+  strEntity: string = "producto"
+  strOperation: string = "plist"
+  strTitleSingular: string = "Producto";
+  strTitlePlural: string = "Productos";
   aProducts: IProducto[];
-  totalElements: number;
+  nTotalElements: number;
   totalPages: number;
   page: number;
   barraPaginacion: string[];
@@ -29,6 +32,8 @@ export class PlistProductoComponent implements OnInit {
   currentSortDirection: string = "";
   filtered: boolean = false;
   id_tipoproducto: number = 0;
+
+  strFilteredMessage: string = "";
 
   eventsSubjectView: Subject<number> = new Subject<number>();
   eventsSubjectModal: Subject<void> = new Subject<void>();
@@ -50,6 +55,12 @@ export class PlistProductoComponent implements OnInit {
       oRouter.navigate(['/home']);
     }
     this.id_tipoproducto = this.oActivatedRoute.snapshot.params.id_tipoproducto;
+    if (this.id_tipoproducto) {
+      this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto;
+    } else {
+      this.strFilteredMessage = "";
+    }
+
     this.page = 0;
     this.getPage();
   }
@@ -66,7 +77,7 @@ export class PlistProductoComponent implements OnInit {
         this.filtered = false;
       }
       this.aProducts = oPageProduct.content;
-      this.totalElements = oPageProduct.totalElements;
+      this.nTotalElements = oPageProduct.totalElements;
       this.totalPages = oPageProduct.totalPages;
       this.barraPaginacion = this.oPaginationService.pagination(this.totalPages, this.page);
     })

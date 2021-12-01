@@ -62,7 +62,7 @@ export class PlistTipoproductoComponent implements OnInit {
     console.log("buscando...", this.strFilter);
     this.oTipoProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection).subscribe((oPage: IPageTP) => {
       if (this.strFilter) {
-        this.strFilteredMessage = "Listado filtrado";
+        this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
       } else {
         this.strFilteredMessage = "";
       }

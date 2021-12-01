@@ -1,7 +1,9 @@
 <app-menu></app-menu>
 <div class="container my-3">
 
-    <app-header [title]="'Listado de Productos'" [icon]="'fas fa-file-alt'" [subtitle]="totalElements + ' productos'">
+    <app-header [title]="'Listado de ' + strTitlePlural" [icon]="oIconService.getIcon(this.strOperation)"
+        [iconEntity]="oIconService.getIcon(this.strEntity)" [filter]="strFilteredMessage"
+        [subtitle]="nTotalElements + ' ' + strTitlePlural">
     </app-header>
 
     <div class="row justify-content-center my-3">
@@ -62,7 +64,7 @@
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr class="text-center">
-                        <th (click)="doSetOrder('id')">ID
+                        <th (click)="doSetOrder('id')"><i [ngClass]="oIconService.getIcon('id')"></i> ID
                             <i class="fas fa-arrow-up" *ngIf="currentSortField=='id'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='id'&&currentSortDirection=='desc'"></i>
@@ -130,9 +132,9 @@
                         <td style="text-align: center;">{{fila.imagen}}</td>
                         <td style="text-align: center;">{{fila.descuento}}%</td>
                         <td>
-                            <a style="text-decoration:none"  [routerLink]="['/producto/plist/' + fila.tipoproducto.id]">
-                            <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> ({{fila.tipoproducto.id}})
-                            {{fila.tipoproducto.nombre | trim}}</a>
+                            <a style="text-decoration:none" [routerLink]="['/producto/plist/' + fila.tipoproducto.id]">
+                                <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> ({{fila.tipoproducto.id}})
+                                {{fila.tipoproducto.nombre | trim}}</a>
                         </td>
 
                         <td class="text-center">
