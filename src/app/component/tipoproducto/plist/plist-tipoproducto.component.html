@@ -2,25 +2,25 @@
 
 <div class="container my-3">
 
-  <app-header [title]="'Listado de ' + strTitlePrural" [icon]="strIconOperation" [iconEntity]="strIconEntity"
-    [filter]="strFiltered" [subtitle]="nTotalElements + ' ' + strTitlePrural">
+  <app-header [title]="'Listado de ' + strTitlePlural" [icon]="strIconOperation" [iconEntity]="strIconEntity"
+    [filter]="strFiltered" [subtitle]="nTotalElements + ' ' + strTitlePlural">
   </app-header>
 
 
   <div class="row justify-content-center my-3">
     <div class="col-12 d-grid gap-2 d-md-block d-md-flex justify-content-md-center">
-      <form style="width: 50%;">
+      <form style="width: 60%;">
         <div class="input-group">
           <div class="input-group-prepend">
             <button class="btn-primary btn" (click)="doFilter()" [disabled]="strFiltered">
-              <i class="fas fa-search"></i> Filtrar
+              <i class="fas fa-search"></i> Filtrar por {{strTitleSingular}}
             </button>
           </div>
-          <input type="text" class="form-control" placeholder="Buscador de posts" [(ngModel)]="strFilter" name="buscar"
+          <input type="text" class="form-control" placeholder="{{'Buscador de ' + strTitlePlural}}" [(ngModel)]="strFilter" name="buscar"
             (keydown)="onKeydownEvent($event)" />
           <div class="input-group-append">
             <button class="btn-primary btn" (click)="doResetFilter()" [disabled]="!strFiltered">Quitar
-              filtro
+              filtro de {{strTitleSingular}}
             </button>
           </div>
         </div>
@@ -41,7 +41,7 @@
     </div>
     <div class="col-md text-center">
       <a [routerLink]="['/tipoproducto/new/']" type="button" class="btn btn-success mb-2">
-        <i class="fas fa-plus"></i> Añadir nuevo tipo de producto.
+        <i class="fas fa-plus"></i> Añadir nuevo {{strTitleSingular}}
       </a>
     </div>
     <div class="col-md text-end">

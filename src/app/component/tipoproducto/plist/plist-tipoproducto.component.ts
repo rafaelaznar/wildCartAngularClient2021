@@ -14,7 +14,7 @@ import { PaginationService } from 'src/app/service/pagination.service';
 export class PlistTipoproductoComponent implements OnInit {
 
   strTitleSingular: string = "Tipo de producto";
-  strTitlePrural: string = "Tipos de producto";
+  strTitlePlural: string = "Tipos de producto";
   strIconEntity: string = "fas fa-tag";
   strIconOperation: string = "fas fa-file-alt";
   aTipoProductos: ITipoProducto[];
