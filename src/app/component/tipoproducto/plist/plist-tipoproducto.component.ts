@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { PaginationService } from 'src/app/service/pagination.service';
+import { IconService } from 'src/app/service/icon.service';
 
 @Component({
   selector: 'app-plist-tipoproducto',
@@ -12,10 +13,10 @@ import { PaginationService } from 'src/app/service/pagination.service';
   styleUrls: ['./plist-tipoproducto.component.css']
 })
 export class PlistTipoproductoComponent implements OnInit {
-
+  strEntity: string = "tipoproducto"
   strTitleSingular: string = "Tipo de producto";
   strTitlePlural: string = "Tipos de producto";
-  strIconEntity: string = "fas fa-tag";
+  strIconEntity: string = this.oIconService.getEntityIcon(this.strEntity);  //"fas fa-tag";
   strIconOperation: string = "fas fa-file-alt";
   aTipoProductos: ITipoProducto[];
   aPaginationBar: string[];
@@ -35,6 +36,7 @@ export class PlistTipoproductoComponent implements OnInit {
     private oRouter: Router,
     private oPaginationService: PaginationService,
     private oTipoProductoService: TipoproductoService,
+    private oIconService: IconService,
   ) {
 
     if (this.oRoute.snapshot.data.message) {
