@@ -3,9 +3,10 @@ import { ITipoProducto, IPageTP } from './../../../model/tipoproducto-interfaces
 import { TipoproductoService } from './../../../service/tipoproducto.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { IconService } from 'src/app/service/icon.service';
+import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-plist-tipoproducto',
@@ -14,29 +15,31 @@ import { IconService } from 'src/app/service/icon.service';
 })
 export class PlistTipoproductoComponent implements OnInit {
   strEntity: string = "tipoproducto"
+  strOperation: string = "plist"
   strTitleSingular: string = "Tipo de producto";
   strTitlePlural: string = "Tipos de producto";
-  strIconEntity: string = this.oIconService.getEntityIcon(this.strEntity);  //"fas fa-tag";
-  strIconOperation: string = "fas fa-file-alt";
+  strIconEntity: string = this.oIconService.getIcon(this.strEntity);
+  strIconOperation: string = this.oIconService.getIcon(this.strOperation);
   aTipoProductos: ITipoProducto[];
   aPaginationBar: string[];
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
-  nPageSize: number = 10;  
+  nPageSize: number = 10;
   strResult: string = null;
   strFilter: string = "";
   strSortField: string = "";
   strSortDirection: string = "";
-  strFiltered: string = "";
+  strFilteredMessage: string = "";
   oUserSession: IUsuario;
+  subjectFiltro$ = new Subject();
 
   constructor(
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oPaginationService: PaginationService,
     private oTipoProductoService: TipoproductoService,
-    private oIconService: IconService,
+    public oIconService: IconService,
   ) {
 
     if (this.oRoute.snapshot.data.message) {
@@ -52,14 +55,18 @@ export class PlistTipoproductoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.subjectFiltro$.pipe(
+      debounceTime(1000)
+    ).subscribe(() => this.getPage());
   }
 
   getPage = () => {
+    console.log("buscando...", this.strFilter);
     this.oTipoProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection).subscribe((oPage: IPageTP) => {
       if (this.strFilter) {
-        this.strFiltered = "Listado filtrado";
+        this.strFilteredMessage = "Listado filtrado";
       } else {
-        this.strFiltered = "";
+        this.strFilteredMessage = "";
       }
       this.aTipoProductos = oPage.content;
       this.nTotalElements = oPage.totalElements;
@@ -77,11 +84,18 @@ export class PlistTipoproductoComponent implements OnInit {
     this.getPage();
   }
 
-  onKeydownEvent(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      this.getPage();
-    }
+
+
+
+
+  
+  onKeyUpFilter(event: KeyboardEvent): void {
+    this.subjectFiltro$.next();
   }
+
+
+
+
 
   doResetFilter() {
     this.strFilter = "";
@@ -106,6 +120,6 @@ export class PlistTipoproductoComponent implements OnInit {
     this.getPage();
   }
 
-  closeModal(): void { }
+
 
 }

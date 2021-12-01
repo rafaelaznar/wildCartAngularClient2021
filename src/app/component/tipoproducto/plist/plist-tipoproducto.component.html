@@ -3,26 +3,15 @@
 <div class="container my-3">
 
   <app-header [title]="'Listado de ' + strTitlePlural" [icon]="strIconOperation" [iconEntity]="strIconEntity"
-    [filter]="strFiltered" [subtitle]="nTotalElements + ' ' + strTitlePlural">
+    [filter]="strFilteredMessage" [subtitle]="nTotalElements + ' ' + strTitlePlural">
   </app-header>
-
 
   <div class="row justify-content-center my-3">
     <div class="col-12 d-grid gap-2 d-md-block d-md-flex justify-content-md-center">
-      <form style="width: 60%;">
+      <form style="width: 15em;">
         <div class="input-group">
-          <div class="input-group-prepend">
-            <button class="btn-primary btn" (click)="doFilter()" [disabled]="strFiltered">
-              <i class="fas fa-search"></i> Filtrar por {{strTitleSingular}}
-            </button>
-          </div>
-          <input type="text" class="form-control" placeholder="{{'Buscador de ' + strTitlePlural}}" [(ngModel)]="strFilter" name="buscar"
-            (keydown)="onKeydownEvent($event)" />
-          <div class="input-group-append">
-            <button class="btn-primary btn" (click)="doResetFilter()" [disabled]="!strFiltered">Quitar
-              filtro de {{strTitleSingular}}
-            </button>
-          </div>
+          <input type="text" class="form-control" placeholder="{{'Filtro de ' + strTitlePlural}}" placeholder="Search"
+            (keyup)="onKeyUpFilter($event)" [(ngModel)]="strFilter" name="buscar" />
         </div>
       </form>
     </div>
@@ -66,12 +55,13 @@
         <thead>
           <tr class="text-center">
             <th (click)="doSetOrder('id')">ID
-              <i class="fas fa-arrow-up" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
-              <i class="fas fa-arrow-down" *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
+              <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
+              <i [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
             </th>
             <th (click)="doSetOrder('nombre')">Nombre
-              <i class="fas fa-arrow-up" *ngIf="strSortField=='nombre'&&strSortDirection=='asc'"></i>
-              <i class="fas fa-arrow-down" *ngIf="strSortField=='nombre'&&strSortDirection=='desc'"></i>
+              <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='nombre'&&strSortDirection=='asc'"></i>
+              <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='nombre'&&strSortDirection=='desc'"></i>
 
             </th>
             <th>Productos </th>
