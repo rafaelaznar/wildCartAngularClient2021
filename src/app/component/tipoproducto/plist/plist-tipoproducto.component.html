@@ -2,16 +2,20 @@
 
 <div class="container my-3">
 
-  <app-header [title]="'Listado de ' + strTitlePlural" [icon]="strIconOperation" [iconEntity]="strIconEntity"
-    [filter]="strFilteredMessage" [subtitle]="nTotalElements + ' ' + strTitlePlural">
+  <app-header [title]="'Listado de ' + strTitlePlural" [icon]="oIconService.getIcon(this.strOperation)"
+    [iconEntity]="oIconService.getIcon(this.strEntity)" [filter]="strFilteredMessage"
+    [subtitle]="nTotalElements + ' ' + strTitlePlural">
   </app-header>
 
   <div class="row justify-content-center my-3">
     <div class="col-12 d-grid gap-2 d-md-block d-md-flex justify-content-md-center">
       <form style="width: 15em;">
-        <div class="input-group">
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i [ngClass]="oIconService.getIcon('filtro')"></i></span>
+          </div>
           <input type="text" class="form-control" placeholder="{{'Filtro de ' + strTitlePlural}}" placeholder="Search"
-            (keyup)="onKeyUpFilter($event)" [(ngModel)]="strFilter" name="buscar" />
+            (keyup)="onKeyUpFilter($event)" [(ngModel)]="strFilter" name="buscar"  aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
         </div>
       </form>
     </div>
@@ -30,13 +34,13 @@
     </div>
     <div class="col-md text-center">
       <a [routerLink]="['/tipoproducto/new/']" type="button" class="btn btn-success mb-2">
-        <i class="fas fa-plus"></i> Añadir nuevo {{strTitleSingular}}
+        <i [ngClass]="oIconService.getIcon('new')"></i> Añadir nuevo {{strTitleSingular}}
       </a>
     </div>
     <div class="col-md text-end">
       <div class="dropdown mb-3">
         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-          aria-expanded="false">
+          aria-expanded="false"><i [ngClass]="oIconService.getIcon('rpp')"></i>
           Registros por página: {{nPageSize}}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -60,12 +64,13 @@
                 *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
             </th>
             <th (click)="doSetOrder('nombre')">Nombre
-              <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='nombre'&&strSortDirection=='asc'"></i>
-              <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='nombre'&&strSortDirection=='desc'"></i>
-
+              <i [ngClass]="oIconService.getIcon('flechaUp')"
+                *ngIf="strSortField=='nombre'&&strSortDirection=='asc'"></i>
+              <i [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="strSortField=='nombre'&&strSortDirection=='desc'"></i>
             </th>
-            <th>Productos </th>
-            <th>Acciones </th>
+            <th>Productos <i [ngClass]="oIconService.getIcon('producto')"></i> </th>
+            <th>Acciones <i [ngClass]="oIconService.getIcon('acciones')"></i> </th>
           </tr>
         </thead>
         <tbody>
@@ -73,15 +78,15 @@
             <td>{{fila.id}}</td>
             <td>{{fila.nombre}}</td>
             <td style="text-align: center;"><button class="btn btn-outline-secondary btn-sm"
-                [routerLink]="['/producto/plist',fila.id]">{{fila?.productos}}</button></td>
+                [routerLink]="['/producto/plist',fila.id]">{{fila?.productos}} <i [ngClass]="oIconService.getIcon('producto')"></i></button></td>
             <td class="text-center">
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
                 <button type="button" class="btn btn-success" [routerLink]="['/tipoproducto/view/' + fila.id]"><i
-                    class="fas fa-eye"></i></button>
+                    [ngClass]="oIconService.getIcon('view')"></i></button>
                 <button type="button" class="btn btn-warning" [routerLink]="['/tipoproducto/edit/' + fila.id]"><i
-                    class="fas fa-pen"></i></button>
+                    [ngClass]="oIconService.getIcon('edit')"></i></button>
                 <button type="button" class="btn btn-danger" [routerLink]="['/tipoproducto/remove/' + fila.id]"><i
-                    class="fas fa-trash"></i></button>
+                    [ngClass]="oIconService.getIcon('remove')"></i></button>
               </div>
             </td>
           </tr>
@@ -89,6 +94,7 @@
       </table>
     </div>
   </div>
+
 </div>
 
 <app-footer></app-footer>

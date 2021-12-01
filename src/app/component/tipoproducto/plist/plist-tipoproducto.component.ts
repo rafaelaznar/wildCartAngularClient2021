@@ -3,7 +3,7 @@ import { ITipoProducto, IPageTP } from './../../../model/tipoproducto-interfaces
 import { TipoproductoService } from './../../../service/tipoproducto.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { IconService } from 'src/app/service/icon.service';
 import { debounceTime, map } from 'rxjs/operators';
@@ -18,8 +18,6 @@ export class PlistTipoproductoComponent implements OnInit {
   strOperation: string = "plist"
   strTitleSingular: string = "Tipo de producto";
   strTitlePlural: string = "Tipos de producto";
-  strIconEntity: string = this.oIconService.getIcon(this.strEntity);
-  strIconOperation: string = this.oIconService.getIcon(this.strOperation);
   aTipoProductos: ITipoProducto[];
   aPaginationBar: string[];
   nTotalElements: number;
@@ -39,7 +37,7 @@ export class PlistTipoproductoComponent implements OnInit {
     private oRouter: Router,
     private oPaginationService: PaginationService,
     private oTipoProductoService: TipoproductoService,
-    public oIconService: IconService,
+    public oIconService: IconService
   ) {
 
     if (this.oRoute.snapshot.data.message) {
@@ -80,26 +78,8 @@ export class PlistTipoproductoComponent implements OnInit {
     return false;
   }
 
-  doFilter() {
-    this.getPage();
-  }
-
-
-
-
-
-  
   onKeyUpFilter(event: KeyboardEvent): void {
     this.subjectFiltro$.next();
-  }
-
-
-
-
-
-  doResetFilter() {
-    this.strFilter = "";
-    this.getPage();
   }
 
   doResetOrder() {
@@ -119,7 +99,5 @@ export class PlistTipoproductoComponent implements OnInit {
     }
     this.getPage();
   }
-
-
 
 }
