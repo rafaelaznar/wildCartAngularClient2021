@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { IPost, IPage } from 'src/app/model/model-interfaces';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { PostService } from 'src/app/service/post.service';
+import { IconService } from 'src/app/service/icon.service';
 
 @Component({
   selector: 'app-plist-producto',
@@ -37,7 +38,8 @@ export class PlistProductoComponent implements OnInit {
     private oRouter: Router,
     private oPaginationService: PaginationService,
     private oProductService: ProductoService,
-    private oActivatedRoute: ActivatedRoute
+    private oActivatedRoute: ActivatedRoute,
+    public oIconService: IconService
   ) {
 
     if (this.oRoute.snapshot.data.message) {
