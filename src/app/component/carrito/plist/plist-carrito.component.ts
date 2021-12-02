@@ -7,6 +7,8 @@ import { PaginationService } from 'src/app/service/pagination.service';
 import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { debounceTime } from 'rxjs/operators';
+import { ICarritoPage, ICarritoPlist } from 'src/app/model/carrito-interfaces';
+import { CarritoService } from 'src/app/service/carrito.service';
 
 @Component({
   selector: 'app-plist-carrito',
@@ -18,7 +20,7 @@ export class PlistCarritoComponent implements OnInit {
   strOperation: string = 'plist';
   strTitleSingular: string = 'Carrito';
   strTitlePlural: string = 'Carritos';
-  aProducts: IProducto[];
+  aCarritos: ICarritoPlist[];
   aPaginationBar: string[];
   nTotalElements: number;
   nTotalPages: number;
@@ -31,13 +33,14 @@ export class PlistCarritoComponent implements OnInit {
   strFilteredMessage: string = '';
   oUserSession: IUsuario;
   subjectFiltro$ = new Subject();
-  id_tipoproducto: number = null;
+  id_producto: number = null;
+  id_usuario: number = null;
 
   constructor(
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oPaginationService: PaginationService,
-    private oProductService: ProductoService,
+    private oCarritoService: CarritoService,
 
     public oIconService: IconService
   ) {
@@ -51,15 +54,20 @@ export class PlistCarritoComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-    this.id_tipoproducto = this.oRoute.snapshot.params.id_tipoproducto;
-    if (this.id_tipoproducto) {
+    this.id_producto = this.oRoute.snapshot.params.idproducto;
+    this.id_usuario = this.oRoute.snapshot.params.idusuario;
+
+    if (this.id_producto) {
       this.strFilteredMessage =
-        'Listado filtrado por el tipo de producto ' + this.id_tipoproducto;
+        'Listado filtrado por el producto ' + this.id_producto;
+    } else if (this.id_usuario) {
+      this.strFilteredMessage =
+        'Listado filtrado por el usuario' + this.id_usuario;
     } else {
       this.strFilteredMessage = '';
     }
 
-    this.nPage = 0;
+    this.nPage = 1;
     this.getPage();
   }
 
@@ -71,22 +79,23 @@ export class PlistCarritoComponent implements OnInit {
 
   getPage = () => {
     console.log('buscando...', this.strFilter);
-    this.oProductService
+    this.oCarritoService
       .getPage(
         this.nPageSize,
-        this.nPage,
+        this.nPage - 1,
         this.strFilter,
         this.strSortField,
         this.strSortDirection,
-        this.id_tipoproducto
+        this.id_producto,
+        this.id_usuario
       )
-      .subscribe((oPage: IPageProduct) => {
+      .subscribe((oPage: ICarritoPage) => {
         if (this.strFilter) {
           this.strFilteredMessage = 'Listado filtrado: ' + this.strFilter;
         } else {
           this.strFilteredMessage = '';
         }
-        this.aProducts = oPage.content;
+        this.aCarritos = oPage.content;
         this.nTotalElements = oPage.totalElements;
         this.nTotalPages = oPage.totalPages;
         this.aPaginationBar = this.oPaginationService.pagination(

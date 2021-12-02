@@ -55,7 +55,7 @@
     </div>
     <div class="col-md text-center">
       <a
-        [routerLink]="['/tipoproducto/new/']"
+        [routerLink]="['/carrito/new/']"
         type="button"
         class="btn btn-success mb-2"
       >
@@ -113,41 +113,15 @@
                 *ngIf="strSortField == 'id' && strSortDirection == 'desc'"
               ></i>
             </th>
-            <th (click)="doSetOrder('codigo')">
-              Código
+            <th (click)="doSetOrder('cantidad')">
+              Cantidad
               <i
                 [ngClass]="oIconService.getIcon('flechaUp')"
-                *ngIf="strSortField == 'codigo' && strSortDirection == 'asc'"
+                *ngIf="strSortField == 'cantidad' && strSortDirection == 'asc'"
               ></i>
               <i
                 [ngClass]="oIconService.getIcon('flechaDown')"
-                *ngIf="strSortField == 'codigo' && strSortDirection == 'desc'"
-              ></i>
-            </th>
-            <th (click)="doSetOrder('nombre')">
-              Nombre
-              <i
-                [ngClass]="oIconService.getIcon('flechaUp')"
-                *ngIf="strSortField == 'nombre' && strSortDirection == 'asc'"
-              ></i>
-              <i
-                [ngClass]="oIconService.getIcon('flechaDown')"
-                *ngIf="strSortField == 'nombre' && strSortDirection == 'desc'"
-              ></i>
-            </th>
-            <th (click)="doSetOrder('existencias')">
-              Existencias
-              <i
-                [ngClass]="oIconService.getIcon('flechaUp')"
-                *ngIf="
-                  strSortField == 'existencias' && strSortDirection == 'asc'
-                "
-              ></i>
-              <i
-                [ngClass]="oIconService.getIcon('flechaDown')"
-                *ngIf="
-                  strSortField == 'existencias' && strSortDirection == 'desc'
-                "
+                *ngIf="strSortField == 'cantidad' && strSortDirection == 'desc'"
               ></i>
             </th>
             <th (click)="doSetOrder('precio')">
@@ -161,44 +135,26 @@
                 *ngIf="strSortField == 'precio' && strSortDirection == 'desc'"
               ></i>
             </th>
-            <th (click)="doSetOrder('imagen')">
-              Imagen
+            <th (click)="doSetOrder('producto')">
+              <i [ngClass]="oIconService.getIcon('producto')"></i> Producto
               <i
                 [ngClass]="oIconService.getIcon('flechaUp')"
-                *ngIf="strSortField == 'imagen' && strSortDirection == 'asc'"
+                *ngIf="strSortField == 'producto' && strSortDirection == 'asc'"
               ></i>
               <i
                 [ngClass]="oIconService.getIcon('flechaDown')"
-                *ngIf="strSortField == 'imagen' && strSortDirection == 'desc'"
+                *ngIf="strSortField == 'producto' && strSortDirection == 'desc'"
               ></i>
             </th>
-            <th (click)="doSetOrder('descuento')">
-              Descuento
+            <th (click)="doSetOrder('usuario')">
+              <i [ngClass]="oIconService.getIcon('usuario')"></i> Usuario
               <i
                 [ngClass]="oIconService.getIcon('flechaUp')"
-                *ngIf="strSortField == 'descuento' && strSortDirection == 'asc'"
+                *ngIf="strSortField == 'usuario' && strSortDirection == 'asc'"
               ></i>
               <i
                 [ngClass]="oIconService.getIcon('flechaDown')"
-                *ngIf="
-                  strSortField == 'descuento' && strSortDirection == 'desc'
-                "
-              ></i>
-            </th>
-            <th (click)="doSetOrder('tipoproducto')">
-              Tipo Producto
-              <i [ngClass]="oIconService.getIcon('tipoproducto')"></i>
-              <i
-                [ngClass]="oIconService.getIcon('flechaUp')"
-                *ngIf="
-                  strSortField == 'tipoproducto' && strSortDirection == 'asc'
-                "
-              ></i>
-              <i
-                [ngClass]="oIconService.getIcon('flechaDown')"
-                *ngIf="
-                  strSortField == 'tipoproducto' && strSortDirection == 'desc'
-                "
+                *ngIf="strSortField == 'usuario' && strSortDirection == 'desc'"
               ></i>
             </th>
             <th>
@@ -207,24 +163,28 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let fila of aProducts">
+          <tr *ngFor="let fila of aCarritos">
             <td>{{ fila.id }}</td>
-            <td>{{ fila.codigo }}</td>
-            <td>{{ fila.nombre | trim: 50 }}</td>
-            <td style="text-align: center">{{ fila.existencias }}</td>
-            <td style="text-align: right">{{ fila.precio }}€</td>
-            <td style="text-align: center">{{ fila.imagen }}</td>
-            <td style="text-align: center">{{ fila.descuento }}%</td>
+            <td>{{ fila.cantidad }}</td>
+            <td>{{ fila.precio }}</td>
             <td>
               <a
                 style="text-decoration: none"
-                [routerLink]="[
-                  '/producto/plist/tipoproducto/' + fila.tipoproducto.id
-                ]"
+                [routerLink]="['/carrito/plist/producto/' + fila.producto.id]"
               >
-                <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> ({{
-                  fila.tipoproducto.id
-                }}) {{ fila.tipoproducto.nombre | trim }}</a
+                <i [ngClass]="oIconService.getIcon('producto')"></i> ({{
+                  fila.producto.id
+                }}) {{ fila.producto.nombre | trim }}</a
+              >
+            </td>
+            <td>
+              <a
+                style="text-decoration: none"
+                [routerLink]="['/carrito/plist/usuario/' + fila.usuario.id]"
+              >
+                <i [ngClass]="oIconService.getIcon('usuario')"></i> ({{
+                  fila.usuario.id
+                }}) {{ fila.usuario.nombre + "" | trim }}</a
               >
             </td>
 
@@ -237,7 +197,7 @@
                 <button
                   type="button"
                   class="btn btn-success"
-                  [routerLink]="['/producto/view/' + fila.id]"
+                  [routerLink]="['/carrito/view/' + fila.id]"
                 >
                   <i [ngClass]="oIconService.getIcon('view')"></i>
                 </button>
@@ -245,14 +205,14 @@
                 <button
                   type="button"
                   class="btn btn-warning"
-                  [routerLink]="['/producto/edit/' + fila.id]"
+                  [routerLink]="['/carrito/edit/' + fila.id]"
                 >
                   <i [ngClass]="oIconService.getIcon('edit')"></i>
                 </button>
                 <button
                   type="button"
                   class="btn btn-danger"
-                  [routerLink]="['/producto/remove/' + fila.id]"
+                  [routerLink]="['/carrito/remove/' + fila.id]"
                 >
                   <i [ngClass]="oIconService.getIcon('remove')"></i>
                 </button>
