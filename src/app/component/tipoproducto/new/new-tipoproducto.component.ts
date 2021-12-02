@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { ITipoProducto, ITipoProducto2Send } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { IconService } from 'src/app/service/icon.service';
 
 declare let $: any;
 
@@ -15,11 +17,17 @@ declare let $: any;
 })
 
 export class NewTipoproductoComponent implements OnInit {
-  
-  TipoProducto2Send: ITipoProducto2Send = null;
-  id: number = 0;
+
+
+  strEntity: string = "tipoproducto"
+  strOperation: string = "new"
+  strTitleSingular: string = "Tipo de producto";
+  strTitlePlural: string = "Tipos de producto";
+  oTipoProducto2Send: ITipoProducto2Send = null;
+  id: number = null;
   oForm: FormGroup = null;
-  strResult: string = '';
+  strResult: string = null;
+  oUserSession: IUsuario;
 
   get f() {
     return this.oForm.controls;
@@ -27,15 +35,15 @@ export class NewTipoproductoComponent implements OnInit {
 
   constructor(
     private oFormBuilder: FormBuilder,
+    private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oTipoProductoService: TipoproductoService,
-    private oActivatedRoute: ActivatedRoute,
-    private oLocation: Location
+    private oLocation: Location,
+    public oIconService: IconService
   ) {
-    if (this.oActivatedRoute.snapshot.data.message) {
-      const strUsuarioSession: string =
-        this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem('user', JSON.stringify(strUsuarioSession));
+    if (this.oRoute.snapshot.data.message) {
+      this.oUserSession = this.oRoute.snapshot.data.message;
+      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
@@ -50,7 +58,7 @@ export class NewTipoproductoComponent implements OnInit {
 
   onSubmit(): void {
     if (this.oForm) {
-      this.TipoProducto2Send = {
+      this.oTipoProducto2Send = {
         id: null,
         nombre: this.oForm.value.nombre,
       };
@@ -60,13 +68,13 @@ export class NewTipoproductoComponent implements OnInit {
 
   new = (): void => {
     this.oTipoProductoService
-      .newOne(this.TipoProducto2Send)
+      .newOne(this.oTipoProducto2Send)
       .subscribe((oTipoProducto: ITipoProducto) => {
         if (oTipoProducto.id) {
           this.id = oTipoProducto.id;
-          this.strResult = 'El post se ha creado correctamente';
+          this.strResult = this.strTitleSingular + ' creado correctamente con id=' + oTipoProducto.id;
         } else {
-          this.strResult = 'Error en la creación del registro';
+          this.strResult = this.strTitleSingular + ': error en la creación del registro';
         }
         this.openModal();
       });
@@ -78,13 +86,13 @@ export class NewTipoproductoComponent implements OnInit {
 
   //modal
 
-  eventsSubject: Subject<void> = new Subject<void>();
+  eventsModalSubject: Subject<void> = new Subject<void>();
 
   openModal(): void {
-    this.eventsSubject.next();
+    this.eventsModalSubject.next();
   }
 
   closeModal(): void {
-    this.oRouter.navigate(['tipoproducto/view/' + this.id]);
+    this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
   }
 }
