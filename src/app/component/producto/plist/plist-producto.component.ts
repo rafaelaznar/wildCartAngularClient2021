@@ -3,10 +3,10 @@ import { IPageProduct, IProducto } from 'src/app/model/producto-interfaces';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { IPost, IPage } from 'src/app/model/model-interfaces';
 import { PaginationService } from 'src/app/service/pagination.service';
-import { PostService } from 'src/app/service/post.service';
 import { IconService } from 'src/app/service/icon.service';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-plist-producto',
@@ -19,67 +19,67 @@ export class PlistProductoComponent implements OnInit {
   strTitleSingular: string = "Producto";
   strTitlePlural: string = "Productos";
   aProducts: IProducto[];
+  aPaginationBar: string[];
   nTotalElements: number;
-  totalPages: number;
-  page: number;
-  barraPaginacion: string[];
-  pageSize: number = 10;
-  id2ShowViewModal: number = 0;
-  strUsuarioSession: string;
+  nTotalPages: number;
+  nPage: number;
+  nPageSize: number = 10;
   strResult: string = null;
-  filterActual: string = "";
-  currentSortField: string = "";
-  currentSortDirection: string = "";
-  filtered: boolean = false;
-  id_tipoproducto: number = 0;
-
+  strFilter: string = "";
+  strSortField: string = "";
+  strSortDirection: string = "";
   strFilteredMessage: string = "";
+  oUserSession: IUsuario;
+  subjectFiltro$ = new Subject();
+  id_tipoproducto: number = null;
 
-  eventsSubjectView: Subject<number> = new Subject<number>();
-  eventsSubjectModal: Subject<void> = new Subject<void>();
+
 
   constructor(
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oPaginationService: PaginationService,
     private oProductService: ProductoService,
-    private oActivatedRoute: ActivatedRoute,
+
     public oIconService: IconService
   ) {
 
     if (this.oRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oRoute.snapshot.data.message;
+      this.oUserSession = this.oRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-    this.id_tipoproducto = this.oActivatedRoute.snapshot.params.id_tipoproducto;
+    this.id_tipoproducto = this.oRoute.snapshot.params.id_tipoproducto;
     if (this.id_tipoproducto) {
       this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto;
     } else {
       this.strFilteredMessage = "";
     }
 
-    this.page = 0;
+    this.nPage = 0;
     this.getPage();
   }
 
   ngOnInit(): void {
+    this.subjectFiltro$.pipe(
+      debounceTime(1000)
+    ).subscribe(() => this.getPage());
   }
 
   getPage = () => {
-    console.log("id_tipoproducto:",this.id_tipoproducto);
-    this.oProductService.getPage(this.pageSize, this.page, this.filterActual, this.currentSortField, this.currentSortDirection, this.id_tipoproducto).subscribe((oPageProduct: IPageProduct) => {
-      if (this.filterActual) {
-        this.filtered = true;
+    console.log("buscando...", this.strFilter);
+    this.oProductService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, this.id_tipoproducto).subscribe((oPage: IPageProduct) => {
+      if (this.strFilter) {
+        this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
       } else {
-        this.filtered = false;
+        this.strFilteredMessage = "";
       }
-      this.aProducts = oPageProduct.content;
-      this.nTotalElements = oPageProduct.totalElements;
-      this.totalPages = oPageProduct.totalPages;
-      this.barraPaginacion = this.oPaginationService.pagination(this.totalPages, this.page);
+      this.aProducts = oPage.content;
+      this.nTotalElements = oPage.totalElements;
+      this.nTotalPages = oPage.totalPages;
+      this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
     })
   }
 
@@ -87,46 +87,28 @@ export class PlistProductoComponent implements OnInit {
     this.getPage();
     return false;
   }
-
-  doFilter() {
-    this.getPage();
-  }
-
-  onKeydownEvent(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      //alert("do filter");
-      this.getPage();
-    }
-  }
-
-  doResetFilter() {
-    this.filterActual = "";
-    this.getPage();
+  onKeyUpFilter(event: KeyboardEvent): void {
+    this.subjectFiltro$.next();
   }
 
   doResetOrder() {
-    this.currentSortField = "";
-    this.currentSortDirection = "";
+    this.strSortField = "";
+    this.strSortDirection = "";
     this.getPage();
   }
 
   doSetOrder(order: string) {
-    this.currentSortField = order;
-    if (this.currentSortDirection == 'asc') {
-      this.currentSortDirection = 'desc';
-    } else if (this.currentSortDirection == 'desc') {
-      this.currentSortDirection = '';
+    this.strSortField = order;
+    if (this.strSortDirection == 'asc') {
+      this.strSortDirection = 'desc';
+    } else if (this.strSortDirection == 'desc') {
+      this.strSortDirection = '';
     } else {
-      this.currentSortDirection = 'asc';
+      this.strSortDirection = 'asc';
     }
     this.getPage();
   }
-
-  showViewModal(id2ShowViewModal1: number) {
-    this.eventsSubjectModal.next();
-    this.eventsSubjectView.next(id2ShowViewModal1);
-  }
-
-  closeModal(): void { }
-
 }
+
+
+
