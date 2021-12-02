@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CryptoService } from 'src/app/service/crypto.service';
+import { IconService } from 'src/app/service/icon.service';
 import { SessionService } from 'src/app/service/session.service';
 
 @Component({
@@ -12,19 +14,21 @@ import { SessionService } from 'src/app/service/session.service';
 
 export class LoginComponent implements OnInit {
 
-
+  strOperation: string = "login"
   formularioLogin: FormGroup;
-  strUsuarioSession: string;
+  oUserSession: IUsuario;
 
   constructor(
     private FormBuilder: FormBuilder,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oSessionService: SessionService,
-    private oCryptoService: CryptoService
+    private oCryptoService: CryptoService,
+    public oIconService: IconService    
   ) {
 
     if (oRoute.snapshot.data.message) {
+      this.oUserSession = this.oRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(oRoute.snapshot.data.message));
       oRouter.navigate(['/home']);
     } else {
@@ -38,11 +42,9 @@ export class LoginComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   onSubmit() {
-    const formData: any = new FormData();
     const loginData = { login: this.formularioLogin.get('login')!.value, password: this.oCryptoService.getSHA256(this.formularioLogin.get('password')!.value) };
     console.log("login:onSubmit: ", loginData);
     this.oSessionService.login(JSON.stringify(loginData)).subscribe(data => {
@@ -56,17 +58,17 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
-  loginAdmin(){
+  loginAdmin() {
     this.formularioLogin.setValue({
-      login:"admin",
-      password:"wildcart"
+      login: "admin",
+      password: "wildcart"
     })
   }
 
-  loginUser(){
+  loginUser() {
     this.formularioLogin.setValue({
-      login:"user",
-      password:"wildcart"
+      login: "user",
+      password: "wildcart"
     })
   }
 

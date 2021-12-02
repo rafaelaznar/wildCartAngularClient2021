@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Location } from '@angular/common';
+import { IconService } from 'src/app/service/icon.service';
 
 @Component({
   selector: 'app-view-usuario',
@@ -13,13 +14,18 @@ export class ViewUsuarioComponent implements OnInit {
   id: number;
   oUsuario: IUsuario;
   strUsuarioSession: string;
+  strEntity: string = "usuario"
+  strOperation: string = "view"
+  strTitleSingular:string= "usuario"
 
   constructor(
     private oUsuarioService: UsuarioService,
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private oLocation: Location
+    private oLocation: Location,
+    public oIconService: IconService
+
   ) {
     if (this.oRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oRoute.snapshot.data.message;

@@ -3,24 +3,24 @@
 <div class="container my-3">
 
     <app-header [title]="'Listado de ' + strTitlePlural" [icon]="oIconService.getIcon(this.strOperation)"
-    [iconEntity]="oIconService.getIcon(this.strEntity)" [filter]="strFilteredMessage"
-    [subtitle]="nTotalElements + ' ' + strTitlePlural">
-  </app-header>
+        [iconEntity]="oIconService.getIcon(this.strEntity)" [filter]="strFilteredMessage"
+        [subtitle]="nTotalElements + ' ' + strTitlePlural">
+    </app-header>
 
-  <div class="row justify-content-center my-3">
-    <div class="col-12 d-grid gap-2 d-md-block d-md-flex justify-content-md-center">
-      <form style="width: 15em;">
-        <div class="input-group input-group-sm">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i [ngClass]="oIconService.getIcon('filtro')"></i></span>
-          </div>
-          <input type="text" class="form-control" placeholder="{{'Filtro de ' + strTitlePlural}}" placeholder="Search"
-            (keyup)="onKeyUpFilter($event)" [(ngModel)]="strFilter" name="buscar" aria-label="Small"
-            aria-describedby="inputGroup-sizing-sm" />
+    <div class="row justify-content-center my-3">
+        <div class="col-12 d-grid gap-2 d-md-block d-md-flex justify-content-md-center">
+            <form style="width: 15em;">
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i [ngClass]="oIconService.getIcon('filtro')"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="{{'Filtro de ' + strTitlePlural}}"
+                        placeholder="Search" (keyup)="onKeyUpFilter($event)" [(ngModel)]="strFilter" name="buscar"
+                        aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                </div>
+            </form>
         </div>
-      </form>
     </div>
-  </div>
 
     <div class="row justify-content-between">
         <div class="col-md">
@@ -59,14 +59,13 @@
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr class="text-center">
-                        <th (click)="doSetOrder('id')"><i [ngClass]="oIconService.getIcon('id')"></i>ID
+                        <th (click)="doSetOrder('id')"><i [ngClass]="oIconService.getIcon('id')"></i> ID
                             <i class="fas fa-arrow-up" *ngIf="currentSortField=='id'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='id'&&currentSortDirection=='desc'"></i>
                         </th>
                         <th (click)="doSetOrder('dni')">DNI
-                            <i class="fas fa-arrow-up"
-                                *ngIf="currentSortField=='dni'&&currentSortDirection=='asc'"></i>
+                            <i class="fas fa-arrow-up" *ngIf="currentSortField=='dni'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='dni'&&currentSortDirection=='desc'"></i>
 
@@ -99,21 +98,24 @@
                                 *ngIf="currentSortField=='email'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('carritos')"><i [ngClass]="oIconService.getIcon('carrito')"></i>Carritos
+                        <th (click)="doSetOrder('carritos')"><i [ngClass]="oIconService.getIcon('carrito')"></i>
+                            Carritos
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='carritos'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='carritos'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('facturas')"><i [ngClass]="oIconService.getIcon('factura')"></i>Facturas
+                        <th (click)="doSetOrder('facturas')"><i [ngClass]="oIconService.getIcon('factura')"></i>
+                            Facturas
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='facturas'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='facturas'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('tipousuario')"><i [ngClass]="oIconService.getIcon('tipousuario')"></i>Tipo Usuario
+                        <th (click)="doSetOrder('tipousuario')"><i [ngClass]="oIconService.getIcon('tipousuario')"></i>
+                            Tipo Usuario
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='tipousuario'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
@@ -135,19 +137,21 @@
                         <td>{{fila.email}}</td>
                         <td>{{fila.carritos}}</td>
                         <td>{{fila.facturas}}</td>
-                        <td><a [routerLink]="['/usuario/plist/',fila.tipousuario.id]">{{fila.tipousuario.nombre + ' (' + fila.tipousuario.id + ')'}}</a></td>
+                        <td>
+                            <a style="text-decoration:none" [routerLink]="['/usuario/plist/' + fila.tipousuario.id]">
+                                <i [ngClass]="oIconService.getIcon('usuario')"></i> ({{fila.tipousuario.id}})
+                                {{fila.tipousuario.nombre | trim}}</a>
+                        </td>
                         <td class="text-center" [innerHTML]="fila.validado | showBoolean"></td>
                         <td class="text-center" [innerHTML]="fila.activo | showBoolean"></td>
                         <td class="text-center">
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-                                <button type="button" class="btn btn-success" [routerLink]="['/usuario/view/' + fila.id]"><i
-                                        class="fas fa-eye"></i></button>
-                                <button type="button" class="btn btn-success" (click)="showViewModal(fila.id)"><i
-                                        class="fas fa-search"></i></button>
-                                <button type="button" class="btn btn-warning" [routerLink]="['/usuario/edit/' + fila.id]"><i
-                                        class="fas fa-pen"></i></button>
-                                <button type="button" class="btn btn-danger" [routerLink]="['/usuario/remove/' + fila.id]"><i
-                                        class="fas fa-trash"></i></button>
+                                <button type="button" class="btn btn-success"
+                                    [routerLink]="['/usuario/view/' + fila.id]"><i class="fas fa-eye"></i></button>
+                                <button type="button" class="btn btn-warning"
+                                    [routerLink]="['/usuario/edit/' + fila.id]"><i class="fas fa-pen"></i></button>
+                                <button type="button" class="btn btn-danger"
+                                    [routerLink]="['/usuario/remove/' + fila.id]"><i class="fas fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>
