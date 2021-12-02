@@ -1,7 +1,11 @@
+<app-menu></app-menu>
+
 <div class="container my-3">
 
-    <app-header [title]="'Actualizar Producto'" [icon]="'fas fa-plus'"></app-header>
-
+    <app-header [title]="'Actualización de ' + strTitleSingular" [icon]="oIconService.getIcon(this.strOperation)"
+        [iconEntity]="oIconService.getIcon(this.strEntity)">
+    </app-header>
+   
     <div class="row justify-content-center">
 
         <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
@@ -98,12 +102,13 @@
 
         <div class="control-group text-center mt-5">
             <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
-                <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i> Página
+                <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i
+                        [ngClass]="oIconService.getIcon('home')"></i> Página
                     principal</a>
-                <a class="btn btn-primary mx-2" [routerLink]="['/producto/plist']"><i class="fas fa-file-alt"></i>
-                    Listado de
-                    Productos</a>
-                <a class="btn btn-primary mx-2" (click)="goBack()"><i class="fas fa-arrow-circle-left"></i> Volver </a>
+                <a class="btn btn-primary mx-2" [routerLink]="['/producto/plist']"><i
+                        [ngClass]="oIconService.getIcon('plist')"></i> Listado de Productos</a>
+                <a class="btn btn-primary mx-2" (click)="goBack()"><i [ngClass]="oIconService.getIcon('volver')"></i>
+                    Volver </a>
             </div>
         </div>
 
