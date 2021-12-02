@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { IconService } from 'src/app/service/icon.service';
 
 declare let $: any;
 
@@ -20,6 +21,10 @@ export class NewUsuarioComponent implements OnInit {
   oForm: FormGroup = null;
   strResult: string = '';
   idnuevo: number;
+  strEntity: string = "usuario"
+  strOperation: string = "new"
+  strTitleSingular: string = "Usuario";
+  strTitlePlural: string = "Usuarios";
 
   get f() {
     return this.oForm.controls;
@@ -30,7 +35,8 @@ export class NewUsuarioComponent implements OnInit {
     private oRouter: Router,
     private oUsuarioService: UsuarioService,
     private oActivatedRoute: ActivatedRoute,
-    private oLocation: Location
+    private oLocation: Location,
+    public oIconService: IconService,
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
       const strUsuarioSession: string =

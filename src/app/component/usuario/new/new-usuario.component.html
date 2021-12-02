@@ -2,8 +2,9 @@
 
 <div class="container my-3">
 
-  <app-header [title]="'Nuevo Usuario'" [icon]="'fas fa-plus'"></app-header>
-
+  <app-header [title]="'Nuevo ' + strTitleSingular" [icon]="oIconService.getIcon(this.strOperation)"
+    [iconEntity]="oIconService.getIcon(this.strEntity)">
+  </app-header>
   <div class="row justify-content-center">
 
     <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
@@ -120,8 +121,8 @@
 
       <div class="row mb-3 justify-content-center">
         <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
-          <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine">Crear
-            nuevo usuario</button>
+          <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine"><i [ngClass]="oIconService.getIcon('ok')"></i> Crear
+            el {{strTitleSingular}}</button>
         </div>
       </div>
 

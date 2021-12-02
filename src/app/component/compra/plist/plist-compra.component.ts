@@ -4,6 +4,9 @@ import { Subject } from 'rxjs';
 import { IPageCompra } from 'src/app/model/compra-interfaces';
 import { CompraService } from 'src/app/service/compra.service';
 import { PaginationService } from 'src/app/service/pagination.service';
+import { IconService } from 'src/app/service/icon.service';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-plist-compra',
@@ -11,60 +14,81 @@ import { PaginationService } from 'src/app/service/pagination.service';
   styleUrls: ['./plist-compra.component.css']
 })
 export class PlistCompraComponent implements OnInit {
-
-  
-
-  aCompras: any[];
-  totalElements: number;
-  totalPages: number;
-  page: number;
-  barraPaginacion: string[];
-  pageSize: number = 10;
-  id2ShowViewModal: number = 0;
-  strUsuarioSession: string;
+  strEntity: string = "compra"
+  strOperation: string = "plist"
+  strTitleSingular: string = "Compra";
+  strTitlePlural: string = "Compras";
+  strFilteredMessage: string = "";
+  aPaginationBar: string[];
+  strSortField: string = "";
+  strSortDirection: string = "";
   strResult: string = null;
-  filterActual: string = "";
-  currentSortField: string = "";
-  currentSortDirection: string = "";
-  filtered: boolean = false;
+  strFilter: string = "";
+  aCompras: any[];
+  nTotalElements: number;
+  nTotalPages: number;
+  nPage: number;
+  nPageSize: number = 10;
+  id2ShowViewModal: number = 0;
+  oUserSession: IUsuario;
+  subjectFiltro$ = new Subject();
 
-  eventsSubjectView: Subject<number> = new Subject<number>();
-  eventsSubjectModal: Subject<void> = new Subject<void>();
+  id_factura: number;
+  id_producto: number;
 
   constructor(
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oPaginationService: PaginationService,
     private oCompraService: CompraService,
+    private oActivatedRoute: ActivatedRoute,
+    public oIconService: IconService
   ) {
 
     if (this.oRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oRoute.snapshot.data.message;
+      this.oUserSession = this.oRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
 
-    this.page = 0;
+    this.id_factura = this.oActivatedRoute.snapshot.params.id_factura;
+    if (this.id_factura) {
+      this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_factura;
+    } else {
+      this.strFilteredMessage = "";
+    }
+
+    this.id_producto = this.oActivatedRoute.snapshot.params.id_producto;
+    if (this.id_producto) {
+      this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_producto;
+    } else {
+      this.strFilteredMessage = "";
+    }
+
+    this.nPage = 1;
     this.getPage();
   }
 
   ngOnInit(): void {
+    this.subjectFiltro$.pipe(
+      debounceTime(1000)
+    ).subscribe(() => this.getPage());
   }
 
   getPage = () => {
-    this.oCompraService.getPage(this.pageSize, this.page, this.filterActual, this.currentSortField, this.currentSortDirection).subscribe((oPage: IPageCompra) => {
-      if (this.filterActual) {
-        this.filtered = true;
+    console.log("buscando...", this.strFilter);
+    this.oCompraService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, this.id_factura, this.id_producto).subscribe((oPage: IPageCompra) => {
+      if (this.strFilter) {
+        this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
       } else {
-        this.filtered = false;
+        this.strFilteredMessage = "";
       }
       this.aCompras = oPage.content;
-      this.totalElements = oPage.totalElements;
-      this.totalPages = oPage.totalPages;
-      this.barraPaginacion = this.oPaginationService.pagination(this.totalPages, this.page);
-      console.log(this.pageSize);
+      this.nTotalElements = oPage.totalElements;
+      this.nTotalPages = oPage.totalPages;
+      this.aPaginationBar  = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
     })
   }
 
@@ -73,46 +97,25 @@ export class PlistCompraComponent implements OnInit {
     return false;
   }
 
-  doFilter() {
-    this.getPage();
-  }
-
-  onKeydownEvent(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      //alert("do filter");
-      this.getPage();
-    }
-  }
-
-  doResetFilter() {
-    this.filterActual = "";
-    this.getPage();
+  onKeyUpFilter(event: KeyboardEvent): void {
+    this.subjectFiltro$.next();
   }
 
   doResetOrder() {
-    this.currentSortField = "";
-    this.currentSortDirection = "";
+    this.strSortField = "";
+    this.strSortDirection = "";
     this.getPage();
   }
 
   doSetOrder(order: string) {
-    this.currentSortField = order;
-    if (this.currentSortDirection == 'asc') {
-      this.currentSortDirection = 'desc';
-    } else if (this.currentSortDirection == 'desc') {
-      this.currentSortDirection = '';
+    this.strSortField = order;
+    if (this.strSortDirection == 'asc') {
+      this.strSortDirection = 'desc';
+    } else if (this.strSortDirection == 'desc') {
+      this.strSortDirection = '';
     } else {
-      this.currentSortDirection = 'asc';
+      this.strSortDirection = 'asc';
     }
     this.getPage();
   }
-
-  showViewModal(id2ShowViewModal1: number) {
-    this.eventsSubjectModal.next();
-    this.eventsSubjectView.next(id2ShowViewModal1);
-  }
-
-  closeModal(): void { }
-
-
 }
