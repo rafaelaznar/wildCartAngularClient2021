@@ -17,16 +17,23 @@ export class CompraService {
 
   sURL = API_URL + '/compra';
 
-  getPage(rpp: number, page: number, filter: string, order: string, direction: string): Observable<IPageCompra> {
-    let strFilterUrl: string = "";
+  getPage(rpp: number, page: number, filter: string, order: string, direction: string, factura: number, producto: number): Observable<IPageCompra> {
+    page--;
     let strOrderUrl: string = "";
     if (filter) {
-      strFilterUrl += "&filter=" + filter;
+      strOrderUrl += "&filter=" + filter;
     }
     if (order) {
       strOrderUrl += "&sort=" + order + "," + direction;
     }
-    return this.http.get<IPageCompra>(this.sURL + "/page"+"?size=" + rpp + "&page=" + page + strFilterUrl + strOrderUrl, httpOptions);
+    if(factura){
+      strOrderUrl += "&factura=" + factura;
+    }
+    if(producto){
+      strOrderUrl += "&producto=" + producto;
+    }
+    console.log(this.sURL + "?page=" + page + "&size=" + rpp + strOrderUrl, httpOptions);
+    return this.http.get<IPageCompra>(this.sURL + "?page=" + page + "&size=" + rpp + strOrderUrl, httpOptions);
   }
   
 

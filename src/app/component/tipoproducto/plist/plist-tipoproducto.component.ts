@@ -1,5 +1,5 @@
 import { IUsuario } from './../../../model/usuario-interfaces';
-import { ITipoProducto, IPageTP } from './../../../model/tipoproducto-interfaces';
+import { ITipoProducto, IPageTipoProducto } from './../../../model/tipoproducto-interfaces';
 import { TipoproductoService } from './../../../service/tipoproducto.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -60,7 +60,7 @@ export class PlistTipoproductoComponent implements OnInit {
 
   getPage = () => {
     console.log("buscando...", this.strFilter);
-    this.oTipoProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection).subscribe((oPage: IPageTP) => {
+    this.oTipoProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection).subscribe((oPage: IPageTipoProducto) => {
       if (this.strFilter) {
         this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
       } else {

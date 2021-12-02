@@ -6,6 +6,8 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { ICompra, ICompraToSend } from 'src/app/model/compra-interfaces';
 import { CompraService } from 'src/app/service/compra.service';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { IconService } from 'src/app/service/icon.service';
 
 declare let $: any;
 @Component({
@@ -15,12 +17,15 @@ declare let $: any;
 })
 export class NewCompraComponent implements OnInit {
 
+  strEntity: string = "compra"
+  strOperation: string = "new"
+  strTitleSingular: string = "Compra";
+  strTitlePlural: string = "Compra";
   oCompra: ICompraToSend = null;
-
   id: ICompra = null;
-
   oForm: FormGroup = null;
   strResult: string = "";
+  oUserSession: IUsuario;
 
   get f() { return this.oForm.controls; }
 
@@ -31,11 +36,12 @@ export class NewCompraComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oLocation: Location,
-    private oDateTimeService: DateTimeService
+    private oDateTimeService: DateTimeService,
+    public oIconService: IconService
   ) {
 
-    if (this.oActivatedRoute.snapshot.data.message) {
-      const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message.login;
+    if (this.oRoute.snapshot.data.message) {
+      this.oUserSession = this.oRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
@@ -114,10 +120,6 @@ export class NewCompraComponent implements OnInit {
     this.oCompraService.new(this.oCompra).subscribe((id: any) => {
       if (id) {
         this.id = JSON.parse(JSON.stringify(id));
-        console.log("ASJKJSJnk" + this.id.id);
-
-
-        console.log()
 
         this.strResult = "La compra se ha creado correctamente";
       } else {

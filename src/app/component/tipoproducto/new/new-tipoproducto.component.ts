@@ -61,6 +61,7 @@ export class NewTipoproductoComponent implements OnInit {
       this.oTipoProducto2Send = {
         id: null,
         nombre: this.oForm.value.nombre,
+      
       };
       this.new();
     }

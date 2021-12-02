@@ -8,6 +8,7 @@ import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
+
 declare let $: any;
 
 @Component({
