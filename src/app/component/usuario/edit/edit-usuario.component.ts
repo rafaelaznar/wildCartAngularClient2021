@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { IconService } from 'src/app/service/icon.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
 declare let $: any;
@@ -20,6 +21,9 @@ export class EditUsuarioComponent implements OnInit {
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
+  strOperation: string="edit";
+  strEntity:string="usuario";
+  strTitleSingular:string="usuario"
 
   get f() {
     return this.oForm.controls;
@@ -30,6 +34,7 @@ export class EditUsuarioComponent implements OnInit {
     private oRouter: Router,
     private oUsuarioService: UsuarioService,
     private oActivatedRoute: ActivatedRoute,
+    public oIconService: IconService,
     private oLocation: Location
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {

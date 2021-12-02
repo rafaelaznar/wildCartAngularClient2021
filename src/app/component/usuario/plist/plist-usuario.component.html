@@ -135,8 +135,9 @@
                         <td>{{fila.email}}</td>
                         <td>{{fila.carritos}}</td>
                         <td>{{fila.facturas}}</td>
-                        <td><a [routerLink]="['/usuario/plist/',fila.tipousuario.id]">{{fila.tipousuario.nombre + ' (' + fila.tipousuario.id + ')'}}</a></td>
-                        <td class="text-center" [innerHTML]="fila.validado | showBoolean"></td>
+                        <td style="text-align: center;"><button class="btn btn-outline-secondary btn-sm"
+                            [routerLink]="['/usuario/plist/',fila.tipousuario.id]">{{fila?.tipousuario.id}} <i
+                              [ngClass]="oIconService.getIcon('tipousuario')"></i></button></td>                        <td class="text-center" [innerHTML]="fila.validado | showBoolean"></td>
                         <td class="text-center" [innerHTML]="fila.activo | showBoolean"></td>
                         <td class="text-center">
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
