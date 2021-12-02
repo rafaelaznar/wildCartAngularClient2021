@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
+import { IconService } from 'src/app/service/icon.service';
 
 @Component({
   selector: 'app-remove-compra',
@@ -15,13 +16,18 @@ export class RemoveCompraComponent implements OnInit {
   oCompra: ICompra;
   strUsuarioSession: string;
   strResult: string = null;
+  strEntity: string = "compra"
+  strOperation: string = "remove"
+  strTitleSingular: string = "Compra";
+  strTitlePlural: string = "Compras";
 
   constructor(
     private oPostService: CompraService,
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private _location: Location
+    private _location: Location,
+    public oIconService: IconService
   ) {
     // control de sesión
     if (this.oRoute.snapshot.data.message) {

@@ -88,6 +88,9 @@ const routes: Routes = [
   { path: 'compra/view/:id', component: ViewCompraComponent, resolve: { message: SessionResolver } },
   { path: 'compra/edit/:id', component: EditCompraComponent, resolve: { message: SessionResolver } },
   { path: 'compra/remove/:id', component: RemoveCompraComponent, resolve: { message: SessionResolver } },
+  { path: 'compra/plist/factura/:id_factura', component: PlistCompraComponent, resolve: { message: SessionResolver } },  
+  { path: 'compra/plist/producto/:id_producto', component: PlistCompraComponent, resolve: { message: SessionResolver } },  
+
 
   { path: 'factura/plist', component: PlistFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'factura/new', component: NewFacturaComponent, resolve: { message: SessionResolver } },

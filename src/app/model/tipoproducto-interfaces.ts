@@ -6,16 +6,13 @@ export interface ITipoProducto {
     productos: number
 }
 
-
 export interface ITipoProducto2Send {
     id: number,
-    nombre: string    
+    nombre: string
 }
 
-export interface IPageTP{   
-        content: ITipoProducto[];
-        totalElements: number,
-        totalPages: number
-    
-
+export interface IPageTipoProducto {
+    content: ITipoProducto[];
+    totalElements: number,
+    totalPages: number
 }
