@@ -4,6 +4,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
+import { IconService } from 'src/app/service/icon.service';
 
 @Component({
   selector: 'app-remove-usuario',
@@ -15,13 +16,19 @@ export class RemoveUsuarioComponent implements OnInit {
   oUsuario: IUsuario;
   strUsuarioSession: string;
   strResult: string = null;
+  strEntity: string = "usuario"
+  strOperation: string = "remove"
+  strTitleSingular: string = "Usuario";
+  strTitlePlural: string = "Usuarios";
 
   constructor(
     private oUsuarioService: UsuarioService,
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private _location: Location
+    private _location: Location,
+    public oIconService: IconService
+
   ) {
     // control de sesión
     if (this.oRoute.snapshot.data.message) {
