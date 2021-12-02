@@ -8,7 +8,7 @@
             <div class="bg-light mt-5 p-5">
                 <img class="my-3" src="assets/img/wildCartLogo100.png" width="100">
                 <form [formGroup]="formularioLogin" (ngSubmit)="onSubmit()" novalidate class="row g-3">
-                    <h4><i class="fas fa-sign-in-alt"></i> entrada al sistema</h4>
+                    <h4><i [ngClass]="oIconService.getIcon(this.strOperation)"></i> entrada al sistema</h4>
                     <div class="col-12 text-start">
                         <label for="username" class="form-label">Nombre de usuario</label>
                         <div class="input-group has-validation">
@@ -38,14 +38,14 @@
                     </div>
                     <div class="col-12">
                         <div class="control-group text-center mt-3">
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>
+                            <button type="submit" class="btn btn-primary"><i [ngClass]="oIconService.getIcon(this.strOperation)"></i>
                                 Acceder</button>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="control-group text-center mt-3">
-                            <button class="btn btn-danger m-2" (click)="loginAdmin()"><i class="fas fa-sign-in-alt"></i> admin/wildcart</button>
-                            <button class="btn btn-success m-2" (click)="loginUser()"><i class="fas fa-sign-in-alt"></i> user/wildcart</button>
+                            <button class="btn btn-danger m-2" (click)="loginAdmin()"><i [ngClass]="oIconService.getIcon(this.strOperation)"></i> admin/wildcart</button>
+                            <button class="btn btn-success m-2" (click)="loginUser()"><i [ngClass]="oIconService.getIcon(this.strOperation)"></i> user/wildcart</button>
                         </div>
                     </div>
                 </form>

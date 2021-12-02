@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
-import { ITipoProducto, IPageTP, ITipoProducto2Send } from '../model/tipoproducto-interfaces';
+import { ITipoProducto, IPageTipoProducto, ITipoProducto2Send } from '../model/tipoproducto-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class TipoproductoService {
     filter: string,
     order: string,
     direction: string
-  ): Observable<IPageTP> {
+  ): Observable<IPageTipoProducto> {
     let strUrl: string = '';
     if (filter) {
       strUrl += '&filter=' + filter;
@@ -26,7 +26,7 @@ export class TipoproductoService {
     if (order) {
       strUrl += '&sort=' + order + ',' + direction;
     }
-    return this.http.get<IPageTP>(
+    return this.http.get<IPageTipoProducto>(
       this.sURL + '/?page=' + (page - 1) + '&size=' + rpp + strUrl, httpOptions);
   }
 
