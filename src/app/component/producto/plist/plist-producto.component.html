@@ -132,7 +132,7 @@
                         <td style="text-align: center;">{{fila.imagen}}</td>
                         <td style="text-align: center;">{{fila.descuento}}%</td>
                         <td>
-                            <a style="text-decoration:none" [routerLink]="['/producto/plist/' + fila.tipoproducto.id]">
+                            <a style="text-decoration:none" [routerLink]="['/producto/plist/tipoproducto' + fila.tipoproducto.id]">
                                 <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> ({{fila.tipoproducto.id}})
                                 {{fila.tipoproducto.nombre | trim}}</a>
                         </td>
