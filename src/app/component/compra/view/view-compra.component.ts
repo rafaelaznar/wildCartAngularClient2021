@@ -7,9 +7,9 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: 'app-view-compra',
-  templateUrl: './view-compra.component.html',
-  styleUrls: ['./view-compra.component.css']
+selector: 'app-view-compra',
+templateUrl: './view-compra.component.html',
+styleUrls: ['./view-compra.component.css']
 })
 export class ViewCompraComponent implements OnInit {
   strEntity: string = "compra"
@@ -54,3 +54,4 @@ export class ViewCompraComponent implements OnInit {
     this.oLocation.back();
   }
 }
+ 
