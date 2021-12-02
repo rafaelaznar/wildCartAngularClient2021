@@ -6,6 +6,7 @@ import { CompraService } from 'src/app/service/compra.service';
 import { DateTimeService } from 'src/app/service/datetime.service';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
+import { IconService } from 'src/app/service/icon.service';
 
 declare let $: any;
 
@@ -15,6 +16,10 @@ declare let $: any;
   styleUrls: ['./edit-compra.component.css']
 })
 export class EditCompraComponent implements OnInit {
+    strEntity: string = "compra"
+  strOperation: string = "edit"
+  strTitleSingular: string = "Compra";
+  strTitlePlural: string = "Compras";
 
   oCompra: ICompra = null;
   oCompraToSend: ICompraToSend = null;
@@ -31,7 +36,9 @@ export class EditCompraComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oLocation: Location,
-    private oDateTimeService: DateTimeService
+    private oDateTimeService: DateTimeService,
+    public oIconService: IconService    
+
   ) {
 
     if (this.oActivatedRoute.snapshot.data.message) {
