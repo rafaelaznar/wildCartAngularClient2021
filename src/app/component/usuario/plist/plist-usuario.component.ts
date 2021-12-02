@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { IPageUsuario, IUsuario } from 'src/app/model/usuario-interfaces';
+import { IconService } from 'src/app/service/icon.service';
+import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-plist-usuario',
@@ -13,9 +15,12 @@ import { IPageUsuario, IUsuario } from 'src/app/model/usuario-interfaces';
   styleUrls: ['./plist-usuario.component.css']
 })
 export class PlistUsuarioComponent implements OnInit {
-
+  strEntity: string = "usuario"
+  strOperation: string = "plist"
+  strTitleSingular: string = "Usuario";
+  strTitlePlural: string = "Usuarios";
   aPosts: IUsuario[];
-  totalElements: number;
+  nTotalElements: number;
   totalPages: number;
   page: number;
   barraPaginacion: string[];
@@ -23,10 +28,13 @@ export class PlistUsuarioComponent implements OnInit {
   id2ShowViewModal: number = 0;
   strUsuarioSession: string;
   strResult: string = null;
-  filterActual: string = "";
+  strFilter: string = "";
   currentSortField: string = "";
   currentSortDirection: string = "";
   filtered: boolean = false;
+  strFilteredMessage: string = "";
+  subjectFiltro$ = new Subject();
+  id_tipousuario:number = null;
 
   eventsSubjectView: Subject<number> = new Subject<number>();
   eventsSubjectModal: Subject<void> = new Subject<void>();
@@ -36,6 +44,8 @@ export class PlistUsuarioComponent implements OnInit {
     private oRouter: Router,
     private oPaginationService: PaginationService,
     private oPostService: UsuarioService,
+    public oIconService: IconService,
+    private oActivatedRoute: ActivatedRoute,
   ) {
 
     if (this.oRoute.snapshot.data.message) {
@@ -45,28 +55,50 @@ export class PlistUsuarioComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
+    this.id_tipousuario = this.oActivatedRoute.snapshot.params.id_tipousuario;
+    if (this.id_tipousuario) {
+      this.strFilteredMessage = "Listado filtrado por el tipo de usuario " + this.id_tipousuario;
+    } else {
+      this.strFilteredMessage = "";
+    }
     this.page = 1;
     this.getPage();
   }
 
   ngOnInit(): void {
+    this.subjectFiltro$.pipe(
+      debounceTime(1000)
+    ).subscribe(() => this.getPage());
   }
 
   getPage = () => {
-    this.oPostService.getPage(this.pageSize, this.page, this.currentSortField, this.currentSortDirection, this.filterActual).subscribe((oPage: IPageUsuario) => {
-      if (this.filterActual) {
-        this.filtered = true;
-      } else {
-        this.filtered = false;
-      }
-      this.aPosts = oPage.content;
-      this.totalElements = oPage.totalElements;
-      this.totalPages = oPage.totalPages;
-      this.barraPaginacion = this.oPaginationService.pagination(this.totalPages, this.page);
-      console.log(oPage);
-      
-    })
+    if (this.id_tipousuario) {
+      this.oPostService.getPageFiltered(this.pageSize, this.page, this.currentSortField, this.currentSortDirection, this.strFilter, this.id_tipousuario).subscribe((oPage: IPageUsuario) => {
+        if (this.strFilter) {
+          this.filtered = true;
+        } else {
+          this.filtered = false;
+        }
+        this.aPosts = oPage.content;
+        this.nTotalElements = oPage.totalElements;
+        this.totalPages = oPage.totalPages;
+        this.barraPaginacion = this.oPaginationService.pagination(this.totalPages, this.page);
+        console.log(oPage);
+      })
+    } else {
+      this.oPostService.getPage(this.pageSize, this.page, this.currentSortField, this.currentSortDirection, this.strFilter).subscribe((oPage: IPageUsuario) => {
+        if (this.strFilter) {
+          this.filtered = true;
+        } else {
+          this.filtered = false;
+        }
+        this.aPosts = oPage.content;
+        this.nTotalElements = oPage.totalElements;
+        this.totalPages = oPage.totalPages;
+        this.barraPaginacion = this.oPaginationService.pagination(this.totalPages, this.page);
+        console.log(oPage);
+      })
+    }
   }
 
   jumpToPage = () => {
@@ -74,19 +106,16 @@ export class PlistUsuarioComponent implements OnInit {
     return false;
   }
 
+  onKeyUpFilter(event: KeyboardEvent): void {
+    this.subjectFiltro$.next();
+  }
+
   doFilter() {
     this.getPage();
   }
 
-  onKeydownEvent(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      //alert("do filter");
-      this.getPage();
-    }
-  }
-
   doResetFilter() {
-    this.filterActual = "";
+    this.strFilter = "";
     this.getPage();
   }
 

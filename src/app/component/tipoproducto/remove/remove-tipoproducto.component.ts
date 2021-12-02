@@ -4,6 +4,8 @@ import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { IconService } from 'src/app/service/icon.service';
 
 @Component({
   selector: 'app-remove-tipoproducto',
@@ -11,9 +13,14 @@ import { Subject } from 'rxjs';
   styleUrls: ['./remove-tipoproducto.component.css'],
 })
 export class RemoveTipoproductoComponent implements OnInit {
+
+  strEntity: string = "tipoproducto"
+  strOperation: string = "view"
+  strTitleSingular: string = "Tipo de producto";
+  strTitlePlural: string = "Tipos de producto";
   id: number = 0;
   oTipoProducto: ITipoProducto;
-  strUsuarioSession: string;
+  oUserSession: IUsuario;
   strResult: string = null;
 
   constructor(
@@ -21,23 +28,22 @@ export class RemoveTipoproductoComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private _location: Location
+    private _location: Location,
+    public oIconService: IconService
   ) {
-    // control de sesión
     if (this.oRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem('user', JSON.stringify(this.strUsuarioSession));
+      this.oUserSession = this.oRoute.snapshot.data.message;
+      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-    // recogida de parámetros
+
     this.id = this.oActivatedRoute.snapshot.params.id;
-    // llamada al servidor
     this.getOne();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   getOne = () => {
     this.oTipoproductoService
@@ -50,12 +56,9 @@ export class RemoveTipoproductoComponent implements OnInit {
   removeOne() {
     this.oTipoproductoService.removeOne(this.id).subscribe((data: number) => {
       if (data) {
-        this.strResult =
-          'El Tipo de producto con ID=' +
-          this.id +
-          ' ha sido borrado con éxito';
+        this.strResult = this.strTitleSingular + ' con ID=' + this.id + ' ha sido borrado con éxito';
       } else {
-        this.strResult = 'Error en el borrado del Tipo de producto';
+        this.strResult = 'Error en el borrado de ' + this.strTitleSingular;
       }
       this.openModal();
     });
@@ -67,13 +70,13 @@ export class RemoveTipoproductoComponent implements OnInit {
 
   //modal
 
-  eventsSubject: Subject<void> = new Subject<void>();
+  eventsModalSubject: Subject<void> = new Subject<void>();
 
   openModal() {
-    this.eventsSubject.next();
+    this.eventsModalSubject.next();
   }
 
   closeModal() {
-    this.oRouter.navigate(['/tipoproducto/plist']);
+    this.oRouter.navigate(['/' + this.strEntity + '/plist']);
   }
 }
