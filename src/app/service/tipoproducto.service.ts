@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
-import { ITipoProducto, IPageTP } from '../model/tipoproducto-interfaces';
+import { ITipoProducto, IPageTP, ITipoProducto2Send } from '../model/tipoproducto-interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TipoproductoService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   sURL = API_URL + '/tipoprod';
 
@@ -19,23 +19,22 @@ export class TipoproductoService {
     order: string,
     direction: string
   ): Observable<IPageTP> {
-    let strFilterUrl: string = '';
-    let strOrderUrl: string = '';
+    let strUrl: string = '';
     if (filter) {
-      strFilterUrl += '/filter/' + filter;
+      strUrl += '&filter=' + filter;
     }
     if (order) {
-      strOrderUrl += '&sort=' + order + ',' + direction;
+      strUrl += '&sort=' + order + ',' + direction;
     }
     return this.http.get<IPageTP>(
-      this.sURL +  strFilterUrl + '/?page=' + (page - 1) +'&size=' +rpp + strOrderUrl, httpOptions);
+      this.sURL + '/?page=' + (page - 1) + '&size=' + rpp + strUrl, httpOptions);
   }
 
   getOne(id: number): Observable<ITipoProducto> {
     return this.http.get<ITipoProducto>(this.sURL + '/' + id, httpOptions);
   }
 
-  newOne(oTipoProducto: ITipoProducto): Observable<ITipoProducto> {
+  newOne(oTipoProducto: ITipoProducto2Send): Observable<ITipoProducto> {
     return this.http.post<ITipoProducto>(
       this.sURL + '/',
       oTipoProducto,
@@ -43,7 +42,7 @@ export class TipoproductoService {
     );
   }
 
-  updateOne(oTipoProducto: ITipoProducto): Observable<ITipoProducto> {
+  updateOne(oTipoProducto: ITipoProducto2Send): Observable<ITipoProducto> {
     return this.http.put<ITipoProducto>(
       this.sURL + '/',
       oTipoProducto,

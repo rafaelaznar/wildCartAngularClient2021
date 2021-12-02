@@ -1,64 +1,118 @@
 import { Component, OnInit } from '@angular/core';
-import { IPage } from 'src/app/model/model-interfaces';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import {
-	ITipoUsuarioPage,
-	IUserTypePlist,
+  ITipoUsuarioPage,
+  IUserTypePlist,
 } from 'src/app/model/tipousuario-interfaces';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { IconService } from 'src/app/service/icon.service';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 @Component({
-	selector: 'app-plist-tipousuario',
-	templateUrl: './plist-tipousuario.component.html',
-	styleUrls: ['./plist-tipousuario.component.css'],
+  selector: 'app-plist-tipousuario',
+  templateUrl: './plist-tipousuario.component.html',
+  styleUrls: ['./plist-tipousuario.component.css'],
 })
 export class PlistTipousuarioComponent implements OnInit {
-	public userTypes: Array<IUserTypePlist>;
-	public barraPaginacion: string[];
-	public totalPages: number;
-	public totalElements: number;
-	public pageSize: number;
-	public page: number;
-	public orderBy: string;
-	public orderAs: boolean;
-	public headers: string[];
+  strEntity: string = 'tipousuario';
+  strOperation: string = 'plist';
+  strTitleSingular: string = 'Tipo de usuario';
+  strTitlePlural: string = 'Tipos de usuario';
+  aTipoUsuarios: IUserTypePlist[];
+  aPaginationBar: string[];
+  nTotalElements: number;
+  nTotalPages: number;
+  nPage: number;
+  nPageSize: number = 10;
+  strResult: string = null;
+  strFilter: string = '';
+  strSortField: string = '';
+  strSortDirection: string = '';
+  strFilteredMessage: string = '';
+  oUserSession: IUsuario;
+  subjectFiltro$ = new Subject();
 
-	constructor(
-		private oPaginationService: PaginationService,
-		private tipoUsuario: TipousuarioService
-	) {
-		this.headers = ['id', 'nombre'];
-		this.pageSize = 2;
-		this.orderBy = this.headers[0];
-		this.orderAs = true;
-		this.getPage(1);
-	}
+  constructor(
+    private oRoute: ActivatedRoute,
+    private oRouter: Router,
+    private oPaginationService: PaginationService,
+    private oTipoUsuarioService: TipousuarioService,
+    public oIconService: IconService
+  ) {
+    if (this.oRoute.snapshot.data.message) {
+      this.oUserSession = this.oRoute.snapshot.data.message;
+      localStorage.setItem(
+        'user',
+        JSON.stringify(this.oRoute.snapshot.data.message)
+      );
+    } else {
+      localStorage.clear();
+      oRouter.navigate(['/home']);
+    }
 
-	getPage(page: number): boolean {
-		this.tipoUsuario
-			.plist(page - 1, this.pageSize, this.orderBy, this.orderAs)
-			.subscribe((data: ITipoUsuarioPage) => {
-				console.log(data);
-				this.userTypes = data.content;
-				this.page = page;
-				this.totalPages = data.totalPages;
-				this.totalElements = data.totalElements;
-				this.barraPaginacion = this.oPaginationService.pagination(
-					this.totalPages,
-					this.page
-				);
-			});
+    this.nPage = 1;
+    this.getPage();
+  }
 
-		return false;
-	}
+  ngOnInit(): void {
+    this.subjectFiltro$
+      .pipe(debounceTime(1000))
+      .subscribe(() => this.getPage());
+  }
 
-	ngOnInit(): void {}
+  getPage = () => {
+    console.log('buscando...', this.strFilter);
+    this.oTipoUsuarioService
+      .getPage(
+        this.nPageSize,
+        this.nPage,
+        this.strFilter,
+        this.strSortField,
+        this.strSortDirection
+      )
+      .subscribe((oPage: ITipoUsuarioPage) => {
+        if (this.strFilter) {
+          this.strFilteredMessage = 'Listado filtrado: ' + this.strFilter;
+        } else {
+          this.strFilteredMessage = '';
+        }
+        this.aTipoUsuarios = oPage.content;
+        this.nTotalElements = oPage.totalElements;
+        this.nTotalPages = oPage.totalPages;
+        this.aPaginationBar = this.oPaginationService.pagination(
+          this.nTotalPages,
+          this.nPage
+        );
+      });
+  };
 
-	modifyOrder(value: string): boolean {
-		this.orderAs = value == this.orderBy ? !this.orderAs : false;
-		this.orderBy = value;
-		this.getPage(this.page);
+  jumpToPage = () => {
+    this.getPage();
+    return false;
+  };
 
-		return false;
-	}
+  onKeyUpFilter(event: KeyboardEvent): void {
+    this.subjectFiltro$.next();
+  }
+
+  doResetOrder() {
+    this.strSortField = '';
+    this.strSortDirection = '';
+    this.getPage();
+  }
+
+  doSetOrder(order: string) {
+    this.strSortField = order;
+    if (this.strSortDirection == 'asc') {
+      this.strSortDirection = 'desc';
+    } else if (this.strSortDirection == 'desc') {
+      this.strSortDirection = '';
+    } else {
+      this.strSortDirection = 'asc';
+    }
+    this.getPage();
+  }
 }

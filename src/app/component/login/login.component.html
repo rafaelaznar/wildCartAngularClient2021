@@ -6,7 +6,7 @@
 
         <div class="col-md-5 text-center">
             <div class="bg-light mt-5 p-5">
-                <img class="my-3" src="assets/img/blogBusterLogo100.png" width="50">
+                <img class="my-3" src="assets/img/wildCartLogo100.png" width="100">
                 <form [formGroup]="formularioLogin" (ngSubmit)="onSubmit()" novalidate class="row g-3">
                     <h4><i class="fas fa-sign-in-alt"></i> entrada al sistema</h4>
                     <div class="col-12 text-start">
@@ -40,6 +40,12 @@
                         <div class="control-group text-center mt-3">
                             <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>
                                 Acceder</button>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="control-group text-center mt-3">
+                            <button class="btn btn-danger m-2" (click)="loginAdmin()"><i class="fas fa-sign-in-alt"></i> admin/wildcart</button>
+                            <button class="btn btn-success m-2" (click)="loginUser()"><i class="fas fa-sign-in-alt"></i> user/wildcart</button>
                         </div>
                     </div>
                 </form>

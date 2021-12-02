@@ -64,6 +64,7 @@ const routes: Routes = [
   { path: 'tipousuario/edit/:id', component: EditTipousuarioComponent, resolve: { message: SessionResolver } },  
 
   { path: 'usuario/plist', component: PlistUsuarioComponent, resolve: { message: SessionResolver } },
+  { path: 'usuario/plist/:id_tipousuario', component: PlistUsuarioComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/new', component: NewUsuarioComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/view/:id', component: ViewUsuarioComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/edit/:id', component: EditUsuarioComponent, resolve: { message: SessionResolver } },
@@ -76,7 +77,7 @@ const routes: Routes = [
   { path: 'tipoproducto/remove/:id', component: RemoveTipoproductoComponent, resolve: { message: SessionResolver } },
 
   { path: 'producto/plist', component: PlistProductoComponent, resolve: { message: SessionResolver } },
-  { path: 'producto/plist/:id', component: PlistProductoComponent, resolve: { message: SessionResolver } },
+  { path: 'producto/plist/tipoproducto/:id_tipoproducto', component: PlistProductoComponent, resolve: { message: SessionResolver } },  
   { path: 'producto/new', component: NewProductoComponent, resolve: { message: SessionResolver } },
   { path: 'producto/view/:id', component: ViewProductoComponent, resolve: { message: SessionResolver } },
   { path: 'producto/edit/:id', component: EditProductoComponent, resolve: { message: SessionResolver } },

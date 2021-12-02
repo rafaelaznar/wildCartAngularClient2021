@@ -3,8 +3,10 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
-import { ITipoProducto } from 'src/app/model/tipoproducto-interfaces';
+import { ITipoProducto, ITipoProducto2Send } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { IconService } from 'src/app/service/icon.service';
 
 
 declare let $: any;
@@ -15,11 +17,17 @@ declare let $: any;
   styleUrls: ['./edit-tipoproducto.component.css'],
 })
 export class EditTipoproductoComponent implements OnInit {
-  oTipoProducto: ITipoProducto = null;
-  oTipoProductoShow: ITipoProducto = null;
+
+  strEntity: string = "tipoproducto"
+  strOperation: string = "edit"
+  strTitleSingular: string = "Tipo de producto";
+  strTitlePlural: string = "Tipos de producto";
+  oTipoProducto2Send: ITipoProducto2Send = null;
+  oTipoProducto2Show: ITipoProducto = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
+  oUserSession: IUsuario;
 
   get f() {
     return this.oForm.controls;
@@ -27,15 +35,16 @@ export class EditTipoproductoComponent implements OnInit {
 
   constructor(
     private oFormBuilder: FormBuilder,
+    private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oTipoProductoService: TipoproductoService,
     private oActivatedRoute: ActivatedRoute,
-    private oLocation: Location
+    private oLocation: Location,
+    public oIconService: IconService    
   ) {
-    if (this.oActivatedRoute.snapshot.data.message) {
-      const strUsuarioSession: string =
-        this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem('user', JSON.stringify(strUsuarioSession));
+    if (this.oRoute.snapshot.data.message) {
+      this.oUserSession = this.oRoute.snapshot.data.message;
+      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
@@ -45,17 +54,17 @@ export class EditTipoproductoComponent implements OnInit {
     this.getOne();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   getOne = (): void => {
     this.oTipoProductoService
       .getOne(this.id)
       .subscribe((oData: ITipoProducto) => {
-        this.oTipoProductoShow = oData;
+        this.oTipoProducto2Show = oData;
         this.oForm = this.oFormBuilder.group({
-          id: [this.oTipoProductoShow.id],
+          id: [this.oTipoProducto2Show.id],
           nombre: [
-            this.oTipoProductoShow.nombre,
+            this.oTipoProducto2Show.nombre,
             [Validators.required, Validators.minLength(5)],
           ],
         });
@@ -64,24 +73,22 @@ export class EditTipoproductoComponent implements OnInit {
 
   onSubmit(): void {
     if (this.oForm) {
-      this.oTipoProducto = {
+      this.oTipoProducto2Send = {
         id: this.oForm.value.id,
-        nombre: this.oForm.value.nombre,
-        productos: this.oForm.value.productos
+        nombre: this.oForm.value.nombre
       };
-
       this.update();
     }
   }
 
   update = (): void => {
     this.oTipoProductoService
-      .updateOne(this.oTipoProducto)
+      .updateOne(this.oTipoProducto2Send)
       .subscribe((oTipoProducto: ITipoProducto) => {
         if (oTipoProducto.id) {
-          this.strResult = 'El post se ha modificado correctamente';
+          this.strResult = this.strTitleSingular + ' modificado correctamente';
         } else {
-          this.strResult = 'Error en la modificación del post';
+          this.strResult = this.strTitleSingular + ': error en la modificación del registro';
         }
         this.openModal();
       });
@@ -100,6 +107,6 @@ export class EditTipoproductoComponent implements OnInit {
   }
 
   closeModal(): void {
-    this.oRouter.navigate(['tipoproducto/view/' + this.id]);
+    this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
   }
 }

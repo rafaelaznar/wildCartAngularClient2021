@@ -2,25 +2,21 @@
 
 <div class="container my-3">
 
-  <app-header [title]="'Listado de Posts'" [icon]="'fas fa-file-alt'" [subtitle]="totalElements + ' posts'">
+  <app-header [title]="'Listado de ' + strTitlePlural" [icon]="oIconService.getIcon(this.strOperation)"
+    [iconEntity]="oIconService.getIcon(this.strEntity)" [filter]="strFilteredMessage"
+    [subtitle]="nTotalElements + ' ' + strTitlePlural">
   </app-header>
 
   <div class="row justify-content-center my-3">
     <div class="col-12 d-grid gap-2 d-md-block d-md-flex justify-content-md-center">
-      <form style="width: 50%;">
-        <div class="input-group">
+      <form style="width: 15em;">
+        <div class="input-group input-group-sm">
           <div class="input-group-prepend">
-            <button class="btn-primary btn" (click)="doFilter()" [disabled]="filtered">
-              <i class="fas fa-search"></i> Filtrar
-            </button>
+            <span class="input-group-text"> <i [ngClass]="oIconService.getIcon('filtro')"></i></span>
           </div>
-          <input type="text" class="form-control" placeholder="Buscador de posts" [(ngModel)]="filterActual"
-            name="buscar" (keydown)="onKeydownEvent($event)" />
-          <div class="input-group-append">
-            <button class="btn-primary btn" (click)="doResetFilter()" [disabled]="!filtered">Quitar
-              filtro
-            </button>
-          </div>
+          <input type="text" class="form-control" placeholder="{{'Filtro de ' + strTitlePlural}}" placeholder="Search"
+            (keyup)="onKeyUpFilter($event)" [(ngModel)]="strFilter" name="buscar" aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm" />
         </div>
       </form>
     </div>
@@ -30,78 +26,71 @@
     <div class="col-md">
       <nav aria-label="pagination">
         <ul class="pagination">
-          <li class="page-item" aria-current="page" *ngFor="let p of barraPaginacion"
-            [ngClass]="{'active': (page+'' == p)}">
-            <a class="page-link" (click)="page=(+p);jumpToPage()" href="#">{{p}}</a>
+          <li class="page-item" aria-current="page" *ngFor="let p of aPaginationBar"
+            [ngClass]="{'active': (nPage+'' == p)}">
+            <a class="page-link" (click)="nPage=(+p);jumpToPage()" href="#">{{p}}</a>
           </li>
         </ul>
       </nav>
     </div>
     <div class="col-md text-center">
       <a [routerLink]="['/tipoproducto/new/']" type="button" class="btn btn-success mb-2">
-        <i class="fas fa-plus"></i> Añadir nuevo tipo de producto.
+        <i [ngClass]="oIconService.getIcon('new')"></i> Añadir nuevo {{strTitleSingular}}
       </a>
     </div>
     <div class="col-md text-end">
       <div class="dropdown mb-3">
         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          Registros por página: {{pageSize}}
+          aria-expanded="false"><i [ngClass]="oIconService.getIcon('rpp')"></i>
+          Registros por página: {{nPageSize}}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" (click)="pageSize=10;getPage()">10</a></li>
-          <li><a class="dropdown-item" (click)="pageSize=50;getPage()">50</a></li>
-          <li><a class="dropdown-item" (click)="pageSize=100;getPage()">100</a></li>
-          <li><a class="dropdown-item" (click)="pageSize=1000;getPage()">1000</a></li>
+          <li><a class="dropdown-item" (click)="nPageSize=10;getPage()">10</a></li>
+          <li><a class="dropdown-item" (click)="nPageSize=50;getPage()">50</a></li>
+          <li><a class="dropdown-item" (click)="nPageSize=100;getPage()">100</a></li>
+          <li><a class="dropdown-item" (click)="nPageSize=1000;getPage()">1000</a></li>
         </ul>
       </div>
     </div>
   </div>
 
+
+  
   <div class="row justify-content-center">
     <div class="col-md table-responsive-md">
       <table class="table table-bordered table-striped table-hover">
         <thead>
           <tr class="text-center">
-            <th (click)="doSetOrder('id')">ID
-              <i class="fas fa-arrow-up" *ngIf="currentSortField=='id'&&currentSortDirection=='asc'"></i>
-              <i class="fas fa-arrow-down" *ngIf="currentSortField=='id'&&currentSortDirection=='desc'"></i>
+            <th (click)="doSetOrder('id')"><i [ngClass]="oIconService.getIcon('id')"></i> ID
+              <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
+              <i [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
             </th>
             <th (click)="doSetOrder('nombre')">Nombre
-              <i class="fas fa-arrow-up" *ngIf="currentSortField=='nombre'&&currentSortDirection=='asc'"></i>
-              <i class="fas fa-arrow-down" *ngIf="currentSortField=='nombre'&&currentSortDirection=='desc'"></i>
-
+              <i [ngClass]="oIconService.getIcon('flechaUp')"
+                *ngIf="strSortField=='nombre'&&strSortDirection=='asc'"></i>
+              <i [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="strSortField=='nombre'&&strSortDirection=='desc'"></i>
             </th>
-            <th (click)="doSetOrder('producto')">Productos
-              <i class="fas fa-arrow-up" *ngIf="currentSortField=='nombre'&&currentSortDirection=='asc'"></i>
-              <i class="fas fa-arrow-down" *ngIf="currentSortField=='nombre'&&currentSortDirection=='desc'"></i>
-
-            </th>
-            
-            <th (click)="doSetOrder('cuerpo')">Acciones
-              <i class="fas fa-arrow-up" *ngIf="currentSortField=='cuerpo'&&currentSortDirection=='asc'"></i>
-              <i class="fas fa-arrow-down" *ngIf="currentSortField=='cuerpo'&&currentSortDirection=='desc'"></i>
-
-            </th>
-
-
+            <th>Productos <i [ngClass]="oIconService.getIcon('producto')"></i> </th>
+            <th>Acciones <i [ngClass]="oIconService.getIcon('acciones')"></i> </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let fila of aTipoProductos">
             <td>{{fila.id}}</td>
             <td>{{fila.nombre}}</td>
-            <td style="text-align: center;"><a [routerLink]="['/producto/plist/'+ fila.id]"></a>{{fila?.productos}}</td>
+            <td style="text-align: center;"><button class="btn btn-outline-secondary btn-sm"
+                [routerLink]="['/producto/plist/tipoproducto',fila.id]">{{fila?.productos}} <i
+                  [ngClass]="oIconService.getIcon('producto')"></i></button></td>
             <td class="text-center">
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
                 <button type="button" class="btn btn-success" [routerLink]="['/tipoproducto/view/' + fila.id]"><i
-                    class="fas fa-eye"></i></button>
-                <!--<button type="button" class="btn btn-success" (click)="showViewModal(fila.id)"><i
-                    class="fas fa-search"></i></button>-->
+                    [ngClass]="oIconService.getIcon('view')"></i></button>
                 <button type="button" class="btn btn-warning" [routerLink]="['/tipoproducto/edit/' + fila.id]"><i
-                    class="fas fa-pen"></i></button>
+                    [ngClass]="oIconService.getIcon('edit')"></i></button>
                 <button type="button" class="btn btn-danger" [routerLink]="['/tipoproducto/remove/' + fila.id]"><i
-                    class="fas fa-trash"></i></button>
+                    [ngClass]="oIconService.getIcon('remove')"></i></button>
               </div>
             </td>
           </tr>
@@ -109,10 +98,7 @@
       </table>
     </div>
   </div>
+
 </div>
 
 <app-footer></app-footer>
-
-<app-modal [show]="eventsSubjectModal.asObservable()" [body]="strResult" (close)="closeModal()" [size]="'xl'">
-  <app-post-look [show]="eventsSubjectView.asObservable()"></app-post-look>
-</app-modal>

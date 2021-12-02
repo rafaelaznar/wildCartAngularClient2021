@@ -81,14 +81,7 @@ export class NewCompraComponent implements OnInit {
           descuento_usuario: this.oForm.value.descuento_usuario,
           descuento_producto: this.oForm.value.descuento_producto,
           producto: {
-            id: this.oForm.value.producto,
-            codigo: null,
-            nombre: null,
-            existencias: null,
-            precio: null,
-            imagen: null,
-            descuento: null,
-            tipoproducto: null
+            id: this.oForm.value.producto
           },
           factura: null
         }
@@ -106,22 +99,9 @@ export class NewCompraComponent implements OnInit {
           descuento_producto: this.oForm.value.descuento_producto,
           producto: {
             id: this.oForm.value.producto,
-            codigo: null,
-            nombre: null,
-            existencias: null,
-            precio: null,
-            imagen: null,
-            descuento: null,
-            tipoproducto: null
           },
-          factura: {
-            totalElements: null,
+          factura: {            
             id: this.oForm.get("factura")?.value,
-            iva: null,
-            usuario: null,
-            fecha: null,
-            pagado: null
-
           }
         }
         console.log(this.oCompra);
