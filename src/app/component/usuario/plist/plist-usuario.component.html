@@ -2,29 +2,25 @@
 
 <div class="container my-3">
 
-    <app-header [title]="'Listado de Usuarios'" [icon]="'fas fa-file-alt'" [subtitle]="totalElements + ' usuarios'">
-    </app-header>
+    <app-header [title]="'Listado de ' + strTitlePlural" [icon]="oIconService.getIcon(this.strOperation)"
+    [iconEntity]="oIconService.getIcon(this.strEntity)" [filter]="strFilteredMessage"
+    [subtitle]="nTotalElements + ' ' + strTitlePlural">
+  </app-header>
 
-    <div class="row justify-content-center my-3">
-        <div class="col-12 d-grid gap-2 d-md-block d-md-flex justify-content-md-center">
-            <form style="width: 50%;">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <button class="btn-primary btn" (click)="doFilter()" [disabled]="filtered">
-                            <i class="fas fa-search"></i> Filtrar
-                        </button>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Buscador de usuarios" [(ngModel)]="filterActual"
-                        name="buscar" (keydown)="onKeydownEvent($event)" />
-                    <div class="input-group-append">
-                        <button class="btn-primary btn" (click)="doResetFilter()" [disabled]="!filtered">Quitar
-                            filtro
-                        </button>
-                    </div>
-                </div>
-            </form>
+  <div class="row justify-content-center my-3">
+    <div class="col-12 d-grid gap-2 d-md-block d-md-flex justify-content-md-center">
+      <form style="width: 15em;">
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i [ngClass]="oIconService.getIcon('filtro')"></i></span>
+          </div>
+          <input type="text" class="form-control" placeholder="{{'Filtro de ' + strTitlePlural}}" placeholder="Search"
+            (keyup)="onKeyUpFilter($event)" [(ngModel)]="strFilter" name="buscar" aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm" />
         </div>
+      </form>
     </div>
+  </div>
 
     <div class="row justify-content-between">
         <div class="col-md">
@@ -63,7 +59,7 @@
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr class="text-center">
-                        <th (click)="doSetOrder('id')">ID
+                        <th (click)="doSetOrder('id')"><i [ngClass]="oIconService.getIcon('id')"></i>ID
                             <i class="fas fa-arrow-up" *ngIf="currentSortField=='id'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='id'&&currentSortDirection=='desc'"></i>
@@ -103,21 +99,21 @@
                                 *ngIf="currentSortField=='email'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('carritos')">Carritos
+                        <th (click)="doSetOrder('carritos')"><i [ngClass]="oIconService.getIcon('carrito')"></i>Carritos
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='carritos'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='carritos'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('facturas')">Facturas
+                        <th (click)="doSetOrder('facturas')"><i [ngClass]="oIconService.getIcon('factura')"></i>Facturas
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='facturas'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='facturas'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('tipousuario')">Tipo Usuario
+                        <th (click)="doSetOrder('tipousuario')"><i [ngClass]="oIconService.getIcon('tipousuario')"></i>Tipo Usuario
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='tipousuario'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
@@ -126,7 +122,7 @@
                         </th>
                         <th>Validado</th>
                         <th>Activado</th>
-                        <th>Acciones</th>
+                        <th><i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -139,7 +135,7 @@
                         <td>{{fila.email}}</td>
                         <td>{{fila.carritos}}</td>
                         <td>{{fila.facturas}}</td>
-                        <td>{{fila.tipousuario.nombre + ' (' + fila.tipousuario.id + ')'}}</td>
+                        <td><a [routerLink]="['/usuario/plist/',fila.tipousuario.id]">{{fila.tipousuario.nombre + ' (' + fila.tipousuario.id + ')'}}</a></td>
                         <td class="text-center" [innerHTML]="fila.validado | showBoolean"></td>
                         <td class="text-center" [innerHTML]="fila.activo | showBoolean"></td>
                         <td class="text-center">

@@ -64,6 +64,7 @@ const routes: Routes = [
   { path: 'tipousuario/edit/:id', component: EditTipousuarioComponent, resolve: { message: SessionResolver } },  
 
   { path: 'usuario/plist', component: PlistUsuarioComponent, resolve: { message: SessionResolver } },
+  { path: 'usuario/plist/:id_tipousuario', component: PlistUsuarioComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/new', component: NewUsuarioComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/view/:id', component: ViewUsuarioComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/edit/:id', component: EditUsuarioComponent, resolve: { message: SessionResolver } },
