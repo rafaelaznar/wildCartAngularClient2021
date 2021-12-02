@@ -17,17 +17,17 @@ declare let $: any;
 })
 export class EditProductoComponent implements OnInit {
 
-  id: number = null;
-  strResult: string = null;
+
   strEntity: string = "producto"
   strOperation: string = "edit"
   strTitleSingular: string = "Producto";
   strTitlePlural: string = "Productos";
   oProducto2Send: IProducto2Send = null;
   oProducto2Show: IProducto = null;
-  oUserSession: IUsuario;
   oForm: FormGroup = null;
-
+  id: number = null;
+  strResult: string = null;
+  oUserSession: IUsuario;
 
   get f() {
     return this.oForm.controls;
@@ -65,8 +65,20 @@ export class EditProductoComponent implements OnInit {
         this.oProducto2Show = oData;
         this.oForm = this.oFormBuilder.group({
           id: [this.oProducto2Show.id],
+          codigo:[
+            this.oProducto2Show.codigo,
+            [Validators.required],
+          ],
           nombre: [
             this.oProducto2Show.nombre,
+            [Validators.required, Validators.minLength(5)],
+          ],
+          existencias: this.oProducto2Show.existencias,
+          precio: this.oProducto2Show.precio,
+          imagen: this.oProducto2Show.imagen,
+          descuento: this.oProducto2Show.descuento,
+          tipoproducto:[
+            this.oProducto2Show.tipoproducto.id,
             [Validators.required, Validators.minLength(5)],
           ],
         });
@@ -85,7 +97,7 @@ export class EditProductoComponent implements OnInit {
         descuento: this.oForm.value.descuento,
         tipoproducto: { id: this.oForm.value.tipoproducto },
       }
-
+      console.log(this.oProducto2Send)
       this.update();
     }
   }
