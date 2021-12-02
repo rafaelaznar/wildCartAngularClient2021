@@ -79,7 +79,7 @@ export class EditProductoComponent implements OnInit {
           descuento: this.oProducto2Show.descuento,
           tipoproducto:[
             this.oProducto2Show.tipoproducto.id,
-            [Validators.required, Validators.minLength(5)],
+            [Validators.required],
           ],
         });
       });
