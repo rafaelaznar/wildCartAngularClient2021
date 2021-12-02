@@ -4,6 +4,8 @@ import { IProducto } from 'src/app/model/producto-interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { IconService } from 'src/app/service/icon.service';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+
 
 @Component({
   selector: 'app-view-producto',
@@ -16,11 +18,11 @@ export class ViewProductoComponent implements OnInit {
   strOperation: string = "view"
   strTitleSingular: string = "Producto";
   strTitlePlural: string = "Productos";
-  id: number = 0;
+  id: number = null;
   strUsuarioSession: string;
   strResult: string = null;
   oProducto: IProducto;
-
+  oUserSession: IUsuario;
 
 
   constructor(
@@ -34,7 +36,7 @@ export class ViewProductoComponent implements OnInit {
   ) {
 
     if (this.oRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oRoute.snapshot.data.message;
+      this.oUserSession = this.oRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();

@@ -34,7 +34,7 @@
       </nav>
     </div>
     <div class="col-md text-center">
-      <a [routerLink]="['/producto/new/']" type="button" class="btn btn-success mb-2">
+      <a [routerLink]="['/' + strEntity + '/new/']" type="button" class="btn btn-success mb-2">
         <i [ngClass]="oIconService.getIcon('new')"></i> Añadir nuevo {{strTitleSingular}}
       </a>
     </div>
@@ -128,19 +128,19 @@
             <td style="text-align: center;">{{fila.imagen}}</td>
             <td style="text-align: center;">{{fila.descuento}}%</td>
             <td>
-              <a style="text-decoration:none" [routerLink]="['/producto/plist/tipoproducto/' + fila.tipoproducto.id]">
+              <a style="text-decoration:none" [routerLink]="['/' + strEntity + '/' + strOperation + '/tipoproducto/' + fila.tipoproducto.id]">
                 <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> ({{fila.tipoproducto.id}})
                 {{fila.tipoproducto.nombre | trim}}</a>
             </td>
 
             <td class="text-center">
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-success" [routerLink]="['/producto/view/' + fila.id]"><i
+                <button type="button" class="btn btn-success" [routerLink]="['/' + strEntity + '/view/' + fila.id]"><i
                     [ngClass]="oIconService.getIcon('view')"></i></button>
 
-                <button type="button" class="btn btn-warning" [routerLink]="['/producto/edit/' + fila.id]"><i
+                <button type="button" class="btn btn-warning" [routerLink]="['/' + strEntity + '/edit/' + fila.id]"><i
                     [ngClass]="oIconService.getIcon('edit')"></i></button>
-                <button type="button" class="btn btn-danger" [routerLink]="['/producto/remove/' + fila.id]"><i
+                <button type="button" class="btn btn-danger" [routerLink]="['/' + strEntity + '/remove/' + fila.id]"><i
                     [ngClass]="oIconService.getIcon('remove')"></i></button>
               </div>
             </td>

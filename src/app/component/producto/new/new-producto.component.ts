@@ -105,6 +105,6 @@ export class NewProductoComponent implements OnInit {
   }
 
   closeModal() {
-    this.oRouter.navigate(['/producto/plist']);
+    this.oRouter.navigate(['/' + this.strEntity + '/plist']);
   }
 }
