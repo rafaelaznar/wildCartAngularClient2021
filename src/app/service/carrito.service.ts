@@ -2,7 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
-import { ICarritoPage } from '../model/carrito-interfaces';
+import {
+  ICarritoPage,
+  ICarritoPlist,
+  ICarritoToSend,
+} from '../model/carrito-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +15,10 @@ export class CarritoService {
   sURL = API_URL + '/carrito';
 
   constructor(private http: HttpClient) {}
+
+  getOne(id: number): Observable<ICarritoPlist> {
+    return this.http.get<ICarritoPlist>(this.sURL + '/' + id, httpOptions);
+  }
 
   getPage(
     rpp: number,
@@ -39,5 +47,25 @@ export class CarritoService {
       this.sURL + '?page=' + page + '&size=' + rpp + strOrderUrl,
       httpOptions
     );
+  }
+
+  newOne(oCarrito2Send: ICarritoToSend): Observable<ICarritoPlist> {
+    return this.http.post<ICarritoPlist>(
+      this.sURL + '/',
+      oCarrito2Send,
+      httpOptions
+    );
+  }
+
+  updateOne(oCarritoPlist: ICarritoToSend): Observable<ICarritoPlist> {
+    return this.http.put<ICarritoPlist>(
+      this.sURL + '/',
+      oCarritoPlist,
+      httpOptions
+    );
+  }
+
+  removeOne(id: number): Observable<number> {
+    return this.http.delete<number>(this.sURL + '/' + id, httpOptions);
   }
 }
