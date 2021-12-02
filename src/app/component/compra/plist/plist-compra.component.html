@@ -125,15 +125,16 @@
                         <td>{{fila.descuento_usuario}}</td>
                         <td>{{fila.descuento_producto}}</td>
                         <td>
-                          <a style="text-decoration:none" [routerLink]="['/compra/plist/producto' + fila.producto.id]">
+                          <a style="text-decoration:none" [routerLink]="['/compra/plist/producto/' + fila.producto.id]">
                             <i [ngClass]="oIconService.getIcon('producto')"></i> ({{fila.producto.id}})
                             {{fila.producto.nombre | trim}}</a>
                         </td>
                         <td>
-                          <a style="text-decoration:none" [routerLink]="['/compra/plist/factura' + fila.factura.id]">
+                          <a style="text-decoration:none" [routerLink]="['/compra/plist/factura/' + fila.factura.id]">
                             <i [ngClass]="oIconService.getIcon('factura')"></i> ({{fila.factura.id}})
                             {{fila.factura.id | trim}}</a>
                         </td>
+
                         
 
                         <td class="text-center">

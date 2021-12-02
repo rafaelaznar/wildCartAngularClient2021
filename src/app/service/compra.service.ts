@@ -18,6 +18,7 @@ export class CompraService {
   sURL = API_URL + '/compra';
 
   getPage(rpp: number, page: number, filter: string, order: string, direction: string, factura: number, producto: number): Observable<IPageCompra> {
+    page--;
     let strOrderUrl: string = "";
     if (filter) {
       strOrderUrl += "&filter=" + filter;
