@@ -13,7 +13,9 @@ declare let $: any;
   templateUrl: './new-tipoproducto.component.html',
   styleUrls: ['./new-tipoproducto.component.css'],
 })
+
 export class NewTipoproductoComponent implements OnInit {
+  
   TipoProducto2Send: ITipoProducto2Send = null;
   id: number = 0;
   oForm: FormGroup = null;
