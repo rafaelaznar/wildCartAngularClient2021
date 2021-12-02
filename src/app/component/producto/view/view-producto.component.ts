@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { IconService } from 'src/app/service/icon.service';
 
 @Component({
   selector: 'app-view-producto',
@@ -11,11 +12,15 @@ import { Location } from '@angular/common';
 })
 
 export class ViewProductoComponent implements OnInit {
-
+  strEntity: string = "producto"
+  strOperation: string = "view"
+  strTitleSingular: string = "Producto";
+  strTitlePlural: string = "Productos";
   id: number = 0;
-  oProduct: IProducto;
   strUsuarioSession: string;
   strResult: string = null;
+  oProducto: IProducto;
+
 
 
   constructor(
@@ -23,7 +28,9 @@ export class ViewProductoComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private oLocation: Location
+    private oLocation: Location,
+    public oIconService: IconService
+
   ) {
 
     if (this.oRoute.snapshot.data.message) {
@@ -42,10 +49,12 @@ export class ViewProductoComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oProductoService.get(this.id).subscribe((oData: IProducto) => {
-      this.oProduct = oData;
-    })
-  }
+    this.oProductoService
+      .get(this.id)
+      .subscribe((oData: IProducto) => {
+        this.oProducto = oData;
+      });
+  };
 
   goBack() {
     this.oLocation.back();
