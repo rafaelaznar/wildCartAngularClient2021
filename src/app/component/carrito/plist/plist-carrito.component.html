@@ -1,1 +1,267 @@
-<p>plist-carrito works!</p>
+<app-menu></app-menu>
+<div class="container my-3">
+  <app-header
+    [title]="'Listado de ' + strTitlePlural"
+    [icon]="oIconService.getIcon(this.strOperation)"
+    [iconEntity]="oIconService.getIcon(this.strEntity)"
+    [filter]="strFilteredMessage"
+    [subtitle]="nTotalElements + ' ' + strTitlePlural"
+  >
+  </app-header>
+
+  <div class="row justify-content-center my-3">
+    <div
+      class="col-12 d-grid gap-2 d-md-block d-md-flex justify-content-md-center"
+    >
+      <form style="width: 15em">
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i [ngClass]="oIconService.getIcon('filtro')"></i
+            ></span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'Filtro de ' + strTitlePlural }}"
+            placeholder="Search"
+            (keyup)="onKeyUpFilter($event)"
+            [(ngModel)]="strFilter"
+            name="buscar"
+            aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row justify-content-between">
+    <div class="col-md">
+      <nav aria-label="pagination">
+        <ul class="pagination">
+          <li
+            class="page-item"
+            aria-current="page"
+            *ngFor="let p of aPaginationBar"
+            [ngClass]="{ active: nPage + '' == p }"
+          >
+            <a class="page-link" (click)="nPage = +p; jumpToPage()" href="#">{{
+              p
+            }}</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-md text-center">
+      <a
+        [routerLink]="['/tipoproducto/new/']"
+        type="button"
+        class="btn btn-success mb-2"
+      >
+        <i [ngClass]="oIconService.getIcon('new')"></i> Añadir nuevo
+        {{ strTitleSingular }}
+      </a>
+    </div>
+    <div class="col-md text-end">
+      <div class="dropdown mb-3">
+        <button
+          class="btn btn-primary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i [ngClass]="oIconService.getIcon('rpp')"></i> Registros por página:
+          {{ nPageSize }}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li>
+            <a class="dropdown-item" (click)="nPageSize = 10; getPage()">10</a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="nPageSize = 50; getPage()">50</a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="nPageSize = 100; getPage()"
+              >100</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="nPageSize = 1000; getPage()"
+              >1000</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md table-responsive-md">
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr class="text-center">
+            <th (click)="doSetOrder('id')">
+              <i [ngClass]="oIconService.getIcon('id')"></i> ID
+              <i
+                [ngClass]="oIconService.getIcon('flechaUp')"
+                *ngIf="strSortField == 'id' && strSortDirection == 'asc'"
+              ></i>
+              <i
+                [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="strSortField == 'id' && strSortDirection == 'desc'"
+              ></i>
+            </th>
+            <th (click)="doSetOrder('codigo')">
+              Código
+              <i
+                [ngClass]="oIconService.getIcon('flechaUp')"
+                *ngIf="strSortField == 'codigo' && strSortDirection == 'asc'"
+              ></i>
+              <i
+                [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="strSortField == 'codigo' && strSortDirection == 'desc'"
+              ></i>
+            </th>
+            <th (click)="doSetOrder('nombre')">
+              Nombre
+              <i
+                [ngClass]="oIconService.getIcon('flechaUp')"
+                *ngIf="strSortField == 'nombre' && strSortDirection == 'asc'"
+              ></i>
+              <i
+                [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="strSortField == 'nombre' && strSortDirection == 'desc'"
+              ></i>
+            </th>
+            <th (click)="doSetOrder('existencias')">
+              Existencias
+              <i
+                [ngClass]="oIconService.getIcon('flechaUp')"
+                *ngIf="
+                  strSortField == 'existencias' && strSortDirection == 'asc'
+                "
+              ></i>
+              <i
+                [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="
+                  strSortField == 'existencias' && strSortDirection == 'desc'
+                "
+              ></i>
+            </th>
+            <th (click)="doSetOrder('precio')">
+              Precio
+              <i
+                [ngClass]="oIconService.getIcon('flechaUp')"
+                *ngIf="strSortField == 'precio' && strSortDirection == 'asc'"
+              ></i>
+              <i
+                [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="strSortField == 'precio' && strSortDirection == 'desc'"
+              ></i>
+            </th>
+            <th (click)="doSetOrder('imagen')">
+              Imagen
+              <i
+                [ngClass]="oIconService.getIcon('flechaUp')"
+                *ngIf="strSortField == 'imagen' && strSortDirection == 'asc'"
+              ></i>
+              <i
+                [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="strSortField == 'imagen' && strSortDirection == 'desc'"
+              ></i>
+            </th>
+            <th (click)="doSetOrder('descuento')">
+              Descuento
+              <i
+                [ngClass]="oIconService.getIcon('flechaUp')"
+                *ngIf="strSortField == 'descuento' && strSortDirection == 'asc'"
+              ></i>
+              <i
+                [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="
+                  strSortField == 'descuento' && strSortDirection == 'desc'
+                "
+              ></i>
+            </th>
+            <th (click)="doSetOrder('tipoproducto')">
+              Tipo Producto
+              <i [ngClass]="oIconService.getIcon('tipoproducto')"></i>
+              <i
+                [ngClass]="oIconService.getIcon('flechaUp')"
+                *ngIf="
+                  strSortField == 'tipoproducto' && strSortDirection == 'asc'
+                "
+              ></i>
+              <i
+                [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="
+                  strSortField == 'tipoproducto' && strSortDirection == 'desc'
+                "
+              ></i>
+            </th>
+            <th>
+              Acciones<i [ngClass]="oIconService.getIcon('acciones')"></i>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let fila of aProducts">
+            <td>{{ fila.id }}</td>
+            <td>{{ fila.codigo }}</td>
+            <td>{{ fila.nombre | trim: 50 }}</td>
+            <td style="text-align: center">{{ fila.existencias }}</td>
+            <td style="text-align: right">{{ fila.precio }}€</td>
+            <td style="text-align: center">{{ fila.imagen }}</td>
+            <td style="text-align: center">{{ fila.descuento }}%</td>
+            <td>
+              <a
+                style="text-decoration: none"
+                [routerLink]="[
+                  '/producto/plist/tipoproducto/' + fila.tipoproducto.id
+                ]"
+              >
+                <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> ({{
+                  fila.tipoproducto.id
+                }}) {{ fila.tipoproducto.nombre | trim }}</a
+              >
+            </td>
+
+            <td class="text-center">
+              <div
+                class="btn-group btn-group-sm"
+                role="group"
+                aria-label="Basic mixed styles example"
+              >
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  [routerLink]="['/producto/view/' + fila.id]"
+                >
+                  <i [ngClass]="oIconService.getIcon('view')"></i>
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  [routerLink]="['/producto/edit/' + fila.id]"
+                >
+                  <i [ngClass]="oIconService.getIcon('edit')"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  [routerLink]="['/producto/remove/' + fila.id]"
+                >
+                  <i [ngClass]="oIconService.getIcon('remove')"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
