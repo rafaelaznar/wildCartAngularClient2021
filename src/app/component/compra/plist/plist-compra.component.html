@@ -99,14 +99,14 @@
                                 *ngIf="strSortField=='descuento_producto'&&strSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('producto')">Id producto
+                        <th (click)="doSetOrder('producto')">Producto <i [ngClass]="oIconService.getIcon('producto')"></i>
                             <i [ngClass]="oIconService.getIcon('flechaUp')"
                                 *ngIf="strSortField=='id_producto'&&strSortDirection=='asc'"></i>
                             <i [ngClass]="oIconService.getIcon('flechaDown')"
                                 *ngIf="strSortField=='id_producto'&&strSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('factura')">Id factura
+                        <th (click)="doSetOrder('factura')">Factura <i [ngClass]="oIconService.getIcon('factura')"></i>
                             <i [ngClass]="oIconService.getIcon('flechaUp')"
                                 *ngIf="strSortField=='id_factura'&&strSortDirection=='asc'"></i>
                             <i [ngClass]="oIconService.getIcon('flechaDown')"
@@ -122,17 +122,17 @@
                         <td>{{fila.cantidad}}</td>
                         <td>{{fila.precio}}</td>
                         <td>{{fila.fecha }}</td>
-                        <td>{{fila.descuento_usuario}}</td>
-                        <td>{{fila.descuento_producto}}</td>
+                        <td>{{fila.descuento_usuario}}%</td>
+                        <td>{{fila.descuento_producto}}%</td>
                         <td>
                           <a style="text-decoration:none" [routerLink]="['/compra/plist/producto/' + fila.producto.id]">
                             <i [ngClass]="oIconService.getIcon('producto')"></i> ({{fila.producto.id}})
                             {{fila.producto.nombre | trim}}</a>
                         </td>
                         <td>
-                          <a style="text-decoration:none" [routerLink]="['/compra/plist/factura/' + fila.factura.id]">
-                            <i [ngClass]="oIconService.getIcon('factura')"></i> ({{fila.factura.id}})
-                            {{fila.factura.id | trim}}</a>
+                          <a style="text-decoration:none" [routerLink]="['/compra/plist/factura/' + fila?.factura?.id]">
+                            <i [ngClass]="oIconService.getIcon('factura')"></i>
+                            ({{fila?.factura?.id}}) {{fila?.factura?.usuario?.nombre}} {{fila?.factura?.usuario?.apellido1}}</a>
                         </td>
 
                         
