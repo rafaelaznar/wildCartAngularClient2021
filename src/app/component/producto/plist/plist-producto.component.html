@@ -135,9 +135,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let fila of aProductos">
-            <td>{{fila.id}}</td>
+            <td class="text-end">{{fila.id}}</td>
             <td>{{fila.codigo}}</td>
-            <td>{{fila.nombre| trim:50}}</td>
+            <td>{{fila.nombre| trim:60}}</td>
             <td style="text-align: center;">{{fila.existencias}}</td>
             <td style="text-align: right;">{{fila.precio}}€</td>
             <td style="text-align: center;">{{fila.imagen}}</td>
@@ -154,7 +154,7 @@
                 <a style="text-decoration:none"
                   [routerLink]="['/' + strEntity + '/' + strOperation + '/tipoproducto/' + fila.tipoproducto.id]">
                   <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> ({{fila.tipoproducto.id}})
-                  {{fila.tipoproducto.nombre | trim}}</a>
+                  {{fila.tipoproducto.nombre | trim:29}}</a>
             </td>
             <td class="text-center">
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">

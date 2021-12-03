@@ -164,9 +164,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let fila of aCarritos">
-            <td>{{ fila.id }}</td>
-            <td>{{ fila.cantidad }}</td>
-            <td>{{ fila.precio }}</td>
+            <td class="text-end">{{ fila.id }}</td>
+            <td class="text-center">{{ fila.cantidad }}</td>
+            <td class="text-end">{{ fila.precio }}€</td>
             <td>
               <a
                 style="text-decoration: none"
@@ -174,7 +174,7 @@
               >
                 <i [ngClass]="oIconService.getIcon('producto')"></i> ({{
                   fila.producto.id
-                }}) {{ fila.producto.nombre | trim }}</a
+                }}) {{ fila.producto.nombre | trim :60}}</a
               >
             </td>
             <td>
@@ -184,7 +184,7 @@
               >
                 <i [ngClass]="oIconService.getIcon('usuario')"></i> ({{
                   fila.usuario.id
-                }}) {{ fila.usuario.nombre + "" | trim }}</a
+                }}) {{ fila.usuario.nombre + " "+fila.usuario.apellido1+" "+fila.usuario.apellido2 | trim:50 }}</a
               >
             </td>
 

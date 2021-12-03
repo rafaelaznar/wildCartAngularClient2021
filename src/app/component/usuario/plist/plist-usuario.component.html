@@ -129,35 +129,31 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let fila of aPosts">
-                        <td>{{fila.id}}</td>
+                        <td class="text-end">{{fila.id}}</td>
                         <td>{{fila.dni}}</td>
                         <td>{{fila.nombre}}</td>
                         <td>{{fila.apellido1}}</td>
                         <td>{{fila.apellido2}}</td>
-                        <td>{{fila.email}}</td>
-            <td style="text-align: center">
-              <button
-                class="btn btn-outline-secondary btn-sm"
-                [routerLink]="['/carrito/plist/usuario/' + fila.id]"
-              >
-                {{ fila.carritos }}
-                <i [ngClass]="oIconService.getIcon('carrito')"></i>
-              </button>
-            </td>
+                        <td>{{fila.email| trim:10}}</td>
+                        <td style="text-align: center">
+                            <button class="btn btn-outline-secondary btn-sm"
+                                [routerLink]="['/carrito/plist/usuario/' + fila.id]">
+                                {{ fila.carritos }}
+                                <i [ngClass]="oIconService.getIcon('carrito')"></i>
+                            </button>
+                        </td>
 
-            <td style="text-align: center">
-              <button
-                class="btn btn-outline-secondary btn-sm"
-                [routerLink]="['/factura/plist/' + fila.id]"
-              >
-                {{ fila.facturas }}
-                <i [ngClass]="oIconService.getIcon('factura')"></i>
-              </button>
-            </td>
+                        <td style="text-align: center">
+                            <button class="btn btn-outline-secondary btn-sm"
+                                [routerLink]="['/factura/plist/' + fila.id]">
+                                {{ fila.facturas }}
+                                <i [ngClass]="oIconService.getIcon('factura')"></i>
+                            </button>
+                        </td>
                         <td>
                             <a style="text-decoration:none" [routerLink]="['/usuario/plist/' + fila.tipousuario.id]">
                                 <i [ngClass]="oIconService.getIcon('usuario')"></i> ({{fila.tipousuario.id}})
-                                {{fila.tipousuario.nombre | trim}}</a>
+                                {{fila.tipousuario.nombre | trim:7}}</a>
                         </td>
                         <td class="text-center" [innerHTML]="fila.validado | showBoolean"></td>
                         <td class="text-center" [innerHTML]="fila.activo | showBoolean"></td>

@@ -89,7 +89,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let fila of aFacturas">
-                        <td>{{fila?.id}}</td>
+                        <td class="text-end">{{fila?.id}}</td>
                         <td class="text-center">{{fila?.iva}}%</td>
                         <td> <a [routerLink]="['/factura/plist/' + fila?.usuario?.id]">{{fila?.usuario?.nombre }} {{fila?.usuario?.apellido1 }} {{fila?.usuario?.apellido2 }}</a></td>
                         <td class="text-center">{{fila?.fecha}}</td>
