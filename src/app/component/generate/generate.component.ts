@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
-import { RandomLoadService } from 'src/app/service/randomload.service';
+import { GenerateService } from 'src/app/service/generate.service';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 
@@ -24,7 +24,7 @@ export class GenerateComponent implements OnInit {
   strResult: string = "";
 
   constructor(
-    public oRandomLoadService: RandomLoadService,
+    public oGenerateService: GenerateService,
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
@@ -45,13 +45,13 @@ export class GenerateComponent implements OnInit {
   ngOnInit(): void { }
 
   getCount(): void {
-    this.oRandomLoadService.getCountProductos().subscribe(number => this.nProductos = number);
-    this.oRandomLoadService.getCountCarritos().subscribe(number => this.nCarritos = number);
-    this.oRandomLoadService.getCountCompras().subscribe(number => this.nCompras = number);
-    this.oRandomLoadService.getCountFacturas().subscribe(number => this.nFacturas = number);
-    this.oRandomLoadService.getCountTiposProducto().subscribe(number => this.nTiposProducto = number);
-    this.oRandomLoadService.getCountUsuarios().subscribe(number => this.nUsuarios = number);
-    this.oRandomLoadService.getCountTiposUsuario().subscribe(number => this.nTiposDeUsuario = number);
+    this.oGenerateService.getCountProductos().subscribe(number => this.nProductos = number);
+    this.oGenerateService.getCountCarritos().subscribe(number => this.nCarritos = number);
+    this.oGenerateService.getCountCompras().subscribe(number => this.nCompras = number);
+    this.oGenerateService.getCountFacturas().subscribe(number => this.nFacturas = number);
+    this.oGenerateService.getCountTiposProducto().subscribe(number => this.nTiposProducto = number);
+    this.oGenerateService.getCountUsuarios().subscribe(number => this.nUsuarios = number);
+    this.oGenerateService.getCountTiposUsuario().subscribe(number => this.nTiposDeUsuario = number);
   }
 
   goBack() {
@@ -59,11 +59,27 @@ export class GenerateComponent implements OnInit {
   }
 
   generateProductos(n: number): void {
-    this.oRandomLoadService.generateProductos(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
+    this.oGenerateService.generateProductos(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
   }
 
   generateUsuarios(n: number): void {
-    this.oRandomLoadService.generateUsuarios(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
+    this.oGenerateService.generateUsuarios(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
+  }
+
+  generateTiposDeProductos(n: number): void {
+    this.oGenerateService.generateTiposDeProductos(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
+  }
+
+  generateCompras(n: number): void {
+    this.oGenerateService.generateCompras(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
+  }
+
+  generateFacturas(n: number): void {
+    this.oGenerateService.generateFacturas(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
+  }
+
+  generateCarritos(n: number): void {
+    this.oGenerateService.generateCarritos(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
   }
 
   //modal 

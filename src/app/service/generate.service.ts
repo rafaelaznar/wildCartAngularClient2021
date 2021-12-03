@@ -7,7 +7,7 @@ import { API_URL, httpOptions } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class RandomLoadService {
+export class GenerateService {
   constructor(private http: HttpClient) { }
 
   getCountProductos(): Observable<number> {
@@ -46,5 +46,20 @@ export class RandomLoadService {
     return this.http.post<number>(API_URL + '/usuario/generate/' + n, httpOptions);
   }
 
+  generateTiposDeProductos(n: number): Observable<number> {
+    return this.http.post<number>(API_URL + '/tipoproducto/generate/' + n, httpOptions);
+  }
+
+  generateFacturas(n: number): Observable<number> {
+    return this.http.post<number>(API_URL + '/factura/generate/' + n, httpOptions);
+  }
+  
+  generateCompras(n: number): Observable<number> {
+    return this.http.post<number>(API_URL + '/compra/generate/' + n, httpOptions);
+  }
+
+  generateCarritos(n: number): Observable<number> {
+    return this.http.post<number>(API_URL + '/carrito/generate/' + n, httpOptions);
+  }
 
 }

@@ -69,7 +69,7 @@ import { TipoproductoService } from './service/tipoproducto.service';
 import { FacturaService } from './service/factura.service';
 import { IconService } from './service/icon.service';
 import { GenerateComponent } from './component/generate/generate.component';
-import { RandomLoadService } from './service/randomload.service';
+import { GenerateService } from './service/generate.service';
 
 @NgModule({
   declarations: [
@@ -156,7 +156,7 @@ import { RandomLoadService } from './service/randomload.service';
     TipousuarioService,
     CarritoService,
     IconService,
-    RandomLoadService
+    GenerateService
   ],
   bootstrap: [AppComponent],
 })
