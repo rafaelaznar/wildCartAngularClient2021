@@ -57,9 +57,9 @@ export class RemoveCompraComponent implements OnInit {
   removeOne() {
     this.oPostService.remove(this.id).subscribe((data: number) => {
       if (data) {
-        this.strResult = "El post con ID=" + this.id + " ha sido borrado con éxito";        
+        this.strResult = "La compra con ID=" + this.id + " ha sido borrado con éxito";        
       } else {
-        this.strResult = "Error en el borrado del post";        
+        this.strResult = "Error en el borrado la compra";        
       }
       this.openModal();
     })

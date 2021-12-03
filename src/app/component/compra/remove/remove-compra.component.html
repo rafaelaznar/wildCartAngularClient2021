@@ -5,16 +5,13 @@
     <app-header [title]="'Borrado de ' + strTitleSingular" [icon]="oIconService.getIcon(this.strOperation)"
     [iconEntity]="oIconService.getIcon(this.strEntity)">
     </app-header>
-
-    
-
-    <i class="fas fa-arrow-circle-left"></i>
+        
     <div class="row justify-content-center">
         <table class="table table-striped">
             <tbody>
                 <tr>
                     <th><i [ngClass]="oIconService.getIcon('id')"></i>ID</th>
-                    <td>{{oCompra?.id}}</td><i class="fas fa-arrow-circle-left"></i>>
+                    <td>{{oCompra?.id}}</td>
                 </tr>
                 <tr>
                     <th>Cantidad</th>

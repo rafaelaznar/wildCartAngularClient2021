@@ -87,7 +87,7 @@ export class GenerateComponent implements OnInit {
   generateTiposDeProductos(n: number): void {
     this.oGenerateService.generateTiposDeProductos(n).subscribe(
       (num: number) => {
-        this.strResult = "Ahora hay " + num + " productos";
+        this.strResult = "Ahora hay " + num + " tipos de producto";
         this.openModal();
       },
       err => {
@@ -145,7 +145,7 @@ export class GenerateComponent implements OnInit {
     this.eventsModalSubject.next();
   }
 
-  closeModal() {
+  onCloseModal() {
     this.getCount();
     this.strResult = "";
   }
