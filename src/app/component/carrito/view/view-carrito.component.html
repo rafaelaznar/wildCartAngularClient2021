@@ -2,9 +2,11 @@
 
 <div class="container my-3">
   <app-header
-    [title]="'Vista de un Tipo de usuario'"
-    [icon]="'fas fa-eye'"
-  ></app-header>
+    [title]="'Edición de ' + strTitleSingular"
+    [icon]="oIconService.getIcon(this.strOperation)"
+    [iconEntity]="oIconService.getIcon(this.strEntity)"
+  >
+  </app-header>
 
   <div class="row justify-content-center">
     <table class="table table-striped">
