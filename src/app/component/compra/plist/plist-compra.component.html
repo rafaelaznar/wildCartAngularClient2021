@@ -127,12 +127,12 @@
                         <td>
                           <a style="text-decoration:none" [routerLink]="['/compra/plist/producto/' + fila.producto.id]">
                             <i [ngClass]="oIconService.getIcon('producto')"></i> ({{fila.producto.id}})
-                            {{fila.producto.nombre | trim}}</a>
+                            {{fila.producto.nombre | trim:20}}</a>
                         </td>
                         <td>
                           <a style="text-decoration:none" [routerLink]="['/compra/plist/factura/' + fila?.factura?.id]">
                             <i [ngClass]="oIconService.getIcon('factura')"></i>
-                            ({{fila?.factura?.id}}) {{fila?.factura?.usuario?.nombre}} {{fila?.factura?.usuario?.apellido1}}</a>
+                            ({{fila?.factura?.id}}) {{fila?.factura?.usuario?.nombre + ' ' + fila?.factura?.usuario?.apellido1 +' '+ fila?.factura?.usuario?.apellido2|trim:20}}</a>
                         </td>
 
                         
