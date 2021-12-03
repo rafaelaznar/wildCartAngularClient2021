@@ -18,7 +18,7 @@ export class PlistProductoComponent implements OnInit {
   strOperation: string = "plist"
   strTitleSingular: string = "Producto";
   strTitlePlural: string = "Productos";
-  aProducts: IProducto[];
+  aProductos: IProducto[];
   aPaginationBar: string[];
   nTotalElements: number;
   nTotalPages: number;
@@ -39,7 +39,7 @@ export class PlistProductoComponent implements OnInit {
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oPaginationService: PaginationService,
-    private oProductService: ProductoService,
+    private oProductoService: ProductoService,
 
     public oIconService: IconService
   ) {
@@ -58,7 +58,7 @@ export class PlistProductoComponent implements OnInit {
       this.strFilteredMessage = "";
     }
 
-    this.nPage = 0;
+    this.nPage = 1;
     this.getPage();
   }
 
@@ -70,18 +70,20 @@ export class PlistProductoComponent implements OnInit {
 
   getPage = () => {
     console.log("buscando...", this.strFilter);
-    this.oProductService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, this.id_tipoproducto).subscribe((oPage: IPageProducto) => {
+    this.oProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, this.id_tipoproducto).subscribe((oPage: IPageProducto) => {
       if (this.strFilter) {
         this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
       } else {
         this.strFilteredMessage = "";
       }
-      this.aProducts = oPage.content;
+      this.aProductos = oPage.content;
       this.nTotalElements = oPage.totalElements;
       this.nTotalPages = oPage.totalPages;
       this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
     })
   }
+
+
 
   jumpToPage = () => {
     this.getPage();
