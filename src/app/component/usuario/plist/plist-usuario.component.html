@@ -135,8 +135,15 @@
                         <td>{{fila.apellido1}}</td>
                         <td>{{fila.apellido2}}</td>
                         <td>{{fila.email}}</td>
-                        <td>{{fila.carritos}}</td>
-                        <td>{{fila.facturas}}</td>
+                        <td>
+                            <a style="text-decoration:none" [routerLink]="['/carrito/plist/usuario/' + fila.id]">
+                                <i [ngClass]="oIconService.getIcon('carrito')"></i> ({{fila.carritos}})
+                                </a></td>
+                        <td>
+                            <a style="text-decoration:none" [routerLink]="['/factura/plist/' + fila.id]">
+                                <i [ngClass]="oIconService.getIcon('factura')"></i> ({{fila.facturas}})
+                                </a>
+                        </td>
                         <td>
                             <a style="text-decoration:none" [routerLink]="['/usuario/plist/' + fila.tipousuario.id]">
                                 <i [ngClass]="oIconService.getIcon('usuario')"></i> ({{fila.tipousuario.id}})

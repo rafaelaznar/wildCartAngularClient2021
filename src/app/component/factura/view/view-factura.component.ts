@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IFactura } from 'src/app/model/factura-interfaces';
 import { Location } from '@angular/common';
 import { FacturaService } from 'src/app/service/factura.service';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { IconService } from 'src/app/service/icon.service';
 
 @Component({
   selector: 'app-view-factura',
@@ -14,14 +16,20 @@ export class ViewFacturaComponent implements OnInit {
   id: number = 0;
   oFactura: IFactura;
   strUsuarioSession: string;
-
+  strEntity: string = "factura"
+  strOperation: string = "view"
+  strTitleSingular: string = "Factura";
+  strTitlePlural: string = "Facturas";
+  oUserSession: IUsuario;
 
   constructor(
     private oFacturaService: FacturaService,
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private oLocation: Location
+    private oLocation: Location,
+    public oIconService: IconService
+
   ) {
 
     if (this.oRoute.snapshot.data.message) {

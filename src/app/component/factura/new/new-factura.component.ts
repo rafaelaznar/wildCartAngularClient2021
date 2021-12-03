@@ -1,3 +1,4 @@
+import { IconService } from './../../../service/icon.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -22,6 +23,11 @@ export class NewFacturaComponent implements OnInit {
   strResult: string = "";
   strUsuarioSession: any;
 
+  strEntity: string = "factura"
+  strOperation: string = "new"
+  strTitleSingular: string = "Factura";
+  strTitlePlural: string = "Facturas";
+
   get f() { return this.oForm.controls; }
 
   constructor(
@@ -30,7 +36,9 @@ export class NewFacturaComponent implements OnInit {
     private oFacturaService: FacturaService,
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
-    private oDateTimeService: DateTimeService
+    private oDateTimeService: DateTimeService,
+    public oIconService: IconService
+
   ) { 
     
     if (this.oActivatedRoute.snapshot.data.message) {

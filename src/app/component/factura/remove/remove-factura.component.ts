@@ -5,6 +5,7 @@ import { PostService } from 'src/app/service/post.service';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { FacturaService } from 'src/app/service/factura.service';
+import { IconService } from 'src/app/service/icon.service';
 
 @Component({
   selector: 'app-remove-factura',
@@ -17,13 +18,18 @@ export class RemoveFacturaComponent implements OnInit {
   oFactura: IFactura;
   strUsuarioSession: string;
   strResult: string = null;
+  strEntity: string = "factura"
+  strOperation: string = "remove"
+  strTitleSingular: string = "Factura";
+  strTitlePlural: string = "Facturas";
 
   constructor(
     private oFacturaService: FacturaService,
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private _location: Location
+    private _location: Location,
+    public oIconService: IconService
   ) {
     if (this.oRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oRoute.snapshot.data.message;
