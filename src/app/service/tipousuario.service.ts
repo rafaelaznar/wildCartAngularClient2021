@@ -17,7 +17,7 @@ import { ITipoUsuarioPage, IUserType } from '../model/tipousuario-interfaces';
 export class TipousuarioService {
   constructor(private http: HttpClient, private oRoute: Router) {}
 
-  sURL = API_URL + '/tusuario';
+  sURL = API_URL + '/tipousuario';
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';

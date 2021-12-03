@@ -10,7 +10,7 @@ import { ITipoProducto, IPageTipoProducto, ITipoProducto2Send } from '../model/t
 export class TipoproductoService {
   constructor(private http: HttpClient) { }
 
-  sURL = API_URL + '/tipoprod';
+  sURL = API_URL + '/tipoproducto';
 
   getPage(
     rpp: number,
