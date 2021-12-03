@@ -10,35 +10,7 @@ import { API_URL, httpOptions } from 'src/environments/environment';
 
 
 export class GenerateService {
-  constructor(private http: HttpClient) { }
-
-  getCountProductos(): Observable<number> {
-    return this.http.get<number>(API_URL + '/producto/count', httpOptions);
-  }
-
-  getCountUsuarios(): Observable<number> {
-    return this.http.get<number>(API_URL + '/usuario/count', httpOptions);
-  }
-
-  getCountTiposUsuario(): Observable<number> {
-    return this.http.get<number>(API_URL + '/tipousuario/count', httpOptions);
-  }
-
-  getCountTiposProducto(): Observable<number> {
-    return this.http.get<number>(API_URL + '/tipoproducto/count', httpOptions);
-  }
-
-  getCountCompras(): Observable<number> {
-    return this.http.get<number>(API_URL + '/compra/count', httpOptions);
-  }
-
-  getCountFacturas(): Observable<number> {
-    return this.http.get<number>(API_URL + '/factura/count', httpOptions);
-  }
-
-  getCountCarritos(): Observable<number> {
-    return this.http.get<number>(API_URL + '/carrito/count', httpOptions);
-  }
+  constructor(private http: HttpClient) { }  
 
   generateProductos(n: number): Observable<number> {
     return this.http.post<number>(API_URL + '/producto/generate/' + n, httpOptions);
@@ -47,6 +19,11 @@ export class GenerateService {
   generateUsuarios(n: number): Observable<number> {
     return this.http.post<number>(API_URL + '/usuario/generate/' + n, { amount: n }, httpOptions);
   }
+
+  generateTiposDeUsuario(): Observable<number> {
+    return this.http.post<number>(API_URL + '/tipousuario/generate', "", httpOptions);
+  }
+
 
   generateTiposDeProductos(n: number): Observable<number> {
     return this.http.post<number>(API_URL + '/tipoproducto/generate/' + n, { amount: n }, httpOptions);

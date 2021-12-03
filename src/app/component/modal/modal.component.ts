@@ -20,25 +20,12 @@ export class ModalComponent implements OnInit {
   @Input() size: string = "";
   @Input() mode: boolean = false; // false->cerrar; true->si/no (no implementado)
 
-  /*
-  strModalTittle: string = this.title;
-  strModalBody: string = this.body;
-  strModalFooter: string = this.footer;
-  boolMode: boolean = this.mode;
-  */
- 
   private eventsSubscription: Subscription;
 
   constructor() { }
 
   ngOnInit() {
     this.eventsSubscription = this.show.subscribe(() => this.showModal());
-    /*
-    this.strModalTittle = this.title;
-    this.strModalBody = this.body;
-    this.strModalFooter = this.footer;
-    this.boolMode = this.mode;
-    */
   }
 
   ngOnDestroy() {
@@ -49,7 +36,7 @@ export class ModalComponent implements OnInit {
     var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
       keyboard: false
     })
-    var myModalEl = document.getElementById('myModal')
+    var myModalEl = document.getElementById('myModal');
     myModalEl.addEventListener('hidden.bs.modal', (event): void => {
       this.close.emit(event);
     })

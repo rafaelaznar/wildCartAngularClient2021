@@ -70,6 +70,7 @@ import { FacturaService } from './service/factura.service';
 import { IconService } from './service/icon.service';
 import { GenerateComponent } from './component/generate/generate.component';
 import { GenerateService } from './service/generate.service';
+import { CountService } from './service/count.service';
 
 @NgModule({
   declarations: [
@@ -156,7 +157,8 @@ import { GenerateService } from './service/generate.service';
     TipousuarioService,
     CarritoService,
     IconService,
-    GenerateService
+    GenerateService,
+    CountService
   ],
   bootstrap: [AppComponent],
 })

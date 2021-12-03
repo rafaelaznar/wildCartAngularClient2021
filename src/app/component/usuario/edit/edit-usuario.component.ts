@@ -16,14 +16,16 @@ declare let $: any;
   styleUrls: ['./edit-usuario.component.css'],
 })
 export class EditUsuarioComponent implements OnInit {
-  oUsuario: IUsuario2Send = null;
-  oUsuarioShow: IUsuario = null;
+  strEntity: string = 'usuario';
+  strOperation: string = 'edit';
+  strTitleSingular: string = 'Usuario';
+  strTitlePlural: string = 'Usuarios';
+  oUsuario2Show: IUsuario = null;
+  oUsuario2Send: IUsuario2Send = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
-  strOperation: string="edit";
-  strEntity:string="usuario";
-  strTitleSingular:string="usuario"
+  oUserSession: IUsuario;
 
   get f() {
     return this.oForm.controls;
@@ -67,26 +69,26 @@ export class EditUsuarioComponent implements OnInit {
     this.oUsuarioService
       .getOne(this.id)
       .subscribe((oData: IUsuario) => {
-        this.oUsuarioShow = oData;
+        this.oUsuario2Show = oData;
         this.oForm = this.oFormBuilder.group({
-          id: [this.oUsuarioShow.id],
+          id: [this.oUsuario2Show.id],
           nombre: [
-            this.oUsuarioShow.nombre,
+            this.oUsuario2Show.nombre,
             [Validators.required, Validators.minLength(5)]
           ],
-          login:[this.oUsuarioShow.login,[Validators.required, Validators.minLength(5)]],
-          apellido1:[this.oUsuarioShow.apellido1,[Validators.required, Validators.minLength(5)]],
-          apellido2:[this.oUsuarioShow.apellido2,[Validators.required, Validators.minLength(5)]],
-          email:[this.oUsuarioShow.email,[Validators.required, Validators.minLength(5)]],
-          dni:[this.oUsuarioShow.dni,[Validators.required, Validators.minLength(5)]],
-          tusuario:[this.oUsuarioShow.tipousuario.id,[Validators.required, Validators.minLength(1)]]
+          login:[this.oUsuario2Show.login,[Validators.required, Validators.minLength(5)]],
+          apellido1:[this.oUsuario2Show.apellido1,[Validators.required, Validators.minLength(5)]],
+          apellido2:[this.oUsuario2Show.apellido2,[Validators.required, Validators.minLength(5)]],
+          email:[this.oUsuario2Show.email,[Validators.required, Validators.minLength(5)]],
+          dni:[this.oUsuario2Show.dni,[Validators.required, Validators.minLength(5)]],
+          tusuario:[this.oUsuario2Show.tipousuario.id,[Validators.required, Validators.minLength(1)]]
         });
       });
   };
 
   onSubmit(): void {
     if (this.oForm) {
-      this.oUsuario = {
+      this.oUsuario2Send = {
         id: this.oForm.value.id,
         nombre: this.oForm.value.nombre,
         dni: this.oForm.value.dni,
@@ -107,9 +109,9 @@ export class EditUsuarioComponent implements OnInit {
   }
 
   update = (): void => {
-    console.log(this.oUsuario);
+    console.log(this.oUsuario2Send);
     this.oUsuarioService
-      .updateOne(this.oUsuario)
+      .updateOne(this.oUsuario2Send)
       .subscribe((id: number) => {
         if (id) {
           this.strResult = 'El usuario se ha modificado correctamente';
