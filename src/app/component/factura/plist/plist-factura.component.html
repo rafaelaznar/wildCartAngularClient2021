@@ -70,6 +70,13 @@
                                 *ngIf="currentSortField=='fecha'&&currentSortDirection=='desc'"></i>
 
                         </th>
+                        <th (click)="doSetOrder('compra')"><i [ngClass]="oIconService.getIcon('compra')"></i> compra
+                            <i class="fas fa-arrow-up"
+                                *ngIf="currentSortField=='pagado'&&currentSortDirection=='asc'"></i>
+                            <i class="fas fa-arrow-down"
+                                *ngIf="currentSortField=='pagado'&&currentSortDirection=='desc'"></i>
+
+                        </th>
                         <th (click)="doSetOrder('pagado')"><i [ngClass]="oIconService.getIcon('pagado')"></i> Pagado
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='pagado'&&currentSortDirection=='asc'"></i>
@@ -86,6 +93,9 @@
                         <td>{{fila?.iva }}</td>
                         <td> <a [routerLink]="['/factura/plist/' + fila?.usuario?.id]">{{fila?.usuario?.nombre }} {{fila?.usuario?.apellido1 }} {{fila?.usuario?.apellido2 }}</a></td>
                         <td>{{fila?.fecha  }}</td>
+                        <td style="text-align: center;"><button class="btn btn-outline-secondary btn-sm"
+                            [routerLink]="['/compra/plist/factura/',fila.id]">{{fila?.compras}} <i
+                              [ngClass]="oIconService.getIcon('compra')"></i></button></td>
                         <td class="text-center" [innerHTML]="fila.pagado | showBoolean"></td>
                         <td class="text-center">
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
@@ -104,4 +114,4 @@
     </div>
 </div>
 
-<app-footer></app-footer>	Pedro Lopez Sanchez
+<app-footer></app-footer>	

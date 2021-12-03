@@ -1,3 +1,4 @@
+import { ICompra } from './compra-interfaces';
 import { I2Send, IFecha } from "./model-interfaces";
 import { IUsuario } from "./usuario-interfaces";
 
@@ -7,7 +8,8 @@ export interface IFactura {
     iva: number,
     usuario: IUsuario,
     fecha: IFecha,
-    pagado: boolean
+    pagado: boolean,
+    compras:ICompra
 }
 export interface IPageFactura {
     content: IFactura[];

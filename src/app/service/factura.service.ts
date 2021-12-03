@@ -50,7 +50,7 @@ export class FacturaService {
     strOrderUrl += "&sort=" + order + "," + direction;
   }
   if(idusuario <0){
-  return this.http.get<IPageFactura>(this.sURL + "/page" + "?size=" + rpp + "&page=" + page + strOrderUrl, httpOptions);
+  return this.http.get<IPageFactura>(this.sURL + "/page" + "?size=" + rpp + "&page=" +page + strOrderUrl, httpOptions);
   
 
   }else return this.http.get<IPageFactura>(this.sURL + "/filter/"+ idusuario + "?size=" + rpp + "&page=" + page + strOrderUrl, httpOptions);
