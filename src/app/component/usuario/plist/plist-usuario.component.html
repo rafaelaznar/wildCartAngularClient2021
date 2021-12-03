@@ -58,40 +58,45 @@
         <div class="col-md table-responsive-md">
             <table class="table table-bordered table-striped table-hover">
                 <thead>
-                    <tr class="text-center">
+                    <tr class="text-center align-middle">
                         <th (click)="doSetOrder('id')"><i [ngClass]="oIconService.getIcon('id')"></i> ID
                             <i class="fas fa-arrow-up" *ngIf="currentSortField=='id'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='id'&&currentSortDirection=='desc'"></i>
                         </th>
-                        <th (click)="doSetOrder('dni')">DNI
+                        <th (click)="doSetOrder('dni')">
+                            <i [ngClass]="oIconService.getIcon('dni')"></i> DNI
                             <i class="fas fa-arrow-up" *ngIf="currentSortField=='dni'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='dni'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('nombre')">Nombre
+                        <th (click)="doSetOrder('nombre')">
+                            <i [ngClass]="oIconService.getIcon('nombre')"></i> Nombre
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='nombre'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='nombre'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('apellido1')">Apellido
+                        <th (click)="doSetOrder('apellido1')">
+                            <i [ngClass]="oIconService.getIcon('nombre')"></i> Primer Apellido
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='apellido1'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='apellido1'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('apellido2')">Apellido 2
+                        <th (click)="doSetOrder('apellido2')">
+                            <i [ngClass]="oIconService.getIcon('nombre')"></i> Segundo Apellido
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='apellido2'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='apellido2'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th (click)="doSetOrder('email')">Email
+                        <th (click)="doSetOrder('email')">
+                            <i [ngClass]="oIconService.getIcon('email')"></i> Email
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='email'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
@@ -99,7 +104,7 @@
 
                         </th>
                         <th (click)="doSetOrder('carritos')"><i [ngClass]="oIconService.getIcon('carrito')"></i>
-                            Carritos
+                            Productos en Carrito
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='carritos'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
@@ -115,26 +120,26 @@
 
                         </th>
                         <th (click)="doSetOrder('tipousuario')"><i [ngClass]="oIconService.getIcon('tipousuario')"></i>
-                            Tipo Usuario
+                            Tipo de Usuario
                             <i class="fas fa-arrow-up"
                                 *ngIf="currentSortField=='tipousuario'&&currentSortDirection=='asc'"></i>
                             <i class="fas fa-arrow-down"
                                 *ngIf="currentSortField=='tipousuario'&&currentSortDirection=='desc'"></i>
 
                         </th>
-                        <th>Validado</th>
-                        <th>Activado</th>
+                        <th><i [ngClass]="oIconService.getIcon('validado')"></i> Validado</th>
+                        <th><i [ngClass]="oIconService.getIcon('activado')"></i> Activado</th>
                         <th><i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let fila of aPosts">
+                    <tr *ngFor="let fila of aPosts" class="align-middle">
                         <td class="text-end">{{fila.id}}</td>
                         <td>{{fila.dni}}</td>
                         <td>{{fila.nombre}}</td>
                         <td>{{fila.apellido1}}</td>
                         <td>{{fila.apellido2}}</td>
-                        <td>{{fila.email| trim:10}}</td>
+                        <td>{{fila.email| trim:18}}</td>
                         <td style="text-align: center">
                             <button class="btn btn-outline-secondary btn-sm"
                                 [routerLink]="['/carrito/plist/usuario/' + fila.id]">

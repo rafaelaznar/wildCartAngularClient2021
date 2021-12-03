@@ -58,49 +58,55 @@
     <div class="col-md table-responsive-md">
       <table class="table table-bordered table-striped table-hover">
         <thead>
-          <tr class="text-center">
+          <tr class="text-center align-middle">
             <th (click)="doSetOrder('id')"><i [ngClass]="oIconService.getIcon('id')"></i> ID
               <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
               <i [ngClass]="oIconService.getIcon('flechaDown')"
                 *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
 
             </th>
-            <th (click)="doSetOrder('codigo')">Código
+            <th (click)="doSetOrder('codigo')">
+              <i [ngClass]="oIconService.getIcon('codigo')"></i> Código
               <i [ngClass]="oIconService.getIcon('flechaUp')"
                 *ngIf="strSortField=='codigo'&&strSortDirection=='asc'"></i>
               <i [ngClass]="oIconService.getIcon('flechaDown')"
                 *ngIf="strSortField=='codigo'&&strSortDirection=='desc'"></i>
 
             </th>
-            <th (click)="doSetOrder('nombre')">Nombre
+            <th (click)="doSetOrder('nombre')">
+              <i [ngClass]="oIconService.getIcon('nombre')"></i> Nombre
               <i [ngClass]="oIconService.getIcon('flechaUp')"
                 *ngIf="strSortField=='nombre'&&strSortDirection=='asc'"></i>
               <i [ngClass]="oIconService.getIcon('flechaDown')"
                 *ngIf="strSortField=='nombre'&&strSortDirection=='desc'"></i>
 
             </th>
-            <th (click)="doSetOrder('existencias')">Existencias
+            <th (click)="doSetOrder('existencias')">
+              <i [ngClass]="oIconService.getIcon('cantidad')"></i> Existencias
               <i [ngClass]="oIconService.getIcon('flechaUp')"
                 *ngIf="strSortField=='existencias'&&strSortDirection=='asc'"></i>
               <i [ngClass]="oIconService.getIcon('flechaDown')"
                 *ngIf="strSortField=='existencias'&&strSortDirection=='desc'"></i>
 
             </th>
-            <th (click)="doSetOrder('precio')">Precio
+            <th (click)="doSetOrder('precio')">
+              <i [ngClass]="oIconService.getIcon('euro')"></i> Precio
               <i [ngClass]="oIconService.getIcon('flechaUp')"
                 *ngIf="strSortField=='precio'&&strSortDirection=='asc'"></i>
               <i [ngClass]="oIconService.getIcon('flechaDown')"
                 *ngIf="strSortField=='precio'&&strSortDirection=='desc'"></i>
 
             </th>
-            <th (click)="doSetOrder('imagen')">Imagen
+            <th (click)="doSetOrder('imagen')">
+              <i [ngClass]="oIconService.getIcon('imagen')"></i> Imagen
               <i [ngClass]="oIconService.getIcon('flechaUp')"
                 *ngIf="strSortField=='imagen'&&strSortDirection=='asc'"></i>
               <i [ngClass]="oIconService.getIcon('flechaDown')"
                 *ngIf="strSortField=='imagen'&&strSortDirection=='desc'"></i>
 
             </th>
-            <th (click)="doSetOrder('descuento')">Descuento
+            <th (click)="doSetOrder('descuento')">
+              <i [ngClass]="oIconService.getIcon('porcentaje')"></i> Descuento
               <i [ngClass]="oIconService.getIcon('flechaUp')"
                 *ngIf="strSortField=='descuento'&&strSortDirection=='asc'"></i>
               <i [ngClass]="oIconService.getIcon('flechaDown')"
@@ -108,33 +114,33 @@
 
             </th>
 
-            <th (click)="doSetOrder('compra')">Compras <i [ngClass]="oIconService.getIcon('compra')"></i>
+            <th (click)="doSetOrder('compra')"><i [ngClass]="oIconService.getIcon('compra')"></i> Compras 
               <i [ngClass]="oIconService.getIcon('flechaUp')"
                 *ngIf="strSortField=='compra'&&strSortDirection=='asc'"></i>
               <i [ngClass]="oIconService.getIcon('flechaDown')"
                 *ngIf="strSortField=='compra'&&strSortDirection=='desc'"></i>
             </th>
 
-            <th (click)="doSetOrder('carrito')">Carrito <i [ngClass]="oIconService.getIcon('carrito')"></i>
+            <th (click)="doSetOrder('carrito')"><i [ngClass]="oIconService.getIcon('carrito')"></i> Carrito 
               <i [ngClass]="oIconService.getIcon('flechaUp')"
                 *ngIf="strSortField=='carrito'&&strSortDirection=='asc'"></i>
               <i [ngClass]="oIconService.getIcon('flechaDown')"
                 *ngIf="strSortField=='carrito'&&strSortDirection=='desc'"></i>
             </th>
 
-            <th (click)="doSetOrder('tipoproducto')"> Tipo Producto <i
-                [ngClass]="oIconService.getIcon('tipoproducto')"></i>
+            <th (click)="doSetOrder('tipoproducto')"> <i
+              [ngClass]="oIconService.getIcon('tipoproducto')"></i> Tipo Producto 
               <i [ngClass]="oIconService.getIcon('flechaUp')"
                 *ngIf="strSortField=='tipoproducto'&&strSortDirection=='asc'"></i>
               <i [ngClass]="oIconService.getIcon('flechaDown')"
                 *ngIf="strSortField=='tipoproducto'&&strSortDirection=='desc'"></i>
 
             </th>
-            <th>Acciones<i [ngClass]="oIconService.getIcon('acciones')"></i> </th>
+            <th><i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let fila of aProductos">
+          <tr *ngFor="let fila of aProductos"  class="align-middle">
             <td class="text-end">{{fila.id}}</td>
             <td>{{fila.codigo}}</td>
             <td>{{fila.nombre| trim:60}}</td>
@@ -154,7 +160,7 @@
                 <a style="text-decoration:none"
                   [routerLink]="['/' + strEntity + '/' + strOperation + '/tipoproducto/' + fila.tipoproducto.id]">
                   <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> ({{fila.tipoproducto.id}})
-                  {{fila.tipoproducto.nombre | trim:29}}</a>
+                  {{fila.tipoproducto.nombre | trim:40}}</a>
             </td>
             <td class="text-center">
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">

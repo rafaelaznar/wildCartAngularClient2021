@@ -54,8 +54,6 @@
     </div>
   </div>
 
-
-  
   <div class="row justify-content-center">
     <div class="col-md table-responsive-md">
       <table class="table table-bordered table-striped table-hover">
@@ -66,14 +64,15 @@
               <i [ngClass]="oIconService.getIcon('flechaDown')"
                 *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
             </th>
-            <th (click)="doSetOrder('nombre')">Nombre
+            <th (click)="doSetOrder('nombre')">
+              <i [ngClass]="oIconService.getIcon('nombre')"></i> Nombre
               <i [ngClass]="oIconService.getIcon('flechaUp')"
                 *ngIf="strSortField=='nombre'&&strSortDirection=='asc'"></i>
               <i [ngClass]="oIconService.getIcon('flechaDown')"
                 *ngIf="strSortField=='nombre'&&strSortDirection=='desc'"></i>
             </th>
-            <th>Productos <i [ngClass]="oIconService.getIcon('producto')"></i> </th>
-            <th>Acciones <i [ngClass]="oIconService.getIcon('acciones')"></i> </th>
+            <th><i [ngClass]="oIconService.getIcon('producto')"></i> Productos</th>
+            <th><i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones</th>
           </tr>
         </thead>
         <tbody>
