@@ -93,17 +93,14 @@
 
         </form>
 
-        <div class="control-group text-center mt-5">
-            <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
-                <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i
-                        [ngClass]="oIconService.getIcon('home')"></i> Página
-                    principal</a>
-                <a class="btn btn-primary mx-2" [routerLink]="['/producto/plist']"><i
-                        [ngClass]="oIconService.getIcon('plist')"></i> Listado de Productos</a>
-                <a class="btn btn-primary mx-2" (click)="goBack()"><i [ngClass]="oIconService.getIcon('volver')"></i>
-                    Volver </a>
-            </div>
-        </div>
+        <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
+            <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i [ngClass]="oIconService.getIcon('home')"></i> Página
+              principal</a>
+            <a class="btn btn-primary mx-2" [routerLink]="['/' + strEntity + '/plist']"><i
+                [ngClass]="oIconService.getIcon('plist')"></i> Listado de {{strTitlePlural}}</a>
+            <a class="btn btn-primary mx-2" (click)="goBack()"><i [ngClass]="oIconService.getIcon('volver')"></i> Volver
+            </a>
+          </div>
 
     </div>
 </div>
