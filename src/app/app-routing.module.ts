@@ -102,6 +102,7 @@ const routes: Routes = [
   { path: 'factura/view/:id', component: ViewFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'factura/edit/:id', component: EditFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'factura/remove/:id', component: RemoveFacturaComponent, resolve: { message: SessionResolver } },
+  { path: 'factura/plist/:id', component: PlistFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/plist', component: PlistCarritoComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/plist/producto/:idproducto', component: PlistCarritoComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/plist/usuario/:idusuario', component: PlistCarritoComponent, resolve: { message: SessionResolver } },

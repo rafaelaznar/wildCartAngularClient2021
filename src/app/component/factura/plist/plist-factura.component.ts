@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IFactura } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
 import { PaginationService } from 'src/app/service/pagination.service';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { Subject } from 'rxjs';
+import { IconService } from 'src/app/service/icon.service';
 
 @Component({
   selector: 'app-plist-factura',
@@ -28,12 +31,29 @@ export class PlistFacturaComponent implements OnInit {
   filtered: boolean = false;
   oActivatedRoute: any;
 
+  strEntity: string = "factura"
+  strOperation: string = "plist"
+  strTitleSingular: string = "Factura";
+  strTitlePlural: string = "Facturas";
+  aPaginationBar: string[];
+  nTotalElements: number;
+  nTotalPages: number;
+  nPage: number;
+  nPageSize: number = 10;
+  strFilter: string = "";
+  strSortField: string = "";
+  strSortDirection: string = "";
+  strFilteredMessage: string = "";
+  oUserSession: IUsuario;
+  subjectFiltro$ = new Subject();
+
 
   constructor(
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oPaginationService: PaginationService,
     private oFacturaService: FacturaService,
+    public oIconService: IconService
   ) {
     
     if (this.oRoute.snapshot.data.message) {
@@ -53,7 +73,8 @@ export class PlistFacturaComponent implements OnInit {
 
 
   getPage = () => {
-    this.oFacturaService.getPage(this.pageSize, this.page, this.filterActual, this.currentSortField, this.currentSortDirection).subscribe((oPage: IPageFactura) => {
+    let id:number=this.oRoute.snapshot.params.id?this.oRoute.snapshot.params.id:-1;
+    this.oFacturaService.getPage(this.pageSize, this.page, this.filterActual, this.currentSortField, this.currentSortDirection,id).subscribe((oPage: IPageFactura) => {
       if (this.filterActual) {
         this.filtered = true;
       } else {

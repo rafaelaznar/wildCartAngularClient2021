@@ -59,28 +59,47 @@ export class GenerateComponent implements OnInit {
   }
 
   generateProductos(n: number): void {
-    this.oGenerateService.generateProductos(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
+    this.oGenerateService.generateProductos(n).subscribe(number => {
+      this.strResult = "Se han creado " + number + " registros";
+      this.openModal();
+    })
   }
 
   generateUsuarios(n: number): void {
-    this.oGenerateService.generateUsuarios(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
+    this.oGenerateService.generateUsuarios(n).subscribe(number => {
+      this.strResult = "Se han creado " + number + " registros";
+      this.openModal();
+    })
   }
 
   generateTiposDeProductos(n: number): void {
-    this.oGenerateService.generateTiposDeProductos(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
+    this.oGenerateService.generateTiposDeProductos(n).subscribe(number => {
+      this.strResult = "Se han creado " + number + " registros";
+      this.openModal();
+    })
   }
 
   generateCompras(n: number): void {
-    this.oGenerateService.generateCompras(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
+    this.oGenerateService.generateCompras(n).subscribe(number => {
+      this.strResult = "Se han creado " + number + " registros";
+      this.openModal();
+    })
   }
 
   generateFacturas(n: number): void {
-    this.oGenerateService.generateFacturas(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
+    this.oGenerateService.generateFacturas(n).subscribe(number => {
+      this.strResult = "Se han creado " + number + " registros";
+      this.openModal();
+    })
   }
 
   generateCarritos(n: number): void {
-    this.oGenerateService.generateCarritos(n).subscribe(number => this.strResult = "Se han creado " + number + " registros");
+    this.oGenerateService.generateCarritos(n).subscribe(number => {
+      this.strResult = "Se han creado " + number + " registros";
+      this.openModal();
+    })
   }
+
 
   //modal 
 

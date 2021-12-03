@@ -56,7 +56,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md table-responsive-md">
-            <table class="table table-bordered table-striped table-hover">
+            <table class="table table-bordered table-striped table-hover text-center">
                 <thead>
                     <tr class="text-center">
                         <th (click)="doSetOrder('id')"><i [ngClass]="oIconService.getIcon('id')"></i> ID
@@ -101,16 +101,16 @@
                         </th>
                         <th (click)="doSetOrder('producto')">Producto <i [ngClass]="oIconService.getIcon('producto')"></i>
                             <i [ngClass]="oIconService.getIcon('flechaUp')"
-                                *ngIf="strSortField=='id_producto'&&strSortDirection=='asc'"></i>
+                                *ngIf="strSortField=='producto'&&strSortDirection=='asc'"></i>
                             <i [ngClass]="oIconService.getIcon('flechaDown')"
-                                *ngIf="strSortField=='id_producto'&&strSortDirection=='desc'"></i>
+                                *ngIf="strSortField=='producto'&&strSortDirection=='desc'"></i>
 
                         </th>
                         <th (click)="doSetOrder('factura')">Factura <i [ngClass]="oIconService.getIcon('factura')"></i>
                             <i [ngClass]="oIconService.getIcon('flechaUp')"
-                                *ngIf="strSortField=='id_factura'&&strSortDirection=='asc'"></i>
+                                *ngIf="strSortField=='factura'&&strSortDirection=='asc'"></i>
                             <i [ngClass]="oIconService.getIcon('flechaDown')"
-                                *ngIf="strSortField=='id_factura'&&strSortDirection=='desc'"></i>
+                                *ngIf="strSortField=='factura'&&strSortDirection=='desc'"></i>
 
                         </th>
                         <th>Acciones <i [ngClass]="oIconService.getIcon('acciones')"></i></th>
