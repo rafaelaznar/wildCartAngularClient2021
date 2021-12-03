@@ -43,6 +43,7 @@ import { NewCarritoComponent } from './component/carrito/new/new-carrito.compone
 import { ViewCarritoComponent } from './component/carrito/view/view-carrito.component';
 import { EditCarritoComponent } from './component/carrito/edit/edit-carrito.component';
 import { RemoveCarritoComponent } from './component/carrito/remove/remove-carrito.component';
+import { GenerateComponent } from './component/generate/generate.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, resolve: { message: SessionResolver } },
   { path: 'login', component: LoginComponent, resolve: { message: SessionResolver } },
   { path: 'logout', component: LogoutComponent, resolve: { message: SessionResolver } },
+  { path: 'random/load', component: GenerateComponent, resolve: { message: SessionResolver } },
 
   { path: 'read/:id', component: ReadComponent, resolve: { message: SessionResolver } },
 

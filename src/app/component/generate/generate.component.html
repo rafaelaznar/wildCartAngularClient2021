@@ -1,0 +1,132 @@
+<app-menu></app-menu>
+
+<div class="container my-3">
+
+  <app-header [title]="'Carga aleatoria de registros'" [icon]="oIconService.getIcon('random')"
+    [iconEntity]="oIconService.getIcon('random')">
+  </app-header>
+
+  <div class="row justify-content-center">
+
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th>Entidad </th>
+          <th class="text-center">Número de registros </th>
+          <th class="text-center">Generación aleatoria </th>
+        </tr>
+        <tr>
+          <th><i [ngClass]="oIconService.getIcon('usuario')"></i> Usuarios</th>
+          <td class="text-center">{{nUsuarios}}</td>
+          <td class="text-center">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')" (click)="generateUsuarios(10)"></i>
+                10</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')" (click)="generateUsuarios(100)"></i>
+                100</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')" (click)="generateUsuarios(1000)"></i>
+                1000</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th><i [ngClass]="oIconService.getIcon('usuario')"></i> Tipos de Usuario</th>
+          <td class="text-center">{{nTiposDeUsuario}}</td>
+          <td class="text-center">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                10</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                100</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                1000</button>
+            </div>
+          </td>
+        </tr>        
+        <tr>
+          <th><i [ngClass]="oIconService.getIcon('tipoproducto')"></i> Tipos de Producto</th>
+          <td class="text-center">{{nTiposProducto}}</td>
+          <td class="text-center">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                10</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                100</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                1000</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th><i [ngClass]="oIconService.getIcon('producto')"></i> Productos</th>
+          <td class="text-center">{{nProductos}}</td>
+          <td class="text-center">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')" (click)="generateProductos(10)"></i>
+                10</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')" (click)="generateProductos(100)"></i>
+                100</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')" (click)="generateProductos(1000)"></i>
+                1000</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th><i [ngClass]="oIconService.getIcon('compra')"></i> Compras</th>
+          <td class="text-center">{{nCompras}}</td>
+          <td class="text-center">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                10</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                100</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                1000</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th><i [ngClass]="oIconService.getIcon('factura')"></i> Facturas</th>
+          <td class="text-center">{{nFacturas}}</td>
+          <td class="text-center">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                10</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                100</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                1000</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th><i [ngClass]="oIconService.getIcon('carrito')"></i> Items en Carritos de Usuarios</th>
+          <td class="text-center">{{nCarritos}}</td>
+          <td class="text-center">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                10</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                100</button>
+              <button type="button" class="btn btn-success mx-2"><i [ngClass]="oIconService.getIcon('random')"></i>
+                1000</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row justify-content-center">
+      <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
+        <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i [ngClass]="oIconService.getIcon('home')"></i> Página
+          principal</a>
+        <a class="btn btn-primary mx-2" (click)="goBack()"><i [ngClass]="oIconService.getIcon('volver')"></i> Volver
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<app-modal [show]="eventsModalSubject.asObservable()" [body]="strResult" (close)="closeModal()"> </app-modal>

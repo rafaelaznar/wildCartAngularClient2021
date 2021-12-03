@@ -60,7 +60,12 @@
                             [routerLink]="['/carrito/plist']"><i [ngClass]="oIconService.getIcon('carrito')"></i> Productos en el carrito</a>
                     </small>
                 </li>
-
+                <li class="nav-item" *ngIf="oUsuarioSession">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/random/load'"
+                            [routerLink]="['/random/load']"><i [ngClass]="oIconService.getIcon('random')"></i> Carga aleatoria</a>
+                    </small>
+                </li>
             </ul>
             <span class="navbar-text" *ngIf="oUsuarioSession"> <i [ngClass]="oIconService.getIcon('usuario')"></i>
                 <small> {{oUsuarioSession.nombre + " " + oUsuarioSession.apellido1 + " (" + oUsuarioSession.tipousuario.nombre+")"}}</small>

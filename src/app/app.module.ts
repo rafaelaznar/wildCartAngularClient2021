@@ -67,6 +67,9 @@ import { UsuarioService } from './service/usuario.service';
 import { TipousuarioService } from './service/tipousuario.service';
 import { TipoproductoService } from './service/tipoproducto.service';
 import { FacturaService } from './service/factura.service';
+import { IconService } from './service/icon.service';
+import { GenerateComponent } from './component/generate/generate.component';
+import { RandomLoadService } from './service/randomload.service';
 
 
 @NgModule({
@@ -79,6 +82,8 @@ import { FacturaService } from './service/factura.service';
     LoginComponent,
     HomeComponent,  
     LogoutComponent,
+    GenerateComponent,
+
     ReadComponent,
     LookPostComponent,
     PlistPostComponent,
@@ -86,6 +91,7 @@ import { FacturaService } from './service/factura.service';
     NewPostComponent,
     EditPostComponent,
     RemovePostComponent,
+    
     TrimPipe,
     showDateTimePipe,
     showBooleanPipe,
@@ -145,7 +151,9 @@ import { FacturaService } from './service/factura.service';
     TipoproductoService,
     UsuarioService,
     TipousuarioService,
-    CarritoService
+    CarritoService,
+    IconService,
+    RandomLoadService
   ],
   bootstrap: [AppComponent]
 })
