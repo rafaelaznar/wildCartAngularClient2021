@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from 'src/app/service/producto.service';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { IconService } from 'src/app/service/icon.service';
 
 declare let $: any;
 
@@ -15,12 +17,21 @@ declare let $: any;
 })
 export class EditProductoComponent implements OnInit {
 
-  oProducto2Send: IProducto2Send = null;
-  id: number = null;
-  oForm: FormGroup = null;
-  strResult: string = null;
 
-  get f() { return this.oForm.controls; }
+  strEntity: string = "producto"
+  strOperation: string = "edit"
+  strTitleSingular: string = "Producto";
+  strTitlePlural: string = "Productos";
+  oProducto2Send: IProducto2Send = null;
+  oProducto2Show: IProducto = null;
+  oForm: FormGroup = null;
+  id: number = null;
+  strResult: string = null;
+  oUserSession: IUsuario;
+
+  get f() {
+    return this.oForm.controls;
+  }
 
   constructor(
     private oFormBuilder: FormBuilder,
@@ -28,6 +39,8 @@ export class EditProductoComponent implements OnInit {
     private oProductoService: ProductoService,
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
+    private oRoute: ActivatedRoute,
+    public oIconService: IconService  
   ) {
 
     if (this.oActivatedRoute.snapshot.data.message) {
@@ -43,24 +56,34 @@ export class EditProductoComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   getOne = (): void => {
-    this.oProductoService.get(this.id).subscribe((oData: IProducto) => {
-
-      this.oForm = this.oFormBuilder.group({
-        codigo: [oData.codigo, [Validators.required]],
-        nombre: [oData.nombre, Validators.required],
-        existencias: [oData.existencias, Validators.required],
-        precio: [oData.precio, Validators.required],
-        imagen: [oData.imagen],
-        descuento: [oData.descuento],
-        tipoproducto: [oData.tipoproducto.id, Validators.required]
+    this.oProductoService
+      .get(this.id)
+      .subscribe((oData: IProducto) => {
+        this.oProducto2Show = oData;
+        this.oForm = this.oFormBuilder.group({
+          id: [this.oProducto2Show.id],
+          codigo:[
+            this.oProducto2Show.codigo,
+            [Validators.required],
+          ],
+          nombre: [
+            this.oProducto2Show.nombre,
+            [Validators.required, Validators.minLength(5)],
+          ],
+          existencias: this.oProducto2Show.existencias,
+          precio: this.oProducto2Show.precio,
+          imagen: this.oProducto2Show.imagen,
+          descuento: this.oProducto2Show.descuento,
+          tipoproducto:[
+            this.oProducto2Show.tipoproducto.id,
+            [Validators.required],
+          ],
+        });
       });
-    })
-  }
+  };
 
   onSubmit(): void {
     if (this.oForm) {
@@ -74,22 +97,24 @@ export class EditProductoComponent implements OnInit {
         descuento: this.oForm.value.descuento,
         tipoproducto: { id: this.oForm.value.tipoproducto },
       }
-
+      console.log(this.oProducto2Send)
       this.update();
     }
   }
 
   update = (): void => {
-    console.log(this.oProducto2Send)
-    this.oProductoService.update(this.oProducto2Send).subscribe((result: IProducto) => {
-      if (result) {
-        this.strResult = "El post se ha modificado correctamente";
-      } else {
-        this.strResult = "Error en la modificación del post";
-      }
-      this.openModal();
-    })
-  }
+    this.oProductoService
+      .update(this.oProducto2Send)
+      .subscribe((oProducto: IProducto) => {
+        if (oProducto.id) {
+          this.strResult = this.strTitleSingular + ' modificado correctamente';
+        } else {
+          this.strResult = this.strTitleSingular + ': error en la modificación del registro';
+        }
+        this.openModal();
+      });
+  };
+
 
   goBack(): void {
     this.oLocation.back();

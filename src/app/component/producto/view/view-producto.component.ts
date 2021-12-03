@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { IconService } from 'src/app/service/icon.service';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+
 
 @Component({
   selector: 'app-view-producto',
@@ -11,11 +14,15 @@ import { Location } from '@angular/common';
 })
 
 export class ViewProductoComponent implements OnInit {
-
-  id: number = 0;
-  oProduct: IProducto;
+  strEntity: string = "producto"
+  strOperation: string = "view"
+  strTitleSingular: string = "Producto";
+  strTitlePlural: string = "Productos";
+  id: number = null;
   strUsuarioSession: string;
   strResult: string = null;
+  oProducto: IProducto;
+  oUserSession: IUsuario;
 
 
   constructor(
@@ -23,11 +30,13 @@ export class ViewProductoComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private oLocation: Location
+    private oLocation: Location,
+    public oIconService: IconService
+
   ) {
 
     if (this.oRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oRoute.snapshot.data.message;
+      this.oUserSession = this.oRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
@@ -42,10 +51,12 @@ export class ViewProductoComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oProductoService.get(this.id).subscribe((oData: IProducto) => {
-      this.oProduct = oData;
-    })
-  }
+    this.oProductoService
+      .get(this.id)
+      .subscribe((oData: IProducto) => {
+        this.oProducto = oData;
+      });
+  };
 
   goBack() {
     this.oLocation.back();

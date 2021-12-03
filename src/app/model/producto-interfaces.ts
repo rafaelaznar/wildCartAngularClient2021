@@ -10,6 +10,7 @@ export interface IProducto {
     imagen: number,
     descuento: number,
     tipoproducto: ITipoProducto,
+    
     compras: number,
     carritos: number
 }
@@ -24,7 +25,7 @@ export interface IProducto2Send {
     tipoproducto: I2Send
 }
 
-export interface IPageProduct {
+export interface IPageProducto {
     content: IProducto[];
     totalElements: number,
     totalPages: number
