@@ -20,7 +20,8 @@ export class IconService {
       case strIcon == "factura": return "fas fa-file-invoice-dollar";
       case strIcon == "carrito": return "fas fa-shopping-cart";
       case strIcon == "fecha": return "far fa-clock";
-      case strIcon == "pagado": return "fas fa-dollar-sign";
+      case strIcon == "cantidad": return "fas fa-mountain";
+      case strIcon == "euro": return "fas fa-euro-sign";      
       case strIcon == "fecha": return "far fa-clock";
       case strIcon == "porcentaje": return "fas fa-percent";
       // 
