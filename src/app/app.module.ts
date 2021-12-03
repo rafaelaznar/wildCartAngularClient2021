@@ -10,7 +10,7 @@ import { HomeComponent } from './component/home/home.component';
 import { LogoutComponent } from './component/logout/logout.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { SessionService } from './service/session.service';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { SessionResolver } from './resolve/session.resolve';
 import { PlistPostComponent } from './component/post/plist/plist.component';
 import { PostService } from './service/post.service';
@@ -71,7 +71,6 @@ import { IconService } from './service/icon.service';
 import { GenerateComponent } from './component/generate/generate.component';
 import { RandomLoadService } from './service/randomload.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +79,7 @@ import { RandomLoadService } from './service/randomload.service';
     FooterComponent,
     MenuComponent,
     LoginComponent,
-    HomeComponent,  
+    HomeComponent,
     LogoutComponent,
     GenerateComponent,
 
@@ -99,45 +98,49 @@ import { RandomLoadService } from './service/randomload.service';
     PlistTipousuarioComponent,
     ViewTipousuarioComponent,
     EditTipousuarioComponent,
-  
+
     PlistUsuarioComponent,
     NewUsuarioComponent,
     ViewUsuarioComponent,
     EditUsuarioComponent,
     RemoveUsuarioComponent,
-  
+
     PlistTipoproductoComponent,
     NewTipoproductoComponent,
     ViewTipoproductoComponent,
     EditTipoproductoComponent,
     RemoveTipoproductoComponent,
-  
+
     PlistProductoComponent,
     NewProductoComponent,
     ViewProductoComponent,
     EditProductoComponent,
     RemoveProductoComponent,
-  
+
     PlistCompraComponent,
     NewCompraComponent,
     ViewCompraComponent,
     EditCompraComponent,
     RemoveCompraComponent,
-  
+
     PlistFacturaComponent,
     NewFacturaComponent,
     ViewFacturaComponent,
     EditFacturaComponent,
     RemoveFacturaComponent,
 
-
+    PlistCarritoComponent,
+    NewCarritoComponent,
+    ViewCarritoComponent,
+    RemoveCarritoComponent,
+    EditCarritoComponent,
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     SessionService,
@@ -155,6 +158,6 @@ import { RandomLoadService } from './service/randomload.service';
     IconService,
     RandomLoadService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

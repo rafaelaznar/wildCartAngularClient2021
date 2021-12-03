@@ -45,9 +45,9 @@ import { EditCarritoComponent } from './component/carrito/edit/edit-carrito.comp
 import { RemoveCarritoComponent } from './component/carrito/remove/remove-carrito.component';
 import { GenerateComponent } from './component/generate/generate.component';
 
-
 const routes: Routes = [
   { path: '', component: HomeComponent, resolve: { message: SessionResolver } },
+
   { path: 'home', component: HomeComponent, resolve: { message: SessionResolver } },
   { path: 'login', component: LoginComponent, resolve: { message: SessionResolver } },
   { path: 'logout', component: LogoutComponent, resolve: { message: SessionResolver } },
@@ -61,55 +61,58 @@ const routes: Routes = [
   { path: 'edit/:id', component: EditPostComponent, resolve: { message: SessionResolver } },
   { path: 'remove/:id', component: RemovePostComponent, resolve: { message: SessionResolver } },
 
+  { path: 'home', component: HomeComponent, resolve: { message: SessionResolver } },
+  { path: 'login', component: LoginComponent, resolve: { message: SessionResolver } },
+  { path: 'logout', component: LogoutComponent, resolve: { message: SessionResolver } },
+  { path: 'read/:id', component: ReadComponent, resolve: { message: SessionResolver } },
+  { path: 'plist', component: PlistPostComponent, resolve: { message: SessionResolver } },
+  { path: 'new', component: NewPostComponent, resolve: { message: SessionResolver } },
+  { path: 'view/:id', component: ViewPostComponent, resolve: { message: SessionResolver } },
+  { path: 'edit/:id', component: EditPostComponent, resolve: { message: SessionResolver } },
+  { path: 'remove/:id', component: RemovePostComponent, resolve: { message: SessionResolver } },
   { path: 'tipousuario/plist', component: PlistTipousuarioComponent, resolve: { message: SessionResolver } },
   { path: 'tipousuario/view/:id', component: ViewTipousuarioComponent, resolve: { message: SessionResolver } },
-  { path: 'tipousuario/edit/:id', component: EditTipousuarioComponent, resolve: { message: SessionResolver } },  
-
+  { path: 'tipousuario/edit/:id', component: EditTipousuarioComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/plist', component: PlistUsuarioComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/plist/:id_tipousuario', component: PlistUsuarioComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/new', component: NewUsuarioComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/view/:id', component: ViewUsuarioComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/edit/:id', component: EditUsuarioComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/remove/:id', component: RemoveUsuarioComponent, resolve: { message: SessionResolver } },
-
   { path: 'tipoproducto/plist', component: PlistTipoproductoComponent, resolve: { message: SessionResolver } },
   { path: 'tipoproducto/new', component: NewTipoproductoComponent, resolve: { message: SessionResolver } },
   { path: 'tipoproducto/view/:id', component: ViewTipoproductoComponent, resolve: { message: SessionResolver } },
   { path: 'tipoproducto/edit/:id', component: EditTipoproductoComponent, resolve: { message: SessionResolver } },
   { path: 'tipoproducto/remove/:id', component: RemoveTipoproductoComponent, resolve: { message: SessionResolver } },
-
   { path: 'producto/plist', component: PlistProductoComponent, resolve: { message: SessionResolver } },
-  { path: 'producto/plist/tipoproducto/:id_tipoproducto', component: PlistProductoComponent, resolve: { message: SessionResolver } },  
+  { path: 'producto/plist/tipoproducto/:id_tipoproducto', component: PlistProductoComponent, resolve: { message: SessionResolver } },
   { path: 'producto/new', component: NewProductoComponent, resolve: { message: SessionResolver } },
   { path: 'producto/view/:id', component: ViewProductoComponent, resolve: { message: SessionResolver } },
   { path: 'producto/edit/:id', component: EditProductoComponent, resolve: { message: SessionResolver } },
   { path: 'producto/remove/:id', component: RemoveProductoComponent, resolve: { message: SessionResolver } },
-
   { path: 'compra/plist', component: PlistCompraComponent, resolve: { message: SessionResolver } },
   { path: 'compra/new', component: NewCompraComponent, resolve: { message: SessionResolver } },
   { path: 'compra/view/:id', component: ViewCompraComponent, resolve: { message: SessionResolver } },
   { path: 'compra/edit/:id', component: EditCompraComponent, resolve: { message: SessionResolver } },
   { path: 'compra/remove/:id', component: RemoveCompraComponent, resolve: { message: SessionResolver } },
-  { path: 'compra/plist/factura/:id_factura', component: PlistCompraComponent, resolve: { message: SessionResolver } },  
-  { path: 'compra/plist/producto/:id_producto', component: PlistCompraComponent, resolve: { message: SessionResolver } },  
-
-
+  { path: 'compra/plist/factura/:id_factura', component: PlistCompraComponent, resolve: { message: SessionResolver } },
+  { path: 'compra/plist/producto/:id_producto', component: PlistCompraComponent, resolve: { message: SessionResolver } },
   { path: 'factura/plist', component: PlistFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'factura/new', component: NewFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'factura/view/:id', component: ViewFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'factura/edit/:id', component: EditFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'factura/remove/:id', component: RemoveFacturaComponent, resolve: { message: SessionResolver } },
-
   { path: 'carrito/plist', component: PlistCarritoComponent, resolve: { message: SessionResolver } },
+  { path: 'carrito/plist/producto/:idproducto', component: PlistCarritoComponent, resolve: { message: SessionResolver } },
+  { path: 'carrito/plist/usuario/:idusuario', component: PlistCarritoComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/new', component: NewCarritoComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/view/:id', component: ViewCarritoComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/edit/:id', component: EditCarritoComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/remove/:id', component: RemoveCarritoComponent, resolve: { message: SessionResolver } }
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

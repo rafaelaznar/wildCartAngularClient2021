@@ -1,50 +1,112 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { Subject } from 'rxjs';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { IconService } from 'src/app/service/icon.service';
 import { IUserType } from 'src/app/model/tipousuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
+declare let $: any;
+
 @Component({
-	selector: 'app-edit-tipousuario',
-	templateUrl: './edit-tipousuario.component.html',
-	styleUrls: ['./edit-tipousuario.component.css'],
+  selector: 'app-edit-tipousuario',
+  templateUrl: './edit-tipousuario.component.html',
+  styleUrls: ['./edit-tipousuario.component.css'],
 })
 export class EditTipousuarioComponent implements OnInit {
-	formUpdatePost: FormGroup;
-	id: number = null;
-	oUserType: IUserType;
+  strEntity: string = 'tipousuario';
+  strOperation: string = 'edit';
+  strTitleSingular: string = 'Tipo de usuario';
+  strTitlePlural: string = 'Tipos de usuario';
+  oUserType: IUserType = null;
+  oUserTypeToSend: IUserType = null;
+  id: number = null;
+  oForm: FormGroup = null;
+  strResult: string = null;
+  oUserSession: IUsuario;
 
-	constructor(
-		private FormBuilder: FormBuilder,
-		private oActivatedRoute: ActivatedRoute,
-		public oUserTypeService: TipousuarioService
-	) {
-		this.formUpdatePost = <FormGroup>this.FormBuilder.group({
-			id: [''],
-			nombre: ['', [Validators.required, Validators.minLength(4)]],
-		});
+  get f() {
+    return this.oForm.controls;
+  }
 
-		this.id = this.oActivatedRoute.snapshot.params.id;
-		this.oUserTypeService.view(this.id).subscribe((data: IUserType) => {
-			this.formUpdatePost = <FormGroup>this.FormBuilder.group({
-				id: [data.id],
-				nombre: [data.nombre, [Validators.required, Validators.minLength(4)]],
-			});
-		});
-	}
+  constructor(
+    private oFormBuilder: FormBuilder,
+    private oRoute: ActivatedRoute,
+    private oRouter: Router,
+    private oTipoUsuarioService: TipousuarioService,
+    private oActivatedRoute: ActivatedRoute,
+    private oLocation: Location,
+    public oIconService: IconService
+  ) {
+    if (this.oRoute.snapshot.data.message) {
+      this.oUserSession = this.oRoute.snapshot.data.message;
+      localStorage.setItem(
+        'user',
+        JSON.stringify(this.oRoute.snapshot.data.message)
+      );
+    } else {
+      localStorage.clear();
+      oRouter.navigate(['/home']);
+    }
 
-	ngOnInit(): void {}
+    this.id = this.oActivatedRoute.snapshot.params.id;
+    this.getOne();
+  }
 
-	updateUserType(): void {
-		if (this.formUpdatePost.get('nombre')!.valid) {
-			let data: any = this.oUserTypeService.postJsonFormater(
-				this.formUpdatePost
-			);
-			this.oUserTypeService.edit(data).subscribe((data: IUserType) => {
-				console.log(data);
-			});
+  ngOnInit(): void {}
 
-			this.oUserTypeService.redirectPlist();
-		}
-	}
+  getOne = (): void => {
+    this.oTipoUsuarioService.view(this.id).subscribe((oData: IUserType) => {
+      this.oUserType = oData;
+      this.oForm = this.oFormBuilder.group({
+        id: [this.id],
+        nombre: [
+          this.oUserType.nombre,
+          [Validators.required, Validators.minLength(4)],
+        ],
+      });
+    });
+  };
+
+  onSubmit(): void {
+    if (this.oForm) {
+      this.oUserTypeToSend = {
+        id: this.oForm.value.id,
+        nombre: this.oForm.value.nombre,
+      };
+      this.update();
+    }
+  }
+
+  update = (): void => {
+    this.oTipoUsuarioService
+      .edit(JSON.stringify(this.oUserTypeToSend))
+      .subscribe((oCarritoPlist: IUserType) => {
+        if (oCarritoPlist.id) {
+          this.strResult = this.strTitleSingular + ' modificado correctamente';
+        } else {
+          this.strResult =
+            this.strTitleSingular + ': error en la modificación del registro';
+        }
+        this.openModal();
+      });
+  };
+
+  goBack(): void {
+    this.oLocation.back();
+  }
+
+  //modal
+
+  eventsSubject: Subject<void> = new Subject<void>();
+
+  openModal(): void {
+    this.eventsSubject.next();
+  }
+
+  closeModal(): void {
+    this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
+  }
 }
