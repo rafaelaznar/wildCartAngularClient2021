@@ -7,6 +7,7 @@ import { API_URL, httpOptions } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
+
 export class GenerateService {
   constructor(private http: HttpClient) { }
 
