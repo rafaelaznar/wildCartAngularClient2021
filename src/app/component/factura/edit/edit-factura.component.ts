@@ -6,6 +6,7 @@ import { FacturaService } from 'src/app/service/factura.service';
 import { DateTimeService } from 'src/app/service/datetime.service';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
+import { IconService } from 'src/app/service/icon.service';
 
 declare let $: any;
 
@@ -22,6 +23,10 @@ export class EditFacturaComponent implements OnInit {
   oForm: FormGroup = null;
   strResult: string = null;
   strUsuarioSession: string;
+  strEntity: string = "factura"
+  strOperation: string = "edit"
+  strTitleSingular: string = "Factura";
+  strTitlePlural: string = "Facturas";
 
   get f() { return this.oForm.controls; }
 
@@ -31,7 +36,9 @@ export class EditFacturaComponent implements OnInit {
     private oFacturaService: FacturaService,
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
-    private oDateTimeService: DateTimeService
+    private oDateTimeService: DateTimeService,
+    public oIconService: IconService    
+
   ) {
 
     if (this.oActivatedRoute.snapshot.data.message) {

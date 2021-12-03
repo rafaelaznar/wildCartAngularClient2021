@@ -2,30 +2,32 @@
 
 <div class="container my-3">
 
-    <app-header [title]="'Borrado de un Post'" [icon]="'fas fa-trash'"></app-header>
+    <app-header [title]="'Borrado de ' + strTitleSingular" [icon]="oIconService.getIcon(this.strOperation)"
+    [iconEntity]="oIconService.getIcon(this.strEntity)">
+  </app-header>
 
     <div class="row justify-content-center">
         <table class="table table-striped">
             <tbody>
                 <tr>
-                    <th>ID</th>
+                    <th> <i [ngClass]="oIconService.getIcon('id')"></i> ID</th>
                     <td>{{oFactura?.id}}</td>
                 </tr>
                 <tr>
-                    <th>Iva</th>
+                    <th> <i [ngClass]="oIconService.getIcon('porcentaje')"></i> Iva</th>
                     <td>{{oFactura?.iva}}</td>
                 </tr>
                 <tr>
-                    <th>Usuario</th>
+                    <th><i [ngClass]="oIconService.getIcon('usuario')"></i> Usuario</th>
                     <td>{{oFactura?.usuario.nombre}} {{oFactura?.usuario.apellido1}} {{oFactura?.usuario.apellido2}}</td>
                 </tr>
                 <tr>
-                    <th>Fecha</th>
+                    <th> <i [ngClass]="oIconService.getIcon('fecha')"></i> Fecha</th>
                     <td>{{oFactura?.fecha }}</td>
                 </tr>
                
                 <tr>
-                    <th>Pagado</th>
+                    <th> <i [ngClass]="oIconService.getIcon('pagado')"></i> Pagado</th>
                     <td [innerHTML]="oFactura?.pagado | showBoolean"></td>
                 </tr>
             </tbody>

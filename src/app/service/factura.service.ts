@@ -42,15 +42,20 @@ export class FacturaService {
  // }
 
   
-  getPage(rpp: number, page: number, filter: string, order: string, direction: string): Observable<IPageFactura> {
+ getPage(rpp: number, page: number, filter: string, order: string, direction: string, idusuario:number): Observable<IPageFactura> {
    
-    let strOrderUrl: string = "";
-  
-    if (order) {
-      strOrderUrl += "&sort=" + order + "," + direction;
-    }
-    return this.http.get<IPageFactura>(this.sURL + "/page" + "?size=" + rpp + "&page=" + page + strOrderUrl, httpOptions);
+  let strOrderUrl: string = "";
+
+  if (order) {
+    strOrderUrl += "&sort=" + order + "," + direction;
   }
+  if(idusuario <0){
+  return this.http.get<IPageFactura>(this.sURL + "/page" + "?size=" + rpp + "&page=" + page + strOrderUrl, httpOptions);
+  
+
+  }else return this.http.get<IPageFactura>(this.sURL + "/filter/"+ idusuario + "?size=" + rpp + "&page=" + page + strOrderUrl, httpOptions);
+  
+}
 
   Random(): Observable<IFactura> {
     return this.http.post<IFactura>(this.sURL + "/random" , httpOptions);

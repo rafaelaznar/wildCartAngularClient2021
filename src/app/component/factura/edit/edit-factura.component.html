@@ -2,18 +2,17 @@
 
 <div class="container my-3">
 
-    <div class="row justify-content-center my-5">
-        <div class="col-md text-start">
-            <h2><i class="fas fa plus me-3"></i>Edición de Factura</h2>
-        </div>
-    </div>
+    <app-header [title]="'Edición de ' + strTitleSingular" [icon]="oIconService.getIcon(this.strOperation)"
+    [iconEntity]="oIconService.getIcon(this.strEntity)">
+  </app-header>
+
 
     <div class="row justify-content-center">
 
         <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
 
             <div class="row mb-3">
-                <label for="id" class="col-sm-2 col-form-label">ID</label>
+                <label for="id" class="col-sm-2 col-form-label"> <i [ngClass]="oIconService.getIcon('id')"></i> ID</label>
                 <div class="col-sm-10">
                     <input class="form-control" formControlName="id" type="text" placeholder="{{id}}"readonly >
                 </div>
@@ -21,7 +20,7 @@
 
 
             <div class="row mb-3">
-                <label for="fecha" class="col-sm-2 col-form-label">Fecha</label>
+                <label for="fecha" class="col-sm-2 col-form-label"> <i [ngClass]="oIconService.getIcon('fecha')"></i> Fecha</label>
                 <div class="col-sm-10">
                     <input type="text" name="fecha" id="fecha" formControlName="fecha"
                         class="text ui-widget-content ui-corner-all" />
@@ -33,7 +32,7 @@
 
 
             <div class="row mb-3">
-                <label for="iva" class="col-sm-2 col-form-label">IVA</label>
+                <label for="iva" class="col-sm-2 col-form-label"> <i [ngClass]="oIconService.getIcon('porcentaje')"></i> IVA</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="iva" formControlName="iva" 
                         [ngClass]="{'is-valid' : f.iva.dirty && !(f.iva.errors?.required || f.iva.errors?.minlength) }">
@@ -46,7 +45,7 @@
 
 
             <div class="row mb-3">
-                <label for="pagado" class="col-sm-2 col-form-label">Pagado</label>
+                <label for="pagado" class="col-sm-2 col-form-label"> <i [ngClass]="oIconService.getIcon('pagado')"></i> Pagado</label>
                 <div class="col-sm-10">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="pagado" formControlName="pagado">
@@ -58,7 +57,7 @@
             </div>
 
             <div class="row mb-3">
-                <label for="id_usuario" class="col-sm-2 col-form-label">ID Usuario</label>
+                <label for="id_usuario" class="col-sm-2 col-form-label"> <i [ngClass]="oIconService.getIcon('usuario')"></i> Usuario</label>
                 <div class="col-sm-10">
                     <input type="number" class="form-control" id="id_usuario" formControlName="id_usuario" >
                 </div>
