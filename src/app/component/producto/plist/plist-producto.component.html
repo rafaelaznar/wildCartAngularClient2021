@@ -142,12 +142,12 @@
             <td style="text-align: right;">{{fila.precio}}€</td>
             <td style="text-align: center;">{{fila.imagen}}</td>
             <td style="text-align: center;">{{fila.descuento}}%</td>
-            <td>
-                  <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/compra/plist/producto/' + fila.compras]">{{fila?.compras}}
+            <td style="text-align: center;">
+                  <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/compra/plist/producto',fila.id]">{{fila?.compras}}
                 <i [ngClass]="oIconService.getIcon('compra')"></i></button>
             </td>
-            <td>
-              <button class="btn btn-outline-secondary btn-sm"[routerLink]="['/carrito/plist/producto/' + fila.carritos]">{{fila?.carritos}}
+            <td style="text-align: center;">
+              <button class="btn btn-outline-secondary btn-sm"[routerLink]="['/carrito/plist/producto',fila.id]">{{fila?.carritos}}
                 <i [ngClass]="oIconService.getIcon('carrito')"></i></button>
             </td>
             <td>
