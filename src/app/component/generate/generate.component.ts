@@ -59,45 +59,81 @@ export class GenerateComponent implements OnInit {
   }
 
   generateProductos(n: number): void {
-    this.oGenerateService.generateProductos(n).subscribe(number => {
-      this.strResult = "Se han creado " + number + " registros";
-      this.openModal();
-    })
+    this.oGenerateService.generateProductos(n).subscribe(
+      (num: number) => {
+        this.strResult = "Ahora hay " + num + " productos";
+        this.openModal();
+      },
+      err => {
+        this.strResult = "ERROR: " + err.message;
+        console.error('ERROR: ', err);
+        this.openModal();
+      })
   }
 
   generateUsuarios(n: number): void {
-    this.oGenerateService.generateUsuarios(n).subscribe(number => {
-      this.strResult = "Se han creado " + number + " registros";
-      this.openModal();
-    })
+    this.oGenerateService.generateUsuarios(n).subscribe(
+      (num: number) => {
+        this.strResult = "Ahora hay " + num + " usuarios";
+        this.openModal();
+      },
+      err => {
+        this.strResult = "ERROR: " + err.message;
+        console.error('ERROR: ', err);
+        this.openModal();
+      })
   }
 
   generateTiposDeProductos(n: number): void {
-    this.oGenerateService.generateTiposDeProductos(n).subscribe(number => {
-      this.strResult = "Se han creado " + number + " registros";
-      this.openModal();
-    })
+    this.oGenerateService.generateTiposDeProductos(n).subscribe(
+      (num: number) => {
+        this.strResult = "Ahora hay " + num + " productos";
+        this.openModal();
+      },
+      err => {
+        this.strResult = "ERROR: " + err.message;
+        console.error('ERROR: ', err);
+        this.openModal();
+      })
   }
 
   generateCompras(n: number): void {
-    this.oGenerateService.generateCompras(n).subscribe(number => {
-      this.strResult = "Se han creado " + number + " registros";
-      this.openModal();
-    })
+    this.oGenerateService.generateCompras(n).subscribe(
+      (num: number) => {
+        this.strResult = "Se han creado " + num + " compras";
+        this.openModal();
+      },
+      err => {
+        this.strResult = "ERROR: " + err.message;
+        console.error('ERROR: ', err);
+        this.openModal();
+      })
   }
 
   generateFacturas(n: number): void {
-    this.oGenerateService.generateFacturas(n).subscribe(number => {
-      this.strResult = "Se han creado " + number + " registros";
-      this.openModal();
-    })
+    this.oGenerateService.generateFacturas(n).subscribe(
+      (num: number) => {
+        this.strResult = "Ahora hay " + num + " facturas";
+        this.openModal();
+      },
+      err => {
+        this.strResult = "ERROR: " + err.message;
+        console.error('ERROR: ', err);
+        this.openModal();
+      })
   }
 
   generateCarritos(n: number): void {
-    this.oGenerateService.generateCarritos(n).subscribe(number => {
-      this.strResult = "Se han creado " + number + " registros";
-      this.openModal();
-    })
+    this.oGenerateService.generateCarritos(n).subscribe(
+      (num: number) => {
+        this.strResult = "Ahora hay " + num + " carritos";
+        this.openModal();
+      },
+      err => {
+        this.strResult = "ERROR: " + err.message;
+        console.error('ERROR: ', err);
+        this.openModal();
+      })
   }
 
 

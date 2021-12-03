@@ -8,6 +8,7 @@ import { API_URL, httpOptions } from 'src/environments/environment';
   providedIn: 'root',
 })
 
+
 export class GenerateService {
   constructor(private http: HttpClient) { }
 
@@ -44,23 +45,23 @@ export class GenerateService {
   }
 
   generateUsuarios(n: number): Observable<number> {
-    return this.http.post<number>(API_URL + '/usuario/generate/' + n, httpOptions);
+    return this.http.post<number>(API_URL + '/usuario/generate/' + n, { amount: n }, httpOptions);
   }
 
   generateTiposDeProductos(n: number): Observable<number> {
-    return this.http.post<number>(API_URL + '/tipoproducto/generate/' + n, httpOptions);
+    return this.http.post<number>(API_URL + '/tipoproducto/generate/' + n, { amount: n }, httpOptions);
   }
 
   generateFacturas(n: number): Observable<number> {
-    return this.http.post<number>(API_URL + '/factura/generate/' + n, httpOptions);
+    return this.http.post<number>(API_URL + '/factura/generate/' + n, { amount: n }, httpOptions);
   }
-  
+
   generateCompras(n: number): Observable<number> {
-    return this.http.post<number>(API_URL + '/compra/generate/' + n, httpOptions);
+    return this.http.post<number>(API_URL + '/compra/generate/' + n, { amount: n }, httpOptions);
   }
 
   generateCarritos(n: number): Observable<number> {
-    return this.http.post<number>(API_URL + '/carrito/generate/' + n, httpOptions);
+    return this.http.post<number>(API_URL + '/carrito/generate/' + n, { amount: n }, httpOptions);
   }
 
 }
