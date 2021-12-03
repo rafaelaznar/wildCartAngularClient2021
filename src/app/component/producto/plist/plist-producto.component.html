@@ -107,6 +107,23 @@
                 *ngIf="strSortField=='descuento'&&strSortDirection=='desc'"></i>
 
             </th>
+            
+            <th (click)="doSetOrder('compra')">Compras <i
+              [ngClass]="oIconService.getIcon('compra')"></i>
+              <i [ngClass]="oIconService.getIcon('flechaUp')"
+                *ngIf="strSortField=='compra'&&strSortDirection=='asc'"></i>
+              <i [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="strSortField=='compra'&&strSortDirection=='desc'"></i>
+            </th>
+
+            <th (click)="doSetOrder('carrito')">Carrito <i
+              [ngClass]="oIconService.getIcon('carrito')"></i>
+              <i [ngClass]="oIconService.getIcon('flechaUp')"
+                *ngIf="strSortField=='carrito'&&strSortDirection=='asc'"></i>
+              <i [ngClass]="oIconService.getIcon('flechaDown')"
+                *ngIf="strSortField=='carrito'&&strSortDirection=='desc'"></i>
+            </th>
+
             <th (click)="doSetOrder('tipoproducto')"> Tipo Producto <i
                 [ngClass]="oIconService.getIcon('tipoproducto')"></i>
               <i [ngClass]="oIconService.getIcon('flechaUp')"
@@ -127,6 +144,16 @@
             <td style="text-align: right;">{{fila.precio}}€</td>
             <td style="text-align: center;">{{fila.imagen}}</td>
             <td style="text-align: center;">{{fila.descuento}}%</td>
+            <td>
+              <a style="text-decoration:none" [routerLink]="['compra/plist/producto/' + fila.compras]">
+                <i [ngClass]="oIconService.getIcon('compra')"></i> ({{fila.compras}})
+                {{fila?.compras}}</a>
+            </td>
+            <td>
+              <a style="text-decoration:none" [routerLink]="['carrito/plist/producto/' + fila.carritos]">
+                <i [ngClass]="oIconService.getIcon('carrito')"></i> ({{fila.carritos}})
+                {{fila?.carritos}}</a>
+            </td>
             <td>
               <a style="text-decoration:none" [routerLink]="['/' + strEntity + '/' + strOperation + '/tipoproducto/' + fila.tipoproducto.id]">
                 <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> ({{fila.tipoproducto.id}})
