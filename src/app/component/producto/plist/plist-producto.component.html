@@ -107,6 +107,8 @@
                 *ngIf="strSortField=='descuento'&&strSortDirection=='desc'"></i>
 
             </th>
+
+
             <th (click)="doSetOrder('tipoproducto')"> Tipo Producto <i
                 [ngClass]="oIconService.getIcon('tipoproducto')"></i>
               <i [ngClass]="oIconService.getIcon('flechaUp')"
@@ -119,20 +121,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let fila of aProducts">
+          <tr *ngFor="let fila of aProductos">
             <td>{{fila.id}}</td>
             <td>{{fila.codigo}}</td>
             <td>{{fila.nombre| trim:50}}</td>
             <td style="text-align: center;">{{fila.existencias}}</td>
             <td style="text-align: right;">{{fila.precio}}€</td>
             <td style="text-align: center;">{{fila.imagen}}</td>
-            <td style="text-align: center;">{{fila.descuento}}%</td>
+            <td style="text-align: center;">{{fila.descuento}}%</td>  
             <td>
-              <a style="text-decoration:none" [routerLink]="['/' + strEntity + '/' + strOperation + '/tipoproducto/' + fila.tipoproducto.id]">
+              <a style="text-decoration:none"
+                [routerLink]="['/' + strEntity + '/' + strOperation + '/tipoproducto/' + fila.tipoproducto.id]">
                 <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> ({{fila.tipoproducto.id}})
                 {{fila.tipoproducto.nombre | trim}}</a>
             </td>
-
             <td class="text-center">
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
                 <button type="button" class="btn btn-success" [routerLink]="['/' + strEntity + '/view/' + fila.id]"><i

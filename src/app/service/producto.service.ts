@@ -29,7 +29,7 @@ export class ProductoService {
     return this.http.put<IProducto>(this.sURL + "/", oProduct, httpOptions);
   }
 
-  getPage(rpp: number, page: number, filter: string, order: string, direction: string, tipoproducto: number): Observable<IPageProducto> {  
+  getPage(rpp: number, page: number, filter: string, order: string, direction: string, tipoproducto: number): Observable<IPageProducto> {
     let strOrderUrl: string = "";
     if (order) {
       strOrderUrl += "&sort=" + order + "," + direction;
@@ -37,9 +37,9 @@ export class ProductoService {
     if (filter) {
       strOrderUrl += "&filter=" + filter;
     }
-    if (tipoproducto){
+    if (tipoproducto) {
       strOrderUrl += "&tipoproducto=" + tipoproducto;
     }
-    return this.http.get<IPageProducto>(this.sURL + "?page=" + page + "&size=" + rpp + strOrderUrl, httpOptions);
+    return this.http.get<IPageProducto>(this.sURL + "?page=" + (page - 1) + "&size=" + rpp + strOrderUrl, httpOptions);
   }
 }
