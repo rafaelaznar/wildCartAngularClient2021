@@ -44,6 +44,7 @@ import { ViewCarritoComponent } from './component/carrito/view/view-carrito.comp
 import { EditCarritoComponent } from './component/carrito/edit/edit-carrito.component';
 import { RemoveCarritoComponent } from './component/carrito/remove/remove-carrito.component';
 import { GenerateComponent } from './component/generate/generate.component';
+import { ReportsComponent } from './component/reports/reports.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, resolve: { message: SessionResolver } },
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, resolve: { message: SessionResolver } },
   { path: 'logout', component: LogoutComponent, resolve: { message: SessionResolver } },
   { path: 'random/load', component: GenerateComponent, resolve: { message: SessionResolver } },
+  { path: 'reports', component: ReportsComponent, resolve: { message: SessionResolver } },
 
   { path: 'read/:id', component: ReadComponent, resolve: { message: SessionResolver } },
 

@@ -41,7 +41,8 @@ export class IconService {
       case strIcon == "edit": return "fas fa-pen";      
       case strIcon == "random": return "fas fa-random";
       //
-      case strIcon == "print": return "fas fa-print";
+      case strIcon == "imprimir": return "fas fa-print";
+      case strIcon == "informe": return "fas fa-file-alt";
       case strIcon.startsWith("report"): return "fas fa-copy";
       // 
       case strIcon == "home": return "fas fa-home";

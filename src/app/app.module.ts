@@ -71,6 +71,7 @@ import { IconService } from './service/icon.service';
 import { GenerateComponent } from './component/generate/generate.component';
 import { GenerateService } from './service/generate.service';
 import { CountService } from './service/count.service';
+import { ReportsComponent } from './component/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { CountService } from './service/count.service';
     HomeComponent,
     LogoutComponent,
     GenerateComponent,
+    ReportsComponent,
 
     ReadComponent,
     LookPostComponent,

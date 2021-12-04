@@ -41,3 +41,8 @@ export interface IPost2Send {
     etiquetas: string,
     visible: boolean
 }
+
+export interface IReport {
+    codigo: string,
+    nombre: string
+}
