@@ -13,7 +13,7 @@ export class GenerateService {
   constructor(private http: HttpClient) { }  
 
   generateProductos(n: number): Observable<number> {
-    return this.http.post<number>(API_URL + '/producto/generate/' + n, httpOptions);
+    return this.http.post<number>(API_URL + '/producto/generate/' + n, { amount: n }, httpOptions);
   }
 
   generateUsuarios(n: number): Observable<number> {
