@@ -10,11 +10,11 @@ import { IconService } from 'src/app/service/icon.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
-  selector: 'app-plist-factura-routed.',
+  selector: 'app-factura-plist-routed.',
   templateUrl: './factura-plist-routed.component.html',
   styleUrls: ['./factura-plist-routed.component.css']
 })
-export class PlistFacturaRoutedComponent implements OnInit {
+export class FacturaPlistRoutedComponent implements OnInit {
   strEntity: string = "factura"
   strOperation: string = "plist"
   strTitleSingular: string = "Factura";
