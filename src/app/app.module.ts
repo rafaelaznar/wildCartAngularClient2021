@@ -70,6 +70,7 @@ import { PopupComponent } from './component/shared/unrouted/popup/popup.componen
 import { UsuarioViewUnroutedComponent } from './component/application/unrouted/usuario/view/usuario-view-unrouted.component';
 import { FileService } from './service/file.service';
 import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
+import { TipoProductoPlistUnroutedComponent } from './component/application/unrouted/tipousuario/plist/tipoproductoplistunrouted/tipoproducto-plist-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,7 @@ import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint
     GenerateComponent,
     ReportsComponent,
     // pipes
-    TrimPipe,    
+    TrimPipe,
     showDateTimePipe,
     showBooleanPipe,
     // Tipousuario routed components
@@ -122,7 +123,7 @@ import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint
     // Factura routed components
     PlistFacturaComponent,
     ViewFacturaComponent,
-    NewFacturaComponent,    
+    NewFacturaComponent,
     EditFacturaComponent,
     RemoveFacturaComponent,
     // Carrito routed components
@@ -133,7 +134,8 @@ import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint
     EditCarritoComponent,
     // Usuario unrouted components
     UsuarioPlistUnroutedComponent,
-    UsuarioViewUnroutedComponent
+    UsuarioViewUnroutedComponent,
+    TipoProductoPlistUnroutedComponent,
   ],
   imports: [
     HttpClientModule,
@@ -158,7 +160,7 @@ import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint
     IconService,
     GenerateService,
     CountService,
-    FileService
+    FileService,
   ],
   bootstrap: [AppComponent],
 })

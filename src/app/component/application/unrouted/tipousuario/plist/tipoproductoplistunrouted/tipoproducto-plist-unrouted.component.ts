@@ -1,21 +1,9 @@
-import {
-  Component,
-  ContentChild,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  TemplateRef,
-} from '@angular/core';
-import { IPage, IPost } from 'src/app/model/model-interfaces';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { UsuarioService } from 'src/app/service/usuario.service';
-import { IPageUsuario, IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
-import { debounceTime, map } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { PaginationService } from 'src/app/service/pagination.service';
-import { IProducto } from 'src/app/model/producto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import {
   IPageTipoProducto,
@@ -24,11 +12,10 @@ import {
 
 @Component({
   selector: 'app-tipoproductoplistunrouted',
-  templateUrl: './tipoproductoplistunrouted.component.html',
-  styleUrls: ['./tipoproductoplistunrouted.component.css'],
+  templateUrl: './tipoproducto-plist-unrouted.component.html',
+  styleUrls: ['./tipoproducto-plist-unrouted.component.css'],
 })
-export class TipoproductoplistunroutedComponent implements OnInit {
-  @Input() id_tipoproducto: number = null;
+export class TipoProductoPlistUnroutedComponent implements OnInit {
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() selection = new EventEmitter<number>();
   //@ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
@@ -71,59 +58,29 @@ export class TipoproductoplistunroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    if (this.id_tipoproducto) {
-      this.oPostService
-        .getPage(
-          this.pageSize,
-          this.page,
-          this.currentSortField,
-          this.currentSortDirection,
-          this.strFilter
-        )
-        .subscribe((oPage: IPageTipoProducto) => {
-          if (this.strFilter) {
-            this.strFilteredMessage =
-              'Listado filtrado por el tipo de usuario ' +
-              this.id_tipoproducto +
-              ' y por ' +
-              this.strFilter;
-          } else {
-            this.strFilteredMessage =
-              'Listado filtrado por el tipo de usuario ' + this.id_tipoproducto;
-          }
-          this.aPosts = oPage.content;
-          this.nTotalElements = oPage.totalElements;
-          this.totalPages = oPage.totalPages;
-          this.barraPaginacion = this.oPaginationService.pagination(
-            this.totalPages,
-            this.page
-          );
-        });
-    } else {
-      this.oPostService
-        .getPage(
-          this.pageSize,
-          this.page,
-          this.strFilter,
-          this.currentSortField,
-          this.currentSortDirection
-        )
-        .subscribe((oPage: IPageTipoProducto) => {
-          if (this.strFilter) {
-            this.strFilteredMessage = 'Listado filtrado por ' + this.strFilter;
-          } else {
-            this.strFilteredMessage = 'Listado NO filtrado';
-          }
-          this.aPosts = oPage.content;
-          this.nTotalElements = oPage.totalElements;
-          this.totalPages = oPage.totalPages;
-          this.barraPaginacion = this.oPaginationService.pagination(
-            this.totalPages,
-            this.page
-          );
-          console.log(oPage);
-        });
-    }
+    this.oPostService
+      .getPage(
+        this.pageSize,
+        this.page,
+        this.strFilter,
+        this.currentSortField,
+        this.currentSortDirection
+      )
+      .subscribe((oPage: IPageTipoProducto) => {
+        if (this.strFilter) {
+          this.strFilteredMessage = 'Listado filtrado por ' + this.strFilter;
+        } else {
+          this.strFilteredMessage = 'Listado NO filtrado';
+        }
+        this.aPosts = oPage.content;
+        this.nTotalElements = oPage.totalElements;
+        this.totalPages = oPage.totalPages;
+        this.barraPaginacion = this.oPaginationService.pagination(
+          this.totalPages,
+          this.page
+        );
+        console.log(oPage);
+      });
   };
 
   jumpToPage = () => {
