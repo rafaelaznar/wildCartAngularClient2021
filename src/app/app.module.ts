@@ -48,7 +48,7 @@ import { NewCompraComponent } from './component/application/routed/compra/new/ne
 import { ViewCompraComponent } from './component/application/routed/compra/view/view-compra.component';
 import { RemoveCompraComponent } from './component/application/routed/compra/remove/remove-compra.component';
 import { EditCompraComponent } from './component/application/routed/compra/edit/edit-compra.component';
-import { PlistFacturaComponent } from './component/application/routed/factura/plist/factura-plist-routed.component';
+import { PlistFacturaRoutedComponent } from './component/application/routed/factura/plist/factura-plist-routed.component';
 import { NewFacturaComponent } from './component/application/routed/factura/new/new-factura.component';
 import { ViewFacturaComponent } from './component/application/routed/factura/view/view-factura.component';
 import { RemoveFacturaComponent } from './component/application/routed/factura/remove/remove-factura.component';
@@ -123,7 +123,7 @@ import { TipousuarioPlistUnroutedComponent } from './component/application/unrou
     EditCompraComponent,
     RemoveCompraComponent,
     // Factura routed components
-    PlistFacturaComponent,
+    PlistFacturaRoutedComponent,
     ViewFacturaComponent,
     NewFacturaComponent,
     EditFacturaComponent,
