@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlistFacturaComponent } from './plist-factura.component';
+import { PlistFacturaComponent } from './factura-plist-routed.component';
 
 describe('PlistFacturaComponent', () => {
   let component: PlistFacturaComponent;
