@@ -1,21 +1,25 @@
-import { IPageFactura } from '../../../../../model/factura-interfaces';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IFactura } from 'src/app/model/factura-interfaces';
-import { FacturaService } from 'src/app/service/factura.service';
-import { PaginationService } from 'src/app/service/pagination.service';
-import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Subject } from 'rxjs';
+import { IFactura, IPageFactura } from 'src/app/model/factura-interfaces';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { FacturaService } from 'src/app/service/factura.service';
 import { IconService } from 'src/app/service/icon.service';
+import { PaginationService } from 'src/app/service/pagination.service';
 
 @Component({
-  selector: 'app-plist-factura',
-  templateUrl: './plist-factura.component.html',
-  styleUrls: ['./plist-factura.component.css']
+  selector: 'app-factura-plist-unrouted',
+  templateUrl: './factura-plist-unrouted.component.html',
+  styleUrls: ['./factura-plist-unrouted.component.css']
 })
-export class PlistFacturaComponent implements OnInit {
+export class FacturaPlistUnroutedComponent implements OnInit {
 
- 
+  @Input() id_usuario: number = null;
+  @Input() mode: boolean = true; //true=edición; false=selección
+  @Output() selection = new EventEmitter<number>();
+  //@ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
+
+
   aFacturas: IFactura[];
   totalElements: number;
   totalPages: number;
@@ -120,4 +124,5 @@ export class PlistFacturaComponent implements OnInit {
     }
     this.getPage();
   }
- }
+
+}
