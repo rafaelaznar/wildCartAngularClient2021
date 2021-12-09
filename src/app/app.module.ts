@@ -23,7 +23,7 @@ import { HeaderComponent } from './component/shared/unrouted/header/header.compo
 import { TipousuarioPlistRoutedComponent } from './component/application/routed/tipousuario/plist/tipousuario-plist-routed.component';
 import { TipousuarioEditRoutedComponent } from './component/application/routed/tipousuario/edit/tipousuario-edit-routed.component';
 import { TipousuarioViewRoutedComponent } from './component/application/routed/tipousuario/view/tipousuario-view-routed.component';
-import { PlistTipoproductoComponent } from './component/application/routed/tipoproducto/plist/plist-tipoproducto.component';
+import { PlistTipoproductoComponent } from './component/application/routed/tipoproducto/plist/tipoproducto-plist-routed.component';
 import { NewTipoproductoComponent } from './component/application/routed/tipoproducto/new/new-tipoproducto.component';
 import { EditTipoproductoComponent } from './component/application/routed/tipoproducto/edit/edit-tipoproducto.component';
 import { RemoveTipoproductoComponent } from './component/application/routed/tipoproducto/remove/remove-tipoproducto.component';

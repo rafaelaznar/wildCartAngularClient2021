@@ -20,7 +20,7 @@ import { ProductoRemoveRoutedComponent } from './component/application/routed/pr
 import { ProductoViewRoutedComponent } from './component/application/routed/producto/view/producto-view-routed.component';
 import { EditTipoproductoComponent } from './component/application/routed/tipoproducto/edit/edit-tipoproducto.component';
 import { NewTipoproductoComponent } from './component/application/routed/tipoproducto/new/new-tipoproducto.component';
-import { PlistTipoproductoComponent } from './component/application/routed/tipoproducto/plist/plist-tipoproducto.component';
+import { PlistTipoproductoComponent } from './component/application/routed/tipoproducto/plist/tipoproducto-plist-routed.component';
 import { RemoveTipoproductoComponent } from './component/application/routed/tipoproducto/remove/remove-tipoproducto.component';
 import { ViewTipoproductoComponent } from './component/application/routed/tipoproducto/view/view-tipoproducto.component';
 import { TipousuarioEditRoutedComponent } from './component/application/routed/tipousuario/edit/tipousuario-edit-routed.component';

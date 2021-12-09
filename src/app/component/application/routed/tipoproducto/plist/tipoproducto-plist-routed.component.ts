@@ -9,8 +9,8 @@ import { IconService } from 'src/app/service/icon.service';
 import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-plist-tipoproducto',
-  templateUrl: './plist-tipoproducto.component.html',
+  selector: 'app-tipoproducto-plist-routed',
+  templateUrl: './tipoproducto-plist-routed.component.html',
   styleUrls: ['./plist-tipoproducto.component.css']
 })
 export class PlistTipoproductoComponent implements OnInit {

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlistTipoproductoComponent } from './plist-tipoproducto.component';
+import { PlistTipoproductoComponent } from './tipoproducto-plist-routed.component';
 
 describe('PlistTipoproductoComponent', () => {
   let component: PlistTipoproductoComponent;
