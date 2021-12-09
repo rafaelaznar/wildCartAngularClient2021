@@ -21,7 +21,7 @@
           <td>{{oReport.nombre}}</td>
           <td class="text-center">
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-              <button type="button" class="btn btn-success" (click)="goBack()">
+              <button type="button" class="btn btn-success" (click)="print()">
                 <i [ngClass]="oIconService.getIcon('imprimir')"></i> Imprimir
               </button>
             </div>
@@ -38,7 +38,16 @@
     </a>
   </div>
 
-
 </div>
 
 <app-footer></app-footer>
+
+<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'lg'" [hide]="eventsSubjectHideModal.asObservable()"
+    (close)="onCloseModal()">
+    
+    <app-preprint-unrouted [nombreinforme]="nombreinforme" [showcantidad]="showcantidad" [showfechas]="showfechas" (selection)="onSelection($event)">        
+    </app-preprint-unrouted>
+    
+</app-modal>
+
+<app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()" [size]="'sm'"></app-popup>

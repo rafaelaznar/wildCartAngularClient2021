@@ -69,6 +69,7 @@ import { UsuarioPlistUnroutedComponent } from './component/application/unrouted/
 import { PopupComponent } from './component/shared/unrouted/popup/popup.component';
 import { UsuarioViewUnroutedComponent } from './component/application/unrouted/usuario/view/usuario-view-unrouted.component';
 import { FileService } from './service/file.service';
+import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { FileService } from './service/file.service';
     HeaderComponent,
     FooterComponent,
     MenuComponent,
+    PrePrintComponent,
     // shared routed
     LoginComponent,
     HomeComponent,

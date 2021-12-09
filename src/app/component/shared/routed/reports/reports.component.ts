@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { IconService } from 'src/app/service/icon.service';
 import { IReport } from 'src/app/model/model-interfaces';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-reports',
@@ -12,10 +13,11 @@ export class ReportsComponent implements OnInit {
 
   strEntity: string = "informe"
   strOperation: string = "imprimir"
+
   aReports: IReport[] = [
     { nombre: "N Productos con más descuento", codigo: "i01" },
     { nombre: "N Productos con menos descuento", codigo: "i02" },
-    
+
     { nombre: "N Clientes con más descuento", codigo: "i03" },
     { nombre: "N Clientes con menos descuento", codigo: "i04" },
 
@@ -45,7 +47,7 @@ export class ReportsComponent implements OnInit {
     { nombre: "N Productos que más compra un cliente entre dos fechas", codigo: "i19" },
 
     { nombre: "N Clientes que más compran un producto entre dos fechas", codigo: "i20" }
-    
+
   ];
 
   constructor(
@@ -58,5 +60,54 @@ export class ReportsComponent implements OnInit {
   goBack() {
     this.oLocation.back();
   }
+
+  print() {
+    this.openModal();
+  }
+
+
+  //modal
+
+  nombreinforme = "";
+  codigoinforme = "";
+  showcantidad = true;
+  showfechas = true;
+  showingModal: boolean = false;
+
+  eventsSubjectShowModal: Subject<void> = new Subject<void>();
+  eventsSubjectHideModal: Subject<void> = new Subject<void>();
+
+  openModal(): void {
+    this.eventsSubjectShowModal.next();
+    this.showingModal = true;
+  }
+
+  onCloseModal(): void {
+    //this.oRouter.navigate(['factura/view/' + this.id]);
+  }
+
+  closeModal(): void {
+    this.eventsSubjectHideModal.next();
+    this.showingModal = false;
+  }
+
+  onSelection($event: any) {
+    console.log("edit evento recibido: " + $event)
+    //this.oForm.controls['id_usuario'].setValue($event);
+  }
+
+  //popup
+
+  eventsSubjectShowPopup: Subject<void> = new Subject<void>();
+  strResult = "";
+
+  openPopup(): void {
+    this.eventsSubjectShowPopup.next();
+  }
+
+  onClosePopup(): void {
+    //this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
+  }
+
 
 }

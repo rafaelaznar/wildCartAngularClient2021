@@ -46,3 +46,9 @@ export interface IReport {
     codigo: string,
     nombre: string
 }
+
+export interface IPrint {
+    cantidad: number;
+    fechainicial:string;
+    fechafinal:string;
+}

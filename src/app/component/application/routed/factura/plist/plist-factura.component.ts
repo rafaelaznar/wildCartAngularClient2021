@@ -103,7 +103,6 @@ export class PlistFacturaComponent implements OnInit {
     }
   }
 
-
   doResetOrder() {
     this.currentSortField = "";
     this.currentSortDirection = "";
