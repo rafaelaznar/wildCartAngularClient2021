@@ -70,6 +70,7 @@ import { PopupComponent } from './component/shared/unrouted/popup/popup.componen
 import { UsuarioViewUnroutedComponent } from './component/application/unrouted/usuario/view/usuario-view-unrouted.component';
 import { FileService } from './service/file.service';
 import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
+import { ProductoPlistUnroutedComponent } from './component/application/unrouted/producto/plist/producto-plist-unrouted.component';
 
 import { FacturaPlistUnroutedComponent } from './component/application/unrouted/factura/plist/factura-plist-unrouted.component';
 import { TipousuarioPlistUnroutedComponent } from './component/application/unrouted/tipousuario/plist/tipousuario-plist-unrouted.component';
@@ -138,6 +139,10 @@ import { TipousuarioPlistUnroutedComponent } from './component/application/unrou
     UsuarioPlistUnroutedComponent,
     UsuarioViewUnroutedComponent,
 
+    // Producto unrouted components
+    ProductoPlistUnroutedComponent,
+
+    // Factura unrouted components
     FacturaPlistUnroutedComponent,
 
     // TipoUsuario unrouted components
