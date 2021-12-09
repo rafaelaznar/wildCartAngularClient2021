@@ -117,14 +117,12 @@
         <div class="col-sm-10">
           <div class="row mb-3">
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="tusuario" formControlName="tusuario"
-                [ngClass]="{'is-valid' : f.tusuario.dirty && !(f.tusuario.errors?.required || f.tusuario.errors?.minlength) }">
-              <div *ngIf="f.tusuario.dirty && f.tusuario.errors?.required" class="text-danger">
-                Se debe introducir un tusuario
-              </div>
-              <div *ngIf="f.tusuario.dirty && f.tusuario.errors?.minlength" class="text-danger">
-                El tusuario introducido es demasiado corto
-              </div>
+              <div class="input-group">
+                <span class="input-group-text">{{oUsuario2Show.tipousuario.nombre}}</span>
+                <input type="number" class="form-control" id="tusuario" formControlName="tusuario"
+                    (ngModelChange)="onChangeTUsuario($event)">
+                <button type="button" class="btn btn-success" (click)="openModal()">Buscar tusuario</button>
+            </div>
             </div>
           </div>
         </div>
@@ -155,5 +153,11 @@
 </div>
 
 <app-footer></app-footer>
+<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
+    (close)="onCloseModal()">
+    <app-tipousuario-plist-unrouted [mode]="false" (selection)="onSelection($event)">
+        <header></header>        
+    </app-tipousuario-plist-unrouted>
+</app-modal>
 
 <app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()"></app-popup>
