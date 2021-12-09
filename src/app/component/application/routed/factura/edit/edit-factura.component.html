@@ -105,22 +105,11 @@
 
 
 
-<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'full'" [hide]="eventsSubjectHideModal.asObservable()"
+<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
     (close)="onCloseModal()">
-
     <app-usuario-plist-unrouted [id_tipousuario]="id_tipousuario" [mode]="false" (selection)="onSelection($event)">
-
-        <header></header>
-
-        <!--
-        <ng-template let-fila>
-            <button type="button" class="btn btn-success" (click)="onSelection(fila.id)")><i
-                    class="fas fa-eye"></i></button>
-        </ng-template>
-        -->
-        
+        <header></header>        
     </app-usuario-plist-unrouted>
-
 </app-modal>
 
 <app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()" [size]="'sm'"></app-popup>
