@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlistFacturaComponent } from './factura-plist-routed.component';
+import { FacturaPlistRoutedComponent } from './factura-plist-routed.component';
 
 describe('PlistFacturaComponent', () => {
-  let component: PlistFacturaComponent;
-  let fixture: ComponentFixture<PlistFacturaComponent>;
+  let component: FacturaPlistRoutedComponent;
+  let fixture: ComponentFixture<FacturaPlistRoutedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlistFacturaComponent ]
+      declarations: [ FacturaPlistRoutedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlistFacturaComponent);
+    fixture = TestBed.createComponent(FacturaPlistRoutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
