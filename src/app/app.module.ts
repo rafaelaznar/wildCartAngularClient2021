@@ -70,6 +70,7 @@ import { PopupComponent } from './component/shared/unrouted/popup/popup.componen
 import { UsuarioViewUnroutedComponent } from './component/application/unrouted/usuario/view/usuario-view-unrouted.component';
 import { FileService } from './service/file.service';
 import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
+import { ProductoPlistUnroutedComponent } from './component/application/unrouted/producto/plist/producto-plist-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -133,7 +134,10 @@ import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint
     EditCarritoComponent,
     // Usuario unrouted components
     UsuarioPlistUnroutedComponent,
-    UsuarioViewUnroutedComponent
+    UsuarioViewUnroutedComponent,
+
+    // Producto unrouted components
+    ProductoPlistUnroutedComponent,
   ],
   imports: [
     HttpClientModule,
