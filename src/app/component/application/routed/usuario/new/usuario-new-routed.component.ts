@@ -1,3 +1,4 @@
+import { TipousuarioService } from './../../../../../service/tipousuario.service';
 import { IUsuario2Send } from '../../../../../model/usuario-interfaces';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,6 +8,7 @@ import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { IconService } from 'src/app/service/icon.service';
+import { IUserType } from 'src/app/model/tipousuario-interfaces';
 
 declare let $: any;
 
@@ -37,6 +39,7 @@ export class UsuarioNewRoutedComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
     public oIconService: IconService,
+    private oTipousuarioService: TipousuarioService
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
       const strUsuarioSession: string =
@@ -99,6 +102,55 @@ export class UsuarioNewRoutedComponent implements OnInit {
 
   goBack(): void {
     this.oLocation.back();
+  }
+  //modal
+  fila: IUserType;
+  id_tipousuario: number = null;
+  showingModal: boolean = false;
+  dataToShow: IUserType = null;
+
+  eventsSubjectShowModal: Subject<void> = new Subject<void>();
+  eventsSubjectHideModal: Subject<void> = new Subject<void>();
+
+  openModal(): void {
+    this.eventsSubjectShowModal.next();
+    this.showingModal = true;
+  }
+
+  onCloseModal(): void {
+    //this.oRouter.navigate(['factura/view/' + this.id]);
+  }
+
+  closeModal(): void {
+    this.eventsSubjectHideModal.next();
+    this.showingModal = false;
+  }
+
+  onSelection($event: any) {
+    console.log("edit evento recibido: " + $event)
+    this.oForm.controls['tusuario'].setValue($event);
+  }
+
+  onChangeTUsuario($event: any) {
+
+    console.log("--->" + this.oForm.controls['tusuario'].value);
+    this.oForm.controls['tusuario'].markAsDirty();
+
+    //aqui cerrar la ventana emergente 
+    if (this.showingModal) {
+      this.closeModal();
+    }
+
+    //actualizar el tipo usuario
+    this.oTipousuarioService
+      .view(this.oForm.controls['tusuario'].value)
+      .subscribe((oData: IUserType) => {
+        this.dataToShow = oData;
+        console.log(this.dataToShow)
+        //this.oUsuario = oData;
+      });
+
+    return false;
   }
 
   //popup
