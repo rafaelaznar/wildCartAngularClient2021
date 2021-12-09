@@ -19,6 +19,18 @@ export class IconService {
       case strIcon == "compra": return "fas fa-cash-register";
       case strIcon == "factura": return "fas fa-file-invoice-dollar";
       case strIcon == "carrito": return "fas fa-shopping-cart";
+      case strIcon == "fecha": return "far fa-clock";
+      case strIcon == "cantidad": return "fas fa-mountain";
+      case strIcon == "euro": return "fas fa-euro-sign";      
+      case strIcon == "fecha": return "far fa-clock";
+      case strIcon == "porcentaje": return "fas fa-percent";
+      case strIcon == "nombre": return "fas fa-signature";
+      case strIcon == "email": return "fas fa-at";
+      case strIcon == "dni": return "fas fa-address-card";
+      case strIcon == "codigo": return "fas fa-barcode";
+      case strIcon == "imagen": return "fas fa-camera";
+      case strIcon == "validado": return "fas fa-user-check";
+      case strIcon == "activado": return "fas fa-flag-checkered";
       // 
       case strIcon == "acciones": return "fas fa-tools";
       case strIcon == "view": return "fas fa-eye";
@@ -29,7 +41,8 @@ export class IconService {
       case strIcon == "edit": return "fas fa-pen";      
       case strIcon == "random": return "fas fa-random";
       //
-      case strIcon == "print": return "fas fa-print";
+      case strIcon == "imprimir": return "fas fa-print";
+      case strIcon == "informe": return "fas fa-file-alt";
       case strIcon.startsWith("report"): return "fas fa-copy";
       // 
       case strIcon == "home": return "fas fa-home";

@@ -26,3 +26,18 @@ export const httpOptions = {
   }),
   withCredentials: true
 };
+
+export const uploadHttpOptions = {
+  //headers: new HttpHeaders({
+    //'Content-Type': 'multipart/form-data'
+
+    //'Content-Type': undefined
+
+  //}),
+  //reportProgress: true,
+  withCredentials: true
+};
+
+
+
+
