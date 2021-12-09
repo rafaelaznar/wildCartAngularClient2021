@@ -48,7 +48,7 @@ import { NewCompraComponent } from './component/application/routed/compra/new/ne
 import { ViewCompraComponent } from './component/application/routed/compra/view/view-compra.component';
 import { RemoveCompraComponent } from './component/application/routed/compra/remove/remove-compra.component';
 import { EditCompraComponent } from './component/application/routed/compra/edit/edit-compra.component';
-import { PlistFacturaComponent } from './component/application/routed/factura/plist/plist-factura.component';
+import { PlistFacturaComponent } from './component/application/routed/factura/plist/factura-plist-routed.component';
 import { NewFacturaComponent } from './component/application/routed/factura/new/new-factura.component';
 import { ViewFacturaComponent } from './component/application/routed/factura/view/view-factura.component';
 import { RemoveFacturaComponent } from './component/application/routed/factura/remove/remove-factura.component';
@@ -70,6 +70,7 @@ import { PopupComponent } from './component/shared/unrouted/popup/popup.componen
 import { UsuarioViewUnroutedComponent } from './component/application/unrouted/usuario/view/usuario-view-unrouted.component';
 import { FileService } from './service/file.service';
 import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
+import { FacturaPlistUnroutedComponent } from './component/application/unrouted/factura/plist/factura-plist-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -133,7 +134,8 @@ import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint
     EditCarritoComponent,
     // Usuario unrouted components
     UsuarioPlistUnroutedComponent,
-    UsuarioViewUnroutedComponent
+    UsuarioViewUnroutedComponent,
+    FacturaPlistUnroutedComponent,
   ],
   imports: [
     HttpClientModule,
