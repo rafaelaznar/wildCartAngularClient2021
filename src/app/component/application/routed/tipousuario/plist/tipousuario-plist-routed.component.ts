@@ -49,67 +49,9 @@ export class TipousuarioPlistRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
-    this.nPage = 1;
-    this.getPage();
   }
 
-  ngOnInit(): void {
-    this.subjectFiltro$
-      .pipe(debounceTime(1000))
-      .subscribe(() => this.getPage());
-  }
+  ngOnInit(): void {}
 
-  getPage = () => {
-    console.log('buscando...', this.strFilter);
-    this.oTipoUsuarioService
-      .getPage(
-        this.nPageSize,
-        this.nPage,
-        this.strFilter,
-        this.strSortField,
-        this.strSortDirection
-      )
-      .subscribe((oPage: ITipoUsuarioPage) => {
-        if (this.strFilter) {
-          this.strFilteredMessage = 'Listado filtrado: ' + this.strFilter;
-        } else {
-          this.strFilteredMessage = '';
-        }
-        this.aTipoUsuarios = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        this.aPaginationBar = this.oPaginationService.pagination(
-          this.nTotalPages,
-          this.nPage
-        );
-      });
-  };
-
-  jumpToPage = () => {
-    this.getPage();
-    return false;
-  };
-
-  onKeyUpFilter(event: KeyboardEvent): void {
-    this.subjectFiltro$.next();
-  }
-
-  doResetOrder() {
-    this.strSortField = '';
-    this.strSortDirection = '';
-    this.getPage();
-  }
-
-  doSetOrder(order: string) {
-    this.strSortField = order;
-    if (this.strSortDirection == 'asc') {
-      this.strSortDirection = 'desc';
-    } else if (this.strSortDirection == 'desc') {
-      this.strSortDirection = '';
-    } else {
-      this.strSortDirection = 'asc';
-    }
-    this.getPage();
-  }
+  
 }

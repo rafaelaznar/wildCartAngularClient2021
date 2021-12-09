@@ -48,7 +48,7 @@ import { NewCompraComponent } from './component/application/routed/compra/new/ne
 import { ViewCompraComponent } from './component/application/routed/compra/view/view-compra.component';
 import { RemoveCompraComponent } from './component/application/routed/compra/remove/remove-compra.component';
 import { EditCompraComponent } from './component/application/routed/compra/edit/edit-compra.component';
-import { PlistFacturaComponent } from './component/application/routed/factura/plist/plist-factura.component';
+import { FacturaPlistRoutedComponent } from './component/application/routed/factura/plist/factura-plist-routed.component';
 import { NewFacturaComponent } from './component/application/routed/factura/new/new-factura.component';
 import { ViewFacturaComponent } from './component/application/routed/factura/view/view-factura.component';
 import { RemoveFacturaComponent } from './component/application/routed/factura/remove/remove-factura.component';
@@ -72,6 +72,9 @@ import { FileService } from './service/file.service';
 import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
 import { ProductoPlistUnroutedComponent } from './component/application/unrouted/producto/plist/producto-plist-unrouted.component';
 
+import { FacturaPlistUnroutedComponent } from './component/application/unrouted/factura/plist/factura-plist-unrouted.component';
+import { TipousuarioPlistUnroutedComponent } from './component/application/unrouted/tipousuario/plist/tipousuario-plist-unrouted.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +92,7 @@ import { ProductoPlistUnroutedComponent } from './component/application/unrouted
     GenerateComponent,
     ReportsComponent,
     // pipes
-    TrimPipe,    
+    TrimPipe,
     showDateTimePipe,
     showBooleanPipe,
     // Tipousuario routed components
@@ -121,9 +124,9 @@ import { ProductoPlistUnroutedComponent } from './component/application/unrouted
     EditCompraComponent,
     RemoveCompraComponent,
     // Factura routed components
-    PlistFacturaComponent,
+    FacturaPlistRoutedComponent,
     ViewFacturaComponent,
-    NewFacturaComponent,    
+    NewFacturaComponent,
     EditFacturaComponent,
     RemoveFacturaComponent,
     // Carrito routed components
@@ -138,6 +141,12 @@ import { ProductoPlistUnroutedComponent } from './component/application/unrouted
 
     // Producto unrouted components
     ProductoPlistUnroutedComponent,
+
+    // Factura unrouted components
+    FacturaPlistUnroutedComponent,
+
+    // TipoUsuario unrouted components
+    TipousuarioPlistUnroutedComponent,
   ],
   imports: [
     HttpClientModule,
@@ -162,7 +171,7 @@ import { ProductoPlistUnroutedComponent } from './component/application/unrouted
     IconService,
     GenerateService,
     CountService,
-    FileService
+    FileService,
   ],
   bootstrap: [AppComponent],
 })
