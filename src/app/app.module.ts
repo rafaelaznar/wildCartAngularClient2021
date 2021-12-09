@@ -70,7 +70,9 @@ import { PopupComponent } from './component/shared/unrouted/popup/popup.componen
 import { UsuarioViewUnroutedComponent } from './component/application/unrouted/usuario/view/usuario-view-unrouted.component';
 import { FileService } from './service/file.service';
 import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
+
 import { FacturaPlistUnroutedComponent } from './component/application/unrouted/factura/plist/factura-plist-unrouted.component';
+import { TipousuarioPlistUnroutedComponent } from './component/application/unrouted/tipousuario/plist/tipousuario-plist-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +91,7 @@ import { FacturaPlistUnroutedComponent } from './component/application/unrouted/
     GenerateComponent,
     ReportsComponent,
     // pipes
-    TrimPipe,    
+    TrimPipe,
     showDateTimePipe,
     showBooleanPipe,
     // Tipousuario routed components
@@ -123,7 +125,7 @@ import { FacturaPlistUnroutedComponent } from './component/application/unrouted/
     // Factura routed components
     PlistFacturaComponent,
     ViewFacturaComponent,
-    NewFacturaComponent,    
+    NewFacturaComponent,
     EditFacturaComponent,
     RemoveFacturaComponent,
     // Carrito routed components
@@ -135,7 +137,11 @@ import { FacturaPlistUnroutedComponent } from './component/application/unrouted/
     // Usuario unrouted components
     UsuarioPlistUnroutedComponent,
     UsuarioViewUnroutedComponent,
+
     FacturaPlistUnroutedComponent,
+
+    // TipoUsuario unrouted components
+    TipousuarioPlistUnroutedComponent,
   ],
   imports: [
     HttpClientModule,
@@ -160,7 +166,7 @@ import { FacturaPlistUnroutedComponent } from './component/application/unrouted/
     IconService,
     GenerateService,
     CountService,
-    FileService
+    FileService,
   ],
   bootstrap: [AppComponent],
 })
