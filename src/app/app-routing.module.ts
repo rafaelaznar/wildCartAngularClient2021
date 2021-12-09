@@ -10,7 +10,7 @@ import { RemoveCompraComponent } from './component/application/routed/compra/rem
 import { ViewCompraComponent } from './component/application/routed/compra/view/view-compra.component';
 import { EditFacturaComponent } from './component/application/routed/factura/edit/edit-factura.component';
 import { NewFacturaComponent } from './component/application/routed/factura/new/new-factura.component';
-import { PlistFacturaComponent } from './component/application/routed/factura/plist/plist-factura.component';
+import { FacturaPlistRoutedComponent } from './component/application/routed/factura/plist/factura-plist-routed.component';
 import { RemoveFacturaComponent } from './component/application/routed/factura/remove/remove-factura.component';
 import { ViewFacturaComponent } from './component/application/routed/factura/view/view-factura.component';
 import { EditProductoComponent } from './component/application/routed/producto/edit/edit-producto.component';
@@ -81,8 +81,8 @@ const routes: Routes = [
   { path: 'compra/edit/:id', component: EditCompraComponent, resolve: { message: SessionResolver } },
   { path: 'compra/remove/:id', component: RemoveCompraComponent, resolve: { message: SessionResolver } },
 
-  { path: 'factura/plist', component: PlistFacturaComponent, resolve: { message: SessionResolver } },
-  { path: 'factura/plist/usuario/:id', component: PlistFacturaComponent, resolve: { message: SessionResolver } },  
+  { path: 'factura/plist', component: FacturaPlistRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'factura/plist/usuario/:id', component: FacturaPlistRoutedComponent, resolve: { message: SessionResolver } },  
   { path: 'factura/new', component: NewFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'factura/view/:id', component: ViewFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'factura/edit/:id', component: EditFacturaComponent, resolve: { message: SessionResolver } },

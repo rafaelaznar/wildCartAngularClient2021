@@ -2,11 +2,17 @@
 
 <div class="container my-3">
 
-  <app-header [title]="'Listado de ' + strTitlePlural" [icon]="oIconService.getIcon(this.strOperation)"
+    <app-header [title]="'Listado de ' + strTitlePlural" [icon]="oIconService.getIcon(this.strOperation)"
     [iconEntity]="oIconService.getIcon(this.strEntity)">
-  </app-header>
+</app-header>
 
-  <app-tipousuario-plist-unrouted>
+<app-factura-plist-unrouted [id_usuario]="id_usuario">
+
+    <header>
+        <a [routerLink]="['/factura/new']" type="button" class="btn btn-success mb-2">
+            <i class="fas fa-plus"></i> Añadir nuevo Usuario
+        </a>
+    </header>
 
     <!--
     <ng-template let-fila>
@@ -19,7 +25,8 @@
     </ng-template>
     -->
 
-  </app-tipousuario-plist-unrouted>
+</app-factura-plist-unrouted>
+
 </div>
 
 <app-footer></app-footer>
