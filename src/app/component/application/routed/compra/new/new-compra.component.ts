@@ -8,6 +8,8 @@ import { ICompra, ICompraToSend } from 'src/app/model/compra-interfaces';
 import { CompraService } from 'src/app/service/compra.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
+import { FacturaService } from 'src/app/service/factura.service';
+import { IFactura } from 'src/app/model/factura-interfaces';
 
 declare let $: any;
 @Component({
@@ -34,6 +36,7 @@ export class NewCompraComponent implements OnInit {
     private oRouter: Router,
     private oCompraService: CompraService,
     private oActivatedRoute: ActivatedRoute,
+    private oFacturaService: FacturaService,
     private oRoute: ActivatedRoute,
     private oLocation: Location,
     private oDateTimeService: DateTimeService,
@@ -132,6 +135,55 @@ export class NewCompraComponent implements OnInit {
 
   goBack(): void {
     this.oLocation.back();
+  }
+
+  //modal
+
+  fila: IFactura;
+  id_usuario: number = null;
+  showingModal: boolean = false;
+
+  eventsSubjectShowModal: Subject<void> = new Subject<void>();
+  eventsSubjectHideModal: Subject<void> = new Subject<void>();
+
+  openModal(): void {
+    this.eventsSubjectShowModal.next();
+    this.showingModal = true;
+  }
+
+  onCloseModal(): void {
+    //this.oRouter.navigate(['factura/view/' + this.id]);
+  }
+
+  closeModal(): void {
+    this.eventsSubjectHideModal.next();
+    this.showingModal = false;
+  }
+
+  onSelection($event: any) {
+    console.log("edit evento recibido: " + $event)
+    this.oForm.controls['factura'].setValue($event);
+  }
+
+  onChangeFactura($event: any) {
+
+    console.log("--->" + this.oForm.controls['factura'].value);
+    this.oForm.controls['factura'].markAsDirty();
+
+    //aqui cerrar la ventana emergente 
+    if (this.showingModal) {
+      this.closeModal();
+    }
+
+    //actualizar el usuario
+    this.oFacturaService
+      .getOne(this.oForm.controls['factura'].value)
+      .subscribe((oData: IFactura) => {
+        this.oCompra.factura = oData;
+        //this.oUsuario = oData;
+      });
+
+    return false;
   }
 
   //popup

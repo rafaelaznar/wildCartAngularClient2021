@@ -1,3 +1,5 @@
+import { FacturaService } from './../../../../../service/factura.service';
+import { IFactura } from './../../../../../model/factura-interfaces';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -33,6 +35,7 @@ export class EditCompraComponent implements OnInit {
     private oFormBuilder: FormBuilder,
     private oRouter: Router,
     private oCompraService: CompraService,
+    private oFacturaService: FacturaService,
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oLocation: Location,
@@ -140,6 +143,55 @@ export class EditCompraComponent implements OnInit {
 
   goBack(): void {
     this.oLocation.back();
+  }
+
+  //modal
+
+  fila: IFactura;
+  id_usuario: number = null;
+  showingModal: boolean = false;
+
+  eventsSubjectShowModal: Subject<void> = new Subject<void>();
+  eventsSubjectHideModal: Subject<void> = new Subject<void>();
+
+  openModal(): void {
+    this.eventsSubjectShowModal.next();
+    this.showingModal = true;
+  }
+
+  onCloseModal(): void {
+    //this.oRouter.navigate(['factura/view/' + this.id]);
+  }
+
+  closeModal(): void {
+    this.eventsSubjectHideModal.next();
+    this.showingModal = false;
+  }
+
+  onSelection($event: any) {
+    console.log("edit evento recibido: " + $event)
+    this.oForm.controls['factura'].setValue($event);
+  }
+
+  onChangeFactura($event: any) {
+
+    console.log("--->" + this.oForm.controls['factura'].value);
+    this.oForm.controls['factura'].markAsDirty();
+
+    //aqui cerrar la ventana emergente 
+    if (this.showingModal) {
+      this.closeModal();
+    }
+
+    //actualizar el usuario
+    this.oFacturaService
+      .getOne(this.oForm.controls['factura'].value)
+      .subscribe((oData: IFactura) => {
+        this.oCompra.factura = oData;
+        //this.oUsuario = oData;
+      });
+
+    return false;
   }
 
   //popup
