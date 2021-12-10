@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { IFactura, IPageFactura } from 'src/app/model/factura-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
@@ -59,20 +60,17 @@ export class FacturaPlistUnroutedComponent implements OnInit {
     private oFacturaService: FacturaService,
     public oIconService: IconService
   ) {
-    
-    if (this.oRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
 
-    this.page = 0;
-    this.getPage();
+
+
   }
 
   ngOnInit(): void {
+    this.subjectFiltro$.pipe(
+      debounceTime(1000)
+    ).subscribe(() => this.getPage());
+    this.page = 0;
+    this.getPage();
   }
 
 
@@ -123,6 +121,11 @@ export class FacturaPlistUnroutedComponent implements OnInit {
       this.currentSortDirection = 'asc';
     }
     this.getPage();
+  }
+
+  onSelection(id: number) {
+    console.log("selection plist emite " + id);
+    this.selection.emit(id);
   }
 
 }

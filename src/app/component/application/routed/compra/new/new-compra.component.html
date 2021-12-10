@@ -73,9 +73,25 @@
             </div>
 
             <div class="row mb-3">
-                <label for="id_factura" class="col-sm-2 col-form-label">ID Factura</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" id="factura" formControlName="factura">                   
+                <label for="factura" class="col-sm-2 col-form-label">
+                  <i [ngClass]="oIconService.getIcon('usuario')"></i> Factura</label>
+        
+                <div class="col-sm-5">
+                  <div class="input-group">
+                    <span class="input-group-text">{{
+                      "Factura "
+                    }}</span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="factura"
+                      formControlName="factura"
+                      (ngModelChange)="onChangeFactura($event)"
+                    />
+                    <button type="button" class="btn btn-success" (click)="openModal()">
+                      Buscar factura
+                    </button>
+                  </div>
                 </div>
             </div>
 
@@ -103,5 +119,18 @@
 
 <app-footer></app-footer>
 
-<app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()"></app-popup>
+<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
+    (close)="onCloseModal()">
+    <app-factura-plist-unrouted  [mode]="false" (selection)="onSelection($event)">
+        <header></header>        
+    </app-factura-plist-unrouted>
+
+</app-modal>
+
+<app-popup
+  [show]="eventsSubjectShowPopup.asObservable()"
+  [body]="strResult"
+  (close)="onClosePopup()"
+  [size]="'sm'"
+></app-popup>
 
