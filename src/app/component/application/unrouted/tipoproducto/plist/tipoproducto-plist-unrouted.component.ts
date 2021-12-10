@@ -9,6 +9,7 @@ import {
   IPageTipoProducto,
   ITipoProducto,
 } from 'src/app/model/tipoproducto-interfaces';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 @Component({
   selector: 'app-tipoproductoplistunrouted',
@@ -36,9 +37,9 @@ export class TipoProductoPlistUnroutedComponent implements OnInit {
   strFilter: string = '';
   currentSortField: string = '';
   currentSortDirection: string = '';
-
   strFilteredMessage: string = '';
   subjectFiltro$ = new Subject();
+  usuario: IUsuario;
 
   constructor(
     private oRoute: ActivatedRoute,
@@ -47,7 +48,10 @@ export class TipoProductoPlistUnroutedComponent implements OnInit {
     private oPostService: TipoproductoService,
     public oIconService: IconService,
     private oActivatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    this.usuario = JSON.parse(localStorage.getItem('user'));
+    console.log(this.usuario);
+  }
 
   ngOnInit(): void {
     this.subjectFiltro$
