@@ -75,6 +75,7 @@ import { ProductoPlistUnroutedComponent } from './component/application/unrouted
 
 import { FacturaPlistUnroutedComponent } from './component/application/unrouted/factura/plist/factura-plist-unrouted.component';
 import { TipousuarioPlistUnroutedComponent } from './component/application/unrouted/tipousuario/plist/tipousuario-plist-unrouted.component';
+import { ProductoCPlistUnroutedComponent } from './component/application/unrouted/producto/cplist/producto-cplist-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -151,6 +152,8 @@ import { TipousuarioPlistUnroutedComponent } from './component/application/unrou
 
     // TipoUsuario unrouted components
     TipousuarioPlistUnroutedComponent,
+
+    ProductoCPlistUnroutedComponent
   ],
   imports: [
     HttpClientModule,

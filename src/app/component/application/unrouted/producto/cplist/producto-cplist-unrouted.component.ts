@@ -1,24 +1,31 @@
-import { IUsuario } from '../../../../../model/usuario-interfaces';
-import { ITipoProducto, IPageTipoProducto } from '../../../../../model/tipoproducto-interfaces';
-import { TipoproductoService } from '../../../../../service/tipoproducto.service';
-import { Component, OnInit } from '@angular/core';
+import { ProductoService } from '../../../../../service/producto.service';
+import { IPageProducto, IProducto } from 'src/app/model/producto-interfaces';
+import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { IconService } from 'src/app/service/icon.service';
-import { debounceTime, map } from 'rxjs/operators';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-tipoproducto-plist-routed',
-  templateUrl: './tipoproducto-plist-routed.component.html',
-  styleUrls: ['./tipoproducto-plist-routed.component.css']
+  selector: 'app-producto-cplist-unrouted',
+  templateUrl: './producto-cplist-unrouted.component.html',
+  styleUrls: ['./producto-cplist-unrouted.component.css']
 })
-export class PlistTipoproductoComponent implements OnInit {
-  strEntity: string = "tipoproducto"
+export class ProductoCPlistUnroutedComponent implements OnInit {
+
+  @Input() id_tipousuario_session: number = null;
+  @Input() id_tipoproducto: number = null;
+  @Input() mode: boolean = true; //true=edición; false=selección
+  @Output() selection = new EventEmitter<number>();
+  @ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
+
+  strEntity: string = "producto"
   strOperation: string = "plist"
-  strTitleSingular: string = "Tipo de producto";
-  strTitlePlural: string = "Tipos de producto";
-  aTipoProductos: ITipoProducto[];
+  strTitleSingular: string = "Producto";
+  strTitlePlural: string = "Productos";
+  aProductos: IProducto[];
   aPaginationBar: string[];
   nTotalElements: number;
   nTotalPages: number;
@@ -31,12 +38,17 @@ export class PlistTipoproductoComponent implements OnInit {
   strFilteredMessage: string = "";
   oUserSession: IUsuario;
   subjectFiltro$ = new Subject();
+  barraPaginacion: string[];
+
+
+
 
   constructor(
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oPaginationService: PaginationService,
-    private oTipoProductoService: TipoproductoService,
+    private oProductoService: ProductoService,
+
     public oIconService: IconService
   ) {
 
@@ -46,6 +58,12 @@ export class PlistTipoproductoComponent implements OnInit {
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
+    }
+    this.id_tipoproducto = this.oRoute.snapshot.params.id_tipoproducto;
+    if (this.id_tipoproducto) {
+      this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto;
+    } else {
+      this.strFilteredMessage = "";
     }
 
     this.nPage = 1;
@@ -58,26 +76,31 @@ export class PlistTipoproductoComponent implements OnInit {
     ).subscribe(() => this.getPage());
   }
 
+  addCarrito(id_producto:number){
+
+  }
+
   getPage = () => {
     console.log("buscando...", this.strFilter);
-    this.oTipoProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection).subscribe((oPage: IPageTipoProducto) => {
+    this.oProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, this.id_tipoproducto).subscribe((oPage: IPageProducto) => {
       if (this.strFilter) {
         this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
       } else {
         this.strFilteredMessage = "";
       }
-      this.aTipoProductos = oPage.content;
+      this.aProductos = oPage.content;
       this.nTotalElements = oPage.totalElements;
       this.nTotalPages = oPage.totalPages;
       this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
     })
   }
 
+
+
   jumpToPage = () => {
     this.getPage();
     return false;
   }
-
   onKeyUpFilter(event: KeyboardEvent): void {
     this.subjectFiltro$.next();
   }
@@ -98,6 +121,11 @@ export class PlistTipoproductoComponent implements OnInit {
       this.strSortDirection = 'asc';
     }
     this.getPage();
+  }
+
+  onSelection(id: number) {
+    console.log("selection plist emite " + id);
+    this.selection.emit(id);
   }
 
 }
