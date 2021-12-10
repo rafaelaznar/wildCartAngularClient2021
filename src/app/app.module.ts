@@ -70,7 +70,7 @@ import { PopupComponent } from './component/shared/unrouted/popup/popup.componen
 import { UsuarioViewUnroutedComponent } from './component/application/unrouted/usuario/view/usuario-view-unrouted.component';
 import { FileService } from './service/file.service';
 import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
-import { TipoProductoPlistUnroutedComponent } from './component/application/unrouted/tipousuario/plist/tipoproductoplistunrouted/tipoproducto-plist-unrouted.component';
+import { TipoProductoPlistUnroutedComponent } from './component/application/unrouted/tipoproducto/plist/tipoproducto-plist-unrouted.component';
 import { ProductoPlistUnroutedComponent } from './component/application/unrouted/producto/plist/producto-plist-unrouted.component';
 
 import { FacturaPlistUnroutedComponent } from './component/application/unrouted/factura/plist/factura-plist-unrouted.component';
@@ -153,7 +153,7 @@ import { ProductoCPlistUnroutedComponent } from './component/application/unroute
     // TipoUsuario unrouted components
     TipousuarioPlistUnroutedComponent,
 
-    ProductoCPlistUnroutedComponent
+    ProductoCPlistUnroutedComponent,
   ],
   imports: [
     HttpClientModule,

@@ -146,6 +146,7 @@
                 <i class="fas fa-eye"></i>
               </button>
               <button
+                *ngIf="usuario.tipousuario.id === 1"
                 type="button"
                 class="btn btn-warning"
                 [routerLink]="['/tipoproducto/edit/' + fila.id]"
@@ -153,6 +154,7 @@
                 <i class="fas fa-pen"></i>
               </button>
               <button
+                *ngIf="usuario.tipousuario.id === 1"
                 type="button"
                 class="btn btn-danger"
                 [routerLink]="['/tipoproducto/remove/' + fila.id]"
