@@ -72,11 +72,28 @@
             </div>
 
             <div class="row mb-3">
-                <label for="id_producto" class="col-sm-2 col-form-label">ID Producto</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" id="producto" formControlName="producto">                   
+                <label for="id_producto" class="col-sm-2 col-form-label">
+                  <i [ngClass]="oIconService.getIcon('producto')"></i> Id Producto</label>
+        
+                <div class="col-sm-5">
+                  <div class="input-group">
+                    <span class="input-group-text">{{
+                      "Producto " + oCompra.producto.id
+                    }}</span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="producto"
+                      formControlName="producto"
+                      (ngModelChange)="onChangeProducto($event)"
+                    />
+                    <button type="button" class="btn btn-success" id="botonProducto" (click)="openModalProducto()">
+                      Buscar producto
+                    </button>
+                  </div>
                 </div>
-            </div>
+              </div>
+
 
             <div class="row mb-3">
                 <label for="factura" class="col-sm-2 col-form-label">
@@ -94,7 +111,7 @@
                       formControlName="factura"
                       (ngModelChange)="onChangeFactura($event)"
                     />
-                    <button type="button" class="btn btn-success" (click)="openModal()">
+                    <button type="button" class="btn btn-success" id="botonFactura" (click)="openModalFactura()">
                       Buscar factura
                     </button>
                   </div>
@@ -121,13 +138,26 @@
 
 <app-footer></app-footer>
 
-<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
-    (close)="onCloseModal()">
-    <app-factura-plist-unrouted  [mode]="false" (selection)="onSelection($event)">
+
+<app-modal [show]="eventsSubjectShowModalProducto.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModalProducto.asObservable()"
+    (close)="closeModalProducto()" [mimodal]="'modalProducto'">
+    
+    <app-producto-plist-unrouted  [mode]="false" (selection)="onSelectionProducto($event)">
+        <header></header>        
+    </app-producto-plist-unrouted>
+</app-modal>
+
+
+<app-modal [show]="eventsSubjectShowModalFactura.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModalFactura.asObservable()"
+    (close)="closeModalFactura()" [mimodal]="'modalFactura'">
+    
+    <app-factura-plist-unrouted  [mode]="false" (selection)="onSelectionFactura($event)">
         <header></header>        
     </app-factura-plist-unrouted>
+    
 
 </app-modal>
+
 
 <app-popup
   [show]="eventsSubjectShowPopup.asObservable()"
