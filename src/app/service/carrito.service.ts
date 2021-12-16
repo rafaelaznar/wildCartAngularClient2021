@@ -68,4 +68,9 @@ export class CarritoService {
   removeOne(id: number): Observable<number> {
     return this.http.delete<number>(this.sURL + '/' + id, httpOptions);
   }
+
+  count(): Observable<number> {
+    return this.http.get<number>(this.sURL + '/count', httpOptions);
+  }
+
 }
