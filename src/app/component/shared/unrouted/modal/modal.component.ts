@@ -19,6 +19,7 @@ export class ModalComponent implements OnInit {
   @Input() title: string = "wildCART";
   @Input() size: string = "";
   @Input() mode: boolean = false; // false->cerrar; true->si/no (no implementado)
+  @Input() mimodal: string = "miModal"; // obligatorio si hay más de un modal en la página
 
   private eventsSubscriptionShow: Subscription;
   private eventsSubscriptionHide: Subscription;
@@ -38,10 +39,10 @@ export class ModalComponent implements OnInit {
   }
 
   showModal = () => {
-    this.myModal = new bootstrap.Modal(document.getElementById('myModal'), {
+    this.myModal = new bootstrap.Modal(document.getElementById(this.mimodal), { //pasar el myModal como parametro
       keyboard: false
     })
-    var myModalEl = document.getElementById('myModal');
+    var myModalEl = document.getElementById(this.mimodal);
     myModalEl.addEventListener('hidden.bs.modal', (event): void => {
       this.close.emit(event);
     })
