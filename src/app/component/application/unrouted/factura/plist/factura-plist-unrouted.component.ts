@@ -94,16 +94,7 @@ export class FacturaPlistUnroutedComponent implements OnInit {
     return false;
   }
 
-  doFilter() {
-    this.getPage();
-  }
 
-  onKeydownEvent(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      //alert("do filter");
-      this.getPage();
-    }
-  }
 
   doResetOrder() {
     this.currentSortField = "";
