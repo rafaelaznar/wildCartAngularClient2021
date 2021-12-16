@@ -8,6 +8,7 @@ import { FacturaService } from 'src/app/service/factura.service';
 import { IconService } from 'src/app/service/icon.service';
 import { PaginationService } from 'src/app/service/pagination.service';
 
+declare let jsPDF: any;
 @Component({
   selector: 'app-factura-plist-unrouted',
   templateUrl: './factura-plist-unrouted.component.html',
@@ -75,8 +76,8 @@ export class FacturaPlistUnroutedComponent implements OnInit {
 
 
   getPage = () => {
-    let id:number=this.oRoute.snapshot.params.id?this.oRoute.snapshot.params.id:-1;
-    this.oFacturaService.getPage(this.pageSize, this.page, this.filterActual, this.currentSortField, this.currentSortDirection,id).subscribe((oPage: IPageFactura) => {
+    let id: number = this.oRoute.snapshot.params.id ? this.oRoute.snapshot.params.id : -1;
+    this.oFacturaService.getPage(this.pageSize, this.page, this.filterActual, this.currentSortField, this.currentSortDirection, id).subscribe((oPage: IPageFactura) => {
       if (this.filterActual) {
         this.filtered = true;
       } else {
@@ -117,6 +118,12 @@ export class FacturaPlistUnroutedComponent implements OnInit {
   onSelection(id: number) {
     console.log("selection plist emite " + id);
     this.selection.emit(id);
+  }
+
+  print(id: number) {
+    var doc = new jsPDF()
+    doc.text('Hello world!', 10, 10)
+    doc.save('a4.pdf')
   }
 
 }
