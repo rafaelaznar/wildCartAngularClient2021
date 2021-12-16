@@ -54,12 +54,7 @@
                             [routerLink]="['/factura/plist']"><i [ngClass]="oIconService.getIcon('factura')"></i> Facturas</a>
                     </small>
                 </li>
-                <li class="nav-item" *ngIf="oUsuarioSession">
-                    <small>
-                        <a class="nav-link" [class.active]="strUrl=='/carrito/plist'"
-                            [routerLink]="['/carrito/plist']"><i [ngClass]="oIconService.getIcon('carrito')"></i> Productos en el carrito</a>
-                    </small>
-                </li>
+                
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
                         <a class="nav-link" [class.active]="strUrl=='/random/load'"
@@ -73,15 +68,24 @@
                     </small>
                 </li>
             </ul>
+
+            <span class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==2">
+                <small>
+                    <a class="nav-link" [class.active]="strUrl=='/carrito/plist'"
+                        [routerLink]="['/carrito/plist']"><i [ngClass]="oIconService.getIcon('carrito')"></i> {{tcarrito}}</a>
+                </small>
+            </span>
             <span class="navbar-text" *ngIf="oUsuarioSession"> <i [ngClass]="oIconService.getIcon('usuario')"></i>
                 <small> {{oUsuarioSession.nombre + " " + oUsuarioSession.apellido1 + " (" + oUsuarioSession.tipousuario.nombre+")"}}</small>
             </span>
+            
             <span class="navbar-text" *ngIf="!oUsuarioSession">
                 <small>
                     <a class="nav-link" [class.active]="strUrl=='/login'" [routerLink]="['/login']"><i
                         [ngClass]="oIconService.getIcon('login')"></i> Login</a>
                 </small>
             </span>
+            
             <span class="navbar-text" *ngIf="oUsuarioSession">
                 <small>
                     <a class="nav-link" [class.active]="strUrl=='/logout'" [routerLink]="['/logout']"><i
