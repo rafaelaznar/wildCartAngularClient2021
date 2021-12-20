@@ -41,15 +41,24 @@
       </div>
 
       <div class="row mb-3">
-        <label for="producto" class="col-sm-2 col-form-label">
+        <label for="id_producto" class="col-sm-2 col-form-label">
           <i [ngClass]="oIconService.getIcon('producto')"></i> Producto</label>
-        <div class="col-sm-10">
-          <input type="number" class="form-control" id="producto" formControlName="producto" [ngClass]="{
-              'is-valid': f.producto.valid,
-              'is-invalid': f.producto.invalid
-            }" />
-          <div *ngIf="f.producto.invalid" class="text-danger">
-            Se debe introducir un id de producto
+
+        <div class="col-sm-5">
+          <div class="input-group">
+            <span class="input-group-text">{{
+              "Producto "
+            }}</span>
+            <input
+              type="number"
+              class="form-control"
+              id="producto"
+              formControlName="producto"
+              (ngModelChange)="onChangeProducto($event)"
+            />
+            <button type="button" class="btn btn-success" id="botonProducto" (click)="openModalProducto()">
+              Buscar producto
+            </button>
           </div>
         </div>
       </div>
@@ -106,5 +115,13 @@
 </div>
 
 <app-footer></app-footer>
+
+<app-modal [show]="eventsSubjectShowModalProducto.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModalProducto.asObservable()"
+    (close)="closeModalProducto()" [mimodal]="'modalProducto'">
+    
+    <app-producto-plist-unrouted  [mode]="false" (selection)="onSelectionProducto($event)">
+        <header></header>        
+    </app-producto-plist-unrouted>
+</app-modal>
 
 <app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()"></app-popup>
