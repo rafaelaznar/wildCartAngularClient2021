@@ -7,7 +7,6 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
 import { IconService } from 'src/app/service/icon.service';
 import { PaginationService } from 'src/app/service/pagination.service';
-import { jsPDF } from "jspdf";
 import { CompraService } from 'src/app/service/compra.service';
 import { ICompra, IPageCompra } from 'src/app/model/compra-interfaces';
 
@@ -126,10 +125,10 @@ export class FacturaPlistUnroutedComponent implements OnInit {
     console.log("selection plist emite " + id);
     this.selection.emit(id);
   }
-  cabecera(doc: jsPDF, oFactura: IFactura): jsPDF {
+  cabecera(doc: any, oFactura: IFactura): any {
     doc.setFontSize(20)
     doc.text('Factura', 25, 25)
-    doc.addImage('../../../../../../assets/img/wildCartLogo100.png', 'JPEG', 140, 15, 40, 35)
+    doc.addImage('', 'JPEG', 140, 15, 40, 35)
     doc.setFontSize(18)
     doc.text('Cliente', 20, 80)
     doc.setFontSize(16)
