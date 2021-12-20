@@ -73,8 +73,9 @@ export class PlistCarritoComponent implements OnInit {
   }
 
   comprar(){
-    this.oCarritoService.buy().subscribe();
-    
+    this.oCarritoService.buy().subscribe(() => {
+      this.getPage();
+    });
   }
   ngOnInit(): void {
     this.subjectFiltro$
