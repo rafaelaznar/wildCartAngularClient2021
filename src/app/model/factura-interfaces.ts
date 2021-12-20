@@ -9,7 +9,7 @@ export interface IFactura {
     usuario: IUsuario,
     fecha: IFecha,
     pagado: boolean,
-    compras:ICompra
+    compras: number
 }
 export interface IPageFactura {
     content: IFactura[];
