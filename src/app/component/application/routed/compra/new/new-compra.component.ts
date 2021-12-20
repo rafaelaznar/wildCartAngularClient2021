@@ -10,6 +10,8 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 import { FacturaService } from 'src/app/service/factura.service';
 import { IFactura } from 'src/app/model/factura-interfaces';
+import { ProductoService } from 'src/app/service/producto.service';
+import { IProducto } from 'src/app/model/producto-interfaces';
 
 declare let $: any;
 @Component({
@@ -37,6 +39,7 @@ export class NewCompraComponent implements OnInit {
     private oCompraService: CompraService,
     private oActivatedRoute: ActivatedRoute,
     private oFacturaService: FacturaService,
+    private oProductoService: ProductoService,
     private oRoute: ActivatedRoute,
     private oLocation: Location,
     private oDateTimeService: DateTimeService,
@@ -109,7 +112,7 @@ export class NewCompraComponent implements OnInit {
           producto: {
             id: this.oForm.value.producto,
           },
-          factura: {            
+          factura: {
             id: this.oForm.get("factura")?.value,
           }
         }
@@ -141,28 +144,48 @@ export class NewCompraComponent implements OnInit {
 
   fila: IFactura;
   id_usuario: number = null;
-  showingModal: boolean = false;
+  showingModalFactura: boolean = false;
+  showingModalProducto: boolean = false;
 
-  eventsSubjectShowModal: Subject<void> = new Subject<void>();
-  eventsSubjectHideModal: Subject<void> = new Subject<void>();
 
-  openModal(): void {
-    this.eventsSubjectShowModal.next();
-    this.showingModal = true;
+  eventsSubjectShowModalFactura: Subject<void> = new Subject<void>();
+  eventsSubjectHideModalFactura: Subject<void> = new Subject<void>();
+
+  eventsSubjectShowModalProducto: Subject<void> = new Subject<void>();
+  eventsSubjectHideModalProducto: Subject<void> = new Subject<void>();
+
+  openModalFactura(): void {
+    this.eventsSubjectShowModalFactura.next();
+    this.showingModalFactura = true;
+  }
+
+  openModalProducto(): void {
+    this.eventsSubjectShowModalProducto.next();
+    this.showingModalProducto = true;
   }
 
   onCloseModal(): void {
     //this.oRouter.navigate(['factura/view/' + this.id]);
   }
 
-  closeModal(): void {
-    this.eventsSubjectHideModal.next();
-    this.showingModal = false;
+  closeModalFactura(): void {
+    this.eventsSubjectHideModalFactura.next();
+    this.showingModalFactura = false;
   }
 
-  onSelection($event: any) {
+  closeModalProducto(): void {
+    this.eventsSubjectHideModalProducto.next();
+    this.showingModalProducto = false;
+  }
+
+  onSelectionFactura($event: any) {
     console.log("edit evento recibido: " + $event)
     this.oForm.controls['factura'].setValue($event);
+  }
+
+  onSelectionProducto($event: any) {
+    console.log("edit evento recibido: " + $event)
+    this.oForm.controls['producto'].setValue($event);
   }
 
   onChangeFactura($event: any) {
@@ -171,8 +194,8 @@ export class NewCompraComponent implements OnInit {
     this.oForm.controls['factura'].markAsDirty();
 
     //aqui cerrar la ventana emergente 
-    if (this.showingModal) {
-      this.closeModal();
+    if (this.showingModalFactura) {
+      this.closeModalFactura();
     }
 
     //actualizar el usuario
@@ -180,6 +203,27 @@ export class NewCompraComponent implements OnInit {
       .getOne(this.oForm.controls['factura'].value)
       .subscribe((oData: IFactura) => {
         this.oCompra.factura = oData;
+        //this.oUsuario = oData;
+      });
+
+    return false;
+  }
+
+  onChangeProducto($event: any) {
+
+    console.log("--->" + this.oForm.controls['producto'].value);
+    this.oForm.controls['producto'].markAsDirty();
+
+    //aqui cerrar la ventana emergente 
+    if (this.showingModalProducto) {
+      this.closeModalProducto();
+    }
+
+    //actualizar el usuario
+    this.oProductoService
+      .get(this.oForm.controls['producto'].value)
+      .subscribe((oData: IProducto) => {
+        this.oCompra.producto = oData;
         //this.oUsuario = oData;
       });
 

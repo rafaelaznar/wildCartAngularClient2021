@@ -20,7 +20,7 @@ declare let $: any;
   styleUrls: ['./edit-compra.component.css']
 })
 export class EditCompraComponent implements OnInit {
-    strEntity: string = "compra"
+  strEntity: string = "compra"
   strOperation: string = "edit"
   strTitleSingular: string = "Compra";
   strTitlePlural: string = "Compras";
@@ -43,7 +43,7 @@ export class EditCompraComponent implements OnInit {
     private oRoute: ActivatedRoute,
     private oLocation: Location,
     private oDateTimeService: DateTimeService,
-    public oIconService: IconService    
+    public oIconService: IconService
 
   ) {
 
@@ -159,7 +159,7 @@ export class EditCompraComponent implements OnInit {
   eventsSubjectShowModalFactura: Subject<void> = new Subject<void>();
   eventsSubjectHideModalFactura: Subject<void> = new Subject<void>();
 
-  eventsSubjectShowModalProducto: Subject<void> = new Subject<void>(); 
+  eventsSubjectShowModalProducto: Subject<void> = new Subject<void>();
   eventsSubjectHideModalProducto: Subject<void> = new Subject<void>();
 
 
@@ -171,10 +171,6 @@ export class EditCompraComponent implements OnInit {
   openModalProducto(): void {
     this.eventsSubjectShowModalProducto.next();
     this.showingModalProducto = true;
-  }
-
-  onCloseModal(): void {
-    //this.oRouter.navigate(['factura/view/' + this.id]);
   }
 
   closeModalFactura(): void {
