@@ -10,6 +10,8 @@ import {
   ICarritoToSend,
 } from 'src/app/model/carrito-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
+import { ProductoService } from 'src/app/service/producto.service';
+import { IProducto } from 'src/app/model/producto-interfaces';
 
 declare let $: any;
 
@@ -24,6 +26,7 @@ export class NewCarritoComponent implements OnInit {
   strTitleSingular: string = 'Carrito';
   strTitlePlural: string = 'Carritos';
   oCarritoToSend: ICarritoToSend = null;
+  oCarritoPlist: ICarritoPlist = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
@@ -39,7 +42,9 @@ export class NewCarritoComponent implements OnInit {
     private oRouter: Router,
     private oCarritoService: CarritoService,
     private oLocation: Location,
-    public oIconService: IconService
+    public oIconService: IconService,
+    private oProductoService: ProductoService,
+
   ) {
     if (this.oRoute.snapshot.data.message) {
       this.oUserSession = this.oRoute.snapshot.data.message;
@@ -96,6 +101,49 @@ export class NewCarritoComponent implements OnInit {
   goBack(): void {
     this.oLocation.back();
   }
+
+  //modal
+  showingModalProducto: boolean = false;
+
+  eventsSubjectShowModalProducto: Subject<void> = new Subject<void>();
+  eventsSubjectHideModalProducto: Subject<void> = new Subject<void>();
+
+  openModalProducto(): void {
+    this.eventsSubjectShowModalProducto.next();
+    this.showingModalProducto = true;
+  }
+
+  closeModalProducto(): void {
+    this.eventsSubjectHideModalProducto.next();
+    this.showingModalProducto = false;
+  }
+
+  onSelectionProducto($event: any) {
+    console.log("edit evento recibido: " + $event)
+    this.oForm.controls['producto'].setValue($event);
+  }
+
+  onChangeProducto($event: any) {
+
+    console.log("--->" + this.oForm.controls['producto'].value);
+    this.oForm.controls['producto'].markAsDirty();
+
+    //aqui cerrar la ventana emergente 
+    if (this.showingModalProducto) {
+      this.closeModalProducto();
+    }
+
+    //actualizar el usuario
+    this.oProductoService
+      .get(this.oForm.controls['producto'].value)
+      .subscribe((oData: IProducto) => {
+        this.oCarritoPlist.producto = oData;
+        //this.oUsuario = oData;
+      });
+
+    return false;
+  }
+
 
   //popup
 

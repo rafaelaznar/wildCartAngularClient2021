@@ -10,7 +10,7 @@
 
     <header>
         <a [routerLink]="['/factura/new']" type="button" class="btn btn-success mb-2">
-            <i class="fas fa-plus"></i> Añadir nuevo Usuario
+            <i [ngClass]="oIconService.getIcon('new')"></i> Añadir nueva factura
         </a>
     </header>
 

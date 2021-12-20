@@ -19,7 +19,9 @@ export class CarritoService {
   getOne(id: number): Observable<ICarritoPlist> {
     return this.http.get<ICarritoPlist>(this.sURL + '/' + id, httpOptions);
   }
-
+  buy():Observable<number>{
+    return this.http.put<number>(this.sURL + '/comprar',null, httpOptions);
+  };
   getPage(
     rpp: number,
     page: number,
@@ -68,4 +70,9 @@ export class CarritoService {
   removeOne(id: number): Observable<number> {
     return this.http.delete<number>(this.sURL + '/' + id, httpOptions);
   }
+
+  count(): Observable<number> {
+    return this.http.get<number>(this.sURL + '/count', httpOptions);
+  }
+
 }

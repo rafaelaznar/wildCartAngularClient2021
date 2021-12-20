@@ -9,6 +9,7 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { debounceTime } from 'rxjs/operators';
 import { ICarritoPage, ICarritoPlist } from 'src/app/model/carrito-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
+import { BuiltinType } from '@angular/compiler';
 
 @Component({
   selector: 'app-plist-carrito',
@@ -71,6 +72,10 @@ export class PlistCarritoComponent implements OnInit {
     this.getPage();
   }
 
+  comprar(){
+    this.oCarritoService.buy().subscribe();
+    
+  }
   ngOnInit(): void {
     this.subjectFiltro$
       .pipe(debounceTime(1000))

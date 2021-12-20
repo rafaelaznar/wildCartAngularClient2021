@@ -11,6 +11,7 @@ import { jsPDF } from "jspdf";
 import { CompraService } from 'src/app/service/compra.service';
 import { ICompra, IPageCompra } from 'src/app/model/compra-interfaces';
 
+declare let jsPDF: any;
 @Component({
   selector: 'app-factura-plist-unrouted',
   templateUrl: './factura-plist-unrouted.component.html',
@@ -101,16 +102,7 @@ export class FacturaPlistUnroutedComponent implements OnInit {
     return false;
   }
 
-  doFilter() {
-    this.getPage();
-  }
 
-  onKeydownEvent(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      //alert("do filter");
-      this.getPage();
-    }
-  }
 
   doResetOrder() {
     this.currentSortField = "";
@@ -246,6 +238,12 @@ export class FacturaPlistUnroutedComponent implements OnInit {
     })
 
 
+  }
+
+  print(id: number) {
+    var doc = new jsPDF()
+    doc.text('Hello world!', 10, 10)
+    doc.save('a4.pdf')
   }
 
 }
