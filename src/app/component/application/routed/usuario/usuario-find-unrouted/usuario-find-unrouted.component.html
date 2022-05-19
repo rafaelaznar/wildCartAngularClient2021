@@ -1,19 +1,19 @@
-<label for="id_usuario" class="col-sm-2 col-form-label">
-  <i [ngClass]="oIconService.getIcon('usuario')"></i> Usuario</label>
+<label class="col-sm-2 col-form-label"> <i [ngClass]="oIconService.getIcon(entity)"></i> {{entity.charAt(0).toUpperCase() + entity.slice(1)}}</label>
+
 <div class="col-sm-6">
   <div class="input-group has-validation">
     <span class="input-group-text">{{description}}</span>
-    <input type="number" class="form-control" id="id_usuario" formControlName="id_usuario"
-      (ngModelChange)="onChangeUsuario($event)" [ngClass]="{'is-valid':dirty && (description!='ERROR'),
-      'is-invalid':dirty && (description=='ERROR')}" />
+    <input type="number" class="form-control" [(ngModel)]="id" (ngModelChange)="onChangeForeign($event)" [ngClass]="{'is-valid':dirty && (description!='ERROR'),
+      'is-invalid':dirty && (description=='ERROR  ')}" />
     <button type="button" class="btn btn-success" (click)="openModal()">
-      Buscar usuario
-    </button>            
+      Buscar {{entity}}
+    </button>
   </div>
 </div>
 
 <app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
   (close)="onCloseModal()">
+  <ng-content select="[plist-finder-title]"></ng-content>
   <app-usuario-plist-unrouted [id_tipousuario]="null" [mode]="false" (selection)="onSelection($event)">
     <header></header>
   </app-usuario-plist-unrouted>

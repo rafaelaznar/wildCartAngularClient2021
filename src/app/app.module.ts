@@ -74,11 +74,11 @@ import { TipoProductoPlistUnroutedComponent } from './component/application/unro
 import { ProductoPlistUnroutedComponent } from './component/application/unrouted/producto/producto-plist-unrouted/producto-plist-unrouted.component';
 
 import { FacturaPlistUnroutedComponent } from './component/application/unrouted/factura/plist/factura-plist-unrouted.component';
-import { TipousuarioPlistUnroutedComponent } from './component/application/unrouted/tipousuario/tipousuario-plist-unrouted/tipousuario-plist-unrouted.component';
+import { TipousuarioPlistUnroutedComponent } from './component/application/unrouted/tipousuario/plist/tipousuario-plist-unrouted.component';
 import { ProductoCPlistUnroutedComponent } from './component/application/unrouted/producto/producto-cplist-unrouted/producto-cplist-unrouted.component';
 import { ProductoPlistRowUnroutedComponent } from './component/application/unrouted/producto/producto-plistrow-unrouted/producto-plistrow-unrouted.component';
 import { ProductoPlistheaderUnroutedComponent } from './component/application/unrouted/producto/producto-plistheader-unrouted/producto-plistheader-unrouted.component';
-import { UsuarioFindUnroutedComponent } from './component/application/unrouted/usuario/usuario-find-unrouted/usuario-find-unrouted.component';
+import { UsuarioFindUnroutedComponent } from './component/application/routed/usuario/usuario-find-unrouted/usuario-find-unrouted.component';
 
 @NgModule({
   declarations: [

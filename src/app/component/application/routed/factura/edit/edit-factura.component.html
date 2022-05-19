@@ -47,27 +47,18 @@
         </div>
       </div>
 
-      <div class="row mb-3">
-        <label for="id_usuario" class="col-sm-2 col-form-label">
-          <i [ngClass]="oIconService.getIcon('usuario')"></i> Usuario</label>
-        <div class="col-sm-6">
-          <div class="input-group has-validation">
-            <span class="input-group-text">{{oFactura2Show.usuario.nombre + " " + oFactura2Show.usuario.apellido1 + " "
-              + oFactura2Show.usuario.apellido2}}</span>
-            <input type="number" class="form-control" id="id_usuario" formControlName="id_usuario"
-              (ngModelChange)="onChangeUsuario($event)" [ngClass]="{'is-valid':f.id_usuario.dirty && (oFactura2Show.usuario.nombre!='ERROR'),
-              'is-invalid':f.id_usuario.dirty && (oFactura2Show.usuario.nombre=='ERROR')}" />
-            <button type="button" class="btn btn-success" (click)="openModal()">
-              Buscar usuario
-            </button>            
-          </div>
+      <div class="row mb-3" app-usuario-find-unrouted [entity]="'usuario'" [id]="oFactura2Show.usuario.id"
+        [description]="oFactura2Show.usuario.nombre + ' ' + oFactura2Show.usuario.apellido1 + ' ' + oFactura2Show.usuario.apellido2"
+        (selection)="onUsuarioFindSelection($event)">
+        <div plist-finder-title>
+          <h4 class="text-center">Por favor, selecciona un usuario</h4>
         </div>
       </div>
 
       <div class="row mb-3 justify-content-center">
         <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
           <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine"><i
-            [ngClass]="oIconService.getIcon('ok')"></i> 
+              [ngClass]="oIconService.getIcon('ok')"></i>
             Guardar {{strTitleSingular}}
           </button>
         </div>
@@ -88,12 +79,7 @@
 
 <app-footer></app-footer>
 
-<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
-  (close)="onCloseModal()">
-  <app-usuario-plist-unrouted [id_tipousuario]="null" [mode]="false" (selection)="onSelection($event)">
-    <header></header>
-  </app-usuario-plist-unrouted>
-</app-modal>
+
 
 <app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()" [size]="'sm'">
 </app-popup>

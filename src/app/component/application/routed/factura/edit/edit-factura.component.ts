@@ -122,58 +122,22 @@ export class EditFacturaComponent implements OnInit {
 
   //modal
 
-  fila: IUsuario;
-
-  showingModal: boolean = false;
-
-  eventsSubjectShowModal: Subject<void> = new Subject<void>();
-  eventsSubjectHideModal: Subject<void> = new Subject<void>();
-
-  openModal(): void {
-    this.eventsSubjectShowModal.next();
-    this.showingModal = true;
-  }
-
-  onCloseModal(): void {
-    //this.oRouter.navigate(['factura/view/' + this.id]);
-  }
-
-  closeModal(): void {
-    this.eventsSubjectHideModal.next();
-    this.showingModal = false;
-  }
-
   onSelection($event: any) {
-    console.log("edit evento recibido: " + $event)
     this.oForm.controls['id_usuario'].setValue($event);
   }
-
-  onChangeUsuario($event: any) {
-
-    //console.log("--->" + this.oForm.controls['id_usuario'].value);
-    this.oForm.controls['id_usuario'].markAsDirty();
-
-    //aqui cerrar la ventana emergente 
-    if (this.showingModal) {
-      this.closeModal();
-    }
-
-    //actualizar el usuario
+  onUsuarioFindSelection($event:any){
+    this.oForm.controls['id_usuario'].setValue($event);
+    this.oForm.controls['id_usuario'].markAsDirty();    
     this.oUsuarioService
       .getOne(this.oForm.controls['id_usuario'].value)
       .subscribe((oData: IUsuario) => {
-        console.log(oData);
-        //if(oData){
         this.oFactura2Show.usuario = oData;
-        //}else{
-        //  this.oFactura2Show.usuario = " ";
-        //}
-        //this.oUsuario = oData;
       }, err => {
         this.oFactura2Show.usuario.nombre="ERROR";
         this.oFactura2Show.usuario.apellido1="";
         this.oFactura2Show.usuario.apellido2="";
-        //console.log('HTTP Error', err)
+        this.oForm.controls['id_usuario'].setErrors({'incorrect': true});
+        console.log('HTTP Error', err)
       });
 
     return false;
