@@ -7,6 +7,7 @@ import { PaginationService } from 'src/app/service/pagination.service';
 import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { debounceTime } from 'rxjs/operators';
+import { IOrder } from 'src/app/model/model-interfaces';
 
 @Component({
   selector: 'app-producto-plist-unrouted',
@@ -105,9 +106,9 @@ export class ProductoPlistUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  doSetOrder(order: any) {
-    this.strSortField = order.strSortField;
-    this.strSortDirection = order.strSortDirection;
+  doSetOrder(order: IOrder) {
+    this.strSortField = order.sortField;
+    this.strSortDirection = order.sortDirection;
     this.getPage();
   }
 

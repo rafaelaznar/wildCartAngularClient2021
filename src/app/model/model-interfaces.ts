@@ -52,3 +52,8 @@ export interface IPrint {
     fechainicial:string;
     fechafinal:string;
 }
+
+export interface IOrder {
+    sortField: string;
+    sortDirection: string;
+}

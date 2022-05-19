@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IOrder } from 'src/app/model/model-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { IconService } from 'src/app/service/icon.service';
 export class ProductoPlistheaderUnroutedComponent implements OnInit {
   @Input() strSortField: string = "";
   @Input() strSortDirection: string = "";
-  @Output() sort = new EventEmitter<any>();
+  @Output() sort = new EventEmitter<IOrder>();
 
   strEntity: string = "producto";
   strOperation: string = "plist";
@@ -29,7 +30,7 @@ export class ProductoPlistheaderUnroutedComponent implements OnInit {
     } else {
       this.strSortDirection = 'asc';
     }
-    this.sort.emit({ strSortField: order, strSortDirection: this.strSortDirection });
+    this.sort.emit({ sortField: order, sortDirection: this.strSortDirection });
   }
 
 
