@@ -65,7 +65,7 @@ import { GenerateComponent } from './component/shared/routed/generate/generate.c
 import { GenerateService } from './service/generate.service';
 import { CountService } from './service/count.service';
 import { ReportsComponent } from './component/shared/routed/reports/reports.component';
-import { UsuarioPlistUnroutedComponent } from './component/application/unrouted/usuario/plist/usuario-plist-unrouted.component';
+import { UsuarioPlistUnroutedComponent } from './component/application/unrouted/usuario/usuario-plist-unrouted/usuario-plist-unrouted.component';
 import { PopupComponent } from './component/shared/unrouted/popup/popup.component';
 import { UsuarioViewUnroutedComponent } from './component/application/unrouted/usuario/view/usuario-view-unrouted.component';
 import { FileService } from './service/file.service';

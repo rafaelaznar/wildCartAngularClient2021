@@ -39,9 +39,6 @@ export class ProductoPlistUnroutedComponent implements OnInit {
   subjectFiltro$ = new Subject();
   barraPaginacion: string[];
 
-
-
-
   constructor(
     private oRoute: ActivatedRoute,
     private oRouter: Router,
@@ -59,11 +56,6 @@ export class ProductoPlistUnroutedComponent implements OnInit {
       oRouter.navigate(['/home']);
     }
     this.id_tipoproducto = this.oRoute.snapshot.params.id_tipoproducto;
-    if (this.id_tipoproducto) {
-      this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto;
-    } else {
-      this.strFilteredMessage = "";
-    }
 
     this.nPage = 1;
     this.getPage();
@@ -76,21 +68,23 @@ export class ProductoPlistUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    console.log("buscando...", this.strFilter);
     this.oProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, this.id_tipoproducto).subscribe((oPage: IPageProducto) => {
-      if (this.strFilter) {
-        this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
+      if (this.id_tipoproducto) {
+        if (this.strFilter) {
+          this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto + " y por " + this.strFilter;
+        } else {
+          this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto;
+        }
       } else {
         this.strFilteredMessage = "";
       }
+
       this.aProductos = oPage.content;
       this.nTotalElements = oPage.totalElements;
       this.nTotalPages = oPage.totalPages;
       this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
     })
   }
-
-
 
   jumpToPage = () => {
     this.getPage();
