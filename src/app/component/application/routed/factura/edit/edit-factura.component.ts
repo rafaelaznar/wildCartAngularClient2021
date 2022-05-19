@@ -150,7 +150,7 @@ export class EditFacturaComponent implements OnInit {
 
   onChangeUsuario($event: any) {
 
-    console.log("--->" + this.oForm.controls['id_usuario'].value);
+    //console.log("--->" + this.oForm.controls['id_usuario'].value);
     this.oForm.controls['id_usuario'].markAsDirty();
 
     //aqui cerrar la ventana emergente 
@@ -162,8 +162,18 @@ export class EditFacturaComponent implements OnInit {
     this.oUsuarioService
       .getOne(this.oForm.controls['id_usuario'].value)
       .subscribe((oData: IUsuario) => {
+        console.log(oData);
+        //if(oData){
         this.oFactura2Show.usuario = oData;
+        //}else{
+        //  this.oFactura2Show.usuario = " ";
+        //}
         //this.oUsuario = oData;
+      }, err => {
+        this.oFactura2Show.usuario.nombre="ERROR";
+        this.oFactura2Show.usuario.apellido1="";
+        this.oFactura2Show.usuario.apellido2="";
+        //console.log('HTTP Error', err)
       });
 
     return false;
