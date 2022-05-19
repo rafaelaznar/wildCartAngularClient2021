@@ -123,7 +123,7 @@ export class EditFacturaComponent implements OnInit {
   //modal
 
   fila: IUsuario;
-  id_tipousuario: number = null;
+
   showingModal: boolean = false;
 
   eventsSubjectShowModal: Subject<void> = new Subject<void>();

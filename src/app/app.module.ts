@@ -65,7 +65,7 @@ import { GenerateComponent } from './component/shared/routed/generate/generate.c
 import { GenerateService } from './service/generate.service';
 import { CountService } from './service/count.service';
 import { ReportsComponent } from './component/shared/routed/reports/reports.component';
-import { UsuarioPlistUnroutedComponent } from './component/application/unrouted/usuario/usuario-plist-unrouted/usuario-plist-unrouted.component';
+import { UsuarioPlistUnroutedComponent } from './component/application/unrouted/usuario/plist/usuario-plist-unrouted.component';
 import { PopupComponent } from './component/shared/unrouted/popup/popup.component';
 import { UsuarioViewUnroutedComponent } from './component/application/unrouted/usuario/view/usuario-view-unrouted.component';
 import { FileService } from './service/file.service';
@@ -78,6 +78,7 @@ import { TipousuarioPlistUnroutedComponent } from './component/application/unrou
 import { ProductoCPlistUnroutedComponent } from './component/application/unrouted/producto/producto-cplist-unrouted/producto-cplist-unrouted.component';
 import { ProductoPlistRowUnroutedComponent } from './component/application/unrouted/producto/producto-plistrow-unrouted/producto-plistrow-unrouted.component';
 import { ProductoPlistheaderUnroutedComponent } from './component/application/unrouted/producto/producto-plistheader-unrouted/producto-plistheader-unrouted.component';
+import { UsuarioFindUnroutedComponent } from './component/application/unrouted/usuario/usuario-find-unrouted/usuario-find-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -142,6 +143,7 @@ import { ProductoPlistheaderUnroutedComponent } from './component/application/un
     // Usuario unrouted components
     UsuarioPlistUnroutedComponent,
     UsuarioViewUnroutedComponent,
+    UsuarioFindUnroutedComponent,
 
     // TipoProducto unrouted components
     TipoProductoPlistUnroutedComponent,

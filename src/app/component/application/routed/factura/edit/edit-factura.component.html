@@ -66,8 +66,9 @@
 
       <div class="row mb-3 justify-content-center">
         <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
-          <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine">
-            Guardar Factura
+          <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine"><i
+            [ngClass]="oIconService.getIcon('ok')"></i> 
+            Guardar {{strTitleSingular}}
           </button>
         </div>
       </div>
@@ -77,7 +78,7 @@
       <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
         <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i> Página principal</a>
         <a class="btn btn-primary mx-2" [routerLink]="['/factura/plist']"><i class="fas fa-file-alt"></i> Listado de
-          Facturas</a>
+          {{strTitlePlural}}</a>
         <a class="btn btn-primary mx-2" (click)="goBack()"><i class="fas fa-arrow-circle-left"></i> Volver
         </a>
       </div>
@@ -89,10 +90,9 @@
 
 <app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
   (close)="onCloseModal()">
-  <app-usuario-plist-unrouted [id_tipousuario]="id_tipousuario" [mode]="false" (selection)="onSelection($event)">
+  <app-usuario-plist-unrouted [id_tipousuario]="null" [mode]="false" (selection)="onSelection($event)">
     <header></header>
   </app-usuario-plist-unrouted>
-
 </app-modal>
 
 <app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()" [size]="'sm'">

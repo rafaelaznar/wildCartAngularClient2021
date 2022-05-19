@@ -76,7 +76,7 @@ export class ProductoPlistUnroutedComponent implements OnInit {
           this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto;
         }
       } else {
-        this.strFilteredMessage = "";
+        this.strFilteredMessage = "Listado NO filtrado";
       }
 
       this.aProductos = oPage.content;

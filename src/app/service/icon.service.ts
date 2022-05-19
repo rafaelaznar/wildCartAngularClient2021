@@ -22,8 +22,10 @@ export class IconService {
       case strIcon == "fecha": return "far fa-clock";
       case strIcon == "cantidad": return "fas fa-mountain";
       case strIcon == "euro": return "fas fa-euro-sign";      
+      case strIcon == "precio": return "fas fa-euro-sign";      
       case strIcon == "fecha": return "far fa-clock";
       case strIcon == "porcentaje": return "fas fa-percent";
+      case strIcon == "descuento": return "fas fa-percent";
       case strIcon == "nombre": return "fas fa-signature";
       case strIcon == "email": return "fas fa-at";
       case strIcon == "dni": return "fas fa-address-card";
@@ -40,6 +42,7 @@ export class IconService {
       case strIcon == "new": return "fas fa-plus";
       case strIcon == "edit": return "fas fa-pen";      
       case strIcon == "random": return "fas fa-random";
+      case strIcon == "save": return "fas fa-floppy-disk";      
       //
       case strIcon == "imprimir": return "fas fa-print";
       case strIcon == "informe": return "fas fa-file-alt";
