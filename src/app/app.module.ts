@@ -71,11 +71,11 @@ import { UsuarioViewUnroutedComponent } from './component/application/unrouted/u
 import { FileService } from './service/file.service';
 import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
 import { TipoProductoPlistUnroutedComponent } from './component/application/unrouted/tipoproducto/plist/tipoproducto-plist-unrouted.component';
-import { ProductoPlistUnroutedComponent } from './component/application/unrouted/producto/plist/producto-plist-unrouted.component';
+import { ProductoPlistUnroutedComponent } from './component/application/unrouted/producto/producto-plist-unrouted/producto-plist-unrouted.component';
 
 import { FacturaPlistUnroutedComponent } from './component/application/unrouted/factura/plist/factura-plist-unrouted.component';
 import { TipousuarioPlistUnroutedComponent } from './component/application/unrouted/tipousuario/plist/tipousuario-plist-unrouted.component';
-import { ProductoCPlistUnroutedComponent } from './component/application/unrouted/producto/cplist/producto-cplist-unrouted.component';
+import { ProductoCPlistUnroutedComponent } from './component/application/unrouted/producto/producto-cplist-unrouted/producto-cplist-unrouted.component';
 import { ProductoPlistRowUnroutedComponent } from './component/application/unrouted/producto/producto-plistrow-unrouted/producto-plistrow-unrouted.component';
 import { ProductoPlistheaderUnroutedComponent } from './component/application/unrouted/producto/producto-plistheader-unrouted/producto-plistheader-unrouted.component';
 
