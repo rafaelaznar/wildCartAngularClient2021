@@ -70,11 +70,11 @@ import { PopupComponent } from './component/shared/unrouted/popup/popup.componen
 import { UsuarioViewUnroutedComponent } from './component/application/unrouted/usuario/view/usuario-view-unrouted.component';
 import { FileService } from './service/file.service';
 import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
-import { TipoProductoPlistUnroutedComponent } from './component/application/unrouted/tipoproducto/plist/tipoproducto-plist-unrouted.component';
+import { TipoProductoPlistUnroutedComponent } from './component/application/unrouted/tipoproducto/tipoproducto-plist-unrouted/tipoproducto-plist-unrouted.component';
 import { ProductoPlistUnroutedComponent } from './component/application/unrouted/producto/producto-plist-unrouted/producto-plist-unrouted.component';
 
 import { FacturaPlistUnroutedComponent } from './component/application/unrouted/factura/plist/factura-plist-unrouted.component';
-import { TipousuarioPlistUnroutedComponent } from './component/application/unrouted/tipousuario/plist/tipousuario-plist-unrouted.component';
+import { TipousuarioPlistUnroutedComponent } from './component/application/unrouted/tipousuario/tipousuario-plist-unrouted/tipousuario-plist-unrouted.component';
 import { ProductoCPlistUnroutedComponent } from './component/application/unrouted/producto/producto-cplist-unrouted/producto-cplist-unrouted.component';
 import { ProductoPlistRowUnroutedComponent } from './component/application/unrouted/producto/producto-plistrow-unrouted/producto-plistrow-unrouted.component';
 import { ProductoPlistheaderUnroutedComponent } from './component/application/unrouted/producto/producto-plistheader-unrouted/producto-plistheader-unrouted.component';
