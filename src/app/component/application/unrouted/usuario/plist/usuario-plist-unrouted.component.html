@@ -146,9 +146,11 @@
           </td>
 
           <td>
-            <button class="btn btn-light btn-sm" [routerLink]="['/usuario/plist/tipousuario/' + fila.tipousuario.id]">
+            <button *ngIf="mode" class="btn btn-light btn-sm"
+              [routerLink]="['/usuario/plist/tipousuario/' + fila.tipousuario.id]">
               <i [ngClass]="oIconService.getIcon('usuario')"></i> ({{fila.tipousuario.id}})
               {{fila.tipousuario.nombre}}</button>
+            <div *ngIf="!mode"><i [ngClass]="oIconService.getIcon('usuario')"></i> {{fila.tipousuario.nombre}}</div>
           </td>
 
           <td *ngIf="mode" class="text-center" [innerHTML]="fila.validado | showBoolean"></td>
