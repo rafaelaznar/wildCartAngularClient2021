@@ -105,15 +105,9 @@ export class ProductoPlistUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  doSetOrder(order: string) {
-    this.strSortField = order;
-    if (this.strSortDirection == 'asc') {
-      this.strSortDirection = 'desc';
-    } else if (this.strSortDirection == 'desc') {
-      this.strSortDirection = '';
-    } else {
-      this.strSortDirection = 'asc';
-    }
+  doSetOrder(order: any) {
+    this.strSortField = order.strSortField;
+    this.strSortDirection = order.strSortDirection;
     this.getPage();
   }
 

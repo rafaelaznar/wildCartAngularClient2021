@@ -76,6 +76,8 @@ import { ProductoPlistUnroutedComponent } from './component/application/unrouted
 import { FacturaPlistUnroutedComponent } from './component/application/unrouted/factura/plist/factura-plist-unrouted.component';
 import { TipousuarioPlistUnroutedComponent } from './component/application/unrouted/tipousuario/plist/tipousuario-plist-unrouted.component';
 import { ProductoCPlistUnroutedComponent } from './component/application/unrouted/producto/cplist/producto-cplist-unrouted.component';
+import { ProductoPlistRowUnroutedComponent } from './component/application/unrouted/producto/producto-plistrow-unrouted/producto-plistrow-unrouted.component';
+import { ProductoPlistheaderUnroutedComponent } from './component/application/unrouted/producto/producto-plistheader-unrouted/producto-plistheader-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -146,6 +148,8 @@ import { ProductoCPlistUnroutedComponent } from './component/application/unroute
 
     // Producto unrouted components
     ProductoPlistUnroutedComponent,
+    ProductoPlistheaderUnroutedComponent,
+    ProductoPlistRowUnroutedComponent,
 
     // Factura unrouted components
     FacturaPlistUnroutedComponent,

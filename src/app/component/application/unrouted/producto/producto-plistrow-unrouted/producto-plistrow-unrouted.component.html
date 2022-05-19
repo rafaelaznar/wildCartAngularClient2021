@@ -1,0 +1,40 @@
+<td class="text-end">{{oProducto.id}}</td>
+<td>{{oProducto.codigo}}</td>
+<td>{{oProducto.nombre| trim:60}}</td>
+<td style="text-align: center;">{{oProducto.existencias}}</td>
+<td style="text-align: right;">{{oProducto.precio}}€</td>
+<td style="text-align: center;">({{oProducto.imagen}}) <img [src]="'http://localhost:8082/file/' + oProducto.imagen" style="height:40px" class="my-3" /></td>
+<td style="text-align: center;">{{oProducto.descuento}}%</td>
+<td style="text-align: center;">
+      <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/compra/plist/producto',oProducto.id]">{{oProducto?.compras}}
+    <i [ngClass]="oIconService.getIcon('compra')"></i></button>
+</td>
+<td style="text-align: center;">
+  <button class="btn btn-outline-secondary btn-sm"[routerLink]="['/carrito/plist/producto',oProducto.id]">{{oProducto?.carritos}}
+    <i [ngClass]="oIconService.getIcon('carrito')"></i></button>
+</td>
+<td>
+  <button class="btn btn-light btn-sm"
+      [routerLink]="['/' + strEntity + '/' + strOperation + '/tipoproducto/' + oProducto.tipoproducto.id]">
+      <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> ({{oProducto.tipoproducto.id}})
+      {{oProducto.tipoproducto.nombre | trim:40}}</button>
+</td>
+<td class="text-center">
+  <div class="btn-group btn-group-sm" role="group" *ngIf="!mode">
+    <button type="button" class="btn btn-success" (click)="onSelection(oProducto.id)"><i
+        class="fas fa-eye"></i></button>
+  </div>
+  <div class="btn-group btn-group-sm" role="group" *ngIf="mode">
+    <button type="button" class="btn btn-success" [routerLink]="['/producto/view/' + oProducto.id]"><i
+        class="fas fa-eye"></i></button>
+    <button type="button" class="btn btn-warning" [routerLink]="['/producto/edit/' + oProducto.id]"><i
+        class="fas fa-pen"></i></button>
+    <button type="button" class="btn btn-danger" [routerLink]="['/producto/remove/' + oProducto.id]"><i
+        class="fas fa-trash"></i></button>
+
+    <!-- 
+    <ng-container *ngTemplateOutlet="toolTemplate; context: { $implicit: fila }"></ng-container>
+    -->
+
+  </div>
+</td>
