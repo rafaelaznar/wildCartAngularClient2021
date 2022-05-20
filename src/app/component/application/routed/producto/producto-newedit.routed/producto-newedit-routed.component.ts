@@ -12,14 +12,14 @@ import { FileService } from 'src/app/service/file.service';
 declare let $: any;
 
 @Component({
-  selector: 'app-edit-producto',
-  templateUrl: './edit-producto.component.html',
-  styleUrls: ['./edit-producto.component.css']
+  selector: 'app-producto-newedit-routed',
+  templateUrl: './producto-newedit-routed.component.html',
+  styleUrls: ['./producto-newedit-routed.component.css']
 })
-export class EditProductoComponent implements OnInit {
+export class ProductoNewEditRoutedComponent implements OnInit {
 
   strEntity: string = "producto"
-  strOperation: string = "edit"
+  strOperation: string = "newedit" //new or edit depends on the url
   strTitleSingular: string = "Producto";
   strTitlePlural: string = "Productos";
   oProducto2Send: IProducto2Send = null;
@@ -56,11 +56,25 @@ export class EditProductoComponent implements OnInit {
     }
 
     this.id = this.oActivatedRoute.snapshot.params.id
-    this.getOne();
-
+    this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
+    if (this.strOperation == "edit") {
+      this.getOne();
+    } else {
+      this.oForm = this.oFormBuilder.group({
+        codigo: ['', [Validators.required]],
+        nombre: ['', Validators.required],
+        existencias: [''],
+        precio: [''],
+        imagen: [''],
+        descuento: [''],
+        tipoproducto: ['', Validators.required],
+      });
+    }
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+
+  }
 
   getOne = (): void => {
     this.oProductoService.get(this.id).subscribe((oData: IProducto) => {
@@ -83,7 +97,7 @@ export class EditProductoComponent implements OnInit {
     const reader = new FileReader();
 
     if ($event.target.files && $event.target.files.length) {
-      this.selectedFiles = $event.target.files;      
+      this.selectedFiles = $event.target.files;
       if (this.selectedFiles) {
         this.file2Send = this.selectedFiles.item(0);
         this.selectedFile = this.file2Send.name;
@@ -105,11 +119,11 @@ export class EditProductoComponent implements OnInit {
   selectedFiles?: FileList;
   imageSrc: string = null;
   file2Send: File = null;
-  selectedFile:string;
+  selectedFile: string;
 
   onSubmit(): void {
-        
-    console.log("-->nombre: " , this.selectedFile);
+
+    console.log("-->nombre: ", this.selectedFile);
     //const file: File = imageInput.files[0];
     //this.selectedFile = new ImageSnippet(  this.imageSrc , file);
     this.oFileService.uploadImage(this.file2Send).subscribe(
@@ -126,16 +140,31 @@ export class EditProductoComponent implements OnInit {
             tipoproducto: { id: this.oForm.value.tipoproducto },
           }
           console.log(this.oProducto2Send)
-          this.oProductoService
-            .update(this.oProducto2Send)
-            .subscribe((oProducto: IProducto) => {
-              if (oProducto.id) {
-                this.strResult = this.strTitleSingular + ' modificado correctamente';
-              } else {
-                this.strResult = this.strTitleSingular + ': error en la modificación del registro';
-              }
-              this.openPopup();
-            });
+          if (this.strOperation == "new") {
+            this.oProductoService
+              .newOne(this.oProducto2Send)
+              .subscribe((oProduct: IProducto) => {
+                console.log('dentro de new');
+                if (oProduct.id) {
+                  this.id = oProduct.id;
+                  this.strResult = 'El/La ' + this.strTitleSingular + ' se ha creado correctamente con el id: ' + oProduct.id;
+                } else {
+                  this.strResult = 'Error en la creación de ' + this.strTitleSingular;
+                }
+                this.openPopup();
+              });
+          } else {
+            this.oProductoService
+              .update(this.oProducto2Send)
+              .subscribe((oProducto: IProducto) => {
+                if (oProducto.id) {
+                  this.strResult = this.strTitleSingular + ' modificado correctamente';
+                } else {
+                  this.strResult = this.strTitleSingular + ': error en la modificación del registro';
+                }
+                this.openPopup();
+              });
+          }
         }
       },
       (err) => {

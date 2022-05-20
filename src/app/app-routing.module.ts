@@ -13,7 +13,7 @@ import { NewFacturaComponent } from './component/application/routed/factura/new/
 import { FacturaPlistRoutedComponent } from './component/application/routed/factura/plist/factura-plist-routed.component';
 import { RemoveFacturaComponent } from './component/application/routed/factura/remove/remove-factura.component';
 import { ViewFacturaComponent } from './component/application/routed/factura/view/view-factura.component';
-import { EditProductoComponent } from './component/application/routed/producto/edit/edit-producto.component';
+import { ProductoNewEditRoutedComponent } from './component/application/routed/producto/producto-newedit.routed/producto-newedit-routed.component';
 import { NewProductoComponent } from './component/application/routed/producto/new/new-producto.component';
 import { PlistProductoComponent } from './component/application/routed/producto/plist/plist-producto.component';
 import { ProductoRemoveRoutedComponent } from './component/application/routed/producto/remove/producto-remove-routed.component';
@@ -69,8 +69,8 @@ const routes: Routes = [
   { path: 'producto/plist', component: PlistProductoComponent, resolve: { message: SessionResolver } },
   { path: 'producto/plist/tipoproducto/:id_tipoproducto', component: PlistProductoComponent, resolve: { message: SessionResolver } },
   { path: 'producto/view/:id', component: ProductoViewRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'producto/new', component: NewProductoComponent, resolve: { message: SessionResolver } },  
-  { path: 'producto/edit/:id', component: EditProductoComponent, resolve: { message: SessionResolver } },
+  { path: 'producto/new', component: ProductoNewEditRoutedComponent, resolve: { message: SessionResolver } },  
+  { path: 'producto/edit/:id', component: ProductoNewEditRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'producto/remove/:id', component: ProductoRemoveRoutedComponent, resolve: { message: SessionResolver } },
 
   { path: 'compra/plist', component: PlistCompraComponent, resolve: { message: SessionResolver } },

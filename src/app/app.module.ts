@@ -30,7 +30,7 @@ import { RemoveTipoproductoComponent } from './component/application/routed/tipo
 import { ViewTipoproductoComponent } from './component/application/routed/tipoproducto/view/view-tipoproducto.component';
 import { PlistProductoComponent } from './component/application/routed/producto/plist/plist-producto.component';
 import { NewProductoComponent } from './component/application/routed/producto/new/new-producto.component';
-import { EditProductoComponent } from './component/application/routed/producto/edit/edit-producto.component';
+import { ProductoNewEditRoutedComponent } from './component/application/routed/producto/producto-newedit.routed/producto-newedit-routed.component';
 import { ProductoRemoveRoutedComponent } from './component/application/routed/producto/remove/producto-remove-routed.component';
 import { ProductoViewRoutedComponent } from './component/application/routed/producto/view/producto-view-routed.component';
 import { UsuarioPlistRoutedComponent } from './component/application/routed/usuario/plist/usuario-plist-routed.component';
@@ -120,7 +120,7 @@ import { UsuarioFindUnroutedComponent } from './component/application/routed/usu
     PlistProductoComponent,
     ProductoViewRoutedComponent,
     NewProductoComponent,
-    EditProductoComponent,
+    ProductoNewEditRoutedComponent,
     ProductoRemoveRoutedComponent,
     // Compra routed components
     PlistCompraComponent,
