@@ -79,6 +79,7 @@ import { ProductoCPlistUnroutedComponent } from './component/application/unroute
 import { ProductoPlistRowUnroutedComponent } from './component/application/unrouted/producto/producto-plistrow-unrouted/producto-plistrow-unrouted.component';
 import { ProductoPlistheaderUnroutedComponent } from './component/application/unrouted/producto/producto-plistheader-unrouted/producto-plistheader-unrouted.component';
 import { UsuarioFindUnroutedComponent } from './component/application/routed/usuario/usuario-find-unrouted/usuario-find-unrouted.component';
+import { ProductoFormUnroutedComponent } from './component/application/unrouted/producto/producto-form.unrouted/producto-form-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -149,6 +150,7 @@ import { UsuarioFindUnroutedComponent } from './component/application/routed/usu
     TipoProductoPlistUnroutedComponent,
 
     // Producto unrouted components
+    ProductoFormUnroutedComponent,
     ProductoPlistUnroutedComponent,
     ProductoPlistheaderUnroutedComponent,
     ProductoPlistRowUnroutedComponent,
