@@ -72,8 +72,8 @@
                         <img [src]="imageSrc" alt="" style="height:100px" class="my-3" />
                     </div>
                     <div *ngIf="strOperation=='edit'">
-                        <img [src]="'http://localhost:8082/file/' + oProducto2Show.imagen"
-                            style="height:100px" class="my-3" />
+                        <img [src]="'http://localhost:8082/file/' + oProducto2Show.imagen" style="height:100px"
+                            class="my-3" />
                     </div>
                 </div>
             </div>
@@ -102,8 +102,8 @@
             <div class="row mb-3 justify-content-center">
                 <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
                     <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine"><i
-                            [ngClass]="oIconService.getIcon('ok')"></i> Modificar
-                        el {{strTitleSingular}}</button>
+                            [ngClass]="oIconService.getIcon('ok')"></i> {{strOperation=='new'?'Crear':'Modificar'}} el
+                        {{strTitleSingular}}</button>
                 </div>
             </div>
 
