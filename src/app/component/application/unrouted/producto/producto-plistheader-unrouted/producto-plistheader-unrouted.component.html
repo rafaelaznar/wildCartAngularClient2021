@@ -1,78 +1,56 @@
 <th (click)="doSetOrder('id')"><i [ngClass]="oIconService.getIcon('id')"></i> ID
   <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
-    *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
-
+  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('codigo')">
   <i [ngClass]="oIconService.getIcon('codigo')"></i> Código
-  <i [ngClass]="oIconService.getIcon('flechaUp')"
-    *ngIf="strSortField=='codigo'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
-    *ngIf="strSortField=='codigo'&&strSortDirection=='desc'"></i>
-
+  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='codigo'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='codigo'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('nombre')">
   <i [ngClass]="oIconService.getIcon('nombre')"></i> Nombre
-  <i [ngClass]="oIconService.getIcon('flechaUp')"
-    *ngIf="strSortField=='nombre'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
-    *ngIf="strSortField=='nombre'&&strSortDirection=='desc'"></i>
-
+  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='nombre'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='nombre'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('existencias')">
   <i [ngClass]="oIconService.getIcon('cantidad')"></i> Existencias
-  <i [ngClass]="oIconService.getIcon('flechaUp')"
-    *ngIf="strSortField=='existencias'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
-    *ngIf="strSortField=='existencias'&&strSortDirection=='desc'"></i>
-
+  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='existencias'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='existencias'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('precio')">
   <i [ngClass]="oIconService.getIcon('euro')"></i> Precio
-  <i [ngClass]="oIconService.getIcon('flechaUp')"
-    *ngIf="strSortField=='precio'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
-    *ngIf="strSortField=='precio'&&strSortDirection=='desc'"></i>
-
+  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='precio'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='precio'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('imagen')">
   <i [ngClass]="oIconService.getIcon('imagen')"></i> Imagen
-  <i [ngClass]="oIconService.getIcon('flechaUp')"
-    *ngIf="strSortField=='imagen'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
-    *ngIf="strSortField=='imagen'&&strSortDirection=='desc'"></i>
-
+  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='imagen'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='imagen'&&strSortDirection=='desc'"></i>
+</th>
+<th (click)="doSetOrder('imagen')">
+  <i [ngClass]="oIconService.getIcon('imagen')"></i> ID Imagen
+  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='imagen'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='imagen'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('descuento')">
   <i [ngClass]="oIconService.getIcon('porcentaje')"></i> Descuento
-  <i [ngClass]="oIconService.getIcon('flechaUp')"
-    *ngIf="strSortField=='descuento'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
-    *ngIf="strSortField=='descuento'&&strSortDirection=='desc'"></i>
-
+  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='descuento'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='descuento'&&strSortDirection=='desc'"></i>
 </th>
 
-<th (click)="doSetOrder('compra')"><i [ngClass]="oIconService.getIcon('compra')"></i> Compras 
-  <i [ngClass]="oIconService.getIcon('flechaUp')"
-    *ngIf="strSortField=='compra'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
-    *ngIf="strSortField=='compra'&&strSortDirection=='desc'"></i>
+<th (click)="doSetOrder('compra')"><i [ngClass]="oIconService.getIcon('compra')"></i> Compras
+  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='compra'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='compra'&&strSortDirection=='desc'"></i>
 </th>
 
-<th (click)="doSetOrder('carrito')"><i [ngClass]="oIconService.getIcon('carrito')"></i> Carrito 
-  <i [ngClass]="oIconService.getIcon('flechaUp')"
-    *ngIf="strSortField=='carrito'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
-    *ngIf="strSortField=='carrito'&&strSortDirection=='desc'"></i>
+<th (click)="doSetOrder('carrito')"><i [ngClass]="oIconService.getIcon('carrito')"></i> Carrito
+  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='carrito'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='carrito'&&strSortDirection=='desc'"></i>
 </th>
 
-<th (click)="doSetOrder('tipoproducto')"> <i
-  [ngClass]="oIconService.getIcon('tipoproducto')"></i> Tipo Producto 
-  <i [ngClass]="oIconService.getIcon('flechaUp')"
-    *ngIf="strSortField=='tipoproducto'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
-    *ngIf="strSortField=='tipoproducto'&&strSortDirection=='desc'"></i>
+<th (click)="doSetOrder('tipoproducto')"> <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> Tipo Producto
+  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='tipoproducto'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='tipoproducto'&&strSortDirection=='desc'"></i>
 
 </th>
 <th><i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones</th>

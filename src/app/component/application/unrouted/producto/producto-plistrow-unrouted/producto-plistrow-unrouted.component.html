@@ -3,7 +3,8 @@
 <td>{{oProducto.nombre| trim:60}}</td>
 <td style="text-align: center;">{{oProducto.existencias}}</td>
 <td style="text-align: right;">{{oProducto.precio}}€</td>
-<td style="text-align: center;">({{oProducto.imagen}}) <img [src]="'http://localhost:8082/file/' + oProducto.imagen" style="height:40px" class="my-3" /></td>
+<td style="text-align: center;"><img [src]="'http://localhost:8082/file/' + oProducto.imagen" style="height:40px" /></td>
+<td style="text-align: center;">{{oProducto.imagen}}</td>
 <td style="text-align: center;">{{oProducto.descuento}}%</td>
 <td style="text-align: center;">
       <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/compra/plist/producto',oProducto.id]">{{oProducto?.compras}}
