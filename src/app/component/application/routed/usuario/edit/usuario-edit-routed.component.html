@@ -12,7 +12,8 @@
 
       <div class="row mb-3">
 
-        <label for="id" class="col-sm-2 col-form-label">Id</label>
+        <label for="id" class="col-sm-2 col-form-label">
+          <i [ngClass]="oIconService.getIcon('id')"></i> Id</label>
         <div class="col-sm-10">
           <div class="row mb-3">
             <div class="col-sm-10">
@@ -21,7 +22,8 @@
           </div>
         </div>
 
-        <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+        <label for="nombre" class="col-sm-2 col-form-label">
+          <i [ngClass]="oIconService.getIcon('nombre')"></i> Nombre</label>
         <div class="col-sm-10">
           <div class="row mb-3">
             <div class="col-sm-10">
@@ -37,7 +39,8 @@
           </div>
         </div>
 
-        <label for="dni" class="col-sm-2 col-form-label">DNI</label>
+        <label for="dni" class="col-sm-2 col-form-label">
+          <i [ngClass]="oIconService.getIcon('dni')"></i> DNI</label>
         <div class="col-sm-10">
           <div class="row mb-3">
             <div class="col-sm-10">
@@ -52,7 +55,8 @@
             </div>
           </div>
         </div>
-        <label for="apellido1" class="col-sm-2 col-form-label">Primer Apellido</label>
+        <label for="apellido1" class="col-sm-2 col-form-label">
+          <i [ngClass]="oIconService.getIcon('nombre')"></i> Primer Apellido</label>
         <div class="col-sm-10">
           <div class="row mb-3">
             <div class="col-sm-10">
@@ -67,7 +71,8 @@
             </div>
           </div>
         </div>
-        <label for="apellido2" class="col-sm-2 col-form-label">Segundo Apellido</label>
+        <label for="apellido2" class="col-sm-2 col-form-label">
+          <i [ngClass]="oIconService.getIcon('nombre')"></i> Segundo Apellido</label>
         <div class="col-sm-10">
           <div class="row mb-3">
             <div class="col-sm-10">
@@ -82,7 +87,8 @@
             </div>
           </div>
         </div>
-        <label for="login" class="col-sm-2 col-form-label">Login</label>
+        <label for="login" class="col-sm-2 col-form-label">
+          <i [ngClass]="oIconService.getIcon('login')"></i> Login</label>
         <div class="col-sm-10">
           <div class="row mb-3">
             <div class="col-sm-10">
@@ -97,7 +103,8 @@
             </div>
           </div>
         </div>
-        <label for="email" class="col-sm-2 col-form-label">email</label>
+        <label for="email" class="col-sm-2 col-form-label">
+          <i [ngClass]="oIconService.getIcon('email')"></i> email</label>
         <div class="col-sm-10">
           <div class="row mb-3">
             <div class="col-sm-10">
@@ -112,7 +119,8 @@
             </div>
           </div>
         </div>
-        <label for="tusuario" class="col-sm-2 col-form-label">Tipo Usuario</label>
+        <label for="tusuario" class="col-sm-2 col-form-label">
+          <i [ngClass]="oIconService.getIcon('tipousuario')"></i> Tipo Usuario</label>
 
         <div class="col-sm-10">
           <div class="row mb-3">
@@ -120,9 +128,9 @@
               <div class="input-group">
                 <span class="input-group-text">{{oUsuario2Show.tipousuario.nombre}}</span>
                 <input type="number" class="form-control" id="tusuario" formControlName="tusuario"
-                    (ngModelChange)="onChangeTUsuario($event)">
+                  (ngModelChange)="onChangeTUsuario($event)">
                 <button type="button" class="btn btn-success" (click)="openModal()">Buscar tusuario</button>
-            </div>
+              </div>
             </div>
           </div>
         </div>
@@ -154,10 +162,10 @@
 
 <app-footer></app-footer>
 <app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
-    (close)="onCloseModal()">
-    <app-tipousuario-plist-unrouted [mode]="false" (selection)="onSelection($event)">
-        <header></header>        
-    </app-tipousuario-plist-unrouted>
+  (close)="onCloseModal()">
+  <app-tipousuario-plist-unrouted [mode]="false" (selection)="onSelection($event)">
+    <header></header>
+  </app-tipousuario-plist-unrouted>
 </app-modal>
 
 <app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()"></app-popup>
