@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+    font-size: 14px;
+    line-height: 1.428;
+}
+
+.table {
+    font-size: 12px;
+}
+
+.table .btn {
+    font-size: 9px;
+}
