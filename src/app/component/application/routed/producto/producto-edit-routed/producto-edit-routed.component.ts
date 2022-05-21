@@ -5,15 +5,15 @@ import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 @Component({
-  selector: 'app-producto-newedit-routed',
-  templateUrl: './producto-newedit-routed.component.html',
-  styleUrls: ['./producto-newedit-routed.component.css']
+  selector: 'app-producto-edit-routed',
+  templateUrl: './producto-edit-routed.component.html',
+  styleUrls: ['./producto-edit-routed.component.css']
 })
 
-export class ProductoNewEditRoutedComponent implements OnInit {
+export class ProductoEditRoutedComponent implements OnInit {
 
   strEntity: string = "producto"
-  strOperation: string = "newedit" //new or edit depends on the url
+  strOperation: string = "edit" //new or edit depends on the url
   strTitleSingular: string = "Producto";
   strTitlePlural: string = "Productos";
   id: number = null;
