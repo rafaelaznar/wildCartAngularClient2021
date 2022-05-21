@@ -15,9 +15,9 @@ import { RemoveFacturaComponent } from './component/application/routed/factura/r
 import { ViewFacturaComponent } from './component/application/routed/factura/view/view-factura.component';
 import { ProductoEditRoutedComponent } from './component/application/routed/producto/producto-edit-routed/producto-edit-routed.component';
 import { ProductoNewRoutedComponent } from './component/application/routed/producto/producto-new-routed/producto-new-routed.component';
-import { PlistProductoComponent } from './component/application/routed/producto/plist/plist-producto.component';
-import { ProductoRemoveRoutedComponent } from './component/application/routed/producto/remove/producto-remove-routed.component';
-import { ProductoViewRoutedComponent } from './component/application/routed/producto/view/producto-view-routed.component';
+import { PlistProductoComponent } from './component/application/routed/producto/producto-plist-routed/plist-producto.component';
+import { ProductoRemoveRoutedComponent } from './component/application/routed/producto/producto-remove-routed/producto-remove-routed.component';
+import { ProductoViewRoutedComponent } from './component/application/routed/producto/producto-view-routed/producto-view-routed.component';
 import { EditTipoproductoComponent } from './component/application/routed/tipoproducto/edit/edit-tipoproducto.component';
 import { NewTipoproductoComponent } from './component/application/routed/tipoproducto/new/new-tipoproducto.component';
 import { PlistTipoproductoComponent } from './component/application/routed/tipoproducto/plist/tipoproducto-plist-routed.component';

@@ -1,12 +1,8 @@
-import { ProductoService } from '../../../../../service/producto.service';
 import { Component, OnInit } from '@angular/core';
-import { IProducto } from 'src/app/model/producto-interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-
-
 @Component({
   selector: 'app-producto-view-routed',
   templateUrl: './producto-view-routed.component.html',
@@ -21,12 +17,12 @@ export class ProductoViewRoutedComponent implements OnInit {
   id: number = null;
   strUsuarioSession: string;
   strResult: string = null;
-  oProducto: IProducto;
+ 
   oUserSession: IUsuario;
 
 
   constructor(
-    private oProductoService: ProductoService,
+  
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
@@ -44,23 +40,14 @@ export class ProductoViewRoutedComponent implements OnInit {
     }
 
     this.id = this.oActivatedRoute.snapshot.params.id
-    this.getOne();
+
   }
 
   ngOnInit() {
   }
 
-  getOne = () => {
-    this.oProductoService
-      .get(this.id)
-      .subscribe((oData: IProducto) => {
-        this.oProducto = oData;
-      });
-  };
-
   goBack() {
     this.oLocation.back();
   }
-
 
 }

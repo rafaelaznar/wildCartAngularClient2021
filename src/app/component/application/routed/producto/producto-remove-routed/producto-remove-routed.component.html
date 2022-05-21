@@ -6,31 +6,9 @@
   </app-header>
 
   <div class="row justify-content-center">
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <th><i [ngClass]="oIconService.getIcon('id')"></i>ID</th>
-          <td>{{oProduct?.id}}</td>
-        </tr>
-        <tr>
-          <th>codigo</th>
-          <td>{{oProduct?.codigo}}</td>
-        </tr>
-        <tr>
-          <th>Nombre</th>
-          <td>{{oProduct?.nombre}}</td>
-        </tr>
-        <tr>
-          <th>Existencias</th>
-          <td>{{oProduct?.existencias}}</td>
-        </tr>
-        <tr>
-          <th>Precio</th>
-          <td>{{oProduct?.precio}}</td>
-        </tr>
+   
+    <app-producto-detail-unrouted [id]="id"></app-producto-detail-unrouted>
 
-      </tbody>
-    </table>
     <div class="row justify-content-center">
         <div class="col-md-5 control-group text-center my-3">
           <div class="alert alert-danger my-3" role="alert">

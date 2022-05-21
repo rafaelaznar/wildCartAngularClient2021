@@ -28,11 +28,11 @@ import { NewTipoproductoComponent } from './component/application/routed/tipopro
 import { EditTipoproductoComponent } from './component/application/routed/tipoproducto/edit/edit-tipoproducto.component';
 import { RemoveTipoproductoComponent } from './component/application/routed/tipoproducto/remove/remove-tipoproducto.component';
 import { ViewTipoproductoComponent } from './component/application/routed/tipoproducto/view/view-tipoproducto.component';
-import { PlistProductoComponent } from './component/application/routed/producto/plist/plist-producto.component';
+import { PlistProductoComponent } from './component/application/routed/producto/producto-plist-routed/plist-producto.component';
 import { ProductoNewRoutedComponent } from './component/application/routed/producto/producto-new-routed/producto-new-routed.component';
 import { ProductoEditRoutedComponent } from './component/application/routed/producto/producto-edit-routed/producto-edit-routed.component';
-import { ProductoRemoveRoutedComponent } from './component/application/routed/producto/remove/producto-remove-routed.component';
-import { ProductoViewRoutedComponent } from './component/application/routed/producto/view/producto-view-routed.component';
+import { ProductoRemoveRoutedComponent } from './component/application/routed/producto/producto-remove-routed/producto-remove-routed.component';
+import { ProductoViewRoutedComponent } from './component/application/routed/producto/producto-view-routed/producto-view-routed.component';
 import { UsuarioPlistRoutedComponent } from './component/application/routed/usuario/plist/usuario-plist-routed.component';
 import { UsuarioNewRoutedComponent } from './component/application/routed/usuario/new/usuario-new-routed.component';
 import { UsuarioEditRoutedComponent } from './component/application/routed/usuario/edit/usuario-edit-routed.component';
@@ -78,8 +78,9 @@ import { TipousuarioPlistUnroutedComponent } from './component/application/unrou
 import { ProductoCPlistUnroutedComponent } from './component/application/unrouted/producto/producto-cplist-unrouted/producto-cplist-unrouted.component';
 import { ProductoPlistRowUnroutedComponent } from './component/application/unrouted/producto/producto-plistrow-unrouted/producto-plistrow-unrouted.component';
 import { ProductoPlistheaderUnroutedComponent } from './component/application/unrouted/producto/producto-plistheader-unrouted/producto-plistheader-unrouted.component';
-import { UsuarioFindUnroutedComponent } from './component/application/unrouted/usuario/usuario-find-unrouted/usuario-find-unrouted.component';
+import { UsuarioFindUnroutedComponent } from './component/application/routed/usuario/usuario-find-unrouted/usuario-find-unrouted.component';
 import { ProductoFormUnroutedComponent } from './component/application/unrouted/producto/producto-form.unrouted/producto-form-unrouted.component';
+import { ProductoDetailUnroutedComponent } from './component/application/unrouted/producto/producto-detail-unrouted/producto-detail-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -150,6 +151,7 @@ import { ProductoFormUnroutedComponent } from './component/application/unrouted/
     TipoProductoPlistUnroutedComponent,
 
     // Producto unrouted components
+    ProductoDetailUnroutedComponent,
     ProductoFormUnroutedComponent,
     ProductoPlistUnroutedComponent,
     ProductoPlistheaderUnroutedComponent,

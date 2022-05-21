@@ -17,8 +17,7 @@ export class ProductoRemoveRoutedComponent implements OnInit {
   strOperation: string = "remove"
   strTitleSingular: string = "Producto";
   strTitlePlural: string = "Productos";
-  id: number = 0;
-  oProduct: IProducto;
+  id: number = 0;  
   oUserSession: IUsuario;
   strResult: string = null;
 
@@ -39,17 +38,10 @@ export class ProductoRemoveRoutedComponent implements OnInit {
     }
     // recogida de parámetros
     this.id = this.oActivatedRoute.snapshot.params.id
-    // llamada al servidor
-    this.getOne();
+
   }
 
   ngOnInit(): void {
-  }
-
-  getOne = () => {
-    this.oProductoService.get(this.id).subscribe((oData: IProducto) => {
-      this.oProduct = oData;
-    })
   }
 
   removeOne() {
@@ -78,7 +70,5 @@ export class ProductoRemoveRoutedComponent implements OnInit {
   onClosePopup(): void {
     this.oRouter.navigate([this.strEntity + '/plist']);
   }
-
-
 
 }
