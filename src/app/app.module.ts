@@ -78,7 +78,7 @@ import { TipousuarioPlistUnroutedComponent } from './component/application/unrou
 import { ProductoCPlistUnroutedComponent } from './component/application/unrouted/producto/producto-cplist-unrouted/producto-cplist-unrouted.component';
 import { ProductoPlistRowUnroutedComponent } from './component/application/unrouted/producto/producto-plistrow-unrouted/producto-plistrow-unrouted.component';
 import { ProductoPlistheaderUnroutedComponent } from './component/application/unrouted/producto/producto-plistheader-unrouted/producto-plistheader-unrouted.component';
-import { UsuarioFindUnroutedComponent } from './component/application/routed/usuario/usuario-find-unrouted/usuario-find-unrouted.component';
+import { UsuarioFindUnroutedComponent } from './component/application/unrouted/usuario/usuario-find-unrouted/usuario-find-unrouted.component';
 import { ProductoFormUnroutedComponent } from './component/application/unrouted/producto/producto-form.unrouted/producto-form-unrouted.component';
 import { ProductoDetailUnroutedComponent } from './component/application/unrouted/producto/producto-detail-unrouted/producto-detail-unrouted.component';
 
