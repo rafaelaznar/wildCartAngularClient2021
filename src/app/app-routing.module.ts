@@ -23,9 +23,9 @@ import { NewTipoproductoComponent } from './component/application/tipoproducto/r
 import { PlistTipoproductoComponent } from './component/application/tipoproducto/routed/plist/tipoproducto-plist-routed.component';
 import { RemoveTipoproductoComponent } from './component/application/tipoproducto/routed/remove/remove-tipoproducto.component';
 import { ViewTipoproductoComponent } from './component/application/tipoproducto/routed/view/view-tipoproducto.component';
-import { TipousuarioEditRoutedComponent } from './component/application/tipousuario/routed/edit/tipousuario-edit-routed.component';
-import { TipousuarioPlistRoutedComponent } from './component/application/tipousuario/routed/plist/tipousuario-plist-routed.component';
-import { TipousuarioViewRoutedComponent } from './component/application/tipousuario/routed/view/tipousuario-view-routed.component';
+import { TipousuarioEditRoutedComponent } from './component/application/tipousuario/routed/tipousuario-edit-routed/tipousuario-edit-routed.component';
+import { TipousuarioPlistRoutedComponent } from './component/application/tipousuario/routed/tipousuario-plist-routed/tipousuario-plist-routed.component';
+import { TipousuarioViewRoutedComponent } from './component/application/tipousuario/routed/tipousuario-view-routed/tipousuario-view-routed.component';
 import { UsuarioEditRoutedComponent } from './component/application/usuario/routed/usuario-edit-routed/usuario-edit-routed.component';
 import { UsuarioNewRoutedComponent } from './component/application/usuario/routed/usuario-new-routed/usuario-new-routed.component';
 import { UsuarioPlistRoutedComponent } from './component/application/usuario/routed/usuario-plist-routed/usuario-plist-routed.component';

@@ -39,12 +39,8 @@ export class ProductoFormUnroutedComponent implements OnInit {
 
   constructor(
     private oFormBuilder: FormBuilder,
-    //private oRouter: Router,
     private oProductoService: ProductoService,
     private oFileService: FileService,
-    //private oActivatedRoute: ActivatedRoute,
-    //private oLocation: Location,
-    //private oRoute: ActivatedRoute,
     public oIconService: IconService
   ) {
   }

@@ -2,10 +2,8 @@
 
     <div class="row mb-3">
         <label for="id" class="col-sm-2 col-form-label"> <i [ngClass]="oIconService.getIcon('id')"></i> ID</label>
-        <div class="col-sm-10">
-            <div class="row mb-1">
-                <input class="form-control" type="text" placeholder="{{id}}" readonly>
-            </div>
+        <div class="col-sm-1">
+            <input class="form-control" type="text" placeholder="{{id}}" readonly>
         </div>
     </div>
 
@@ -100,8 +98,8 @@
         </div>
     </div>
 
-    <div class="row mb-3" app-find-unrouted [entity]="'tipousuario'" [id]="oData2Show.tipousuario.id"
-        [description]="oData2Show.tipousuario.nombre" (selection)="onFindSelection($event)">
+    <div class="row mb-3" app-find-unrouted [entity]="'tipousuario'" [id]="oData2Show?.tipousuario.id"
+        [description]="oData2Show?.tipousuario.nombre" (selection)="onFindSelection($event)">
         <div plist-finder-title>
             <h4 class="text-center">Por favor, selecciona un usuario</h4>
         </div>

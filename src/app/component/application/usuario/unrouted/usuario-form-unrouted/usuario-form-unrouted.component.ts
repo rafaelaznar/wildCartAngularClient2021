@@ -45,13 +45,13 @@ export class UsuarioFormUnroutedComponent implements OnInit {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
-        codigo: ['', [Validators.required]],
-        nombre: ['', Validators.required],
-        existencias: [''],
-        precio: [''],
-        imagen: [''],
-        descuento: [''],
-        tipoproducto: ['', Validators.required],
+        nombre: ['', [Validators.required, Validators.minLength(5)]],
+        dni: ['', [Validators.required, Validators.minLength(5)]],
+        apellido1: ['', [Validators.required, Validators.minLength(5)]],
+        apellido2: ['', [Validators.required, Validators.minLength(5)]],
+        login: ['', [Validators.required, Validators.minLength(5)]],
+        email: ['', [Validators.required, Validators.minLength(5)]],
+        tipousuario: ['', [Validators.required, Validators.maxLength(1)]],  
       });
     }
   }
