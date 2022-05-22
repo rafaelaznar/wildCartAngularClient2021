@@ -1,4 +1,3 @@
-import { IUsuario } from '../../../../../model/usuario-interfaces';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,7 +13,6 @@ import { IconService } from 'src/app/service/icon.service';
 
 export class UsuarioRemoveRoutedComponent implements OnInit {
   id: number = 0;
-  oUsuario: IUsuario;
   strUsuarioSession: string;
   strResult: string = null;
   strEntity: string = "usuario"
@@ -25,15 +23,14 @@ export class UsuarioRemoveRoutedComponent implements OnInit {
   constructor(
     private oUsuarioService: UsuarioService,
     private oActivatedRoute: ActivatedRoute,
-    private oRoute: ActivatedRoute,
     private oRouter: Router,
     private _location: Location,
     public oIconService: IconService
 
   ) {
     // control de sesión
-    if (this.oRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oRoute.snapshot.data.message;
+    if (this.oActivatedRoute.snapshot.data.message) {
+      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
       localStorage.setItem('user', JSON.stringify(this.strUsuarioSession));
     } else {
       localStorage.clear();
@@ -41,23 +38,14 @@ export class UsuarioRemoveRoutedComponent implements OnInit {
     }
     // recogida de parámetros
     this.id = this.oActivatedRoute.snapshot.params.id;
-    // llamada al servidor
-    this.getOne();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  getOne = () => {
-    this.oUsuarioService
-      .getOne(this.id)
-      .subscribe((oData: IUsuario) => {
-        this.oUsuario = oData;
-      });
-  };
 
   removeOne() {
     this.oUsuarioService.removeOne(this.id).subscribe((data: number) => {
-      this.strResult = 'Usuario eliminado';
+      this.strResult = this.strTitleSingular +' ' + this.id + ' eliminado';
       this.openPopup();
     });
   }

@@ -19,6 +19,7 @@ export class ProductoEditRoutedComponent implements OnInit {
   id: number = null;
   strResult: string = null;
   oUserSession: IUsuario;
+  strUsuarioSession: string;
 
   constructor(
     private oRouter: Router,
@@ -29,8 +30,8 @@ export class ProductoEditRoutedComponent implements OnInit {
   ) {
 
     if (this.oActivatedRoute.snapshot.data.message) {
-      const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(strUsuarioSession));
+      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
+      localStorage.setItem("user", JSON.stringify(this.strUsuarioSession));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);

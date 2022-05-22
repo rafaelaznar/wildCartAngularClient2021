@@ -14,7 +14,7 @@
 <app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
   (close)="onCloseModal()">
   <ng-content select="[plist-finder-title]"></ng-content>
-  <app-usuario-plist-unrouted [mode]="false" (selection)="onSelection($event)">
+  <app-tipousuario-plist-unrouted [mode]="false" (selection)="onSelection($event)">
     <header></header>
-  </app-usuario-plist-unrouted>
+  </app-tipousuario-plist-unrouted>
 </app-modal>

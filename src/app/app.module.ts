@@ -33,11 +33,11 @@ import { ProductoNewRoutedComponent } from './component/application/routed/produ
 import { ProductoEditRoutedComponent } from './component/application/routed/producto/producto-edit-routed/producto-edit-routed.component';
 import { ProductoRemoveRoutedComponent } from './component/application/routed/producto/producto-remove-routed/producto-remove-routed.component';
 import { ProductoViewRoutedComponent } from './component/application/routed/producto/producto-view-routed/producto-view-routed.component';
-import { UsuarioPlistRoutedComponent } from './component/application/routed/usuario/plist/usuario-plist-routed.component';
-import { UsuarioNewRoutedComponent } from './component/application/routed/usuario/new/usuario-new-routed.component';
+import { UsuarioPlistRoutedComponent } from './component/application/routed/usuario/usuario-plist-routed/usuario-plist-routed.component';
+import { UsuarioNewRoutedComponent } from './component/application/routed/usuario/usuario-new-routed/usuario-new-routed.component';
 import { UsuarioEditRoutedComponent } from './component/application/routed/usuario/edit/usuario-edit-routed.component';
-import { UsuarioRemoveRoutedComponent } from './component/application/routed/usuario/remove/usuario-remove-routed.component';
-import { UsuarioViewRoutedComponent } from './component/application/routed/usuario/view/usuario-view-routed.component';
+import { UsuarioRemoveRoutedComponent } from './component/application/routed/usuario/usuario-remove-routed/usuario-remove-routed.component';
+import { UsuarioViewRoutedComponent } from './component/application/routed/usuario/usuario-view-routed/usuario-view-routed.component';
 import { PlistCarritoComponent } from './component/application/routed/carrito/plist/plist-carrito.component';
 import { NewCarritoComponent } from './component/application/routed/carrito/new/new-carrito.component';
 import { ViewCarritoComponent } from './component/application/routed/carrito/view/view-carrito.component';
@@ -65,9 +65,9 @@ import { GenerateComponent } from './component/shared/routed/generate/generate.c
 import { GenerateService } from './service/generate.service';
 import { CountService } from './service/count.service';
 import { ReportsComponent } from './component/shared/routed/reports/reports.component';
-import { UsuarioPlistUnroutedComponent } from './component/application/unrouted/usuario/plist/usuario-plist-unrouted.component';
+import { UsuarioPlistUnroutedComponent } from './component/application/unrouted/usuario/usuario-plist-unrouted/usuario-plist-unrouted.component';
 import { PopupComponent } from './component/shared/unrouted/popup/popup.component';
-import { UsuarioViewUnroutedComponent } from './component/application/unrouted/usuario/view/usuario-view-unrouted.component';
+import { UsuarioViewUnroutedComponent } from './component/application/unrouted/usuario/usuario-view-unrouted/usuario-view-unrouted.component';
 import { FileService } from './service/file.service';
 import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
 import { TipoProductoPlistUnroutedComponent } from './component/application/unrouted/tipoproducto/tipoproducto-plist-unrouted/tipoproducto-plist-unrouted.component';
@@ -81,6 +81,9 @@ import { ProductoPlistheaderUnroutedComponent } from './component/application/un
 import { UsuarioFindUnroutedComponent } from './component/application/unrouted/usuario/usuario-find-unrouted/usuario-find-unrouted.component';
 import { ProductoFormUnroutedComponent } from './component/application/unrouted/producto/producto-form.unrouted/producto-form-unrouted.component';
 import { ProductoDetailUnroutedComponent } from './component/application/unrouted/producto/producto-detail-unrouted/producto-detail-unrouted.component';
+import { TipousuarioFindUnroutedComponent } from './component/application/unrouted/tipousuario/tipousuario-find-unrouted/tipousuario-find-unrouted.component';
+import { findUnroutedComponent } from './component/shared/unrouted/find-unrouted/find-unrouted.component';
+import { UsuarioFormUnroutedComponent } from './component/application/unrouted/usuario/usuario-form-unrouted/usuario-form-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +95,8 @@ import { ProductoDetailUnroutedComponent } from './component/application/unroute
     FooterComponent,
     MenuComponent,
     PrePrintComponent,
+    findUnroutedComponent,
+    //
     // shared routed
     LoginComponent,
     HomeComponent,
@@ -142,10 +147,17 @@ import { ProductoDetailUnroutedComponent } from './component/application/unroute
     ViewCarritoComponent,
     RemoveCarritoComponent,
     EditCarritoComponent,
+
+
+
+    //
+    // unrouted components
+    //
     // Usuario unrouted components
     UsuarioPlistUnroutedComponent,
     UsuarioViewUnroutedComponent,
     UsuarioFindUnroutedComponent,
+    UsuarioFormUnroutedComponent,
 
     // TipoProducto unrouted components
     TipoProductoPlistUnroutedComponent,
@@ -159,6 +171,7 @@ import { ProductoDetailUnroutedComponent } from './component/application/unroute
 
     // Factura unrouted components
     FacturaPlistUnroutedComponent,
+    TipousuarioFindUnroutedComponent,
 
     // TipoUsuario unrouted components
     TipousuarioPlistUnroutedComponent,

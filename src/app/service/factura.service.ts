@@ -64,7 +64,7 @@ export class FacturaService {
     return this.http.post<number>(this.sURL + '/',oFactura,httpOptions);
   }
 
-  Update(oFactura: IFactura2Send): Observable<number> {
+  updateOne(oFactura: IFactura2Send): Observable<number> {
     return this.http.put<number>(this.sURL + '/',oFactura,httpOptions);
   }
 

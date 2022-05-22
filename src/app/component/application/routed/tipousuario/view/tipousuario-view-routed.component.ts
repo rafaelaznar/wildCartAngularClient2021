@@ -1,7 +1,7 @@
 import { IconService } from 'src/app/service/icon.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IUserType } from 'src/app/model/tipousuario-interfaces';
+import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { TipousuarioService } from 'src/app/service/tipousuario.service';
   styleUrls: ['./tipousuario-view-routed.component.css'],
 })
 export class TipousuarioViewRoutedComponent implements OnInit {
-  public tipoUsuario: IUserType;
+  public tipoUsuario: ITipousuario;
   strEntity: string = 'tipousuario';
   strOperation: string = 'view';
   strTitleSingular: string = 'Tipo de Usuario';
@@ -23,7 +23,7 @@ export class TipousuarioViewRoutedComponent implements OnInit {
   ) {
     this.tipoUsuarioService
       .view(this.activatedRoute.snapshot.params.id)
-      .subscribe((data: IUserType) => {
+      .subscribe((data: ITipousuario) => {
         this.tipoUsuario = data;
       });
   }

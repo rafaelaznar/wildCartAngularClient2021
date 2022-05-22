@@ -27,10 +27,10 @@ import { TipousuarioEditRoutedComponent } from './component/application/routed/t
 import { TipousuarioPlistRoutedComponent } from './component/application/routed/tipousuario/plist/tipousuario-plist-routed.component';
 import { TipousuarioViewRoutedComponent } from './component/application/routed/tipousuario/view/tipousuario-view-routed.component';
 import { UsuarioEditRoutedComponent } from './component/application/routed/usuario/edit/usuario-edit-routed.component';
-import { UsuarioNewRoutedComponent } from './component/application/routed/usuario/new/usuario-new-routed.component';
-import { UsuarioPlistRoutedComponent } from './component/application/routed/usuario/plist/usuario-plist-routed.component';
-import { UsuarioRemoveRoutedComponent } from './component/application/routed/usuario/remove/usuario-remove-routed.component';
-import { UsuarioViewRoutedComponent } from './component/application/routed/usuario/view/usuario-view-routed.component';
+import { UsuarioNewRoutedComponent } from './component/application/routed/usuario/usuario-new-routed/usuario-new-routed.component';
+import { UsuarioPlistRoutedComponent } from './component/application/routed/usuario/usuario-plist-routed/usuario-plist-routed.component';
+import { UsuarioRemoveRoutedComponent } from './component/application/routed/usuario/usuario-remove-routed/usuario-remove-routed.component';
+import { UsuarioViewRoutedComponent } from './component/application/routed/usuario/usuario-view-routed/usuario-view-routed.component';
 import { PlistCarritoComponent } from './component/application/routed/carrito/plist/plist-carrito.component';
 import { NewCarritoComponent } from './component/application/routed/carrito/new/new-carrito.component';
 import { ViewCarritoComponent } from './component/application/routed/carrito/view/view-carrito.component';

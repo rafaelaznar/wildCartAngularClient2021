@@ -62,9 +62,11 @@ export class ProductoPlistUnroutedComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /*
     this.subjectFiltro$.pipe(
       debounceTime(1000)
     ).subscribe(() => this.getPage());
+    */
   }
 
   getPage = () => {

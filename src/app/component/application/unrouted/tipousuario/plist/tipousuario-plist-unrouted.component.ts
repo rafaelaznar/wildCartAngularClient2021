@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import {  ITipoUsuarioPage,  IUserTypePlist,} from 'src/app/model/tipousuario-interfaces';
+import {  ITipoUsuarioPage,  ITipousuarioPlist,} from 'src/app/model/tipousuario-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 import { PaginationService } from 'src/app/service/pagination.service';
@@ -15,7 +15,6 @@ import { TipousuarioService } from 'src/app/service/tipousuario.service';
 })
 export class TipousuarioPlistUnroutedComponent implements OnInit {
 
-  @Input() id_usuario: number = null;
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() selection = new EventEmitter<number>();
 
@@ -23,7 +22,7 @@ export class TipousuarioPlistUnroutedComponent implements OnInit {
   strOperation: string = 'plist';
   strTitleSingular: string = 'Tipo de usuario';
   strTitlePlural: string = 'Tipos de usuario';
-  aTipoUsuarios: IUserTypePlist[];
+  aTipoUsuarios: ITipousuarioPlist[];
   aPaginationBar: string[];
   nTotalElements: number;
   nTotalPages: number;
@@ -38,8 +37,6 @@ export class TipousuarioPlistUnroutedComponent implements OnInit {
   subjectFiltro$ = new Subject();
 
   constructor(
-    private oRoute: ActivatedRoute,
-    private oRouter: Router,
     private oPaginationService: PaginationService,
     private oTipoUsuarioService: TipousuarioService,
     public oIconService: IconService
@@ -50,9 +47,11 @@ export class TipousuarioPlistUnroutedComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /*
     this.subjectFiltro$
       .pipe(debounceTime(1000))
       .subscribe(() => this.getPage());
+      */
   }
 
   getPage = () => {

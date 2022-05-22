@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
-import { IUserType } from 'src/app/model/tipousuario-interfaces';
+import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 declare let $: any;
@@ -20,8 +20,8 @@ export class TipousuarioEditRoutedComponent implements OnInit {
   strOperation: string = 'edit';
   strTitleSingular: string = 'Tipo de usuario';
   strTitlePlural: string = 'Tipos de usuario';
-  oUserType: IUserType = null;
-  oUserTypeToSend: IUserType = null;
+  oUserType: ITipousuario = null;
+  oUserTypeToSend: ITipousuario = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
@@ -58,7 +58,7 @@ export class TipousuarioEditRoutedComponent implements OnInit {
   ngOnInit(): void {}
 
   getOne = (): void => {
-    this.oTipoUsuarioService.view(this.id).subscribe((oData: IUserType) => {
+    this.oTipoUsuarioService.view(this.id).subscribe((oData: ITipousuario) => {
       this.oUserType = oData;
       this.oForm = this.oFormBuilder.group({
         id: [this.id],
@@ -83,7 +83,7 @@ export class TipousuarioEditRoutedComponent implements OnInit {
   update = (): void => {
     this.oTipoUsuarioService
       .edit(JSON.stringify(this.oUserTypeToSend))
-      .subscribe((oCarritoPlist: IUserType) => {
+      .subscribe((oCarritoPlist: ITipousuario) => {
         if (oCarritoPlist.id) {
           this.strResult = this.strTitleSingular + ' modificado correctamente';
         } else {

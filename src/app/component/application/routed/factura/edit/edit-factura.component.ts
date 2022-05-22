@@ -19,8 +19,8 @@ declare let $: any;
 })
 export class EditFacturaComponent implements OnInit {
 
-  oFactura2Show: IFactura = null;
-  oFactura2Send: IFactura2Send = null;
+  oData2Show: IFactura = null;
+  oData2Send: IFactura2Send = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
@@ -29,6 +29,8 @@ export class EditFacturaComponent implements OnInit {
   strOperation: string = "edit"
   strTitleSingular: string = "Factura";
   strTitlePlural: string = "Facturas";
+  strATitleSingular: string = 'La factura';
+  strATitlePlural: string = 'Las facturas';
 
   get f() { return this.oForm.controls; }
 
@@ -76,38 +78,22 @@ export class EditFacturaComponent implements OnInit {
   get = (): void => {
     this.oFacturaService.getOne(this.id).subscribe((oData: IFactura) => {
       // console.log(oData);
-      this.oFactura2Show = oData;
+      this.oData2Show = oData;
       this.oForm = this.oFormBuilder.group({
-        id: [this.oFactura2Show.id],
-        fecha: [this.oFactura2Show.fecha, Validators.required],
-        iva: [this.oFactura2Show.iva, Validators.required],
-        pagado: [this.oFactura2Show.pagado],
-        id_usuario: [this.oFactura2Show.usuario.id, Validators.required]
+        id: [this.oData2Show.id],
+        fecha: [this.oData2Show.fecha, Validators.required],
+        iva: [this.oData2Show.iva, Validators.required],
+        pagado: [this.oData2Show.pagado],
+        id_usuario: [this.oData2Show.usuario.id, Validators.required]
       });
-      $('#fecha').val(this.oFactura2Show.fecha);
+      $('#fecha').val(this.oData2Show.fecha);
 
     })
-  }
-
-  update = (): void => {
-    console.log(this.oFactura2Send);
-    this.oFacturaService.Update(this.oFactura2Send).subscribe((result: number) => {
-      if (result) {
-        this.strResult = "La factura se ha modificado correctamente";
-      } else {
-        this.strResult = "Error en la modificación de la factura";
-      }
-      this.openPopup();
-    })
-  }
-
-  goBack(): void {
-    this.oLocation.back();
   }
 
   onSubmit(): void {
     if (this.oForm) {
-      this.oFactura2Send = {
+      this.oData2Send = {
         id: this.oForm.value.id,
         fecha: this.oForm.value.fecha,
         iva: this.oForm.value.iva,
@@ -120,24 +106,36 @@ export class EditFacturaComponent implements OnInit {
     }
   }
 
-  //modal
-
-  onSelection($event: any) {
-    this.oForm.controls['id_usuario'].setValue($event);
+  update = (): void => {
+    console.log(this.oData2Send);
+    this.oFacturaService.updateOne(this.oData2Send).subscribe((id: number) => {
+      if (id) {
+        this.strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+      } else {
+        this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+      }
+      this.openPopup();
+    })
   }
-  onUsuarioFindSelection($event:any){
+
+  goBack(): void {
+    this.oLocation.back();
+  }
+
+  //ajenas
+
+  onFindSelection($event: any) {
     this.oForm.controls['id_usuario'].setValue($event);
-    this.oForm.controls['id_usuario'].markAsDirty();    
+    this.oForm.controls['id_usuario'].markAsDirty();
     this.oUsuarioService
       .getOne(this.oForm.controls['id_usuario'].value)
       .subscribe((oData: IUsuario) => {
-        this.oFactura2Show.usuario = oData;
+        this.oData2Show.usuario = oData;
       }, err => {
-        this.oFactura2Show.usuario.nombre="ERROR";
-        this.oFactura2Show.usuario.apellido1="";
-        this.oFactura2Show.usuario.apellido2="";
-        this.oForm.controls['id_usuario'].setErrors({'incorrect': true});
-        console.log('HTTP Error', err)
+        this.oData2Show.usuario.nombre = "ERROR";
+        this.oData2Show.usuario.apellido1 = "";
+        this.oData2Show.usuario.apellido2 = "";
+        this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
       });
 
     return false;

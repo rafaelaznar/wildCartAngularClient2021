@@ -9,7 +9,7 @@ import {
   environment,
   httpOptions,
 } from 'src/environments/environment';
-import { ITipoUsuarioPage, IUserType } from '../model/tipousuario-interfaces';
+import { ITipoUsuarioPage, ITipousuario } from '../model/tipousuario-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -33,9 +33,9 @@ export class TipousuarioService {
     return throwError(errorMessage);
   }
 
-  view(id: number): Observable<IUserType> {
+  view(id: number): Observable<ITipousuario> {
     return this.http
-      .get<IUserType>(`${this.sURL}/${id}`, httpOptions)
+      .get<ITipousuario>(`${this.sURL}/${id}`, httpOptions)
       .pipe(catchError(this.handleError));
   }
 
@@ -59,9 +59,9 @@ export class TipousuarioService {
     );
   }
 
-  edit(body: String): Observable<IUserType> {
+  edit(body: String): Observable<ITipousuario> {
     return this.http
-      .put<IUserType>(this.sURL, body, httpOptions)
+      .put<ITipousuario>(this.sURL, body, httpOptions)
       .pipe(catchError(this.handleError));
   }
   postJsonFormater(formPost: FormGroup): string {
@@ -74,5 +74,8 @@ export class TipousuarioService {
 
   redirectPlist(): void {
     this.oRoute.navigate(['/tipousuario/plist']);
+  }
+  getOne(id: number): Observable<ITipousuario> {
+    return this.http.get<ITipousuario>(this.sURL + "/" + id, httpOptions);
   }
 }

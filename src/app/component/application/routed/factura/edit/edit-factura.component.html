@@ -47,9 +47,9 @@
         </div>
       </div>
 
-      <div class="row mb-3" app-usuario-find-unrouted [entity]="'usuario'" [id]="oFactura2Show.usuario.id"
-        [description]="oFactura2Show.usuario.nombre + ' ' + oFactura2Show.usuario.apellido1 + ' ' + oFactura2Show.usuario.apellido2"
-        (selection)="onUsuarioFindSelection($event)">
+      <div class="row mb-3" app-find-unrouted [entity]="'usuario'" [id]="oData2Show.usuario.id"
+        [description]="(oData2Show.usuario.nombre + ' ' + oData2Show.usuario.apellido1 + ' ' + oData2Show.usuario.apellido2).trim()"
+        (selection)="onFindSelection($event)">
         <div plist-finder-title>
           <h4 class="text-center">Por favor, selecciona un usuario</h4>
         </div>

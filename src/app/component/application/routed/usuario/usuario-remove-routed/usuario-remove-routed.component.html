@@ -6,42 +6,7 @@
     [iconEntity]="oIconService.getIcon(this.strEntity)">
   </app-header>
     <div class="row justify-content-center">
-        <table class="table table-striped">
-            <tbody>
-                <tr>
-                    <th>ID</th>
-                    <td>{{oUsuario?.id}}</td>
-                </tr>
-                <tr>
-                    <th>Nombre</th>
-                    <td>{{oUsuario?.nombre}}</td>
-                </tr>
-                <tr>
-                    <th>Primer Apellido</th>
-                    <td>{{oUsuario?.apellido1}}</td>
-                </tr>
-                <tr>
-                    <th>Segundo Apellido</th>
-                    <td>{{oUsuario?.apellido2}}</td>
-                </tr>
-                <tr>
-                    <th>DNI</th>
-                    <td>{{oUsuario?.dni}}</td>
-                </tr>
-                <tr>
-                    <th>Login</th>
-                    <td>{{oUsuario?.login}}</td>
-                </tr>
-                <tr>
-                    <th>email</th>
-                    <td>{{oUsuario?.email}}</td>
-                </tr>
-                <tr>
-                    <th>Tipo Usuario</th>
-                    <td>{{oUsuario?.tipousuario.id}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <app-usuario-view-unrouted [id]=id></app-usuario-view-unrouted> 
     </div>
     <div class="row justify-content-center">
         <div class="col-md-5 control-group text-center my-3">

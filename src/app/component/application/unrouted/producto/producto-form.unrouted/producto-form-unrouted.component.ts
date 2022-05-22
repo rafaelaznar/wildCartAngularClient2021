@@ -21,6 +21,7 @@ export class ProductoFormUnroutedComponent implements OnInit {
   strEntity: string = "producto"
   //strOperation: string = "newedit" //new or edit depends on the url
   strTitleSingular: string = "Producto";
+  strATitleSingular: string = "El producto";
   strTitlePlural: string = "Productos";
   oProducto2Send: IProducto2Send = null;
   oProducto2Show: IProducto = null;
@@ -83,7 +84,6 @@ export class ProductoFormUnroutedComponent implements OnInit {
 
   processFile($event: any) {
     const reader = new FileReader();
-
     if ($event.target.files && $event.target.files.length) {
       this.selectedFiles = $event.target.files;
       if (this.selectedFiles) {
@@ -104,58 +104,6 @@ export class ProductoFormUnroutedComponent implements OnInit {
     }
   }
 
-  selectedFiles?: FileList;
-  imageSrc: string = null;
-  file2Send: File = null;
-  selectedFile: string;
-
-  save(img:number): void {
-    if (this.oForm.valid) {
-      if (this.oForm) {
-        this.oProducto2Send = {
-          id: this.id,
-          codigo: this.oForm.value.codigo,
-          nombre: this.oForm.value.nombre,
-          existencias: this.oForm.value.existencias,
-          precio: this.oForm.value.precio,
-          imagen: img,
-          descuento: this.oForm.value.descuento,
-          tipoproducto: { id: this.oForm.value.tipoproducto },
-        }
-        //console.log(this.oProducto2Send)
-        if (this.strOperation == "new") {
-          this.oProductoService
-            .newOne(this.oProducto2Send)
-            .subscribe((oProduct: IProducto) => {
-              console.log('dentro de new');
-              if (oProduct.id) {
-                this.id = oProduct.id;
-                this.strResult = 'El/La ' + this.strTitleSingular + ' se ha creado correctamente con el id: ' + oProduct.id;
-              } else {
-                this.strResult = 'Error en la creación de ' + this.strTitleSingular;
-              }
-              //this.openPopup();
-              this.msg.emit({ strMsg: this.strResult, id: this.id });
-            });
-        } else {
-          this.oProductoService
-            .update(this.oProducto2Send)
-            .subscribe((oProducto: IProducto) => {
-              if (oProducto.id) {
-                this.strResult = this.strTitleSingular + ' modificado correctamente';
-              } else {
-                this.strResult = this.strTitleSingular + ': error en la modificación del registro';
-              }
-              //this.openPopup();
-
-              this.msg.emit({ strMsg: this.strResult, id: this.id });
-            });
-        }
-      }
-    }
-  }
-
-
   onSubmit(): void {
     //console.log("-->nombre: ", this.selectedFile);
     //const file: File = imageInput.files[0];
@@ -168,19 +116,59 @@ export class ProductoFormUnroutedComponent implements OnInit {
         (err) => {
           this.strResult = this.strTitleSingular + 'Error al cambiar el registro: ' + err.error.message;
           console.log("Img Upload error:", err.error.message);
-          //this.openPopup();
           this.msg.emit({ strMsg: this.strResult, id: 0 });
         })
     } else {
       this.save(this.oForm.value.imagen);
     }
-
   }
 
+  selectedFiles?: FileList;
+  imageSrc: string = null;
+  file2Send: File = null;
+  selectedFile: string;
 
-
-
-
-
+  save(img: number): void {
+    if (this.oForm) {
+      if (this.oForm.valid) {
+        this.oProducto2Send = {
+          id: this.id,
+          codigo: this.oForm.value.codigo,
+          nombre: this.oForm.value.nombre,
+          existencias: this.oForm.value.existencias,
+          precio: this.oForm.value.precio,
+          imagen: img,
+          descuento: this.oForm.value.descuento,
+          tipoproducto: { id: this.oForm.value.tipoproducto },
+        }
+        if (this.strOperation == "new") {
+          this.oProductoService
+            .newOne(this.oProducto2Send)
+            .subscribe((oProducto: IProducto) => {
+              console.log('dentro de new');
+              if (oProducto.id) {
+                this.id = oProducto.id;
+                this.strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + oProducto.id;
+              } else {
+                this.strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
+              }
+              this.msg.emit({ strMsg: this.strResult, id: this.id });
+            });
+        } else {
+          this.oProductoService
+            .update(this.oProducto2Send)
+            .subscribe((oProducto: IProducto) => {
+              if (oProducto.id) {
+                this.id = oProducto.id;
+                this.strResult = this.strATitleSingular + ' con id=' + oProducto.id + ' se ha modificado correctamente';
+              } else {
+                this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+              }
+              this.msg.emit({ strMsg: this.strResult, id: this.id });
+            });
+        }
+      }
+    }
+  }
 
 }

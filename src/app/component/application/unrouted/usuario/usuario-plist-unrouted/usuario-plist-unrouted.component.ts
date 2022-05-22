@@ -48,14 +48,18 @@ export class UsuarioPlistUnroutedComponent implements OnInit {
     private oPostService: UsuarioService,
     public oIconService: IconService,
     private oActivatedRoute: ActivatedRoute,
-  ) { }
+  ) { 
+    this.getPage();
+  }
 
   ngOnInit(): void {
+    /*
     this.subjectFiltro$.pipe(
       debounceTime(1000)
     ).subscribe(() => this.getPage());
     this.page = 1;
     this.getPage();
+    */
   }
 
   getPage = () => {

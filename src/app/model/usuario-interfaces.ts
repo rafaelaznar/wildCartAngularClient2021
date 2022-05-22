@@ -1,5 +1,5 @@
 import { I2Send } from "./model-interfaces";
-import { IUserType } from "./tipousuario-interfaces";
+import { ITipousuario } from "./tipousuario-interfaces";
 
 export interface IUsuario {
     id: number,
@@ -12,7 +12,7 @@ export interface IUsuario {
     descuento: number,
     validado: boolean,
     activo: boolean,
-    tipousuario: IUserType,
+    tipousuario: ITipousuario,
     carritos: number,
     facturas: number
 }

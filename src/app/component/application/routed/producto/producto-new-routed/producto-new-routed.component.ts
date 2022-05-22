@@ -18,19 +18,18 @@ export class ProductoNewRoutedComponent implements OnInit {
   strTitlePlural: string = "Productos";
   id: number = null;
   strResult: string = null;
-  oUserSession: IUsuario;
+  strUsuarioSession: string;
 
   constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
-    private oRoute: ActivatedRoute,
     public oIconService: IconService
   ) {
 
     if (this.oActivatedRoute.snapshot.data.message) {
-      const strUsuarioSession: string = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(strUsuarioSession));
+      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
+      localStorage.setItem("user", JSON.stringify(this.strUsuarioSession));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);

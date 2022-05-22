@@ -30,9 +30,7 @@ export class UsuarioPlistRoutedComponent implements OnInit {
 
   constructor(
     private oRoute: ActivatedRoute,
-    private oRouter: Router,
-    private oPaginationService: PaginationService,
-    private oPostService: UsuarioService,
+    private oRouter: Router,    
     public oIconService: IconService,
     private oActivatedRoute: ActivatedRoute,
   ) {
@@ -42,10 +40,9 @@ export class UsuarioPlistRoutedComponent implements OnInit {
       localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
-      oRouter.navigate(['/home']);
+      this.oRouter.navigate(['/home']);
     }
     this.id_tipousuario = this.oActivatedRoute.snapshot.params.id_tipousuario;
-
 
   }
 

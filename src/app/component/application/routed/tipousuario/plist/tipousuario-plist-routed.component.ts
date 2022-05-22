@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import {  ITipoUsuarioPage,  IUserTypePlist,} from 'src/app/model/tipousuario-interfaces';
+import {  ITipoUsuarioPage,  ITipousuarioPlist,} from 'src/app/model/tipousuario-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 import { PaginationService } from 'src/app/service/pagination.service';
@@ -18,7 +18,7 @@ export class TipousuarioPlistRoutedComponent implements OnInit {
   strOperation: string = 'plist';
   strTitleSingular: string = 'Tipo de usuario';
   strTitlePlural: string = 'Tipos de usuario';
-  aTipoUsuarios: IUserTypePlist[];
+  aTipoUsuarios: ITipousuarioPlist[];
   aPaginationBar: string[];
   nTotalElements: number;
   nTotalPages: number;
