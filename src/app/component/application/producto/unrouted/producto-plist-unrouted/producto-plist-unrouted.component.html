@@ -25,7 +25,7 @@
       <ul class="pagination">
         <li class="page-item" aria-current="page" *ngFor="let p of aPaginationBar"
           [ngClass]="{'active': (nPage+'' == p)}">
-          <a class="page-link" (click)="nPage=(+p);jumpToPage()" href="#">{{p}}</a>
+          <a class="page-link" (click)="nPage=(+p);doJumpToPage()" href="#">{{p}}</a>
         </li>
       </ul>
     </nav>

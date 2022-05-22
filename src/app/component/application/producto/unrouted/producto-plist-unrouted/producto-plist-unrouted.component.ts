@@ -1,11 +1,9 @@
 import { ProductoService } from '../../../../../service/producto.service';
 import { IPageProducto, IProducto } from 'src/app/model/producto-interfaces';
-import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { IconService } from 'src/app/service/icon.service';
-import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { debounceTime } from 'rxjs/operators';
 import { IOrder } from 'src/app/model/model-interfaces';
 
@@ -15,58 +13,51 @@ import { IOrder } from 'src/app/model/model-interfaces';
   styleUrls: ['./producto-plist-unrouted.component.css']
 })
 export class ProductoPlistUnroutedComponent implements OnInit {
+
   @Input() id_tipoproducto: number = null;
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() selection = new EventEmitter<number>();
-  //@ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
 
   strEntity: string = "producto"
   strOperation: string = "plist"
   strTitleSingular: string = "Producto";
+  strATitleSingular: string = "El producto";
   strTitlePlural: string = "Productos";
+  //
   aProductos: IProducto[];
-  aPaginationBar: string[];
+  //  
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
+  aPaginationBar: string[];
   nPageSize: number = 10;
-  strResult: string = null;
-  strFilter: string = "";
+  //
   strSortField: string = "";
   strSortDirection: string = "";
+  //
+  strFilter: string = "";
   strFilteredMessage: string = "";
-  oUserSession: IUsuario;
-  subjectFiltro$ = new Subject();
-  barraPaginacion: string[];
+  subjectFilter = new Subject();
+  //
+
+  strResult: string = null;
 
   constructor(
-    private oRoute: ActivatedRoute,
-    private oRouter: Router,
     private oPaginationService: PaginationService,
     private oProductoService: ProductoService,
-
     public oIconService: IconService
   ) {
-
-    if (this.oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
-    this.id_tipoproducto = this.oRoute.snapshot.params.id_tipoproducto;
-
     this.nPage = 1;
     this.getPage();
   }
 
   ngOnInit(): void {
-    /*
-    this.subjectFiltro$.pipe(
+    this.subjectFilter.pipe(
       debounceTime(1000)
-    ).subscribe(() => this.getPage());
-    */
+    ).subscribe(() => {
+      this.getPage();
+      this.nPage = 1;
+    });
   }
 
   getPage = () => {
@@ -80,7 +71,6 @@ export class ProductoPlistUnroutedComponent implements OnInit {
       } else {
         this.strFilteredMessage = "Listado NO filtrado";
       }
-
       this.aProductos = oPage.content;
       this.nTotalElements = oPage.totalElements;
       this.nTotalPages = oPage.totalPages;
@@ -88,12 +78,12 @@ export class ProductoPlistUnroutedComponent implements OnInit {
     })
   }
 
-  jumpToPage = () => {
+  doJumpToPage = () => {
     this.getPage();
     return false;
   }
   onKeyUpFilter(event: KeyboardEvent): void {
-    this.subjectFiltro$.next();
+    this.subjectFilter.next();
   }
 
   doResetOrder() {
