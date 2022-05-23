@@ -85,6 +85,8 @@ import { TipousuarioFindUnroutedComponent } from './component/application/tipous
 import { findUnroutedComponent } from './component/shared/unrouted/find-unrouted/find-unrouted.component';
 import { UsuarioFormUnroutedComponent } from './component/application/usuario/unrouted/usuario-form-unrouted/usuario-form-unrouted.component';
 import { RppUnroutedComponent } from './component/shared/unrouted/rpp-unrouted/rpp-unrouted.component';
+import { SearchUnroutedComponent } from './component/shared/unrouted/search-unrouted/search-unrouted.component';
+import { PaginationUnroutedComponent } from './component/shared/unrouted/pagination-unrouted/pagination-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +100,8 @@ import { RppUnroutedComponent } from './component/shared/unrouted/rpp-unrouted/r
     PrePrintComponent,
     findUnroutedComponent,
     RppUnroutedComponent,
+    SearchUnroutedComponent,
+    PaginationUnroutedComponent,
 
     
     //

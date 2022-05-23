@@ -3,16 +3,7 @@
     <h6>{{strFilteredMessage}}</h6>
   </div>
   <div class="col-md text-center">
-    <form>
-      <div class="input-group input-group-sm">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i [ngClass]="oIconService.getIcon('filtro')"></i></span>
-        </div>
-        <input type="text" class="form-control" placeholder="{{'Filtro de ' + strTitlePlural}}" placeholder="Search"
-          (keyup)="onKeyUpFilter($event)" [(ngModel)]="strFilter" name="buscar" aria-label="Small"
-          aria-describedby="inputGroup-sizing-sm" />
-      </div>
-    </form>
+      <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="strTitlePlural" (eeFilter)="onSetFilter($event)" ></app-search-unrouted>
   </div>
   <div class="col-md text-end">
     <h4 class="text-muted">{{nTotalElements}} {{strTitlePlural}}</h4>
@@ -21,31 +12,21 @@
 
 <div class="row justify-content-between">
   <div class="col-md text-start">
-    <nav aria-label="pagination">
-      <ul class="pagination">
-        <li class="page-item" aria-current="page" *ngFor="let p of aPaginationBar"
-          [ngClass]="{'active': (nPage+'' == p)}">
-          <a class="page-link" (click)="nPage=(+p);doJumpToPage()" href="#">{{p}}</a>
-        </li>
-      </ul>
-    </nav>
+    <app-pagination-unrouted [nPage]="nPage" [nTotalPages]="nTotalPages" (eePage)="onSetPage($event)" ></app-pagination-unrouted>
   </div>
-
   <div class="col-md text-center">
     <ng-content select="header"></ng-content>
   </div>
-
   <div class="col-md text-end">
-    <app-rpp-unrouted [nPageSize]="nPageSize" (selection)="doChangeRpp($event)"></app-rpp-unrouted>
+    <app-rpp-unrouted [nPageSize]="nPageSize" (eeRpp)="onSetRpp($event)"></app-rpp-unrouted>
   </div>
-
 </div>
 
 <div class="row justify-content-center">
   <div class="col-md table-responsive-md">
     <table class="table table-bordered table-striped table-hover">
       <thead>
-        <tr class="text-center align-middle" app-producto-plistheader-unrouted (sort)="doSetOrder($event)">
+        <tr class="text-center align-middle" app-producto-plistheader-unrouted (sort)="onSetOrder($event)">
         </tr>
       </thead>
       <tbody>

@@ -2,7 +2,6 @@ import { ProductoService } from '../../../../../service/producto.service';
 import { IPageProducto, IProducto } from 'src/app/model/producto-interfaces';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
-import { PaginationService } from 'src/app/service/pagination.service';
 import { IconService } from 'src/app/service/icon.service';
 import { debounceTime } from 'rxjs/operators';
 import { IOrder } from 'src/app/model/model-interfaces';
@@ -15,7 +14,7 @@ import { IOrder } from 'src/app/model/model-interfaces';
 export class ProductoPlistUnroutedComponent implements OnInit {
 
   @Input() id_tipoproducto: number = null;
-  @Input() mode: boolean = true; //true=edición; false=selección
+  @Input() mode: boolean = true; //mode ... true=normal; false=selection;
   @Output() selection = new EventEmitter<number>();
 
   strEntity: string = "producto"
@@ -42,8 +41,7 @@ export class ProductoPlistUnroutedComponent implements OnInit {
 
   strResult: string = null;
 
-  constructor(
-    private oPaginationService: PaginationService,
+  constructor(    
     private oProductoService: ProductoService,
     public oIconService: IconService
   ) {
@@ -77,17 +75,14 @@ export class ProductoPlistUnroutedComponent implements OnInit {
       }
       this.aProductos = oPage.content;
       this.nTotalElements = oPage.totalElements;
-      this.nTotalPages = oPage.totalPages;
-      this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
+      this.nTotalPages = oPage.totalPages;      
     })
   }
 
-  doJumpToPage = () => {
+  onSetPage = (nPage:number) => {
+    this.nPage = nPage;
     this.getPage();
     return false;
-  }
-  onKeyUpFilter(event: KeyboardEvent): void {
-    this.subjectFilter.next();
   }
 
   doResetOrder() {
@@ -96,19 +91,23 @@ export class ProductoPlistUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  doChangeRpp(nRpp: number) {
+  onSetRpp(nRpp: number) {
     this.nPageSize = nRpp;
     this.getPage();
   }
 
-  doSetOrder(order: IOrder) {
+  onSetFilter(strFilter: string) {
+    this.strFilter = strFilter;
+    this.getPage();
+  }
+
+  onSetOrder(order: IOrder) {
     this.strSortField = order.sortField;
     this.strSortDirection = order.sortDirection;
     this.getPage();
   }
 
   onSelection(id: number) {
-    console.log("selection plist emite " + id);
     this.selection.emit(id);
   }
 

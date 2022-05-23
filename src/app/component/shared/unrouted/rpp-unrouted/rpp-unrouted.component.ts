@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class RppUnroutedComponent implements OnInit {
 
   @Input() nPageSize: number = 10;
-  @Output() selection = new EventEmitter<number>();
+  @Output() eeRpp = new EventEmitter<number>();
 
   constructor() { }
 
@@ -16,7 +16,7 @@ export class RppUnroutedComponent implements OnInit {
   }
 
   onChangeRpp(nRpp:number){
-    this.selection.emit(nRpp);
+    this.eeRpp.emit(nRpp);
   }
   
 }
