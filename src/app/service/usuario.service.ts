@@ -1,12 +1,8 @@
-import { IPost2Send } from './../model/model-interfaces';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { API_URL, environment, httpOptions } from 'src/environments/environment';
 
-
-import { catchError, retry, shareReplay, tap } from 'rxjs/operators';
-import { IPage, IPost } from '../model/model-interfaces';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { API_URL, httpOptions } from 'src/environments/environment';
 import { IPageUsuario, IUsuario, IUsuario2Send } from '../model/usuario-interfaces';
 
 @Injectable({
@@ -14,36 +10,24 @@ import { IPageUsuario, IUsuario, IUsuario2Send } from '../model/usuario-interfac
 })
 export class UsuarioService {
 
-  constructor(private http: HttpClient) { }
-
   sURL = API_URL + '/usuario';
 
-  getPage(rpp: number, page: number, order: string, direction: string, filter: string): Observable<IPageUsuario> {
-    let strOrderUrl: string = "";
-    let filterStr: string = "";
+  constructor(private http: HttpClient) { }
+
+  getPage(rpp: number, page: number, order: string, direction: string, filter: string, tipousuario: number): Observable<IPageUsuario> {
+    let strUrl: string = "";    
     if (order) {
-      strOrderUrl += "&sort=" + order + "," + direction;
+      strUrl += "&sort=" + order + "," + direction;
     }
     if (filter) {
-      filterStr += "&filter=" + filter;
+      strUrl += "&filter=" + filter;
+    }
+    if (tipousuario) {
+      strUrl += "&tipousuario=" + tipousuario;
     }
     page--;
-    return this.http.get<IPageUsuario>(this.sURL + "/page" + "?size=" + rpp + "&page=" + page + strOrderUrl + filterStr, httpOptions);
+    return this.http.get<IPageUsuario>(this.sURL + "/page" + "?size=" + rpp + "&page=" + page + strUrl, httpOptions);
   }
-
-  getPageFiltered(rpp: number, page: number, order: string, direction: string, filter: string, tipoproducto: number): Observable<IPageUsuario> {
-    let strOrderUrl: string = "";
-    let filterStr: string = "";
-    if (order) {
-      strOrderUrl += "&sort=" + order + "," + direction;
-    }
-    if (filter) {
-      filterStr += "&filter=" + filter;
-    }
-    page--;
-    return this.http.get<IPageUsuario>(this.sURL + "/page" + "?size=" + rpp + "&page=" + page + strOrderUrl + filterStr + "&filtertype=" + tipoproducto, httpOptions);
-  }
-
 
   getOne(id: number): Observable<IUsuario> {
     return this.http.get<IUsuario>(this.sURL + "/" + id, httpOptions);

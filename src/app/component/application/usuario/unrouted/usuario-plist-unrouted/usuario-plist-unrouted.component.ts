@@ -42,7 +42,7 @@ export class UsuarioPlistUnroutedComponent implements OnInit {
 
   constructor(
     private oPaginationService: PaginationService,
-    private oPostService: UsuarioService,
+    private oUsuarioService: UsuarioService,
     public oIconService: IconService,
   ) { 
     this.getPage();
@@ -58,32 +58,25 @@ export class UsuarioPlistUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    if (this.id_tipousuario) {
-      this.oPostService.getPageFiltered(this.nPageSize, this.nPage, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipousuario).subscribe((oPage: IPageUsuario) => {
+    this.oUsuarioService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, this.id_tipousuario).subscribe((oPage: IPageUsuario) => {
+      if (this.id_tipousuario) {
         if (this.strFilter) {
-          this.strFilteredMessage = "Listado filtrado por el tipo de usuario " + this.id_tipousuario + " y por " + this.strFilter;
+          this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipousuario + " y por " + this.strFilter;
         } else {
-          this.strFilteredMessage = "Listado filtrado por el tipo de usuario " + this.id_tipousuario;
+          this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipousuario;
         }
-        this.aUsuarios = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
-      })
-    } else {
-      this.oPostService.getPage(this.nPageSize, this.nPage, this.strSortField, this.strSortDirection, this.strFilter).subscribe((oPage: IPageUsuario) => {
+      } else {
         if (this.strFilter) {
           this.strFilteredMessage = "Listado filtrado por " + this.strFilter;
         } else {
           this.strFilteredMessage = "Listado NO filtrado";
         }
-        this.aUsuarios = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
-        console.log(oPage);
-      })
-    }
+      }
+      this.aUsuarios = oPage.content;
+      this.nTotalElements = oPage.totalElements;
+      this.nTotalPages = oPage.totalPages;
+      this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
+    })
   }
 
   doJumpToPage = () => {
@@ -91,7 +84,7 @@ export class UsuarioPlistUnroutedComponent implements OnInit {
     return false;
   }
 
-  onKeyUpFilter(event: KeyboardEvent): void {
+  onKeyUpFilter(_event: KeyboardEvent): void {
     this.subjectFilter.next();
   }
 

@@ -61,7 +61,7 @@ export class ProductoPlistUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, this.id_tipoproducto).subscribe((oPage: IPageProducto) => {
+    this.oProductoService.getPage(this.nPageSize, this.nPage, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipoproducto).subscribe((oPage: IPageProducto) => {
       if (this.id_tipoproducto) {
         if (this.strFilter) {
           this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto + " y por " + this.strFilter;
@@ -69,7 +69,11 @@ export class ProductoPlistUnroutedComponent implements OnInit {
           this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto;
         }
       } else {
-        this.strFilteredMessage = "Listado NO filtrado";
+        if (this.strFilter) {
+          this.strFilteredMessage = "Listado filtrado por " + this.strFilter;
+        } else {
+          this.strFilteredMessage = "Listado NO filtrado";
+        }
       }
       this.aProductos = oPage.content;
       this.nTotalElements = oPage.totalElements;

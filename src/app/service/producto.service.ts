@@ -13,12 +13,22 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
 
-  get(id: number): Observable<IProducto> {
-    return this.http.get<IProducto>(this.sURL + "/" + id, httpOptions);
+  getPage(rpp: number, page: number, order: string, direction: string, filter: string, tipoproducto: number): Observable<IPageProducto> {
+    let strUrl: string = "";
+    if (order) {
+      strUrl += "&sort=" + order + "," + direction;
+    }
+    if (filter) {
+      strUrl += "&filter=" + filter;
+    }
+    if (tipoproducto) {
+      strUrl += "&tipoproducto=" + tipoproducto;
+    }
+    return this.http.get<IPageProducto>(this.sURL + "?page=" + (page - 1) + "&size=" + rpp + strUrl, httpOptions);
   }
 
-  removeOne(id: number): Observable<IProducto> {
-    return this.http.delete<IProducto>(this.sURL + "/" + id, httpOptions);
+  get(id: number): Observable<IProducto> {
+    return this.http.get<IProducto>(this.sURL + "/" + id, httpOptions);
   }
 
   newOne(oProduct: IProducto2Send): Observable<IProducto> {
@@ -29,17 +39,8 @@ export class ProductoService {
     return this.http.put<IProducto>(this.sURL + "/", oProduct, httpOptions);
   }
 
-  getPage(rpp: number, page: number, filter: string, order: string, direction: string, tipoproducto: number): Observable<IPageProducto> {
-    let strOrderUrl: string = "";
-    if (order) {
-      strOrderUrl += "&sort=" + order + "," + direction;
-    }
-    if (filter) {
-      strOrderUrl += "&filter=" + filter;
-    }
-    if (tipoproducto) {
-      strOrderUrl += "&tipoproducto=" + tipoproducto;
-    }
-    return this.http.get<IPageProducto>(this.sURL + "?page=" + (page - 1) + "&size=" + rpp + strOrderUrl, httpOptions);
+  removeOne(id: number): Observable<IProducto> {
+    return this.http.delete<IProducto>(this.sURL + "/" + id, httpOptions);
   }
+
 }
