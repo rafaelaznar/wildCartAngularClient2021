@@ -84,6 +84,7 @@ import { ProductoDetailUnroutedComponent } from './component/application/product
 import { TipousuarioFindUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-find-unrouted/tipousuario-find-unrouted.component';
 import { findUnroutedComponent } from './component/shared/unrouted/find-unrouted/find-unrouted.component';
 import { UsuarioFormUnroutedComponent } from './component/application/usuario/unrouted/usuario-form-unrouted/usuario-form-unrouted.component';
+import { RppUnroutedComponent } from './component/shared/unrouted/rpp-unrouted/rpp-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,9 @@ import { UsuarioFormUnroutedComponent } from './component/application/usuario/un
     MenuComponent,
     PrePrintComponent,
     findUnroutedComponent,
+    RppUnroutedComponent,
+
+    
     //
     // shared routed
     LoginComponent,

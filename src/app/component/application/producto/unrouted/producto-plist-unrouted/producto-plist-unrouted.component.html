@@ -32,25 +32,13 @@
   </div>
 
   <div class="col-md text-center">
-
     <ng-content select="header"></ng-content>
-
   </div>
 
   <div class="col-md text-end">
-    <div class="dropdown mb-3">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-        aria-expanded="false">
-        Registros por página: {{nPageSize}}
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" (click)="nPageSize=10;getPage()">10</a></li>
-        <li><a class="dropdown-item" (click)="nPageSize=50;getPage()">50</a></li>
-        <li><a class="dropdown-item" (click)="nPageSize=100;getPage()">100</a></li>
-        <li><a class="dropdown-item" (click)="nPageSize=1000;getPage()">1000</a></li>
-      </ul>
-    </div>
+    <app-rpp-unrouted [nPageSize]="nPageSize" (selection)="doChangeRpp($event)"></app-rpp-unrouted>
   </div>
+
 </div>
 
 <div class="row justify-content-center">
@@ -61,8 +49,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let fila of aProductos"  class="align-middle" 
-          app-producto-plistrow-unrouted [oProducto]="fila" [mode]="mode" (selection)="onSelection($event)">                   
+        <tr *ngFor="let fila of aProductos" class="align-middle" app-producto-plistrow-unrouted [oProducto]="fila"
+          [mode]="mode" (selection)="onSelection($event)">
         </tr>
       </tbody>
     </table>

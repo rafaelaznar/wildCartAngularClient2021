@@ -96,6 +96,11 @@ export class ProductoPlistUnroutedComponent implements OnInit {
     this.getPage();
   }
 
+  doChangeRpp(nRpp: number) {
+    this.nPageSize = nRpp;
+    this.getPage();
+  }
+
   doSetOrder(order: IOrder) {
     this.strSortField = order.sortField;
     this.strSortDirection = order.sortDirection;
