@@ -3,7 +3,6 @@ import { IPageProducto, IProducto } from 'src/app/model/producto-interfaces';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IconService } from 'src/app/service/icon.service';
-import { debounceTime } from 'rxjs/operators';
 import { IOrder } from 'src/app/model/model-interfaces';
 
 @Component({

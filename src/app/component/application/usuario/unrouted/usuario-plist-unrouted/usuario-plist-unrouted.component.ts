@@ -4,7 +4,6 @@ import { Subject } from 'rxjs';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { IPageUsuario, IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
-import { debounceTime } from 'rxjs/operators';
 import { IOrder } from 'src/app/model/model-interfaces';
 
 @Component({
