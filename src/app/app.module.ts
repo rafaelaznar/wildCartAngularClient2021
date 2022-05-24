@@ -87,6 +87,7 @@ import { UsuarioFormUnroutedComponent } from './component/application/usuario/un
 import { RppUnroutedComponent } from './component/shared/unrouted/rpp-unrouted/rpp-unrouted.component';
 import { SearchUnroutedComponent } from './component/shared/unrouted/search-unrouted/search-unrouted.component';
 import { PaginationUnroutedComponent } from './component/shared/unrouted/pagination-unrouted/pagination-unrouted.component';
+import { PlistrowbuttonsUnroutedComponent } from './component/shared/unrouted/plistrowbuttons-unrouted/plistrowbuttons-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { PaginationUnroutedComponent } from './component/shared/unrouted/paginat
     RppUnroutedComponent,
     SearchUnroutedComponent,
     PaginationUnroutedComponent,
+    PlistrowbuttonsUnroutedComponent,
 
     
     //
