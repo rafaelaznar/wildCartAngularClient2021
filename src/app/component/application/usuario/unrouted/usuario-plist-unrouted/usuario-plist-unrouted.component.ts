@@ -41,7 +41,6 @@ export class UsuarioPlistUnroutedComponent implements OnInit {
   strResult: string = null;
 
   constructor(
-    private oPaginationService: PaginationService,
     private oUsuarioService: UsuarioService,
     public oIconService: IconService,
   ) {
