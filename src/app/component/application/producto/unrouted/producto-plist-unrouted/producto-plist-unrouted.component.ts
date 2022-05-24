@@ -38,10 +38,9 @@ export class ProductoPlistUnroutedComponent implements OnInit {
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
   //
-
   strResult: string = null;
 
-  constructor(    
+  constructor(
     private oProductoService: ProductoService,
     public oIconService: IconService
   ) {
@@ -50,12 +49,6 @@ export class ProductoPlistUnroutedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subjectFilter.pipe(
-      debounceTime(1000)
-    ).subscribe(() => {
-      this.getPage();
-      this.nPage = 1;
-    });
   }
 
   getPage = () => {
@@ -75,20 +68,14 @@ export class ProductoPlistUnroutedComponent implements OnInit {
       }
       this.aProductos = oPage.content;
       this.nTotalElements = oPage.totalElements;
-      this.nTotalPages = oPage.totalPages;      
+      this.nTotalPages = oPage.totalPages;
     })
   }
 
-  onSetPage = (nPage:number) => {
+  onSetPage = (nPage: number) => {
     this.nPage = nPage;
     this.getPage();
     return false;
-  }
-
-  doResetOrder() {
-    this.strSortField = "";
-    this.strSortDirection = "";
-    this.getPage();
   }
 
   onSetRpp(nRpp: number) {

@@ -88,6 +88,8 @@ import { RppUnroutedComponent } from './component/shared/unrouted/rpp-unrouted/r
 import { SearchUnroutedComponent } from './component/shared/unrouted/search-unrouted/search-unrouted.component';
 import { PaginationUnroutedComponent } from './component/shared/unrouted/pagination-unrouted/pagination-unrouted.component';
 import { PlistrowbuttonsUnroutedComponent } from './component/shared/unrouted/plistrowbuttons-unrouted/plistrowbuttons-unrouted.component';
+import { UsuarioPlistheaderUnroutedComponent } from './component/application/usuario/unrouted/usuario-plistheader-unrouted/usuario-plistheader-unrouted.component';
+import { UsuarioPlistRowUnroutedComponent } from './component/application/usuario/unrouted/usuario-plistrow-unrouted/usuario-plistrow-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -168,6 +170,8 @@ import { PlistrowbuttonsUnroutedComponent } from './component/shared/unrouted/pl
     UsuarioViewUnroutedComponent,
     UsuarioFindUnroutedComponent,
     UsuarioFormUnroutedComponent,
+    UsuarioPlistheaderUnroutedComponent,
+    UsuarioPlistRowUnroutedComponent,
 
     // TipoProducto unrouted components
     TipoProductoPlistUnroutedComponent,

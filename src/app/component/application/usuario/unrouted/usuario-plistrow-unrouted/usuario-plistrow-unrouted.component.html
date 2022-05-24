@@ -1,0 +1,46 @@
+<td class="text-end">{{oUsuario.id}}</td>
+<td>{{oUsuario.dni}}</td>
+<td>{{oUsuario.nombre}}</td>
+<td>{{oUsuario.apellido1}}</td>
+<td>{{oUsuario.apellido2}}</td>
+<td *ngIf="mode">{{oUsuario.email| trim:18}}</td>
+<td style="text-align: center" *ngIf="mode">
+  <button *ngIf="!mode || oUsuario.carritos==0" class="btn btn-outline-secondary btn-sm"> {{ oUsuario.carritos }}
+    <i [ngClass]="oIconService.getIcon('carrito')"></i>
+  </button>
+  <button *ngIf="mode && oUsuario.carritos>0" class="btn btn-outline-secondary btn-sm"
+    [routerLink]="['/carrito/plist/usuario/' + oUsuario.id]">
+    {{ oUsuario.carritos }} <i [ngClass]="oIconService.getIcon('carrito')"></i>
+  </button>
+</td>
+
+<td style="text-align: center" *ngIf="mode">
+  <button *ngIf="!mode || oUsuario.facturas==0" class="btn btn-outline-secondary btn-sm"> {{ oUsuario.facturas }}
+    <i [ngClass]="oIconService.getIcon('factura')"></i>
+  </button>
+  <button *ngIf="mode && oUsuario.facturas>0" class="btn btn-outline-secondary btn-sm"
+    [routerLink]="['/factura/plist/usuario/' + oUsuario.id]">
+    {{ oUsuario.facturas }}
+    <i [ngClass]="oIconService.getIcon('factura')"></i>
+  </button>
+</td>
+
+<td>
+  <button *ngIf="mode" class="btn btn-light btn-sm"
+    [routerLink]="['/usuario/plist/tipousuario/' + oUsuario.tipousuario.id]">
+    <i [ngClass]="oIconService.getIcon('usuario')"></i> ({{oUsuario.tipousuario.id}})
+    {{oUsuario.tipousuario.nombre}}</button>
+  <div *ngIf="!mode"><i [ngClass]="oIconService.getIcon('usuario')"></i> {{oUsuario.tipousuario.nombre}}</div>
+</td>
+
+<td *ngIf="mode" class="text-center" [innerHTML]="oUsuario.validado | showBoolean"></td>
+<td *ngIf="mode" class="text-center" [innerHTML]="oUsuario.activo | showBoolean"></td>
+<td class="text-center">
+  <div class="btn-group btn-group-sm" role="group" *ngIf="!mode">
+    <button type="button" class="btn btn-success" (click)="onSelection(oUsuario.id)"><i
+        class="fas fa-check"></i></button>
+  </div>
+  <div class="btn-group btn-group-sm" role="group" *ngIf="mode" app-plistrowbuttons-unrouted [id]="oUsuario.id" [strEntity]="strEntity">  
+  </div>
+
+</td>

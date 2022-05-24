@@ -30,7 +30,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let fila of aProductos" class="align-middle" app-producto-plistrow-unrouted [oProducto]="fila"
+        <tr *ngFor="let oProducto of aProductos" class="align-middle" app-producto-plistrow-unrouted [oProducto]="oProducto"
           [mode]="mode" (selection)="onSelection($event)">
         </tr>
       </tbody>

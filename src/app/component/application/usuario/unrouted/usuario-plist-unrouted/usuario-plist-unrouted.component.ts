@@ -5,6 +5,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { IPageUsuario, IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 import { debounceTime } from 'rxjs/operators';
+import { IOrder } from 'src/app/model/model-interfaces';
 
 @Component({
   selector: 'app-usuario-plist-unrouted',
@@ -44,17 +45,12 @@ export class UsuarioPlistUnroutedComponent implements OnInit {
     private oPaginationService: PaginationService,
     private oUsuarioService: UsuarioService,
     public oIconService: IconService,
-  ) { 
+  ) {
+    this.nPage = 1;
     this.getPage();
   }
 
-  ngOnInit(): void {    
-    this.subjectFilter.pipe(
-      debounceTime(1000)
-    ).subscribe(() => {
-      this.getPage();
-      this.nPage = 1;
-    });      
+  ngOnInit(): void {
   }
 
   getPage = () => {
@@ -75,43 +71,28 @@ export class UsuarioPlistUnroutedComponent implements OnInit {
       this.aUsuarios = oPage.content;
       this.nTotalElements = oPage.totalElements;
       this.nTotalPages = oPage.totalPages;
-      this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
     })
   }
 
-  doJumpToPage = () => {
+  onSetPage = (nPage: number) => {
+    this.nPage = nPage;
     this.getPage();
     return false;
   }
 
-  onKeyUpFilter(_event: KeyboardEvent): void {
-    this.subjectFilter.next();
-  }
-
-  doFilter() {
+  onSetRpp(nRpp: number) {
+    this.nPageSize = nRpp;
     this.getPage();
   }
 
-  doResetFilter() {
-    this.strFilter = "";
+  onSetFilter(strFilter: string) {
+    this.strFilter = strFilter;
     this.getPage();
   }
 
-  doResetOrder() {
-    this.strSortField = "";
-    this.strSortDirection = "";
-    this.getPage();
-  }
-
-  doSetOrder(order: string) {
-    this.strSortField = order;
-    if (this.strSortDirection == 'asc') {
-      this.strSortDirection = 'desc';
-    } else if (this.strSortDirection == 'desc') {
-      this.strSortDirection = '';
-    } else {
-      this.strSortDirection = 'asc';
-    }
+  onSetOrder(order: IOrder) {
+    this.strSortField = order.sortField;
+    this.strSortDirection = order.sortDirection;
     this.getPage();
   }
 
