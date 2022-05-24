@@ -1,4 +1,3 @@
-import { PaginationService } from '../../../../../service/pagination.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { UsuarioService } from 'src/app/service/usuario.service';
