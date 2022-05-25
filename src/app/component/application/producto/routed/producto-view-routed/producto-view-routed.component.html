@@ -8,27 +8,7 @@
     <div class="row justify-content-center">
        <app-producto-detail-unrouted [id]="id"></app-producto-detail-unrouted>
 
-        <div class="row justify-content-center">
-            <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
-                <a class="btn btn-warning mx-2" [routerLink]="['/' + strEntity + '/edit/' + id]"><i
-                        [ngClass]="oIconService.getIcon('edit')"></i> Modificarlo</a>
-                <a class="btn btn-danger mx-2" [routerLink]="['/' + strEntity + '/remove/' + id]"><i
-                        [ngClass]="oIconService.getIcon('remove')"></i> Borrarlo </a>
-            </div>
-
-            <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
-                <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i
-                        [ngClass]="oIconService.getIcon('home')"></i> Página
-                    principal</a>
-                <a class="btn btn-primary mx-2" [routerLink]="['/' + strEntity + '/plist']"><i
-                        [ngClass]="oIconService.getIcon('plist')"></i> Listado de {{strTitlePlural}}</a>
-                <a class="btn btn-primary mx-2" (click)="goBack()"><i [ngClass]="oIconService.getIcon('volver')"></i>
-                    Volver
-                </a>
-            </div>
-
-        </div>
-
+       <app-viewbuttons-unrouted [id]="id" [strEntity]="strEntity" [strTitleSingular]="strTitleSingular" [strTitlePlural]="strTitlePlural"></app-viewbuttons-unrouted>
 
     </div>
 </div>

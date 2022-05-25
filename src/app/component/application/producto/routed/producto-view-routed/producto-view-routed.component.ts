@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 @Component({
@@ -20,13 +19,11 @@ export class ProductoViewRoutedComponent implements OnInit {
  
   oUserSession: IUsuario;
 
-
   constructor(
   
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private oLocation: Location,
     public oIconService: IconService
 
   ) {
@@ -44,10 +41,6 @@ export class ProductoViewRoutedComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  goBack() {
-    this.oLocation.back();
   }
 
 }
