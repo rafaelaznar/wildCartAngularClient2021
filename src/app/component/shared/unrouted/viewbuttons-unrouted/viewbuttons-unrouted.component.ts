@@ -8,9 +8,8 @@ import { IconService } from 'src/app/service/icon.service';
   styleUrls: ['./viewbuttons-unrouted.component.css']
 })
 export class ViewbuttonsUnroutedComponent implements OnInit {
-  @Input() id: number;
+
   @Input() strEntity: string = "";
-  @Input() strTitleSingular: string = "";
   @Input() strTitlePlural: string = "";
 
 
