@@ -90,6 +90,7 @@ import { PaginationUnroutedComponent } from './component/shared/unrouted/paginat
 import { PlistrowbuttonsUnroutedComponent } from './component/shared/unrouted/plistrowbuttons-unrouted/plistrowbuttons-unrouted.component';
 import { UsuarioPlistheaderUnroutedComponent } from './component/application/usuario/unrouted/usuario-plistheader-unrouted/usuario-plistheader-unrouted.component';
 import { UsuarioPlistRowUnroutedComponent } from './component/application/usuario/unrouted/usuario-plistrow-unrouted/usuario-plistrow-unrouted.component';
+import { ViewbuttonsUnroutedComponent } from './component/shared/unrouted/viewbuttons-unrouted/viewbuttons-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +107,7 @@ import { UsuarioPlistRowUnroutedComponent } from './component/application/usuari
     SearchUnroutedComponent,
     PaginationUnroutedComponent,
     PlistrowbuttonsUnroutedComponent,
+    ViewbuttonsUnroutedComponent,
 
     
     //

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
@@ -16,14 +16,13 @@ export class UsuarioViewRoutedComponent implements OnInit {
   strEntity: string = "usuario"
   strOperation: string = "view"
   strTitleSingular:string= "usuario"
+  strTitlePlural:string= "usuarios"
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private oLocation: Location,
     public oIconService: IconService
-
   ) {
     if (this.oRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oRoute.snapshot.data.message;
@@ -38,7 +37,4 @@ export class UsuarioViewRoutedComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  goBack() {
-    this.oLocation.back();
-  }
 }
