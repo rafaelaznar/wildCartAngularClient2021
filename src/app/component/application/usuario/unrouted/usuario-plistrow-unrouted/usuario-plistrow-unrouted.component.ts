@@ -24,10 +24,10 @@ export class UsuarioPlistRowUnroutedComponent implements OnInit {
     this.selection.emit(id);
   }
   flipValidateUser(id:number){
-    console.log("todo: flip validate user");
+    console.log("todo: flip validate user " + id);
   }
   flipActivateUser(id:number){
-    console.log("todo: flip activate user");
+    console.log("todo: flip activate user " + id);
   }
 
 }
