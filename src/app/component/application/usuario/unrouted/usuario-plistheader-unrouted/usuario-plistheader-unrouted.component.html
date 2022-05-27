@@ -1,55 +1,54 @@
 <th (click)="doSetOrder('id')"><i [ngClass]="oIconService.getIcon('id')"></i> ID
-  <i class="fas fa-arrow-up" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
-  <i class="fas fa-arrow-down" *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderUp')" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderDown')" *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('dni')">
   <i [ngClass]="oIconService.getIcon('dni')"></i> DNI
-  <i class="fas fa-arrow-up" *ngIf="strSortField=='dni'&&strSortDirection=='asc'"></i>
-  <i class="fas fa-arrow-down" *ngIf="strSortField=='dni'&&strSortDirection=='desc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderUp')" *ngIf="strSortField=='dni'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderDown')" *ngIf="strSortField=='dni'&&strSortDirection=='desc'"></i>
 
 </th>
 <th (click)="doSetOrder('nombre')">
   <i [ngClass]="oIconService.getIcon('nombre')"></i> Nombre
-  <i class="fas fa-arrow-up" *ngIf="strSortField=='nombre'&&strSortDirection=='asc'"></i>
-  <i class="fas fa-arrow-down" *ngIf="strSortField=='nombre'&&strSortDirection=='desc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderUp')" *ngIf="strSortField=='nombre'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderDown')" *ngIf="strSortField=='nombre'&&strSortDirection=='desc'"></i>
 
 </th>
 <th (click)="doSetOrder('apellido1')">
-  <i [ngClass]="oIconService.getIcon('nombre')"></i> Primer Apellido
-  <i class="fas fa-arrow-up" *ngIf="strSortField=='apellido1'&&strSortDirection=='asc'"></i>
-  <i class="fas fa-arrow-down" *ngIf="strSortField=='apellido1'&&strSortDirection=='desc'"></i>
-
+  <i [ngClass]="oIconService.getIcon('apellido1')"></i> Primer Apellido
+  <i [ngClass]="oIconService.getIcon('orderUp')" *ngIf="strSortField=='apellido1'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderDown')" *ngIf="strSortField=='apellido1'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('apellido2')">
-  <i [ngClass]="oIconService.getIcon('nombre')"></i> Segundo Apellido
-  <i class="fas fa-arrow-up" *ngIf="strSortField=='apellido2'&&strSortDirection=='asc'"></i>
-  <i class="fas fa-arrow-down" *ngIf="strSortField=='apellido2'&&strSortDirection=='desc'"></i>
-
+  <i [ngClass]="oIconService.getIcon('apellido2')"></i> Segundo Apellido
+  <i [ngClass]="oIconService.getIcon('orderUp')" *ngIf="strSortField=='apellido2'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderDown')" *ngIf="strSortField=='apellido2'&&strSortDirection=='desc'"></i>
 </th>
+
 <th (click)="doSetOrder('email')" *ngIf="mode">
   <i [ngClass]="oIconService.getIcon('email')"></i> Email
-  <i class="fas fa-arrow-up" *ngIf="strSortField=='email'&&strSortDirection=='asc'"></i>
-  <i class="fas fa-arrow-down" *ngIf="strSortField=='email'&&strSortDirection=='desc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderUp')" *ngIf="strSortField=='email'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderDown')" *ngIf="strSortField=='email'&&strSortDirection=='desc'"></i>
 
 </th>
 <th (click)="doSetOrder('carritos')" *ngIf="mode"><i [ngClass]="oIconService.getIcon('carrito')"></i>
   Productos en Carrito
-  <i class="fas fa-arrow-up" *ngIf="strSortField=='carritos'&&strSortDirection=='asc'"></i>
-  <i class="fas fa-arrow-down" *ngIf="strSortField=='carritos'&&strSortDirection=='desc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderUp')" *ngIf="strSortField=='carritos'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderDown')" *ngIf="strSortField=='carritos'&&strSortDirection=='desc'"></i>
 
 </th>
 <th (click)="doSetOrder('facturas')" *ngIf="mode"><i [ngClass]="oIconService.getIcon('factura')"></i>
   Facturas
-  <i class="fas fa-arrow-up" *ngIf="strSortField=='facturas'&&strSortDirection=='asc'"></i>
-  <i class="fas fa-arrow-down" *ngIf="strSortField=='facturas'&&strSortDirection=='desc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderUp')" *ngIf="strSortField=='facturas'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderDown')" *ngIf="strSortField=='facturas'&&strSortDirection=='desc'"></i>
 
 </th>
 <th (click)="doSetOrder('tipousuario')"><i [ngClass]="oIconService.getIcon('tipousuario')"></i>
   Tipo de Usuario
-  <i class="fas fa-arrow-up" *ngIf="strSortField=='tipousuario'&&strSortDirection=='asc'"></i>
-  <i class="fas fa-arrow-down" *ngIf="strSortField=='tipousuario'&&strSortDirection=='desc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderUp')" *ngIf="strSortField=='tipousuario'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oIconService.getIcon('orderDown')" *ngIf="strSortField=='tipousuario'&&strSortDirection=='desc'"></i>
 
 </th>
 <th *ngIf="mode"><i [ngClass]="oIconService.getIcon('validado')"></i> Validado</th>
 <th *ngIf="mode"><i [ngClass]="oIconService.getIcon('activado')"></i> Activado</th>
-<th><i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones</th>
+<th><i [ngClass]="oIconService.getIcon('tools')"></i> Acciones</th>

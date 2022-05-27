@@ -92,6 +92,7 @@ import { UsuarioPlistheaderUnroutedComponent } from './component/application/usu
 import { UsuarioPlistRowUnroutedComponent } from './component/application/usuario/unrouted/usuario-plistrow-unrouted/usuario-plistrow-unrouted.component';
 import { ViewbuttonsUnroutedComponent } from './component/shared/unrouted/viewbuttons-unrouted/viewbuttons-unrouted.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

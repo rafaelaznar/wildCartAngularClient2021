@@ -31,6 +31,7 @@ export class UsuarioPlistheaderUnroutedComponent implements OnInit {
     } else {
       this.strSortDirection = 'asc';
     }
+    console.log({ sortField: order, sortDirection: this.strSortDirection })
     this.sort.emit({ sortField: order, sortDirection: this.strSortDirection });
   }
 
