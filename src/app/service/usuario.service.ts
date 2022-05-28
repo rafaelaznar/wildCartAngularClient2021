@@ -26,7 +26,7 @@ export class UsuarioService {
       strUrl += "&tipousuario=" + tipousuario;
     }
     page--;
-    return this.http.get<IPageUsuario>(this.sURL + "/page" + "?size=" + rpp + "&page=" + page + strUrl, httpOptions);
+    return this.http.get<IPageUsuario>(this.sURL + "?page=" + page + "&size=" + rpp + strUrl, httpOptions);
   }
 
   getOne(id: number): Observable<IUsuario> {
