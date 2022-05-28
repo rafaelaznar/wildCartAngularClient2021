@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
-import { IPageUsuario, IUsuario, IUsuario2Send } from '../model/usuario-interfaces';
+import { IUsuarioPage, IUsuario, IUsuario2Send } from '../model/usuario-interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  getPage(rpp: number, page: number, order: string, direction: string, filter: string, tipousuario: number): Observable<IPageUsuario> {
+  getPage(rpp: number, page: number, order: string, direction: string, filter: string, tipousuario: number): Observable<IUsuarioPage> {
     let strUrl: string = "";    
     if (order) {
       strUrl += "&sort=" + order + "," + direction;
@@ -26,7 +26,7 @@ export class UsuarioService {
       strUrl += "&tipousuario=" + tipousuario;
     }
     page--;
-    return this.http.get<IPageUsuario>(this.sURL + "?page=" + page + "&size=" + rpp + strUrl, httpOptions);
+    return this.http.get<IUsuarioPage>(this.sURL + "?page=" + page + "&size=" + rpp + strUrl, httpOptions);
   }
 
   getOne(id: number): Observable<IUsuario> {

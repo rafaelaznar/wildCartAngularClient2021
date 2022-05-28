@@ -1,5 +1,5 @@
 import { ProductoService } from '../../../../../service/producto.service';
-import { IPageProducto, IProducto } from 'src/app/model/producto-interfaces';
+import { IProductoPage, IProducto } from 'src/app/model/producto-interfaces';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';

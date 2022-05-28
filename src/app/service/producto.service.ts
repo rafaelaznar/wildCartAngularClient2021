@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
-import { IPageProducto, IProducto, IProducto2Send } from '../model/producto-interfaces';
+import { IProductoPage, IProducto, IProducto2Send } from '../model/producto-interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
 
-  getPage(rpp: number, page: number, order: string, direction: string, filter: string, tipoproducto: number): Observable<IPageProducto> {
+  getPage(rpp: number, page: number, order: string, direction: string, filter: string, tipoproducto: number): Observable<IProductoPage> {
     let strUrl: string = "";
     if (order) {
       strUrl += "&sort=" + order + "," + direction;
@@ -24,7 +24,7 @@ export class ProductoService {
     if (tipoproducto) {
       strUrl += "&tipoproducto=" + tipoproducto;
     }
-    return this.http.get<IPageProducto>(this.sURL + "?page=" + (page - 1) + "&size=" + rpp + strUrl, httpOptions);
+    return this.http.get<IProductoPage>(this.sURL + "?page=" + (page - 1) + "&size=" + rpp + strUrl, httpOptions);
   }
 
   get(id: number): Observable<IProducto> {

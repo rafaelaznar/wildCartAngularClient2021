@@ -1,12 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
 import { IOrder } from 'src/app/model/model-interfaces';
-import {  ITipoUsuarioPage,  ITipousuarioPlist,} from 'src/app/model/tipousuario-interfaces';
-import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { ITipousuario, ITipousuarioPage } from 'src/app/model/tipousuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
-import { PaginationService } from 'src/app/service/pagination.service';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 @Component({
@@ -22,23 +18,27 @@ export class TipousuarioPlistUnroutedComponent implements OnInit {
   strEntity: string = 'tipousuario';
   strOperation: string = 'plist';
   strTitleSingular: string = 'Tipo de usuario';
+  strATitleSingular: string = "El tipo de usuario";
   strTitlePlural: string = 'Tipos de usuario';
-  aTipoUsuarios: ITipousuarioPlist[];
-  aPaginationBar: string[];
+  //
+  aTipoUsuarios: ITipousuario[];
+  //
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
+  aPaginationBar: string[];
   nPageSize: number = 10;
+  //
+  strSortField: string = "";
+  strSortDirection: string = "";
+  //
+  strFilter: string = "";
+  strFilteredMessage: string = "";
+  subjectFilter = new Subject();
+  //
   strResult: string = null;
-  strFilter: string = '';
-  strSortField: string = '';
-  strSortDirection: string = '';
-  strFilteredMessage: string = '';
-  oUserSession: IUsuario;
-  subjectFiltro$ = new Subject();
 
   constructor(
-    private oPaginationService: PaginationService,
     private oTipoUsuarioService: TipousuarioService,
     public oIconService: IconService
   ) {
@@ -48,24 +48,12 @@ export class TipousuarioPlistUnroutedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*
-    this.subjectFiltro$
-      .pipe(debounceTime(1000))
-      .subscribe(() => this.getPage());
-      */
   }
 
   getPage = () => {
-    console.log('buscando...', this.strFilter);
     this.oTipoUsuarioService
-      .getPage(
-        this.nPageSize,
-        this.nPage,
-        this.strFilter,
-        this.strSortField,
-        this.strSortDirection
-      )
-      .subscribe((oPage: ITipoUsuarioPage) => {
+      .getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection)
+      .subscribe((oPage: ITipousuarioPage) => {
         if (this.strFilter) {
           this.strFilteredMessage = 'Listado filtrado: ' + this.strFilter;
         } else {
@@ -74,10 +62,6 @@ export class TipousuarioPlistUnroutedComponent implements OnInit {
         this.aTipoUsuarios = oPage.content;
         this.nTotalElements = oPage.totalElements;
         this.nTotalPages = oPage.totalPages;
-        this.aPaginationBar = this.oPaginationService.pagination(
-          this.nTotalPages,
-          this.nPage
-        );
       });
   };
 
@@ -86,16 +70,6 @@ export class TipousuarioPlistUnroutedComponent implements OnInit {
     return false;
   };
 
-  onKeyUpFilter(event: KeyboardEvent): void {
-    this.subjectFiltro$.next();
-  }
-
-  doResetOrder() {
-    this.strSortField = '';
-    this.strSortDirection = '';
-    this.getPage();
-  }
-
   onSetOrder(order: IOrder) {
     this.strSortField = order.sortField;
     this.strSortDirection = order.sortDirection;
@@ -103,7 +77,6 @@ export class TipousuarioPlistUnroutedComponent implements OnInit {
   }
 
   onSelection(id: number) {
-    console.log("selection plist emite " + id);
     this.selection.emit(id);
   }
 }

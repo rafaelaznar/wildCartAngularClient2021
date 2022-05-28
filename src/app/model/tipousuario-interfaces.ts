@@ -1,16 +1,16 @@
 export interface ITipousuario {
 	id: number;
 	nombre: string;
-}
-
-export interface ITipousuarioPlist {
-	id: number;
-	nombre: string;
 	usuarios: number;
 }
 
-export interface ITipoUsuarioPage {
-	content: ITipousuarioPlist[];
+export interface ITiposuario2Send {
+	id: number;
+	nombre: string;
+}
+
+export interface ITipousuarioPage {
+	content: ITipousuario[];
 	totalElements: number;
 	totalPages: number;
 }

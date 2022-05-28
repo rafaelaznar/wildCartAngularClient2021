@@ -20,18 +20,15 @@ export class UsuarioPlistRoutedComponent implements OnInit {
 
   id_tipousuario: number = null;
 
-  fila: IUsuario;
-
   constructor(
-    private oRoute: ActivatedRoute,
-    private oRouter: Router,    
-    public oIconService: IconService,
     private oActivatedRoute: ActivatedRoute,
+    private oRouter: Router,    
+    public oIconService: IconService
   ) {
 
-    if (this.oRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
+    if (this.oActivatedRoute.snapshot.data.message) {
+      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
+      localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       this.oRouter.navigate(['/home']);

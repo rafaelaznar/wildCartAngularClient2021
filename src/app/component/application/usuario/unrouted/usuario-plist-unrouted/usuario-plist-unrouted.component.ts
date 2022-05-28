@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { UsuarioService } from 'src/app/service/usuario.service';
-import { IPageUsuario, IUsuario } from 'src/app/model/usuario-interfaces';
+import { IUsuarioPage, IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 
@@ -51,7 +51,7 @@ export class UsuarioPlistUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oUsuarioService.getPage(this.nPageSize, this.nPage, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipousuario).subscribe((oPage: IPageUsuario) => {
+    this.oUsuarioService.getPage(this.nPageSize, this.nPage, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipousuario).subscribe((oPage: IUsuarioPage) => {
       if (this.id_tipousuario) {
         if (this.strFilter) {
           this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipousuario + " y por " + this.strFilter;

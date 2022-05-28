@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import {  ITipoUsuarioPage,  ITipousuarioPlist,} from 'src/app/model/tipousuario-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 import { PaginationService } from 'src/app/service/pagination.service';
@@ -18,40 +17,27 @@ export class TipousuarioPlistRoutedComponent implements OnInit {
   strOperation: string = 'plist';
   strTitleSingular: string = 'Tipo de usuario';
   strTitlePlural: string = 'Tipos de usuario';
-  aTipoUsuarios: ITipousuarioPlist[];
-  aPaginationBar: string[];
-  nTotalElements: number;
-  nTotalPages: number;
-  nPage: number;
-  nPageSize: number = 10;
-  strResult: string = null;
-  strFilter: string = '';
-  strSortField: string = '';
-  strSortDirection: string = '';
-  strFilteredMessage: string = '';
+  //
+
   oUserSession: IUsuario;
   subjectFiltro$ = new Subject();
 
   constructor(
-    private oRoute: ActivatedRoute,
+    private oActivatedRoute: ActivatedRoute,
     private oRouter: Router,
-    private oPaginationService: PaginationService,
-    private oTipoUsuarioService: TipousuarioService,
     public oIconService: IconService
   ) {
-    if (this.oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem(
-        'user',
-        JSON.stringify(this.oRoute.snapshot.data.message)
-      );
+    if (this.oActivatedRoute.snapshot.data.message) {
+      this.oUserSession = this.oActivatedRoute.snapshot.data.message;
+      localStorage.setItem('user', JSON.stringify(this.oActivatedRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
+    
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  
+
 }

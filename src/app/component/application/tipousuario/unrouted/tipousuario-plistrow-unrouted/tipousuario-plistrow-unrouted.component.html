@@ -1,0 +1,22 @@
+<td class="text-end">{{ oTipousuario.id }}</td>
+<td>{{ oTipousuario.nombre }}</td>
+<td *ngIf="mode" style="text-align: center">
+  <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/usuario/plist/tipousuario/', oTipousuario.id]">
+    {{ oTipousuario?.usuarios }}
+    <i [ngClass]="oIconService.getIcon('usuario')"></i>
+  </button>
+</td>
+<td class="text-center">
+  <div class="btn-group btn-group-sm" role="group" *ngIf="!mode">
+    <button type="button" class="btn btn-success" (click)="onSelection(oTipousuario.id)"><i
+        class="fas fa-eye"></i></button>
+  </div>
+  <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example" *ngIf="mode">
+    <button type="button" class="btn btn-success" [routerLink]="['/tipousuario/view/' + oTipousuario.id]">
+      <i [ngClass]="oIconService.getIcon('view')"></i>
+    </button>
+    <button type="button" class="btn btn-warning" [routerLink]="['/tipousuario/edit/' + oTipousuario.id]">
+      <i [ngClass]="oIconService.getIcon('edit')"></i>
+    </button>
+  </div>
+</td>

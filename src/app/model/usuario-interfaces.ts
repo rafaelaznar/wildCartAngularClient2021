@@ -17,7 +17,7 @@ export interface IUsuario {
     facturas: number
 }
 
-export interface IPageUsuario {
+export interface IUsuarioPage {
     content: IUsuario[];
     totalElements: number,
     totalPages: number

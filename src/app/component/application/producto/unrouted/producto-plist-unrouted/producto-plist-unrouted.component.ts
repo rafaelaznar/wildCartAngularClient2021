@@ -1,5 +1,5 @@
 import { ProductoService } from '../../../../../service/producto.service';
-import { IPageProducto, IProducto } from 'src/app/model/producto-interfaces';
+import { IProductoPage, IProducto } from 'src/app/model/producto-interfaces';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IconService } from 'src/app/service/icon.service';
@@ -51,7 +51,7 @@ export class ProductoPlistUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oProductoService.getPage(this.nPageSize, this.nPage, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipoproducto).subscribe((oPage: IPageProducto) => {
+    this.oProductoService.getPage(this.nPageSize, this.nPage, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipoproducto).subscribe((oPage: IProductoPage) => {
       if (this.id_tipoproducto) {
         if (this.strFilter) {
           this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto + " y por " + this.strFilter;

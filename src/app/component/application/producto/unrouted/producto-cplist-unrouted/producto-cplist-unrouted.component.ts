@@ -1,5 +1,5 @@
 import { ProductoService } from '../../../../../service/producto.service';
-import { IPageProducto, IProducto } from 'src/app/model/producto-interfaces';
+import { IProductoPage, IProducto } from 'src/app/model/producto-interfaces';
 import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -83,7 +83,7 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
 
   getPage = () => {
     console.log("buscando...", this.strFilter);
-    this.oProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, this.id_tipoproducto).subscribe((oPage: IPageProducto) => {
+    this.oProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, this.id_tipoproducto).subscribe((oPage: IProductoPage) => {
       if (this.strFilter) {
         this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
       } else {

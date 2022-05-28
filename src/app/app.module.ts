@@ -92,6 +92,7 @@ import { UsuarioPlistheaderUnroutedComponent } from './component/application/usu
 import { UsuarioPlistRowUnroutedComponent } from './component/application/usuario/unrouted/usuario-plistrow-unrouted/usuario-plistrow-unrouted.component';
 import { ViewbuttonsUnroutedComponent } from './component/shared/unrouted/viewbuttons-unrouted/viewbuttons-unrouted.component';
 import { TipousuarioPlistheaderUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-plistheader-unrouted/tipousuario-plistheader-unrouted.component';
+import { TipousuarioPlistRowUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-plistrow-unrouted/tipousuario-plistrow-unrouted.component';
 
 
 @NgModule({
@@ -180,6 +181,7 @@ import { TipousuarioPlistheaderUnroutedComponent } from './component/application
     // TipoUsuario unrouted components
     TipousuarioPlistUnroutedComponent,
     TipousuarioPlistheaderUnroutedComponent,
+    TipousuarioPlistRowUnroutedComponent,
 
     // Producto unrouted components
     ProductoDetailUnroutedComponent,

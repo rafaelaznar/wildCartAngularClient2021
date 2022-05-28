@@ -28,7 +28,7 @@ export interface IProducto2Send {
     tipoproducto: I2Send
 }
 
-export interface IPageProducto {
+export interface IProductoPage {
     content: IProducto[];
     totalElements: number,
     totalPages: number

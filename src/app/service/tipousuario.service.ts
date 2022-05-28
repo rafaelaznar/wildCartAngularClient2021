@@ -4,18 +4,15 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import {
-  API_URL,
-  environment,
-  httpOptions,
-} from 'src/environments/environment';
-import { ITipoUsuarioPage, ITipousuario } from '../model/tipousuario-interfaces';
+import { API_URL, environment, httpOptions, } from 'src/environments/environment';
+import { ITipousuario, ITipousuarioPage } from '../model/tipousuario-interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class TipousuarioService {
-  constructor(private http: HttpClient, private oRoute: Router) {}
+  constructor(private http: HttpClient, private oRoute: Router) { }
 
   sURL = API_URL + '/tipousuario';
 
@@ -39,13 +36,7 @@ export class TipousuarioService {
       .pipe(catchError(this.handleError));
   }
 
-  getPage(
-    rpp: number,
-    page: number,
-    filter: string,
-    order: string,
-    direction: string
-  ): Observable<ITipoUsuarioPage> {
+  getPage(rpp: number, page: number, filter: string, order: string, direction: string): Observable<ITipousuarioPage> {
     let strUrl: string = '';
     if (filter) {
       strUrl += '&filter=' + filter;
@@ -53,7 +44,7 @@ export class TipousuarioService {
     if (order) {
       strUrl += '&sort=' + order + ',' + direction;
     }
-    return this.http.get<ITipoUsuarioPage>(
+    return this.http.get<ITipousuarioPage>(
       this.sURL + '/?page=' + (page - 1) + '&size=' + rpp + strUrl,
       httpOptions
     );

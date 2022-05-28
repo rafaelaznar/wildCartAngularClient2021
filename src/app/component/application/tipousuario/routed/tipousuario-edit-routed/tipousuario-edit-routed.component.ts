@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
-import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
+import { ITiposuario2Send, ITipousuario } from 'src/app/model/tipousuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 declare let $: any;
@@ -15,13 +15,14 @@ declare let $: any;
   templateUrl: './tipousuario-edit-routed.component.html',
   styleUrls: ['./tipousuario-edit-routed.component.css'],
 })
+
 export class TipousuarioEditRoutedComponent implements OnInit {
   strEntity: string = 'tipousuario';
   strOperation: string = 'edit';
   strTitleSingular: string = 'Tipo de usuario';
   strTitlePlural: string = 'Tipos de usuario';
   oUserType: ITipousuario = null;
-  oUserTypeToSend: ITipousuario = null;
+  oTiposuario2Send: ITiposuario2Send = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
@@ -72,7 +73,7 @@ export class TipousuarioEditRoutedComponent implements OnInit {
 
   onSubmit(): void {
     if (this.oForm) {
-      this.oUserTypeToSend = {
+      this.oTiposuario2Send = {
         id: this.oForm.value.id,
         nombre: this.oForm.value.nombre,
       };
@@ -82,7 +83,7 @@ export class TipousuarioEditRoutedComponent implements OnInit {
 
   update = (): void => {
     this.oTipoUsuarioService
-      .edit(JSON.stringify(this.oUserTypeToSend))
+      .edit(JSON.stringify(this.oTiposuario2Send))
       .subscribe((oCarritoPlist: ITipousuario) => {
         if (oCarritoPlist.id) {
           this.strResult = this.strTitleSingular + ' modificado correctamente';
