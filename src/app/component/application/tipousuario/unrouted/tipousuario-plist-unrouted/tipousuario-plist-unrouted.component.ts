@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { IOrder } from 'src/app/model/model-interfaces';
 import {  ITipoUsuarioPage,  ITipousuarioPlist,} from 'src/app/model/tipousuario-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
@@ -95,15 +96,9 @@ export class TipousuarioPlistUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  doSetOrder(order: string) {
-    this.strSortField = order;
-    if (this.strSortDirection == 'asc') {
-      this.strSortDirection = 'desc';
-    } else if (this.strSortDirection == 'desc') {
-      this.strSortDirection = '';
-    } else {
-      this.strSortDirection = 'asc';
-    }
+  onSetOrder(order: IOrder) {
+    this.strSortField = order.sortField;
+    this.strSortDirection = order.sortDirection;
     this.getPage();
   }
 

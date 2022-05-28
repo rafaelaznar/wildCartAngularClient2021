@@ -43,11 +43,11 @@ export class UsuarioPlistUnroutedComponent implements OnInit {
     private oUsuarioService: UsuarioService,
     public oIconService: IconService,
   ) {
-    this.nPage = 1;
-    this.getPage();
   }
 
   ngOnInit(): void {
+    this.nPage = 1;
+    this.getPage();
   }
 
   getPage = () => {

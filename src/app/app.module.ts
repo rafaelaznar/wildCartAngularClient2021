@@ -91,6 +91,7 @@ import { PlistrowbuttonsUnroutedComponent } from './component/shared/unrouted/pl
 import { UsuarioPlistheaderUnroutedComponent } from './component/application/usuario/unrouted/usuario-plistheader-unrouted/usuario-plistheader-unrouted.component';
 import { UsuarioPlistRowUnroutedComponent } from './component/application/usuario/unrouted/usuario-plistrow-unrouted/usuario-plistrow-unrouted.component';
 import { ViewbuttonsUnroutedComponent } from './component/shared/unrouted/viewbuttons-unrouted/viewbuttons-unrouted.component';
+import { TipousuarioPlistheaderUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-plistheader-unrouted/tipousuario-plistheader-unrouted.component';
 
 
 @NgModule({
@@ -176,8 +177,9 @@ import { ViewbuttonsUnroutedComponent } from './component/shared/unrouted/viewbu
     UsuarioPlistheaderUnroutedComponent,
     UsuarioPlistRowUnroutedComponent,
 
-    // TipoProducto unrouted components
-    TipoProductoPlistUnroutedComponent,
+    // TipoUsuario unrouted components
+    TipousuarioPlistUnroutedComponent,
+    TipousuarioPlistheaderUnroutedComponent,
 
     // Producto unrouted components
     ProductoDetailUnroutedComponent,
@@ -185,15 +187,16 @@ import { ViewbuttonsUnroutedComponent } from './component/shared/unrouted/viewbu
     ProductoPlistUnroutedComponent,
     ProductoPlistheaderUnroutedComponent,
     ProductoPlistRowUnroutedComponent,
+    ProductoCPlistUnroutedComponent,
+
+    // TipoProducto unrouted components
+    TipoProductoPlistUnroutedComponent,
 
     // Factura unrouted components
     FacturaPlistUnroutedComponent,
     TipousuarioFindUnroutedComponent,
 
-    // TipoUsuario unrouted components
-    TipousuarioPlistUnroutedComponent,
 
-    ProductoCPlistUnroutedComponent,
   ],
   imports: [
     HttpClientModule,

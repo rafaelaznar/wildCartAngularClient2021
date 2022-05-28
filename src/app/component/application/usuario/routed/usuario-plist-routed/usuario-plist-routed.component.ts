@@ -1,13 +1,7 @@
-import { PaginationService } from '../../../../../service/pagination.service';
-import { PostService } from '../../../../../service/post.service';
 import { Component, OnInit } from '@angular/core';
-import { IPage, IPost } from 'src/app/model/model-interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { UsuarioService } from 'src/app/service/usuario.service';
-import { IPageUsuario, IUsuario } from 'src/app/model/usuario-interfaces';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
-import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-usuario-plist-routed',
