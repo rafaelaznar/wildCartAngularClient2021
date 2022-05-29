@@ -16,6 +16,7 @@ export class ProductoEditRoutedComponent implements OnInit {
   strOperation: string = "edit" //new or edit depends on the url
   strTitleSingular: string = "Producto";
   strTitlePlural: string = "Productos";
+  //
   id: number = null;
   strResult: string = null;
   oUserSession: IUsuario;
@@ -24,8 +25,7 @@ export class ProductoEditRoutedComponent implements OnInit {
   constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
-    private oLocation: Location,
-    private oRoute: ActivatedRoute,
+    private oLocation: Location,    
     public oIconService: IconService
   ) {
 

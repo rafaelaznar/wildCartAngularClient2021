@@ -18,35 +18,35 @@ declare let $: any;
 
 export class TipousuarioEditRoutedComponent implements OnInit {
   strEntity: string = 'tipousuario';
-  strOperation: string = 'edit';
+  strOperation: string = 'edit'; //only edit; it can't be new
   strTitleSingular: string = 'Tipo de usuario';
+  strATitleSingular: string = 'El tipo de usuario';
   strTitlePlural: string = 'Tipos de usuario';
-  oUserType: ITipousuario = null;
+  //
+  oTipousuario: ITipousuario = null;
   oTiposuario2Send: ITiposuario2Send = null;
+  //
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
-  oUserSession: IUsuario;
+  strUserSession: IUsuario = null;
 
   get f() {
     return this.oForm.controls;
   }
 
-  constructor(
-    private oFormBuilder: FormBuilder,
-    private oRoute: ActivatedRoute,
+  constructor(  
     private oRouter: Router,
-    private oTipoUsuarioService: TipousuarioService,
     private oActivatedRoute: ActivatedRoute,
+    private oTipoUsuarioService: TipousuarioService,    
     private oLocation: Location,
+    private oFormBuilder: FormBuilder,
     public oIconService: IconService
   ) {
-    if (this.oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem(
-        'user',
-        JSON.stringify(this.oRoute.snapshot.data.message)
-      );
+
+    if (this.oActivatedRoute.snapshot.data.message) {
+      this.strUserSession = this.oActivatedRoute.snapshot.data.message;
+      localStorage.setItem('user', JSON.stringify(this.oActivatedRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
@@ -54,19 +54,17 @@ export class TipousuarioEditRoutedComponent implements OnInit {
 
     this.id = this.oActivatedRoute.snapshot.params.id;
     this.getOne();
+
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   getOne = (): void => {
     this.oTipoUsuarioService.view(this.id).subscribe((oData: ITipousuario) => {
-      this.oUserType = oData;
+      this.oTipousuario = oData;
       this.oForm = this.oFormBuilder.group({
         id: [this.id],
-        nombre: [
-          this.oUserType.nombre,
-          [Validators.required, Validators.minLength(4)],
-        ],
+        nombre: [this.oTipousuario.nombre, [Validators.required, Validators.minLength(4)]]
       });
     });
   };
@@ -84,12 +82,11 @@ export class TipousuarioEditRoutedComponent implements OnInit {
   update = (): void => {
     this.oTipoUsuarioService
       .edit(JSON.stringify(this.oTiposuario2Send))
-      .subscribe((oCarritoPlist: ITipousuario) => {
-        if (oCarritoPlist.id) {
-          this.strResult = this.strTitleSingular + ' modificado correctamente';
+      .subscribe((oTipousuario: ITipousuario) => {
+        if (oTipousuario.id) {
+          this.strResult = this.strATitleSingular + ' con id=' + oTipousuario.id + ' se ha modificado correctamente';
         } else {
-          this.strResult =
-            this.strTitleSingular + ': error en la modificación del registro';
+          this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
         }
         this.openPopup();
       });
