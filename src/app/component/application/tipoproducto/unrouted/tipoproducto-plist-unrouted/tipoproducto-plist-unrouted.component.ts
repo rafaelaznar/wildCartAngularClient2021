@@ -5,6 +5,7 @@ import { debounceTime } from 'rxjs/operators';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { ITipoproducto, ITipoproductoPage } from 'src/app/model/tipoproducto-interfaces';
+import { IOrder } from 'src/app/model/model-interfaces';
 
 @Component({
   selector: 'app-tipoproductoplistunrouted',
@@ -75,39 +76,25 @@ export class TipoProductoPlistUnroutedComponent implements OnInit {
       });
   };
 
-  jumpToPage = () => {
+  onSetPage = (nPage: number) => {
+    this.nPage = nPage;
     this.getPage();
     return false;
-  };
-
-  onKeyUpFilter(event: KeyboardEvent): void {
-    this.subjectFilter.next();
   }
 
-  doFilter() {
+  onSetRpp(nRpp: number) {
+    this.nPageSize = nRpp;
     this.getPage();
   }
 
-  doResetFilter() {
-    this.strFilter = '';
+  onSetFilter(strFilter: string) {
+    this.strFilter = strFilter;
     this.getPage();
   }
 
-  doResetOrder() {
-    this.strSortField = '';
-    this.strSortDirection = '';
-    this.getPage();
-  }
-
-  doSetOrder(order: string) {
-    this.strSortField = order;
-    if (this.strSortDirection == 'asc') {
-      this.strSortDirection = 'desc';
-    } else if (this.strSortDirection == 'desc') {
-      this.strSortDirection = '';
-    } else {
-      this.strSortDirection = 'asc';
-    }
+  onSetOrder(order: IOrder) {
+    this.strSortField = order.sortField;
+    this.strSortDirection = order.sortDirection;
     this.getPage();
   }
 

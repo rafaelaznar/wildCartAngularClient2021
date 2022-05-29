@@ -22,12 +22,12 @@
   <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='precio'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='precio'&&strSortDirection=='desc'"></i>
 </th>
-<th (click)="doSetOrder('imagen')">
+<th (click)="doSetOrder('imagen')"  *ngIf="mode">
   <i [ngClass]="oIconService.getIcon('imagen')"></i> Imagen
   <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='imagen'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='imagen'&&strSortDirection=='desc'"></i>
 </th>
-<th (click)="doSetOrder('imagen')">
+<th (click)="doSetOrder('imagen')"  *ngIf="mode">
   <i [ngClass]="oIconService.getIcon('imagen')"></i> ID Imagen
   <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='imagen'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='imagen'&&strSortDirection=='desc'"></i>
@@ -38,12 +38,12 @@
   <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='descuento'&&strSortDirection=='desc'"></i>
 </th>
 
-<th (click)="doSetOrder('compra')"><i [ngClass]="oIconService.getIcon('compra')"></i> Compras
+<th (click)="doSetOrder('compra')"  *ngIf="mode"><i [ngClass]="oIconService.getIcon('compra')"></i> Compras
   <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='compra'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='compra'&&strSortDirection=='desc'"></i>
 </th>
 
-<th (click)="doSetOrder('carrito')"><i [ngClass]="oIconService.getIcon('carrito')"></i> Carrito
+<th (click)="doSetOrder('carrito')"  *ngIf="mode"><i [ngClass]="oIconService.getIcon('carrito')"></i> Carrito
   <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField=='carrito'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField=='carrito'&&strSortDirection=='desc'"></i>
 </th>

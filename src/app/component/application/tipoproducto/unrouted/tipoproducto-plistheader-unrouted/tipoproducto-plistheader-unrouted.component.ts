@@ -3,18 +3,17 @@ import { IOrder } from 'src/app/model/model-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: '[app-producto-plistheader-unrouted]',
-  templateUrl: './producto-plistheader-unrouted.component.html',
-  styleUrls: ['./producto-plistheader-unrouted.component.css']
+  selector: '[app-tipoproducto-plistheader-unrouted]',
+  templateUrl: './tipoproducto-plistheader-unrouted.component.html',
+  styleUrls: ['./tipoproducto-plistheader-unrouted.component.css']
 })
-export class ProductoPlistheaderUnroutedComponent implements OnInit {
-  
+export class TipoproductoPlistheaderUnroutedComponent implements OnInit {
+  @Input() mode: boolean = true; //true=edición; false=selección
   @Input() strSortField: string = "";
   @Input() strSortDirection: string = "";
-  @Input() mode: boolean = true; //true=edición; false=selección
   @Output() sort = new EventEmitter<IOrder>();
 
-  strEntity: string = "producto";
+  strEntity: string = "tipoproducto";
   strOperation: string = "plist";
   constructor(
     public oIconService: IconService
