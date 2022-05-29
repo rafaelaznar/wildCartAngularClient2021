@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
@@ -11,22 +10,22 @@ import { IconService } from 'src/app/service/icon.service';
 
 export class UsuarioViewRoutedComponent implements OnInit {
   
-  id: number;
-  strUsuarioSession: string;
   strEntity: string = "usuario"
   strOperation: string = "view"
   strTitleSingular:string= "usuario"
   strTitlePlural:string= "usuarios"
+  //
+  id: number;
+  strUsuarioSession: string;
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
-    private oRoute: ActivatedRoute,
     private oRouter: Router,
     public oIconService: IconService
   ) {
-    if (this.oRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem('user', JSON.stringify(this.oRoute.snapshot.data.message));
+    if (this.oActivatedRoute.snapshot.data.message) {
+      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
+      localStorage.setItem('user', JSON.stringify(this.oActivatedRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);

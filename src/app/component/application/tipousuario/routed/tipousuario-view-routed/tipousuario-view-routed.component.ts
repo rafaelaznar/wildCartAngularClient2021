@@ -1,8 +1,6 @@
 import { IconService } from 'src/app/service/icon.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
-import { TipousuarioService } from 'src/app/service/tipousuario.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tipousuario-view-routed',
@@ -10,27 +8,31 @@ import { TipousuarioService } from 'src/app/service/tipousuario.service';
   styleUrls: ['./tipousuario-view-routed.component.css'],
 })
 export class TipousuarioViewRoutedComponent implements OnInit {
-  public tipoUsuario: ITipousuario;
-  strEntity: string = 'tipousuario';
+
+  strEntity: string = 'tipousuario';  
   strOperation: string = 'view';
   strTitleSingular: string = 'Tipo de Usuario';
   strTitlePlural: string = 'Tipos de Usuario';
+  //
+  id: number;
+  strUsuarioSession: string;
 
-  constructor(
-    private tipoUsuarioService: TipousuarioService,
-    private activatedRoute: ActivatedRoute,
+  constructor(    
+    private oActivatedRoute: ActivatedRoute,
+    private oRouter: Router,
     public oIconService: IconService
   ) {
-    this.tipoUsuarioService
-      .view(this.activatedRoute.snapshot.params.id)
-      .subscribe((data: ITipousuario) => {
-        this.tipoUsuario = data;
-      });
+    if (this.oActivatedRoute.snapshot.data.message) {
+      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
+      localStorage.setItem('user', JSON.stringify(this.oActivatedRoute.snapshot.data.message));
+    } else {
+      localStorage.clear();
+      oRouter.navigate(['/home']);
+    }
+
+    this.id = this.oActivatedRoute.snapshot.params.id;    
   }
 
   ngOnInit(): void {}
 
-  goBack(): void {
-    this.tipoUsuarioService.redirectPlist();
-  }
 }

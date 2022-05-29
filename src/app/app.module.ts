@@ -94,6 +94,7 @@ import { TipousuarioPlistheaderUnroutedComponent } from './component/application
 import { TipousuarioPlistRowUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-plistrow-unrouted/tipousuario-plistrow-unrouted.component';
 import { TipoproductoPlistRowUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-plistrow-unrouted/tipoproducto-plistrow-unrouted.component';
 import { TipoproductoPlistheaderUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-plistheader-unrouted/tipoproducto-plistheader-unrouted.component';
+import { TipousuarioViewUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-view-unrouted/tipousuario-view-unrouted.component';
 
 
 @NgModule({
@@ -182,6 +183,7 @@ import { TipoproductoPlistheaderUnroutedComponent } from './component/applicatio
     TipousuarioPlistUnroutedComponent,
     TipousuarioPlistheaderUnroutedComponent,
     TipousuarioPlistRowUnroutedComponent,
+    TipousuarioViewUnroutedComponent,
 
     // Producto unrouted components
     ProductoDetailUnroutedComponent,
@@ -199,8 +201,6 @@ import { TipoproductoPlistheaderUnroutedComponent } from './component/applicatio
     // Factura unrouted components
     FacturaPlistUnroutedComponent,
     
-
-
   ],
   imports: [
     HttpClientModule,
