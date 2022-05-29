@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { API_URL, environment, httpOptions, } from 'src/environments/environment';
-import { ITipousuario, ITipousuarioPage } from '../model/tipousuario-interfaces';
+import { ITipousuario, ITipousuario2Send, ITipousuarioPage } from '../model/tipousuario-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -50,11 +50,10 @@ export class TipousuarioService {
     );
   }
 
-  edit(body: String): Observable<ITipousuario> {
-    return this.http
-      .put<ITipousuario>(this.sURL, body, httpOptions)
-      .pipe(catchError(this.handleError));
+  updateOne(oTipousuario: ITipousuario2Send): Observable<ITipousuario> {
+    return this.http.put<ITipousuario>(this.sURL, oTipousuario, httpOptions);
   }
+
   postJsonFormater(formPost: FormGroup): string {
     let data: any = {};
     Object.keys(formPost.controls).forEach((key) => {

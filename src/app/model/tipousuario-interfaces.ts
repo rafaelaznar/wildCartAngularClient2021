@@ -4,7 +4,7 @@ export interface ITipousuario {
 	usuarios: number;
 }
 
-export interface ITiposuario2Send {
+export interface ITipousuario2Send {
 	id: number;
 	nombre: string;
 }

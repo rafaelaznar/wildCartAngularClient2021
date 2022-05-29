@@ -12,15 +12,17 @@ import { IconService } from 'src/app/service/icon.service';
 
 export class UsuarioEditRoutedComponent implements OnInit {
 
-  id: number = null;
-  strResult: string = null;
-  strUsuarioSession: string;
   strEntity: string = 'usuario';
   strOperation: string = 'edit';
   strTitleSingular: string = 'Usuario';
   strTitlePlural: string = 'Usuarios';
   strATitleSingular: string = 'El usuario';
   strATitlePlural: string = 'Los usuarios';
+  //
+  id: number = null;
+  strResult: string = null;
+  strUsuarioSession: string;
+
 
   constructor(
     private oRouter: Router,
