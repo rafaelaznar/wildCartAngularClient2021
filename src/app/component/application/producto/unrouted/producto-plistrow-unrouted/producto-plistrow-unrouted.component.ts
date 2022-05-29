@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { IconService } from 'src/app/service/icon.service';
+import { API_URL } from './../../../../../../environments/environment';
 
 @Component({
   selector: '[app-producto-plistrow-unrouted]',
@@ -8,12 +9,14 @@ import { IconService } from 'src/app/service/icon.service';
   styleUrls: ['./producto-plistrow-unrouted.component.css']
 })
 export class ProductoPlistRowUnroutedComponent implements OnInit {
-  @Input() oProducto: IProducto = null;  
+  @Input() oProducto: IProducto = null;
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() selection = new EventEmitter<number>();
-  
+
+  strAPI_URL: string = API_URL;
   strEntity: string = "producto";
   strOperation: string = "plist";
+  
   constructor(
     public oIconService: IconService
   ) { }
@@ -21,7 +24,6 @@ export class ProductoPlistRowUnroutedComponent implements OnInit {
   ngOnInit() {
   }
   onSelection(id: number) {
-    //console.log("selection plist emite " + id);
     this.selection.emit(id);
   }
 }

@@ -3,7 +3,7 @@
 <td>{{oProducto.nombre| trim:60}}</td>
 <td style="text-align: center;">{{oProducto.existencias}}</td>
 <td style="text-align: right;">{{oProducto.precio}}€</td>
-<td style="text-align: center;"><img [src]="'http://localhost:8082/file/' + oProducto.imagen" style="height:40px" />
+<td style="text-align: center;"><img [src]="strAPI_URL + '/file/' + oProducto.imagen" style="height:40px" />
 </td>
 <td style="text-align: center;">{{oProducto.imagen}}</td>
 <td style="text-align: center;">{{oProducto.descuento}}%</td>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ITipoProducto } from 'src/app/model/tipoproducto-interfaces';
+import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
 import { Location } from '@angular/common';
 import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';

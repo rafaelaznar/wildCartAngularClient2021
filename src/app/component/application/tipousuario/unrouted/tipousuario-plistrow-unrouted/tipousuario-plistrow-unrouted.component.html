@@ -1,7 +1,8 @@
 <td class="text-end">{{ oTipousuario.id }}</td>
 <td>{{ oTipousuario.nombre }}</td>
 <td *ngIf="mode" style="text-align: center">
-  <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/usuario/plist/tipousuario/', oTipousuario.id]">
+  <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/usuario/plist/tipousuario/', oTipousuario.id]"
+    [disabled]="oTipousuario?.usuarios<=0">
     {{ oTipousuario?.usuarios }}
     <i [ngClass]="oIconService.getIcon('usuario')"></i>
   </button>

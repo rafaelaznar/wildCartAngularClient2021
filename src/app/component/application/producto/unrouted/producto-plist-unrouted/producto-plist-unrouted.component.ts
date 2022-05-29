@@ -43,11 +43,11 @@ export class ProductoPlistUnroutedComponent implements OnInit {
     private oProductoService: ProductoService,
     public oIconService: IconService
   ) {
-    this.nPage = 1;
-    this.getPage();
   }
 
   ngOnInit(): void {
+    this.nPage = 1;
+    this.getPage(); //important! id_tipoproducto must be initialized before calling getPage()
   }
 
   getPage = () => {

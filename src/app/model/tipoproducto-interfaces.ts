@@ -1,18 +1,16 @@
-import { NumberSymbol } from "@angular/common";
-
-export interface ITipoProducto {
+export interface ITipoproducto {
     id: number,
     nombre: string,
     productos: number
 }
 
-export interface ITipoProducto2Send {
+export interface ITipoproducto2Send {
     id: number,
     nombre: string
 }
 
-export interface IPageTipoProducto {
-    content: ITipoProducto[];
+export interface ITipoproductoPage {
+    content: ITipoproducto[];
     totalElements: number,
     totalPages: number
 }

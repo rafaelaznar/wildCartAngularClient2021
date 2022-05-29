@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ITipoProducto } from 'src/app/model/tipoproducto-interfaces';
+import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { Location } from '@angular/common';
 import { IconService } from 'src/app/service/icon.service';
@@ -18,7 +18,7 @@ export class ViewTipoproductoComponent implements OnInit {
   strTitleSingular: string = "Tipo de producto";
   strTitlePlural: string = "Tipos de producto";
   id: number = 0;
-  oTipoProducto: ITipoProducto;
+  oTipoProducto: ITipoproducto;
   oUserSession: IUsuario;
 
   constructor(
@@ -46,7 +46,7 @@ export class ViewTipoproductoComponent implements OnInit {
   getOne = () => {
     this.oTipoproductoService
       .getOne(this.id)
-      .subscribe((oData: ITipoProducto) => {
+      .subscribe((oData: ITipoproducto) => {
         this.oTipoProducto = oData;
       });
   };

@@ -47,7 +47,7 @@ export class UsuarioPlistUnroutedComponent implements OnInit {
 
   ngOnInit(): void {
     this.nPage = 1;
-    this.getPage();
+    this.getPage(); //important! don't call in constructor; id_tipousuario must be initialized before calling getPage()
   }
 
   getPage = () => {

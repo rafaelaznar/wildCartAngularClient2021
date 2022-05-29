@@ -3,7 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
-import { ITipoProducto, ITipoProducto2Send } from 'src/app/model/tipoproducto-interfaces';
+import { ITipoproducto, ITipoproducto2Send } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
@@ -22,8 +22,8 @@ export class EditTipoproductoComponent implements OnInit {
   strOperation: string = "edit"
   strTitleSingular: string = "Tipo de producto";
   strTitlePlural: string = "Tipos de producto";
-  oTipoProducto2Send: ITipoProducto2Send = null;
-  oTipoProducto2Show: ITipoProducto = null;
+  oTipoProducto2Send: ITipoproducto2Send = null;
+  oTipoProducto2Show: ITipoproducto = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
@@ -59,7 +59,7 @@ export class EditTipoproductoComponent implements OnInit {
   getOne = (): void => {
     this.oTipoProductoService
       .getOne(this.id)
-      .subscribe((oData: ITipoProducto) => {
+      .subscribe((oData: ITipoproducto) => {
         this.oTipoProducto2Show = oData;
         this.oForm = this.oFormBuilder.group({
           id: [this.oTipoProducto2Show.id],
@@ -84,7 +84,7 @@ export class EditTipoproductoComponent implements OnInit {
   update = (): void => {
     this.oTipoProductoService
       .updateOne(this.oTipoProducto2Send)
-      .subscribe((oTipoProducto: ITipoProducto) => {
+      .subscribe((oTipoProducto: ITipoproducto) => {
         if (oTipoProducto.id) {
           this.strResult = this.strTitleSingular + ' modificado correctamente';
         } else {

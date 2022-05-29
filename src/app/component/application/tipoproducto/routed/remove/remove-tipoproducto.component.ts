@@ -1,4 +1,4 @@
-import { ITipoProducto } from '../../../../../model/tipoproducto-interfaces';
+import { ITipoproducto } from '../../../../../model/tipoproducto-interfaces';
 import { Component, OnInit } from '@angular/core';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,7 +19,7 @@ export class RemoveTipoproductoComponent implements OnInit {
   strTitleSingular: string = "Tipo de producto";
   strTitlePlural: string = "Tipos de producto";
   id: number = 0;
-  oTipoProducto: ITipoProducto;
+  oTipoProducto: ITipoproducto;
   oUserSession: IUsuario;
   strResult: string = null;
 
@@ -48,7 +48,7 @@ export class RemoveTipoproductoComponent implements OnInit {
   getOne = () => {
     this.oTipoproductoService
       .getOne(this.id)
-      .subscribe((oData: ITipoProducto) => {
+      .subscribe((oData: ITipoproducto) => {
         this.oTipoProducto = oData;
       });
   };

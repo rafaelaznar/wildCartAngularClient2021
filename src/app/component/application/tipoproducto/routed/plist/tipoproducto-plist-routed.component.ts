@@ -1,5 +1,5 @@
 import { IUsuario } from '../../../../../model/usuario-interfaces';
-import { ITipoProducto, IPageTipoProducto } from '../../../../../model/tipoproducto-interfaces';
+import { ITipoproducto, ITipoproductoPage } from '../../../../../model/tipoproducto-interfaces';
 import { TipoproductoService } from '../../../../../service/tipoproducto.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class PlistTipoproductoComponent implements OnInit {
   strOperation: string = "plist"
   strTitleSingular: string = "Tipo de producto";
   strTitlePlural: string = "Tipos de producto";
-  aTipoProductos: ITipoProducto[];
+  aTipoProductos: ITipoproducto[];
   aPaginationBar: string[];
   nTotalElements: number;
   nTotalPages: number;
@@ -60,7 +60,7 @@ export class PlistTipoproductoComponent implements OnInit {
 
   getPage = () => {
     console.log("buscando...", this.strFilter);
-    this.oTipoProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection).subscribe((oPage: IPageTipoProducto) => {
+    this.oTipoProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection).subscribe((oPage: ITipoproductoPage) => {
       if (this.strFilter) {
         this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
       } else {

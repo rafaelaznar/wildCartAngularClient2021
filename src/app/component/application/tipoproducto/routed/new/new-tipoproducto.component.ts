@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
-import { ITipoProducto, ITipoProducto2Send } from 'src/app/model/tipoproducto-interfaces';
+import { ITipoproducto, ITipoproducto2Send } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
@@ -23,7 +23,7 @@ export class NewTipoproductoComponent implements OnInit {
   strOperation: string = "new"
   strTitleSingular: string = "Tipo de producto";
   strTitlePlural: string = "Tipos de producto";
-  oTipoProducto2Send: ITipoProducto2Send = null;
+  oTipoProducto2Send: ITipoproducto2Send = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
@@ -70,7 +70,7 @@ export class NewTipoproductoComponent implements OnInit {
   new = (): void => {
     this.oTipoProductoService
       .newOne(this.oTipoProducto2Send)
-      .subscribe((oTipoProducto: ITipoProducto) => {
+      .subscribe((oTipoProducto: ITipoproducto) => {
         if (oTipoProducto.id) {
           this.id = oTipoProducto.id;
           this.strResult = this.strTitleSingular + ' creado correctamente con id=' + oTipoProducto.id;

@@ -1,5 +1,5 @@
 import { I2Send } from "./model-interfaces";
-import { ITipoProducto } from "./tipoproducto-interfaces";
+import { ITipoproducto } from "./tipoproducto-interfaces";
 
 export interface IFile {
     file: File
@@ -12,7 +12,7 @@ export interface IProducto {
     precio: number,
     imagen: number,
     descuento: number,
-    tipoproducto: ITipoProducto,
+    tipoproducto: ITipoproducto,
 
     compras: number,
     carritos: number
