@@ -9,12 +9,12 @@
 <td style="text-align: center;">{{oProducto.descuento}}%</td>
 <td style="text-align: center;">
   <button class="btn btn-outline-secondary btn-sm"
-    [routerLink]="['/compra/plist/producto',oProducto.id]">{{oProducto?.compras}}
+    [routerLink]="['/compra/plist/producto',oProducto.id]"  [disabled]="oProducto?.compras<=0">{{oProducto?.compras}}
     <i [ngClass]="oIconService.getIcon('compra')"></i></button>
 </td>
 <td style="text-align: center;">
   <button class="btn btn-outline-secondary btn-sm"
-    [routerLink]="['/carrito/plist/producto',oProducto.id]">{{oProducto?.carritos}}
+    [routerLink]="['/carrito/plist/producto',oProducto.id]" [disabled]="oProducto?.carritos<=0">{{oProducto?.carritos}}
     <i [ngClass]="oIconService.getIcon('carrito')"></i></button>
 </td>
 <td>

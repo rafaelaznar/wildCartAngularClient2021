@@ -5,7 +5,8 @@
 <td>{{oUsuario.apellido2}}</td>
 <td *ngIf="mode">{{oUsuario.email| trim:18}}</td>
 <td style="text-align: center" *ngIf="mode">
-  <button *ngIf="!mode || oUsuario.carritos==0" class="btn btn-outline-secondary btn-sm"> {{ oUsuario.carritos }}
+  <button *ngIf="!mode || oUsuario.carritos==0" class="btn btn-outline-secondary btn-sm"
+    [disabled]="oUsuario?.carritos<=0"> {{ oUsuario.carritos }}
     <i [ngClass]="oIconService.getIcon('carrito')"></i>
   </button>
   <button *ngIf="mode && oUsuario.carritos>0" class="btn btn-outline-secondary btn-sm"
@@ -19,7 +20,7 @@
     <i [ngClass]="oIconService.getIcon('factura')"></i>
   </button>
   <button *ngIf="mode && oUsuario.facturas>0" class="btn btn-outline-secondary btn-sm"
-    [routerLink]="['/factura/plist/usuario/' + oUsuario.id]">
+    [routerLink]="['/factura/plist/usuario/' + oUsuario.id]" [disabled]="oUsuario?.facturas<=0">
     {{ oUsuario.facturas }}
     <i [ngClass]="oIconService.getIcon('factura')"></i>
   </button>
@@ -40,9 +41,12 @@
     <button type="button" class="btn btn-success" (click)="onSelection(oUsuario.id)"><i
         class="fas fa-check"></i></button>
   </div>
-  <div class="btn-group btn-group-sm" role="group" *ngIf="mode" app-plistrowbuttons-unrouted [id]="oUsuario.id" [strEntity]="strEntity">  
-      <button type="button" class="btn btn-secondary" (click)="flipValidateUser(oUsuario.id)"><i [ngClass]="oIconService.getIcon('validado')"></i></button>
-      <button type="button" class="btn btn-secondary" (click)="flipActivateUser(oUsuario.id)"><i [ngClass]="oIconService.getIcon('activado')"></i></button>
+  <div class="btn-group btn-group-sm" role="group" *ngIf="mode" app-plistrowbuttons-unrouted [id]="oUsuario.id"
+    [strEntity]="strEntity">
+    <button type="button" class="btn btn-secondary" (click)="flipValidateUser(oUsuario.id)"><i
+        [ngClass]="oIconService.getIcon('validado')"></i></button>
+    <button type="button" class="btn btn-secondary" (click)="flipActivateUser(oUsuario.id)"><i
+        [ngClass]="oIconService.getIcon('activado')"></i></button>
   </div>
 
 </td>
