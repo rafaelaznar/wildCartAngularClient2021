@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
-import { PaginationService } from 'src/app/service/pagination.service';
-import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 @Component({
   selector: 'app-tipousuario-plist-routed',

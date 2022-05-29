@@ -78,10 +78,9 @@ import { TipousuarioPlistUnroutedComponent } from './component/application/tipou
 import { ProductoCPlistUnroutedComponent } from './component/application/producto/unrouted/producto-cplist-unrouted/producto-cplist-unrouted.component';
 import { ProductoPlistRowUnroutedComponent } from './component/application/producto/unrouted/producto-plistrow-unrouted/producto-plistrow-unrouted.component';
 import { ProductoPlistheaderUnroutedComponent } from './component/application/producto/unrouted/producto-plistheader-unrouted/producto-plistheader-unrouted.component';
-import { UsuarioFindUnroutedComponent } from './component/application/usuario/unrouted/usuario-find-unrouted/usuario-find-unrouted.component';
 import { ProductoFormUnroutedComponent } from './component/application/producto/unrouted/producto-form.unrouted/producto-form-unrouted.component';
 import { ProductoDetailUnroutedComponent } from './component/application/producto/unrouted/producto-detail-unrouted/producto-detail-unrouted.component';
-import { TipousuarioFindUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-find-unrouted/tipousuario-find-unrouted.component';
+
 import { findUnroutedComponent } from './component/shared/unrouted/find-unrouted/find-unrouted.component';
 import { UsuarioFormUnroutedComponent } from './component/application/usuario/unrouted/usuario-form-unrouted/usuario-form-unrouted.component';
 import { RppUnroutedComponent } from './component/shared/unrouted/rpp-unrouted/rpp-unrouted.component';
@@ -175,7 +174,6 @@ import { TipoproductoPlistheaderUnroutedComponent } from './component/applicatio
     // Usuario unrouted components
     UsuarioPlistUnroutedComponent,
     UsuarioViewUnroutedComponent,
-    UsuarioFindUnroutedComponent,
     UsuarioFormUnroutedComponent,
     UsuarioPlistheaderUnroutedComponent,
     UsuarioPlistRowUnroutedComponent,
@@ -200,7 +198,7 @@ import { TipoproductoPlistheaderUnroutedComponent } from './component/applicatio
 
     // Factura unrouted components
     FacturaPlistUnroutedComponent,
-    TipousuarioFindUnroutedComponent,
+    
 
 
   ],
