@@ -1,11 +1,10 @@
-import { I2Send } from "./model-interfaces";
+import { IEntity, IEntity2Send, IPage } from "./model-interfaces";
 import { ITipoproducto } from "./tipoproducto-interfaces";
 
 export interface IFile {
     file: File
 }
-export interface IProducto {
-    id: number,
+export interface IProducto extends IEntity {
     codigo: string,
     nombre: string,
     existencias: number,
@@ -17,19 +16,16 @@ export interface IProducto {
     compras: number,
     carritos: number
 }
-export interface IProducto2Send {
+export interface IProducto2Send extends IEntity2Send {
     id: number,
     codigo: string,
     nombre: string,
     existencias: number,
     precio: number,
-    imagen: number,    
+    imagen: number,
     descuento: number,
-    tipoproducto: I2Send
+    tipoproducto: IEntity2Send
 }
 
-export interface IProductoPage {
-    content: IProducto[];
-    totalElements: number,
-    totalPages: number
+export interface IProductoPage extends IPage<IProducto> {
 }

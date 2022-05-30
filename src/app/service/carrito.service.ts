@@ -2,77 +2,57 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
-import {
-  ICarritoPage,
-  ICarritoPlist,
-  ICarritoToSend,
-} from '../model/carrito-interfaces';
+import { ICarritoPage, ICarrito, ICarrito2Send, } from '../model/carrito-interfaces';
+import { ICrud } from '../model/crud-interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CarritoService {
+export class CarritoService implements ICrud {
+
   sURL = API_URL + '/carrito';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getOne(id: number): Observable<ICarritoPlist> {
-    return this.http.get<ICarritoPlist>(this.sURL + '/' + id, httpOptions);
-  }
-  buy():Observable<number>{
-    return this.http.put<number>(this.sURL + '/comprar',null, httpOptions);
-  };
-  getPage(
-    rpp: number,
-    page: number,
-    filter: string,
-    order: string,
-    direction: string,
-    idproducto: number,
-    idusuario: number
-  ): Observable<ICarritoPage> {
+  getPage(page: number, rpp: number, order: string, direction: string, filter: string, id_producto: number, id_usuario: number): Observable<ICarritoPage> {
     let strOrderUrl: string = '';
     if (order) {
       strOrderUrl += '&sort=' + order + ',' + direction;
     }
-
     if (filter) {
       strOrderUrl += '&filter=' + filter;
     }
-    if (idproducto) {
-      strOrderUrl += '&idproducto=' + idproducto;
-    } else if (idusuario) {
-      strOrderUrl += '&idusuario=' + idusuario;
+    if (id_producto) {
+      strOrderUrl += '&idproducto=' + id_producto;
+    } else if (id_usuario) {
+      strOrderUrl += '&idusuario=' + id_usuario;
     }
-
-    return this.http.get<ICarritoPage>(
-      this.sURL + '?page=' + page + '&size=' + rpp + strOrderUrl,
-      httpOptions
-    );
+    page--;
+    return this.http.get<ICarritoPage>(this.sURL + '?page=' + page + '&size=' + rpp + strOrderUrl, httpOptions);
   }
 
-  newOne(oCarrito2Send: ICarritoToSend): Observable<ICarritoPlist> {
-    return this.http.post<ICarritoPlist>(
-      this.sURL + '/',
-      oCarrito2Send,
-      httpOptions
-    );
+  getOne(id: number): Observable<ICarrito> {
+    return this.http.get<ICarrito>(this.sURL + '/' + id, httpOptions);
   }
 
-  updateOne(oCarritoPlist: ICarritoToSend): Observable<ICarritoPlist> {
-    return this.http.put<ICarritoPlist>(
-      this.sURL + '/',
-      oCarritoPlist,
-      httpOptions
-    );
+  newOne(oCarrito2Send: ICarrito2Send): Observable<ICarrito> {
+    return this.http.post<ICarrito>(this.sURL + '/', oCarrito2Send, httpOptions);
+  }
+
+  updateOne(oCarritoPlist: ICarrito2Send): Observable<ICarrito> {
+    return this.http.put<ICarrito>(this.sURL + '/', oCarritoPlist, httpOptions);
   }
 
   removeOne(id: number): Observable<number> {
     return this.http.delete<number>(this.sURL + '/' + id, httpOptions);
   }
 
-  count(): Observable<number> {
+  getCount(): Observable<number> {
     return this.http.get<number>(this.sURL + '/count', httpOptions);
   }
+
+  purchase(): Observable<number> {
+    return this.http.put<number>(this.sURL + '/comprar', null, httpOptions);
+  };
 
 }

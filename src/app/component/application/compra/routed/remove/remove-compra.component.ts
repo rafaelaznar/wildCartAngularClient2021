@@ -47,7 +47,7 @@ export class RemoveCompraComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oPostService.get(this.id).subscribe((oData: ICompra) => {
+    this.oPostService.getOne(this.id).subscribe((oData: ICompra) => {
       this.oCompra = oData;
       console.log(oData.producto);
     })
@@ -55,7 +55,7 @@ export class RemoveCompraComponent implements OnInit {
   }
 
   removeOne() {
-    this.oPostService.remove(this.id).subscribe((data: number) => {
+    this.oPostService.removeOne(this.id).subscribe((data: number) => {
       if (data) {
         this.strResult = "La compra con ID=" + this.id + " ha sido borrado con éxito";        
       } else {

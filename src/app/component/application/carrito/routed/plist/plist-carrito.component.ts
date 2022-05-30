@@ -1,5 +1,3 @@
-import { ProductoService } from '../../../../../service/producto.service';
-import { IProductoPage, IProducto } from 'src/app/model/producto-interfaces';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -7,9 +5,8 @@ import { PaginationService } from 'src/app/service/pagination.service';
 import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { debounceTime } from 'rxjs/operators';
-import { ICarritoPage, ICarritoPlist } from 'src/app/model/carrito-interfaces';
+import { ICarritoPage, ICarrito } from 'src/app/model/carrito-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
-import { BuiltinType } from '@angular/compiler';
 
 @Component({
   selector: 'app-plist-carrito',
@@ -21,7 +18,7 @@ export class PlistCarritoComponent implements OnInit {
   strOperation: string = 'plist';
   strTitleSingular: string = 'Carrito';
   strTitlePlural: string = 'Carritos';
-  aCarritos: ICarritoPlist[];
+  aCarritos: ICarrito[];
   aPaginationBar: string[];
   nTotalElements: number;
   nTotalPages: number;
@@ -72,8 +69,8 @@ export class PlistCarritoComponent implements OnInit {
     this.getPage();
   }
 
-  comprar(){
-    this.oCarritoService.buy().subscribe(() => {
+  comprar() {
+    this.oCarritoService.purchase().subscribe(() => {
       this.getPage();
     });
   }
@@ -86,15 +83,7 @@ export class PlistCarritoComponent implements OnInit {
   getPage = () => {
     console.log('buscando...', this.strFilter);
     this.oCarritoService
-      .getPage(
-        this.nPageSize,
-        this.nPage - 1,
-        this.strFilter,
-        this.strSortField,
-        this.strSortDirection,
-        this.id_producto,
-        this.id_usuario
-      )
+      .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_producto, this.id_usuario)
       .subscribe((oPage: ICarritoPage) => {
         if (this.strFilter) {
           this.strFilteredMessage = 'Listado filtrado: ' + this.strFilter;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { IPageCompra } from 'src/app/model/compra-interfaces';
+import { ICompraPage } from 'src/app/model/compra-interfaces';
 import { CompraService } from 'src/app/service/compra.service';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { IconService } from 'src/app/service/icon.service';
@@ -79,7 +79,7 @@ export class PlistCompraComponent implements OnInit {
 
   getPage = () => {
     console.log("buscando...", this.strFilter);
-    this.oCompraService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, this.id_factura, this.id_producto).subscribe((oPage: IPageCompra) => {
+    this.oCompraService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_factura, this.id_producto).subscribe((oPage: ICompraPage) => {
       if (this.strFilter) {
         this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
       } else {
@@ -88,7 +88,7 @@ export class PlistCompraComponent implements OnInit {
       this.aCompras = oPage.content;
       this.nTotalElements = oPage.totalElements;
       this.nTotalPages = oPage.totalPages;
-      this.aPaginationBar  = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
+      this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
     })
   }
 

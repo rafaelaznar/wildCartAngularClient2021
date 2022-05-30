@@ -87,9 +87,9 @@ export class NewFacturaComponent implements OnInit {
 
   new = (): void => {
  
-    this.oFacturaService.Create(JSON.stringify(this.oFactura2Send)).subscribe((id: number) => {
-      if (id) {
-        this.id = id;
+    this.oFacturaService.newOne(this.oFactura2Send).subscribe((oData: IFactura) => {
+      if (oData) {
+        this.id = oData.id;
         this.strResult = "La factura se ha creado correctamente";
       } else {
         this.strResult = "Error en la creación de la factura";

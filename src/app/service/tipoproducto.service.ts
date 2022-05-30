@@ -2,23 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
+import { ICrud } from '../model/crud-interface';
 import { ITipoproducto, ITipoproductoPage, ITipoproducto2Send } from '../model/tipoproducto-interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TipoproductoService {
+
+export class TipoproductoService implements ICrud {
   constructor(private http: HttpClient) { }
 
   sURL = API_URL + '/tipoproducto';
 
-  getPage(
-    rpp: number,
-    page: number,
-    filter: string,
-    order: string,
-    direction: string
-  ): Observable<ITipoproductoPage> {
+  getPage(page: number, rpp: number, order: string, direction: string, filter: string): Observable<ITipoproductoPage> {
     let strUrl: string = '';
     if (filter) {
       strUrl += '&filter=' + filter;
@@ -35,22 +31,15 @@ export class TipoproductoService {
   }
 
   newOne(oTipoProducto: ITipoproducto2Send): Observable<ITipoproducto> {
-    return this.http.post<ITipoproducto>(
-      this.sURL + '/',
-      oTipoProducto,
-      httpOptions
-    );
+    return this.http.post<ITipoproducto>(this.sURL + '/', oTipoProducto, httpOptions);
   }
 
   updateOne(oTipoProducto: ITipoproducto2Send): Observable<ITipoproducto> {
-    return this.http.put<ITipoproducto>(
-      this.sURL + '/',
-      oTipoProducto,
-      httpOptions
-    );
+    return this.http.put<ITipoproducto>(this.sURL + '/', oTipoProducto, httpOptions);
   }
 
   removeOne(id: number): Observable<number> {
     return this.http.delete<number>(this.sURL + '/' + id, httpOptions);
   }
+
 }

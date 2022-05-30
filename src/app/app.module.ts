@@ -12,7 +12,6 @@ import { MenuComponent } from './component/shared/unrouted/menu/menu.component';
 import { SessionService } from './service/session.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SessionResolver } from './resolve/session.resolve';
-import { PostService } from './service/post.service';
 import { TrimPipe } from './pipe/trim.pipe';
 import { showDateTimePipe } from './pipe/showDateTime.pipe';
 import { FooterComponent } from './component/shared/unrouted/footer/footer.component';
@@ -96,6 +95,7 @@ import { TipoproductoPlistRowUnroutedComponent } from './component/application/t
 import { TipoproductoPlistheaderUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-plistheader-unrouted/tipoproducto-plistheader-unrouted.component';
 import { TipousuarioViewUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-view-unrouted/tipousuario-view-unrouted.component';
 import { TipousuarioFormUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-form-unrouted/tipousuario-form-unrouted.component';
+import { ErrorHandlerService } from './service/errorHandler.service';
 
 
 @NgModule({
@@ -214,7 +214,6 @@ import { TipousuarioFormUnroutedComponent } from './component/application/tipous
   providers: [
     SessionService,
     SessionResolver,
-    PostService,
     PaginationService,
     DateTimeService,
     CompraService,
@@ -228,6 +227,7 @@ import { TipousuarioFormUnroutedComponent } from './component/application/tipous
     GenerateService,
     CountService,
     FileService,
+    ErrorHandlerService
   ],
   bootstrap: [AppComponent],
 })

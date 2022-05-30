@@ -2,18 +2,20 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
+import { ICrud } from '../model/crud-interface';
+import { IEntity2Send, IEntity } from '../model/model-interfaces';
 import { IProductoPage, IProducto, IProducto2Send } from '../model/producto-interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductoService {
+export class ProductoService implements ICrud  {
 
   sURL = API_URL + '/producto';
 
   constructor(private http: HttpClient) { }
 
-  getPage(rpp: number, page: number, order: string, direction: string, filter: string, tipoproducto: number): Observable<IProductoPage> {
+  getPage( page: number, rpp: number, order: string, direction: string, filter: string, tipoproducto: number): Observable<IProductoPage> {
     let strUrl: string = "";
     if (order) {
       strUrl += "&sort=" + order + "," + direction;
@@ -27,7 +29,7 @@ export class ProductoService {
     return this.http.get<IProductoPage>(this.sURL + "?page=" + (page - 1) + "&size=" + rpp + strUrl, httpOptions);
   }
 
-  get(id: number): Observable<IProducto> {
+  getOne(id: number): Observable<IProducto> {
     return this.http.get<IProducto>(this.sURL + "/" + id, httpOptions);
   }
 
@@ -35,12 +37,12 @@ export class ProductoService {
     return this.http.post<IProducto>(this.sURL + "/", oProduct, httpOptions);
   }
 
-  update(oProduct: IProducto2Send): Observable<IProducto> {
+  updateOne(oProduct: IProducto2Send): Observable<IProducto> {
     return this.http.put<IProducto>(this.sURL + "/", oProduct, httpOptions);
   }
 
-  removeOne(id: number): Observable<IProducto> {
-    return this.http.delete<IProducto>(this.sURL + "/" + id, httpOptions);
+  removeOne(id: number): Observable<number> {
+    return this.http.delete<number>(this.sURL + "/" + id, httpOptions);
   }
 
 }

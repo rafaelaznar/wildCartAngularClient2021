@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IPage, IPost } from 'src/app/model/model-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { PaginationService } from 'src/app/service/pagination.service';
-import { PostService } from 'src/app/service/post.service';
+
 
 @Component({
   selector: 'app-home',
@@ -22,7 +21,6 @@ export class HomeComponent implements OnInit {
     private oRoute: ActivatedRoute,
     private oActivatedRoute: ActivatedRoute,
     private oPaginationService: PaginationService,
-    private oPostService: PostService,
   ) {
 
 

@@ -1,22 +1,19 @@
+import { IEntity, IEntity2Send, IPage } from "./model-interfaces";
 import { IProducto } from './producto-interfaces';
 import { IUsuario } from './usuario-interfaces';
 
-export interface ICarritoPlist {
-  id: number;
+export interface ICarrito extends IEntity {
+
   cantidad: number;
   precio: number;
   producto: IProducto;
   usuario: IUsuario;
 }
 
-export interface ICarritoPage {
-  content: ICarritoPlist[];
-  totalElements: number;
-  totalPages: number;
+export interface ICarritoPage extends IPage<ICarrito> {
 }
 
-export interface ICarritoToSend {
-  id: number;
+export interface ICarrito2Send extends IEntity2Send {
   cantidad: number;
   precio: number;
   producto: number;

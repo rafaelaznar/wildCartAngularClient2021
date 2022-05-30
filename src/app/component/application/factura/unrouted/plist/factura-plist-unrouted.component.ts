@@ -8,7 +8,7 @@ import { FacturaService } from 'src/app/service/factura.service';
 import { IconService } from 'src/app/service/icon.service';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { CompraService } from 'src/app/service/compra.service';
-import { ICompra, IPageCompra } from 'src/app/model/compra-interfaces';
+import { ICompra, ICompraPage } from 'src/app/model/compra-interfaces';
 
 declare let jsPDF: any;
 @Component({
@@ -68,8 +68,6 @@ export class FacturaPlistUnroutedComponent implements OnInit {
     public oCompraService: CompraService
   ) {
 
-
-
   }
 
   ngOnInit(): void {
@@ -80,10 +78,9 @@ export class FacturaPlistUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-
   getPage = () => {
     let id: number = this.oRoute.snapshot.params.id ? this.oRoute.snapshot.params.id : -1;
-    this.oFacturaService.getPage(this.pageSize, this.page, this.filterActual, this.currentSortField, this.currentSortDirection, id).subscribe((oPage: IPageFactura) => {
+    this.oFacturaService.getPage(this.page, this.pageSize, this.currentSortField, this.currentSortDirection, this.filterActual, id).subscribe((oPage: IPageFactura) => {
       if (this.filterActual) {
         this.filtered = true;
       } else {
@@ -100,8 +97,6 @@ export class FacturaPlistUnroutedComponent implements OnInit {
     this.getPage();
     return false;
   }
-
-
 
   doResetOrder() {
     this.currentSortField = "";
@@ -125,6 +120,7 @@ export class FacturaPlistUnroutedComponent implements OnInit {
     console.log("selection plist emite " + id);
     this.selection.emit(id);
   }
+
   cabecera(doc: any, oFactura: IFactura): any {
     doc.setFontSize(20)
     doc.text('Factura', 25, 25)
@@ -164,7 +160,7 @@ export class FacturaPlistUnroutedComponent implements OnInit {
 
   getProductos = (tamanyo: number, factura: number) => {
     console.log("buscando...", this.strFilter);
-    this.oCompraService.getPage(tamanyo, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, factura, null).subscribe((oPage: IPageCompra) => {
+    this.oCompraService.getPage(this.nPage, tamanyo, this.strSortField, this.strSortDirection, this.strFilter, factura, null).subscribe((oPage: ICompraPage) => {
       if (this.strFilter) {
         this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
       } else {
@@ -191,7 +187,7 @@ export class FacturaPlistUnroutedComponent implements OnInit {
       console.log(this.aCompras);
 
       var linea = 155;
-      var total=0;
+      var total = 0;
 
       for (let i = 0; i < this.oFactura.compras; i++) {
 
@@ -200,24 +196,24 @@ export class FacturaPlistUnroutedComponent implements OnInit {
         doc.text(this.aCompras[i].producto.precio + "", 130, linea)
         doc.text((this.aCompras[i].cantidad * this.aCompras[i].producto.precio) + "", 170, linea)
 
-        total= total + (this.aCompras[i].cantidad * this.aCompras[i].producto.precio);
-        linea = linea+7;
+        total = total + (this.aCompras[i].cantidad * this.aCompras[i].producto.precio);
+        linea = linea + 7;
 
-        if (linea>230){
+        if (linea > 230) {
           doc.addPage();
           doc = this.cabecera(doc, this.oFactura);
-          linea=155;
+          linea = 155;
           doc.setFontSize(12)
         }
 
       }
 
-      doc.text('Total:', 139, linea+7)
-      doc.text(total+"€", 170, linea+7)
+      doc.text('Total:', 139, linea + 7)
+      doc.text(total + "€", 170, linea + 7)
       doc.text('IVA:', 139, linea + 14)
       doc.text(this.oFactura.iva + "%", 170, linea + 14)
       doc.text('Total + IVA:', 139, linea + 21)
-      doc.text(total+(total*this.oFactura.iva)/100 +"€", 170, linea + 21)
+      doc.text(total + (total * this.oFactura.iva) / 100 + "€", 170, linea + 21)
 
 
       doc.save("Factura.pdf");
@@ -231,11 +227,7 @@ export class FacturaPlistUnroutedComponent implements OnInit {
       this.oFactura = oData;
       this.getProductos(this.oFactura.compras, this.oFactura.id);
       console.log(this.oFactura);
-
-
-
     })
-
 
   }
 

@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DateTimeService } from 'src/app/service/datetime.service';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
-import { ICompra, ICompraToSend } from 'src/app/model/compra-interfaces';
+import { ICompra, ICompra2Send } from 'src/app/model/compra-interfaces';
 import { CompraService } from 'src/app/service/compra.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
@@ -25,7 +25,7 @@ export class NewCompraComponent implements OnInit {
   strOperation: string = "new"
   strTitleSingular: string = "Compra";
   strTitlePlural: string = "Compra";
-  oCompra: ICompraToSend = null;
+  oCompra2Send: ICompra2Send = null;
   id: ICompra = null;
   oForm: FormGroup = null;
   strResult: string = "";
@@ -85,7 +85,7 @@ export class NewCompraComponent implements OnInit {
 
       if (this.oForm.get("factura")?.value == "") {
 
-        this.oCompra = {
+        this.oCompra2Send = {
           id: null,
           cantidad: this.oForm.value.cantidad,
           precio: this.oForm.value.precio,
@@ -97,12 +97,12 @@ export class NewCompraComponent implements OnInit {
           },
           factura: null
         }
-        console.log(this.oCompra);
+        console.log(this.oCompra2Send);
         this.new();
 
       } else {
         console.log(this.oForm.value.fecha);
-        this.oCompra = {
+        this.oCompra2Send = {
           id: null,
           cantidad: this.oForm.value.cantidad,
           precio: this.oForm.value.precio,
@@ -116,14 +116,14 @@ export class NewCompraComponent implements OnInit {
             id: this.oForm.get("factura")?.value,
           }
         }
-        console.log(this.oCompra);
+        console.log(this.oCompra2Send);
         this.new();
       }
     }
   }
 
   new = (): void => {
-    this.oCompraService.new(this.oCompra).subscribe((id: any) => {
+    this.oCompraService.newOne(this.oCompra2Send).subscribe((id: any) => {
       if (id) {
         this.id = JSON.parse(JSON.stringify(id));
 
@@ -202,7 +202,7 @@ export class NewCompraComponent implements OnInit {
     this.oFacturaService
       .getOne(this.oForm.controls['factura'].value)
       .subscribe((oData: IFactura) => {
-        this.oCompra.factura = oData;
+        this.oCompra2Send.factura = oData;
         //this.oUsuario = oData;
       });
 
@@ -221,9 +221,9 @@ export class NewCompraComponent implements OnInit {
 
     //actualizar el usuario
     this.oProductoService
-      .get(this.oForm.controls['producto'].value)
+      .getOne(this.oForm.controls['producto'].value)
       .subscribe((oData: IProducto) => {
-        this.oCompra.producto = oData;
+        this.oCompra2Send.producto = oData;
         //this.oUsuario = oData;
       });
 

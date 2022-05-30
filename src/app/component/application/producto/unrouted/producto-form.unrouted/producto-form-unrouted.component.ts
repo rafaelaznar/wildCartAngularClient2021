@@ -62,7 +62,7 @@ export class ProductoFormUnroutedComponent implements OnInit {
   }
 
   getOne = (): void => {
-    this.oProductoService.get(this.id).subscribe((oData: IProducto) => {
+    this.oProductoService.getOne(this.id).subscribe((oData: IProducto) => {
       this.oProducto2Show = oData;
       this.oForm = this.oFormBuilder.group({
         id: [this.oProducto2Show.id],
@@ -152,7 +152,7 @@ export class ProductoFormUnroutedComponent implements OnInit {
             });
         } else {
           this.oProductoService
-            .update(this.oProducto2Send)
+            .updateOne(this.oProducto2Send)
             .subscribe((oProducto: IProducto) => {
               if (oProducto.id) {
                 this.id = oProducto.id;

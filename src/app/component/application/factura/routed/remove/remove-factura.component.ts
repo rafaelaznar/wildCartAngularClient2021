@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IFactura } from 'src/app/model/factura-interfaces';
-import { PostService } from 'src/app/service/post.service';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { FacturaService } from 'src/app/service/factura.service';
@@ -54,7 +53,7 @@ export class RemoveFacturaComponent implements OnInit {
   }
 
   removeOne() {
-    this.oFacturaService.Delete(this.id).subscribe((data: number) => {
+    this.oFacturaService.removeOne(this.id).subscribe((data: number) => {
      
         this.strResult = "El post se ha borrado bien";        
       

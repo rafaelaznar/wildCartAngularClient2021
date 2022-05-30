@@ -24,7 +24,7 @@ export class ProductoDetailUnroutedComponent implements OnInit {
 
   getOne = () => {
     this.oProductoService
-      .get(this.id)
+      .getOne(this.id)
       .subscribe((oData: IProducto) => {
         this.oProducto = oData;
       });

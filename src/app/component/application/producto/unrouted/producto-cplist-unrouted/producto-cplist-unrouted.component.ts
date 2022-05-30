@@ -44,22 +44,22 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
 
 
   constructor(
-//    private oRoute: ActivatedRoute,
-//    private oRouter: Router,
+    //    private oRoute: ActivatedRoute,
+    //    private oRouter: Router,
     private oPaginationService: PaginationService,
     private oProductoService: ProductoService,
     public oIconService: IconService
   ) {
-/*
-    if (this.oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
-*/
-//    this.id_tipoproducto = this.oRoute.snapshot.params.id_tipoproducto;
+    /*
+        if (this.oRoute.snapshot.data.message) {
+          this.oUserSession = this.oRoute.snapshot.data.message;
+          localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
+        } else {
+          localStorage.clear();
+          oRouter.navigate(['/home']);
+        }
+    */
+    //    this.id_tipoproducto = this.oRoute.snapshot.params.id_tipoproducto;
 
     if (this.id_tipoproducto) {
       this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto;
@@ -77,13 +77,13 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
     ).subscribe(() => this.getPage());
   }
 
-  addCarrito(id_producto:number){
+  addCarrito(id_producto: number) {
 
   }
 
   getPage = () => {
     console.log("buscando...", this.strFilter);
-    this.oProductoService.getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection, this.id_tipoproducto).subscribe((oPage: IProductoPage) => {
+    this.oProductoService.getPage(this.nPage, this.nPageSize, this.strFilter, this.strSortField, this.strSortDirection, this.id_tipoproducto).subscribe((oPage: IProductoPage) => {
       if (this.strFilter) {
         this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
       } else {

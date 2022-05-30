@@ -1,3 +1,19 @@
+export interface IEntity {
+    id: number,
+}
+
+export interface IEntity2Send {
+    id: number,
+}
+
+export interface IPage<T> {
+    content: T[];
+    totalElements: number,
+    totalPages: number
+}
+
+
+
 export interface IDate {
     year: number,
     month: number,
@@ -14,33 +30,9 @@ export interface IFecha {
     time: ITime
 }
 
-export interface I2Send {
-    id: number,
-}
 
-export interface IPost {
-    id: number,
-    titulo: string,
-    cuerpo: string,
-    fecha: IFecha,
-    etiquetas: string,
-    visible: boolean
-}
 
-export interface IPage {
-    content: IPost[];
-    totalElements: number,
-    totalPages: number
-}
 
-export interface IPost2Send {
-    id: number,
-    titulo: string,
-    cuerpo: string,
-    fecha: string,
-    etiquetas: string,
-    visible: boolean
-}
 
 export interface IReport {
     codigo: string,

@@ -4,7 +4,7 @@ import { IFactura } from '../../../../../model/factura-interfaces';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ICompra, ICompraToSend } from 'src/app/model/compra-interfaces';
+import { ICompra, ICompra2Send } from 'src/app/model/compra-interfaces';
 import { CompraService } from 'src/app/service/compra.service';
 import { DateTimeService } from 'src/app/service/datetime.service';
 import { Location } from '@angular/common';
@@ -26,7 +26,7 @@ export class EditCompraComponent implements OnInit {
   strTitlePlural: string = "Compras";
 
   oCompra: ICompra = null;
-  oCompraToSend: ICompraToSend = null;
+  oCompra2Send: ICompra2Send = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
@@ -77,7 +77,7 @@ export class EditCompraComponent implements OnInit {
   }
 
   get = (): void => {
-    this.oCompraService.get(this.id).subscribe((oData: ICompra) => {
+    this.oCompraService.getOne(this.id).subscribe((oData: ICompra) => {
 
       this.oCompra = oData;
       this.oForm = this.oFormBuilder.group({
@@ -97,7 +97,7 @@ export class EditCompraComponent implements OnInit {
     if (this.oForm) {
       if (this.oForm.get("factura")?.value == null) {
 
-        this.oCompraToSend = {
+        this.oCompra2Send = {
           id: this.oForm.value.id,
           cantidad: this.oForm.value.cantidad,
           precio: this.oForm.value.precio,
@@ -109,10 +109,10 @@ export class EditCompraComponent implements OnInit {
           },
           factura: null
         }
-        console.log(this.oCompraToSend);
+        console.log(this.oCompra2Send);
         this.update();
       } else {
-        this.oCompraToSend = {
+        this.oCompra2Send = {
           id: this.oForm.value.id,
           cantidad: this.oForm.value.cantidad,
           precio: this.oForm.value.precio,
@@ -127,14 +127,14 @@ export class EditCompraComponent implements OnInit {
           }
         }
 
-        console.log(this.oCompraToSend);
+        console.log(this.oCompra2Send);
         this.update();
       }
     }
   }
 
   update = (): void => {
-    this.oCompraService.update(this.oCompraToSend).subscribe((result: number) => {
+    this.oCompraService.updateOne(this.oCompra2Send).subscribe((result: ICompra) => {
       if (result) {
         this.strResult = "La compra se ha modificado correctamente";
       } else {
@@ -226,7 +226,7 @@ export class EditCompraComponent implements OnInit {
 
     //actualizar el usuario
     this.oProductoService
-      .get(this.oForm.controls['producto'].value)
+      .getOne(this.oForm.controls['producto'].value)
       .subscribe((oData: IProducto) => {
         this.oCompra.producto = oData;
         //this.oUsuario = oData;

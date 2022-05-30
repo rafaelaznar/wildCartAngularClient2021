@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
-import { ICarritoPlist } from 'src/app/model/carrito-interfaces';
+import { ICarrito } from 'src/app/model/carrito-interfaces';
 
 @Component({
   selector: 'app-view-carrito',
@@ -18,7 +18,7 @@ export class ViewCarritoComponent implements OnInit {
   strTitleSingular: string = 'Carrito';
   strTitlePlural: string = 'Carritos';
   id: number = 0;
-  oCarritoPlist: ICarritoPlist;
+  oCarrito: ICarrito;
   oUserSession: IUsuario;
 
   constructor(
@@ -47,8 +47,8 @@ export class ViewCarritoComponent implements OnInit {
   ngOnInit(): void {}
 
   getOne = () => {
-    this.oCarritoService.getOne(this.id).subscribe((oData: ICarritoPlist) => {
-      this.oCarritoPlist = oData;
+    this.oCarritoService.getOne(this.id).subscribe((oData: ICarrito) => {
+      this.oCarrito = oData;
     });
   };
 

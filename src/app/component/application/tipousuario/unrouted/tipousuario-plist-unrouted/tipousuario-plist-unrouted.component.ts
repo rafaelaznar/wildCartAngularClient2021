@@ -52,7 +52,7 @@ export class TipousuarioPlistUnroutedComponent implements OnInit {
 
   getPage = () => {
     this.oTipoUsuarioService
-      .getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection)
+      .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter)
       .subscribe((oPage: ITipousuarioPage) => {
         if (this.strFilter) {
           this.strFilteredMessage = 'Listado filtrado: ' + this.strFilter;

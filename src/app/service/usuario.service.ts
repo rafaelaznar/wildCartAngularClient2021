@@ -3,19 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
+import { ICrud } from '../model/crud-interface';
 import { IUsuarioPage, IUsuario, IUsuario2Send } from '../model/usuario-interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class UsuarioService implements ICrud {
 
   sURL = API_URL + '/usuario';
 
   constructor(private http: HttpClient) { }
 
-  getPage(rpp: number, page: number, order: string, direction: string, filter: string, tipousuario: number): Observable<IUsuarioPage> {
-    let strUrl: string = "";    
+  getPage(page: number, rpp: number, order: string, direction: string, filter: string, tipousuario: number): Observable<IUsuarioPage> {
+    let strUrl: string = "";
     if (order) {
       strUrl += "&sort=" + order + "," + direction;
     }

@@ -1,8 +1,7 @@
-import { I2Send } from "./model-interfaces";
+import { IEntity2Send, IEntity, IPage } from "./model-interfaces";
 import { ITipousuario } from "./tipousuario-interfaces";
 
-export interface IUsuario {
-    id: number,
+export interface IUsuario extends IEntity{
     dni: string,
     nombre: string,
     apellido1: string,
@@ -17,14 +16,10 @@ export interface IUsuario {
     facturas: number
 }
 
-export interface IUsuarioPage {
-    content: IUsuario[];
-    totalElements: number,
-    totalPages: number
+export interface IUsuarioPage extends IPage<IUsuario> {
 }
 
-export interface IUsuario2Send {
-    id: number,
+export interface IUsuario2Send extends IEntity2Send {    
     dni: string,
     nombre: string,
     apellido1: string,
@@ -34,5 +29,5 @@ export interface IUsuario2Send {
     descuento: number,
     validado: boolean,
     activo: boolean,
-    tipousuario: I2Send
+    tipousuario: IEntity2Send
 }

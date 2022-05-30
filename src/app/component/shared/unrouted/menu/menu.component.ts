@@ -42,7 +42,7 @@ export class MenuComponent implements OnInit {
   }
 
   count = () => {
-    this.oCarritoService.count().subscribe((oData: number) => {
+    this.oCarritoService.getCount().subscribe((oData: number) => {
       this.tcarrito=oData;
     })
   }

@@ -51,7 +51,7 @@ export class UsuarioPlistUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oUsuarioService.getPage(this.nPageSize, this.nPage, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipousuario).subscribe((oPage: IUsuarioPage) => {
+    this.oUsuarioService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipousuario).subscribe((oPage: IUsuarioPage) => {
       if (this.id_tipousuario) {
         if (this.strFilter) {
           this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipousuario + " y por " + this.strFilter;

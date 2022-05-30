@@ -1,26 +1,20 @@
-import { ICompra } from './compra-interfaces';
-import { I2Send, IFecha } from "./model-interfaces";
+import { IFecha } from "./model-interfaces";
 import { IUsuario } from "./usuario-interfaces";
+import { IEntity, IEntity2Send, IPage } from "./model-interfaces";
 
-export interface IFactura {
-    totalElements: number;
-    id: number,
+export interface IFactura extends IEntity {
     iva: number,
-    usuario: IUsuario,
     fecha: IFecha,
     pagado: boolean,
-    compras: number
+    compras: number,
+    usuario: IUsuario,
 }
-export interface IPageFactura {
-    content: IFactura[];
-    totalElements: number,
-    totalPages: number
-}
-
-export interface IFactura2Send {
-    id: number,
+export interface IFactura2Send extends IEntity2Send {
     fecha: string,
     iva: number,
     pagado: boolean,
-    usuario: I2Send
+    usuario: IEntity2Send
+}
+
+export interface IPageFactura extends IPage<IFactura> {
 }

@@ -45,7 +45,7 @@ export class ViewCompraComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oComprasService.get(this.id).subscribe((oData: ICompra) => {
+    this.oComprasService.getOne(this.id).subscribe((oData: ICompra) => {
       this.oCompra = oData;
     })
   }

@@ -5,10 +5,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
-import {
-  ICarritoPlist,
-  ICarritoToSend,
-} from 'src/app/model/carrito-interfaces';
+import { ICarrito, ICarrito2Send } from 'src/app/model/carrito-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { ProductoService } from 'src/app/service/producto.service';
 import { IProducto } from 'src/app/model/producto-interfaces';
@@ -20,13 +17,14 @@ declare let $: any;
   templateUrl: './new-carrito.component.html',
   styleUrls: ['./new-carrito.component.css'],
 })
+
 export class NewCarritoComponent implements OnInit {
   strEntity: string = 'carrito';
   strOperation: string = 'new';
   strTitleSingular: string = 'Carrito';
   strTitlePlural: string = 'Carritos';
-  oCarritoToSend: ICarritoToSend = null;
-  oCarritoPlist: ICarritoPlist = null;
+  oCarrito2Send: ICarrito2Send = null;
+  oCarrito: ICarrito = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
@@ -69,7 +67,7 @@ export class NewCarritoComponent implements OnInit {
 
   onSubmit(): void {
     if (this.oForm) {
-      this.oCarritoToSend = {
+      this.oCarrito2Send = {
         id: this.oForm.value.id,
         cantidad: this.oForm.value.cantidad,
         precio: this.oForm.value.precio,
@@ -82,17 +80,13 @@ export class NewCarritoComponent implements OnInit {
 
   new = (): void => {
     this.oCarritoService
-      .newOne(this.oCarritoToSend)
-      .subscribe((oTipoProducto: ICarritoPlist) => {
+      .newOne(this.oCarrito2Send)
+      .subscribe((oTipoProducto: ICarrito) => {
         if (oTipoProducto.id) {
           this.id = oTipoProducto.id;
-          this.strResult =
-            this.strTitleSingular +
-            ' creado correctamente con id=' +
-            oTipoProducto.id;
+          this.strResult = this.strTitleSingular + ' creado correctamente con id=' + oTipoProducto.id;
         } else {
-          this.strResult =
-            this.strTitleSingular + ': error en la creación del registro';
+          this.strResult = this.strTitleSingular + ': error en la creación del registro';
         }
         this.openPopup();
       });
@@ -135,15 +129,14 @@ export class NewCarritoComponent implements OnInit {
 
     //actualizar el usuario
     this.oProductoService
-      .get(this.oForm.controls['producto'].value)
+      .getOne(this.oForm.controls['producto'].value)
       .subscribe((oData: IProducto) => {
-        this.oCarritoPlist.producto = oData;
+        this.oCarrito.producto = oData;
         //this.oUsuario = oData;
       });
 
     return false;
   }
-
 
   //popup
 

@@ -59,7 +59,7 @@ export class TipoProductoPlistUnroutedComponent implements OnInit {
 
   getPage = () => {
     this.oPostService
-      .getPage(this.nPageSize, this.nPage, this.strFilter, this.strSortField, this.strSortDirection)
+      .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter)
       .subscribe((oPage: ITipoproductoPage) => {
         if (this.strFilter) {
           this.strFilteredMessage = 'Listado filtrado por ' + this.strFilter;

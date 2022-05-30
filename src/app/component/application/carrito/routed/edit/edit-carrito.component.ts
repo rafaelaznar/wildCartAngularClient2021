@@ -5,13 +5,9 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
-import {
-  ICarritoPlist,
-  ICarritoToSend,
-} from 'src/app/model/carrito-interfaces';
+import { ICarrito, ICarrito2Send } from 'src/app/model/carrito-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { ProductoService } from 'src/app/service/producto.service';
-import { ICompra } from 'src/app/model/compra-interfaces';
 import { IProducto } from 'src/app/model/producto-interfaces';
 
 declare let $: any;
@@ -26,8 +22,8 @@ export class EditCarritoComponent implements OnInit {
   strOperation: string = 'edit';
   strTitleSingular: string = 'Carrito';
   strTitlePlural: string = 'Carritos';
-  oCarrito2Send: ICarritoToSend = null;
-  oCarritoPlist: ICarritoPlist = null;
+  oCarrito2Send: ICarrito2Send = null;
+  oCarrito: ICarrito = null;
   id: number = null;
   oForm: FormGroup = null;
   strResult: string = null;
@@ -66,14 +62,14 @@ export class EditCarritoComponent implements OnInit {
   ngOnInit(): void { }
 
   getOne = (): void => {
-    this.oCarritoService.getOne(this.id).subscribe((oData: ICarritoPlist) => {
-      this.oCarritoPlist = oData;
+    this.oCarritoService.getOne(this.id).subscribe((oData: ICarrito) => {
+      this.oCarrito = oData;
       this.oForm = this.oFormBuilder.group({
-        id: [this.oCarritoPlist.id],
-        cantidad: [this.oCarritoPlist.cantidad, [Validators.required]],
-        precio: [this.oCarritoPlist.precio, [Validators.required]],
-        producto: [this.oCarritoPlist.producto.id, [Validators.required]],
-        usuario: [this.oCarritoPlist.usuario.id, [Validators.required]],
+        id: [this.oCarrito.id],
+        cantidad: [this.oCarrito.cantidad, [Validators.required]],
+        precio: [this.oCarrito.precio, [Validators.required]],
+        producto: [this.oCarrito.producto.id, [Validators.required]],
+        usuario: [this.oCarrito.usuario.id, [Validators.required]],
       });
     });
   };
@@ -94,7 +90,7 @@ export class EditCarritoComponent implements OnInit {
   update = (): void => {
     this.oCarritoService
       .updateOne(this.oCarrito2Send)
-      .subscribe((oCarritoPlist: ICarritoPlist) => {
+      .subscribe((oCarritoPlist: ICarrito) => {
         if (oCarritoPlist.id) {
           this.strResult = this.strTitleSingular + ' modificado correctamente';
         } else {
@@ -142,9 +138,9 @@ export class EditCarritoComponent implements OnInit {
 
     //actualizar el usuario
     this.oProductoService
-      .get(this.oForm.controls['producto'].value)
+      .getOne(this.oForm.controls['producto'].value)
       .subscribe((oData: IProducto) => {
-        this.oCarritoPlist.producto = oData;
+        this.oCarrito.producto = oData;
         //this.oUsuario = oData;
       });
 
