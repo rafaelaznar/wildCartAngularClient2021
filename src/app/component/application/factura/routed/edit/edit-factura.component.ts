@@ -122,15 +122,20 @@ export class EditFacturaComponent implements OnInit {
     this.oLocation.back();
   }
 
-  //ajenas
-
+  //ajenas 
   onFindSelection($event: any) {
     this.oForm.controls['id_usuario'].setValue($event);
     this.oForm.controls['id_usuario'].markAsDirty();
     this.oUsuarioService
       .getOne(this.oForm.controls['id_usuario'].value)
       .subscribe((oData: IUsuario) => {
-        this.oData2Show.usuario = oData;
+        if (this.strOperation == "edit") {
+        this.oData2Show.usuario = oData;    
+      } else {
+        this.oData2Show={} as IFactura;
+        this.oData2Show.usuario = {} as IUsuario;; 
+        this.oData2Show.usuario = oData;   
+      }
       }, err => {
         this.oData2Show.usuario.nombre = "ERROR";
         this.oData2Show.usuario.apellido1 = "";

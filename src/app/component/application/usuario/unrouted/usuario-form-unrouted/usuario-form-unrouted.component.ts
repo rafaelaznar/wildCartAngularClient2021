@@ -29,7 +29,7 @@ export class UsuarioFormUnroutedComponent implements OnInit {
   strResult: string = null;
 
   get f() {
-    return this.oForm.controls;
+    return this.oForm;
   }
 
   constructor(
@@ -45,13 +45,14 @@ export class UsuarioFormUnroutedComponent implements OnInit {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
+        id: [''],
         nombre: ['', [Validators.required, Validators.minLength(5)]],
         dni: ['', [Validators.required, Validators.minLength(5)]],
         apellido1: ['', [Validators.required, Validators.minLength(5)]],
         apellido2: ['', [Validators.required, Validators.minLength(5)]],
         login: ['', [Validators.required, Validators.minLength(5)]],
         email: ['', [Validators.required, Validators.minLength(5)]],
-        tipousuario: ['', [Validators.required, Validators.maxLength(1)]],  
+        id_tipousuario: ['', [Validators.required, Validators.maxLength(1)]],
       });
     }
   }
@@ -74,7 +75,7 @@ export class UsuarioFormUnroutedComponent implements OnInit {
           dni: [this.oData2Show.dni, [Validators.required, Validators.minLength(5)]],
           id_tipousuario: [this.oData2Show.tipousuario.id, [Validators.required, Validators.minLength(1)]]
         });
-      });
+      }, error => console.log('error', error.error));
   };
 
   onSubmit(): void {
@@ -112,7 +113,7 @@ export class UsuarioFormUnroutedComponent implements OnInit {
             this.strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
           }
           this.msg.emit({ strMsg: this.strResult, id: this.id });
-        });
+        }, error => console.log('error', error.error));
     } else {
       this.oUsuarioService
         .updateOne(this.oData2Send)
@@ -124,7 +125,7 @@ export class UsuarioFormUnroutedComponent implements OnInit {
             this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
           }
           this.msg.emit({ strMsg: this.strResult, id: this.id });
-        });
+        }, error => console.log('error', error.error));
     }
   };
 
@@ -136,7 +137,13 @@ export class UsuarioFormUnroutedComponent implements OnInit {
     this.oTipousuarioService
       .getOne(this.oForm.controls['id_tipousuario'].value)
       .subscribe((oData: ITipousuario) => {
-        this.oData2Show.tipousuario = oData;
+        if (this.strOperation == "edit") {
+          this.oData2Show.tipousuario = oData; //pte!!
+        } else {
+          this.oData2Show={} as IUsuario;
+          this.oData2Show.tipousuario = {} as ITipousuario;; 
+          this.oData2Show.tipousuario = oData;
+        }
       }, err => {
         this.oData2Show.tipousuario.nombre = "ERROR";
         this.oForm.controls['id_tipousuario'].setErrors({ 'incorrect': true });

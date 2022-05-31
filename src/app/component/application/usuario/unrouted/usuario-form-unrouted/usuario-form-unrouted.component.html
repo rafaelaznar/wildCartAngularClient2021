@@ -3,7 +3,7 @@
     <div class="row mb-3">
         <label for="id" class="col-sm-2 col-form-label"> <i [ngClass]="oIconService.getIcon('id')"></i> ID</label>
         <div class="col-sm-1">
-            <input class="form-control" type="text" placeholder="{{id}}" readonly>
+            <input class="form-control" type="text" name="id" formControlName="id" id="id" readonly>
         </div>
     </div>
 
@@ -12,11 +12,11 @@
             <i [ngClass]="oIconService.getIcon('dni')"></i> DNI</label>
         <div class="col-sm-2">
             <input type="text" class="form-control" id="dni" formControlName="dni"
-                [ngClass]="{'is-valid' : f.dni.dirty && !(f.dni.errors?.required || f.dni.errors?.minlength) }">
-            <div *ngIf="f.dni.dirty && f.dni.errors?.required" class="text-danger">
+                [ngClass]="{'is-valid' : f.controls.dni.dirty && !(f.controls.dni.errors?.required || f.controls.dni.errors?.minlength) }">
+            <div *ngIf="f.controls.dni.dirty && f.controls.dni.errors?.required" class="text-danger">
                 Se debe introducir un DNI
             </div>
-            <div *ngIf="f.dni.dirty && f.dni.errors?.minlength" class="text-danger">
+            <div *ngIf="f.controls.dni.dirty && f.controls.dni.errors?.minlength" class="text-danger">
                 El DNI introducido es demasiado corto
             </div>
         </div>
@@ -27,11 +27,11 @@
             <i [ngClass]="oIconService.getIcon('nombre')"></i> Nombre</label>
         <div class="col-sm-8">
             <input type="text" class="form-control" id="nombre" formControlName="nombre"
-                [ngClass]="{'is-valid' : f.nombre.dirty && !(f.nombre.errors?.required || f.nombre.errors?.minlength) }">
-            <div *ngIf="f.nombre.dirty && f.nombre.errors?.required" class="text-danger">
+                [ngClass]="{'is-valid' : f.controls.nombre.dirty && !(f.controls.nombre.errors?.required || f.controls.nombre.errors?.minlength) }">
+            <div *ngIf="f.controls.nombre.dirty && f.controls.nombre.errors?.required" class="text-danger">
                 Se debe introducir un nombre
             </div>
-            <div *ngIf="f.nombre.dirty && f.nombre.errors?.minlength" class="text-danger">
+            <div *ngIf="f.controls.nombre.dirty && f.controls.nombre.errors?.minlength" class="text-danger">
                 El nombre introducido es demasiado corto
             </div>
         </div>
@@ -42,11 +42,11 @@
             <i [ngClass]="oIconService.getIcon('nombre')"></i> Primer Apellido</label>
         <div class="col-sm-9">
             <input type="text" class="form-control" id="apellido1" formControlName="apellido1"
-                [ngClass]="{'is-valid' : f.apellido1.dirty && !(f.apellido1.errors?.required || f.apellido1.errors?.minlength) }">
-            <div *ngIf="f.apellido1.dirty && f.apellido1.errors?.required" class="text-danger">
+                [ngClass]="{'is-valid' : f.controls.apellido1.dirty && !(f.controls.apellido1.errors?.required || f.controls.apellido1.errors?.minlength) }">
+            <div *ngIf="f.controls.apellido1.dirty && f.controls.apellido1.errors?.required" class="text-danger">
                 Se debe introducir un Primer Apellido
             </div>
-            <div *ngIf="f.apellido1.dirty && f.apellido1.errors?.minlength" class="text-danger">
+            <div *ngIf="f.controls.apellido1.dirty && f.controls.apellido1.errors?.minlength" class="text-danger">
                 El Primer Apellido introducido es demasiado corto
             </div>
         </div>
@@ -58,11 +58,11 @@
             <i [ngClass]="oIconService.getIcon('nombre')"></i> Segundo Apellido</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="apellido2" formControlName="apellido2"
-                [ngClass]="{'is-valid' : f.apellido2.dirty && !(f.apellido2.errors?.required || f.apellido2.errors?.minlength) }">
-            <div *ngIf="f.apellido2.dirty && f.apellido2.errors?.required" class="text-danger">
+                [ngClass]="{'is-valid' : f.controls.apellido2.dirty && !(f.controls.apellido2.errors?.required || f.controls.apellido2.errors?.minlength) }">
+            <div *ngIf="f.controls.apellido2.dirty && f.controls.apellido2.errors?.required" class="text-danger">
                 Se debe introducir un Segundo Apellido
             </div>
-            <div *ngIf="f.apellido2.dirty && f.apellido2.errors?.minlength" class="text-danger">
+            <div *ngIf="f.controls.apellido2.dirty && f.controls.apellido2.errors?.minlength" class="text-danger">
                 El Segundo Apellido introducido es demasiado corto
             </div>
         </div>
@@ -73,11 +73,11 @@
             <i [ngClass]="oIconService.getIcon('login')"></i> Login</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="login" formControlName="login"
-                [ngClass]="{'is-valid' : f.login.dirty && !(f.login.errors?.required || f.login.errors?.minlength) }">
-            <div *ngIf="f.login.dirty && f.login.errors?.required" class="text-danger">
+                [ngClass]="{'is-valid' : f.controls.login.dirty && !(f.controls.login.errors?.required || f.controls.login.errors?.minlength) }">
+            <div *ngIf="f.controls.login.dirty && f.controls.login.errors?.required" class="text-danger">
                 Se debe introducir un Login
             </div>
-            <div *ngIf="f.login.dirty && f.login.errors?.minlength" class="text-danger">
+            <div *ngIf="f.controls.login.dirty && f.controls.login.errors?.minlength" class="text-danger">
                 El Login introducido es demasiado corto
             </div>
         </div>
@@ -88,11 +88,11 @@
             <i [ngClass]="oIconService.getIcon('email')"></i> email</label>
         <div class="col-sm-5">
             <input type="text" class="form-control" id="email" formControlName="email"
-                [ngClass]="{'is-valid' : f.email.dirty && !(f.email.errors?.required || f.email.errors?.minlength) }">
-            <div *ngIf="f.email.dirty && f.email.errors?.required" class="text-danger">
+                [ngClass]="{'is-valid' : f.controls.email.dirty && !(f.controls.email.errors?.required || f.controls.email.errors?.minlength) }">
+            <div *ngIf="f.controls.email.dirty && f.controls.email.errors?.required" class="text-danger">
                 Se debe introducir un email
             </div>
-            <div *ngIf="f.email.dirty && f.email.errors?.minlength" class="text-danger">
+            <div *ngIf="f.controls.email.dirty && f.controls.email.errors?.minlength" class="text-danger">
                 El email introducido es demasiado corto
             </div>
         </div>
@@ -101,13 +101,13 @@
     <div class="row mb-3" app-find-unrouted [entity]="'tipousuario'" [id]="oData2Show?.tipousuario.id"
         [description]="oData2Show?.tipousuario.nombre" (selection)="onFindSelection($event)">
         <div plist-finder-title>
-            <h4 class="text-center">Por favor, selecciona un usuario</h4>
+            <h4 class="text-center">Por favor, selecciona un tipo de usuario</h4>
         </div>
     </div>
 
     <div class="row mb-3 justify-content-center">
         <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
-            <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine"><i
+            <button type="submit" class="btn btn-warning" [disabled]="f.invalid || f.pristine"><i
                     [ngClass]="oIconService.getIcon('ok')"></i> {{strOperation=='new'?'Crear':'Modificar'}} el
                 {{strTitleSingular}}</button>
         </div>
