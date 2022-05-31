@@ -35,7 +35,7 @@ export class UsuarioService implements ICrud {
   }
 
   newOne(oUsuario: IUsuario2Send): Observable<IUsuario> {
-    return this.http.post<IUsuario>(this.sURL + "/new", oUsuario, httpOptions);
+    return this.http.post<IUsuario>(this.sURL + "/", oUsuario, httpOptions);
   }
 
   updateOne(oUsuario: IUsuario2Send): Observable<IUsuario> {
