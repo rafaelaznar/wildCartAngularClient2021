@@ -68,6 +68,10 @@ export class UsuarioPlistUnroutedComponent implements OnInit {
       this.aUsuarios = oPage.content;
       this.nTotalElements = oPage.totalElements;
       this.nTotalPages = oPage.totalPages;
+      if (this.nPage > this.nTotalPages) {
+        this.nPage = this.nTotalPages;
+        this.getPage();
+      }
     })
   }
 

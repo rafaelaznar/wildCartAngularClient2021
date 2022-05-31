@@ -73,6 +73,10 @@ export class TipoProductoPlistUnroutedComponent implements OnInit {
           this.nTotalPages,
           this.nPage
         );
+        if (this.nPage > this.nTotalPages) {
+          this.nPage = this.nTotalPages;
+          this.getPage();
+        }
       });
   };
 
