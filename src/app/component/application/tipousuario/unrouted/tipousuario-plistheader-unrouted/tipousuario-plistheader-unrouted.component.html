@@ -8,9 +8,9 @@
   <i [ngClass]="oIconService.getIcon('orderUp')" *ngIf="strSortField == 'nombre' && strSortDirection == 'asc'"></i>
   <i [ngClass]="oIconService.getIcon('orderDown')" *ngIf="strSortField == 'nombre' && strSortDirection == 'desc'"></i>
 </th>
-<th>
-  <i [ngClass]="oIconService.getIcon('usuario')"></i> Usuarios
+<th *ngIf="mode">
+  <i [ngClass]="oIconService.getIcon('usuario')"></i> Usuarios 
 </th>
-<th>
+<th >
   <i [ngClass]="oIconService.getIcon('tools')"></i> Acciones
 </th>
