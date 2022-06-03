@@ -5,6 +5,9 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { IUsuario, IUsuario2Send } from 'src/app/model/usuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { ErrorHandlerService } from 'src/app/service/errorHandler.service';
 
 @Component({
   selector: 'app-usuario-form-unrouted',
@@ -26,6 +29,7 @@ export class UsuarioFormUnroutedComponent implements OnInit {
   strATitleSingular: string = 'El usuario';
 
   oForm: FormGroup = null;
+  strStatus: string = null;
   strResult: string = null;
 
   get f() {
@@ -36,9 +40,10 @@ export class UsuarioFormUnroutedComponent implements OnInit {
     private oFormBuilder: FormBuilder,
     private oUsuarioService: UsuarioService,
     private oTipousuarioService: TipousuarioService,
-    public oIconService: IconService
-  ) {
-  }
+    public oIconService: IconService,
+    private oRouter: Router,
+    private oErrorHandlerService: ErrorHandlerService
+  ) { }
 
   ngOnInit(): void {
     if (this.strOperation == "edit") {
@@ -103,17 +108,22 @@ export class UsuarioFormUnroutedComponent implements OnInit {
 
   save(): void {
     if (this.strOperation == "new") {
-      this.oUsuarioService
-        .newOne(this.oData2Send)
-        .subscribe((oUsuario: IUsuario) => {
-          if (oUsuario.id) {
-            this.id = oUsuario.id;
-            this.strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + oUsuario.id;
-          } else {
-            this.strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
-          }
-          this.msg.emit({ strMsg: this.strResult, id: this.id });
-        }, error => console.log('error', error.error));
+      this.oUsuarioService.newOne(this.oData2Send)
+        .subscribe(
+          (oUsuario: IUsuario) => {
+            if (oUsuario.id) {
+              this.id = oUsuario.id;
+              this.strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + oUsuario.id;
+            } else {
+              this.strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
+            }
+            this.msg.emit({ strMsg: this.strResult, id: this.id });
+          },
+          (error) => {
+            this.strResult = "Error al guardar " +
+              this.strATitleSingular.toLowerCase() + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
+            this.openPopup();
+          });
     } else {
       this.oUsuarioService
         .updateOne(this.oData2Send)
@@ -125,7 +135,12 @@ export class UsuarioFormUnroutedComponent implements OnInit {
             this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
           }
           this.msg.emit({ strMsg: this.strResult, id: this.id });
-        }, error => console.log('error', error.error));
+        },
+          (error) => {
+            this.strStatus = error.status;
+            this.strResult = this.oErrorHandlerService.componentHandleError(error);
+            this.openPopup();
+          });
     }
   };
 
@@ -140,8 +155,8 @@ export class UsuarioFormUnroutedComponent implements OnInit {
         if (this.strOperation == "edit") {
           this.oData2Show.tipousuario = oData; //pte!!
         } else {
-          this.oData2Show={} as IUsuario;
-          this.oData2Show.tipousuario = {} as ITipousuario;; 
+          this.oData2Show = {} as IUsuario;
+          this.oData2Show.tipousuario = {} as ITipousuario;;
           this.oData2Show.tipousuario = oData;
         }
       }, err => {
@@ -150,6 +165,20 @@ export class UsuarioFormUnroutedComponent implements OnInit {
       });
 
     return false;
+  }
+
+  //popup
+
+  eventsSubjectShowPopup: Subject<void> = new Subject<void>();
+
+  openPopup(): void {
+    this.eventsSubjectShowPopup.next();
+  }
+
+  onClosePopup(): void {
+    if (this.strStatus == "401") {
+      this.oRouter.navigate(['/login']);
+    }
   }
 
 

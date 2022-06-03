@@ -28,11 +28,11 @@ export class TipousuarioService implements ICrud {
     if (order) {
       strUrl += '&sort=' + order + ',' + direction;
     }
-    return this.http.get<ITipousuarioPage>(this.sURL + '/?page=' + (page - 1) + '&size=' + rpp + strUrl, httpOptions).pipe(catchError(this.oErrorHandlerService.handleError));
+    return this.http.get<ITipousuarioPage>(this.sURL + '/?page=' + (page - 1) + '&size=' + rpp + strUrl, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   getOne(id: number): Observable<ITipousuario> {
-    return this.http.get<ITipousuario>(`${this.sURL}/${id}`, httpOptions).pipe(catchError(this.oErrorHandlerService.handleError));
+    return this.http.get<ITipousuario>(`${this.sURL}/${id}`, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   updateOne(oTipousuario: ITipousuario2Send): Observable<ITipousuario> {

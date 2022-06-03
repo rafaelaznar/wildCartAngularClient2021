@@ -114,3 +114,5 @@
     </div>
 
 </form>
+
+<app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()"></app-popup>
