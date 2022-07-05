@@ -26,7 +26,7 @@ import { PlistTipoproductoComponent } from './component/application/tipoproducto
 import { NewTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-new-routed/new-tipoproducto.component';
 import { EditTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-edit-routed/edit-tipoproducto.component';
 import { RemoveTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-remove-routed/remove-tipoproducto.component';
-import { ViewTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-view-routed/view-tipoproducto.component';
+import { TipoproductoViewRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-view-routed/view-tipoproducto.component';
 import { PlistProductoComponent } from './component/application/producto/routed/producto-plist-routed/plist-producto.component';
 import { ProductoNewRoutedComponent } from './component/application/producto/routed/producto-new-routed/producto-new-routed.component';
 import { ProductoEditRoutedComponent } from './component/application/producto/routed/producto-edit-routed/producto-edit-routed.component';
@@ -140,7 +140,7 @@ import { ErrorHandlerService } from './service/errorHandler.service';
     // Tipoproducto routed components
     PlistTipoproductoComponent,
     NewTipoproductoComponent,
-    ViewTipoproductoComponent,
+    TipoproductoViewRoutedComponent,
     EditTipoproductoComponent,
     RemoveTipoproductoComponent,
     // Producto routed components

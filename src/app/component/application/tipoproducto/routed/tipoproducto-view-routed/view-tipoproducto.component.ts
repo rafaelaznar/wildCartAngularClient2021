@@ -7,11 +7,11 @@ import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 @Component({
-  selector: 'app-view-tipoproducto',
+  selector: 'app-tipoproducto-view-routed',
   templateUrl: './view-tipoproducto.component.html',
   styleUrls: ['./view-tipoproducto.component.css'],
 })
-export class ViewTipoproductoComponent implements OnInit {
+export class TipoproductoViewRoutedComponent implements OnInit {
 
   strEntity: string = "tipoproducto"
   strOperation: string = "view"
