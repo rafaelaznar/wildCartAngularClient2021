@@ -16,19 +16,17 @@ export class FacturaService implements ICrud {
   sURL = API_URL + '/factura';
 
   getPage(page: number, rpp: number, order: string, direction: string, filter: string, id_usuario: number): Observable<IPageFactura> {
-
-    let strOrderUrl: string = "";
-
+    let strUrl: string = "";
     if (order) {
-      strOrderUrl += "&sort=" + order + "," + direction;
+      strUrl += "&sort=" + order + "," + direction;
     }
-
-    if (id_usuario < 0) {
-      return this.http.get<IPageFactura>(this.sURL + "/page" + "?size=" + rpp + "&page=" + page + strOrderUrl, httpOptions);
-    } else {
-      return this.http.get<IPageFactura>(this.sURL + "/filter/" + id_usuario + "?size=" + rpp + "&page=" + page + strOrderUrl, httpOptions);
+    if (filter) {
+      strUrl += "&filter=" + filter;
     }
-
+    if (id_usuario) {
+      strUrl += "&usuario=" + id_usuario;
+    }
+    return this.http.get<IPageFactura>(this.sURL + "?size=" + rpp + "&page=" + page + strUrl, httpOptions);
   }
 
   getOne(id: number): Observable<IFactura> {
