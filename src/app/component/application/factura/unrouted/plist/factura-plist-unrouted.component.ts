@@ -79,7 +79,7 @@ export class FacturaPlistUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    let id: number = this.oRoute.snapshot.params.id ? this.oRoute.snapshot.params.id : -1;
+    let id: number = this.oRoute.snapshot.params.id ? this.oRoute.snapshot.params.id : "";
     this.oFacturaService.getPage(this.page, this.pageSize, this.currentSortField, this.currentSortDirection, this.filterActual, id).subscribe((oPage: IPageFactura) => {
       if (this.filterActual) {
         this.filtered = true;
