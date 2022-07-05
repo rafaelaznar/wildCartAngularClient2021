@@ -10,7 +10,7 @@ import { RemoveCompraComponent } from './component/application/compra/routed/rem
 import { ViewCompraComponent } from './component/application/compra/routed/view/view-compra.component';
 import { EditFacturaComponent } from './component/application/factura/routed/edit/edit-factura.component';
 import { NewFacturaComponent } from './component/application/factura/routed/new/new-factura.component';
-import { FacturaPlistRoutedComponent } from './component/application/factura/routed/plist/factura-plist-routed.component';
+import { FacturaPlistRoutedComponent } from './component/application/factura/routed/factura-plist-routed/factura-plist-routed.component';
 import { RemoveFacturaComponent } from './component/application/factura/routed/remove/remove-factura.component';
 import { ViewFacturaComponent } from './component/application/factura/routed/view/view-factura.component';
 import { ProductoEditRoutedComponent } from './component/application/producto/routed/producto-edit-routed/producto-edit-routed.component';

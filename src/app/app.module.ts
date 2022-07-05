@@ -47,7 +47,7 @@ import { NewCompraComponent } from './component/application/compra/routed/new/ne
 import { ViewCompraComponent } from './component/application/compra/routed/view/view-compra.component';
 import { RemoveCompraComponent } from './component/application/compra/routed/remove/remove-compra.component';
 import { EditCompraComponent } from './component/application/compra/routed/edit/edit-compra.component';
-import { FacturaPlistRoutedComponent } from './component/application/factura/routed/plist/factura-plist-routed.component';
+import { FacturaPlistRoutedComponent } from './component/application/factura/routed/factura-plist-routed/factura-plist-routed.component';
 import { NewFacturaComponent } from './component/application/factura/routed/new/new-factura.component';
 import { ViewFacturaComponent } from './component/application/factura/routed/view/view-factura.component';
 import { RemoveFacturaComponent } from './component/application/factura/routed/remove/remove-factura.component';
