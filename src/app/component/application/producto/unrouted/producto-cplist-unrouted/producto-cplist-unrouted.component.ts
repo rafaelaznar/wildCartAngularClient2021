@@ -82,21 +82,30 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    console.log("buscando...", this.strFilter);
-    this.oProductoService.getPage(this.nPage, this.nPageSize, this.strFilter, this.strSortField, this.strSortDirection, this.id_tipoproducto).subscribe((oPage: IProductoPage) => {
-      if (this.strFilter) {
-        this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
+    this.oProductoService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipoproducto).subscribe((oPage: IProductoPage) => {
+      if (this.id_tipoproducto) {
+        if (this.strFilter) {
+          this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto + " y por " + this.strFilter;
+        } else {
+          this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto;
+        }
       } else {
-        this.strFilteredMessage = "";
+        if (this.strFilter) {
+          this.strFilteredMessage = "Listado filtrado por " + this.strFilter;
+        } else {
+          this.strFilteredMessage = "Listado NO filtrado";
+        }
       }
       this.aProductos = oPage.content;
       this.nTotalElements = oPage.totalElements;
       this.nTotalPages = oPage.totalPages;
-      this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
+      if (this.nPage > this.nTotalPages) {
+        this.nPage = this.nTotalPages;
+        this.getPage();
+      }
+      //this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
     })
   }
-
-
 
   jumpToPage = () => {
     this.getPage();
@@ -129,4 +138,19 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
     this.selection.emit(id);
   }
 
+  onSetFilter(strFilter: string) {
+    this.strFilter = strFilter;
+    this.getPage();
+  }
+  
+  onSetPage = (nPage: number) => {
+    this.nPage = nPage;
+    this.getPage();
+    return false;
+  }
+
+  onSetRpp(nRpp: number) {
+    this.nPageSize = nRpp;
+    this.getPage();
+  }
 }
