@@ -23,10 +23,10 @@ import { TipousuarioPlistRoutedComponent } from './component/application/tipousu
 import { TipousuarioEditRoutedComponent } from './component/application/tipousuario/routed/tipousuario-edit-routed/tipousuario-edit-routed.component';
 import { TipousuarioViewRoutedComponent } from './component/application/tipousuario/routed/tipousuario-view-routed/tipousuario-view-routed.component';
 import { PlistTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-plist-routed/tipoproducto-plist-routed.component';
-import { NewTipoproductoComponent } from './component/application/tipoproducto/routed/new/new-tipoproducto.component';
-import { EditTipoproductoComponent } from './component/application/tipoproducto/routed/edit/edit-tipoproducto.component';
-import { RemoveTipoproductoComponent } from './component/application/tipoproducto/routed/remove/remove-tipoproducto.component';
-import { ViewTipoproductoComponent } from './component/application/tipoproducto/routed/view/view-tipoproducto.component';
+import { NewTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-new-routed/new-tipoproducto.component';
+import { EditTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-edit-routed/edit-tipoproducto.component';
+import { RemoveTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-remove-routed/remove-tipoproducto.component';
+import { ViewTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-view-routed/view-tipoproducto.component';
 import { PlistProductoComponent } from './component/application/producto/routed/producto-plist-routed/plist-producto.component';
 import { ProductoNewRoutedComponent } from './component/application/producto/routed/producto-new-routed/producto-new-routed.component';
 import { ProductoEditRoutedComponent } from './component/application/producto/routed/producto-edit-routed/producto-edit-routed.component';

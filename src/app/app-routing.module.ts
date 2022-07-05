@@ -18,11 +18,11 @@ import { ProductoNewRoutedComponent } from './component/application/producto/rou
 import { PlistProductoComponent } from './component/application/producto/routed/producto-plist-routed/plist-producto.component';
 import { ProductoRemoveRoutedComponent } from './component/application/producto/routed/producto-remove-routed/producto-remove-routed.component';
 import { ProductoViewRoutedComponent } from './component/application/producto/routed/producto-view-routed/producto-view-routed.component';
-import { EditTipoproductoComponent } from './component/application/tipoproducto/routed/edit/edit-tipoproducto.component';
-import { NewTipoproductoComponent } from './component/application/tipoproducto/routed/new/new-tipoproducto.component';
+import { EditTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-edit-routed/edit-tipoproducto.component';
+import { NewTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-new-routed/new-tipoproducto.component';
 import { PlistTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-plist-routed/tipoproducto-plist-routed.component';
-import { RemoveTipoproductoComponent } from './component/application/tipoproducto/routed/remove/remove-tipoproducto.component';
-import { ViewTipoproductoComponent } from './component/application/tipoproducto/routed/view/view-tipoproducto.component';
+import { RemoveTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-remove-routed/remove-tipoproducto.component';
+import { ViewTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-view-routed/view-tipoproducto.component';
 import { TipousuarioEditRoutedComponent } from './component/application/tipousuario/routed/tipousuario-edit-routed/tipousuario-edit-routed.component';
 import { TipousuarioPlistRoutedComponent } from './component/application/tipousuario/routed/tipousuario-plist-routed/tipousuario-plist-routed.component';
 import { TipousuarioViewRoutedComponent } from './component/application/tipousuario/routed/tipousuario-view-routed/tipousuario-view-routed.component';
