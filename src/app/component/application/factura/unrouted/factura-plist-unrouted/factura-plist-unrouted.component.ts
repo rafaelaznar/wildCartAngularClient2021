@@ -249,4 +249,11 @@ export class FacturaPlistUnroutedComponent implements OnInit {
     doc.save('a4.pdf')
   }
 
+
+  onPrintFactura($event: any) {
+    alert("print factura" + $event);
+    var doc = new jsPDF()
+    doc.text('Hello world!', 10, 10)
+    doc.save('a4.pdf')
+  }
 }

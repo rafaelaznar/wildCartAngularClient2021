@@ -12,6 +12,7 @@ export class FacturaPlistRowUnroutedComponent implements OnInit {
   @Input() oFactura: IFactura = null;
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() selection = new EventEmitter<number>();
+  @Output() printFactura = new EventEmitter<number>();
 
   strAPI_URL: string = API_URL;
   strEntity: string = "factura";
@@ -25,5 +26,11 @@ export class FacturaPlistRowUnroutedComponent implements OnInit {
   }
   onSelection(id: number) {
     this.selection.emit(id);
+  }
+
+  print(id: number) {
+    //trigger event to parent
+    // alert("print" + id);
+    this.printFactura.emit(id);
   }
 }

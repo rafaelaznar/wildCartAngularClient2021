@@ -29,7 +29,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let oFactura of aFacturas" class="align-middle" app-factura-plistrow-unrouted
-                    [oFactura]="oFactura" [mode]="mode" (selection)="onSelection($event)">
+                    [oFactura]="oFactura" [mode]="mode" (selection)="onSelection($event)"  (printFactura)="onPrintFactura($event)">
                 </tr>
             </tbody>
         </table>
