@@ -1,0 +1,31 @@
+<th (click)="doSetOrder('id')"> <i [ngClass]="oIconService.getIcon('id')"></i> ID
+  <i class="fas fa-arrow-up" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
+  <i class="fas fa-arrow-down" *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
+</th>
+<th (click)="doSetOrder('iva')"><i [ngClass]="oIconService.getIcon('porcentaje')"></i> Iva
+  <i class="fas fa-arrow-up" *ngIf="strSortField=='iva'&&strSortDirection=='asc'"></i>
+  <i class="fas fa-arrow-down" *ngIf="strSortField=='iva'&&strSortDirection=='desc'"></i>
+
+</th>
+<th (click)="doSetOrder('id_usuario')"><i [ngClass]="oIconService.getIcon('usuario')"></i>
+  Usuario
+  <i class="fas fa-arrow-up" *ngIf="strSortField=='cuerpo'&&strSortDirection=='asc'"></i>
+  <i class="fas fa-arrow-down" *ngIf="strSortField=='cuerpo'&&strSortDirection=='desc'"></i>
+
+</th>
+<th (click)="doSetOrder('fecha')"><i [ngClass]="oIconService.getIcon('fecha')"></i> Fecha
+  <i class="fas fa-arrow-up" *ngIf="strSortField=='fecha'&&strSortDirection=='asc'"></i>
+  <i class="fas fa-arrow-down" *ngIf="strSortField=='fecha'&&strSortDirection=='desc'"></i>
+
+</th>
+<th (click)="doSetOrder('compra')"><i [ngClass]="oIconService.getIcon('compra')"></i> compra
+  <i class="fas fa-arrow-up" *ngIf="strSortField=='pagado'&&strSortDirection=='asc'"></i>
+  <i class="fas fa-arrow-down" *ngIf="strSortField=='pagado'&&strSortDirection=='desc'"></i>
+
+</th>
+<th (click)="doSetOrder('pagado')"><i [ngClass]="oIconService.getIcon('euro')"></i> Pagado
+  <i class="fas fa-arrow-up" *ngIf="strSortField=='pagado'&&strSortDirection=='asc'"></i>
+  <i class="fas fa-arrow-down" *ngIf="strSortField=='pagado'&&strSortDirection=='desc'"></i>
+
+</th>
+<th><i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones</th>

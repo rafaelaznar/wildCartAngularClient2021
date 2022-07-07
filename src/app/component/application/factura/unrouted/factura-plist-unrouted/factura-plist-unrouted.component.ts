@@ -9,6 +9,7 @@ import { IconService } from 'src/app/service/icon.service';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { CompraService } from 'src/app/service/compra.service';
 import { ICompra, ICompraPage } from 'src/app/model/compra-interfaces';
+import { IOrder } from 'src/app/model/model-interfaces';
 
 declare let jsPDF: any;
 @Component({
@@ -229,6 +230,17 @@ export class FacturaPlistUnroutedComponent implements OnInit {
       console.log(this.oFactura);
     })
 
+  }
+
+  onSetOrder(order: IOrder) {
+    this.strSortField = order.sortField;
+    this.strSortDirection = order.sortDirection;
+    this.getPage();
+  }
+
+  onSetRpp(nRpp: number) {
+    this.nPageSize = nRpp;
+    this.getPage();
   }
 
   print(id: number) {

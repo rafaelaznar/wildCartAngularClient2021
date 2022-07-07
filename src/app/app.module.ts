@@ -96,6 +96,8 @@ import { TipoproductoPlistheaderUnroutedComponent } from './component/applicatio
 import { TipousuarioViewUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-view-unrouted/tipousuario-view-unrouted.component';
 import { TipousuarioFormUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-form-unrouted/tipousuario-form-unrouted.component';
 import { ErrorHandlerService } from './service/errorHandler.service';
+import { FacturaPlistheaderUnroutedComponent } from './component/application/factura/unrouted/factura-plistheader-unrouted/factura-plistheader-unrouted.component';
+import { FacturaPlistRowUnroutedComponent } from './component/application/factura/unrouted/factura-plistrow-unrouted/factura-plistrow-unrouted.component';
 
 
 @NgModule({
@@ -202,6 +204,8 @@ import { ErrorHandlerService } from './service/errorHandler.service';
 
     // Factura unrouted components
     FacturaPlistUnroutedComponent,
+    FacturaPlistheaderUnroutedComponent,
+    FacturaPlistRowUnroutedComponent,
     
   ],
   imports: [
