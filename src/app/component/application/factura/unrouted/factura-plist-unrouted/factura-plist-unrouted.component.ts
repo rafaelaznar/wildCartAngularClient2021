@@ -123,9 +123,24 @@ export class FacturaPlistUnroutedComponent implements OnInit {
   }
 
   cabecera(doc: any, oFactura: IFactura): any {
+    var imgData: string = '../../../../../../assets/img/wildCartLogo100.png'
     doc.setFontSize(20)
     doc.text('Factura', 25, 25)
-    doc.addImage('', 'JPEG', 140, 15, 40, 35)
+
+    function loadImage(url: string) {
+      return new Promise((resolve) => {
+        let img = new Image();
+        img.onload = () => resolve(img);
+        img.src = url;
+      })
+    }
+
+    loadImage(imgData).then((logo) => {
+      doc.addImage(logo, 'PNG', 140, 15, 40, 35);
+    });
+
+
+    //doc.addImage(imgData, 'PNG', 140, 15, 40, 35)
     doc.setFontSize(18)
     doc.text('Cliente', 20, 80)
     doc.setFontSize(16)
@@ -151,17 +166,19 @@ export class FacturaPlistUnroutedComponent implements OnInit {
     doc.text(oFactura.fecha + "", 42, 129)
 
     doc.text('Producto', 20, 140)
-    doc.text('Cantidad', 100, 140)
-    doc.text('Precio (€)', 130, 140)
+    doc.text('Cantidad', 110, 140)
+    doc.text('Precio (€)', 140, 140)
     doc.text('Importe (€)', 170, 140)
     doc.line(15, 145, 195, 145)
 
     return doc;
   }
 
+  sp = (n: number): string => n.toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
   getProductos = (tamanyo: number, factura: number) => {
     console.log("buscando...", this.strFilter);
-    this.oCompraService.getPage(this.nPage, tamanyo, this.strSortField, this.strSortDirection, this.strFilter, factura, null).subscribe((oPage: ICompraPage) => {
+    this.oCompraService.getPage(1, tamanyo, this.strSortField, this.strSortDirection, this.strFilter, factura, null).subscribe((oPage: ICompraPage) => {
       if (this.strFilter) {
         this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
       } else {
@@ -175,8 +192,12 @@ export class FacturaPlistUnroutedComponent implements OnInit {
 
       // You'll need to make your image into a Data URL
       // Use http://dataurl.net/#dataurlmaker
-      var imgData = '../../../../../../assets/img/wildCartLogo100.png'
+
       var doc = new jsPDF()
+
+
+      //doc.addFont('Arial', 'Arial', 'normal');
+      //doc.setFont('Arial');
 
       //Cabecera
       doc = this.cabecera(doc, this.oFactura);
@@ -188,16 +209,24 @@ export class FacturaPlistUnroutedComponent implements OnInit {
       console.log(this.aCompras);
 
       var linea = 155;
-      var total = 0;
+      var totalFactura = 0;
 
+      doc.setFont('Courier');
       for (let i = 0; i < this.oFactura.compras; i++) {
-
+        doc.setFontSize(8)
         doc.text(this.aCompras[i].producto.nombre, 20, linea)
-        doc.text(this.aCompras[i].cantidad + "", 100, linea)
-        doc.text(this.aCompras[i].producto.precio + "", 130, linea)
-        doc.text((this.aCompras[i].cantidad * this.aCompras[i].producto.precio) + "", 170, linea)
+        doc.setFontSize(12);
+        doc.text(this.aCompras[i].cantidad + "", 130, linea, "right");
+        doc.text(this.sp(this.aCompras[i].producto.precio), 160, linea, "right");
+        //let total: number = this.aCompras[i].cantidad * this.aCompras[i].producto.precio;
+        //let total_round:string = (Math.round(total * 100) / 100).toFixed(2);
 
-        total = total + (this.aCompras[i].cantidad * this.aCompras[i].producto.precio);
+
+
+        //let total_miles = total.toLocaleString('es', { minimumFractionDigits: 2 });
+        doc.text(this.sp(this.aCompras[i].cantidad * this.aCompras[i].producto.precio), 194, linea, "right");
+
+        totalFactura = totalFactura + (this.aCompras[i].cantidad * this.aCompras[i].producto.precio);
         linea = linea + 7;
 
         if (linea > 230) {
@@ -208,13 +237,16 @@ export class FacturaPlistUnroutedComponent implements OnInit {
         }
 
       }
-
-      doc.text('Total:', 139, linea + 7)
-      doc.text(total + "€", 170, linea + 7)
-      doc.text('IVA:', 139, linea + 14)
-      doc.text(this.oFactura.iva + "%", 170, linea + 14)
-      doc.text('Total + IVA:', 139, linea + 21)
-      doc.text(total + (total * this.oFactura.iva) / 100 + "€", 170, linea + 21)
+      doc.setFontSize(12)
+      doc.line(15, linea, 195, linea);
+      let xtit=150;
+      let xnum=190;
+      doc.text('Total:', xtit, linea + 7,"right");
+      doc.text(this.sp(totalFactura) + " €", xnum, linea + 7,"right")
+      doc.text('IVA:', xtit, linea + 14,"right")
+      doc.text(this.oFactura.iva + "%", xnum, linea + 14,"right")
+      doc.text('Total + IVA:', xtit, linea + 21,"right")
+      doc.text(this.sp(totalFactura + (totalFactura * this.oFactura.iva) / 100) + " €", xnum, linea + 21,"right");
 
 
       doc.save("Factura.pdf");
@@ -252,8 +284,6 @@ export class FacturaPlistUnroutedComponent implements OnInit {
 
   onPrintFactura($event: any) {
     alert("print factura" + $event);
-    var doc = new jsPDF()
-    doc.text('Hello world!', 10, 10)
-    doc.save('a4.pdf')
+    this.factura($event);
   }
 }
