@@ -12,7 +12,6 @@ import { EditFacturaComponent } from './component/application/factura/routed/edi
 import { NewFacturaComponent } from './component/application/factura/routed/new/new-factura.component';
 import { FacturaPlistRoutedComponent } from './component/application/factura/routed/factura-plist-routed/factura-plist-routed.component';
 import { RemoveFacturaComponent } from './component/application/factura/routed/remove/remove-factura.component';
-import { ViewFacturaComponent } from './component/application/factura/routed/view/view-factura.component';
 import { ProductoEditRoutedComponent } from './component/application/producto/routed/producto-edit-routed/producto-edit-routed.component';
 import { ProductoNewRoutedComponent } from './component/application/producto/routed/producto-new-routed/producto-new-routed.component';
 import { PlistProductoComponent } from './component/application/producto/routed/producto-plist-routed/plist-producto.component';
@@ -39,6 +38,7 @@ import { RemoveCarritoComponent } from './component/application/carrito/routed/r
 import { GenerateComponent } from './component/shared/routed/generate/generate.component';
 import { ReportsComponent } from './component/shared/routed/reports/reports.component';
 import { SessionResolver } from './resolve/session.resolve';
+import { FacturaViewRoutedComponent } from './component/application/factura/routed/factura-view-routed/factura-view-routed.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, resolve: { message: SessionResolver } },
@@ -84,7 +84,7 @@ const routes: Routes = [
   { path: 'factura/plist', component: FacturaPlistRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'factura/plist/usuario/:id', component: FacturaPlistRoutedComponent, resolve: { message: SessionResolver } },  
   { path: 'factura/new', component: NewFacturaComponent, resolve: { message: SessionResolver } },
-  { path: 'factura/view/:id', component: ViewFacturaComponent, resolve: { message: SessionResolver } },
+  { path: 'factura/view/:id', component: FacturaViewRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'factura/edit/:id', component: EditFacturaComponent, resolve: { message: SessionResolver } },
   { path: 'factura/remove/:id', component: RemoveFacturaComponent, resolve: { message: SessionResolver } },
 

@@ -49,7 +49,6 @@ import { RemoveCompraComponent } from './component/application/compra/routed/rem
 import { EditCompraComponent } from './component/application/compra/routed/edit/edit-compra.component';
 import { FacturaPlistRoutedComponent } from './component/application/factura/routed/factura-plist-routed/factura-plist-routed.component';
 import { NewFacturaComponent } from './component/application/factura/routed/new/new-factura.component';
-import { ViewFacturaComponent } from './component/application/factura/routed/view/view-factura.component';
 import { RemoveFacturaComponent } from './component/application/factura/routed/remove/remove-factura.component';
 import { EditFacturaComponent } from './component/application/factura/routed/edit/edit-factura.component';
 import { CompraService } from './service/compra.service';
@@ -98,6 +97,8 @@ import { TipousuarioFormUnroutedComponent } from './component/application/tipous
 import { ErrorHandlerService } from './service/errorHandler.service';
 import { FacturaPlistheaderUnroutedComponent } from './component/application/factura/unrouted/factura-plistheader-unrouted/factura-plistheader-unrouted.component';
 import { FacturaPlistRowUnroutedComponent } from './component/application/factura/unrouted/factura-plistrow-unrouted/factura-plistrow-unrouted.component';
+import { FacturaDetailUnroutedComponent } from './component/application/factura/unrouted/factura-detail-unrouted/factura-detail-unrouted.component';
+import { FacturaViewRoutedComponent } from './component/application/factura/routed/factura-view-routed/factura-view-routed.component';
 
 
 @NgModule({
@@ -159,7 +160,7 @@ import { FacturaPlistRowUnroutedComponent } from './component/application/factur
     RemoveCompraComponent,
     // Factura routed components
     FacturaPlistRoutedComponent,
-    ViewFacturaComponent,
+    FacturaViewRoutedComponent,
     NewFacturaComponent,
     EditFacturaComponent,
     RemoveFacturaComponent,
@@ -206,6 +207,7 @@ import { FacturaPlistRowUnroutedComponent } from './component/application/factur
     FacturaPlistUnroutedComponent,
     FacturaPlistheaderUnroutedComponent,
     FacturaPlistRowUnroutedComponent,
+    FacturaDetailUnroutedComponent
     
   ],
   imports: [

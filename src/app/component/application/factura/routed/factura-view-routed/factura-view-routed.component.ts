@@ -7,53 +7,44 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: 'app-view-factura',
-  templateUrl: './view-factura.component.html',
-  styleUrls: ['./view-factura.component.css']
+  selector: 'app-factura-view-routed',
+  templateUrl: './factura-view-routed.component.html',
+  styleUrls: ['./factura-view-routed.component.css']
 })
-export class ViewFacturaComponent implements OnInit {
+export class FacturaViewRoutedComponent implements OnInit {
 
-  id: number = 0;
-  oFactura: IFactura;
-  strUsuarioSession: string;
   strEntity: string = "factura"
   strOperation: string = "view"
   strTitleSingular: string = "Factura";
   strTitlePlural: string = "Facturas";
+  id: number = null;
+  strUsuarioSession: string;
+  strResult: string = null;
+
   oUserSession: IUsuario;
 
   constructor(
-    private oFacturaService: FacturaService,
+
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private oLocation: Location,
     public oIconService: IconService
 
   ) {
 
     if (this.oRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oRoute.snapshot.data.message;
+      this.oUserSession = this.oRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
+
     this.id = this.oActivatedRoute.snapshot.params.id
-    this.getOne();
+
   }
 
   ngOnInit() {
-  }
-
-  getOne = () => {
-    this.oFacturaService.getOne(this.id).subscribe((oData: IFactura) => {
-      this.oFactura = oData;
-    })
-  }
-
-  goBack() {
-    this.oLocation.back();
   }
 
 

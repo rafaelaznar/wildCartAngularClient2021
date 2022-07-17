@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewFacturaComponent } from './view-factura.component';
+import { FacturaViewRoutedComponent } from './factura-view-routed.component';
 
-describe('ViewFacturaComponent', () => {
-  let component: ViewFacturaComponent;
-  let fixture: ComponentFixture<ViewFacturaComponent>;
+describe('FacturaViewRoutedComponent', () => {
+  let component: FacturaViewRoutedComponent;
+  let fixture: ComponentFixture<FacturaViewRoutedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewFacturaComponent ]
+      declarations: [ FacturaViewRoutedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewFacturaComponent);
+    fixture = TestBed.createComponent(FacturaViewRoutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
