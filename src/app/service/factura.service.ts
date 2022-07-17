@@ -1,5 +1,5 @@
 import { IFactura } from 'src/app/model/factura-interfaces';
-import { IPageFactura, IFactura2Send } from './../model/factura-interfaces';
+import { IFacturaPage, IFactura2Send } from './../model/factura-interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -15,7 +15,7 @@ export class FacturaService implements ICrud {
 
   sURL = API_URL + '/factura';
 
-  getPage(page: number, rpp: number, order: string, direction: string, filter: string, id_usuario: number): Observable<IPageFactura> {
+  getPage(page: number, rpp: number, order: string, direction: string, filter: string, id_usuario: number): Observable<IFacturaPage> {
     let strUrl: string = "";
     if (order) {
       strUrl += "&sort=" + order + "," + direction;
@@ -26,7 +26,7 @@ export class FacturaService implements ICrud {
     if (id_usuario) {
       strUrl += "&usuario=" + id_usuario;
     }
-    return this.http.get<IPageFactura>(this.sURL + "?size=" + rpp + "&page=" + page + strUrl, httpOptions);
+    return this.http.get<IFacturaPage>(this.sURL + "?size=" + rpp + "&page=" + page + strUrl, httpOptions);
   }
 
   getOne(id: number): Observable<IFactura> {

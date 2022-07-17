@@ -16,5 +16,5 @@ export interface IFactura2Send extends IEntity2Send {
     usuario: IEntity2Send
 }
 
-export interface IPageFactura extends IPage<IFactura> {
+export interface IFacturaPage extends IPage<IFactura> {
 }

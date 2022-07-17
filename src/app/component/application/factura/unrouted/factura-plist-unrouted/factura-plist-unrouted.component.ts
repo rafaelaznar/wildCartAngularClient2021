@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+
 import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
-import { IFactura, IPageFactura } from 'src/app/model/factura-interfaces';
-import { IUsuario } from 'src/app/model/usuario-interfaces';
+
+import { IFactura, IFacturaPage } from 'src/app/model/factura-interfaces';
+
 import { FacturaService } from 'src/app/service/factura.service';
 import { IconService } from 'src/app/service/icon.service';
 import { PaginationService } from 'src/app/service/pagination.service';
@@ -24,6 +24,7 @@ export class FacturaPlistUnroutedComponent implements OnInit {
   @Output() selection = new EventEmitter<number>();
   //@ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
 
+  /*
   aCompras: ICompra[];
   oFacturas: IFactura[];
   aFacturas: IFactura[];
@@ -40,87 +41,97 @@ export class FacturaPlistUnroutedComponent implements OnInit {
   filterActual: string = "";
   filtered: boolean = false;
   oActivatedRoute: any;
+*/
+
 
   strEntity: string = "factura"
   strOperation: string = "plist"
   strTitleSingular: string = "Factura";
+  strATitleSingular: string = "La factura";
   strTitlePlural: string = "Facturas";
-  aPaginationBar: string[];
+  //
+  aFacturas: IFactura[];
+  //  
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
+  aPaginationBar: string[];
   nPageSize: number = 10;
-  strFilter: string = "";
+  //
   strSortField: string = "";
   strSortDirection: string = "";
+  //
+  strFilter: string = "";
   strFilteredMessage: string = "";
-  oUserSession: IUsuario;
-  oFactura: IFactura;
-  subjectFiltro$ = new Subject();
-
-
+  subjectFilter = new Subject();
+  //
+  strResult: string = null;
 
   constructor(
-    private oRoute: ActivatedRoute,
-    private oRouter: Router,
-    private oPaginationService: PaginationService,
     private oFacturaService: FacturaService,
     public oIconService: IconService,
-    public oCompraService: CompraService
+    private oCompraService: CompraService,
+    private oPaginationService: PaginationService
   ) {
-
   }
 
   ngOnInit(): void {
-    this.subjectFiltro$.pipe(
-      debounceTime(1000)
-    ).subscribe(() => this.getPage());
-    this.page = 0;
-    this.getPage();
+    this.nPage = 1;
+    this.getPage(); //important! id_tipoproducto must be initialized before calling getPage()
   }
 
   getPage = () => {
-    let id: number = this.oRoute.snapshot.params.id ? this.oRoute.snapshot.params.id : "";
-    this.oFacturaService.getPage(this.page, this.pageSize, this.currentSortField, this.currentSortDirection, this.filterActual, id).subscribe((oPage: IPageFactura) => {
-      if (this.filterActual) {
-        this.filtered = true;
+    this.oFacturaService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_usuario).subscribe((oPage: IFacturaPage) => {
+      if (this.id_usuario) {
+        if (this.strFilter) {
+          this.strFilteredMessage = "Listado filtrado por el usuario " + this.id_usuario + " y por " + this.strFilter;
+        } else {
+          this.strFilteredMessage = "Listado filtrado por el usuario " + this.id_usuario;
+        }
       } else {
-        this.filtered = false;
+        if (this.strFilter) {
+          this.strFilteredMessage = "Listado filtrado por " + this.strFilter;
+        } else {
+          this.strFilteredMessage = "Listado NO filtrado";
+        }
       }
       this.aFacturas = oPage.content;
-      this.totalElements = oPage.totalElements;
-      this.totalPages = oPage.totalPages;
-      this.barraPaginacion = this.oPaginationService.pagination(this.totalPages, this.page);
+      this.nTotalElements = oPage.totalElements;
+      this.nTotalPages = oPage.totalPages;
+      if (this.nPage > this.nTotalPages) {
+        this.nPage = this.nTotalPages;
+        this.getPage();
+      }
     })
   }
 
-  jumpToPage = () => {
+
+  onSetPage = (nPage: number) => {
+    this.nPage = nPage;
     this.getPage();
     return false;
   }
 
-  doResetOrder() {
-    this.currentSortField = "";
-    this.currentSortDirection = "";
+  onSetRpp(nRpp: number) {
+    this.nPageSize = nRpp;
     this.getPage();
   }
 
-  doSetOrder(order: string) {
-    this.currentSortField = order;
-    if (this.currentSortDirection == 'asc') {
-      this.currentSortDirection = 'desc';
-    } else if (this.currentSortDirection == 'desc') {
-      this.currentSortDirection = '';
-    } else {
-      this.currentSortDirection = 'asc';
-    }
+  onSetFilter(strFilter: string) {
+    this.strFilter = strFilter;
+    this.getPage();
+  }
+
+  onSetOrder(order: IOrder) {
+    this.strSortField = order.sortField;
+    this.strSortDirection = order.sortDirection;
     this.getPage();
   }
 
   onSelection(id: number) {
-    console.log("selection plist emite " + id);
     this.selection.emit(id);
   }
+
 
   cabecera(doc: any, oFactura: IFactura): any {
     var imgData: string = '../../../../../../assets/img/wildCartLogo100.png'
@@ -176,114 +187,98 @@ export class FacturaPlistUnroutedComponent implements OnInit {
 
   sp = (n: number): string => n.toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  getProductos = (tamanyo: number, factura: number) => {
-    console.log("buscando...", this.strFilter);
-    this.oCompraService.getPage(1, tamanyo, this.strSortField, this.strSortDirection, this.strFilter, factura, null).subscribe((oPage: ICompraPage) => {
-      if (this.strFilter) {
-        this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
-      } else {
-        this.strFilteredMessage = "";
-      }
-      this.aCompras = oPage.content;
-      this.nTotalElements = oPage.totalElements;
-      this.nTotalPages = oPage.totalPages;
-      this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
-      console.log(this.aCompras);
+  printFactura = (id_factura: number) => {
+    this.oFacturaService.getOne(id_factura).subscribe((oFactura2Print: IFactura) => {
 
-      // You'll need to make your image into a Data URL
-      // Use http://dataurl.net/#dataurlmaker
+      console.log(oFactura2Print);
 
-      var doc = new jsPDF()
-
-
-      //doc.addFont('Arial', 'Arial', 'normal');
-      //doc.setFont('Arial');
-
-      //Cabecera
-      doc = this.cabecera(doc, this.oFactura);
-      //Fin de cabecera
-
-      doc.setFontSize(12)
-
-      console.log(this.oFactura.compras);
-      console.log(this.aCompras);
-
-      var linea = 155;
-      var totalFactura = 0;
-
-      doc.setFont('Courier');
-      for (let i = 0; i < this.oFactura.compras; i++) {
-        doc.setFontSize(8)
-        doc.text(this.aCompras[i].producto.nombre, 20, linea)
-        doc.setFontSize(12);
-        doc.text(this.aCompras[i].cantidad + "", 130, linea, "right");
-        doc.text(this.sp(this.aCompras[i].producto.precio), 160, linea, "right");
-        //let total: number = this.aCompras[i].cantidad * this.aCompras[i].producto.precio;
-        //let total_round:string = (Math.round(total * 100) / 100).toFixed(2);
-
-
-
-        //let total_miles = total.toLocaleString('es', { minimumFractionDigits: 2 });
-        doc.text(this.sp(this.aCompras[i].cantidad * this.aCompras[i].producto.precio), 194, linea, "right");
-
-        totalFactura = totalFactura + (this.aCompras[i].cantidad * this.aCompras[i].producto.precio);
-        linea = linea + 7;
-
-        if (linea > 230) {
-          doc.addPage();
-          doc = this.cabecera(doc, this.oFactura);
-          linea = 155;
-          doc.setFontSize(12)
+      console.log("buscando...", this.strFilter);
+      this.oCompraService.getPage(1, oFactura2Print.compras, this.strSortField, this.strSortDirection, this.strFilter, id_factura, null).subscribe((oPage: ICompraPage) => {
+        if (this.strFilter) {
+          this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
+        } else {
+          this.strFilteredMessage = "";
         }
+        let aCompras: ICompra[] = oPage.content;
+        this.nTotalElements = oPage.totalElements;
+        this.nTotalPages = oPage.totalPages;
+        this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
+        console.log(aCompras);
 
-      }
-      doc.setFontSize(12)
-      doc.line(15, linea, 195, linea);
-      let xtit=150;
-      let xnum=190;
-      doc.text('Total:', xtit, linea + 7,"right");
-      doc.text(this.sp(totalFactura) + " €", xnum, linea + 7,"right")
-      doc.text('IVA:', xtit, linea + 14,"right")
-      doc.text(this.oFactura.iva + "%", xnum, linea + 14,"right")
-      doc.text('Total + IVA:', xtit, linea + 21,"right")
-      doc.text(this.sp(totalFactura + (totalFactura * this.oFactura.iva) / 100) + " €", xnum, linea + 21,"right");
+        // You'll need to make your image into a Data URL
+        // Use http://dataurl.net/#dataurlmaker
+
+        var doc = new jsPDF()
 
 
-      doc.save("Factura.pdf");
+        //doc.addFont('Arial', 'Arial', 'normal');
+        //doc.setFont('Arial');
+
+        //Cabecera
+        doc = this.cabecera(doc, oFactura2Print);
+        //Fin de cabecera
+
+        doc.setFontSize(12)
+
+        console.log(oFactura2Print.compras);
+        //console.log(this.aCompras);
+
+        var linea = 155;
+        var totalFactura = 0;
+
+        doc.setFont('Courier');
+        for (let i = 0; i < oFactura2Print.compras; i++) {
+          doc.setFontSize(8)
+          doc.text(aCompras[i].producto.nombre, 20, linea)
+          doc.setFontSize(12);
+          doc.text(aCompras[i].cantidad + "", 130, linea, "right");
+          doc.text(this.sp(aCompras[i].producto.precio), 160, linea, "right");
+          //let total: number = this.aCompras[i].cantidad * this.aCompras[i].producto.precio;
+          //let total_round:string = (Math.round(total * 100) / 100).toFixed(2);
+
+          //let total_miles = total.toLocaleString('es', { minimumFractionDigits: 2 });
+          doc.text(this.sp(aCompras[i].cantidad * aCompras[i].producto.precio), 194, linea, "right");
+
+          totalFactura = totalFactura + (aCompras[i].cantidad * aCompras[i].producto.precio);
+          linea = linea + 7;
+
+          if (linea > 230) {
+            doc.addPage();
+            doc = this.cabecera(doc, oFactura2Print);
+            linea = 155;
+            doc.setFontSize(12)
+          }
+
+        }
+        doc.setFontSize(12)
+        doc.line(15, linea, 195, linea);
+        let xtit = 150;
+        let xnum = 190;
+        doc.text('Total:', xtit, linea + 7, "right");
+        doc.text(this.sp(totalFactura) + " €", xnum, linea + 7, "right")
+        doc.text('IVA:', xtit, linea + 14, "right")
+        doc.text(oFactura2Print.iva + "%", xnum, linea + 14, "right")
+        doc.text('Total + IVA:', xtit, linea + 21, "right")
+        doc.text(this.sp(totalFactura + (totalFactura * oFactura2Print.iva) / 100) + " €", xnum, linea + 21, "right");
+
+        doc.save("Factura.pdf");
+      })
     })
-
   }
 
-  factura(id: number) {
 
-    this.oFacturaService.getOne(id).subscribe((oData: IFactura) => {
-      this.oFactura = oData;
-      this.getProductos(this.oFactura.compras, this.oFactura.id);
-      console.log(this.oFactura);
-    })
 
-  }
-
-  onSetOrder(order: IOrder) {
-    this.strSortField = order.sortField;
-    this.strSortDirection = order.sortDirection;
-    this.getPage();
-  }
-
-  onSetRpp(nRpp: number) {
-    this.nPageSize = nRpp;
-    this.getPage();
-  }
-
+  /*
   print(id: number) {
     var doc = new jsPDF()
     doc.text('Hello world!', 10, 10)
     doc.save('a4.pdf')
   }
+  */
 
 
   onPrintFactura($event: any) {
     alert("print factura" + $event);
-    this.factura($event);
+    this.printFactura($event);
   }
 }
