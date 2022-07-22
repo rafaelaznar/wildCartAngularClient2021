@@ -18,6 +18,8 @@ export class RemoveTipoproductoComponent implements OnInit {
   strOperation: string = "view"
   strTitleSingular: string = "Tipo de producto";
   strTitlePlural: string = "Tipos de producto";
+  strTitleArtSingular: string = "El tipo de producto";
+
   id: number = 0;
   oTipoProducto: ITipoproducto;
   oUserSession: IUsuario;
@@ -54,9 +56,9 @@ export class RemoveTipoproductoComponent implements OnInit {
   };
 
   removeOne() {
-    this.oTipoproductoService.removeOne(this.id).subscribe((data: number) => {
-      if (data) {
-        this.strResult = this.strTitleSingular + ' con ID=' + this.id + ' ha sido borrado con éxito';
+    this.oTipoproductoService.removeOne(this.id).subscribe((id: number) => {
+      if (id) {
+        this.strResult = this.strTitleArtSingular + " con id = " + this.id + "se ha eliminado.";
       } else {
         this.strResult = 'Error en el borrado de ' + this.strTitleSingular;
       }

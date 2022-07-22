@@ -17,6 +17,8 @@ export class ProductoRemoveRoutedComponent implements OnInit {
   strOperation: string = "remove"
   strTitleSingular: string = "Producto";
   strTitlePlural: string = "Productos";
+  strTitleArtSingular: string = "El producto";
+
   id: number = 0;
   oUserSession: IUsuario;
   strResult: string = null;
@@ -47,7 +49,7 @@ export class ProductoRemoveRoutedComponent implements OnInit {
   removeOne() {
     this.oProductoService.removeOne(this.id).subscribe((id: number) => {    
       if (id) {                
-        this.strResult = this.strTitleSingular + ' ' + this.id + ' eliminado';
+        this.strResult = this.strTitleArtSingular + " con id = " + this.id + "se ha eliminado.";
       } else {
         this.strResult = 'Error en el borrado de ' + this.strTitleSingular;
       }

@@ -19,6 +19,7 @@ export class UsuarioRemoveRoutedComponent implements OnInit {
   strOperation: string = "remove"
   strTitleSingular: string = "Usuario";
   strTitlePlural: string = "Usuarios";
+  strTitleArtSingular: string = "El usuario";
 
   constructor(
     private oUsuarioService: UsuarioService,
@@ -42,12 +43,15 @@ export class UsuarioRemoveRoutedComponent implements OnInit {
 
   ngOnInit(): void { }
 
-
   removeOne() {
-    this.oUsuarioService.removeOne(this.id).subscribe((data: number) => {
-      this.strResult = this.strTitleSingular +' ' + this.id + ' eliminado';
+    this.oUsuarioService.removeOne(this.id).subscribe((id: number) => {
+      if (id) {
+        this.strResult = this.strTitleArtSingular + " con id = " + this.id + "se ha eliminado.";
+      } else {
+        this.strResult = 'Error en el borrado de ' + this.strTitleSingular;
+      }
       this.openPopup();
-    });
+    })
   }
 
   goBack() {

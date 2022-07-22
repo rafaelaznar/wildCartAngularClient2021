@@ -49,7 +49,7 @@ import { RemoveCompraComponent } from './component/application/compra/routed/rem
 import { EditCompraComponent } from './component/application/compra/routed/edit/edit-compra.component';
 import { FacturaPlistRoutedComponent } from './component/application/factura/routed/factura-plist-routed/factura-plist-routed.component';
 import { NewFacturaComponent } from './component/application/factura/routed/new/new-factura.component';
-import { RemoveFacturaComponent } from './component/application/factura/routed/remove/remove-factura.component';
+import { FacturaRemoveRoutedComponent } from './component/application/factura/routed/factura-remove-routed/factura-remove-routed.component';
 import { EditFacturaComponent } from './component/application/factura/routed/edit/edit-factura.component';
 import { CompraService } from './service/compra.service';
 import { ProductoService } from './service/producto.service';
@@ -163,7 +163,7 @@ import { FacturaViewRoutedComponent } from './component/application/factura/rout
     FacturaViewRoutedComponent,
     NewFacturaComponent,
     EditFacturaComponent,
-    RemoveFacturaComponent,
+    FacturaRemoveRoutedComponent,
     // Carrito routed components
     PlistCarritoComponent,
     NewCarritoComponent,
@@ -207,7 +207,8 @@ import { FacturaViewRoutedComponent } from './component/application/factura/rout
     FacturaPlistUnroutedComponent,
     FacturaPlistheaderUnroutedComponent,
     FacturaPlistRowUnroutedComponent,
-    FacturaDetailUnroutedComponent
+    FacturaDetailUnroutedComponent,    
+    
     
   ],
   imports: [
