@@ -6,9 +6,9 @@ export interface ICrud {
 
     getOne(id: number): Observable<IEntity>;
 
-    newOne(oEntity: IEntity2Send): Observable<IEntity>;
+    newOne(oEntity: IEntity2Send): Observable<number>;
 
-    updateOne(oEntity: IEntity2Send): Observable<IEntity>;
+    updateOne(oEntity: IEntity2Send): Observable<number>;
 
     removeOne(id: number): Observable<number>;
 }

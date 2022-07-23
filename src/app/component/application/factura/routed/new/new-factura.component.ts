@@ -39,15 +39,15 @@ export class NewFacturaComponent implements OnInit {
     private oDateTimeService: DateTimeService,
     public oIconService: IconService
 
-  ) { 
-    
+  ) {
+
     if (this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
-     localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
-   } else {
-     localStorage.clear();
-     oRouter.navigate(['/home']);
-   }
+      localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
+    } else {
+      localStorage.clear();
+      oRouter.navigate(['/home']);
+    }
 
   }
 
@@ -71,7 +71,7 @@ export class NewFacturaComponent implements OnInit {
     });
   }
 
-  
+
 
   onSubmit(): void {
     if (this.oForm) {
@@ -79,17 +79,17 @@ export class NewFacturaComponent implements OnInit {
         fecha: this.oDateTimeService.getStrFecha2Send(this.oForm.value.fecha),
         iva: this.oForm.value.iva,
         pagado: this.oForm.value.pagado,
-        usuario:{ id:this.oForm.value.usuario}
+        usuario: { id: this.oForm.value.usuario }
       }
       this.new()
     }
   }
 
   new = (): void => {
- 
-    this.oFacturaService.newOne(this.oFactura2Send).subscribe((oData: IFactura) => {
-      if (oData) {
-        this.id = oData.id;
+
+    this.oFacturaService.newOne(this.oFactura2Send).subscribe((id: number) => {
+      if (id > 0) {
+        this.id = id;
         this.strResult = "La factura se ha creado correctamente";
       } else {
         this.strResult = "Error en la creación de la factura";

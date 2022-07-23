@@ -70,10 +70,10 @@ export class NewTipoproductoComponent implements OnInit {
   new = (): void => {
     this.oTipoProductoService
       .newOne(this.oTipoProducto2Send)
-      .subscribe((oTipoProducto: ITipoproducto) => {
-        if (oTipoProducto.id) {
-          this.id = oTipoProducto.id;
-          this.strResult = this.strTitleSingular + ' creado correctamente con id=' + oTipoProducto.id;
+      .subscribe((id: number) => {
+        if (id) {
+          this.id = id;
+          this.strResult = this.strTitleSingular + ' creado correctamente con id=' + id;
         } else {
           this.strResult = this.strTitleSingular + ': error en la creación del registro';
         }

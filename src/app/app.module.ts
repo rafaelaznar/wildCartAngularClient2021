@@ -50,7 +50,7 @@ import { EditCompraComponent } from './component/application/compra/routed/edit/
 import { FacturaPlistRoutedComponent } from './component/application/factura/routed/factura-plist-routed/factura-plist-routed.component';
 import { NewFacturaComponent } from './component/application/factura/routed/new/new-factura.component';
 import { FacturaRemoveRoutedComponent } from './component/application/factura/routed/factura-remove-routed/factura-remove-routed.component';
-import { EditFacturaComponent } from './component/application/factura/routed/edit/edit-factura.component';
+import { EditFacturaComponent } from './component/application/factura/routed/factura-edit-component/factura-edit-routed.component';
 import { CompraService } from './service/compra.service';
 import { ProductoService } from './service/producto.service';
 import { CarritoService } from './service/carrito.service';
@@ -76,7 +76,7 @@ import { TipousuarioPlistUnroutedComponent } from './component/application/tipou
 import { ProductoCPlistUnroutedComponent } from './component/application/producto/unrouted/producto-cplist-unrouted/producto-cplist-unrouted.component';
 import { ProductoPlistRowUnroutedComponent } from './component/application/producto/unrouted/producto-plistrow-unrouted/producto-plistrow-unrouted.component';
 import { ProductoPlistheaderUnroutedComponent } from './component/application/producto/unrouted/producto-plistheader-unrouted/producto-plistheader-unrouted.component';
-import { ProductoFormUnroutedComponent } from './component/application/producto/unrouted/producto-form.unrouted/producto-form-unrouted.component';
+import { ProductoFormUnroutedComponent } from './component/application/producto/unrouted/producto-form-unrouted/producto-form-unrouted.component';
 import { ProductoDetailUnroutedComponent } from './component/application/producto/unrouted/producto-detail-unrouted/producto-detail-unrouted.component';
 
 import { findUnroutedComponent } from './component/shared/unrouted/find-unrouted/find-unrouted.component';
@@ -99,7 +99,7 @@ import { FacturaPlistheaderUnroutedComponent } from './component/application/fac
 import { FacturaPlistRowUnroutedComponent } from './component/application/factura/unrouted/factura-plistrow-unrouted/factura-plistrow-unrouted.component';
 import { FacturaDetailUnroutedComponent } from './component/application/factura/unrouted/factura-detail-unrouted/factura-detail-unrouted.component';
 import { FacturaViewRoutedComponent } from './component/application/factura/routed/factura-view-routed/factura-view-routed.component';
-
+import { FacturaFormUnroutedComponent } from './component/application/factura/unrouted/factura-form-unrouted/factura-form-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -207,7 +207,8 @@ import { FacturaViewRoutedComponent } from './component/application/factura/rout
     FacturaPlistUnroutedComponent,
     FacturaPlistheaderUnroutedComponent,
     FacturaPlistRowUnroutedComponent,
-    FacturaDetailUnroutedComponent,    
+    FacturaDetailUnroutedComponent,   
+    FacturaFormUnroutedComponent, 
     
     
   ],

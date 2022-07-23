@@ -14,8 +14,8 @@ declare let $: any;
 
 @Component({
   selector: 'app-edit-factura',
-  templateUrl: './edit-factura.component.html',
-  styleUrls: ['./edit-factura.component.css']
+  templateUrl: './factura-edit-routed.component.html',
+  styleUrls: ['./factura-edit-routed.component.css']
 })
 export class EditFacturaComponent implements OnInit {
 
@@ -61,17 +61,7 @@ export class EditFacturaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    $('#fecha').datetimepicker({
-      defaultDate: "+1w",
-      numberOfMonths: 1,
-      dateFormat: 'dd/mm/yy',
-      timeFormat: 'hh:mm',
-      showAnim: "fold",
-      onClose: (dateText: string, inst: any) => {
-        this.oForm.controls['fecha'].setValue(dateText);
-        this.oForm.controls['fecha'].markAsDirty();
-      }
-    });
+    
 
   }
 
@@ -108,15 +98,21 @@ export class EditFacturaComponent implements OnInit {
 
   update = (): void => {
     console.log(this.oData2Send);
-    this.oFacturaService.updateOne(this.oData2Send).subscribe((oData: IFactura) => {
-      if (oData) {
-        this.strResult = this.strATitleSingular + ' con id=' + oData.id + ' se ha modificado correctamente';
+    this.oFacturaService.updateOne(this.oData2Send).subscribe((id: number) => {
+      if (id > 0) {
+        this.strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
       } else {
         this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
       }
       this.openPopup();
     })
   }
+
+  reportResult = (oResult: any): void => {
+    this.strResult = oResult.strMsg;
+    this.id = oResult.id;
+    this.openPopup();
+  };
 
   goBack(): void {
     this.oLocation.back();
@@ -130,12 +126,12 @@ export class EditFacturaComponent implements OnInit {
       .getOne(this.oForm.controls['id_usuario'].value)
       .subscribe((oData: IUsuario) => {
         if (this.strOperation == "edit") {
-        this.oData2Show.usuario = oData;    
-      } else {
-        this.oData2Show={} as IFactura;
-        this.oData2Show.usuario = {} as IUsuario;; 
-        this.oData2Show.usuario = oData;   
-      }
+          this.oData2Show.usuario = oData;
+        } else {
+          this.oData2Show = {} as IFactura;
+          this.oData2Show.usuario = {} as IUsuario;;
+          this.oData2Show.usuario = oData;
+        }
       }, err => {
         this.oData2Show.usuario.nombre = "ERROR";
         this.oData2Show.usuario.apellido1 = "";

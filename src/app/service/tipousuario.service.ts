@@ -35,11 +35,11 @@ export class TipousuarioService implements ICrud {
     return this.http.get<ITipousuario>(`${this.sURL}/${id}`, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
-  updateOne(oTipousuario: ITipousuario2Send): Observable<ITipousuario> {
-    return this.http.put<ITipousuario>(this.sURL, oTipousuario, httpOptions);
+  updateOne(oTipousuario: ITipousuario2Send): Observable<number> {
+    return this.http.put<number>(this.sURL, oTipousuario, httpOptions);
   }
 
-  newOne(_oTipousuario: ITipousuario2Send): Observable<ITipousuario> {
+  newOne(_oTipousuario: ITipousuario2Send): Observable<number> {
     throw new Error('Method not implemented.');
   }
   removeOne(_id: number): Observable<number> {

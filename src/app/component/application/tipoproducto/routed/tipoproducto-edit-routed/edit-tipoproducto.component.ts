@@ -84,8 +84,8 @@ export class EditTipoproductoComponent implements OnInit {
   update = (): void => {
     this.oTipoProductoService
       .updateOne(this.oTipoProducto2Send)
-      .subscribe((oTipoProducto: ITipoproducto) => {
-        if (oTipoProducto.id) {
+      .subscribe((id: number) => {
+        if (id) {
           this.strResult = this.strTitleSingular + ' modificado correctamente';
         } else {
           this.strResult = this.strTitleSingular + ': error en la modificación del registro';

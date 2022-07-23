@@ -39,12 +39,12 @@ export class UsuarioService implements ICrud {
     return this.http.get<IUsuario>(this.sURL + "/" + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
-  newOne(oUsuario: IUsuario2Send): Observable<IUsuario> {
-    return this.http.post<IUsuario>(this.sURL + "/", oUsuario, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+  newOne(oUsuario: IUsuario2Send): Observable<number> {
+    return this.http.post<number>(this.sURL + "/", oUsuario, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
-  updateOne(oUsuario: IUsuario2Send): Observable<IUsuario> {
-    return this.http.put<IUsuario>(this.sURL + "/" + oUsuario.id, oUsuario, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+  updateOne(oUsuario: IUsuario2Send): Observable<number> {
+    return this.http.put<number>(this.sURL + "/" + oUsuario.id, oUsuario, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   removeOne(id: number): Observable<number> {

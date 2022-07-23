@@ -33,12 +33,12 @@ export class FacturaService implements ICrud {
     return this.http.get<IFactura>(this.sURL + "/" + id, httpOptions);
   }
 
-  newOne(oFactura: IFactura2Send): Observable<IFactura> {
-    return this.http.post<IFactura>(this.sURL + '/', oFactura, httpOptions);
+  newOne(oFactura: IFactura2Send): Observable<number> {
+    return this.http.post<number>(this.sURL + '/', oFactura, httpOptions);
   }
 
-  updateOne(oFactura: IFactura2Send): Observable<IFactura> {
-    return this.http.put<IFactura>(this.sURL + '/', oFactura, httpOptions);
+  updateOne(oFactura: IFactura2Send): Observable<number> {
+    return this.http.put<number>(this.sURL + '/', oFactura, httpOptions);
   }
 
   removeOne(id: number): Observable<number> {

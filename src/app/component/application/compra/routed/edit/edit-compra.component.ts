@@ -134,8 +134,8 @@ export class EditCompraComponent implements OnInit {
   }
 
   update = (): void => {
-    this.oCompraService.updateOne(this.oCompra2Send).subscribe((result: ICompra) => {
-      if (result) {
+    this.oCompraService.updateOne(this.oCompra2Send).subscribe((id: number) => {
+      if (id > 0) {
         this.strResult = "La compra se ha modificado correctamente";
       } else {
         this.strResult = "Error en la modificación de la compra";

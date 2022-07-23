@@ -140,11 +140,10 @@ export class ProductoFormUnroutedComponent implements OnInit {
         if (this.strOperation == "new") {
           this.oProductoService
             .newOne(this.oProducto2Send)
-            .subscribe((oProducto: IProducto) => {
-              console.log('dentro de new');
-              if (oProducto.id) {
-                this.id = oProducto.id;
-                this.strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + oProducto.id;
+            .subscribe((id: number) => {
+              if (id > 0) {
+                this.id = id;
+                this.strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
               } else {
                 this.strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
               }
@@ -153,10 +152,10 @@ export class ProductoFormUnroutedComponent implements OnInit {
         } else {
           this.oProductoService
             .updateOne(this.oProducto2Send)
-            .subscribe((oProducto: IProducto) => {
-              if (oProducto.id) {
-                this.id = oProducto.id;
-                this.strResult = this.strATitleSingular + ' con id=' + oProducto.id + ' se ha modificado correctamente';
+            .subscribe((id: number) => {
+              if (id) {
+                this.id = id;
+                this.strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
               } else {
                 this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
               }

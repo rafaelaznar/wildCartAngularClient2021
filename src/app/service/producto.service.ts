@@ -33,12 +33,12 @@ export class ProductoService implements ICrud  {
     return this.http.get<IProducto>(this.sURL + "/" + id, httpOptions);
   }
 
-  newOne(oProduct: IProducto2Send): Observable<IProducto> {
-    return this.http.post<IProducto>(this.sURL + "/", oProduct, httpOptions);
+  newOne(oProduct: IProducto2Send): Observable<number> {
+    return this.http.post<number>(this.sURL + "/", oProduct, httpOptions);
   }
 
-  updateOne(oProduct: IProducto2Send): Observable<IProducto> {
-    return this.http.put<IProducto>(this.sURL + "/", oProduct, httpOptions);
+  updateOne(oProduct: IProducto2Send): Observable<number> {
+    return this.http.put<number>(this.sURL + "/", oProduct, httpOptions);
   }
 
   removeOne(id: number): Observable<number> {

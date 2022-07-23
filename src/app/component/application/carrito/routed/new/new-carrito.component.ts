@@ -81,10 +81,10 @@ export class NewCarritoComponent implements OnInit {
   new = (): void => {
     this.oCarritoService
       .newOne(this.oCarrito2Send)
-      .subscribe((oTipoProducto: ICarrito) => {
-        if (oTipoProducto.id) {
-          this.id = oTipoProducto.id;
-          this.strResult = this.strTitleSingular + ' creado correctamente con id=' + oTipoProducto.id;
+      .subscribe((id: number) => {
+        if (id>0) {
+          this.id = id;
+          this.strResult = this.strTitleSingular + ' creado correctamente con id=' + id;
         } else {
           this.strResult = this.strTitleSingular + ': error en la creación del registro';
         }

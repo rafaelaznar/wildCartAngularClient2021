@@ -90,8 +90,8 @@ export class EditCarritoComponent implements OnInit {
   update = (): void => {
     this.oCarritoService
       .updateOne(this.oCarrito2Send)
-      .subscribe((oCarritoPlist: ICarrito) => {
-        if (oCarritoPlist.id) {
+      .subscribe((id: number) => {
+        if (id) {
           this.strResult = this.strTitleSingular + ' modificado correctamente';
         } else {
           this.strResult =

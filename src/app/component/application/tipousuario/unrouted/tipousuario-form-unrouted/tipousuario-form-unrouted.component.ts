@@ -71,10 +71,10 @@ export class TipousuarioFormUnroutedComponent implements OnInit {
   save(): void {
     this.oTipousuarioService
       .updateOne(this.oData2Send)
-      .subscribe((oData: ITipousuario) => {
-        if (oData.id) {
-          this.id = oData.id;
-          this.strResult = this.strATitleSingular + ' con id=' + oData.id + ' se ha modificado correctamente';
+      .subscribe((id: number) => {
+        if (id) {
+          this.id = id;
+          this.strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
         } else {
           this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
         }

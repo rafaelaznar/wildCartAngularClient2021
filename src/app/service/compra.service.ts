@@ -37,12 +37,12 @@ export class CompraService implements ICrud {
     return this.http.get<ICompra>(this.sURL + "/" + id, httpOptions);
   }
 
-  newOne(oCompra2Send: ICompra2Send): Observable<ICompra> {
-    return this.http.post<ICompra>(this.sURL, oCompra2Send, httpOptions);
+  newOne(oCompra2Send: ICompra2Send): Observable<number> {
+    return this.http.post<number>(this.sURL, oCompra2Send, httpOptions);
   }
 
-  updateOne(oCompra2Send: ICompra2Send): Observable<ICompra> {
-    return this.http.put<ICompra>(this.sURL, oCompra2Send, httpOptions);
+  updateOne(oCompra2Send: ICompra2Send): Observable<number> {
+    return this.http.put<number>(this.sURL, oCompra2Send, httpOptions);
   }
 
   removeOne(id: number): Observable<number> {

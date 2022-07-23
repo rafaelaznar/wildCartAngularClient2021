@@ -110,10 +110,10 @@ export class UsuarioFormUnroutedComponent implements OnInit {
     if (this.strOperation == "new") {
       this.oUsuarioService.newOne(this.oData2Send)
         .subscribe(
-          (oUsuario: IUsuario) => {
-            if (oUsuario.id) {
-              this.id = oUsuario.id;
-              this.strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + oUsuario.id;
+          (id: number) => {
+            if (id>0) {
+              this.id = id;
+              this.strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
             } else {
               this.strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
             }
@@ -127,10 +127,10 @@ export class UsuarioFormUnroutedComponent implements OnInit {
     } else {
       this.oUsuarioService
         .updateOne(this.oData2Send)
-        .subscribe((oUsuario: IUsuario) => {
-          if (oUsuario.id) {
-            this.id = oUsuario.id;
-            this.strResult = this.strATitleSingular + ' con id=' + oUsuario.id + ' se ha modificado correctamente';
+        .subscribe((id: number) => {
+          if (id>0) {
+            this.id = id;
+            this.strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
           } else {
             this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
           }

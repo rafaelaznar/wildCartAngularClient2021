@@ -35,12 +35,12 @@ export class CarritoService implements ICrud {
     return this.http.get<ICarrito>(this.sURL + '/' + id, httpOptions);
   }
 
-  newOne(oCarrito2Send: ICarrito2Send): Observable<ICarrito> {
-    return this.http.post<ICarrito>(this.sURL + '/', oCarrito2Send, httpOptions);
+  newOne(oCarrito2Send: ICarrito2Send): Observable<number> {
+    return this.http.post<number>(this.sURL + '/', oCarrito2Send, httpOptions);
   }
 
-  updateOne(oCarritoPlist: ICarrito2Send): Observable<ICarrito> {
-    return this.http.put<ICarrito>(this.sURL + '/', oCarritoPlist, httpOptions);
+  updateOne(oCarritoPlist: ICarrito2Send): Observable<number> {
+    return this.http.put<number>(this.sURL + '/', oCarritoPlist, httpOptions);
   }
 
   removeOne(id: number): Observable<number> {
