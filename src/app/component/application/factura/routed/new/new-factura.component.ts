@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IFactura, IFactura2Send } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
-import { ThrowStmt } from '@angular/compiler';
+
 
 declare let $: any;
 @Component({
