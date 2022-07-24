@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { IconService } from 'src/app/service/icon.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { IUsuario, IUsuario2Send } from 'src/app/model/usuario-interfaces';
@@ -28,7 +28,7 @@ export class UsuarioFormUnroutedComponent implements OnInit {
   strTitleSingular: string = 'Usuario';
   strATitleSingular: string = 'El usuario';
 
-  oForm: FormGroup = null;
+  oForm: UntypedFormGroup = null;
   strStatus: string = null;
   strResult: string = null;
 
@@ -37,7 +37,7 @@ export class UsuarioFormUnroutedComponent implements OnInit {
   }
 
   constructor(
-    private oFormBuilder: FormBuilder,
+    private oFormBuilder: UntypedFormBuilder,
     private oUsuarioService: UsuarioService,
     private oTipousuarioService: TipousuarioService,
     public oIconService: IconService,

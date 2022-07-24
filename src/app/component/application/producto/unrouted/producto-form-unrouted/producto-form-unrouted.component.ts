@@ -1,6 +1,6 @@
 import { IProducto, IProducto2Send } from '../../../../../model/producto-interfaces';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ProductoService } from 'src/app/service/producto.service';
 import { IconService } from 'src/app/service/icon.service';
 import { FileService } from 'src/app/service/file.service';
@@ -25,7 +25,7 @@ export class ProductoFormUnroutedComponent implements OnInit {
   strTitlePlural: string = "Productos";
   oProducto2Send: IProducto2Send = null;
   oProducto2Show: IProducto = null;
-  oForm: FormGroup = null;
+  oForm: UntypedFormGroup = null;
   //id: number = null;
   strResult: string = null;
   //oUserSession: IUsuario;
@@ -38,7 +38,7 @@ export class ProductoFormUnroutedComponent implements OnInit {
   }
 
   constructor(
-    private oFormBuilder: FormBuilder,
+    private oFormBuilder: UntypedFormBuilder,
     private oProductoService: ProductoService,
     private oFileService: FileService,
     public oIconService: IconService

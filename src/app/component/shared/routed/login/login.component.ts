@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CryptoService } from 'src/app/service/crypto.service';
@@ -15,11 +15,11 @@ import { SessionService } from 'src/app/service/session.service';
 export class LoginComponent implements OnInit {
 
   strOperation: string = "login"
-  formularioLogin: FormGroup;
+  formularioLogin: UntypedFormGroup;
   oUserSession: IUsuario;
 
   constructor(
-    private FormBuilder: FormBuilder,
+    private FormBuilder: UntypedFormBuilder,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oSessionService: SessionService,
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       localStorage.clear();
     }
 
-    this.formularioLogin = <FormGroup>this.FormBuilder.group({
+    this.formularioLogin = <UntypedFormGroup>this.FormBuilder.group({
       login: ['', [Validators.required, Validators.minLength(5)]],
       password: ['', [Validators.required, Validators.minLength(5)]]
     });

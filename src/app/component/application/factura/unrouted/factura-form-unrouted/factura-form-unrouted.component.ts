@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { IconService } from 'src/app/service/icon.service';
 import { IFactura, IFactura2Send } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
@@ -31,7 +31,7 @@ export class FacturaFormUnroutedComponent implements OnInit {
   oFactura2Send: IFactura2Send = null;
   oFactura2Show: IFactura = null;
 
-  oForm: FormGroup = null;
+  oForm: UntypedFormGroup = null;
 
   strStatus: string = null;
   strResult: string = null;
@@ -41,7 +41,7 @@ export class FacturaFormUnroutedComponent implements OnInit {
   }
 
   constructor(
-    private oFormBuilder: FormBuilder,
+    private oFormBuilder: UntypedFormBuilder,
     private oFacturaService: FacturaService,
     public oIconService: IconService,
     private oRouter: Router,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
@@ -25,7 +25,7 @@ export class EditCarritoComponent implements OnInit {
   oCarrito2Send: ICarrito2Send = null;
   oCarrito: ICarrito = null;
   id: number = null;
-  oForm: FormGroup = null;
+  oForm: UntypedFormGroup = null;
   strResult: string = null;
   oUserSession: IUsuario;
 
@@ -34,7 +34,7 @@ export class EditCarritoComponent implements OnInit {
   }
 
   constructor(
-    private oFormBuilder: FormBuilder,
+    private oFormBuilder: UntypedFormBuilder,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oCarritoService: CarritoService,

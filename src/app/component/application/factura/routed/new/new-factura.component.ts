@@ -1,6 +1,6 @@
 import { IconService } from '../../../../../service/icon.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DateTimeService } from 'src/app/service/datetime.service';
 import { Location } from '@angular/common';
@@ -19,7 +19,7 @@ export class NewFacturaComponent implements OnInit {
 
   oFactura2Send: any;
   id: number = 0;
-  oForm: FormGroup = null;
+  oForm: UntypedFormGroup = null;
   strResult: string = "";
   strUsuarioSession: any;
 
@@ -31,7 +31,7 @@ export class NewFacturaComponent implements OnInit {
   get f() { return this.oForm.controls; }
 
   constructor(
-    private oFormBuilder: FormBuilder,
+    private oFormBuilder: UntypedFormBuilder,
     private oRouter: Router,
     private oFacturaService: FacturaService,
     private oActivatedRoute: ActivatedRoute,

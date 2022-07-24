@@ -2,7 +2,7 @@ import { IProducto } from 'src/app/model/producto-interfaces';
 import { FacturaService } from '../../../../../service/factura.service';
 import { IFactura } from '../../../../../model/factura-interfaces';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICompra, ICompra2Send } from 'src/app/model/compra-interfaces';
 import { CompraService } from 'src/app/service/compra.service';
@@ -28,13 +28,13 @@ export class EditCompraComponent implements OnInit {
   oCompra: ICompra = null;
   oCompra2Send: ICompra2Send = null;
   id: number = null;
-  oForm: FormGroup = null;
+  oForm: UntypedFormGroup = null;
   strResult: string = null;
 
   get f() { return this.oForm?.controls; }
 
   constructor(
-    private oFormBuilder: FormBuilder,
+    private oFormBuilder: UntypedFormBuilder,
     private oRouter: Router,
     private oCompraService: CompraService,
     private oFacturaService: FacturaService,

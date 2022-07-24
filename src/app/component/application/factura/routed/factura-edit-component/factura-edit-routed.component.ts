@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IFactura, IFactura2Send } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
@@ -22,7 +22,7 @@ export class EditFacturaComponent implements OnInit {
   oData2Show: IFactura = null;
   oData2Send: IFactura2Send = null;
   id: number = null;
-  oForm: FormGroup = null;
+  oForm: UntypedFormGroup = null;
   strResult: string = null;
   strUsuarioSession: string;
   strEntity: string = "factura"
@@ -35,7 +35,7 @@ export class EditFacturaComponent implements OnInit {
   get f() { return this.oForm.controls; }
 
   constructor(
-    private oFormBuilder: FormBuilder,
+    private oFormBuilder: UntypedFormBuilder,
     private oRouter: Router,
     private oFacturaService: FacturaService,
     private oUsuarioService: UsuarioService,

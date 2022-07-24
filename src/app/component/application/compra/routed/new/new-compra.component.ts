@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DateTimeService } from 'src/app/service/datetime.service';
 import { Location } from '@angular/common';
@@ -27,14 +27,14 @@ export class NewCompraComponent implements OnInit {
   strTitlePlural: string = "Compra";
   oCompra2Send: ICompra2Send = null;
   id: ICompra = null;
-  oForm: FormGroup = null;
+  oForm: UntypedFormGroup = null;
   strResult: string = "";
   oUserSession: IUsuario;
 
   get f() { return this.oForm.controls; }
 
   constructor(
-    private oFormBuilder: FormBuilder,
+    private oFormBuilder: UntypedFormBuilder,
     private oRouter: Router,
     private oCompraService: CompraService,
     private oActivatedRoute: ActivatedRoute,

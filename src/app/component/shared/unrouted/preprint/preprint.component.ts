@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { IPrint } from 'src/app/model/model-interfaces';
 import { DateTimeService } from 'src/app/service/datetime.service';
 import { IconService } from 'src/app/service/icon.service';
@@ -21,7 +21,7 @@ export class PrePrintComponent implements OnInit {
   cantidad: number;
   fechainicio: string;
   fechafin: string;
-  oForm: FormGroup = null;
+  oForm: UntypedFormGroup = null;
   oData2Send:IPrint=null;
 
   strOperation: string = "imprimir";
@@ -32,7 +32,7 @@ export class PrePrintComponent implements OnInit {
   constructor(
     private oDateTimeService: DateTimeService,
     public oIconService: IconService,
-    private oFormBuilder: FormBuilder,
+    private oFormBuilder: UntypedFormBuilder,
   ) { }
 
   ngOnInit() {
