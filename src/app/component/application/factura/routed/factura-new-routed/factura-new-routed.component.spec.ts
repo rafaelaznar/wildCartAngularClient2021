@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewFacturaComponent } from './new-factura.component';
+import { NewFacturaComponent } from './factura-new-routed.component';
 
 describe('NewFacturaComponent', () => {
   let component: NewFacturaComponent;

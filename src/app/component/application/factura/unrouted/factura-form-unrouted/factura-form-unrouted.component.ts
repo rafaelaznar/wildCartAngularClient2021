@@ -75,7 +75,7 @@ export class FacturaFormUnroutedComponent implements OnInit {
         fecha: ['', Validators.required],
         iva: ['', Validators.required],
         pagado: [''],
-        usuario: ['', Validators.required]
+        id_usuario: ['', Validators.required]
       });
     }
 
@@ -142,11 +142,11 @@ export class FacturaFormUnroutedComponent implements OnInit {
     if (this.oForm) {
       if (this.oForm.valid) {
 
-        console.log(this.oForm.value.fecha);
+        //console.log(this.oForm.value.fecha);
 
-        let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(this.oForm.value.fecha);
-        let mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(this.oForm.value.fecha);
-        let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(this.oForm.value.fecha);
+        //let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(this.oForm.value.fecha);
+        //let mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(this.oForm.value.fecha);
+        //let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(this.oForm.value.fecha);
 
 
 

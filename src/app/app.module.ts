@@ -48,9 +48,9 @@ import { ViewCompraComponent } from './component/application/compra/routed/view/
 import { RemoveCompraComponent } from './component/application/compra/routed/remove/remove-compra.component';
 import { EditCompraComponent } from './component/application/compra/routed/edit/edit-compra.component';
 import { FacturaPlistRoutedComponent } from './component/application/factura/routed/factura-plist-routed/factura-plist-routed.component';
-import { NewFacturaComponent } from './component/application/factura/routed/new/new-factura.component';
+import { FacturaNewRoutedComponent } from './component/application/factura/routed/factura-new-routed/factura-new-routed.component';
 import { FacturaRemoveRoutedComponent } from './component/application/factura/routed/factura-remove-routed/factura-remove-routed.component';
-import { EditFacturaComponent } from './component/application/factura/routed/factura-edit-component/factura-edit-routed.component';
+import { FacturaEditRoutedComponent } from './component/application/factura/routed/factura-edit-component/factura-edit-routed.component';
 import { CompraService } from './service/compra.service';
 import { ProductoService } from './service/producto.service';
 import { CarritoService } from './service/carrito.service';
@@ -163,8 +163,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     // Factura routed components
     FacturaPlistRoutedComponent,
     FacturaViewRoutedComponent,
-    NewFacturaComponent,
-    EditFacturaComponent,
+    FacturaNewRoutedComponent,
+    FacturaEditRoutedComponent,
     FacturaRemoveRoutedComponent,
     // Carrito routed components
     PlistCarritoComponent,

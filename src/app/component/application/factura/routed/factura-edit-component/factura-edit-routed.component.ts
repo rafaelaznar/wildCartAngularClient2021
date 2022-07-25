@@ -14,11 +14,11 @@ import { Location } from '@angular/common';
 declare let $: any;
 
 @Component({
-  selector: 'app-edit-factura',
+  selector: 'app-factura-edit-routed',
   templateUrl: './factura-edit-routed.component.html',
   styleUrls: ['./factura-edit-routed.component.css']
 })
-export class EditFacturaComponent implements OnInit {
+export class FacturaEditRoutedComponent implements OnInit {
 
   oData2Show: IFactura = null;
   oData2Send: IFactura2Send = null;
@@ -61,9 +61,6 @@ export class EditFacturaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
-
   }
 
   get = (): void => {

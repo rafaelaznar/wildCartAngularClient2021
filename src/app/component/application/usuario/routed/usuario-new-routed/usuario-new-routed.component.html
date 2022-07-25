@@ -5,6 +5,7 @@
   <app-header [title]="'Nuevo ' + strTitleSingular" [icon]="oIconService.getIcon(this.strOperation)"
     [iconEntity]="oIconService.getIcon(this.strEntity)">
   </app-header>
+
   <div class="row justify-content-center">
 
     <app-usuario-form-unrouted [strOperation]="strOperation" [id]="id" (msg)="reportResult($event)">
@@ -15,7 +16,7 @@
         <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i> Página
           principal</a>
         <a class="btn btn-primary mx-2" [routerLink]="['/plist']"><i class="fas fa-file-alt"></i> Listado de
-          Posts</a>
+          usuarios</a>
         <a class="btn btn-primary mx-2" (click)="goBack()"><i class="fas fa-arrow-circle-left"></i> Volver </a>
       </div>
     </div>

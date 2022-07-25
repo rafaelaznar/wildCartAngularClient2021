@@ -12,7 +12,8 @@
         <label for="fecha" class="col-sm-2 col-form-label">
             <i [ngClass]="oIconService.getIcon('fecha')"></i> Fecha</label>
         <div class="col-sm-10">
-            <p-calendar formControlName="fecha" [locale]="es" dateFormat="dd/mm/yy" inputId="spanish" [showIcon]="true" inputId="spanish"></p-calendar>
+            <p-calendar formControlName="fecha" [locale]="es" dateFormat="dd/mm/yy" inputId="spanish" [showIcon]="true"
+                inputId="spanish"></p-calendar>
             <div *ngIf="f.fecha.dirty && f.fecha.errors?.required" class="text-danger">
                 Se debe introducir una fecha correcta
             </div>
@@ -42,8 +43,8 @@
 
 
 
-    <div class="row mb-3" app-find-unrouted [entity]="'usuario'" [id]="oFactura2Show.usuario.id"
-        [description]="(oFactura2Show.usuario.nombre + ' ' + oFactura2Show.usuario.apellido1 + ' ' + oFactura2Show.usuario.apellido2).trim()"
+    <div class="row mb-3" app-find-unrouted [entity]="'usuario'" [id]="oFactura2Show?.usuario.id"
+        [description]="oFactura2Show?.usuario.nombre && oFactura2Show?.usuario.apellido1 ? ( oFactura2Show?.usuario.nombre + ' ' + oFactura2Show?.usuario.apellido1 + ' ' + oFactura2Show?.usuario.apellido2).trim() : ''"
         (selection)="onFindSelection($event)">
         <div plist-finder-title>
             <h4 class="text-center">Por favor, selecciona un usuario</h4>
