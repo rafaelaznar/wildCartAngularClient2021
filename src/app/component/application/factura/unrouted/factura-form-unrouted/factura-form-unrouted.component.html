@@ -12,8 +12,7 @@
         <label for="fecha" class="col-sm-2 col-form-label">
             <i [ngClass]="oIconService.getIcon('fecha')"></i> Fecha</label>
         <div class="col-sm-10">
-            <input type="text" name="fecha" id="fecha" formControlName="fecha"
-                class="text ui-widget-content ui-corner-all" />
+            <p-calendar formControlName="fecha" [locale]="es" dateFormat="dd/mm/yy" inputId="spanish" [showIcon]="true" inputId="spanish"></p-calendar>
             <div *ngIf="f.fecha.dirty && f.fecha.errors?.required" class="text-danger">
                 Se debe introducir una fecha correcta
             </div>

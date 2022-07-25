@@ -100,6 +100,8 @@ import { FacturaPlistRowUnroutedComponent } from './component/application/factur
 import { FacturaDetailUnroutedComponent } from './component/application/factura/unrouted/factura-detail-unrouted/factura-detail-unrouted.component';
 import { FacturaViewRoutedComponent } from './component/application/factura/routed/factura-view-routed/factura-view-routed.component';
 import { FacturaFormUnroutedComponent } from './component/application/factura/unrouted/factura-form-unrouted/factura-form-unrouted.component';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -218,6 +220,8 @@ import { FacturaFormUnroutedComponent } from './component/application/factura/un
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    CalendarModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     SessionService,

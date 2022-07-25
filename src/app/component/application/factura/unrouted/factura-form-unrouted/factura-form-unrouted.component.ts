@@ -8,8 +8,8 @@ import { ErrorHandlerService } from 'src/app/service/errorHandler.service';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { CalendarModule } from 'primeng/calendar';
 
-declare let $: any;
 
 @Component({
   selector: 'app-factura-form-unrouted',
@@ -36,6 +36,9 @@ export class FacturaFormUnroutedComponent implements OnInit {
   strStatus: string = null;
   strResult: string = null;
 
+  es: any;
+
+
   get f() {
     return this.oForm.controls;
   }
@@ -52,6 +55,18 @@ export class FacturaFormUnroutedComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.es = {
+      firstDayOfWeek: 1,
+      dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+      dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
+      dayNamesMin: ["D", "L", "M", "X", "J", "V", "S"],
+      monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+      monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+      today: 'Hoy',
+      clear: 'Borrar',
+      dateFormat: 'mm/dd/yyyy',
+    }
+
 
     if (this.strOperation == "edit") {
       this.get();
@@ -63,17 +78,7 @@ export class FacturaFormUnroutedComponent implements OnInit {
         usuario: ['', Validators.required]
       });
     }
-    $('#fecha').datetimepicker({
-      defaultDate: "+1w",
-      numberOfMonths: 1,
-      dateFormat: 'dd/mm/yy',
-      timeFormat: 'hh:mm',
-      showAnim: "fold",
-      onClose: (dateText: string, inst: any) => {
-        this.oForm.controls['fecha'].setValue(dateText);
-        this.oForm.controls['fecha'].markAsDirty();
-      }
-    });
+
   }
 
   get = (): void => {
@@ -81,6 +86,9 @@ export class FacturaFormUnroutedComponent implements OnInit {
       .getOne(this.id)
       .subscribe((oData: IFactura) => {
         this.oFactura2Show = oData;
+    
+        this.oFactura2Show.fecha = new Date(oData.fecha);
+
         this.oForm = this.oFormBuilder.group({
           id: [this.oFactura2Show.id],
           fecha: [this.oFactura2Show.fecha, Validators.required],
@@ -133,8 +141,18 @@ export class FacturaFormUnroutedComponent implements OnInit {
   onSubmit(): void {
     if (this.oForm) {
       if (this.oForm.valid) {
+
+        console.log(this.oForm.value.fecha);
+
+        let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(this.oForm.value.fecha);
+        let mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(this.oForm.value.fecha);
+        let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(this.oForm.value.fecha);
+
+
+
         this.oFactura2Send = {
           id: this.oForm.value.id,
+          //fecha: da + "/" + mo + "/" + ye + " " + "00:00",
           fecha: this.oForm.value.fecha,
           iva: this.oForm.value.iva,
           pagado: this.oForm.value.pagado,
