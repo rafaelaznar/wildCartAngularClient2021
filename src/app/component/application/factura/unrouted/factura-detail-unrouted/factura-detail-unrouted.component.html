@@ -14,7 +14,7 @@
       </tr>
       <tr>
           <th> <i [ngClass]="oIconService.getIcon('fecha')"></i> Fecha</th>
-          <td>{{oFactura?.fecha }}</td>
+          <td>{{oFactura?.fecha | date: 'dd/MM/yyyy' }}</td>
       </tr>
      
       <tr>
