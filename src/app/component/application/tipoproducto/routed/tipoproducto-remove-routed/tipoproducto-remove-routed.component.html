@@ -7,18 +7,7 @@
   </app-header>
 
   <div class="row justify-content-center">
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <th><i [ngClass]="oIconService.getIcon('id')"></i> ID</th>
-          <td>{{oTipoProducto?.id}}</td>
-        </tr>
-        <tr>
-          <th>Nombre</th>
-          <td>{{oTipoProducto?.nombre}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <app-tipoproducto-detail-unrouted [id]=id></app-tipoproducto-detail-unrouted>
   </div>
 
   <div class="row justify-content-center">

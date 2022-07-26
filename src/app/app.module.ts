@@ -92,6 +92,9 @@ import { TipousuarioPlistheaderUnroutedComponent } from './component/application
 import { TipousuarioPlistRowUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-plistrow-unrouted/tipousuario-plistrow-unrouted.component';
 import { TipoproductoPlistRowUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-plistrow-unrouted/tipoproducto-plistrow-unrouted.component';
 import { TipoproductoPlistheaderUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-plistheader-unrouted/tipoproducto-plistheader-unrouted.component';
+import { TipoproductoDetailUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-view-unrouted/tipoproducto-detail-unrouted.component';
+
+
 import { TipousuarioViewUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-view-unrouted/tipousuario-view-unrouted.component';
 import { TipousuarioFormUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-form-unrouted/tipousuario-form-unrouted.component';
 import { ErrorHandlerService } from './service/errorHandler.service';
@@ -204,6 +207,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TipoProductoPlistUnroutedComponent,
     TipoproductoPlistRowUnroutedComponent,
     TipoproductoPlistheaderUnroutedComponent,
+    TipoproductoDetailUnroutedComponent,
 
     // Factura unrouted components
     FacturaPlistUnroutedComponent,
