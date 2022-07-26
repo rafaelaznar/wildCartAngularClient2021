@@ -8,8 +8,8 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 @Component({
   selector: 'app-tipoproducto-view-routed',
-  templateUrl: './view-tipoproducto.component.html',
-  styleUrls: ['./view-tipoproducto.component.css'],
+  templateUrl: './tipoproducto-view-routed.component.html',
+  styleUrls: ['./tipoproducto-view-routed.component.css'],
 })
 export class TipoproductoViewRoutedComponent implements OnInit {
 

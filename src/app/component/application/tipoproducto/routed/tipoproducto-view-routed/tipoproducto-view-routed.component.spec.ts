@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewTipoproductoComponent } from './view-tipoproducto.component';
+import { ViewTipoproductoComponent } from './tipoproducto-view-routed.component';
 
 describe('ViewTipoproductoComponent', () => {
   let component: ViewTipoproductoComponent;
