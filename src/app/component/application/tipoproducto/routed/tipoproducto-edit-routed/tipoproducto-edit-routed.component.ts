@@ -18,80 +18,43 @@ declare let $: any;
 })
 export class TipoproductoEditRoutedComponent implements OnInit {
 
-  strEntity: string = "tipoproducto"
-  strOperation: string = "edit"
-  strTitleSingular: string = "Tipo de producto";
-  strTitlePlural: string = "Tipos de producto";
-  oTipoProducto2Send: ITipoproducto2Send = null;
-  oTipoProducto2Show: ITipoproducto = null;
+  strEntity: string = 'tipoproducto';
+  strOperation: string = 'edit';
+  strTitleSingular: string = 'Tipo de producto';
+  strTitlePlural: string = 'Tipos de producto';
+  strATitleSingular: string = 'El tipo de producto';
+  strATitlePlural: string = 'Los tipos de producto';
+  //
   id: number = null;
-  oForm: UntypedFormGroup = null;
   strResult: string = null;
-  oUserSession: IUsuario;
+  strUsuarioSession: string;
 
-  get f() {
-    return this.oForm.controls;
-  }
 
   constructor(
-    private oFormBuilder: UntypedFormBuilder,
-    private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private oTipoProductoService: TipoproductoService,
     private oActivatedRoute: ActivatedRoute,
-    private oLocation: Location,
-    public oIconService: IconService    
+    public oIconService: IconService,
+    private oLocation: Location
   ) {
-    if (this.oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
+    if (this.oActivatedRoute.snapshot.data.message) {
+      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
+      localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
     } else {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
 
     this.id = this.oActivatedRoute.snapshot.params.id;
-    this.getOne();
+    this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 
-  ngOnInit(): void { }
-
-  getOne = (): void => {
-    this.oTipoProductoService
-      .getOne(this.id)
-      .subscribe((oData: ITipoproducto) => {
-        this.oTipoProducto2Show = oData;
-        this.oForm = this.oFormBuilder.group({
-          id: [this.oTipoProducto2Show.id],
-          nombre: [
-            this.oTipoProducto2Show.nombre,
-            [Validators.required, Validators.minLength(5)],
-          ],
-        });
-      });
-  };
-
-  onSubmit(): void {
-    if (this.oForm) {
-      this.oTipoProducto2Send = {
-        id: this.oForm.value.id,
-        nombre: this.oForm.value.nombre
-      };
-      this.update();
-    }
+  ngOnInit(): void {
   }
 
-  update = (): void => {
-    this.oTipoProductoService
-      .updateOne(this.oTipoProducto2Send)
-      .subscribe((id: number) => {
-        if (id) {
-          this.strResult = this.strTitleSingular + ' modificado correctamente';
-        } else {
-          this.strResult = this.strTitleSingular + ': error en la modificación del registro';
-        }
-        this.openPopup();
-      });
+  reportResult = (oResult: any): void => {
+    this.strResult = oResult.strMsg;
+    this.id = oResult.id;
+    this.openPopup();
   };
 
   goBack(): void {

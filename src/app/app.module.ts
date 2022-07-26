@@ -105,6 +105,7 @@ import { FacturaViewRoutedComponent } from './component/application/factura/rout
 import { FacturaFormUnroutedComponent } from './component/application/factura/unrouted/factura-form-unrouted/factura-form-unrouted.component';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TipoproductoFormUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-form-unrouted/tipoproducto-form-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -208,6 +209,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TipoproductoPlistRowUnroutedComponent,
     TipoproductoPlistheaderUnroutedComponent,
     TipoproductoDetailUnroutedComponent,
+    TipoproductoFormUnroutedComponent,
 
     // Factura unrouted components
     FacturaPlistUnroutedComponent,

@@ -2,13 +2,16 @@
 
 <div class="container my-3">
   <app-header [title]="'Listado de ' + strTitlePlural" [icon]="oIconService.getIcon(this.strOperation)"
-  [iconEntity]="oIconService.getIcon(this.strEntity)">
-</app-header>
+    [iconEntity]="oIconService.getIcon(this.strEntity)">
+  </app-header>
 
   <app-tipoproductoplistunrouted [mode]="true">
-    <header></header>
+    <header>
+      <a [routerLink]="['/tipoproducto/new']" type="button" class="btn btn-success mb-2">
+        <i class="fas fa-plus"></i> Añadir nuevo Tipo de producto
+      </a>
+    </header>
   </app-tipoproductoplistunrouted>
 </div>
 
 <app-footer></app-footer>
-
