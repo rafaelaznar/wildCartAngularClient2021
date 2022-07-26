@@ -12,11 +12,11 @@ declare let $: any;
 
 @Component({
   selector: 'app-new-tipoproducto',
-  templateUrl: './new-tipoproducto.component.html',
-  styleUrls: ['./new-tipoproducto.component.css'],
+  templateUrl: './tipoproducto-new-routed.component.html',
+  styleUrls: ['./tipoproducto-new-routed.component.css'],
 })
 
-export class NewTipoproductoComponent implements OnInit {
+export class TipoproductoNewRoutedComponent implements OnInit {
 
 
   strEntity: string = "tipoproducto"

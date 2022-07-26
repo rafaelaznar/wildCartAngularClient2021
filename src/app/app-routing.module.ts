@@ -17,10 +17,10 @@ import { ProductoNewRoutedComponent } from './component/application/producto/rou
 import { PlistProductoComponent } from './component/application/producto/routed/producto-plist-routed/plist-producto.component';
 import { ProductoRemoveRoutedComponent } from './component/application/producto/routed/producto-remove-routed/producto-remove-routed.component';
 import { ProductoViewRoutedComponent } from './component/application/producto/routed/producto-view-routed/producto-view-routed.component';
-import { EditTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-edit-routed/edit-tipoproducto.component';
-import { NewTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-new-routed/new-tipoproducto.component';
+import { TipoproductoEditRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-edit-routed/tipoproducto-edit-routed.component';
+import { TipoproductoNewRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-new-routed/tipoproducto-new-routed.component';
 import { PlistTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-plist-routed/tipoproducto-plist-routed.component';
-import { RemoveTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-remove-routed/remove-tipoproducto.component';
+import { TipoproductoRemoveRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-remove-routed/tipoproducto-remove-routed.component';
 import { TipoproductoViewRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-view-routed/tipoproducto-view-routed.component';
 import { TipousuarioEditRoutedComponent } from './component/application/tipousuario/routed/tipousuario-edit-routed/tipousuario-edit-routed.component';
 import { TipousuarioPlistRoutedComponent } from './component/application/tipousuario/routed/tipousuario-plist-routed/tipousuario-plist-routed.component';
@@ -62,9 +62,9 @@ const routes: Routes = [
 
   { path: 'tipoproducto/plist', component: PlistTipoproductoComponent, resolve: { message: SessionResolver } },
   { path: 'tipoproducto/view/:id', component: TipoproductoViewRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'tipoproducto/new', component: NewTipoproductoComponent, resolve: { message: SessionResolver } },
-  { path: 'tipoproducto/edit/:id', component: EditTipoproductoComponent, resolve: { message: SessionResolver } },
-  { path: 'tipoproducto/remove/:id', component: RemoveTipoproductoComponent, resolve: { message: SessionResolver } },
+  { path: 'tipoproducto/new', component: TipoproductoNewRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'tipoproducto/edit/:id', component: TipoproductoEditRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'tipoproducto/remove/:id', component: TipoproductoRemoveRoutedComponent, resolve: { message: SessionResolver } },
 
   { path: 'producto/plist', component: PlistProductoComponent, resolve: { message: SessionResolver } },
   { path: 'producto/plist/tipoproducto/:id_tipoproducto', component: PlistProductoComponent, resolve: { message: SessionResolver } },

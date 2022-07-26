@@ -12,11 +12,11 @@ import { IconService } from 'src/app/service/icon.service';
 declare let $: any;
 
 @Component({
-  selector: 'app-edit-tipoproducto',
-  templateUrl: './edit-tipoproducto.component.html',
-  styleUrls: ['./edit-tipoproducto.component.css'],
+  selector: 'app-tipoproducto-edit-routed',
+  templateUrl: './tipoproducto-edit-routed.component.html',
+  styleUrls: ['./tipoproducto-edit-routed.component.css'],
 })
-export class EditTipoproductoComponent implements OnInit {
+export class TipoproductoEditRoutedComponent implements OnInit {
 
   strEntity: string = "tipoproducto"
   strOperation: string = "edit"

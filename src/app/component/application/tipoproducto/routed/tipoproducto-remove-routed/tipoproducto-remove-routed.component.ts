@@ -8,11 +8,11 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: 'app-remove-tipoproducto',
-  templateUrl: './remove-tipoproducto.component.html',
-  styleUrls: ['./remove-tipoproducto.component.css'],
+  selector: 'app-tipoproducto-remove-routed',
+  templateUrl: './tipoproducto-remove-routed.component.html',
+  styleUrls: ['./tipoproducto-remove-routed.component.css'],
 })
-export class RemoveTipoproductoComponent implements OnInit {
+export class TipoproductoRemoveRoutedComponent implements OnInit {
 
   strEntity: string = "tipoproducto"
   strOperation: string = "view"
