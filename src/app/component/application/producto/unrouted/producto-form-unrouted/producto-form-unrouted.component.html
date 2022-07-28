@@ -76,15 +76,11 @@
         </div>
     </div>
 
-    <div class="row mb-3">
-        <label for="tipoproducto" class="col-sm-2 col-form-label"><i
-                [ngClass]="oIconService.getIcon('tipoproducto')"></i> Tipo de producto</label>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" id="tipoproducto" formControlName="tipoproducto"
-                [ngClass]="{'is-valid' : f.tipoproducto.dirty && !(f.tipoproducto.errors?.required) }">
-            <div *ngIf="f.tipoproducto.dirty && f.tipoproducto.errors?.required" class="text-danger">
-                Se debe introducir al menos un id del tipoproducto
-            </div>
+    <div class="row mb-3" app-find-unrouted [entity]="'tipoproducto'" [id]="oProducto2Show?.tipoproducto.id"
+        [description]="oProducto2Show?.tipoproducto.nombre"
+        (selection)="onFindSelection($event)">
+        <div plist-finder-title>
+            <h4 class="text-center">Por favor, selecciona un tipo de producto</h4>
         </div>
     </div>
 

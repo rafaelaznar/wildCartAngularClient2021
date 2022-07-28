@@ -24,5 +24,7 @@
   <app-producto-plist-unrouted [mode]="false" (selection)="onSelection($event)" *ngIf="entity=='producto'">
     <header></header>
   </app-producto-plist-unrouted>
-
+  <app-tipoproducto-plist-unrouted [mode]="false" (selection)="onSelection($event)" *ngIf="entity=='tipoproducto'">
+    <header></header>
+  </app-tipoproducto-plist-unrouted>
 </app-modal>

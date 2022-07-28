@@ -4,6 +4,8 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { ProductoService } from 'src/app/service/producto.service';
 import { IconService } from 'src/app/service/icon.service';
 import { FileService } from 'src/app/service/file.service';
+import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
+import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 
 declare let $: any;
 
@@ -41,7 +43,8 @@ export class ProductoFormUnroutedComponent implements OnInit {
     private oFormBuilder: UntypedFormBuilder,
     private oProductoService: ProductoService,
     private oFileService: FileService,
-    public oIconService: IconService
+    public oIconService: IconService,
+    public oTipoproductoService: TipoproductoService
   ) {
   }
 
@@ -56,7 +59,7 @@ export class ProductoFormUnroutedComponent implements OnInit {
         precio: [''],
         imagen: [''],
         descuento: [''],
-        tipoproducto: ['', Validators.required],
+        id_tipoproducto: ['', Validators.required],
       });
     }
   }
@@ -72,7 +75,7 @@ export class ProductoFormUnroutedComponent implements OnInit {
         precio: this.oProducto2Show.precio,
         imagen: this.oProducto2Show.imagen,
         descuento: this.oProducto2Show.descuento,
-        tipoproducto: [this.oProducto2Show.tipoproducto.id, [Validators.required],],
+        id_tipoproducto: [this.oProducto2Show.tipoproducto.id, [Validators.required],],
       });
     });
   };
@@ -135,7 +138,7 @@ export class ProductoFormUnroutedComponent implements OnInit {
           precio: this.oForm.value.precio,
           imagen: img,
           descuento: this.oForm.value.descuento,
-          tipoproducto: { id: this.oForm.value.tipoproducto },
+          tipoproducto: { id: this.oForm.value.id_tipoproducto },
         }
         if (this.strOperation == "new") {
           this.oProductoService
@@ -164,6 +167,29 @@ export class ProductoFormUnroutedComponent implements OnInit {
         }
       }
     }
+  }
+
+  //ajenas
+
+  onFindSelection($event: any) {
+    this.oForm.controls['id_tipoproducto'].setValue($event);
+    this.oForm.controls['id_tipoproducto'].markAsDirty();
+    this.oTipoproductoService
+      .getOne(this.oForm.controls['id_tipoproducto'].value)
+      .subscribe((oTipoproducto: ITipoproducto) => {
+        if (this.strOperation == "edit") {
+          this.oProducto2Show.tipoproducto = oTipoproducto; //pte!!
+        } else {
+          this.oProducto2Show = {} as IProducto;
+          this.oProducto2Show.tipoproducto = {} as ITipoproducto;
+          this.oProducto2Show.tipoproducto = oTipoproducto;
+        }
+      }, err => {
+        this.oProducto2Show.tipoproducto.nombre = "ERROR";
+        this.oForm.controls['id_tipousuario'].setErrors({ 'incorrect': true });
+      });
+
+    return false;
   }
 
 }

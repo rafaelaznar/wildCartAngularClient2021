@@ -8,7 +8,7 @@ import { ITipoproducto, ITipoproductoPage } from 'src/app/model/tipoproducto-int
 import { IOrder } from 'src/app/model/model-interfaces';
 
 @Component({
-  selector: 'app-tipoproductoplistunrouted',
+  selector: 'app-tipoproducto-plist-unrouted',
   templateUrl: './tipoproducto-plist-unrouted.component.html',
   styleUrls: ['./tipoproducto-plist-unrouted.component.css'],
 })
