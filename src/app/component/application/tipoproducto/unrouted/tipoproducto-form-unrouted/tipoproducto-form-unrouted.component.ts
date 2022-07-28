@@ -3,7 +3,9 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { IconService } from 'src/app/service/icon.service';
 import { ITipoproducto, ITipoproducto2Send } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
-
+import { Subject } from 'rxjs/internal/Subject';
+import { Router } from '@angular/router';
+import { ErrorHandlerService } from 'src/app/service/errorHandler.service';
 
 @Component({
   selector: 'app-tipoproducto-form-unrouted',
@@ -26,6 +28,7 @@ export class TipoproductoFormUnroutedComponent implements OnInit {
 
   oForm: UntypedFormGroup = null;
   strResult: string = null;
+  strStatus: string = null;  
 
   get f() {
     return this.oForm.controls;
@@ -34,7 +37,9 @@ export class TipoproductoFormUnroutedComponent implements OnInit {
   constructor(
     private oFormBuilder: UntypedFormBuilder,
     private oTipoproductoService: TipoproductoService,
-    public oIconService: IconService
+    public oIconService: IconService,
+    private oRouter: Router,
+    private oErrorHandlerService: ErrorHandlerService
   ) {
   }
 
@@ -75,19 +80,56 @@ export class TipoproductoFormUnroutedComponent implements OnInit {
   }
 
   save(): void {
-    this.oTipoproductoService
-      .updateOne(this.oData2Send)
-      .subscribe((id: number) => {
-        if (id) {
-          this.id = id;
-          this.strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
-        } else {
-          this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
-        }
-        this.msg.emit({ strMsg: this.strResult, id: this.id });
-      });
-
+    if (this.strOperation == "new") {
+      this.oTipoproductoService.newOne(this.oData2Send)
+        .subscribe(
+          (id: number) => {
+            if (id>0) {
+              this.id = id;
+              this.strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
+            } else {
+              this.strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
+            }
+            this.msg.emit({ strMsg: this.strResult, id: this.id });
+          },
+          (error) => {
+            this.strResult = "Error al guardar " +
+              this.strATitleSingular.toLowerCase() + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
+            this.openPopup();
+          });
+    } else {
+      this.oTipoproductoService
+        .updateOne(this.oData2Send)
+        .subscribe((id: number) => {
+          if (id>0) {
+            this.id = id;
+            this.strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+          } else {
+            this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+          }
+          this.msg.emit({ strMsg: this.strResult, id: this.id });
+        },
+          (error) => {
+            this.strStatus = error.status;
+            this.strResult = this.oErrorHandlerService.componentHandleError(error);
+            this.openPopup();
+          });
+    }
   };
+  
+  //popup
+
+  eventsSubjectShowPopup: Subject<void> = new Subject<void>();
+
+  openPopup(): void {
+    this.eventsSubjectShowPopup.next();
+  }
+
+  onClosePopup(): void {
+    if (this.strStatus == "401") {
+      this.oRouter.navigate(['/login']);
+    }
+  }
 
 
 }
