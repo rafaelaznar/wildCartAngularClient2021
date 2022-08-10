@@ -1,0 +1,23 @@
+<div class="row justify-content-between my-3">
+    <div class="col-md text-start">
+      <h6>{{strFilteredMessage}}</h6>
+    </div>
+    <div class="col-md text-center">
+        <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="strTitlePlural" (eeFilter)="onSetFilter($event)" ></app-search-unrouted>
+    </div>
+    <div class="col-md text-end">
+      <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{strTitlePlural}}</h4>
+    </div>
+  </div>
+  
+  <div class="row justify-content-between">
+    <div class="col-md text-start">
+      <app-pagination-unrouted [nPage]="nPage" [nTotalPages]="nTotalPages" (eePage)="onSetPage($event)" ></app-pagination-unrouted>
+    </div>
+    <div class="col-md text-center">
+      <ng-content select="header"></ng-content>
+    </div>
+    <div class="col-md text-end">
+      <app-rpp-unrouted [nPageSize]="nPageSize" (eeRpp)="onSetRpp($event)"></app-rpp-unrouted>
+    </div>
+  </div>

@@ -42,7 +42,7 @@ import { NewCarritoComponent } from './component/application/carrito/routed/new/
 import { ViewCarritoComponent } from './component/application/carrito/routed/view/view-carrito.component';
 import { RemoveCarritoComponent } from './component/application/carrito/routed/remove/remove-carrito.component';
 import { EditCarritoComponent } from './component/application/carrito/routed/edit/edit-carrito.component';
-import { PlistCompraComponent } from './component/application/compra/routed/plist/plist-compra.component';
+import { CompraPlistRoutedComponent } from './component/application/compra/routed/compra-plist-routed/compra-plist-routed.component';
 import { NewCompraComponent } from './component/application/compra/routed/new/new-compra.component';
 import { ViewCompraComponent } from './component/application/compra/routed/view/view-compra.component';
 import { RemoveCompraComponent } from './component/application/compra/routed/remove/remove-compra.component';
@@ -106,6 +106,9 @@ import { FacturaFormUnroutedComponent } from './component/application/factura/un
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TipoproductoFormUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-form-unrouted/tipoproducto-form-unrouted.component';
+import { CompraPlistRowUnroutedComponent } from './component/application/compra/unrouted/compra-plistrow-unrouted/compra-plistrow-unrouted.component';
+import { CompraPlistheaderUnroutedComponent } from './component/application/compra/unrouted/compra-plistheader-unrouted/compra-plistheader-unrouted.component';
+import { CompraPlistUnroutedComponent } from './component/application/compra/unrouted/compra-plist-unrouted/compra-plist-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -124,7 +127,7 @@ import { TipoproductoFormUnroutedComponent } from './component/application/tipop
     PlistrowbuttonsUnroutedComponent,
     ViewbuttonsUnroutedComponent,
 
-    
+
     //
     // shared routed
     LoginComponent,
@@ -159,7 +162,7 @@ import { TipoproductoFormUnroutedComponent } from './component/application/tipop
     ProductoEditRoutedComponent,
     ProductoRemoveRoutedComponent,
     // Compra routed components
-    PlistCompraComponent,
+    CompraPlistRoutedComponent,
     ViewCompraComponent,
     NewCompraComponent,
     EditCompraComponent,
@@ -182,6 +185,7 @@ import { TipoproductoFormUnroutedComponent } from './component/application/tipop
     //
     // unrouted components
     //
+
     // Usuario unrouted components
     UsuarioPlistUnroutedComponent,
     UsuarioViewUnroutedComponent,
@@ -215,10 +219,15 @@ import { TipoproductoFormUnroutedComponent } from './component/application/tipop
     FacturaPlistUnroutedComponent,
     FacturaPlistheaderUnroutedComponent,
     FacturaPlistRowUnroutedComponent,
-    FacturaDetailUnroutedComponent,   
-    FacturaFormUnroutedComponent, 
-    
-    
+    FacturaDetailUnroutedComponent,
+    FacturaFormUnroutedComponent,
+
+    // Compra unrouted components
+    CompraPlistRowUnroutedComponent,
+    CompraPlistheaderUnroutedComponent,
+    CompraPlistUnroutedComponent,
+
+
   ],
   imports: [
     HttpClientModule,
@@ -249,4 +258,4 @@ import { TipoproductoFormUnroutedComponent } from './component/application/tipop
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

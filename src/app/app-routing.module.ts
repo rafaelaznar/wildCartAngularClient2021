@@ -5,7 +5,7 @@ import { HomeComponent } from './component/shared/routed/home/home.component';
 import { LogoutComponent } from './component/shared/routed/logout/logout.component';
 import { EditCompraComponent } from './component/application/compra/routed/edit/edit-compra.component';
 import { NewCompraComponent } from './component/application/compra/routed/new/new-compra.component';
-import { PlistCompraComponent } from './component/application/compra/routed/plist/plist-compra.component';
+import { CompraPlistRoutedComponent } from './component/application/compra/routed/compra-plist-routed/compra-plist-routed.component';
 import { RemoveCompraComponent } from './component/application/compra/routed/remove/remove-compra.component';
 import { ViewCompraComponent } from './component/application/compra/routed/view/view-compra.component';
 import { FacturaEditRoutedComponent } from './component/application/factura/routed/factura-edit-component/factura-edit-routed.component';
@@ -73,9 +73,9 @@ const routes: Routes = [
   { path: 'producto/edit/:id', component: ProductoEditRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'producto/remove/:id', component: ProductoRemoveRoutedComponent, resolve: { message: SessionResolver } },
 
-  { path: 'compra/plist', component: PlistCompraComponent, resolve: { message: SessionResolver } },
-  { path: 'compra/plist/factura/:id_factura', component: PlistCompraComponent, resolve: { message: SessionResolver } },
-  { path: 'compra/plist/producto/:id_producto', component: PlistCompraComponent, resolve: { message: SessionResolver } },
+  { path: 'compra/plist', component: CompraPlistRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'compra/plist/factura/:id_factura', component: CompraPlistRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'compra/plist/producto/:id_producto', component: CompraPlistRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'compra/view/:id', component: ViewCompraComponent, resolve: { message: SessionResolver } },  
   { path: 'compra/new', component: NewCompraComponent, resolve: { message: SessionResolver } },  
   { path: 'compra/edit/:id', component: EditCompraComponent, resolve: { message: SessionResolver } },

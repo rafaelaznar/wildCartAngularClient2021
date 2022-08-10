@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlistCompraComponent } from './plist-compra.component';
+import { CompraPlistRoutedComponent } from './compra-plist-routed.component';
 
 describe('PlistCompraComponent', () => {
-  let component: PlistCompraComponent;
-  let fixture: ComponentFixture<PlistCompraComponent>;
+  let component: CompraPlistRoutedComponent;
+  let fixture: ComponentFixture<CompraPlistRoutedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlistCompraComponent ]
+      declarations: [ CompraPlistRoutedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlistCompraComponent);
+    fixture = TestBed.createComponent(CompraPlistRoutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
