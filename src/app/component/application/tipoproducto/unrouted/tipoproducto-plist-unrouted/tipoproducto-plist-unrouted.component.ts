@@ -12,7 +12,7 @@ import { IOrder } from 'src/app/model/model-interfaces';
   templateUrl: './tipoproducto-plist-unrouted.component.html',
   styleUrls: ['./tipoproducto-plist-unrouted.component.css'],
 })
-export class TipoProductoPlistUnroutedComponent implements OnInit {
+export class TipoproductoPlistUnroutedComponent implements OnInit {
 
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() selection = new EventEmitter<number>();

@@ -1,20 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TipoproductoPlistUnroutedComponent } from './tipoproducto-plist-unrouted.component';
 
-import { TipoproductoplistunroutedComponent } from './tipoproductoplistunrouted.component';
 
-describe('TipoproductoplistunroutedComponent', () => {
-  let component: TipoproductoplistunroutedComponent;
-  let fixture: ComponentFixture<TipoproductoplistunroutedComponent>;
+
+describe('TipoproductoPlistUnroutedComponent', () => {
+  let component: TipoproductoPlistUnroutedComponent;
+  let fixture: ComponentFixture<TipoproductoPlistUnroutedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TipoproductoplistunroutedComponent ]
+      declarations: [ TipoproductoPlistUnroutedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TipoproductoplistunroutedComponent);
+    fixture = TestBed.createComponent(TipoproductoPlistUnroutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

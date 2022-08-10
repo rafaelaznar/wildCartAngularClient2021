@@ -68,7 +68,7 @@ import { PopupComponent } from './component/shared/unrouted/popup/popup.componen
 import { UsuarioViewUnroutedComponent } from './component/application/usuario/unrouted/usuario-view-unrouted/usuario-view-unrouted.component';
 import { FileService } from './service/file.service';
 import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
-import { TipoProductoPlistUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-plist-unrouted/tipoproducto-plist-unrouted.component';
+import { TipoproductoPlistUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-plist-unrouted/tipoproducto-plist-unrouted.component';
 import { ProductoPlistUnroutedComponent } from './component/application/producto/unrouted/producto-plist-unrouted/producto-plist-unrouted.component';
 
 import { FacturaPlistUnroutedComponent } from './component/application/factura/unrouted/factura-plist-unrouted/factura-plist-unrouted.component';
@@ -205,7 +205,7 @@ import { TipoproductoFormUnroutedComponent } from './component/application/tipop
     ProductoCPlistUnroutedComponent,
 
     // TipoProducto unrouted components
-    TipoProductoPlistUnroutedComponent,
+    TipoproductoPlistUnroutedComponent,
     TipoproductoPlistRowUnroutedComponent,
     TipoproductoPlistheaderUnroutedComponent,
     TipoproductoDetailUnroutedComponent,
