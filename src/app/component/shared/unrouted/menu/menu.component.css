@@ -1,0 +1,9 @@
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show>.nav-link {
+    border-style: solid;
+    border-color: grey;
+    border-width: 9;
+    border-radius: 70;
+    background-color: rgb(238, 189, 173);
+    
+}
