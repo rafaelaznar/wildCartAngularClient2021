@@ -20,7 +20,7 @@
   <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField == 'fecha' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('descuento_usuario')">
-  <i [ngClass]="oIconService.getIcon('porcentaje')"></i> Descuento
+  <i [ngClass]="oIconService.getIcon('porcentaje')"></i> Desc.
   usuario
   <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="
       strSortField == 'descuento_usuario' &&
@@ -32,16 +32,11 @@
     "></i>
 </th>
 <th (click)="doSetOrder('descuento_producto')">
-  <i [ngClass]="oIconService.getIcon('porcentaje')"></i> Descuento
-  producto
-  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="
-      strSortField == 'descuento_producto' &&
-      strSortDirection == 'asc'
-    "></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="
-      strSortField == 'descuento_producto' &&
-      strSortDirection == 'desc'
-    "></i>
+  <i [ngClass]="oIconService.getIcon('porcentaje')"></i> Desc. producto
+  <i [ngClass]="oIconService.getIcon('flechaUp')"
+    *ngIf="strSortField == 'descuento_producto' && strSortDirection == 'asc'"></i>
+  <i [ngClass]="oIconService.getIcon('flechaDown')"
+    *ngIf="strSortField == 'descuento_producto' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('producto')">
   <i [ngClass]="oIconService.getIcon('producto')"></i> Producto
