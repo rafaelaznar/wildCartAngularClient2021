@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewCompraComponent } from './view-compra.component';
+import { CompraRemoveRoutedComponent } from './compra-remove-routed.component';
 
-describe('ViewCompraComponent', () => {
-  let component: ViewCompraComponent;
-  let fixture: ComponentFixture<ViewCompraComponent>;
+describe('CompraRemoveRoutedComponent', () => {
+  let component: CompraRemoveRoutedComponent;
+  let fixture: ComponentFixture<CompraRemoveRoutedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewCompraComponent ]
+      declarations: [ CompraRemoveRoutedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewCompraComponent);
+    fixture = TestBed.createComponent(CompraRemoveRoutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

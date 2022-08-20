@@ -44,8 +44,8 @@ import { RemoveCarritoComponent } from './component/application/carrito/routed/r
 import { EditCarritoComponent } from './component/application/carrito/routed/edit/edit-carrito.component';
 import { CompraPlistRoutedComponent } from './component/application/compra/routed/compra-plist-routed/compra-plist-routed.component';
 import { NewCompraComponent } from './component/application/compra/routed/new/new-compra.component';
-import { ViewCompraComponent } from './component/application/compra/routed/view/view-compra.component';
-import { RemoveCompraComponent } from './component/application/compra/routed/remove/remove-compra.component';
+import { CompraViewRoutedComponent } from './component/application/compra/routed/compra-view-routed/compra-view-routed.component';
+import { CompraRemoveRoutedComponent } from './component/application/compra/routed/compra-remove-routed/compra-remove-routed.component';
 import { EditCompraComponent } from './component/application/compra/routed/edit/edit-compra.component';
 import { FacturaPlistRoutedComponent } from './component/application/factura/routed/factura-plist-routed/factura-plist-routed.component';
 import { FacturaNewRoutedComponent } from './component/application/factura/routed/factura-new-routed/factura-new-routed.component';
@@ -109,6 +109,7 @@ import { TipoproductoFormUnroutedComponent } from './component/application/tipop
 import { CompraPlistRowUnroutedComponent } from './component/application/compra/unrouted/compra-plistrow-unrouted/compra-plistrow-unrouted.component';
 import { CompraPlistheaderUnroutedComponent } from './component/application/compra/unrouted/compra-plistheader-unrouted/compra-plistheader-unrouted.component';
 import { CompraPlistUnroutedComponent } from './component/application/compra/unrouted/compra-plist-unrouted/compra-plist-unrouted.component';
+import { CompraDetailUnroutedComponent } from './component/application/compra/unrouted/compra-detail-unrouted/compra-detail-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -163,10 +164,10 @@ import { CompraPlistUnroutedComponent } from './component/application/compra/unr
     ProductoRemoveRoutedComponent,
     // Compra routed components
     CompraPlistRoutedComponent,
-    ViewCompraComponent,
+    CompraViewRoutedComponent,
     NewCompraComponent,
     EditCompraComponent,
-    RemoveCompraComponent,
+    CompraRemoveRoutedComponent,
     // Factura routed components
     FacturaPlistRoutedComponent,
     FacturaViewRoutedComponent,
@@ -226,6 +227,7 @@ import { CompraPlistUnroutedComponent } from './component/application/compra/unr
     CompraPlistRowUnroutedComponent,
     CompraPlistheaderUnroutedComponent,
     CompraPlistUnroutedComponent,
+    CompraDetailUnroutedComponent
 
 
   ],

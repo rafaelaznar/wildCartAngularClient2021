@@ -1,0 +1,36 @@
+<table class="table table-striped">
+  <tbody>
+      <tr>
+          <th><i [ngClass]="oIconService.getIcon('id')"></i> ID</th>
+          <td>{{oCompra?.id}}</td>
+      </tr>
+      <tr>
+          <th>Cantidad</th>
+          <td>{{oCompra?.cantidad}}</td>
+      </tr>
+      <tr>
+          <th>Precio</th>
+          <td>{{oCompra?.precio}}</td>
+      </tr>
+      <tr>
+          <th>Fecha</th>
+          <td>{{oCompra?.fecha | date: 'dd/MM/yyyy'}}</td>
+      </tr>
+      <tr>
+          <th>Descuento usuario</th>
+          <td>{{oCompra?.descuento_usuario}}</td>
+      </tr>
+      <tr>
+          <th>Descuento producto</th>
+          <td>{{oCompra?.descuento_producto}}</td>
+      </tr>
+      <tr>
+          <th>Id producto</th>
+          <td>{{oCompra?.producto.id  }}</td>
+      </tr>
+      <tr>
+          <th>Id factura</th>
+          <td>{{oCompra?.factura?.id}}</td>
+      </tr>
+  </tbody>
+</table>
