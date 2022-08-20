@@ -7,7 +7,7 @@
     {{oFactura?.usuario?.nombre + ' ' + oFactura?.usuario?.apellido1 + ' ' + oFactura?.usuario?.apellido2 }}
   </button>
 </td>
-<td class="text-center">{{oFactura?.fecha}}</td>
+<td class="text-center">{{oFactura?.fecha | date: 'dd/MM/yyyy'}}</td>
 <td style="text-align: center;"><button class="btn btn-outline-secondary btn-sm"
     [routerLink]="['/compra/plist/factura/',oFactura.id]">{{oFactura?.compras}} <i
       [ngClass]="oIconService.getIcon('compra')"></i></button></td>
