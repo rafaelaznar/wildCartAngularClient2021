@@ -22,9 +22,9 @@ export class TipoproductoFormUnroutedComponent implements OnInit {
   oData2Show: ITipoproducto = null;
   oData2Send: ITipoproducto2Send = null;
 
-  strEntity: string = 'tipousuario';
-  strTitleSingular: string = 'Tipo de usuario';
-  strATitleSingular: string = 'El tipo de usuario';
+  strEntity: string = 'tipoproducto';
+  strTitleSingular: string = 'Tipo de producto';
+  strATitleSingular: string = 'El tipo de producto';
 
   oForm: UntypedFormGroup = null;
   strResult: string = null;

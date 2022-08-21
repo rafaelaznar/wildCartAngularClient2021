@@ -43,10 +43,10 @@ import { ViewCarritoComponent } from './component/application/carrito/routed/vie
 import { RemoveCarritoComponent } from './component/application/carrito/routed/remove/remove-carrito.component';
 import { EditCarritoComponent } from './component/application/carrito/routed/edit/edit-carrito.component';
 import { CompraPlistRoutedComponent } from './component/application/compra/routed/compra-plist-routed/compra-plist-routed.component';
-import { NewCompraComponent } from './component/application/compra/routed/new/new-compra.component';
+import { CompraNewRoutedComponent } from './component/application/compra/routed/compra-new-routed/compra-new-routed.component';
+import { CompraEditRoutedComponent } from './component/application/compra/routed/compra-edit-routed/compra-edit-routed.component';
 import { CompraViewRoutedComponent } from './component/application/compra/routed/compra-view-routed/compra-view-routed.component';
 import { CompraRemoveRoutedComponent } from './component/application/compra/routed/compra-remove-routed/compra-remove-routed.component';
-import { EditCompraComponent } from './component/application/compra/routed/edit/edit-compra.component';
 import { FacturaPlistRoutedComponent } from './component/application/factura/routed/factura-plist-routed/factura-plist-routed.component';
 import { FacturaNewRoutedComponent } from './component/application/factura/routed/factura-new-routed/factura-new-routed.component';
 import { FacturaRemoveRoutedComponent } from './component/application/factura/routed/factura-remove-routed/factura-remove-routed.component';
@@ -110,6 +110,7 @@ import { CompraPlistRowUnroutedComponent } from './component/application/compra/
 import { CompraPlistheaderUnroutedComponent } from './component/application/compra/unrouted/compra-plistheader-unrouted/compra-plistheader-unrouted.component';
 import { CompraPlistUnroutedComponent } from './component/application/compra/unrouted/compra-plist-unrouted/compra-plist-unrouted.component';
 import { CompraDetailUnroutedComponent } from './component/application/compra/unrouted/compra-detail-unrouted/compra-detail-unrouted.component';
+import { CompraFormUnroutedComponent } from './component/application/compra/unrouted/compra-form-unrouted/compra-form-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -165,8 +166,8 @@ import { CompraDetailUnroutedComponent } from './component/application/compra/un
     // Compra routed components
     CompraPlistRoutedComponent,
     CompraViewRoutedComponent,
-    NewCompraComponent,
-    EditCompraComponent,
+    CompraNewRoutedComponent,
+    CompraEditRoutedComponent,
     CompraRemoveRoutedComponent,
     // Factura routed components
     FacturaPlistRoutedComponent,
@@ -227,7 +228,8 @@ import { CompraDetailUnroutedComponent } from './component/application/compra/un
     CompraPlistRowUnroutedComponent,
     CompraPlistheaderUnroutedComponent,
     CompraPlistUnroutedComponent,
-    CompraDetailUnroutedComponent
+    CompraDetailUnroutedComponent,
+    CompraFormUnroutedComponent
 
 
   ],

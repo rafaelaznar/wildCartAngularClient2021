@@ -21,6 +21,7 @@ export class findUnroutedComponent implements OnInit {
 
   ngOnInit() {
     this.dirty = false;
+    console.log("----->>>>>" + this.entity);
   }
 
   //modal

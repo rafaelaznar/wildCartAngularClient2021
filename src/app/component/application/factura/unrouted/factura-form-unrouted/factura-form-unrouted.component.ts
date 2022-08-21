@@ -182,7 +182,7 @@ export class FacturaFormUnroutedComponent implements OnInit {
         }
       }, err => {
         this.oFactura2Show.usuario.nombre = "ERROR";
-        this.oForm.controls['id_tipousuario'].setErrors({ 'incorrect': true });
+        this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
       });
 
     return false;
