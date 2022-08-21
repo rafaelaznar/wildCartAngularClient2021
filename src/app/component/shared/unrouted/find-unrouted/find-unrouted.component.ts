@@ -33,8 +33,13 @@ export class findUnroutedComponent implements OnInit {
   eventsSubjectShowModal: Subject<void> = new Subject<void>();
   eventsSubjectHideModal: Subject<void> = new Subject<void>();
 
+  //eventsSubjectShowModal: EventEmitter<void> = new EventEmitter();
+  //eventsSubjectHideModal: EventEmitter<void> = new EventEmitter();
+
   openModal(): void {
+    console.log("----->>>>>" + this.entity);
     this.eventsSubjectShowModal.next();
+    console.log(this.eventsSubjectShowModal)
     this.showingModal = true;
   }
 
@@ -65,4 +70,7 @@ export class findUnroutedComponent implements OnInit {
     this.selection.emit($event);
   }
 
+  generateRandomIntegerInRange(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 }

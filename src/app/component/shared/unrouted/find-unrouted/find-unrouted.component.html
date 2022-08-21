@@ -13,7 +13,8 @@
 </div>
 
 <app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
-  (close)="onCloseModal()">
+  (close)="onCloseModal()" [mimodal]="entity + generateRandomIntegerInRange(10000,99999)"> 
+  {{entity}}
   <ng-content select="[plist-finder-title]"></ng-content>
   <app-tipousuario-plist-unrouted [mode]="false" (selection)="onSelection($event)" *ngIf="entity=='tipousuario'">
     <header></header>
