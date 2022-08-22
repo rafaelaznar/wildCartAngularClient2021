@@ -72,6 +72,7 @@ export class FacturaFormUnroutedComponent implements OnInit {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
+        id: [''],
         fecha: ['', Validators.required],
         iva: ['', Validators.required],
         pagado: [''],

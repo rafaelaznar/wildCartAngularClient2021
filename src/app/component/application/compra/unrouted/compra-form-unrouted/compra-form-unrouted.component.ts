@@ -55,6 +55,7 @@ export class CompraFormUnroutedComponent implements OnInit {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
+        id: [''],
         cantidad: ['', Validators.required],
         precio: ['', Validators.required],
         fecha: ['', Validators.required],
