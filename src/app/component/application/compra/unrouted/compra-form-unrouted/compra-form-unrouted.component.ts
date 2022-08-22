@@ -55,8 +55,15 @@ export class CompraFormUnroutedComponent implements OnInit {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
-        nombre: ['', Validators.required],
+        cantidad: ['', Validators.required],
+        precio: ['', Validators.required],
+        fecha: ['', Validators.required],
+        descuento_usuario: ['', Validators.required],
+        descuento_producto: ['', Validators.required],
+        id_producto: ['', Validators.required],
+        id_factura: ['', Validators.required]
       });
+
     }
 
   }
@@ -73,8 +80,8 @@ export class CompraFormUnroutedComponent implements OnInit {
           fecha: [this.oData2Show.fecha, Validators.required],
           descuento_usuario: [this.oData2Show.descuento_usuario, Validators.required],
           descuento_producto: [this.oData2Show.descuento_producto, Validators.required],
-          producto: [this.oData2Show.producto.id, Validators.required],
-          factura: [this.oData2Show.factura?.id]
+          id_producto: [this.oData2Show.producto.id, Validators.required],
+          id_factura: [this.oData2Show.factura.id, Validators.required]
         });
       });
   };
@@ -90,10 +97,10 @@ export class CompraFormUnroutedComponent implements OnInit {
           descuento_usuario: this.oForm.value.descuento_usuario,
           descuento_producto: this.oForm.value.descuento_producto,
           producto: {
-            id: this.oForm.value.producto
+            id: this.oForm.value.id_producto
           },
           factura: {
-            id: this.oForm.value.factura
+            id: this.oForm.value.id_factura
           },
         };
         this.save();
