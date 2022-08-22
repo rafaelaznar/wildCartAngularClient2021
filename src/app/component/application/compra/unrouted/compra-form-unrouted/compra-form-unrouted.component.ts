@@ -158,9 +158,11 @@ export class CompraFormUnroutedComponent implements OnInit {
       .getOne(this.oForm.controls['id_producto'].value)
       .subscribe((oProducto: IProducto) => {
         if (this.strOperation == "edit") {
-          this.oData2Show.producto = oProducto; //pte!!
+          this.oData2Show.producto = oProducto;
         } else {
-          this.oData2Show = {} as ICompra;
+          if (!this.oData2Show) {
+            this.oData2Show = {} as ICompra;
+          }
           this.oData2Show.producto = {} as IProducto;
           this.oData2Show.producto = oProducto;
         }
@@ -179,9 +181,11 @@ export class CompraFormUnroutedComponent implements OnInit {
       .getOne(this.oForm.controls['id_factura'].value)
       .subscribe((oFactura: IFactura) => {
         if (this.strOperation == "edit") {
-          this.oData2Show.factura = oFactura; //pte!!
+          this.oData2Show.factura = oFactura;
         } else {
-          this.oData2Show = {} as ICompra;
+          if (!this.oData2Show) {
+            this.oData2Show = {} as ICompra;
+          }
           this.oData2Show.factura = {} as IFactura;
           this.oData2Show.factura = oFactura;
         }
