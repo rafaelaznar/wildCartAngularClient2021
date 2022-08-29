@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <tbody>
+      <tr>
+        <th><i [ngClass]="oIconService.getIcon('id')"></i> ID</th>
+        <td>{{ oCarrito?.id }}</td>
+      </tr>
+      <tr>
+        <th>Cantidad</th>
+        <td>{{ oCarrito?.cantidad }}</td>
+      </tr>
+      <tr>
+        <th>Precio</th>
+        <td>{{ oCarrito?.precio }}</td>
+      </tr>
+      <tr>
+        <th><i [ngClass]="oIconService.getIcon('producto')"></i> Producto</th>
+        <td>{{ oCarrito?.producto?.nombre }}</td>
+      </tr>
+      <tr>
+        <th><i [ngClass]="oIconService.getIcon('usuario')"></i> Usuario</th>
+        <td>{{ oCarrito?.usuario?.nombre }}</td>
+      </tr>
+    </tbody>
+  </table>

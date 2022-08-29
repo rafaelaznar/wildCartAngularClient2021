@@ -110,6 +110,10 @@ import { CompraPlistRowUnroutedComponent } from './component/application/compra/
 import { CompraPlistheaderUnroutedComponent } from './component/application/compra/unrouted/compra-plistheader-unrouted/compra-plistheader-unrouted.component';
 import { CompraPlistUnroutedComponent } from './component/application/compra/unrouted/compra-plist-unrouted/compra-plist-unrouted.component';
 import { CompraDetailUnroutedComponent } from './component/application/compra/unrouted/compra-detail-unrouted/compra-detail-unrouted.component';
+
+import { CarritoDetailUnroutedComponent } from './component/application/carrito/unrouted/carrito-detail-unrouted/carrito-detail-unrouted.component';
+
+
 import { CompraFormUnroutedComponent } from './component/application/compra/unrouted/compra-form-unrouted/compra-form-unrouted.component';
 
 @NgModule({
@@ -229,8 +233,10 @@ import { CompraFormUnroutedComponent } from './component/application/compra/unro
     CompraPlistheaderUnroutedComponent,
     CompraPlistUnroutedComponent,
     CompraDetailUnroutedComponent,
-    CompraFormUnroutedComponent
+    CompraFormUnroutedComponent,
 
+    // Carrito unrouted components
+    CarritoDetailUnroutedComponent
 
   ],
   imports: [
