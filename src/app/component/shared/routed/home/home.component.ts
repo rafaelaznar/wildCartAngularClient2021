@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
 
 
-    if (this.oRoute.snapshot.data.message) {
+    if (this.oActivatedRoute.snapshot.data && this.oRoute.snapshot.data.message) {
       this.usuarioSession = this.oRoute.snapshot.data.message;
       this.tipousuarioSession_id=this.usuarioSession.tipousuario.id;
       localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));

@@ -34,6 +34,18 @@ export class CompraFormUnroutedComponent implements OnInit {
   strResult: string = null;
   strStatus: string = null;
 
+  es: any = {
+    firstDayOfWeek: 1,
+    dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+    dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
+    dayNamesMin: ["D", "L", "M", "X", "J", "V", "S"],
+    monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+    monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+    today: 'Hoy',
+    clear: 'Borrar',
+    dateFormat: 'mm/dd/yyyy',
+  };
+
   get f() {
     return this.oForm.controls;
   }
@@ -94,7 +106,7 @@ export class CompraFormUnroutedComponent implements OnInit {
           id: this.oForm.value.id,
           cantidad: this.oForm.value.cantidad,
           precio: this.oForm.value.precio,
-          fecha: this.oForm.value.fecha.replace("-", "/").replace("-", "/"),
+          fecha: this.oForm.value.fecha,
           descuento_usuario: this.oForm.value.descuento_usuario,
           descuento_producto: this.oForm.value.descuento_producto,
           producto: {

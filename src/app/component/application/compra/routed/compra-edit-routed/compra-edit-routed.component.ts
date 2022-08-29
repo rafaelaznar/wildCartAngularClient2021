@@ -33,7 +33,7 @@ export class CompraEditRoutedComponent implements OnInit {
     public oIconService: IconService,
     private oLocation: Location
   ) {
-    if (this.oActivatedRoute.snapshot.data.message) {
+    if (this.oActivatedRoute.snapshot.data && this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
     } else {

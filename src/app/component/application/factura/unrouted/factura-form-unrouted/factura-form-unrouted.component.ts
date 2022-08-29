@@ -36,7 +36,17 @@ export class FacturaFormUnroutedComponent implements OnInit {
   strStatus: string = null;
   strResult: string = null;
 
-  es: any;
+  es: any = {
+    firstDayOfWeek: 1,
+    dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+    dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
+    dayNamesMin: ["D", "L", "M", "X", "J", "V", "S"],
+    monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+    monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+    today: 'Hoy',
+    clear: 'Borrar',
+    dateFormat: 'mm/dd/yyyy',
+  };
 
 
   get f() {
@@ -87,7 +97,7 @@ export class FacturaFormUnroutedComponent implements OnInit {
       .getOne(this.id)
       .subscribe((oData: IFactura) => {
         this.oFactura2Show = oData;
-    
+
         this.oFactura2Show.fecha = new Date(oData.fecha);
 
         this.oForm = this.oFormBuilder.group({
