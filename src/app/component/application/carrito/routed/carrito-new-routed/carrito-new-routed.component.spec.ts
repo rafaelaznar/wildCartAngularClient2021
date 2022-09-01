@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CompraNewRoutedComponent } from './compra-new-routed.component';
+import { CarritoNewRoutedComponent } from './carrito-new-routed.component';
 
-describe('TipoproductoNewRoutedComponent', () => {
-  let component: CompraNewRoutedComponent;
-  let fixture: ComponentFixture<CompraNewRoutedComponent>;
+describe('CarritoNewRoutedComponent', () => {
+  let component: CarritoNewRoutedComponent;
+  let fixture: ComponentFixture<CarritoNewRoutedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CompraNewRoutedComponent ]
+      declarations: [ CarritoNewRoutedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CompraNewRoutedComponent);
+    fixture = TestBed.createComponent(CarritoNewRoutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
