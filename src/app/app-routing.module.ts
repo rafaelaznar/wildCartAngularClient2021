@@ -28,7 +28,6 @@ import { UsuarioNewRoutedComponent } from './component/application/usuario/route
 import { UsuarioPlistRoutedComponent } from './component/application/usuario/routed/usuario-plist-routed/usuario-plist-routed.component';
 import { UsuarioRemoveRoutedComponent } from './component/application/usuario/routed/usuario-remove-routed/usuario-remove-routed.component';
 import { UsuarioViewRoutedComponent } from './component/application/usuario/routed/usuario-view-routed/usuario-view-routed.component';
-import { PlistCarritoComponent } from './component/application/carrito/routed/plist/plist-carrito.component';
 import { NewCarritoComponent } from './component/application/carrito/routed/new/new-carrito.component';
 import { EditCarritoComponent } from './component/application/carrito/routed/edit/edit-carrito.component';
 import { GenerateComponent } from './component/shared/routed/generate/generate.component';
@@ -39,6 +38,7 @@ import { CompraNewRoutedComponent } from './component/application/compra/routed/
 import { CompraEditRoutedComponent } from './component/application/compra/routed/compra-edit-routed/compra-edit-routed.component';
 import { CarritoViewRoutedComponent } from './component/application/carrito/routed/carrito-view-routed/carrito-view-routed.component';
 import { CarritoRemoveRoutedComponent } from './component/application/carrito/routed/carrito-remove-routed/carrito-remove-routed.component';
+import { CarritoPlistRoutedComponent } from './component/application/carrito/routed/carrito-plist-routed/carrito-plist-routed.component';
 
 
 const routes: Routes = [
@@ -89,9 +89,9 @@ const routes: Routes = [
   { path: 'factura/edit/:id', component: FacturaEditRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'factura/remove/:id', component: FacturaRemoveRoutedComponent, resolve: { message: SessionResolver } },
 
-  { path: 'carrito/plist', component: PlistCarritoComponent, resolve: { message: SessionResolver } },
-  { path: 'carrito/plist/producto/:idproducto', component: PlistCarritoComponent, resolve: { message: SessionResolver } },
-  { path: 'carrito/plist/usuario/:idusuario', component: PlistCarritoComponent, resolve: { message: SessionResolver } },
+  { path: 'carrito/plist', component: CarritoPlistRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'carrito/plist/producto/:idproducto', component: CarritoPlistRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'carrito/plist/usuario/:idusuario', component: CarritoPlistRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/new', component: NewCarritoComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/view/:id', component: CarritoViewRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/edit/:id', component: EditCarritoComponent, resolve: { message: SessionResolver } },

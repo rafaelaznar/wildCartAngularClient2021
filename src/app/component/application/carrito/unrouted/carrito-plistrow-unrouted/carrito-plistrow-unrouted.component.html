@@ -1,0 +1,29 @@
+<td class="text-end">{{ oCarrito.id }}</td>
+<td class="text-center">{{ oCarrito.cantidad }}</td>
+<td class="text-end">{{ oCarrito.precio }}€</td>
+<td>
+  <button class="btn btn-light btn-sm" [routerLink]="['/oCarrito/plist/producto/' + oCarrito.producto.id]">
+    <i [ngClass]="oIconService.getIcon('producto')"></i> ({{ oCarrito.producto.id }}) {{ oCarrito.producto.nombre | trim
+    :60}}</button>
+</td>
+<td>
+  <button class="btn btn-light btn-sm" [routerLink]="['/oCarrito/plist/usuario/' + oCarrito.usuario.id]">
+    <i [ngClass]="oIconService.getIcon('usuario')"></i> ({{ oCarrito.usuario.id }}) {{ oCarrito.usuario.nombre + "
+    " + oCarrito.usuario.apellido1 + " " + oCarrito.usuario.apellido2 | trim:50 }}
+  </button>
+</td>
+
+<td class="text-center">
+  <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
+    <button type="button" class="btn btn-success" [routerLink]="['/oCarrito/view/' + oCarrito.id]">
+      <i [ngClass]="oIconService.getIcon('view')"></i>
+    </button>
+
+    <button type="button" class="btn btn-warning" [routerLink]="['/oCarrito/edit/' + oCarrito.id]">
+      <i [ngClass]="oIconService.getIcon('edit')"></i>
+    </button>
+    <button type="button" class="btn btn-danger" [routerLink]="['/oCarrito/remove/' + oCarrito.id]">
+      <i [ngClass]="oIconService.getIcon('remove')"></i>
+    </button>
+  </div>
+</td>

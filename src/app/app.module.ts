@@ -37,7 +37,6 @@ import { UsuarioNewRoutedComponent } from './component/application/usuario/route
 import { UsuarioEditRoutedComponent } from './component/application/usuario/routed/usuario-edit-routed/usuario-edit-routed.component';
 import { UsuarioRemoveRoutedComponent } from './component/application/usuario/routed/usuario-remove-routed/usuario-remove-routed.component';
 import { UsuarioViewRoutedComponent } from './component/application/usuario/routed/usuario-view-routed/usuario-view-routed.component';
-import { PlistCarritoComponent } from './component/application/carrito/routed/plist/plist-carrito.component';
 import { NewCarritoComponent } from './component/application/carrito/routed/new/new-carrito.component';
 import { EditCarritoComponent } from './component/application/carrito/routed/edit/edit-carrito.component';
 import { CompraPlistRoutedComponent } from './component/application/compra/routed/compra-plist-routed/compra-plist-routed.component';
@@ -115,6 +114,10 @@ import { CarritoDetailUnroutedComponent } from './component/application/carrito/
 import { CompraFormUnroutedComponent } from './component/application/compra/unrouted/compra-form-unrouted/compra-form-unrouted.component';
 import { CarritoViewRoutedComponent } from './component/application/carrito/routed/carrito-view-routed/carrito-view-routed.component';
 import { CarritoRemoveRoutedComponent } from './component/application/carrito/routed/carrito-remove-routed/carrito-remove-routed.component';
+import { CarritoPlistUnroutedComponent } from './component/application/carrito/unrouted/carrito-plist-unrouted/carrito-plist-unrouted.component';
+import { CarritoPlistRowUnroutedComponent } from './component/application/carrito/unrouted/carrito-plistrow-unrouted/carrito-plistrow-unrouted.component';
+import { CarritoPlistheaderUnroutedComponent } from './component/application/carrito/unrouted/carrito-plistheader-unrouted/carrito-plistheader-unrouted.component';
+import { CarritoPlistRoutedComponent } from './component/application/carrito/routed/carrito-plist-routed/carrito-plist-routed.component';
 
 @NgModule({
   declarations: [
@@ -180,7 +183,7 @@ import { CarritoRemoveRoutedComponent } from './component/application/carrito/ro
     FacturaEditRoutedComponent,
     FacturaRemoveRoutedComponent,
     // Carrito routed components
-    PlistCarritoComponent,
+    CarritoPlistRoutedComponent,
     NewCarritoComponent,    
     EditCarritoComponent,
     CarritoViewRoutedComponent,
@@ -236,7 +239,10 @@ import { CarritoRemoveRoutedComponent } from './component/application/carrito/ro
     CompraFormUnroutedComponent,
 
     // Carrito unrouted components
-    CarritoDetailUnroutedComponent
+    CarritoDetailUnroutedComponent,
+    CarritoPlistUnroutedComponent,
+    CarritoPlistRowUnroutedComponent,
+    CarritoPlistheaderUnroutedComponent
 
   ],
   imports: [
