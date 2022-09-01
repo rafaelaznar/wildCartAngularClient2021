@@ -118,6 +118,7 @@ import { CarritoPlistUnroutedComponent } from './component/application/carrito/u
 import { CarritoPlistRowUnroutedComponent } from './component/application/carrito/unrouted/carrito-plistrow-unrouted/carrito-plistrow-unrouted.component';
 import { CarritoPlistheaderUnroutedComponent } from './component/application/carrito/unrouted/carrito-plistheader-unrouted/carrito-plistheader-unrouted.component';
 import { CarritoPlistRoutedComponent } from './component/application/carrito/routed/carrito-plist-routed/carrito-plist-routed.component';
+import { CarritoFormUnroutedComponent } from './component/application/carrito/unrouted/carrito-form-unrouted/carrito-form-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -242,7 +243,8 @@ import { CarritoPlistRoutedComponent } from './component/application/carrito/rou
     CarritoDetailUnroutedComponent,
     CarritoPlistUnroutedComponent,
     CarritoPlistRowUnroutedComponent,
-    CarritoPlistheaderUnroutedComponent
+    CarritoPlistheaderUnroutedComponent,
+    CarritoFormUnroutedComponent
 
   ],
   imports: [
