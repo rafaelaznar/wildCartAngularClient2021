@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ICompra } from 'src/app/model/compra-interfaces';
 import { CompraService } from 'src/app/service/compra.service';
 import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
@@ -49,7 +48,7 @@ export class CompraRemoveRoutedComponent implements OnInit {
   removeOne() {
     this.oCompraService.removeOne(this.id).subscribe((id: number) => {    
       if (id) {                
-        this.strResult = this.strTitleArtSingular + " con id = " + this.id + "se ha eliminado.";
+        this.strResult = this.strTitleArtSingular + " con id = " + this.id + " se ha eliminado.";
       } else {
         this.strResult = 'Error en el borrado de ' + this.strTitleSingular;
       }

@@ -39,7 +39,6 @@ import { UsuarioRemoveRoutedComponent } from './component/application/usuario/ro
 import { UsuarioViewRoutedComponent } from './component/application/usuario/routed/usuario-view-routed/usuario-view-routed.component';
 import { PlistCarritoComponent } from './component/application/carrito/routed/plist/plist-carrito.component';
 import { NewCarritoComponent } from './component/application/carrito/routed/new/new-carrito.component';
-import { RemoveCarritoComponent } from './component/application/carrito/routed/remove/remove-carrito.component';
 import { EditCarritoComponent } from './component/application/carrito/routed/edit/edit-carrito.component';
 import { CompraPlistRoutedComponent } from './component/application/compra/routed/compra-plist-routed/compra-plist-routed.component';
 import { CompraNewRoutedComponent } from './component/application/compra/routed/compra-new-routed/compra-new-routed.component';
@@ -115,6 +114,7 @@ import { CarritoDetailUnroutedComponent } from './component/application/carrito/
 
 import { CompraFormUnroutedComponent } from './component/application/compra/unrouted/compra-form-unrouted/compra-form-unrouted.component';
 import { CarritoViewRoutedComponent } from './component/application/carrito/routed/carrito-view-routed/carrito-view-routed.component';
+import { CarritoRemoveRoutedComponent } from './component/application/carrito/routed/carrito-remove-routed/carrito-remove-routed.component';
 
 @NgModule({
   declarations: [
@@ -182,9 +182,9 @@ import { CarritoViewRoutedComponent } from './component/application/carrito/rout
     // Carrito routed components
     PlistCarritoComponent,
     NewCarritoComponent,    
-    RemoveCarritoComponent,
     EditCarritoComponent,
     CarritoViewRoutedComponent,
+    CarritoRemoveRoutedComponent,
 
 
 

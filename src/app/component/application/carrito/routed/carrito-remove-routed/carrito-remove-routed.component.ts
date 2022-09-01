@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductoService } from 'src/app/service/producto.service';
+import { CarritoService } from 'src/app/service/carrito.service';
 import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
 import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 @Component({
-  selector: 'app-producto-remove-routed',
-  templateUrl: './producto-remove-routed.component.html',
-  styleUrls: ['./producto-remove-routed.component.css']
+  selector: 'app-carrito-remove-routed',
+  templateUrl: './carrito-remove-routed.component.html',
+  styleUrls: ['./carrito-remove-routed.component.css']
 })
-export class ProductoRemoveRoutedComponent implements OnInit {
-  strEntity: string = "producto"
+export class CarritoRemoveRoutedComponent implements OnInit {
+  strEntity: string = "carrito"
   strOperation: string = "remove"
-  strTitleSingular: string = "Producto";
-  strTitlePlural: string = "Productos";
-  strTitleArtSingular: string = "El producto";
+  strTitleSingular: string = "Carrito";
+  strTitlePlural: string = "Carritos";
+  strTitleArtSingular: string = "El carrito";
 
   id: number = 0;
   oUserSession: IUsuario;
   strResult: string = null;
 
   constructor(
-    private oProductoService: ProductoService,
+    private oCarritoService: CarritoService,
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
@@ -46,7 +46,7 @@ export class ProductoRemoveRoutedComponent implements OnInit {
   }
 
   removeOne() {
-    this.oProductoService.removeOne(this.id).subscribe((id: number) => {    
+    this.oCarritoService.removeOne(this.id).subscribe((id: number) => {    
       if (id) {                
         this.strResult = this.strTitleArtSingular + " con id = " + this.id + " se ha eliminado.";
       } else {

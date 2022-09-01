@@ -31,7 +31,6 @@ import { UsuarioViewRoutedComponent } from './component/application/usuario/rout
 import { PlistCarritoComponent } from './component/application/carrito/routed/plist/plist-carrito.component';
 import { NewCarritoComponent } from './component/application/carrito/routed/new/new-carrito.component';
 import { EditCarritoComponent } from './component/application/carrito/routed/edit/edit-carrito.component';
-import { RemoveCarritoComponent } from './component/application/carrito/routed/remove/remove-carrito.component';
 import { GenerateComponent } from './component/shared/routed/generate/generate.component';
 import { ReportsComponent } from './component/shared/routed/reports/reports.component';
 import { SessionResolver } from './resolve/session.resolve';
@@ -39,6 +38,7 @@ import { FacturaViewRoutedComponent } from './component/application/factura/rout
 import { CompraNewRoutedComponent } from './component/application/compra/routed/compra-new-routed/compra-new-routed.component';
 import { CompraEditRoutedComponent } from './component/application/compra/routed/compra-edit-routed/compra-edit-routed.component';
 import { CarritoViewRoutedComponent } from './component/application/carrito/routed/carrito-view-routed/carrito-view-routed.component';
+import { CarritoRemoveRoutedComponent } from './component/application/carrito/routed/carrito-remove-routed/carrito-remove-routed.component';
 
 
 const routes: Routes = [
@@ -95,7 +95,7 @@ const routes: Routes = [
   { path: 'carrito/new', component: NewCarritoComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/view/:id', component: CarritoViewRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/edit/:id', component: EditCarritoComponent, resolve: { message: SessionResolver } },
-  { path: 'carrito/remove/:id', component: RemoveCarritoComponent, resolve: { message: SessionResolver } }
+  { path: 'carrito/remove/:id', component: CarritoRemoveRoutedComponent, resolve: { message: SessionResolver } }
 ];
 
 @NgModule({

@@ -58,7 +58,7 @@ export class TipoproductoRemoveRoutedComponent implements OnInit {
   removeOne() {
     this.oTipoproductoService.removeOne(this.id).subscribe((id: number) => {
       if (id) {
-        this.strResult = this.strTitleArtSingular + " con id = " + this.id + "se ha eliminado.";
+        this.strResult = this.strTitleArtSingular + " con id = " + this.id + " se ha eliminado.";
       } else {
         this.strResult = 'Error en el borrado de ' + this.strTitleSingular;
       }

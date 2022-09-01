@@ -6,19 +6,19 @@
       </tr>
       <tr>
         <th><i [ngClass]="oIconService.getIcon('cantidad')"></i> Cantidad</th>
-        <td>{{ oCarrito?.cantidad }}</td>
+        <td>{{ oCarrito?.cantidad }} unidades</td>
       </tr>
       <tr>
         <th><i [ngClass]="oIconService.getIcon('precio')"></i> Precio</th>
-        <td>{{ oCarrito?.precio }}</td>
+        <td>{{ oCarrito?.precio }} €</td>
       </tr>
       <tr>
         <th><i [ngClass]="oIconService.getIcon('producto')"></i> Producto</th>
-        <td>{{ oCarrito?.producto?.nombre }} ({{ oCarrito?.producto?.codigo }})</td>
+        <td>{{ oCarrito?.producto?.id }} - {{ oCarrito?.producto?.nombre }} ({{ oCarrito?.producto?.codigo }})</td>
       </tr>
       <tr>
         <th><i [ngClass]="oIconService.getIcon('usuario')"></i> Usuario</th>
-        <td>{{ oCarrito?.usuario?.nombre }} {{ oCarrito?.usuario?.apellido1 }} {{ oCarrito?.usuario?.apellido2 }}</td>
+        <td>{{ oCarrito?.usuario?.id }} - {{ oCarrito?.usuario?.nombre }} {{ oCarrito?.usuario?.apellido1 }} {{ oCarrito?.usuario?.apellido2 }} ({{ oCarrito?.usuario?.dni }})</td>
       </tr>
     </tbody>
   </table>
