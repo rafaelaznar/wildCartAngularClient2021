@@ -17,7 +17,8 @@
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
                         <a class="nav-link" [class.active]="strUrl=='/usuario/plist'"
-                            [routerLink]="['/usuario/plist']"><i [ngClass]="oIconService.getIcon('usuario') + ' fa-2x'"></i>
+                            [routerLink]="['/usuario/plist']"><i
+                                [ngClass]="oIconService.getIcon('usuario') + ' fa-2x'"></i>
                         </a>
                     </small>
                 </li>
@@ -31,7 +32,8 @@
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
                         <a class="nav-link" [class.active]="strUrl=='/producto/plist'"
-                            [routerLink]="['/producto/plist']"><i [ngClass]="oIconService.getIcon('producto') + ' fa-2x'"></i></a>
+                            [routerLink]="['/producto/plist']"><i
+                                [ngClass]="oIconService.getIcon('producto') + ' fa-2x'"></i></a>
                     </small>
                 </li>
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
@@ -50,7 +52,8 @@
                 <li class="nav-item" *ngIf="oUsuarioSession">
                     <small>
                         <a class="nav-link" [class.active]="strUrl=='/factura/plist'"
-                            [routerLink]="['/factura/plist']"><i [ngClass]="oIconService.getIcon('factura') + ' fa-2x'"></i>
+                            [routerLink]="['/factura/plist']"><i
+                                [ngClass]="oIconService.getIcon('factura') + ' fa-2x'"></i>
                         </a>
                     </small>
                 </li>
@@ -70,10 +73,12 @@
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
                         <a class="nav-link" [class.active]="strUrl=='/carrito/plist'"
-                            [routerLink]="['/carrito/plist']"><i [ngClass]="oIconService.getIcon('carrito') + ' fa-2x'"></i>
+                            [routerLink]="['/carrito/plist']"><i
+                                [ngClass]="oIconService.getIcon('carrito') + ' fa-2x'"></i>
                         </a>
                     </small>
                 </li>
+
             </ul>
 
             <span class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==2">
@@ -83,22 +88,26 @@
                 </small>
             </span>
 
-            <span class="navbar-text" *ngIf="oUsuarioSession"> <i [ngClass]="oIconService.getIcon('usuario')"></i>
-                <small> {{oUsuarioSession.nombre + " " + oUsuarioSession.apellido1 + " (" +
-                    oUsuarioSession.tipousuario.nombre+")"}}</small>
+            <span class="navbar-text" *ngIf="oUsuarioSession"> {{oUsuarioSession.login + " (" +
+                oUsuarioSession.tipousuario.nombre+")"}}
+                <small>
+                    <i [ngClass]="oIconService.getIcon('usuario')+ ' fa-2x mx-2'">   </i>
+                </small>
+
             </span>
 
             <span class="navbar-text" *ngIf="!oUsuarioSession">
                 <small>
                     <a class="nav-link" [class.active]="strUrl=='/login'" [routerLink]="['/login']"><i
-                            [ngClass]="oIconService.getIcon('login')"></i> Login</a>
+                            [ngClass]="oIconService.getIcon('login') + ' fa-2x'"></i> </a>
+
                 </small>
             </span>
 
             <span class="navbar-text" *ngIf="oUsuarioSession">
                 <small>
                     <a class="nav-link" [class.active]="strUrl=='/logout'" [routerLink]="['/logout']"><i
-                            [ngClass]="oIconService.getIcon('logout')"></i> Logout</a>
+                            [ngClass]="oIconService.getIcon('logout') + ' fa-2x'"></i> </a>
                 </small>
             </span>
 
