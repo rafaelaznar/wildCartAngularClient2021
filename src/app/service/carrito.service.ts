@@ -51,8 +51,24 @@ export class CarritoService implements ICrud {
     return this.http.get<number>(this.sURL + '/count', httpOptions);
   }
 
+  add(id: number, amount: number): Observable<number> {
+    return this.http.post<number>(this.sURL + '/' + id + '/' + amount, null, httpOptions);
+  };
+
   purchase(): Observable<number> {
-    return this.http.put<number>(this.sURL + '/comprar', null, httpOptions);
+    return this.http.put<number>(this.sURL + '/buy', null, httpOptions);
+  };
+
+  emptyCart(): Observable<number> {
+    return this.http.delete<number>(this.sURL + '/', httpOptions);
+  };
+
+  emptyProduct(id_producto: number): Observable<number> {
+    return this.http.delete<number>(this.sURL + '/producto/' + id_producto, httpOptions);
+  };
+
+  reduceProduct(id_producto: number, amount: number): Observable<number> {
+    return this.http.delete<number>(this.sURL + '/producto/' + id_producto + '/' + amount, httpOptions);
   };
 
 }
