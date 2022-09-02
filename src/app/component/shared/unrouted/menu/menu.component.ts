@@ -1,8 +1,9 @@
 import { CarritoService } from './../../../../service/carrito.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -11,10 +12,13 @@ import { IconService } from 'src/app/service/icon.service';
 })
 export class MenuComponent implements OnInit {
 
+  private carritoEventsSubscription: Subscription;
+  @Input() carritoMenuObservable: Observable<number>;
+
   oUsuarioSession: IUsuario;
   strUrl: String = "";
   tcarrito: number
- 
+
   constructor(
     private router: Router,
     public oIconService: IconService,
@@ -32,12 +36,17 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   this.count();
+    this.count();
+    this.carritoEventsSubscription = this.carritoMenuObservable.subscribe((id_producto) => this.count());
+  }
+
+  ngOnDestroy() {
+    this.carritoEventsSubscription.unsubscribe();
   }
 
   count = () => {
     this.oCarritoService.getCount().subscribe((oData: number) => {
-      this.tcarrito=oData;
+      this.tcarrito = oData;
     })
   }
 

@@ -1,7 +1,7 @@
-<app-menu></app-menu>
+<app-menu [carritoMenuObservable]="carritoHomeEventsSubject.asObservable()"></app-menu>
 
 <div class="container mt-4">
-    <app-producto-cplist-unrouted [id_tipousuario_session]="tipousuarioSession_id">
+    <app-producto-cplist-unrouted [id_tipousuario_session]="tipousuarioSession_id" (addCarritoEE)="onAddCarrito($event)">
         <header>
             <div class="p-3 mb-3 bg-light rounded-3">
                 <img class="img-fluid" src="assets/img/wildCart600.png" style="height:50px">

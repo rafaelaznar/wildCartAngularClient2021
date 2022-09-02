@@ -17,8 +17,8 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
 
   @Input() id_tipousuario_session: number = null;
   @Input() id_tipoproducto: number = null;
-  @Input() mode: boolean = true; //true=edición; false=selección
-  @Output() selection = new EventEmitter<number>();
+  
+  @Output() addCarritoEE = new EventEmitter<number>();
   @ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
 
   strEntity: string = "producto"
@@ -78,15 +78,6 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
     ).subscribe(() => this.getPage());
   }
 
-  addCarrito(id_producto: number) {
-    this.oCarritoService.add(id_producto,1).subscribe((result:number)=>{
-      console.log("addCarrito:result:" + result);
-    })
-
-
-
-  }
-
   getPage = () => {
     this.oProductoService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipoproducto).subscribe((oPage: IProductoPage) => {
       if (this.id_tipoproducto) {
@@ -139,9 +130,11 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  onSelection(id: number) {
-    console.log("selection plist emite " + id);
-    this.selection.emit(id);
+  addCarrito(id_producto: number) {
+    this.oCarritoService.add(id_producto,1).subscribe((result:number)=>{
+      //console.log("addCarrito:" + result);
+      this.addCarritoEE.emit(id_producto);
+    })
   }
 
   onSetFilter(strFilter: string) {
