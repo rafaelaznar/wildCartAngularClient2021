@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   usuarioSession: IUsuario = null;
   tipousuarioSession_id: number = null;
 
-  carritoHomeEventsSubject: Subject<number> = new Subject<number>();
+  carritoHomeEventsSubject: Subject<{ action: string, data: number }> = new Subject<{ action: string, data: number }>();
 
 
   constructor(
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   onAddCarrito(id_producto: number) {
-    this.carritoHomeEventsSubject.next(id_producto);
+    this.carritoHomeEventsSubject.next({ action: 'add', data: id_producto });
   }
 
 }
