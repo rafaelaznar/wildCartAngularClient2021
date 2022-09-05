@@ -16,6 +16,21 @@ export interface IProducto extends IEntity {
     compras: number,
     carritos: number
 }
+
+export interface IProducto extends IEntity {
+    codigo: string,
+    nombre: string,
+    existencias: number,
+    precio: number,
+    imagen: number,
+    descuento: number,
+    tipoproducto: ITipoproducto,
+
+    compras: number,
+    carritos: number,
+    cantidad: number
+}
+
 export interface IProducto2Send extends IEntity2Send {
     id: number,
     codigo: string,

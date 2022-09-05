@@ -35,7 +35,8 @@
         </h4>
         <p>{{producto.tipoproducto.nombre}}<br />
           <em>{{producto.codigo}}</em><br />
-          <strong>{{producto.existencias}} disponibles en stock</strong>
+          <strong>{{producto.existencias}} disponibles en stock</strong><br />
+          <strong  *ngIf="producto.cantidad">{{producto?.cantidad}} en carrito</strong>
         </p>
       </div>
       <p>Precio: {{producto.precio.toFixed(2)}}€</p>

@@ -7,6 +7,7 @@ import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { debounceTime } from 'rxjs/operators';
 import { CarritoService } from 'src/app/service/carrito.service';
+import { ProductoCarritoViewService } from 'src/app/service/productocarritoview.service';
 
 @Component({
   selector: 'app-producto-cplist-unrouted',
@@ -47,7 +48,7 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
     //    private oRoute: ActivatedRoute,
     //    private oRouter: Router,
     private oPaginationService: PaginationService,
-    private oProductoService: ProductoService,
+    private oProductoService: ProductoCarritoViewService,
     private oCarritoService: CarritoService,
     public oIconService: IconService
   ) {
@@ -134,6 +135,7 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
     this.oCarritoService.add(id_producto,1).subscribe((result:number)=>{
       //console.log("addCarrito:" + result);
       this.addCarritoEE.emit(id_producto);
+      this.getPage();
     })
   }
 
