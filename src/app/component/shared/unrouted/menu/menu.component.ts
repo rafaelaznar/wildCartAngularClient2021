@@ -37,20 +37,26 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.count();
-    this.carritoEventsSubscription = this.carritoMenuObservable.subscribe((data) => {
-      console.log("action:" + data.action, "data:" + data.data)
-      this.count()
-    });
+    if (this.carritoMenuObservable) {
+      this.carritoEventsSubscription = this.carritoMenuObservable.subscribe((data) => {
+        console.log("action:" + data.action, "data:" + data.data)
+        this.count()
+      });
+    }
   }
 
   ngOnDestroy() {
-    this.carritoEventsSubscription.unsubscribe();
+    if (this.carritoMenuObservable) {
+      this.carritoEventsSubscription.unsubscribe();
+    }
   }
 
   count = () => {
-    this.oCarritoService.getCount().subscribe((oData: number) => {
-      this.tcarrito = oData;
-    })
+    if (this.oUsuarioSession) {
+      this.oCarritoService.getCount().subscribe((oData: number) => {
+        this.tcarrito = oData;
+      })
+    }
   }
 
 }
