@@ -33,13 +33,20 @@
         <h4>
           <a [href]="'producto/view/'+producto.id"> {{producto.nombre}} </a>
         </h4>
-        <p>{{producto.tipoproducto.nombre}}<br />
-          <em>{{producto.codigo}}</em><br />
-          <strong>{{producto.existencias}} disponibles en stock</strong><br />
-          <strong  *ngIf="producto.cantidad">{{producto?.cantidad}} en carrito</strong>
-        </p>
       </div>
-      <p>Precio: {{producto.precio.toFixed(2)}}€</p>
+
+      <p class="card-text">{{producto.tipoproducto.nombre}}<br />
+        <em>{{producto.codigo}}</em><br />
+        <strong>{{producto.existencias}} disponibles</strong>
+      </p>
+      <div class="d-flex justify-content-between">
+        <div> <i *ngIf="producto.cantidad" class="fas fa-shopping-cart" pBadge style="font-size: 2rem"
+            value="{{producto.cantidad}}"></i></div>
+        <div>
+          <h1><span class="badge bg-success">{{producto.precio.toFixed(2)}}€</span></h1>
+        </div>
+      </div>
+
     </div>
     <div class="col-3"></div>
 

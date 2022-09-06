@@ -120,6 +120,7 @@ import { CarritoPlistRoutedComponent } from './component/application/carrito/rou
 import { CarritoFormUnroutedComponent } from './component/application/carrito/unrouted/carrito-form-unrouted/carrito-form-unrouted.component';
 import { CarritoNewRoutedComponent } from './component/application/carrito/routed/carrito-new-routed/carrito-new-routed.component';
 import { CarritoEditRoutedComponent } from './component/application/carrito/routed/carrito-edit-routed/carrito-edit-routed.component';
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
   declarations: [
@@ -257,6 +258,7 @@ import { CarritoEditRoutedComponent } from './component/application/carrito/rout
     ReactiveFormsModule,
     CalendarModule,
     BrowserAnimationsModule,
+    BadgeModule
   ],
   providers: [
     SessionService,

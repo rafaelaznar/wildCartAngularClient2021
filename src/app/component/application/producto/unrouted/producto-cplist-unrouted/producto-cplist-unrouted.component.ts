@@ -8,6 +8,7 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { debounceTime } from 'rxjs/operators';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { ProductoCarritoViewService } from 'src/app/service/productocarritoview.service';
+import {BadgeModule} from 'primeng/badge';
 
 @Component({
   selector: 'app-producto-cplist-unrouted',
