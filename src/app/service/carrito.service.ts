@@ -67,7 +67,7 @@ export class CarritoService implements ICrud {
     return this.http.delete<number>(this.sURL + '/producto/' + id_producto, httpOptions);
   };
 
-  reduceProduct(id_producto: number, amount: number): Observable<number> {
+  reduce(id_producto: number, amount: number): Observable<number> {
     return this.http.delete<number>(this.sURL + '/producto/' + id_producto + '/' + amount, httpOptions);
   };
 

@@ -8,7 +8,7 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { debounceTime } from 'rxjs/operators';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { ProductoCarritoViewService } from 'src/app/service/productocarritoview.service';
-import {BadgeModule} from 'primeng/badge';
+import { BadgeModule } from 'primeng/badge';
 
 @Component({
   selector: 'app-producto-cplist-unrouted',
@@ -19,7 +19,7 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
 
   @Input() id_tipousuario_session: number = null;
   @Input() id_tipoproducto: number = null;
-  
+
   @Output() addCarritoEE = new EventEmitter<number>();
   @ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
 
@@ -133,7 +133,15 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
   }
 
   addCarrito(id_producto: number) {
-    this.oCarritoService.add(id_producto,1).subscribe((result:number)=>{
+    this.oCarritoService.add(id_producto, 1).subscribe((result: number) => {
+      //console.log("addCarrito:" + result);
+      this.addCarritoEE.emit(id_producto);
+      this.getPage();
+    })
+  }
+
+  removeCarrito(id_producto: number) {
+    this.oCarritoService.reduce(id_producto, 1).subscribe((result: number) => {
       //console.log("addCarrito:" + result);
       this.addCarritoEE.emit(id_producto);
       this.getPage();
@@ -144,7 +152,7 @@ export class ProductoCPlistUnroutedComponent implements OnInit {
     this.strFilter = strFilter;
     this.getPage();
   }
-  
+
   onSetPage = (nPage: number) => {
     this.nPage = nPage;
     this.getPage();
