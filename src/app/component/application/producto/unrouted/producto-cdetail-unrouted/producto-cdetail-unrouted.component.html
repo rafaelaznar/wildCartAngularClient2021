@@ -1,0 +1,38 @@
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <th><i [ngClass]="oIconService.getIcon('id')"></i>ID</th>
+      <td>{{oProducto?.id}}</td>
+    </tr>
+    <tr>
+      <th>Codigo</th>
+      <td>{{oProducto?.codigo}}</td>
+    </tr>
+    <tr>
+      <th>Nombre</th>
+      <td>{{oProducto?.nombre}}</td>
+    </tr>
+    <tr>
+      <th>Existencias</th>
+      <td>{{oProducto?.existencias}}</td>
+    </tr>
+    <tr>
+      <th>Precio</th>
+      <td>{{oProducto?.precio}}</td>
+    </tr>
+    <tr>
+      <th>Imagen</th>
+      <td>({{oProducto?.imagen}}) <img [src]="'http://localhost:8082/file/' + oProducto?.imagen" style="height:100px"
+          class="my-3" /></td>
+    </tr>
+    <tr>
+      <th>Descuento</th>
+      <td>{{oProducto?.descuento}}</td>
+    </tr>
+    <tr>
+      <th>Tipo producto</th>
+      <td>{{oProducto?.tipoproducto.nombre}}</td>
+    </tr>
+
+  </tbody>
+</table>

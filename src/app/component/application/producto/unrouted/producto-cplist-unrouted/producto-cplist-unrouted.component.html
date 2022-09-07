@@ -30,7 +30,7 @@
     <img class="card-img-top" [src]="'http://localhost:8082/file/' + producto.imagen" height="180px" width="180px" />
     <div class="card-body">
       <div class="card-title d-flex justify-content-between">
-        <h4 class="flex-grow-1"> <a [href]="'producto/view/'+producto.id"> {{producto.nombre}} </a> </h4>
+        <h4 class="flex-grow-1"> <a [href]="'producto/cview/'+producto.id"> {{producto.nombre}} </a> </h4>
         <div> <i *ngIf="producto.cantidad" class="fas fa-shopping-cart" pBadge style="font-size: 2rem"
             value="{{producto.cantidad}}"></i></div>
       </div>

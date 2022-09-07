@@ -125,6 +125,8 @@ import { BadgeModule } from 'primeng/badge';
 // BLOQUE LOCALE
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { ProductoCDetailUnroutedComponent } from './component/application/producto/unrouted/producto-cdetail-unrouted/producto-cdetail-unrouted.component';
+import { ProductoCViewRoutedComponent } from './component/application/producto/routed/producto-cview-routed copy/producto-cview-routed.component';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -178,6 +180,7 @@ registerLocaleData(localeEs);
     ProductoNewRoutedComponent,
     ProductoEditRoutedComponent,
     ProductoRemoveRoutedComponent,
+    ProductoCViewRoutedComponent,
     // Compra routed components
     CompraPlistRoutedComponent,
     CompraViewRoutedComponent,
@@ -225,6 +228,7 @@ registerLocaleData(localeEs);
     ProductoPlistheaderUnroutedComponent,
     ProductoPlistRowUnroutedComponent,
     ProductoCPlistUnroutedComponent,
+    ProductoCDetailUnroutedComponent,
 
     // TipoProducto unrouted components
     TipoproductoPlistUnroutedComponent,
