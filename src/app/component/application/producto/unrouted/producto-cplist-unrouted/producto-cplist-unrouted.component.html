@@ -43,7 +43,7 @@
         <div> <i *ngIf="producto.cantidad" class="fas fa-shopping-cart" pBadge style="font-size: 2rem"
             value="{{producto.cantidad}}"></i></div>
         <div>
-          <h1><span class="badge bg-success">{{producto.precio.toFixed(2)}}€</span></h1>
+          <h1><span class="badge bg-success">{{producto.precio.toFixed(2)|number: '1.2-2':'es-ES'}}€</span></h1>
         </div>
       </div>
 

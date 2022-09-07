@@ -1,5 +1,5 @@
 import { PaginationService } from './service/pagination.service';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -121,6 +121,11 @@ import { CarritoFormUnroutedComponent } from './component/application/carrito/un
 import { CarritoNewRoutedComponent } from './component/application/carrito/routed/carrito-new-routed/carrito-new-routed.component';
 import { CarritoEditRoutedComponent } from './component/application/carrito/routed/carrito-edit-routed/carrito-edit-routed.component';
 import { BadgeModule } from 'primeng/badge';
+
+// BLOQUE LOCALE
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
@@ -276,7 +281,8 @@ import { BadgeModule } from 'primeng/badge';
     GenerateService,
     CountService,
     FileService,
-    ErrorHandlerService
+    ErrorHandlerService,
+    { provide: LOCALE_ID, useValue: 'es-ES' } //USO DE LOCALE!!
   ],
   bootstrap: [AppComponent],
 })
