@@ -127,6 +127,10 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { ProductoCDetailUnroutedComponent } from './component/application/producto/unrouted/producto-cdetail-unrouted/producto-cdetail-unrouted.component';
 import { ProductoCViewRoutedComponent } from './component/application/producto/routed/producto-cview-routed copy/producto-cview-routed.component';
+import { CarritoCPlistRoutedComponent } from './component/application/carrito/routed/carrito-cplist-routed/carrito-cplist-routed.component';
+import { CarritoCPlistUnroutedComponent } from './component/application/carrito/unrouted/carrito-cplist-unrouted/carrito-cplist-unrouted.component';
+import { CarritoCPlistheaderUnroutedComponent } from './component/application/carrito/unrouted/carrito-cplistheader-unrouted/carrito-cplistheader-unrouted.component';
+import { CarritoCPlistRowUnroutedComponent } from './component/application/carrito/unrouted/carrito-cplistrow-unrouted/carrito-cplistrow-unrouted.component';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -199,6 +203,7 @@ registerLocaleData(localeEs);
     CarritoRemoveRoutedComponent,
     CarritoNewRoutedComponent,
     CarritoEditRoutedComponent,
+    CarritoCPlistRoutedComponent,
     
 
 
@@ -256,7 +261,10 @@ registerLocaleData(localeEs);
     CarritoPlistUnroutedComponent,
     CarritoPlistRowUnroutedComponent,
     CarritoPlistheaderUnroutedComponent,
-    CarritoFormUnroutedComponent
+    CarritoFormUnroutedComponent,
+    CarritoCPlistUnroutedComponent,
+    CarritoCPlistheaderUnroutedComponent,
+    CarritoCPlistRowUnroutedComponent
 
   ],
   imports: [

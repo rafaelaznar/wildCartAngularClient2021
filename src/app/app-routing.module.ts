@@ -40,6 +40,7 @@ import { CarritoPlistRoutedComponent } from './component/application/carrito/rou
 import { CarritoEditRoutedComponent } from './component/application/carrito/routed/carrito-edit-routed/carrito-edit-routed.component';
 import { CarritoNewRoutedComponent } from './component/application/carrito/routed/carrito-new-routed/carrito-new-routed.component';
 import { ProductoCViewRoutedComponent } from './component/application/producto/routed/producto-cview-routed copy/producto-cview-routed.component';
+import { CarritoCPlistRoutedComponent } from './component/application/carrito/routed/carrito-cplist-routed/carrito-cplist-routed.component';
 
 
 const routes: Routes = [
@@ -92,6 +93,7 @@ const routes: Routes = [
   { path: 'factura/remove/:id', component: FacturaRemoveRoutedComponent, resolve: { message: SessionResolver } },
 
   { path: 'carrito/plist', component: CarritoPlistRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'carrito/cplist', component: CarritoCPlistRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/plist/producto/:idproducto', component: CarritoPlistRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/plist/usuario/:idusuario', component: CarritoPlistRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'carrito/new', component: CarritoNewRoutedComponent, resolve: { message: SessionResolver } },
