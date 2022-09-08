@@ -1,13 +1,13 @@
-<app-menu></app-menu>
+<app-menu [carritoMenuObservable]="carritoHomeEventsSubject.asObservable()"></app-menu>
 <div class="container my-3">
 
-    <app-header [title]="'C Vista de un ' + strTitleSingular" [icon]="oIconService.getIcon(this.strOperation)"
+    <app-header [title]="'Detalle de producto'" [icon]="oIconService.getIcon(this.strOperation)"
         [iconEntity]="oIconService.getIcon(this.strEntity)">
     </app-header>
 
     <div class="row justify-content-center">
-        <app-producto-cdetail-unrouted [id]="id"></app-producto-cdetail-unrouted>
-
+        <app-producto-cdetail-unrouted [id]="id"  [id_tipousuario_session]="tipousuarioSession_id" (addCarritoEE)="onAddCarrito($event)"></app-producto-cdetail-unrouted>
+<!-- 
         <div class="row justify-content-center">
             <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
                 <a class="btn btn-warning mx-2" [routerLink]="['/' + strEntity + '/edit/' + id]"><i
@@ -21,7 +21,7 @@
             <app-viewbuttons-unrouted [strEntity]="strEntity" [strTitlePlural]="strTitlePlural">
             </app-viewbuttons-unrouted>
         </div>
-
+-->
     </div>
 </div>
 
