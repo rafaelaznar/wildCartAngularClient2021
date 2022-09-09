@@ -80,21 +80,23 @@
                 </li>
 
             </ul>
-
-            <span class="navbar-item mx-1" *ngIf="oUsuarioSession?.tipousuario.id==2">
-                <small>
-                    <a class="nav-link" [class.active]="strUrl=='/carrito/plist'" [routerLink]="['/carrito/cplist']"><i
-                            [ngClass]="oIconService.getIcon('carrito') + ' fa-2x'"></i> {{tcarrito}}</a>
-                </small>
-            </span>
-
-            <span class="navbar-text mx-1" *ngIf="oUsuarioSession"> {{oUsuarioSession.login + " (" +
-                oUsuarioSession.tipousuario.nombre+")"}}
+      
+            <span class="navbar-text mx-1" *ngIf="oUsuarioSession"> {{oUsuarioSession.login + " (rol " +
+                oUsuarioSession.tipousuario.nombre + ")"}} 
                 <small>
                     <i [ngClass]="oIconService.getIcon('usuario') + ' fa-2x'">   </i>
                 </small>
 
             </span>
+
+            <span class="navbar-item mx-1" *ngIf="oUsuarioSession?.tipousuario.id==2">
+                <small>
+                    <a class="nav-link" [class.active]="strUrl=='/carrito/plist'" [routerLink]="['/carrito/cplist']"><i
+                            [ngClass]="oIconService.getIcon('carrito') + ' fa-2x'" pBadge value="{{tcarrito}}"></i> </a>
+                </small>
+            </span>
+
+          
 
             <span class="navbar-text mx-1" *ngIf="!oUsuarioSession">
                 <small>
