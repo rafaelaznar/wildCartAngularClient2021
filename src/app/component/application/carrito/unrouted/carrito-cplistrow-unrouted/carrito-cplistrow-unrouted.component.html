@@ -11,7 +11,10 @@
   </button>
 </td>
 <td class="text-center" style="font-size: 25px;">{{ oCarrito.cantidad }}</td>
-<td class="text-end" style="font-size: 18px;">{{ oCarrito.producto.precio }} €</td>
+<td class="text-end" style="font-size: 20px;">{{ oCarrito.producto.precio|number: '1.2-2':'es-ES' }} €</td>
+<td class="text-end" style="font-size: 20px;">{{ 0.21 * oCarrito.cantidad * oCarrito.producto.precio|number: '1.2-2':'es-ES' }} €</td>
+<td class="text-end" style="font-size: 20px;">{{ (oCarrito.cantidad * oCarrito.producto.precio) + (oCarrito.cantidad * oCarrito.producto.precio * 0.21) |number: '1.2-2':'es-ES' }} €</td>
+
 <!--
 <td>
   <button class="btn btn-light btn-sm" [routerLink]="['/carrito/plist/usuario/' + oCarrito.usuario.id]">
@@ -23,14 +26,11 @@
 
 <td class="text-center">
   <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-    <button type="button" class="btn btn-success" [routerLink]="['/carrito/view/' + oCarrito.id]">
+    <button type="button" class="btn btn-success" [routerLink]="['/producto/cview/' + oCarrito.producto.id]">
       <i [ngClass]="oIconService.getIcon('view')"></i>
     </button>
 
-    <button type="button" class="btn btn-warning" [routerLink]="['/carrito/edit/' + oCarrito.id]">
-      <i [ngClass]="oIconService.getIcon('edit')"></i>
-    </button>
-    <button type="button" class="btn btn-danger" [routerLink]="['/carrito/remove/' + oCarrito.id]">
+    <button type="button" class="btn btn-danger"  (click)="doRemoveProducto(oCarrito.producto.id)">
       <i [ngClass]="oIconService.getIcon('remove')"></i>
     </button>
   </div>

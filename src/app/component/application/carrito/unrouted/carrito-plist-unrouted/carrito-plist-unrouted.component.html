@@ -4,7 +4,7 @@
       <h6>{{strFilteredMessage}}</h6>
     </div>
     <div class="col-md text-center">
-      <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="strTitlePlural" (eeFilter)="onSetFilter($event)" ></app-search-unrouted>
+      <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + strTitlePlural" (eeFilter)="onSetFilter($event)" ></app-search-unrouted>
     </div>
     <div class="col-md text-end">
       <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{strTitlePlural}}</h4>

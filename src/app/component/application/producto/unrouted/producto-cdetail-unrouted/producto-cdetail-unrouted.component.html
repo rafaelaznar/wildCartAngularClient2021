@@ -10,7 +10,7 @@
           <p class="card-text flex-grow-1" style="font-size: 0.95rem; font-style: italic;">
             {{oProducto?.tipoproducto.nombre}}</p>
           <p class="card-text"><small class="text-muted">Código {{oProducto?.codigo}}</small></p>
-          <h1 class="price">Precio: <span>{{oProducto?.precio}}€</span></h1>
+          <h1 class="price">Precio: <span>{{oProducto?.precio|number: '1.2-2':'es-ES'}}€</span></h1>
           <h2><span class="badge bg-danger">Descuento del {{oProducto?.descuento}}%</span></h2>
           <div class="d-flex justify-content-left my-3">
             <h3>

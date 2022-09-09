@@ -8,7 +8,7 @@
 </th>
 -->
 <th (click)="doSetOrder('producto')">
-  <i [ngClass]="oIconService.getIcon('producto')"></i> Imagen del producto
+  <i [ngClass]="oIconService.getIcon('imagen')"></i> Imagen del producto
   <i [ngClass]="oIconService.getIcon('flechaUp')"
     *ngIf="strSortField == 'producto' && strSortDirection == 'asc'"></i>
   <i [ngClass]="oIconService.getIcon('flechaDown')"
@@ -44,6 +44,12 @@
     *ngIf="strSortField == 'usuario' && strSortDirection == 'desc'"></i>
 </th>
 -->
+<th>
+  <i [ngClass]="oIconService.getIcon('iva')"></i> IVA 21%
+</th>
+<th>
+  <i [ngClass]="oIconService.getIcon('total')"></i> TOTAL (con IVA)
+</th>
 <th>
   <i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones
 </th>

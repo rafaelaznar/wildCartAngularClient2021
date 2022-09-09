@@ -35,4 +35,9 @@ export class CarritoCPlistRowUnroutedComponent implements OnInit {
     this.selection.emit(id);
   }
 
+  doRemoveProducto(id_producto: number) {
+
+  }
+  
+
 }
