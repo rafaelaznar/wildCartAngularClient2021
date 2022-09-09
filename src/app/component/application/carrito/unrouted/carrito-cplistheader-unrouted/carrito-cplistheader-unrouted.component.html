@@ -8,7 +8,7 @@
 </th>
 -->
 <th (click)="doSetOrder('producto')">
-  <i [ngClass]="oIconService.getIcon('imagen')"></i> Imagen del producto
+  <i [ngClass]="oIconService.getIcon('imagen')"></i> Producto
   <i [ngClass]="oIconService.getIcon('flechaUp')"
     *ngIf="strSortField == 'producto' && strSortDirection == 'asc'"></i>
   <i [ngClass]="oIconService.getIcon('flechaDown')"

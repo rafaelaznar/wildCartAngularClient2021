@@ -1,7 +1,7 @@
 <!-- 
 <td class="text-end">{{ oCarrito.id }}</td>
 -->
-<td><img [src]="strAPI_URL + '/file/' + oCarrito.producto.imagen" style="height:60px" /></td>
+<td class="text-center" ><img [src]="strAPI_URL + '/file/' + oCarrito.producto.imagen" style="height:60px; width:80px" /></td>
 <td>
   <button class="btn btn-light" style="text-align: start;" [routerLink]="['/carrito/plist/producto/' + oCarrito.producto.id]">
     <i [ngClass]="oIconService.getIcon('producto')"></i> {{ oCarrito.producto.nombre | trim
