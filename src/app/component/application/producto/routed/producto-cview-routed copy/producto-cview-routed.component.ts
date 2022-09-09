@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Subject } from 'rxjs';
+import { Location } from '@angular/common';
+
+
 @Component({
   selector: 'app-producto-cview-routed',
   templateUrl: './producto-cview-routed.component.html',
@@ -28,7 +31,8 @@ export class ProductoCViewRoutedComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    public oIconService: IconService
+    public oIconService: IconService,
+    private oLocation: Location
 
   ) {
 
@@ -51,4 +55,9 @@ export class ProductoCViewRoutedComponent implements OnInit {
   onAddCarrito(id_producto: number) {
     this.carritoHomeEventsSubject.next({ action: 'add', data: id_producto });
   }
+
+  goBack(): void {
+    this.oLocation.back();
+  }
+  
 }

@@ -16,7 +16,9 @@ export class CarritoCPlistUnroutedComponent implements OnInit {
   @Input() id_producto: number = null;
   @Input() id_usuario: number = null;
   @Input() mode: boolean = true; //true=edición; false=selección
+  @Input() id_tipousuario_session: number = null;
   @Output() selection = new EventEmitter<number>();
+  @Output() addCarritoEE = new EventEmitter<number>();
   //@ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
 
   strEntity: string = 'carrito';
@@ -42,6 +44,8 @@ export class CarritoCPlistUnroutedComponent implements OnInit {
   subjectFilter = new Subject();
   //  
   strResult: string = null;
+
+
 
   constructor(
     private oPaginationService: PaginationService,
@@ -105,5 +109,10 @@ export class CarritoCPlistUnroutedComponent implements OnInit {
 
   onSelection(id: number) {
     this.selection.emit(id);
+  }
+
+  onAddCarrito(id_producto: number) {
+    this.getPage();
+    this.addCarritoEE.emit(id_producto);    
   }
 }

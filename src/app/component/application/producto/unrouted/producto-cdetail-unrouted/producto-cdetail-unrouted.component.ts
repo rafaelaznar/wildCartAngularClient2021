@@ -11,7 +11,7 @@ import { ProductoService } from 'src/app/service/producto.service';
 })
 export class ProductoCDetailUnroutedComponent implements OnInit {
 
-  @Input() id: number = null;  
+  @Input() id: number = null;
   @Input() id_tipousuario_session: number = null;
   @Output() addCarritoEE = new EventEmitter<number>();
 
@@ -19,7 +19,7 @@ export class ProductoCDetailUnroutedComponent implements OnInit {
   constructor(
     private oProductoService: ProductoService,
     public oIconService: IconService,
-    private oCarritoService: CarritoService
+    private oCarritoService: CarritoService,
   ) { }
 
   ngOnInit() {
@@ -49,4 +49,7 @@ export class ProductoCDetailUnroutedComponent implements OnInit {
       this.getOne();
     })
   }
+
+
+
 }

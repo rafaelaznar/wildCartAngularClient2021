@@ -1,4 +1,4 @@
-<app-menu></app-menu>
+<app-menu  [carritoMenuObservable]="carritoHomeEventsSubject.asObservable()"></app-menu>
 
 <div class="container my-3">
 
@@ -6,7 +6,7 @@
     [iconEntity]="oIconService.getIcon(this.strEntity)">
 </app-header>
 
-<app-carrito-cplist-unrouted [id_usuario]="id_usuario" [id_producto]="id_producto">
+<app-carrito-cplist-unrouted [id_usuario]="id_usuario"  [id_tipousuario_session]="tipousuarioSession_id"  [id_producto]="id_producto"  (addCarritoEE)="onAddCarrito($event)">
 
     <header>
         <a [routerLink]="['/carrito/new']" type="button" class="btn btn-success mb-2">

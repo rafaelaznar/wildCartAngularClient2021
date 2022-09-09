@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { ICarrito } from 'src/app/model/carrito-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { CarritoService } from 'src/app/service/carrito.service';
 import { IconService } from 'src/app/service/icon.service';
 import { API_URL } from 'src/environments/environment';
 
@@ -14,7 +15,9 @@ export class CarritoCPlistRowUnroutedComponent implements OnInit {
 
   @Input() oCarrito: ICarrito = null;
   @Input() mode: boolean = true; //true=edición; false=selección
+  @Input() id_tipousuario_session: number = null;
   @Output() selection = new EventEmitter<number>();
+  @Output() addCarritoEE = new EventEmitter<number>();
 
   strEntity: string = "carrito";
   strOperation: string = "plist";
@@ -23,7 +26,8 @@ export class CarritoCPlistRowUnroutedComponent implements OnInit {
   strAPI_URL: string = API_URL;
 
   constructor(
-    public oIconService: IconService
+    public oIconService: IconService,
+    private oCarritoService: CarritoService
   ) {
     console.log("user=" +localStorage.getItem("user"));
     this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
@@ -35,8 +39,18 @@ export class CarritoCPlistRowUnroutedComponent implements OnInit {
     this.selection.emit(id);
   }
 
-  doRemoveProducto(id_producto: number) {
+  addCarrito(id_producto: number) {
+    this.oCarritoService.add(id_producto, 1).subscribe((result: number) => {
+      //console.log("addCarrito:" + result);
+      this.addCarritoEE.emit(id_producto);
+    })
+  }
 
+  removeCarrito(id_producto: number) {
+    this.oCarritoService.reduce(id_producto, 1).subscribe((result: number) => {
+      //console.log("addCarrito:" + result);
+      this.addCarritoEE.emit(id_producto);
+    })
   }
   
 

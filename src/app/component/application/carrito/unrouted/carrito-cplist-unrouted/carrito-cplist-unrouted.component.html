@@ -40,8 +40,8 @@
       </thead>
       <tbody>
 
-        <tr *ngFor="let oCarrito of aCarritos" class="align-middle" app-carrito-cplistrow-unrouted [oCarrito]="oCarrito"
-          [mode]="mode" (selection)="onSelection($event)">
+        <tr *ngFor="let oCarrito of aCarritos" class="align-middle" app-carrito-cplistrow-unrouted [oCarrito]="oCarrito"  [id_tipousuario_session]="id_tipousuario_session" 
+          [mode]="mode" (selection)="onSelection($event)"  (addCarritoEE)="onAddCarrito($event)">
 
         </tr>
       </tbody>
