@@ -26,7 +26,7 @@
 
 <div class="d-flex align-items-end flex-column">
   <h4 class="text-muted">Tienes {{nTotalElements| number:'1.0-0'}} productos en tu carrito</h4>
-  <h4 class="text-muted">TOTAL PEDIDO EN CARRITO: ____ €</h4>
+  <h4 class="text-muted">TOTAL PEDIDO EN CARRITO: {{nTotal + (nTotal * 0.21)|number: '1.2-2':'es-ES'}} €</h4>
   <h6 class="text-muted">(iva incluido)</h6>
 </div>
 

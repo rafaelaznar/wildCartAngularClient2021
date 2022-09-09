@@ -29,7 +29,14 @@
     *ngIf="strSortField == 'cantidad' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('precio')">
-  <i [ngClass]="oIconService.getIcon('euro')"></i> Precio
+  <i [ngClass]="oIconService.getIcon('euro')"></i> Precio unitario
+  <i [ngClass]="oIconService.getIcon('flechaUp')"
+    *ngIf="strSortField == 'precio' && strSortDirection == 'asc'"></i>
+  <i [ngClass]="oIconService.getIcon('flechaDown')"
+    *ngIf="strSortField == 'precio' && strSortDirection == 'desc'"></i>
+</th>
+<th (click)="doSetOrder('descuento')">
+  <i [ngClass]="oIconService.getIcon('euro')"></i> Descuentos
   <i [ngClass]="oIconService.getIcon('flechaUp')"
     *ngIf="strSortField == 'precio' && strSortDirection == 'asc'"></i>
   <i [ngClass]="oIconService.getIcon('flechaDown')"

@@ -29,7 +29,7 @@ export class CarritoCPlistRowUnroutedComponent implements OnInit {
     public oIconService: IconService,
     private oCarritoService: CarritoService
   ) {
-    console.log("user=" +localStorage.getItem("user"));
+    console.log("user=" + localStorage.getItem("user"));
     this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
   }
 
@@ -52,6 +52,19 @@ export class CarritoCPlistRowUnroutedComponent implements OnInit {
       this.addCarritoEE.emit(id_producto);
     })
   }
-  
+
+  getPrecioConDescuento(oCarrito: ICarrito) {
+    let descuentoPorProducto = oCarrito.producto.precio * oCarrito.producto.descuento / 100;
+    let descuentoPorUsuario = oCarrito.producto.precio * oCarrito.usuario.descuento / 100;
+    return oCarrito.producto.precio - descuentoPorProducto - descuentoPorUsuario;
+  }
+
+  getPrecioConDescuentoConIVA(oCarrito: ICarrito) {
+    let descuentoPorProducto = oCarrito.producto.precio * oCarrito.producto.descuento / 100;
+    let descuentoPorUsuario = oCarrito.producto.precio * oCarrito.usuario.descuento / 100;
+    let iva = 21 / 100;
+    let total = oCarrito.producto.precio - descuentoPorProducto - descuentoPorUsuario;
+    return total + total * iva;
+  }
 
 }

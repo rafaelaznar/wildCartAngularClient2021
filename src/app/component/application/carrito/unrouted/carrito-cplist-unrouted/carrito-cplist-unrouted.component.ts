@@ -44,6 +44,7 @@ export class CarritoCPlistUnroutedComponent implements OnInit {
   subjectFilter = new Subject();
   //  
   strResult: string = null;
+  nTotal: number = 0;
 
 
 
@@ -82,6 +83,7 @@ export class CarritoCPlistUnroutedComponent implements OnInit {
           this.nPage = this.nTotalPages;
           this.getPage();
         }
+        this.getTotalCarrito4User();
       });
   };
 
@@ -113,6 +115,12 @@ export class CarritoCPlistUnroutedComponent implements OnInit {
 
   onAddCarrito(id_producto: number) {
     this.getPage();
-    this.addCarritoEE.emit(id_producto);    
+    this.addCarritoEE.emit(id_producto);
+  }
+
+  getTotalCarrito4User() {
+    this.oCarritoService.getTotalCarrito4User().subscribe((nTotal: number) => {
+      this.nTotal = nTotal;
+    });
   }
 }

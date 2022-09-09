@@ -9,15 +9,15 @@
     <i [ngClass]="oIconService.getIcon('producto')"></i> {{ oCarrito.producto.nombre | trim
     :60}}<br>
     Código: {{ oCarrito.producto.codigo }}<br>
-    Descuento: {{ oCarrito.producto.descuento }}%
+    Descuento del producto: {{ oCarrito.producto.descuento }}%<br>
+    Descuento de cliente: {{ oCarrito.usuario.descuento }}%
   </button>
 </td>
 <td class="text-center" style="font-size: 25px;">{{ oCarrito.cantidad }}</td>
 <td class="text-end" style="font-size: 20px;">{{ oCarrito.producto.precio|number: '1.2-2':'es-ES' }} €</td>
-<td class="text-end" style="font-size: 20px;">{{ 0.21 * oCarrito.cantidad * oCarrito.producto.precio|number:
-  '1.2-2':'es-ES' }} €</td>
-<td class="text-end" style="font-size: 20px;">{{ (oCarrito.cantidad * oCarrito.producto.precio) + (oCarrito.cantidad *
-  oCarrito.producto.precio * 0.21) |number: '1.2-2':'es-ES' }} €</td>
+<td class="text-center" style="font-size: 20px;">{{ getPrecioConDescuento(oCarrito) |number: '1.2-2':'es-ES' }} €</td>
+<td class="text-end" style="font-size: 20px;">{{ getPrecioConDescuentoConIVA(oCarrito) |number: '1.2-2':'es-ES' }} €</td>
+<td class="text-end" style="font-size: 20px;">{{ oCarrito.cantidad * getPrecioConDescuentoConIVA(oCarrito) |number: '1.2-2':'es-ES' }} €</td>
 
 <!--
 <td>

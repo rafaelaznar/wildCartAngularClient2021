@@ -71,4 +71,8 @@ export class CarritoService implements ICrud {
     return this.http.delete<number>(this.sURL + '/producto/' + id_producto + '/' + amount, httpOptions);
   };
 
+  getTotalCarrito4User(): Observable<number> {
+    return this.http.get<number>(this.sURL + '/total', httpOptions);
+  }
+
 }
