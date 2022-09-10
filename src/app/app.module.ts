@@ -131,6 +131,8 @@ import { CarritoCPlistRoutedComponent } from './component/application/carrito/ro
 import { CarritoCPlistUnroutedComponent } from './component/application/carrito/unrouted/carrito-cplist-unrouted/carrito-cplist-unrouted.component';
 import { CarritoCPlistheaderUnroutedComponent } from './component/application/carrito/unrouted/carrito-cplistheader-unrouted/carrito-cplistheader-unrouted.component';
 import { CarritoCPlistRowUnroutedComponent } from './component/application/carrito/unrouted/carrito-cplistrow-unrouted/carrito-cplistrow-unrouted.component';
+import { UsuarioCViewRoutedComponent } from './component/application/usuario/routed/usuario-cview-routed/usuario-cview-routed.component';
+import { UsuarioCDetailUnroutedComponent } from './component/application/usuario/unrouted/usuario-cdetail-unrouted copy/usuario-cdetail-unrouted.component';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -172,6 +174,7 @@ registerLocaleData(localeEs);
     UsuarioNewRoutedComponent,
     UsuarioEditRoutedComponent,
     UsuarioRemoveRoutedComponent,
+    UsuarioCViewRoutedComponent,
     // Tipoproducto routed components
     PlistTipoproductoComponent,
     TipoproductoNewRoutedComponent,
@@ -218,6 +221,7 @@ registerLocaleData(localeEs);
     UsuarioFormUnroutedComponent,
     UsuarioPlistheaderUnroutedComponent,
     UsuarioPlistRowUnroutedComponent,
+    UsuarioCDetailUnroutedComponent,
 
     // TipoUsuario unrouted components
     TipousuarioPlistUnroutedComponent,
