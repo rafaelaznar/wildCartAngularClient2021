@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+<div class="container my-3">
+
+  <app-header [title]="'Borrado de ' + strTitleSingular" [icon]="oIconService.getIcon(this.strOperation)"
+    [iconEntity]="oIconService.getIcon(this.strEntity)">
+  </app-header>
+
+  <div class="row justify-content-center">
+   
+    <app-compra-detail-admin-unrouted [id]="id"></app-compra-detail-admin-unrouted>
+
+    <div class="row justify-content-center">
+        <div class="col-md-5 control-group text-center my-3">
+          <div class="alert alert-danger my-3" role="alert">
+            <h3 class="">¿Está seguro de que quiere eliminar el {{strTitleSingular}}?</h3>
+            <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center my-4">
+              <a class="btn btn-danger mx-2" (click)="removeOne()"><i [ngClass]="oIconService.getIcon('aceptar')"></i>
+                SÍ</a>
+              <a class="btn btn-success mx-2" (click)="goBack()"><i [ngClass]="oIconService.getIcon('rechazar')"></i> NO
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <app-viewbuttons-unrouted [strEntity]="strEntity" [strTitlePlural]="strTitlePlural">
+        </app-viewbuttons-unrouted>
+    
+      </div>
+    </div>
+    
+    <app-footer></app-footer>
+    
+    <app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()"></app-popup>

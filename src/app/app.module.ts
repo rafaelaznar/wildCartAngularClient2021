@@ -38,11 +38,11 @@ import { UsuarioEditRoutedComponent } from './component/application/usuario/rout
 import { UsuarioRemoveRoutedComponent } from './component/application/usuario/routed/usuario-remove-routed/usuario-remove-routed.component';
 import { UsuarioViewRoutedComponent } from './component/application/usuario/routed/usuario-view-routed/usuario-view-routed.component';
 
-import { CompraPlistRoutedComponent } from './component/application/compra/routed/compra-plist-routed/compra-plist-routed.component';
-import { CompraNewRoutedComponent } from './component/application/compra/routed/compra-new-routed/compra-new-routed.component';
-import { CompraEditRoutedComponent } from './component/application/compra/routed/compra-edit-routed/compra-edit-routed.component';
-import { CompraViewRoutedComponent } from './component/application/compra/routed/compra-view-routed/compra-view-routed.component';
-import { CompraRemoveRoutedComponent } from './component/application/compra/routed/compra-remove-routed/compra-remove-routed.component';
+import { CompraPlistAdminRoutedComponent } from './component/application/compra/routed/admin/compra-plist-ar/compra-plist-ar.component';
+import { CompraNewAdminRoutedComponent } from './component/application/compra/routed/admin/compra-new-ar/compra-new-ar.component';
+import { CompraEditAdminRoutedComponent } from './component/application/compra/routed/admin/compra-edit-ar/compra-edit-ar.component';
+import { CompraViewAdminRoutedComponent } from './component/application/compra/routed/admin/compra-view-ar/compra-view-ar.component';
+import { CompraRemoveAdminRoutedComponent } from './component/application/compra/routed/admin/compra-remove-ar/compra-remove-ar.component';
 import { FacturaPlistRoutedComponent } from './component/application/factura/routed/factura-plist-routed/factura-plist-routed.component';
 import { FacturaNewRoutedComponent } from './component/application/factura/routed/factura-new-routed/factura-new-routed.component';
 import { FacturaRemoveRoutedComponent } from './component/application/factura/routed/factura-remove-routed/factura-remove-routed.component';
@@ -102,15 +102,15 @@ import { FacturaFormUnroutedComponent } from './component/application/factura/un
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TipoproductoFormUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-form-unrouted/tipoproducto-form-unrouted.component';
-import { CompraPlistRowUnroutedComponent } from './component/application/compra/unrouted/compra-plistrow-unrouted/compra-plistrow-unrouted.component';
-import { CompraPlistheaderUnroutedComponent } from './component/application/compra/unrouted/compra-plistheader-unrouted/compra-plistheader-unrouted.component';
-import { CompraPlistUnroutedComponent } from './component/application/compra/unrouted/compra-plist-unrouted/compra-plist-unrouted.component';
-import { CompraDetailUnroutedComponent } from './component/application/compra/unrouted/compra-detail-unrouted/compra-detail-unrouted.component';
+import { CompraPlistRowUnroutedComponent } from './component/application/compra/unrouted/admin/compra-plist-au/compra-plistrow-au/compra-plistrow-au.component';
+import { CompraPlistHeaderAdminUnroutedComponent } from './component/application/compra/unrouted/admin/compra-plist-au/compra-plistheader-au/compra-plistheader-au.component';
+import { CompraPlistAdminUnroutedComponent } from './component/application/compra/unrouted/admin/compra-plist-au/compra-plist-au.component';
+import { CompraDetailAdminUnroutedComponent } from './component/application/compra/unrouted/admin/compra-detail-au/compra-detail-au.component';
 
 import { CarritoDetailAUComponent } from './component/application/carrito/unrouted/admin/carrito-detail-au/carrito-detail-au.component';
 
 
-import { CompraFormUnroutedComponent } from './component/application/compra/unrouted/compra-form-unrouted/compra-form-unrouted.component';
+import { CompraFormAdminUnroutedComponent } from './component/application/compra/unrouted/admin/compra-form-au/compra-form-au.component';
 import { CarritoViewARComponent } from './component/application/carrito/routed/admin/carrito-view-ar/carrito-view-ar.component';
 import { CarritoRemoveARComponent } from './component/application/carrito/routed/admin/carrito-remove-ar/carrito-remove-ar.component';
 import { CarritoPlistAUComponent } from './component/application/carrito/unrouted/admin/carrito-plist-au/carrito-plist-au.component';
@@ -189,11 +189,11 @@ registerLocaleData(localeEs);
     ProductoRemoveRoutedComponent,
     ProductoCViewRoutedComponent,
     // Compra routed components
-    CompraPlistRoutedComponent,
-    CompraViewRoutedComponent,
-    CompraNewRoutedComponent,
-    CompraEditRoutedComponent,
-    CompraRemoveRoutedComponent,
+    CompraPlistAdminRoutedComponent,
+    CompraViewAdminRoutedComponent,
+    CompraNewAdminRoutedComponent,
+    CompraEditAdminRoutedComponent,
+    CompraRemoveAdminRoutedComponent,
     // Factura routed components
     FacturaPlistRoutedComponent,
     FacturaViewRoutedComponent,
@@ -255,10 +255,10 @@ registerLocaleData(localeEs);
 
     // Compra unrouted components
     CompraPlistRowUnroutedComponent,
-    CompraPlistheaderUnroutedComponent,
-    CompraPlistUnroutedComponent,
-    CompraDetailUnroutedComponent,
-    CompraFormUnroutedComponent,
+    CompraPlistHeaderAdminUnroutedComponent,
+    CompraPlistAdminUnroutedComponent,
+    CompraDetailAdminUnroutedComponent,
+    CompraFormAdminUnroutedComponent,
 
     // Carrito unrouted components
     CarritoDetailAUComponent,

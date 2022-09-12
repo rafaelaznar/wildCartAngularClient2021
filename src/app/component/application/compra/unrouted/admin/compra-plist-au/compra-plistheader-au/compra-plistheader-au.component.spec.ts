@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { CarritoDetailAUComponent } from './carrito-detail-au.component';
+import { CompraPlistHeaderAdminUnroutedComponent } from './compra-plistheader-au.component';
 
-describe('CompraDetailAdminUnroutedComponent', () => {
-  let component: CarritoDetailAUComponent;
-  let fixture: ComponentFixture<CarritoDetailAUComponent>;
+describe('ProductoPlistheaderUnroutedComponent', () => {
+  let component: CompraPlistHeaderAdminUnroutedComponent;
+  let fixture: ComponentFixture<CompraPlistHeaderAdminUnroutedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CarritoDetailAUComponent ]
+      declarations: [CompraPlistHeaderAdminUnroutedComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CarritoDetailAUComponent);
+    fixture = TestBed.createComponent(CompraPlistHeaderAdminUnroutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

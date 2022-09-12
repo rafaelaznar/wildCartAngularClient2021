@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './component/shared/routed/home/home.component';
 import { LogoutComponent } from './component/shared/routed/logout/logout.component';
-import { CompraPlistRoutedComponent } from './component/application/compra/routed/compra-plist-routed/compra-plist-routed.component';
-import { CompraRemoveRoutedComponent } from './component/application/compra/routed/compra-remove-routed/compra-remove-routed.component';
-import { CompraViewRoutedComponent } from './component/application/compra/routed/compra-view-routed/compra-view-routed.component';
+import { CompraPlistAdminRoutedComponent } from './component/application/compra/routed/admin/compra-plist-ar/compra-plist-ar.component';
+import { CompraRemoveAdminRoutedComponent } from './component/application/compra/routed/admin/compra-remove-ar/compra-remove-ar.component';
+import { CompraViewAdminRoutedComponent } from './component/application/compra/routed/admin/compra-view-ar/compra-view-ar.component';
 import { FacturaEditRoutedComponent } from './component/application/factura/routed/factura-edit-component/factura-edit-routed.component';
 import { FacturaNewRoutedComponent } from './component/application/factura/routed/factura-new-routed/factura-new-routed.component';
 import { FacturaPlistRoutedComponent } from './component/application/factura/routed/factura-plist-routed/factura-plist-routed.component';
@@ -32,8 +32,8 @@ import { GenerateComponent } from './component/shared/routed/generate/generate.c
 import { ReportsComponent } from './component/shared/routed/reports/reports.component';
 import { SessionResolver } from './resolve/session.resolve';
 import { FacturaViewRoutedComponent } from './component/application/factura/routed/factura-view-routed/factura-view-routed.component';
-import { CompraNewRoutedComponent } from './component/application/compra/routed/compra-new-routed/compra-new-routed.component';
-import { CompraEditRoutedComponent } from './component/application/compra/routed/compra-edit-routed/compra-edit-routed.component';
+import { CompraNewAdminRoutedComponent } from './component/application/compra/routed/admin/compra-new-ar/compra-new-ar.component';
+import { CompraEditAdminRoutedComponent } from './component/application/compra/routed/admin/compra-edit-ar/compra-edit-ar.component';
 import { CarritoViewARComponent } from './component/application/carrito/routed/admin/carrito-view-ar/carrito-view-ar.component';
 import { CarritoRemoveARComponent } from './component/application/carrito/routed/admin/carrito-remove-ar/carrito-remove-ar.component';
 import { CarritoPlistARComponent } from './component/application/carrito/routed/admin/carrito-plist-ar/carrito-plist-ar.component';
@@ -79,13 +79,13 @@ const routes: Routes = [
   { path: 'producto/remove/:id', component: ProductoRemoveRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'producto/cview/:id', component: ProductoCViewRoutedComponent, resolve: { message: SessionResolver } },
 
-  { path: 'compra/plist', component: CompraPlistRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'compra/plist/factura/:id_factura', component: CompraPlistRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'compra/plist/producto/:id_producto', component: CompraPlistRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'compra/view/:id', component: CompraViewRoutedComponent, resolve: { message: SessionResolver } },  
-  { path: 'compra/new', component: CompraNewRoutedComponent, resolve: { message: SessionResolver } },  
-  { path: 'compra/edit/:id', component: CompraEditRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'compra/remove/:id', component: CompraRemoveRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'compra/plist', component: CompraPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'compra/plist/factura/:id_factura', component: CompraPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'compra/plist/producto/:id_producto', component: CompraPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'compra/view/:id', component: CompraViewAdminRoutedComponent, resolve: { message: SessionResolver } },  
+  { path: 'compra/new', component: CompraNewAdminRoutedComponent, resolve: { message: SessionResolver } },  
+  { path: 'compra/edit/:id', component: CompraEditAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'compra/remove/:id', component: CompraRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
   
   { path: 'factura/plist', component: FacturaPlistRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'factura/plist/usuario/:id', component: FacturaPlistRoutedComponent, resolve: { message: SessionResolver } },  
