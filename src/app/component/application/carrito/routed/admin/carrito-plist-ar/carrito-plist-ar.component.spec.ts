@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CarritoPlistARComponent } from './carrito-plist-ar.component';
+import { CarritoPlistAdminRoutedComponent } from './carrito-plist-ar.component';
 
 describe('PlistCarritoComponent', () => {
-  let component: CarritoPlistARComponent;
-  let fixture: ComponentFixture<CarritoPlistARComponent>;
+  let component: CarritoPlistAdminRoutedComponent;
+  let fixture: ComponentFixture<CarritoPlistAdminRoutedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CarritoPlistARComponent ]
+      declarations: [ CarritoPlistAdminRoutedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CarritoPlistARComponent);
+    fixture = TestBed.createComponent(CarritoPlistAdminRoutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

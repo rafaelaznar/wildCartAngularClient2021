@@ -34,13 +34,13 @@
   <div class="col-md table-responsive-md">
     <table class="table table-bordered table-striped table-hover">
       <thead>
-        <tr class="text-center align-middle" app-carrito-plistheader-uu (sort)="onSetOrder($event)"
+        <tr class="text-center align-middle" app-carrito-plistheader-user-unrouted (sort)="onSetOrder($event)"
           [mode]="mode">
         </tr>
       </thead>
       <tbody>
 
-        <tr *ngFor="let oCarrito of aCarritos" class="align-middle" app-carrito-plistrow-uu [oCarrito]="oCarrito"  [id_tipousuario_session]="id_tipousuario_session" 
+        <tr *ngFor="let oCarrito of aCarritos" class="align-middle" app-carrito-plistrow-user-unrouted [oCarrito]="oCarrito"  [id_tipousuario_session]="id_tipousuario_session" 
           [mode]="mode" (selection)="onSelection($event)"  (addCarritoEE)="onAddCarrito($event)">
 
         </tr>

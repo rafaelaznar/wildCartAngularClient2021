@@ -6,12 +6,13 @@ import { IconService } from 'src/app/service/icon.service';
 import { API_URL } from 'src/environments/environment';
 
 @Component({
-  selector: '[app-carrito-plistrow-uu]',
+  selector: '[app-carrito-plistrow-user-unrouted]',
   templateUrl: './carrito-plistrow-uu.component.html',
   styleUrls: ['./carrito-plistrow-uu.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class CarritoPlistRowUUComponent implements OnInit {
+
+export class CarritoPlistRowUserUnroutedComponent implements OnInit {
 
   @Input() oCarrito: ICarrito = null;
   @Input() mode: boolean = true; //true=edición; false=selección

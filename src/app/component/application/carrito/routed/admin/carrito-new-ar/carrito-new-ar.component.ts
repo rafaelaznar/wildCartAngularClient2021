@@ -5,12 +5,12 @@ import { Subject } from 'rxjs';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: 'app-carrito-new-ar',
+  selector: 'app-carrito-new-admin-routed',
   templateUrl: './carrito-new-ar.component.html',
   styleUrls: ['./carrito-new-ar.component.css'],
 })
 
-export class CarritoNewARComponent implements OnInit {
+export class CarritoNewAdminRoutedComponent implements OnInit {
 
 
   strEntity: string = "carrito"

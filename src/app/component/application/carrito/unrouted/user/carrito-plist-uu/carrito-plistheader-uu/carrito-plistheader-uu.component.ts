@@ -3,13 +3,14 @@ import { IOrder } from 'src/app/model/model-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: '[app-carrito-plistheader-uu]',
+  selector: '[app-carrito-plistheader-user-unrouted]',
   templateUrl: './carrito-plistheader-uu.component.html',
   styleUrls: ['./carrito-plistheader-uu.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 
-export class CarritoPlistHeaderUUComponent implements OnInit {
+export class CarritoPlistHeaderUserUnroutedComponent implements OnInit {
+
   @Input() mode: boolean = true; //true=edición; false=selección
   @Input() strSortField: string = "";
   @Input() strSortDirection: string = "";

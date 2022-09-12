@@ -4,11 +4,11 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: '[app-carrito-plistrow-au]',
+  selector: '[app-carrito-plistrow-admin-unrouted]',
   templateUrl: './carrito-plistrow-au.component.html',
   styleUrls: ['./carrito-plistrow-au.component.css']
 })
-export class CarritoPlistRowAUComponent implements OnInit {
+export class CarritoPlistRowAdminUnroutedComponent implements OnInit {
 
   @Input() oCarrito: ICarrito = null;
   @Input() mode: boolean = true; //true=edición; false=selección

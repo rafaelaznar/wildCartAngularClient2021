@@ -12,12 +12,12 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
-  selector: 'app-carrito-form-au',
+  selector: 'app-carrito-form-admin-unrouted',
   templateUrl: './carrito-form-au.component.html',
   styleUrls: ['./carrito-form-au.component.css']
 })
 
-export class CarritoFormAUComponent implements OnInit {
+export class CarritoFormAdminUnroutedComponent implements OnInit {
 
   @Input() strOperation: string = null;
   @Input() id: number = null;

@@ -7,11 +7,11 @@ import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 @Component({
-  selector: 'app-carrito-remove-ar',
+  selector: 'app-carrito-remove-admin-routed',
   templateUrl: './carrito-remove-ar.component.html',
   styleUrls: ['./carrito-remove-ar.component.css']
 })
-export class CarritoRemoveARComponent implements OnInit {
+export class CarritoRemoveAdminRoutedComponent implements OnInit {
   strEntity: string = "carrito"
   strOperation: string = "remove"
   strTitleSingular: string = "Carrito";

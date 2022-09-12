@@ -8,11 +8,12 @@ import { ICarrito, ICarritoPage } from 'src/app/model/carrito-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
 
 @Component({
-  selector: 'app-carrito-cplist-uu',
+  selector: 'app-carrito-cplist-user-unrouted',
   templateUrl: './carrito-plist-uu.component.html',
   styleUrls: ['./carrito-plist-uu.component.css'],
 })
-export class CarritoPlistUUComponent implements OnInit {
+
+export class CarritoPlistUserUnroutedComponent implements OnInit {
   @Input() id_producto: number = null;
   @Input() id_usuario: number = null;
   @Input() mode: boolean = true; //true=edición; false=selección

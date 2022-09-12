@@ -4,12 +4,12 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: 'app-carrito-plist-ar',
+  selector: 'app-carrito-plist-admin-routed',
   templateUrl: './carrito-plist-ar.component.html',
   styleUrls: ['./carrito-plist-ar.component.css'],
 })
 
-export class CarritoPlistARComponent implements OnInit {
+export class CarritoPlistAdminRoutedComponent implements OnInit {
   strEntity: string = 'carrito';
   strOperation: string = 'plist';
   strTitleSingular: string = 'Carrito';

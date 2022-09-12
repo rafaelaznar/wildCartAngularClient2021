@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CarritoPlistUUComponent } from './carrito-plist-uu.component';
+import { CarritoPlistUserUnroutedComponent } from './carrito-plist-uu.component';
 
 
 
-describe('CarritoPlistAUComponent', () => {
-  let component: CarritoPlistUUComponent;
-  let fixture: ComponentFixture<CarritoPlistUUComponent>;
+describe('CarritoPlistAdminUnroutedComponent', () => {
+  let component: CarritoPlistUserUnroutedComponent;
+  let fixture: ComponentFixture<CarritoPlistUserUnroutedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CarritoPlistUUComponent ]
+      declarations: [ CarritoPlistUserUnroutedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CarritoPlistUUComponent);
+    fixture = TestBed.createComponent(CarritoPlistUserUnroutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

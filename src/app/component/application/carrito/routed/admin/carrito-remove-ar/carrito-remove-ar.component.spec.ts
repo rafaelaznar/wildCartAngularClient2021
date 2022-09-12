@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CarritoRemoveARComponent } from './carrito-remove-ar.component';
+import { CarritoRemoveAdminRoutedComponent } from './carrito-remove-ar.component';
 
-describe('CarritoRemoveARComponent', () => {
-  let component: CarritoRemoveARComponent;
-  let fixture: ComponentFixture<CarritoRemoveARComponent>;
+describe('CarritoRemoveAdminRoutedComponent', () => {
+  let component: CarritoRemoveAdminRoutedComponent;
+  let fixture: ComponentFixture<CarritoRemoveAdminRoutedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CarritoRemoveARComponent ]
+      declarations: [ CarritoRemoveAdminRoutedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CarritoRemoveARComponent);
+    fixture = TestBed.createComponent(CarritoRemoveAdminRoutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

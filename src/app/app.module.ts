@@ -107,19 +107,19 @@ import { CompraPlistHeaderAdminUnroutedComponent } from './component/application
 import { CompraPlistAdminUnroutedComponent } from './component/application/compra/unrouted/admin/compra-plist-au/compra-plist-au.component';
 import { CompraDetailAdminUnroutedComponent } from './component/application/compra/unrouted/admin/compra-detail-au/compra-detail-au.component';
 
-import { CarritoDetailAUComponent } from './component/application/carrito/unrouted/admin/carrito-detail-au/carrito-detail-au.component';
+import { CarritoDetailAdminUnroutedComponent } from './component/application/carrito/unrouted/admin/carrito-detail-au/carrito-detail-au.component';
 
 
 import { CompraFormAdminUnroutedComponent } from './component/application/compra/unrouted/admin/compra-form-au/compra-form-au.component';
-import { CarritoViewARComponent } from './component/application/carrito/routed/admin/carrito-view-ar/carrito-view-ar.component';
-import { CarritoRemoveARComponent } from './component/application/carrito/routed/admin/carrito-remove-ar/carrito-remove-ar.component';
-import { CarritoPlistAUComponent } from './component/application/carrito/unrouted/admin/carrito-plist-au/carrito-plist-au.component';
-import { CarritoPlistRowAUComponent } from './component/application/carrito/unrouted/admin/carrito-plist-au/carrito-plistrow-au/carrito-plistrow-au.component';
-import { CarritoPlistHeaderAUComponent } from './component/application/carrito/unrouted/admin/carrito-plist-au/carrito-plistheader-au/carrito-plistheader-au.component';
-import { CarritoPlistARComponent } from './component/application/carrito/routed/admin/carrito-plist-ar/carrito-plist-ar.component';
-import { CarritoFormAUComponent } from './component/application/carrito/unrouted/admin/carrito-form-au/carrito-form-au.component';
-import { CarritoNewARComponent } from './component/application/carrito/routed/admin/carrito-new-ar/carrito-new-ar.component';
-import { CarritoEditARComponent } from './component/application/carrito/routed/admin/carrito-edit-ar/carrito-edit-ar.component';
+import { CarritoViewAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-view-ar/carrito-view-ar.component';
+import { CarritoRemoveAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-remove-ar/carrito-remove-ar.component';
+import { CarritoPlistAdminUnroutedComponent } from './component/application/carrito/unrouted/admin/carrito-plist-au/carrito-plist-au.component';
+import { CarritoPlistRowAdminUnroutedComponent } from './component/application/carrito/unrouted/admin/carrito-plist-au/carrito-plistrow-au/carrito-plistrow-au.component';
+import { CarritoPlistHeaderAdminUnroutedComponent } from './component/application/carrito/unrouted/admin/carrito-plist-au/carrito-plistheader-au/carrito-plistheader-au.component';
+import { CarritoPlistAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-plist-ar/carrito-plist-ar.component';
+import { CarritoFormAdminUnroutedComponent } from './component/application/carrito/unrouted/admin/carrito-form-au/carrito-form-au.component';
+import { CarritoNewAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-new-ar/carrito-new-ar.component';
+import { CarritoEditAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-edit-ar/carrito-edit-ar.component';
 import { BadgeModule } from 'primeng/badge';
 
 // BLOQUE LOCALE
@@ -127,10 +127,10 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { ProductoCDetailUnroutedComponent } from './component/application/producto/unrouted/producto-cdetail-unrouted/producto-cdetail-unrouted.component';
 import { ProductoCViewRoutedComponent } from './component/application/producto/routed/producto-cview-routed copy/producto-cview-routed.component';
-import { CarritoPlistURComponent } from './component/application/carrito/routed/user/carrito-plist-ur/carrito-plist-ur.component';
-import { CarritoPlistUUComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plist-uu.component';
-import { CarritoPlistHeaderUUComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plistheader-uu/carrito-plistheader-uu.component';
-import { CarritoPlistRowUUComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plistrow-uu/carrito-plistrow-uu.component';
+import { CarritoPlistUserRoutedComponent } from './component/application/carrito/routed/user/carrito-plist-ur/carrito-plist-ur.component';
+import { CarritoPlistUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plist-uu.component';
+import { CarritoPlistHeaderUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plistheader-uu/carrito-plistheader-uu.component';
+import { CarritoPlistRowUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plistrow-uu/carrito-plistrow-uu.component';
 import { UsuarioCViewRoutedComponent } from './component/application/usuario/routed/usuario-cview-routed/usuario-cview-routed.component';
 import { UsuarioCDetailUnroutedComponent } from './component/application/usuario/unrouted/usuario-cdetail-unrouted copy/usuario-cdetail-unrouted.component';
 registerLocaleData(localeEs);
@@ -201,12 +201,12 @@ registerLocaleData(localeEs);
     FacturaEditRoutedComponent,
     FacturaRemoveRoutedComponent,
     // Carrito routed components
-    CarritoPlistARComponent,
-    CarritoViewARComponent,
-    CarritoRemoveARComponent,
-    CarritoNewARComponent,
-    CarritoEditARComponent,
-    CarritoPlistURComponent,
+    CarritoPlistAdminRoutedComponent,
+    CarritoViewAdminRoutedComponent,
+    CarritoRemoveAdminRoutedComponent,
+    CarritoNewAdminRoutedComponent,
+    CarritoEditAdminRoutedComponent,
+    CarritoPlistUserRoutedComponent,
     
 
 
@@ -261,14 +261,14 @@ registerLocaleData(localeEs);
     CompraFormAdminUnroutedComponent,
 
     // Carrito unrouted components
-    CarritoDetailAUComponent,
-    CarritoPlistAUComponent,
-    CarritoPlistRowAUComponent,
-    CarritoPlistHeaderAUComponent,
-    CarritoFormAUComponent,
-    CarritoPlistUUComponent,
-    CarritoPlistHeaderUUComponent,
-    CarritoPlistRowUUComponent
+    CarritoDetailAdminUnroutedComponent,
+    CarritoPlistAdminUnroutedComponent,
+    CarritoPlistRowAdminUnroutedComponent,
+    CarritoPlistHeaderAdminUnroutedComponent,
+    CarritoFormAdminUnroutedComponent,
+    CarritoPlistUserUnroutedComponent,
+    CarritoPlistHeaderUserUnroutedComponent,
+    CarritoPlistRowUserUnroutedComponent
 
   ],
   imports: [

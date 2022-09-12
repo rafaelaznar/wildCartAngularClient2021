@@ -27,12 +27,12 @@
   <div class="col-md table-responsive-md">
     <table class="table table-bordered table-striped table-hover">
       <thead>
-        <tr class="text-center align-middle" app-carrito-plistheader-au (sort)="onSetOrder($event)" [mode]="mode">
+        <tr class="text-center align-middle" app-carrito-plistheader-admin-unrouted (sort)="onSetOrder($event)" [mode]="mode">
         </tr>
       </thead>
       <tbody>
 
-        <tr *ngFor="let oCarrito of aCarritos" class="align-middle" app-carrito-plistrow-au
+        <tr *ngFor="let oCarrito of aCarritos" class="align-middle" app-carrito-plistrow-admin-unrouted
           [oCarrito]="oCarrito" [mode]="mode" (selection)="onSelection($event)">
 
         </tr>

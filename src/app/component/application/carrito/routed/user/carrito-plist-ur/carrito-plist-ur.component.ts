@@ -5,13 +5,13 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: 'app-carrito-plist-ur',
+  selector: 'app-carrito-plist-user-routed',
   templateUrl: './carrito-plist-ur.component.html',
   styleUrls: ['./carrito-plist-ur.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 
-export class CarritoPlistURComponent implements OnInit {
+export class CarritoPlistUserRoutedComponent implements OnInit {
   strEntity: string = 'carrito';
   strOperation: string = 'plist';
   strTitleSingular: string = 'Carrito';

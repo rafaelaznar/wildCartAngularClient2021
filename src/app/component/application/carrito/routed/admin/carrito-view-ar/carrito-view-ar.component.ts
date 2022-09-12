@@ -3,12 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IconService } from 'src/app/service/icon.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 @Component({
-  selector: 'app-carrito-view-ar',
+  selector: 'app-carrito-view-admin-routed',
   templateUrl: './carrito-view-ar.component.html',
   styleUrls: ['./carrito-view-ar.component.css']
 })
 
-export class CarritoViewARComponent implements OnInit {
+export class CarritoViewAdminRoutedComponent implements OnInit {
   strEntity: string = "carrito"
   strOperation: string = "view"
   strTitleSingular: string = "Carrito";

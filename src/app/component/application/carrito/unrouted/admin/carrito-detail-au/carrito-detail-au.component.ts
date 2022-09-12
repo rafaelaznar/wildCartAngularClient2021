@@ -4,11 +4,11 @@ import { CarritoService } from 'src/app/service/carrito.service';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: 'app-carrito-detail-au',
+  selector: 'app-carrito-detail-admin-unrouted',
   templateUrl: './carrito-detail-au.component.html',
   styleUrls: ['./carrito-detail-au.component.css']
 })
-export class CarritoDetailAUComponent implements OnInit {
+export class CarritoDetailAdminUnroutedComponent implements OnInit {
 
   @Input() id: number = null;  
 

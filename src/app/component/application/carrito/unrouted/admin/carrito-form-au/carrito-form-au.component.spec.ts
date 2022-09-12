@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CarritoFormAUComponent } from './carrito-form-au.component';
+import { CarritoFormAdminUnroutedComponent } from './carrito-form-au.component';
 
-describe('CarritoFormAUComponent', () => {
-  let component: CarritoFormAUComponent;
-  let fixture: ComponentFixture<CarritoFormAUComponent>;
+describe('CarritoFormAdminUnroutedComponent', () => {
+  let component: CarritoFormAdminUnroutedComponent;
+  let fixture: ComponentFixture<CarritoFormAdminUnroutedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CarritoFormAUComponent ]
+      declarations: [ CarritoFormAdminUnroutedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CarritoFormAUComponent);
+    fixture = TestBed.createComponent(CarritoFormAdminUnroutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
