@@ -15,8 +15,7 @@ export class CarritoPlistHeaderAdminUnroutedComponent implements OnInit {
   @Input() strSortDirection: string = "";
   @Output() sort = new EventEmitter<IOrder>();
 
-  strEntity: string = "carrito";
-  strOperation: string = "plist";
+
   constructor(
     public oIconService: IconService
   ) { }

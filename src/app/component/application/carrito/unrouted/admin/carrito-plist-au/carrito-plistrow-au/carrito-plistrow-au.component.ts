@@ -13,9 +13,7 @@ export class CarritoPlistRowAdminUnroutedComponent implements OnInit {
   @Input() oCarrito: ICarrito = null;
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() selection = new EventEmitter<number>();
-
-  strEntity: string = "carrito";
-  strOperation: string = "plist";
+  
   oUsuarioSession: IUsuario;
 
   constructor(

@@ -15,8 +15,8 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
   strOperation: string = 'edit';
   strTitleSingular: string = 'Carrito';
   strTitlePlural: string = 'Carritos';
-  strATitleSingular: string = 'La carrito';
-  strATitlePlural: string = 'Las carritos';
+  strATitleSingular: string = 'El carrito';
+  strATitlePlural: string = 'Los carritos';
   //
   id: number = null;
   strResult: string = null;

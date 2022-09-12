@@ -12,10 +12,13 @@ import { IconService } from 'src/app/service/icon.service';
 })
 
 export class CarritoPlistUserRoutedComponent implements OnInit {
+
   strEntity: string = 'carrito';
   strOperation: string = 'plist';
   strTitleSingular: string = 'Carrito';
   strTitlePlural: string = 'Carritos';
+  strATitleSingular: string = 'El carrito';
+  strATitlePlural: string = 'Los carritos';
 
   oUserSession: IUsuario;
 

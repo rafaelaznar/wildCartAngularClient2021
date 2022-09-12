@@ -9,10 +9,14 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 })
 
 export class CarritoViewAdminRoutedComponent implements OnInit {
-  strEntity: string = "carrito"
-  strOperation: string = "view"
-  strTitleSingular: string = "Carrito";
-  strTitlePlural: string = "Carritos";
+
+  strEntity: string = 'carrito';
+  strOperation: string = 'view';
+  strTitleSingular: string = 'Carrito';
+  strTitlePlural: string = 'Carritos';
+  strATitleSingular: string = 'El carrito';
+  strATitlePlural: string = 'Los carritos';
+
   id: number = null;
   strUsuarioSession: string;
   strResult: string = null;

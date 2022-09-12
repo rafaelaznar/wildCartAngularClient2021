@@ -12,11 +12,13 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
   styleUrls: ['./carrito-remove-ar.component.css']
 })
 export class CarritoRemoveAdminRoutedComponent implements OnInit {
-  strEntity: string = "carrito"
-  strOperation: string = "remove"
-  strTitleSingular: string = "Carrito";
-  strTitlePlural: string = "Carritos";
-  strTitleArtSingular: string = "El carrito";
+
+  strEntity: string = 'carrito';
+  strOperation: string = 'remove';
+  strTitleSingular: string = 'Carrito';
+  strTitlePlural: string = 'Carritos';
+  strATitleSingular: string = 'El carrito';
+  strATitlePlural: string = 'Los carritos';
 
   id: number = 0;  
   oUserSession: IUsuario;
@@ -48,7 +50,7 @@ export class CarritoRemoveAdminRoutedComponent implements OnInit {
   removeOne() {
     this.oCarritoService.removeOne(this.id).subscribe((id: number) => {    
       if (id) {                
-        this.strResult = this.strTitleArtSingular + " con id = " + this.id + " se ha eliminado.";
+        this.strResult = this.strATitleSingular + " con id = " + this.id + " se ha eliminado.";
       } else {
         this.strResult = 'Error en el borrado de ' + this.strTitleSingular;
       }

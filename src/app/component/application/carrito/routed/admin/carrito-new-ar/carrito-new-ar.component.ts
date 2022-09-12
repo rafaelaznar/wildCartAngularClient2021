@@ -12,12 +12,13 @@ import { IconService } from 'src/app/service/icon.service';
 
 export class CarritoNewAdminRoutedComponent implements OnInit {
 
-
   strEntity: string = "carrito"
   strOperation: string = "new"
   strTitleSingular: string = "Carrito";
-  strATitleSingular: string = "La carrito";
   strTitlePlural: string = "Carritos";
+  strATitleSingular: string = "El carrito";
+  strATitlePlural: string = "Los carritos";
+  //
   id: number = null;
   strResult: string = null;
   strUsuarioSession: string;
