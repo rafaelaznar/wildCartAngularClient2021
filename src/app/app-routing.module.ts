@@ -34,13 +34,13 @@ import { SessionResolver } from './resolve/session.resolve';
 import { FacturaViewRoutedComponent } from './component/application/factura/routed/factura-view-routed/factura-view-routed.component';
 import { CompraNewRoutedComponent } from './component/application/compra/routed/compra-new-routed/compra-new-routed.component';
 import { CompraEditRoutedComponent } from './component/application/compra/routed/compra-edit-routed/compra-edit-routed.component';
-import { CarritoViewARComponent } from './component/application/carrito/routed/carrito-view-AR/carrito-view-AR.component';
-import { CarritoRemoveARComponent } from './component/application/carrito/routed/carrito-remove-AR/carrito-remove-AR.component';
-import { CarritoPlistARComponent } from './component/application/carrito/routed/carrito-plist-AR/carrito-plist-AR.component';
-import { CarritoEditARComponent } from './component/application/carrito/routed/carrito-edit-AR/carrito-edit-AR.component';
-import { CarritoNewARComponent } from './component/application/carrito/routed/carrito-new-AR/carrito-new-AR.component';
+import { CarritoViewARComponent } from './component/application/carrito/routed/admin/carrito-view-ar/carrito-view-ar.component';
+import { CarritoRemoveARComponent } from './component/application/carrito/routed/admin/carrito-remove-ar/carrito-remove-ar.component';
+import { CarritoPlistARComponent } from './component/application/carrito/routed/admin/carrito-plist-ar/carrito-plist-ar.component';
+import { CarritoEditARComponent } from './component/application/carrito/routed/admin/carrito-edit-ar/carrito-edit-ar.component';
+import { CarritoNewARComponent } from './component/application/carrito/routed/admin/carrito-new-ar/carrito-new-ar.component';
 import { ProductoCViewRoutedComponent } from './component/application/producto/routed/producto-cview-routed copy/producto-cview-routed.component';
-import { CarritoPlistURComponent } from './component/application/carrito/routed/carrito-plist-UR/carrito-plist-UR.component';
+import { CarritoPlistURComponent } from './component/application/carrito/routed/user/carrito-plist-ur/carrito-plist-ur.component';
 import { UsuarioCViewRoutedComponent } from './component/application/usuario/routed/usuario-cview-routed/usuario-cview-routed.component';
 
 
