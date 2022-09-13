@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductoFormUnroutedComponent } from './producto-form-unrouted.component';
+import { ProductoFormAdminUnroutedComponent } from './producto-form-unrouted.component';
 
-describe('ProductoFormUnroutedComponent', () => {
-  let component: ProductoFormUnroutedComponent;
-  let fixture: ComponentFixture<ProductoFormUnroutedComponent>;
+describe('ProductoFormAdminUnroutedComponent', () => {
+  let component: ProductoFormAdminUnroutedComponent;
+  let fixture: ComponentFixture<ProductoFormAdminUnroutedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductoFormUnroutedComponent ]
+      declarations: [ ProductoFormAdminUnroutedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductoFormUnroutedComponent);
+    fixture = TestBed.createComponent(ProductoFormAdminUnroutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

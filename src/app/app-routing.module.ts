@@ -10,11 +10,11 @@ import { FacturaEditAdminRoutedComponent } from './component/application/factura
 import { FacturaNewAdminRoutedComponent } from './component/application/factura/routed/admin/factura-new-ar/factura-new-ar.component';
 import { FacturaPlistAdminRoutedComponent } from './component/application/factura/routed/admin/factura-plist-ar/factura-plist-ar.component';
 import { FacturaRemoveAdminRoutedComponent } from './component/application/factura/routed/admin/factura-remove-ar/factura-remove-ar.component';
-import { ProductoEditRoutedComponent } from './component/application/producto/routed/admin/producto-edit-ar/producto-edit-routed.component';
-import { ProductoNewRoutedComponent } from './component/application/producto/routed/admin/producto-new-ar/producto-new-routed.component';
-import { PlistProductoComponent } from './component/application/producto/routed/admin/producto-plist-ar/plist-producto.component';
-import { ProductoRemoveRoutedComponent } from './component/application/producto/routed/admin/producto-remove-ar/producto-remove-routed.component';
-import { ProductoViewRoutedComponent } from './component/application/producto/routed/admin/producto-view-ar/producto-view-routed.component';
+import { ProductoEdiAdminRoutedComponent } from './component/application/producto/routed/admin/producto-edit-ar/producto-edit-ar.component';
+import { ProductoNewAdminRoutedComponent } from './component/application/producto/routed/admin/producto-new-ar/producto-new-ar.component';
+import { ProductoPlistAdminRoutedComponent } from './component/application/producto/routed/admin/producto-plist-ar/producto-plist-ar.component';
+import { ProductoRemoveAdminRoutedComponent } from './component/application/producto/routed/admin/producto-remove-ar/producto-remove-ar.component';
+import { ProductoViewAdminRoutedComponent } from './component/application/producto/routed/admin/producto-view-ar/producto-view-ar.component';
 import { TipoproductoEditRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-edit-routed/tipoproducto-edit-routed.component';
 import { TipoproductoNewRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-new-routed/tipoproducto-new-routed.component';
 import { PlistTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-plist-routed/tipoproducto-plist-routed.component';
@@ -39,7 +39,7 @@ import { CarritoRemoveAdminRoutedComponent } from './component/application/carri
 import { CarritoPlistAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-plist-ar/carrito-plist-ar.component';
 import { CarritoEditAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-edit-ar/carrito-edit-ar.component';
 import { CarritoNewAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-new-ar/carrito-new-ar.component';
-import { ProductoCViewRoutedComponent } from './component/application/producto/routed/user/producto-view-ur/producto-cview-routed.component';
+import { ProductoViewUserRoutedComponent } from './component/application/producto/routed/user/producto-view-ur/producto-view-ur.component';
 import { CarritoPlistUserRoutedComponent } from './component/application/carrito/routed/user/carrito-plist-ur/carrito-plist-ur.component';
 import { UsuarioCViewRoutedComponent } from './component/application/usuario/routed/usuario-cview-routed/usuario-cview-routed.component';
 
@@ -71,13 +71,13 @@ const routes: Routes = [
   { path: 'tipoproducto/edit/:id', component: TipoproductoEditRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'tipoproducto/remove/:id', component: TipoproductoRemoveRoutedComponent, resolve: { message: SessionResolver } },
 
-  { path: 'producto/plist', component: PlistProductoComponent, resolve: { message: SessionResolver } },
-  { path: 'producto/plist/tipoproducto/:id_tipoproducto', component: PlistProductoComponent, resolve: { message: SessionResolver } },
-  { path: 'producto/view/:id', component: ProductoViewRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'producto/new', component: ProductoNewRoutedComponent, resolve: { message: SessionResolver } },  
-  { path: 'producto/edit/:id', component: ProductoEditRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'producto/remove/:id', component: ProductoRemoveRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'producto/cview/:id', component: ProductoCViewRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'producto/plist', component: ProductoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'producto/plist/tipoproducto/:id_tipoproducto', component: ProductoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'producto/view/:id', component: ProductoViewAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'producto/new', component: ProductoNewAdminRoutedComponent, resolve: { message: SessionResolver } },  
+  { path: 'producto/edit/:id', component: ProductoEdiAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'producto/remove/:id', component: ProductoRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'producto/cview/:id', component: ProductoViewUserRoutedComponent, resolve: { message: SessionResolver } },
 
   { path: 'compra/plist', component: CompraPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'compra/plist/factura/:id_factura', component: CompraPlistAdminRoutedComponent, resolve: { message: SessionResolver } },

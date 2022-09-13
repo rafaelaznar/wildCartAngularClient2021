@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductoFormAdminUnroutedComponent } from './producto-form-unrouted.component';
+import { ProductoFormAdminUnroutedComponent } from './producto-form-au.component';
 
 describe('ProductoFormAdminUnroutedComponent', () => {
   let component: ProductoFormAdminUnroutedComponent;

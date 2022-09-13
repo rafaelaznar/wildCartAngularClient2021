@@ -27,11 +27,11 @@ import { TipoproductoNewRoutedComponent } from './component/application/tipoprod
 import { TipoproductoEditRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-edit-routed/tipoproducto-edit-routed.component';
 import { TipoproductoRemoveRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-remove-routed/tipoproducto-remove-routed.component';
 import { TipoproductoViewRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-view-routed/tipoproducto-view-routed.component';
-import { PlistProductoComponent } from './component/application/producto/routed/admin/producto-plist-ar/plist-producto.component';
-import { ProductoNewRoutedComponent } from './component/application/producto/routed/admin/producto-new-ar/producto-new-routed.component';
-import { ProductoEditRoutedComponent } from './component/application/producto/routed/admin/producto-edit-ar/producto-edit-routed.component';
-import { ProductoRemoveRoutedComponent } from './component/application/producto/routed/admin/producto-remove-ar/producto-remove-routed.component';
-import { ProductoViewRoutedComponent } from './component/application/producto/routed/admin/producto-view-ar/producto-view-routed.component';
+import { ProductoPlistAdminRoutedComponent } from './component/application/producto/routed/admin/producto-plist-ar/producto-plist-ar.component';
+import { ProductoNewAdminRoutedComponent } from './component/application/producto/routed/admin/producto-new-ar/producto-new-ar.component';
+import { ProductoEdiAdminRoutedComponent } from './component/application/producto/routed/admin/producto-edit-ar/producto-edit-ar.component';
+import { ProductoRemoveAdminRoutedComponent } from './component/application/producto/routed/admin/producto-remove-ar/producto-remove-ar.component';
+import { ProductoViewAdminRoutedComponent } from './component/application/producto/routed/admin/producto-view-ar/producto-view-ar.component';
 import { UsuarioPlistRoutedComponent } from './component/application/usuario/routed/usuario-plist-routed/usuario-plist-routed.component';
 import { UsuarioNewRoutedComponent } from './component/application/usuario/routed/usuario-new-routed/usuario-new-routed.component';
 import { UsuarioEditRoutedComponent } from './component/application/usuario/routed/usuario-edit-routed/usuario-edit-routed.component';
@@ -65,15 +65,15 @@ import { UsuarioViewUnroutedComponent } from './component/application/usuario/un
 import { FileService } from './service/file.service';
 import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
 import { TipoproductoPlistUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-plist-unrouted/tipoproducto-plist-unrouted.component';
-import { ProductoPlistUnroutedComponent } from './component/application/producto/unrouted/admin/producto-plist-au/producto-plist-unrouted.component';
+import { ProductoPlistAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-plist-au/producto-plist-au.component';
 
 import { FacturaPlistAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-plist-au/factura-plist-au.component';
 import { TipousuarioPlistUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-plist-unrouted/tipousuario-plist-unrouted.component';
-import { ProductoCPlistUnroutedComponent } from './component/application/producto/unrouted/user/producto-plist-uu/producto-cplist-unrouted.component';
-import { ProductoPlistRowUnroutedComponent } from './component/application/producto/unrouted/admin/producto-plist-au/producto-plistrow-au/producto-plistrow-unrouted.component';
-import { ProductoPlistheaderUnroutedComponent } from './component/application/producto/unrouted/admin/producto-plist-au/producto-plistheader-au/producto-plistheader-unrouted.component';
-import { ProductoFormUnroutedComponent } from './component/application/producto/unrouted/admin/producto-form-au/producto-form-unrouted.component';
-import { ProductoDetailUnroutedComponent } from './component/application/producto/unrouted/admin/producto-detail-au/producto-detail-unrouted.component';
+import { ProductoPlistUserUnroutedComponent } from './component/application/producto/unrouted/user/producto-plist-uu/producto-plist-uu.component';
+import { ProductoPlistRowUnroutedComponent } from './component/application/producto/unrouted/admin/producto-plist-au/producto-plistrow-au/producto-plistrow-au.component';
+import { ProductoPlistheaderUnroutedComponent } from './component/application/producto/unrouted/admin/producto-plist-au/producto-plistheader-au/producto-plistheader-au.component';
+import { ProductoFormAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-form-au/producto-form-au.component';
+import { ProductoDetailAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-detail-au/producto-detail-au.component';
 
 import { findUnroutedComponent } from './component/shared/unrouted/find-unrouted/find-unrouted.component';
 import { UsuarioFormUnroutedComponent } from './component/application/usuario/unrouted/usuario-form-unrouted/usuario-form-unrouted.component';
@@ -125,8 +125,8 @@ import { BadgeModule } from 'primeng/badge';
 // BLOQUE LOCALE
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import { ProductoCDetailUnroutedComponent } from './component/application/producto/unrouted/user/producto-detail-uu/producto-cdetail-unrouted.component';
-import { ProductoCViewRoutedComponent } from './component/application/producto/routed/user/producto-view-ur/producto-cview-routed.component';
+import { ProductoDetailUserUnroutedComponent } from './component/application/producto/unrouted/user/producto-detail-uu/producto-detail-uu.component';
+import { ProductoViewUserRoutedComponent } from './component/application/producto/routed/user/producto-view-ur/producto-view-ur.component';
 import { CarritoPlistUserRoutedComponent } from './component/application/carrito/routed/user/carrito-plist-ur/carrito-plist-ur.component';
 import { CarritoPlistUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plist-uu.component';
 import { CarritoPlistheaderUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plistheader-uu/carrito-plistheader-uu.component';
@@ -182,12 +182,12 @@ registerLocaleData(localeEs);
     TipoproductoEditRoutedComponent,
     TipoproductoRemoveRoutedComponent,
     // Producto routed components
-    PlistProductoComponent,
-    ProductoViewRoutedComponent,
-    ProductoNewRoutedComponent,
-    ProductoEditRoutedComponent,
-    ProductoRemoveRoutedComponent,
-    ProductoCViewRoutedComponent,
+    ProductoPlistAdminRoutedComponent,
+    ProductoViewAdminRoutedComponent,
+    ProductoNewAdminRoutedComponent,
+    ProductoEdiAdminRoutedComponent,
+    ProductoRemoveAdminRoutedComponent,
+    ProductoViewUserRoutedComponent,
     // Compra routed components
     CompraPlistAdminRoutedComponent,
     CompraViewAdminRoutedComponent,
@@ -231,13 +231,13 @@ registerLocaleData(localeEs);
     TipousuarioFormUnroutedComponent,
 
     // Producto unrouted components
-    ProductoDetailUnroutedComponent,
-    ProductoFormUnroutedComponent,
-    ProductoPlistUnroutedComponent,
+    ProductoDetailAdminUnroutedComponent,
+    ProductoFormAdminUnroutedComponent,
+    ProductoPlistAdminUnroutedComponent,
     ProductoPlistheaderUnroutedComponent,
     ProductoPlistRowUnroutedComponent,
-    ProductoCPlistUnroutedComponent,
-    ProductoCDetailUnroutedComponent,
+    ProductoPlistUserUnroutedComponent,
+    ProductoDetailUserUnroutedComponent,
 
     // TipoProducto unrouted components
     TipoproductoPlistUnroutedComponent,
