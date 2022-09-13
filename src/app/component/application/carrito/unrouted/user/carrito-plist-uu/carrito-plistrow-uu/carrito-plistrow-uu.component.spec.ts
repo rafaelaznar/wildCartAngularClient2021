@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { CarritoPlistRowUserUnroutedComponent } from './carrito-plistrow-uu.component';
+import { CarritoPlistrowUserUnroutedComponent } from './carrito-plistrow-uu.component';
 
 describe('ProductoRowUnroutedComponent', () => {
-  let component: CarritoPlistRowUserUnroutedComponent;
-  let fixture: ComponentFixture<CarritoPlistRowUserUnroutedComponent>;
+  let component: CarritoPlistrowUserUnroutedComponent;
+  let fixture: ComponentFixture<CarritoPlistrowUserUnroutedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CarritoPlistRowUserUnroutedComponent ]
+      declarations: [ CarritoPlistrowUserUnroutedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CarritoPlistRowUserUnroutedComponent);
+    fixture = TestBed.createComponent(CarritoPlistrowUserUnroutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

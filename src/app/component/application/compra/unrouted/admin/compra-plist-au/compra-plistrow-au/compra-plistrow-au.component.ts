@@ -9,7 +9,7 @@ import { API_URL } from '../../../../../../../../environments/environment';
   templateUrl: './compra-plistrow-au.component.html',
   styleUrls: ['./compra-plistrow-au.component.css']
 })
-export class CompraPlistRowUnroutedComponent implements OnInit {
+export class CompraPlistrowUnroutedComponent implements OnInit {
   @Input() oCompra: ICompra = null;
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() selection = new EventEmitter<number>();

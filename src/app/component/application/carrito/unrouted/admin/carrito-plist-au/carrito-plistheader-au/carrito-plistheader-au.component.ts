@@ -8,7 +8,7 @@ import { IconService } from 'src/app/service/icon.service';
   styleUrls: ['./carrito-plistheader-au.component.css']
 })
 
-export class CarritoPlistHeaderAdminUnroutedComponent implements OnInit {
+export class CarritoPlistheaderAdminUnroutedComponent implements OnInit {
   
   @Input() mode: boolean = true; //true=edición; false=selección
   @Input() strSortField: string = "";

@@ -102,8 +102,8 @@ import { FacturaFormUnroutedComponent } from './component/application/factura/un
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TipoproductoFormUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-form-unrouted/tipoproducto-form-unrouted.component';
-import { CompraPlistRowUnroutedComponent } from './component/application/compra/unrouted/admin/compra-plist-au/compra-plistrow-au/compra-plistrow-au.component';
-import { CompraPlistHeaderAdminUnroutedComponent } from './component/application/compra/unrouted/admin/compra-plist-au/compra-plistheader-au/compra-plistheader-au.component';
+import { CompraPlistrowUnroutedComponent } from './component/application/compra/unrouted/admin/compra-plist-au/compra-plistrow-au/compra-plistrow-au.component';
+import { CompraPlistheaderAdminUnroutedComponent } from './component/application/compra/unrouted/admin/compra-plist-au/compra-plistheader-au/compra-plistheader-au.component';
 import { CompraPlistAdminUnroutedComponent } from './component/application/compra/unrouted/admin/compra-plist-au/compra-plist-au.component';
 import { CompraDetailAdminUnroutedComponent } from './component/application/compra/unrouted/admin/compra-detail-au/compra-detail-au.component';
 
@@ -114,8 +114,8 @@ import { CompraFormAdminUnroutedComponent } from './component/application/compra
 import { CarritoViewAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-view-ar/carrito-view-ar.component';
 import { CarritoRemoveAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-remove-ar/carrito-remove-ar.component';
 import { CarritoPlistAdminUnroutedComponent } from './component/application/carrito/unrouted/admin/carrito-plist-au/carrito-plist-au.component';
-import { CarritoPlistRowAdminUnroutedComponent } from './component/application/carrito/unrouted/admin/carrito-plist-au/carrito-plistrow-au/carrito-plistrow-au.component';
-import { CarritoPlistHeaderAdminUnroutedComponent } from './component/application/carrito/unrouted/admin/carrito-plist-au/carrito-plistheader-au/carrito-plistheader-au.component';
+import { CarritoPlistrowAdminUnroutedComponent } from './component/application/carrito/unrouted/admin/carrito-plist-au/carrito-plistrow-au/carrito-plistrow-au.component';
+import { CarritoPlistheaderAdminUnroutedComponent } from './component/application/carrito/unrouted/admin/carrito-plist-au/carrito-plistheader-au/carrito-plistheader-au.component';
 import { CarritoPlistAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-plist-ar/carrito-plist-ar.component';
 import { CarritoFormAdminUnroutedComponent } from './component/application/carrito/unrouted/admin/carrito-form-au/carrito-form-au.component';
 import { CarritoNewAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-new-ar/carrito-new-ar.component';
@@ -129,8 +129,8 @@ import { ProductoCDetailUnroutedComponent } from './component/application/produc
 import { ProductoCViewRoutedComponent } from './component/application/producto/routed/producto-cview-routed copy/producto-cview-routed.component';
 import { CarritoPlistUserRoutedComponent } from './component/application/carrito/routed/user/carrito-plist-ur/carrito-plist-ur.component';
 import { CarritoPlistUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plist-uu.component';
-import { CarritoPlistHeaderUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plistheader-uu/carrito-plistheader-uu.component';
-import { CarritoPlistRowUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plistrow-uu/carrito-plistrow-uu.component';
+import { CarritoPlistheaderUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plistheader-uu/carrito-plistheader-uu.component';
+import { CarritoPlistrowUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-uu/carrito-plistrow-uu/carrito-plistrow-uu.component';
 import { UsuarioCViewRoutedComponent } from './component/application/usuario/routed/usuario-cview-routed/usuario-cview-routed.component';
 import { UsuarioCDetailUnroutedComponent } from './component/application/usuario/unrouted/usuario-cdetail-unrouted copy/usuario-cdetail-unrouted.component';
 registerLocaleData(localeEs);
@@ -254,8 +254,8 @@ registerLocaleData(localeEs);
     FacturaFormUnroutedComponent,
 
     // Compra unrouted components
-    CompraPlistRowUnroutedComponent,
-    CompraPlistHeaderAdminUnroutedComponent,
+    CompraPlistrowUnroutedComponent,
+    CompraPlistheaderAdminUnroutedComponent,
     CompraPlistAdminUnroutedComponent,
     CompraDetailAdminUnroutedComponent,
     CompraFormAdminUnroutedComponent,
@@ -263,12 +263,12 @@ registerLocaleData(localeEs);
     // Carrito unrouted components
     CarritoDetailAdminUnroutedComponent,
     CarritoPlistAdminUnroutedComponent,
-    CarritoPlistRowAdminUnroutedComponent,
-    CarritoPlistHeaderAdminUnroutedComponent,
+    CarritoPlistrowAdminUnroutedComponent,
+    CarritoPlistheaderAdminUnroutedComponent,
     CarritoFormAdminUnroutedComponent,
     CarritoPlistUserUnroutedComponent,
-    CarritoPlistHeaderUserUnroutedComponent,
-    CarritoPlistRowUserUnroutedComponent
+    CarritoPlistheaderUserUnroutedComponent,
+    CarritoPlistrowUserUnroutedComponent
 
   ],
   imports: [

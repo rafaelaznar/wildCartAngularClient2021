@@ -12,7 +12,7 @@ import { API_URL } from 'src/environments/environment';
   encapsulation: ViewEncapsulation.None
 })
 
-export class CarritoPlistRowUserUnroutedComponent implements OnInit {
+export class CarritoPlistrowUserUnroutedComponent implements OnInit {
 
   @Input() oCarrito: ICarrito = null;
   @Input() mode: boolean = true; //true=edición; false=selección

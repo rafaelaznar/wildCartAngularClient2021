@@ -8,7 +8,7 @@ import { IconService } from 'src/app/service/icon.service';
   templateUrl: './carrito-plistrow-au.component.html',
   styleUrls: ['./carrito-plistrow-au.component.css']
 })
-export class CarritoPlistRowAdminUnroutedComponent implements OnInit {
+export class CarritoPlistrowAdminUnroutedComponent implements OnInit {
 
   @Input() oCarrito: ICarrito = null;
   @Input() mode: boolean = true; //true=edición; false=selección

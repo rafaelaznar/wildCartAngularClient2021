@@ -9,7 +9,7 @@ import { IconService } from 'src/app/service/icon.service';
   encapsulation: ViewEncapsulation.None
 })
 
-export class CarritoPlistHeaderUserUnroutedComponent implements OnInit {
+export class CarritoPlistheaderUserUnroutedComponent implements OnInit {
 
   @Input() mode: boolean = true; //true=edición; false=selección
   @Input() strSortField: string = "";

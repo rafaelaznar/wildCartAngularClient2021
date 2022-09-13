@@ -7,7 +7,7 @@ import { IconService } from 'src/app/service/icon.service';
   templateUrl: './compra-plistheader-au.component.html',
   styleUrls: ['./compra-plistheader-au.component.css']
 })
-export class CompraPlistHeaderAdminUnroutedComponent implements OnInit {
+export class CompraPlistheaderAdminUnroutedComponent implements OnInit {
   
   @Input() strSortField: string = "";
   @Input() strSortDirection: string = "";
