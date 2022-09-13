@@ -43,10 +43,10 @@ import { CompraNewAdminRoutedComponent } from './component/application/compra/ro
 import { CompraEditAdminRoutedComponent } from './component/application/compra/routed/admin/compra-edit-ar/compra-edit-ar.component';
 import { CompraViewAdminRoutedComponent } from './component/application/compra/routed/admin/compra-view-ar/compra-view-ar.component';
 import { CompraRemoveAdminRoutedComponent } from './component/application/compra/routed/admin/compra-remove-ar/compra-remove-ar.component';
-import { FacturaPlistRoutedComponent } from './component/application/factura/routed/factura-plist-routed/factura-plist-routed.component';
-import { FacturaNewRoutedComponent } from './component/application/factura/routed/factura-new-routed/factura-new-routed.component';
-import { FacturaRemoveRoutedComponent } from './component/application/factura/routed/factura-remove-routed/factura-remove-routed.component';
-import { FacturaEditRoutedComponent } from './component/application/factura/routed/factura-edit-component/factura-edit-routed.component';
+import { FacturaPlistAdminRoutedComponent } from './component/application/factura/routed/admin/factura-plist-ar/factura-plist-ar.component';
+import { FacturaNewAdminRoutedComponent } from './component/application/factura/routed/admin/factura-new-ar/factura-new-ar.component';
+import { FacturaRemoveAdminRoutedComponent } from './component/application/factura/routed/admin/factura-remove-ar/factura-remove-ar.component';
+import { FacturaEditAdminRoutedComponent } from './component/application/factura/routed/admin/factura-edit-ar/factura-edit-ar.component';
 import { CompraService } from './service/compra.service';
 import { ProductoService } from './service/producto.service';
 import { CarritoService } from './service/carrito.service';
@@ -67,7 +67,7 @@ import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint
 import { TipoproductoPlistUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-plist-unrouted/tipoproducto-plist-unrouted.component';
 import { ProductoPlistUnroutedComponent } from './component/application/producto/unrouted/producto-plist-unrouted/producto-plist-unrouted.component';
 
-import { FacturaPlistUnroutedComponent } from './component/application/factura/unrouted/factura-plist-unrouted/factura-plist-unrouted.component';
+import { FacturaPlistAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-plist-au/factura-plist-au.component';
 import { TipousuarioPlistUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-plist-unrouted/tipousuario-plist-unrouted.component';
 import { ProductoCPlistUnroutedComponent } from './component/application/producto/unrouted/producto-cplist-unrouted/producto-cplist-unrouted.component';
 import { ProductoPlistRowUnroutedComponent } from './component/application/producto/unrouted/producto-plistrow-unrouted/producto-plistrow-unrouted.component';
@@ -94,11 +94,11 @@ import { TipoproductoDetailUnroutedComponent } from './component/application/tip
 import { TipousuarioViewUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-view-unrouted/tipousuario-view-unrouted.component';
 import { TipousuarioFormUnroutedComponent } from './component/application/tipousuario/unrouted/tipousuario-form-unrouted/tipousuario-form-unrouted.component';
 import { ErrorHandlerService } from './service/errorHandler.service';
-import { FacturaPlistheaderUnroutedComponent } from './component/application/factura/unrouted/factura-plistheader-unrouted/factura-plistheader-unrouted.component';
-import { FacturaPlistRowUnroutedComponent } from './component/application/factura/unrouted/factura-plistrow-unrouted/factura-plistrow-unrouted.component';
-import { FacturaDetailUnroutedComponent } from './component/application/factura/unrouted/factura-detail-unrouted/factura-detail-unrouted.component';
-import { FacturaViewRoutedComponent } from './component/application/factura/routed/factura-view-routed/factura-view-routed.component';
-import { FacturaFormUnroutedComponent } from './component/application/factura/unrouted/factura-form-unrouted/factura-form-unrouted.component';
+import { FacturaPlistheaderAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-plist-au/factura-plistheader-au/factura-plistheader-au.component';
+import { FacturaPlistrowAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-plist-au/factura-plistrow-au/factura-plistrow-au.component';
+import { FacturaDetailAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-detail-au/factura-detail-au.component';
+import { FacturaViewAdminRoutedComponent } from './component/application/factura/routed/admin/factura-view-ar/factura-view-ar.component';
+import { FacturaFormAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-form-au/factura-form-au.component';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TipoproductoFormUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-form-unrouted/tipoproducto-form-unrouted.component';
@@ -195,11 +195,11 @@ registerLocaleData(localeEs);
     CompraEditAdminRoutedComponent,
     CompraRemoveAdminRoutedComponent,
     // Factura routed components
-    FacturaPlistRoutedComponent,
-    FacturaViewRoutedComponent,
-    FacturaNewRoutedComponent,
-    FacturaEditRoutedComponent,
-    FacturaRemoveRoutedComponent,
+    FacturaPlistAdminRoutedComponent,
+    FacturaViewAdminRoutedComponent,
+    FacturaNewAdminRoutedComponent,
+    FacturaEditAdminRoutedComponent,
+    FacturaRemoveAdminRoutedComponent,
     // Carrito routed components
     CarritoPlistAdminRoutedComponent,
     CarritoViewAdminRoutedComponent,
@@ -247,11 +247,11 @@ registerLocaleData(localeEs);
     TipoproductoFormUnroutedComponent,
 
     // Factura unrouted components
-    FacturaPlistUnroutedComponent,
-    FacturaPlistheaderUnroutedComponent,
-    FacturaPlistRowUnroutedComponent,
-    FacturaDetailUnroutedComponent,
-    FacturaFormUnroutedComponent,
+    FacturaPlistAdminUnroutedComponent,
+    FacturaPlistheaderAdminUnroutedComponent,
+    FacturaPlistrowAdminUnroutedComponent,
+    FacturaDetailAdminUnroutedComponent,
+    FacturaFormAdminUnroutedComponent,
 
     // Compra unrouted components
     CompraPlistrowUnroutedComponent,
