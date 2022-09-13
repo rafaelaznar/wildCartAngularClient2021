@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
+
 @Component({
   selector: 'app-producto-edit-routed',
   templateUrl: './producto-edit-routed.component.html',

@@ -1,4 +1,4 @@
-import { IProducto, IProducto2Send } from '../../../../../model/producto-interfaces';
+import { IProducto, IProducto2Send } from '../../../../../../model/producto-interfaces';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ProductoService } from 'src/app/service/producto.service';

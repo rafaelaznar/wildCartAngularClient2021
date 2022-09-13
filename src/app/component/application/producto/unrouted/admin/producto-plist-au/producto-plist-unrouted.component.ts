@@ -1,4 +1,4 @@
-import { ProductoService } from '../../../../../service/producto.service';
+import { ProductoService } from '../../../../../../service/producto.service';
 import { IProductoPage, IProducto } from 'src/app/model/producto-interfaces';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
