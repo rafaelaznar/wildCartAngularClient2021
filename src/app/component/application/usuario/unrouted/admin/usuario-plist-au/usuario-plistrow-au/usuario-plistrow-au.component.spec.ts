@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { TipousuarioPlistheaderUnroutedComponent } from './tipousuario-plistheader-unrouted.component';
+import { UsuarioPlistRowAdminUnroutedComponent } from './usuario-plistrow-au.component';
 
-describe('UsuarioPlistheaderAdminUnroutedComponent', () => {
-  let component: TipousuarioPlistheaderUnroutedComponent;
-  let fixture: ComponentFixture<TipousuarioPlistheaderUnroutedComponent>;
+describe('UsuarioRowUnroutedComponent', () => {
+  let component: UsuarioPlistRowAdminUnroutedComponent;
+  let fixture: ComponentFixture<UsuarioPlistRowAdminUnroutedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TipousuarioPlistheaderUnroutedComponent ]
+      declarations: [ UsuarioPlistRowAdminUnroutedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TipousuarioPlistheaderUnroutedComponent);
+    fixture = TestBed.createComponent(UsuarioPlistRowAdminUnroutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

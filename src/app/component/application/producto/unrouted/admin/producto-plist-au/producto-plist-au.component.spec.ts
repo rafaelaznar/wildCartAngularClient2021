@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { UsuarioPlistUnroutedComponent } from './producto-plist-au.component';
+import { UsuarioPlistAdminUnroutedComponent } from './producto-plist-au.component';
 
 describe('UsuarioPlistComponent', () => {
-  let component: UsuarioPlistUnroutedComponent;
-  let fixture: ComponentFixture<UsuarioPlistUnroutedComponent>;
+  let component: UsuarioPlistAdminUnroutedComponent;
+  let fixture: ComponentFixture<UsuarioPlistAdminUnroutedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsuarioPlistUnroutedComponent ]
+      declarations: [ UsuarioPlistAdminUnroutedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UsuarioPlistUnroutedComponent);
+    fixture = TestBed.createComponent(UsuarioPlistAdminUnroutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

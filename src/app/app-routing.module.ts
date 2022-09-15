@@ -23,11 +23,11 @@ import { TipoproductoViewRoutedComponent } from './component/application/tipopro
 import { TipousuarioEditRoutedComponent } from './component/application/tipousuario/routed/tipousuario-edit-routed/tipousuario-edit-routed.component';
 import { TipousuarioPlistRoutedComponent } from './component/application/tipousuario/routed/tipousuario-plist-routed/tipousuario-plist-routed.component';
 import { TipousuarioViewRoutedComponent } from './component/application/tipousuario/routed/tipousuario-view-routed/tipousuario-view-routed.component';
-import { UsuarioEditRoutedComponent } from './component/application/usuario/routed/usuario-edit-routed/usuario-edit-routed.component';
-import { UsuarioNewRoutedComponent } from './component/application/usuario/routed/usuario-new-routed/usuario-new-routed.component';
-import { UsuarioPlistRoutedComponent } from './component/application/usuario/routed/usuario-plist-routed/usuario-plist-routed.component';
-import { UsuarioRemoveRoutedComponent } from './component/application/usuario/routed/usuario-remove-routed/usuario-remove-routed.component';
-import { UsuarioViewRoutedComponent } from './component/application/usuario/routed/usuario-view-routed/usuario-view-routed.component';
+import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-edit-ar/usuario-edit-ar.component';
+import { UsuarioNewAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-new-ar/usuario-new-ar.component';
+import { UsuarioPlistAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-plist-ar/usuario-plist-ar.component';
+import { UsuarioRemoveAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-remove-ar/usuario-remove-ar.component';
+import { UsuarioViewAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-view-ar/usuario-view-ar.component';
 import { GenerateComponent } from './component/shared/routed/generate/generate.component';
 import { ReportsComponent } from './component/shared/routed/reports/reports.component';
 import { SessionResolver } from './resolve/session.resolve';
@@ -41,7 +41,7 @@ import { CarritoEditAdminRoutedComponent } from './component/application/carrito
 import { CarritoNewAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-new-ar/carrito-new-ar.component';
 import { ProductoViewUserRoutedComponent } from './component/application/producto/routed/user/producto-view-ur/producto-view-ur.component';
 import { CarritoPlistUserRoutedComponent } from './component/application/carrito/routed/user/carrito-plist-ur/carrito-plist-ur.component';
-import { UsuarioCViewRoutedComponent } from './component/application/usuario/routed/usuario-cview-routed/usuario-cview-routed.component';
+import { UsuarioViewUserRoutedComponent } from './component/application/usuario/routed/user/usuario-view-ur/usuario-view-ur.component';
 
 
 const routes: Routes = [
@@ -57,13 +57,13 @@ const routes: Routes = [
   { path: 'tipousuario/view/:id', component: TipousuarioViewRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'tipousuario/edit/:id', component: TipousuarioEditRoutedComponent, resolve: { message: SessionResolver } },
 
-  { path: 'usuario/plist', component: UsuarioPlistRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'usuario/plist/tipousuario/:id_tipousuario', component: UsuarioPlistRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'usuario/view/:id', component: UsuarioViewRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'usuario/cview/:id', component: UsuarioCViewRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'usuario/new', component: UsuarioNewRoutedComponent, resolve: { message: SessionResolver } },  
-  { path: 'usuario/edit/:id', component: UsuarioEditRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'usuario/remove/:id', component: UsuarioRemoveRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'usuario/plist', component: UsuarioPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'usuario/plist/tipousuario/:id_tipousuario', component: UsuarioPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'usuario/view/:id', component: UsuarioViewAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'usuario/cview/:id', component: UsuarioViewUserRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'usuario/new', component: UsuarioNewAdminRoutedComponent, resolve: { message: SessionResolver } },  
+  { path: 'usuario/edit/:id', component: UsuarioEditAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'usuario/remove/:id', component: UsuarioRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
 
   { path: 'tipoproducto/plist', component: PlistTipoproductoComponent, resolve: { message: SessionResolver } },
   { path: 'tipoproducto/view/:id', component: TipoproductoViewRoutedComponent, resolve: { message: SessionResolver } },
