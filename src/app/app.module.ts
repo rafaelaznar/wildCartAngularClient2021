@@ -75,16 +75,16 @@ import { TipousuarioFormAdminUnroutedComponent } from './component/application/t
 import { TipousuarioPlistheaderAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-plist-au/tipousuario-plistheader-au/tipousuario-plistheader-au.component';
 import { TipousuarioPlistrowAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-plist-au/tipousuario-plistrow-au/tipousuario-plistrow-unrouted.component';
 // tipoproducto components
-import { TipoproductoPlistRowUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-plistrow-unrouted/tipoproducto-plistrow-unrouted.component';
-import { TipoproductoPlistheaderUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-plistheader-unrouted/tipoproducto-plistheader-unrouted.component';
-import { TipoproductoDetailUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-view-unrouted/tipoproducto-detail-unrouted.component';
-import { PlistTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-plist-routed/tipoproducto-plist-routed.component';
-import { TipoproductoNewRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-new-routed/tipoproducto-new-routed.component';
-import { TipoproductoEditRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-edit-routed/tipoproducto-edit-routed.component';
-import { TipoproductoRemoveRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-remove-routed/tipoproducto-remove-routed.component';
-import { TipoproductoViewRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-view-routed/tipoproducto-view-routed.component';
-import { TipoproductoPlistUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-plist-unrouted/tipoproducto-plist-unrouted.component';
-import { TipoproductoFormUnroutedComponent } from './component/application/tipoproducto/unrouted/tipoproducto-form-unrouted/tipoproducto-form-unrouted.component';
+import { TipoproductoPlistRowAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-plist-au/tipoproducto-plistrow-au/tipoproducto-plistrow-unrouted.component';
+import { TipoproductoPlistheaderAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-plist-au/tipoproducto-plistheader-au/tipoproducto-plistheader-au.component';
+import { TipoproductoDetailAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-view-au/tipoproducto-detail-au.component';
+import { PlistTipoproductoAdminComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-plist-ar/tipoproducto-plist-ar.component';
+import { TipoproductoNewAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-new-ar/tipoproducto-new-ar.component';
+import { TipoproductoEditAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-edit-ar/tipoproducto-edit-ar.component';
+import { TipoproductoRemoveAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-remove-ar/tipoproducto-remove-ar.component';
+import { TipoproductoViewAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-view-ar/tipoproducto-view-ar.component';
+import { TipoproductoPlistAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-plist-au/tipoproducto-plist-au.component';
+import { TipoproductoFormAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-form-au/tipoproducto-form-au.component';
 // producto components
 import { ProductoPlistAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-plist-au/producto-plist-au.component';
 import { ProductoPlistUserUnroutedComponent } from './component/application/producto/unrouted/user/producto-plist-uu/producto-plist-uu.component';
@@ -178,11 +178,11 @@ import { CarritoPlistrowUserUnroutedComponent } from './component/application/ca
     UsuarioRemoveAdminRoutedComponent,
     UsuarioViewUserRoutedComponent,
     // Tipoproducto routed components
-    PlistTipoproductoComponent,
-    TipoproductoNewRoutedComponent,
-    TipoproductoViewRoutedComponent,
-    TipoproductoEditRoutedComponent,
-    TipoproductoRemoveRoutedComponent,
+    PlistTipoproductoAdminComponent,
+    TipoproductoNewAdminRoutedComponent,
+    TipoproductoViewAdminRoutedComponent,
+    TipoproductoEditAdminRoutedComponent,
+    TipoproductoRemoveAdminRoutedComponent,
     // Producto routed components
     ProductoPlistAdminRoutedComponent,
     ProductoViewAdminRoutedComponent,
@@ -242,11 +242,11 @@ import { CarritoPlistrowUserUnroutedComponent } from './component/application/ca
     ProductoDetailUserUnroutedComponent,
 
     // TipoProducto unrouted components
-    TipoproductoPlistUnroutedComponent,
-    TipoproductoPlistRowUnroutedComponent,
-    TipoproductoPlistheaderUnroutedComponent,
-    TipoproductoDetailUnroutedComponent,
-    TipoproductoFormUnroutedComponent,
+    TipoproductoPlistAdminUnroutedComponent,
+    TipoproductoPlistRowAdminUnroutedComponent,
+    TipoproductoPlistheaderAdminUnroutedComponent,
+    TipoproductoDetailAdminUnroutedComponent,
+    TipoproductoFormAdminUnroutedComponent,
 
     // Factura unrouted components
     FacturaPlistAdminUnroutedComponent,

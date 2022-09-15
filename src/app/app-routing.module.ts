@@ -15,11 +15,11 @@ import { ProductoNewAdminRoutedComponent } from './component/application/product
 import { ProductoPlistAdminRoutedComponent } from './component/application/producto/routed/admin/producto-plist-ar/producto-plist-ar.component';
 import { ProductoRemoveAdminRoutedComponent } from './component/application/producto/routed/admin/producto-remove-ar/producto-remove-ar.component';
 import { ProductoViewAdminRoutedComponent } from './component/application/producto/routed/admin/producto-view-ar/producto-view-ar.component';
-import { TipoproductoEditRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-edit-routed/tipoproducto-edit-routed.component';
-import { TipoproductoNewRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-new-routed/tipoproducto-new-routed.component';
-import { PlistTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-plist-routed/tipoproducto-plist-routed.component';
-import { TipoproductoRemoveRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-remove-routed/tipoproducto-remove-routed.component';
-import { TipoproductoViewRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-view-routed/tipoproducto-view-routed.component';
+import { TipoproductoEditAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-edit-ar/tipoproducto-edit-ar.component';
+import { TipoproductoNewAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-new-ar/tipoproducto-new-ar.component';
+import { PlistTipoproductoAdminComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-plist-ar/tipoproducto-plist-ar.component';
+import { TipoproductoRemoveAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-remove-ar/tipoproducto-remove-ar.component';
+import { TipoproductoViewAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-view-ar/tipoproducto-view-ar.component';
 import { TipousuarioEditAdminRoutedComponent } from './component/application/tipousuario/routed/admin/tipousuario-edit-ar/tipousuario-edit-ar.component';
 import { TipousuarioPlistAdminRoutedComponent } from './component/application/tipousuario/routed/admin/tipousuario-plist-ar/tipousuario-plist-ar.component';
 import { TipousuarioViewAdminRoutedComponent } from './component/application/tipousuario/routed/admin/tipousuario-view-ar/tipousuario-view-ar.component';
@@ -65,11 +65,11 @@ const routes: Routes = [
   { path: 'usuario/edit/:id', component: UsuarioEditAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/remove/:id', component: UsuarioRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
 
-  { path: 'tipoproducto/plist', component: PlistTipoproductoComponent, resolve: { message: SessionResolver } },
-  { path: 'tipoproducto/view/:id', component: TipoproductoViewRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'tipoproducto/new', component: TipoproductoNewRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'tipoproducto/edit/:id', component: TipoproductoEditRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'tipoproducto/remove/:id', component: TipoproductoRemoveRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'tipoproducto/plist', component: PlistTipoproductoAdminComponent, resolve: { message: SessionResolver } },
+  { path: 'tipoproducto/view/:id', component: TipoproductoViewAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'tipoproducto/new', component: TipoproductoNewAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'tipoproducto/edit/:id', component: TipoproductoEditAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'tipoproducto/remove/:id', component: TipoproductoRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
 
   { path: 'producto/plist', component: ProductoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'producto/plist/tipoproducto/:id_tipoproducto', component: ProductoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
