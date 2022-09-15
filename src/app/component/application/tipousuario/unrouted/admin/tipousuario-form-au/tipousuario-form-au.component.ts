@@ -4,14 +4,13 @@ import { IconService } from 'src/app/service/icon.service';
 import { ITipousuario, ITipousuario2Send } from 'src/app/model/tipousuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
-
 @Component({
-  selector: 'app-tipousuario-form-unrouted',
-  templateUrl: './tipousuario-form-unrouted.component.html',
-  styleUrls: ['./tipousuario-form-unrouted.component.css']
+  selector: 'app-tipousuario-form-admin-unrouted',
+  templateUrl: './tipousuario-form-au.component.html',
+  styleUrls: ['./tipousuario-form-au.component.css']
 })
 
-export class TipousuarioFormUnroutedComponent implements OnInit {
+export class TipousuarioFormAdminUnroutedComponent implements OnInit {
 
   @Input() strOperation: string = null;
   @Input() id: number = null;

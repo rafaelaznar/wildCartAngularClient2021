@@ -20,9 +20,9 @@ import { TipoproductoNewRoutedComponent } from './component/application/tipoprod
 import { PlistTipoproductoComponent } from './component/application/tipoproducto/routed/tipoproducto-plist-routed/tipoproducto-plist-routed.component';
 import { TipoproductoRemoveRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-remove-routed/tipoproducto-remove-routed.component';
 import { TipoproductoViewRoutedComponent } from './component/application/tipoproducto/routed/tipoproducto-view-routed/tipoproducto-view-routed.component';
-import { TipousuarioEditRoutedComponent } from './component/application/tipousuario/routed/tipousuario-edit-routed/tipousuario-edit-routed.component';
-import { TipousuarioPlistRoutedComponent } from './component/application/tipousuario/routed/tipousuario-plist-routed/tipousuario-plist-routed.component';
-import { TipousuarioViewRoutedComponent } from './component/application/tipousuario/routed/tipousuario-view-routed/tipousuario-view-routed.component';
+import { TipousuarioEditAdminRoutedComponent } from './component/application/tipousuario/routed/admin/tipousuario-edit-ar/tipousuario-edit-ar.component';
+import { TipousuarioPlistAdminRoutedComponent } from './component/application/tipousuario/routed/admin/tipousuario-plist-ar/tipousuario-plist-ar.component';
+import { TipousuarioViewAdminRoutedComponent } from './component/application/tipousuario/routed/admin/tipousuario-view-ar/tipousuario-view-ar.component';
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-edit-ar/usuario-edit-ar.component';
 import { UsuarioNewAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-new-ar/usuario-new-ar.component';
 import { UsuarioPlistAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-plist-ar/usuario-plist-ar.component';
@@ -53,9 +53,9 @@ const routes: Routes = [
   { path: 'random/load', component: GenerateComponent, resolve: { message: SessionResolver } },
   { path: 'reports', component: ReportsComponent, resolve: { message: SessionResolver } },
 
-  { path: 'tipousuario/plist', component: TipousuarioPlistRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'tipousuario/view/:id', component: TipousuarioViewRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'tipousuario/edit/:id', component: TipousuarioEditRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'tipousuario/plist', component: TipousuarioPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'tipousuario/view/:id', component: TipousuarioViewAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'tipousuario/edit/:id', component: TipousuarioEditAdminRoutedComponent, resolve: { message: SessionResolver } },
 
   { path: 'usuario/plist', component: UsuarioPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/plist/tipousuario/:id_tipousuario', component: UsuarioPlistAdminRoutedComponent, resolve: { message: SessionResolver } },

@@ -4,11 +4,12 @@ import { IconService } from 'src/app/service/icon.service';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 @Component({
-  selector: 'app-tipousuario-view-unrouted',
-  templateUrl: './tipousuario-view-unrouted.component.html',
-  styleUrls: ['./tipousuario-view-unrouted.component.css']
+  selector: 'app-tipousuario-view-admin-unrouted',
+  templateUrl: './tipousuario-view-au.component.html',
+  styleUrls: ['./tipousuario-view-au.component.css']
 })
-export class TipousuarioViewUnroutedComponent implements OnInit {
+
+export class TipousuarioViewAdminUnroutedComponent implements OnInit {
 
   @Input() id: number = null;
 
@@ -22,9 +23,7 @@ export class TipousuarioViewUnroutedComponent implements OnInit {
   constructor(
     private oTipousuarioService: TipousuarioService,
     public oIconService: IconService
-  ) {
-
-  }
+  ) { }
 
   ngOnInit(): void {
     this.getOne();

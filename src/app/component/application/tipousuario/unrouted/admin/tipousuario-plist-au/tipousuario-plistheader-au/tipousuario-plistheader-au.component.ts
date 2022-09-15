@@ -3,11 +3,12 @@ import { IOrder } from 'src/app/model/model-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: '[app-tipousuario-plistheader-unrouted]',
-  templateUrl: './tipousuario-plistheader-unrouted.component.html',
-  styleUrls: ['./tipousuario-plistheader-unrouted.component.css']
+  selector: '[app-tipousuario-plistheader-admin-unrouted]',
+  templateUrl: './tipousuario-plistheader-au.component.html',
+  styleUrls: ['./tipousuario-plistheader-au.component.css']
 })
-export class TipousuarioPlistheaderUnroutedComponent implements OnInit {
+
+export class TipousuarioPlistheaderAdminUnroutedComponent implements OnInit {
   
   @Input() strSortField: string = "";
   @Input() strSortDirection: string = "";

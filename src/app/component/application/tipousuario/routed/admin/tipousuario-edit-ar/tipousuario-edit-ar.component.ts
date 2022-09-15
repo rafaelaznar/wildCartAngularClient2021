@@ -6,12 +6,12 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: 'app-tipousuario-edit-routed',
-  templateUrl: './tipousuario-edit-routed.component.html',
-  styleUrls: ['./tipousuario-edit-routed.component.css'],
+  selector: 'app-tipousuario-edit-admin-routed',
+  templateUrl: './tipousuario-edit-ar.component.html',
+  styleUrls: ['./tipousuario-edit-ar.component.css'],
 })
 
-export class TipousuarioEditRoutedComponent implements OnInit {
+export class TipousuarioEditAdminRoutedComponent implements OnInit {
 
   strEntity: string = 'tipousuario';
   strOperation: string = 'edit'; //only edit; it can't be new

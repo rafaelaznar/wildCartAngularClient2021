@@ -16,9 +16,9 @@
   (close)="onCloseModal()" [mimodal]="entity"> 
   {{entity}}
   <ng-content select="[plist-finder-title]"></ng-content>
-  <app-tipousuario-plist-unrouted [mode]="false" (selection)="onSelection($event)" *ngIf="entity=='tipousuario'">
+  <app-tipousuario-plist-admin-unrouted [mode]="false" (selection)="onSelection($event)" *ngIf="entity=='tipousuario'">
     <header></header>
-  </app-tipousuario-plist-unrouted>
+  </app-tipousuario-plist-admin-unrouted>
   <app-usuario-plist-admin-unrouted [mode]="false" (selection)="onSelection($event)" *ngIf="entity=='usuario'">
     <header></header>
   </app-usuario-plist-admin-unrouted>

@@ -5,23 +5,23 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: 'app-tipousuario-plist-routed',
-  templateUrl: './tipousuario-plist-routed.component.html',
-  styleUrls: ['./tipousuario-plist-routed.component.css'],
+  selector: 'app-tipousuario-plist-admin-routed',
+  templateUrl: './tipousuario-plist-ar.component.html',
+  styleUrls: ['./tipousuario-plist-ar.component.css'],
 })
-export class TipousuarioPlistRoutedComponent implements OnInit {
+
+export class TipousuarioPlistAdminRoutedComponent implements OnInit {
   strEntity: string = 'tipousuario';
   strOperation: string = 'plist';
   strTitleSingular: string = 'Tipo de usuario';
   strTitlePlural: string = 'Tipos de usuario';
-  //
 
   oUserSession: IUsuario;
   subjectFiltro$ = new Subject();
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
-    private oRouter: Router,
+    oRouter: Router,
     public oIconService: IconService
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {

@@ -7,11 +7,11 @@
     <div class="col-md table-responsive-md">
         <table class="table table-bordered table-striped table-hover">
             <thead>
-                <tr class="text-center align-middle" app-tipousuario-plistheader-unrouted (sort)="onSetOrder($event)" [mode]="mode">
+                <tr class="text-center align-middle" app-tipousuario-plistheader-admin-unrouted (sort)="onSetOrder($event)" [mode]="mode">
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let oTipousuario of aTipoUsuarios" class="align-middle" app-tipousuario-plistrow-unrouted
+                <tr *ngFor="let oTipousuario of aTipoUsuarios" class="align-middle" app-tipousuario-plistrow-admin-unrouted
                     [oTipousuario]="oTipousuario" [mode]="mode" (selection)="onSelection($event)">
                 </tr>
             </tbody>

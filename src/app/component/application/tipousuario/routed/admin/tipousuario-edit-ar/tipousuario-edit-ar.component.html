@@ -7,8 +7,8 @@
 
   <div class="row justify-content-center">
  
-    <app-tipousuario-form-unrouted [strOperation]="strOperation" [id]="id" (msg)="reportResult($event)">
-    </app-tipousuario-form-unrouted>
+    <app-tipousuario-form-admin-unrouted [strOperation]="strOperation" [id]="id" (msg)="reportResult($event)">
+    </app-tipousuario-form-admin-unrouted>
 
     <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
       <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i [ngClass]="oIconService.getIcon('home')"></i> Página

@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-tipousuario-view-routed',
-  templateUrl: './tipousuario-view-routed.component.html',
-  styleUrls: ['./tipousuario-view-routed.component.css'],
+  selector: 'app-tipousuario-view-admin-routed',
+  templateUrl: './tipousuario-view-ar.component.html',
+  styleUrls: ['./tipousuario-view-ar.component.css'],
 })
-export class TipousuarioViewRoutedComponent implements OnInit {
+
+export class TipousuarioViewAdminRoutedComponent implements OnInit {
 
   strEntity: string = 'tipousuario';  
   strOperation: string = 'view';
@@ -19,7 +20,7 @@ export class TipousuarioViewRoutedComponent implements OnInit {
 
   constructor(    
     private oActivatedRoute: ActivatedRoute,
-    private oRouter: Router,
+    oRouter: Router,
     public oIconService: IconService
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
