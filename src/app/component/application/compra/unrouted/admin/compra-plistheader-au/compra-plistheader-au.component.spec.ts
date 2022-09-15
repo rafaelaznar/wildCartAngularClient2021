@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { CompraPlistheaderAdminUnroutedComponent } from './compra-plistheader-au.component';
 
-describe('ProductoPlistheaderUnroutedComponent', () => {
+describe('ProductoPlistheaderAdminUnroutedComponent', () => {
   let component: CompraPlistheaderAdminUnroutedComponent;
   let fixture: ComponentFixture<CompraPlistheaderAdminUnroutedComponent>;
 

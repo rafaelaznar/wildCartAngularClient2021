@@ -26,11 +26,11 @@
   <div class="col-md table-responsive-md">
     <table class="table table-bordered table-striped table-hover">
       <thead>
-        <tr class="text-center align-middle" app-producto-plistheader-unrouted (sort)="onSetOrder($event)" [mode]="mode" >
+        <tr class="text-center align-middle" app-producto-plistheader-admin-unrouted (sort)="onSetOrder($event)" [mode]="mode" >
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let oProducto of aProductos" class="align-middle" app-producto-plistrow-unrouted [oProducto]="oProducto"
+        <tr *ngFor="let oProducto of aProductos" class="align-middle" app-producto-plistrow-admin-unrouted [oProducto]="oProducto"
           [mode]="mode" (selection)="onSelection($event)">
         </tr>
       </tbody>

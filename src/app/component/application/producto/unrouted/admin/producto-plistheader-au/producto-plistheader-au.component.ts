@@ -3,12 +3,12 @@ import { IOrder } from 'src/app/model/model-interfaces';
 import { IconService } from 'src/app/service/icon.service';
 
 @Component({
-  selector: '[app-producto-plistheader-unrouted]',
+  selector: '[app-producto-plistheader-admin-unrouted]',
   templateUrl: './producto-plistheader-au.component.html',
   styleUrls: ['./producto-plistheader-au.component.css']
 })
 
-export class ProductoPlistheaderUnroutedComponent implements OnInit {
+export class ProductoPlistheaderAdminUnroutedComponent implements OnInit {
   
   @Input() strSortField: string = "";
   @Input() strSortDirection: string = "";
