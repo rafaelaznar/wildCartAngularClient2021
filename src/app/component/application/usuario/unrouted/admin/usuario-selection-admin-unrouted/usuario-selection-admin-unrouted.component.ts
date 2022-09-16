@@ -6,15 +6,16 @@ import { IconService } from 'src/app/service/icon.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 
 @Component({
-  selector: 'app-usuario-plist-admin-unrouted',
-  templateUrl: './usuario-plist-admin-unrouted.component.html',
-  styleUrls: ['./usuario-plist-admin-unrouted.component.css']
+  selector: 'app-usuario-selection-admin-unrouted',
+  templateUrl: './usuario-selection-admin-unrouted.component.html',
+  styleUrls: ['./usuario-selection-admin-unrouted.component.css']
 })
 
-export class UsuarioPlistAdminUnroutedComponent implements OnInit {
+export class UsuarioSelectionAdminUnroutedComponent implements OnInit {
 
   @Input() id_tipousuario: number = null;
-  
+  @Output() selection = new EventEmitter<number>();
+
   strEntity: string = "usuario"
   strOperation: string = "plist"
   strTitleSingular: string = "Usuario";
@@ -94,6 +95,10 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
     this.strSortField = order.sortField;
     this.strSortDirection = order.sortDirection;
     this.getPage();
+  }
+
+  onSelection(id: number) {
+    this.selection.emit(id);
   }
 
 }

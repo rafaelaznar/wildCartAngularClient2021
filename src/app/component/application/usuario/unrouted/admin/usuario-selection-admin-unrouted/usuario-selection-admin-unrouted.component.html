@@ -27,12 +27,12 @@
 
     <table class="table table-bordered table-striped table-hover">
       <thead>
-        <tr class="text-center align-middle" app-usuario-plistheader-admin-unrouted (sort)="onSetOrder($event)" [mode]="true">
+        <tr class="text-center align-middle" app-usuario-plistheader-admin-unrouted (sort)="onSetOrder($event)" [mode]="false">
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let oUsuarioRow of aUsuarios" class="align-middle" app-usuario-plistrow-admin-unrouted [oUsuario]="oUsuarioRow"
-        [mode]="true">
+        [mode]="false" (selection)="onSelection($event)">
       </tbody>
     </table>
 

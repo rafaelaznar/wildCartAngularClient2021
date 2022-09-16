@@ -65,6 +65,7 @@ import { UsuarioViewAdminRoutedComponent } from './component/application/usuario
 import { UsuarioFormAdminUnroutedComponent } from './component/application/usuario/unrouted/admin/usuario-form-admin-unrouted/usuario-form-admin-unrouted.component';
 import { UsuarioPlistheaderAdminUnroutedComponent } from './component/application/usuario/unrouted/admin/usuario-plistheader-admin-unrouted/usuario-plistheader-admin-unrouted.component';
 import { UsuarioPlistRowAdminUnroutedComponent } from './component/application/usuario/unrouted/admin/usuario-plistrow-admin-unrouted/usuario-plistrow-admin-unrouted.component';
+import { UsuarioSelectionAdminUnroutedComponent } from './component/application/usuario/unrouted/admin/usuario-selection-admin-unrouted/usuario-selection-admin-unrouted.component';
 // tipousuario components
 import { TipousuarioPlistAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-plist-admin-unrouted/tipousuario-plist-admin-unrouted.component';
 import { TipousuarioPlistAdminRoutedComponent } from './component/application/tipousuario/routed/admin/tipousuario-plist-admin-routed/tipousuario-plist-admin-routed.component';
@@ -136,6 +137,7 @@ import { CarritoPlistUserRoutedComponent } from './component/application/carrito
 import { CarritoPlistUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-user-unrouted/carrito-plist-user-unrouted.component';
 import { CarritoPlistheaderUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistheader-user-unrouted/carrito-plistheader-user-unrouted.component';
 import { CarritoPlistrowUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistrow-user-unrouted/carrito-plistrow-user-unrouted.component';
+
 //
 @NgModule({
   declarations: [
@@ -224,6 +226,7 @@ import { CarritoPlistrowUserUnroutedComponent } from './component/application/ca
     UsuarioPlistheaderAdminUnroutedComponent,
     UsuarioPlistRowAdminUnroutedComponent,
     UsuarioDetailUserUnroutedComponent,
+    UsuarioSelectionAdminUnroutedComponent,
 
     // TipoUsuario unrouted components
     TipousuarioPlistAdminUnroutedComponent,
