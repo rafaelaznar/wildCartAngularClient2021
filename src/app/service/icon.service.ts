@@ -44,6 +44,8 @@ export class IconService {
       case strIcon == "rechazar": return "fas fa-times-circle";
       case strIcon == "volver": return "fas fa-arrow-circle-left";
 
+
+      case strIcon == "seleccion": return "fas fa-bullseye";
       //
       //
       //

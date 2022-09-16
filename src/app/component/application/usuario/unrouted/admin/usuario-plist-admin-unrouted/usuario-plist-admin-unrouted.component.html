@@ -27,7 +27,10 @@
 
     <table class="table table-bordered table-striped table-hover">
       <thead>
-        <tr class="text-center align-middle" app-usuario-plistheader-admin-unrouted (sort)="onSetOrder($event)" [mode]="true">
+        <tr class="text-center align-middle" app-usuario-plistheader-admin-unrouted (sort)="onSetOrder($event)">
+          <div action_column_title>
+            <i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones
+          </div>
         </tr>
       </thead>
       <tbody>

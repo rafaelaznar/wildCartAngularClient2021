@@ -3,7 +3,8 @@
     <h6>{{strFilteredMessage}}</h6>
   </div>
   <div class="col-md text-center">
-    <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + strTitlePlural" (eeFilter)="onSetFilter($event)" ></app-search-unrouted>
+    <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + strTitlePlural"
+      (eeFilter)="onSetFilter($event)"></app-search-unrouted>
   </div>
   <div class="col-md text-end">
     <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{strTitlePlural}}</h4>
@@ -12,7 +13,8 @@
 
 <div class="row justify-content-between">
   <div class="col-md text-start">
-    <app-pagination-unrouted [nPage]="nPage" [nTotalPages]="nTotalPages" (eePage)="onSetPage($event)" ></app-pagination-unrouted>
+    <app-pagination-unrouted [nPage]="nPage" [nTotalPages]="nTotalPages" (eePage)="onSetPage($event)">
+    </app-pagination-unrouted>
   </div>
   <div class="col-md text-center">
     <ng-content select="header"></ng-content>
@@ -27,12 +29,16 @@
 
     <table class="table table-bordered table-striped table-hover">
       <thead>
-        <tr class="text-center align-middle" app-usuario-plistheader-admin-unrouted (sort)="onSetOrder($event)" [mode]="false">
+        <tr class="text-center align-middle" app-usuario-plistheader-admin-unrouted (sort)="onSetOrder($event)"
+          [mode]="false">
+          <div action_column_title>
+            <i [ngClass]="oIconService.getIcon('seleccion')"></i> Selecciona un usuario
+          </div>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let oUsuarioRow of aUsuarios" class="align-middle" app-usuario-plistrow-admin-unrouted [oUsuario]="oUsuarioRow"
-        [mode]="false" (selection)="onSelection($event)">
+        <tr *ngFor="let oUsuarioRow of aUsuarios" class="align-middle" app-usuario-plistrow-admin-unrouted
+          [oUsuario]="oUsuarioRow" [mode]="false" (selection)="onSelection($event)">
       </tbody>
     </table>
 

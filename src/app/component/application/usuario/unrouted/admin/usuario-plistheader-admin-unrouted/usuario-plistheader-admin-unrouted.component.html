@@ -44,4 +44,4 @@
 </th>
 <th *ngIf="mode"><i [ngClass]="oIconService.getIcon('validado')"></i> Validado</th>
 <th *ngIf="mode"><i [ngClass]="oIconService.getIcon('activado')"></i> Activado</th>
-<th><i [ngClass]="oIconService.getIcon('tools')"></i> Acciones</th>
+<th><ng-content select="[action_column_title]"></ng-content></th>
