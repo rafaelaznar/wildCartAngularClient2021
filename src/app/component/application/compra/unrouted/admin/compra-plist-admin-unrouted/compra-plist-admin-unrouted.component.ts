@@ -44,8 +44,7 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oCompraService: CompraService,
-    public oIconService: IconService,
-    private oPaginationService: PaginationService
+    public oIconService: IconService    
   ) {
   }
 
