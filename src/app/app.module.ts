@@ -137,6 +137,7 @@ import { CarritoPlistUserRoutedComponent } from './component/application/carrito
 import { CarritoPlistUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-user-unrouted/carrito-plist-user-unrouted.component';
 import { CarritoPlistheaderUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistheader-user-unrouted/carrito-plistheader-user-unrouted.component';
 import { CarritoPlistrowUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistrow-user-unrouted/carrito-plistrow-user-unrouted.component';
+import { TipousuarioSelectionAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-selection-admin-unrouted/tipousuario-selection-admin-unrouted.component';
 
 //
 @NgModule({
@@ -234,6 +235,7 @@ import { CarritoPlistrowUserUnroutedComponent } from './component/application/ca
     TipousuarioPlistrowAdminUnroutedComponent,
     TipousuarioViewAdminUnroutedComponent,
     TipousuarioFormAdminUnroutedComponent,
+    TipousuarioSelectionAdminUnroutedComponent,
 
     // Producto unrouted components
     ProductoDetailAdminUnroutedComponent,

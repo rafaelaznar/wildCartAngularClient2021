@@ -6,13 +6,13 @@ import { IconService } from 'src/app/service/icon.service';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 @Component({
-  selector: 'app-tipousuario-plist-admin-unrouted',
-  templateUrl: './tipousuario-plist-admin-unrouted.component.html',
-  styleUrls: ['./tipousuario-plist-admin-unrouted.component.css'],
+  selector: 'app-tipousuario-selection-admin-unrouted',
+  templateUrl: './tipousuario-selection-admin-unrouted.component.html',
+  styleUrls: ['./tipousuario-selection-admin-unrouted.component.css'],
 })
 
-export class TipousuarioPlistAdminUnroutedComponent implements OnInit {
-
+export class TipousuarioSelectionAdminUnroutedComponent implements OnInit {
+  
   @Output() selection = new EventEmitter<number>();
 
   strEntity: string = 'tipousuario';

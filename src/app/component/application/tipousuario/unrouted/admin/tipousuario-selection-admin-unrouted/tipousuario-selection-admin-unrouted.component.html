@@ -8,15 +8,15 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr class="text-center align-middle" app-tipousuario-plistheader-admin-unrouted
-                    (sort)="onSetOrder($event)" [mode]="true">
+                    (sort)="onSetOrder($event)" [mode]="false">
                     <div action_column_title>
-                        <i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones
+                        <i [ngClass]="oIconService.getIcon('seleccion')"></i> Selecciona un usuario
                     </div>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let oTipousuario of aTipoUsuarios" class="align-middle"
-                    app-tipousuario-plistrow-admin-unrouted [oTipousuario]="oTipousuario" [mode]="true"
+                    app-tipousuario-plistrow-admin-unrouted [oTipousuario]="oTipousuario" [mode]="false"
                     (selection)="onSelection($event)">
                 </tr>
             </tbody>
