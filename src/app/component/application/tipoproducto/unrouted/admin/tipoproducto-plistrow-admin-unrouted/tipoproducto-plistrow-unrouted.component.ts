@@ -21,7 +21,7 @@ export class TipoproductoPlistRowAdminUnroutedComponent implements OnInit {
   constructor(
     public oIconService: IconService
   ) {
-    console.log("user=" +localStorage.getItem("user"));
+    //console.log("user=" +localStorage.getItem("user"));
     this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
   }
 

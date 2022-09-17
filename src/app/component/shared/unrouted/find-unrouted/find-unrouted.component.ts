@@ -21,7 +21,7 @@ export class findUnroutedComponent implements OnInit {
 
   ngOnInit() {
     this.dirty = false;
-    console.log("----->>>>>" + this.entity);
+    //console.log("----->>>>>" + this.entity);
   }
 
   //modal
@@ -37,9 +37,9 @@ export class findUnroutedComponent implements OnInit {
   //eventsSubjectHideModal: EventEmitter<void> = new EventEmitter();
 
   openModal(): void {
-    console.log("----->>>>>" + this.entity);
+    //console.log("----->>>>>" + this.entity);
     this.eventsSubjectShowModal.next();
-    console.log(this.eventsSubjectShowModal)
+    //console.log(this.eventsSubjectShowModal)
     this.showingModal = true;
   }
 
@@ -62,7 +62,7 @@ export class findUnroutedComponent implements OnInit {
   }
 
   onChangeForeign($event: any) {
-    console.log("find onChangeForeign evento recibido: " + $event)
+    //console.log("find onChangeForeign evento recibido: " + $event)
     this.dirty = true;
     if (this.showingModal) {
       this.closeModal();

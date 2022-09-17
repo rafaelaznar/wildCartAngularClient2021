@@ -115,7 +115,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
         },
         (err) => {
           this.strResult = this.strTitleSingular + 'Error al cambiar el registro: ' + err.error.message;
-          console.log("Img Upload error:", err.error.message);
+          //console.log("Img Upload error:", err.error.message);
           this.msg.emit({ strMsg: this.strResult, id: 0 });
         })
     } else {

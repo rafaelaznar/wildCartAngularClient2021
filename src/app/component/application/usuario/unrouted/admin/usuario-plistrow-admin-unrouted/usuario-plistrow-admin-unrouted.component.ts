@@ -27,10 +27,10 @@ export class UsuarioPlistRowAdminUnroutedComponent implements OnInit {
     this.selection.emit(id);
   }
   flipValidateUser(id:number){
-    console.log("todo: flip validate user " + id);
+    //console.log("todo: flip validate user " + id);
   }
   flipActivateUser(id:number){
-    console.log("todo: flip activate user " + id);
+    //console.log("todo: flip activate user " + id);
   }
 
 }

@@ -30,7 +30,7 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
     public oIconService: IconService,
     private oCarritoService: CarritoService
   ) {
-    console.log("user=" + localStorage.getItem("user"));
+    //console.log("user=" + localStorage.getItem("user"));
     this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
   }
 

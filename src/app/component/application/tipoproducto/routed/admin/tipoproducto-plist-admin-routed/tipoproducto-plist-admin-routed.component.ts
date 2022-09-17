@@ -8,7 +8,7 @@ import { IconService } from 'src/app/service/icon.service';
   styleUrls: ['./tipoproducto-plist-admin-routed.component.css']
 })
 
-export class PlistTipoproductoAdminComponent implements OnInit {
+export class TipoproductoPlistAdminRoutedComponent implements OnInit {
 
   strEntity: string = "tipoproducto"
   strOperation: string = "plist"

@@ -13,7 +13,7 @@ export class PaginationUnroutedComponent implements OnInit {
 
   @Input()
   set nPage(value: number) {
-    console.log("set npage " + value);
+    //console.log("set npage " + value);
     this._nPage = value;
     this.aPaginationBar = this.oPaginationService.pagination(this._nTotalPages, this._nPage);
   }  
@@ -23,7 +23,7 @@ export class PaginationUnroutedComponent implements OnInit {
 
   @Input()
   set nTotalPages(value: number) {
-    console.log("set ntotalpages " + value);
+    //console.log("set ntotalpages " + value);
     this._nTotalPages = value;
     this.aPaginationBar = this.oPaginationService.pagination(this._nTotalPages, this._nPage);
   }

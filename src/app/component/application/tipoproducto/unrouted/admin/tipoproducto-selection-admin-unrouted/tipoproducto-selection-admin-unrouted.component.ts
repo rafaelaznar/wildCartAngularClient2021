@@ -8,13 +8,13 @@ import { ITipoproducto, ITipoproductoPage } from 'src/app/model/tipoproducto-int
 import { IOrder } from 'src/app/model/model-interfaces';
 
 @Component({
-  selector: 'app-tipoproducto-plist-admin-unrouted',
-  templateUrl: './tipoproducto-plist-admin-unrouted.component.html',
-  styleUrls: ['./tipoproducto-plist-admin-unrouted.component.css'],
+  selector: 'app-tipoproducto-selection-admin-unrouted',
+  templateUrl: './tipoproducto-selection-admin-unrouted.component.html',
+  styleUrls: ['./tipoproducto-selection-admin-unrouted.component.css'],
 })
 
-export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
-
+export class TipoproductoSelectionAdminUnroutedComponent implements OnInit {
+  
   @Output() selection = new EventEmitter<number>();
   //@ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
 

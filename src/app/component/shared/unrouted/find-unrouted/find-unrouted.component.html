@@ -14,7 +14,7 @@
 
 <app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
   (close)="onCloseModal()" [mimodal]="entity"> 
-    
+
   <ng-content select="[plist-finder-title]"></ng-content>
   
   <app-usuario-selection-admin-unrouted (selection)="onSelection($event)" *ngIf="entity=='usuario'">
@@ -29,9 +29,9 @@
     <header></header>
   </app-producto-plist-admin-unrouted>
   
-  <app-tipoproducto-plist-admin-unrouted [mode]="false" (selection)="onSelection($event)" *ngIf="entity=='tipoproducto'">
+  <app-tipoproducto-selection-admin-unrouted (selection)="onSelection($event)" *ngIf="entity=='tipoproducto'">
     <header></header>
-  </app-tipoproducto-plist-admin-unrouted>
+  </app-tipoproducto-selection-admin-unrouted>
   
   <app-factura-plist-admin-unrouted [mode]="false" (selection)="onSelection($event)" *ngIf="entity=='factura'">
     <header></header>

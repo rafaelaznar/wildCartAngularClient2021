@@ -166,9 +166,9 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
   printFactura = (id_factura: number) => {
     this.oFacturaService.getOne(id_factura).subscribe((oFactura2Print: IFactura) => {
 
-      console.log(oFactura2Print);
+      //console.log(oFactura2Print);
 
-      console.log("buscando...", this.strFilter);
+      //console.log("buscando...", this.strFilter);
       this.oCompraService.getPage(1, oFactura2Print.compras, this.strSortField, this.strSortDirection, this.strFilter, id_factura, null).subscribe((oPage: ICompraPage) => {
         if (this.strFilter) {
           this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
@@ -179,7 +179,7 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
         this.nTotalElements = oPage.totalElements;
         this.nTotalPages = oPage.totalPages;
         this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
-        console.log(aCompras);
+        //console.log(aCompras);
 
         // You'll need to make your image into a Data URL
         // Use http://dataurl.net/#dataurlmaker
@@ -195,7 +195,7 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
 
         doc.setFontSize(12)
 
-        console.log(oFactura2Print.compras);
+        //console.log(oFactura2Print.compras);
         //console.log(this.aCompras);
 
         var linea = 155;

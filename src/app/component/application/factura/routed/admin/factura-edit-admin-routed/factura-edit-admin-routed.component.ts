@@ -95,7 +95,7 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
   }
 
   update = (): void => {
-    console.log(this.oData2Send);
+    //console.log(this.oData2Send);
     this.oFacturaService.updateOne(this.oData2Send).subscribe((id: number) => {
       if (id > 0) {
         this.strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';

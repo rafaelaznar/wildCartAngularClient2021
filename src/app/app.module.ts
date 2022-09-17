@@ -54,38 +54,40 @@ import { PlistrowbuttonsUnroutedComponent } from './component/shared/unrouted/pl
 import { ViewbuttonsUnroutedComponent } from './component/shared/unrouted/viewbuttons-unrouted/viewbuttons-unrouted.component';
 // usuario components
 import { UsuarioViewUserRoutedComponent } from './component/application/usuario/routed/user/usuario-view-user-routed/usuario-view-user-routed.component';
-import { UsuarioDetailUserUnroutedComponent } from './component/application/usuario/unrouted/user/usuario-detail-user-unrouted/usuario-detail-user-unrouted.component';
-import { UsuarioViewAdminUnroutedComponent } from './component/application/usuario/unrouted/admin/usuario-view-admin-unrouted/usuario-view-unrouted.component';
-import { UsuarioPlistAdminUnroutedComponent } from './component/application/usuario/unrouted/admin/usuario-plist-admin-unrouted/usuario-plist-admin-unrouted.component';
 import { UsuarioPlistAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-plist-admin-routed/usuario-plist-admin-routed.component';
 import { UsuarioNewAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-new-admin-routed/usuario-new-admin-routed.component';
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-edit-admin-routed/usuario-edit-admin-routed.component';
 import { UsuarioRemoveAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-remove-admin-routed/usuario-remove-admin-routed.component';
 import { UsuarioViewAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-view-admin-routed/usuario-view-admin-routed.component';
+import { UsuarioDetailUserUnroutedComponent } from './component/application/usuario/unrouted/user/usuario-detail-user-unrouted/usuario-detail-user-unrouted.component';
+import { UsuarioViewAdminUnroutedComponent } from './component/application/usuario/unrouted/admin/usuario-view-admin-unrouted/usuario-view-unrouted.component';
 import { UsuarioFormAdminUnroutedComponent } from './component/application/usuario/unrouted/admin/usuario-form-admin-unrouted/usuario-form-admin-unrouted.component';
+import { UsuarioPlistAdminUnroutedComponent } from './component/application/usuario/unrouted/admin/usuario-plist-admin-unrouted/usuario-plist-admin-unrouted.component';
 import { UsuarioPlistheaderAdminUnroutedComponent } from './component/application/usuario/unrouted/admin/usuario-plistheader-admin-unrouted/usuario-plistheader-admin-unrouted.component';
 import { UsuarioPlistRowAdminUnroutedComponent } from './component/application/usuario/unrouted/admin/usuario-plistrow-admin-unrouted/usuario-plistrow-admin-unrouted.component';
 import { UsuarioSelectionAdminUnroutedComponent } from './component/application/usuario/unrouted/admin/usuario-selection-admin-unrouted/usuario-selection-admin-unrouted.component';
 // tipousuario components
-import { TipousuarioPlistAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-plist-admin-unrouted/tipousuario-plist-admin-unrouted.component';
 import { TipousuarioPlistAdminRoutedComponent } from './component/application/tipousuario/routed/admin/tipousuario-plist-admin-routed/tipousuario-plist-admin-routed.component';
 import { TipousuarioEditAdminRoutedComponent } from './component/application/tipousuario/routed/admin/tipousuario-edit-admin-routed/tipousuario-edit-admin-routed.component';
 import { TipousuarioViewAdminRoutedComponent } from './component/application/tipousuario/routed/admin/tipousuario-view-admin-routed/tipousuario-view-admin-routed.component';
+import { TipousuarioPlistAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-plist-admin-unrouted/tipousuario-plist-admin-unrouted.component';
 import { TipousuarioViewAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-view-admin-unrouted/tipousuario-view-admin-unrouted.component';
 import { TipousuarioFormAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-form-admin-unrouted/tipousuario-form-admin-unrouted.component';
 import { TipousuarioPlistheaderAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-plistheader-admin-unrouted/tipousuario-plistheader-admin-unrouted.component';
 import { TipousuarioPlistrowAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-plistrow-admin-unrouted/tipousuario-plistrow-unrouted.component';
+import { TipousuarioSelectionAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-selection-admin-unrouted/tipousuario-selection-admin-unrouted.component';
 // tipoproducto components
 import { TipoproductoPlistRowAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-plistrow-admin-unrouted/tipoproducto-plistrow-unrouted.component';
 import { TipoproductoPlistheaderAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-plistheader-admin-unrouted/tipoproducto-plistheader-admin-unrouted.component';
 import { TipoproductoDetailAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-view-admin-unrouted/tipoproducto-detail-admin-unrouted.component';
-import { PlistTipoproductoAdminComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-plist-admin-routed/tipoproducto-plist-admin-routed.component';
+import { TipoproductoPlistAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-plist-admin-routed/tipoproducto-plist-admin-routed.component';
 import { TipoproductoNewAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-new-admin-routed/tipoproducto-new-admin-routed.component';
 import { TipoproductoEditAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-edit-admin-routed/tipoproducto-edit-admin-routed.component';
 import { TipoproductoRemoveAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-remove-admin-routed/tipoproducto-remove-admin-routed.component';
 import { TipoproductoViewAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-view-admin-routed/tipoproducto-view-admin-routed.component';
 import { TipoproductoPlistAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-plist-admin-unrouted/tipoproducto-plist-admin-unrouted.component';
 import { TipoproductoFormAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-form-admin-unrouted/tipoproducto-form-admin-unrouted.component';
+import { TipoproductoSelectionAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-selection-admin-unrouted/tipoproducto-selection-admin-unrouted.component';
 // producto components
 import { ProductoPlistAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-plist-admin-unrouted/producto-plist-admin-unrouted.component';
 import { ProductoPlistUserUnroutedComponent } from './component/application/producto/unrouted/user/producto-plist-user-unrouted/producto-plist-user-unrouted.component';
@@ -137,12 +139,13 @@ import { CarritoPlistUserRoutedComponent } from './component/application/carrito
 import { CarritoPlistUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-user-unrouted/carrito-plist-user-unrouted.component';
 import { CarritoPlistheaderUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistheader-user-unrouted/carrito-plistheader-user-unrouted.component';
 import { CarritoPlistrowUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistrow-user-unrouted/carrito-plistrow-user-unrouted.component';
-import { TipousuarioSelectionAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-selection-admin-unrouted/tipousuario-selection-admin-unrouted.component';
+
 
 //
 @NgModule({
   declarations: [
     AppComponent,
+    //
     // shared unrouted
     ModalComponent,
     PopupComponent,
@@ -156,9 +159,6 @@ import { TipousuarioSelectionAdminUnroutedComponent } from './component/applicat
     PaginationUnroutedComponent,
     PlistrowbuttonsUnroutedComponent,
     ViewbuttonsUnroutedComponent,
-
-
-    //
     // shared routed
     LoginComponent,
     HomeComponent,
@@ -169,10 +169,11 @@ import { TipousuarioSelectionAdminUnroutedComponent } from './component/applicat
     TrimPipe,
     showDateTimePipe,
     showBooleanPipe,
-    // Tipousuario routed components
-    TipousuarioPlistAdminRoutedComponent,
-    TipousuarioViewAdminRoutedComponent,
-    TipousuarioEditAdminRoutedComponent,
+    //
+    //
+    // ----------------->   routed components
+    //
+    //
     // Usuario routed components
     UsuarioPlistAdminRoutedComponent,
     UsuarioViewAdminRoutedComponent,
@@ -180,12 +181,10 @@ import { TipousuarioSelectionAdminUnroutedComponent } from './component/applicat
     UsuarioEditAdminRoutedComponent,
     UsuarioRemoveAdminRoutedComponent,
     UsuarioViewUserRoutedComponent,
-    // Tipoproducto routed components
-    PlistTipoproductoAdminComponent,
-    TipoproductoNewAdminRoutedComponent,
-    TipoproductoViewAdminRoutedComponent,
-    TipoproductoEditAdminRoutedComponent,
-    TipoproductoRemoveAdminRoutedComponent,
+    // Tipousuario routed components
+    TipousuarioPlistAdminRoutedComponent,
+    TipousuarioViewAdminRoutedComponent,
+    TipousuarioEditAdminRoutedComponent,
     // Producto routed components
     ProductoPlistAdminRoutedComponent,
     ProductoViewAdminRoutedComponent,
@@ -193,6 +192,12 @@ import { TipousuarioSelectionAdminUnroutedComponent } from './component/applicat
     ProductoEdiAdminRoutedComponent,
     ProductoRemoveAdminRoutedComponent,
     ProductoViewUserRoutedComponent,
+    // Tipoproducto routed components
+    TipoproductoPlistAdminRoutedComponent,
+    TipoproductoNewAdminRoutedComponent,
+    TipoproductoViewAdminRoutedComponent,
+    TipoproductoEditAdminRoutedComponent,
+    TipoproductoRemoveAdminRoutedComponent,
     // Compra routed components
     CompraPlistAdminRoutedComponent,
     CompraViewAdminRoutedComponent,
@@ -212,14 +217,11 @@ import { TipousuarioSelectionAdminUnroutedComponent } from './component/applicat
     CarritoNewAdminRoutedComponent,
     CarritoEditAdminRoutedComponent,
     CarritoPlistUserRoutedComponent,
-    
-
-
-
     //
-    // unrouted components
     //
-
+    // ----------------->   unrouted components
+    //
+    //
     // Usuario unrouted components
     UsuarioPlistAdminUnroutedComponent,
     UsuarioViewAdminUnroutedComponent,
@@ -228,7 +230,7 @@ import { TipousuarioSelectionAdminUnroutedComponent } from './component/applicat
     UsuarioPlistRowAdminUnroutedComponent,
     UsuarioDetailUserUnroutedComponent,
     UsuarioSelectionAdminUnroutedComponent,
-
+    //
     // TipoUsuario unrouted components
     TipousuarioPlistAdminUnroutedComponent,
     TipousuarioPlistheaderAdminUnroutedComponent,
@@ -236,7 +238,7 @@ import { TipousuarioSelectionAdminUnroutedComponent } from './component/applicat
     TipousuarioViewAdminUnroutedComponent,
     TipousuarioFormAdminUnroutedComponent,
     TipousuarioSelectionAdminUnroutedComponent,
-
+    //
     // Producto unrouted components
     ProductoDetailAdminUnroutedComponent,
     ProductoFormAdminUnroutedComponent,
@@ -245,28 +247,29 @@ import { TipousuarioSelectionAdminUnroutedComponent } from './component/applicat
     ProductoPlistRowAdminUnroutedComponent,
     ProductoPlistUserUnroutedComponent,
     ProductoDetailUserUnroutedComponent,
-
+    //
     // TipoProducto unrouted components
     TipoproductoPlistAdminUnroutedComponent,
     TipoproductoPlistRowAdminUnroutedComponent,
     TipoproductoPlistheaderAdminUnroutedComponent,
     TipoproductoDetailAdminUnroutedComponent,
     TipoproductoFormAdminUnroutedComponent,
-
+    TipoproductoSelectionAdminUnroutedComponent,
+    //
     // Factura unrouted components
     FacturaPlistAdminUnroutedComponent,
     FacturaPlistheaderAdminUnroutedComponent,
     FacturaPlistrowAdminUnroutedComponent,
     FacturaDetailAdminUnroutedComponent,
     FacturaFormAdminUnroutedComponent,
-
+    //
     // Compra unrouted components
     CompraPlistrowAdminUnroutedComponent,
     CompraPlistheaderAdminUnroutedComponent,
     CompraPlistAdminUnroutedComponent,
     CompraDetailAdminUnroutedComponent,
     CompraFormAdminUnroutedComponent,
-
+    //
     // Carrito unrouted components
     CarritoDetailAdminUnroutedComponent,
     CarritoPlistAdminUnroutedComponent,
