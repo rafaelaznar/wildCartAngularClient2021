@@ -19,10 +19,11 @@
     <i [ngClass]="oIconService.getIcon('carrito')"></i></button>
 </td>
 <td>
-  <button class="btn btn-light btn-sm"
+  <button class="btn btn-light btn-sm" *ngIf="mode"
     [routerLink]="['/' + strEntity + '/' + strOperation + '/tipoproducto/' + oProducto.tipoproducto.id]">
     <i [ngClass]="oIconService.getIcon('tipoproducto')"></i> ({{oProducto.tipoproducto.id}})
     {{oProducto.tipoproducto.nombre | trim:40}}</button>
+  <span *ngIf="!mode">{{oProducto.tipoproducto.nombre | trim:40}}</span>
 </td>
 <td class="text-center">
   <div class="btn-group btn-group-sm" role="group" *ngIf="!mode">

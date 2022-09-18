@@ -6,12 +6,12 @@ import { IconService } from 'src/app/service/icon.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 
 @Component({
-  selector: 'app-producto-plist-admin-unrouted',
-  templateUrl: './producto-plist-admin-unrouted.component.html',
-  styleUrls: ['./producto-plist-admin-unrouted.component.css']
+  selector: 'app-producto-selection-admin-unrouted',
+  templateUrl: './producto-selection-admin-unrouted.component.html',
+  styleUrls: ['./producto-selection-admin-unrouted.component.css']
 })
 
-export class ProductoPlistAdminUnroutedComponent implements OnInit {
+export class ProductoSelectionAdminUnroutedComponent implements OnInit {
 
   @Input() id_tipoproducto: number = null;
   @Output() selection = new EventEmitter<number>();

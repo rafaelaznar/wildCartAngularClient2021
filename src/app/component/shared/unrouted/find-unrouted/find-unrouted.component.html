@@ -25,9 +25,9 @@
     <header></header>
   </app-tipousuario-selection-admin-unrouted>
   
-  <app-producto-plist-admin-unrouted [mode]="false" (selection)="onSelection($event)" *ngIf="entity=='producto'">
+  <app-producto-selection-admin-unrouted (selection)="onSelection($event)" *ngIf="entity=='producto'">
     <header></header>
-  </app-producto-plist-admin-unrouted>
+  </app-producto-selection-admin-unrouted>
   
   <app-tipoproducto-selection-admin-unrouted (selection)="onSelection($event)" *ngIf="entity=='tipoproducto'">
     <header></header>

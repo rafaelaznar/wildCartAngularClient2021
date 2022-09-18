@@ -102,6 +102,7 @@ import { ProductoNewAdminRoutedComponent } from './component/application/product
 import { ProductoEdiAdminRoutedComponent } from './component/application/producto/routed/admin/producto-edit-admin-routed/producto-edit-admin-routed.component';
 import { ProductoRemoveAdminRoutedComponent } from './component/application/producto/routed/admin/producto-remove-admin-routed/producto-remove-admin-routed.component';
 import { ProductoViewAdminRoutedComponent } from './component/application/producto/routed/admin/producto-view-admin-routed/producto-view-admin-routed.component';
+import { ProductoSelectionAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-selection-admin-unrouted/producto-selection-admin-unrouted.component';
 //  factura components
 import { FacturaPlistAdminRoutedComponent } from './component/application/factura/routed/admin/factura-plist-admin-routed/factura-plist-admin-routed.component';
 import { FacturaNewAdminRoutedComponent } from './component/application/factura/routed/admin/factura-new-admin-routed/factura-new-admin-routed.component';
@@ -139,7 +140,7 @@ import { CarritoPlistUserRoutedComponent } from './component/application/carrito
 import { CarritoPlistUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-user-unrouted/carrito-plist-user-unrouted.component';
 import { CarritoPlistheaderUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistheader-user-unrouted/carrito-plistheader-user-unrouted.component';
 import { CarritoPlistrowUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistrow-user-unrouted/carrito-plistrow-user-unrouted.component';
-
+//
 
 //
 @NgModule({
@@ -247,6 +248,7 @@ import { CarritoPlistrowUserUnroutedComponent } from './component/application/ca
     ProductoPlistRowAdminUnroutedComponent,
     ProductoPlistUserUnroutedComponent,
     ProductoDetailUserUnroutedComponent,
+    ProductoSelectionAdminUnroutedComponent,
     //
     // TipoProducto unrouted components
     TipoproductoPlistAdminUnroutedComponent,
