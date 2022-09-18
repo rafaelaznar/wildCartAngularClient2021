@@ -11,12 +11,12 @@ import { IOrder } from 'src/app/model/model-interfaces';
 declare let jsPDF: any;
 
 @Component({
-  selector: 'app-factura-plist-admin-unrouted',
-  templateUrl: './factura-plist-admin-unrouted.component.html',
-  styleUrls: ['./factura-plist-admin-unrouted.component.css']
+  selector: 'app-factura-selection-admin-unrouted',
+  templateUrl: './factura-selection-admin-unrouted.component.html',
+  styleUrls: ['./factura-selection-admin-unrouted.component.css']
 })
 
-export class FacturaPlistAdminUnroutedComponent implements OnInit {
+export class FacturaSelectionAdminUnroutedComponent implements OnInit {
 
   @Input() id_usuario: number = null;
   @Output() selection = new EventEmitter<number>();

@@ -30,15 +30,15 @@
     <table class="table table-bordered table-striped table-hover">
       <thead>
         <tr class="text-center align-middle" app-factura-plistheader-admin-unrouted (sort)="onSetOrder($event)"
-          [mode]="true">
+          [mode]="false">
           <div action_column_title>
-            <i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones
+            <i [ngClass]="oIconService.getIcon('seleccion')"></i> Selecciona una factura
           </div>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let oFactura of aFacturas" class="align-middle" app-factura-plistrow-unrouted [oFactura]="oFactura"
-          [mode]="true" (selection)="onSelection($event)" (printFactura)="onPrintFactura($event)">
+          [mode]="false" (selection)="onSelection($event)" (printFactura)="onPrintFactura($event)">
         </tr>
       </tbody>
     </table>

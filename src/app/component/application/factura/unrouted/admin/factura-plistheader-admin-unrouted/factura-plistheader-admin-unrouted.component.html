@@ -28,4 +28,4 @@
   <i class="fas fa-arrow-down" *ngIf="strSortField=='pagado'&&strSortDirection=='desc'"></i>
 
 </th>
-<th><i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones</th>
+<th><ng-content select="[action_column_title]"></ng-content></th>

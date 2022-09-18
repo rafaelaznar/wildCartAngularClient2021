@@ -1,16 +1,24 @@
 <td class="text-end">{{oFactura?.id}}</td>
 <td class="text-center">{{oFactura?.iva}}%</td>
 <td>
-  <button class="btn btn-light btn-sm" [routerLink]="['/factura/plist/usuario/' + oFactura?.usuario?.id]">
+  <button class="btn btn-light btn-sm" [routerLink]="['/factura/plist/usuario/' + oFactura?.usuario?.id]" *ngIf="mode">
     <i [ngClass]="oIconService.getIcon('usuario')"></i>
     ({{oFactura?.usuario?.id }})
     {{oFactura?.usuario?.nombre + ' ' + oFactura?.usuario?.apellido1 + ' ' + oFactura?.usuario?.apellido2 }}
   </button>
+  <div *ngIf="!mode">    
+    {{oFactura?.usuario?.nombre + ' ' + oFactura?.usuario?.apellido1 + ' ' + oFactura?.usuario?.apellido2 }}
+  </div>
 </td>
 <td class="text-center">{{oFactura?.fecha | date: 'dd/MM/yyyy'}}</td>
-<td style="text-align: center;"><button class="btn btn-outline-secondary btn-sm"
-    [routerLink]="['/compra/plist/factura/',oFactura.id]">{{oFactura?.compras}} <i
-      [ngClass]="oIconService.getIcon('compra')"></i></button></td>
+<td style="text-align: center;">
+  <button class="btn btn-outline-secondary btn-sm"  *ngIf="mode"
+    [routerLink]="['/compra/plist/factura/',oFactura.id]">{{oFactura?.compras}}
+    <i [ngClass]="oIconService.getIcon('compra')"></i>
+  </button>
+  <div *ngIf="!mode">{{oFactura?.compras}}
+  </div>
+</td>
 <td class="text-center" [innerHTML]="oFactura.pagado | showBoolean"></td>
 <td class="text-center">
   <div class="btn-group btn-group-sm" role="group" *ngIf="!mode">

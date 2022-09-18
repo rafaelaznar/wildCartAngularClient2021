@@ -140,6 +140,7 @@ import { CarritoPlistUserRoutedComponent } from './component/application/carrito
 import { CarritoPlistUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-user-unrouted/carrito-plist-user-unrouted.component';
 import { CarritoPlistheaderUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistheader-user-unrouted/carrito-plistheader-user-unrouted.component';
 import { CarritoPlistrowUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistrow-user-unrouted/carrito-plistrow-user-unrouted.component';
+import { FacturaSelectionAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-selection-admin-unrouted/factura-selection-admin-unrouted.component';
 //
 
 //
@@ -264,6 +265,7 @@ import { CarritoPlistrowUserUnroutedComponent } from './component/application/ca
     FacturaPlistrowAdminUnroutedComponent,
     FacturaDetailAdminUnroutedComponent,
     FacturaFormAdminUnroutedComponent,
+    FacturaSelectionAdminUnroutedComponent,
     //
     // Compra unrouted components
     CompraPlistrowAdminUnroutedComponent,
