@@ -3,7 +3,9 @@
     <h6>{{strFilteredMessage}}</h6>
   </div>
   <div class="col-md text-center">
-    <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + strTitlePlural" (eeFilter)="onSetFilter($event)">
+    <app-search-unrouted [strFilter]="strFilter"
+      [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
+      (eeFilter)="onSetFilter($event)">
     </app-search-unrouted>
   </div>
   <div class="col-md text-end">
@@ -32,7 +34,8 @@
 
       <div>
         <div class="card-title d-flex justify-content-between">
-          <h4 class="flex-grow-1"> <a class="nombreproducto" [href]="'producto/cview/'+producto.id"> {{producto.nombre}} </a> </h4>
+          <h4 class="flex-grow-1"> <a class="nombreproducto" [href]="'producto/cview/'+producto.id"> {{producto.nombre}}
+            </a> </h4>
           <div> <i *ngIf="producto.cantidad" class="fas fa-shopping-cart" pBadge style="font-size: 2rem"
               value="{{producto.cantidad}}"></i></div>
         </div>
@@ -57,10 +60,11 @@
             *ngIf="id_tipousuario_session==2&&producto.existencias>0&&producto.cantidad<producto.existencias"
             (click)="addCarrito(producto.id)"><i class="fas fa-cart-plus" style="font-size: 2rem"></i></button>
           <button type="button" class="btn btn-danger m-1" *ngIf="id_tipousuario_session==2&&producto.cantidad>0"
-            (click)="removeCarrito(producto.id)"><i class="fas fa-cart-admin-routedrow-down" style="font-size: 2rem"></i></button>
+            (click)="removeCarrito(producto.id)"><i class="fas fa-cart-admin-routedrow-down"
+              style="font-size: 2rem"></i></button>
         </div>
       </div>
-      
+
     </div>
 
   </div>

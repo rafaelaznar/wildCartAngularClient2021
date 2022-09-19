@@ -4,7 +4,9 @@
       <h6>{{strFilteredMessage}}</h6>
     </div>
     <div class="col-md text-center">
-      <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + strTitlePlural" (eeFilter)="onSetFilter($event)" ></app-search-unrouted>
+      <app-search-unrouted [strFilter]="strFilter"
+        [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
+        (eeFilter)="onSetFilter($event)"></app-search-unrouted>
     </div>
     <div class="col-md text-end">
       <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{strTitlePlural}}</h4>
@@ -13,7 +15,8 @@
 
   <div class="row justify-content-between">
     <div class="col-md text-start">
-      <app-pagination-unrouted [nPage]="nPage" [nTotalPages]="nTotalPages" (eePage)="onSetPage($event)" ></app-pagination-unrouted>
+      <app-pagination-unrouted [nPage]="nPage" [nTotalPages]="nTotalPages" (eePage)="onSetPage($event)">
+      </app-pagination-unrouted>
     </div>
     <div class="col-md text-center">
       <ng-content select="header"></ng-content>
@@ -23,23 +26,24 @@
     </div>
   </div>
 
-<div class="row justify-content-center">
-  <div class="col-md table-responsive-md">
-    <table class="table table-bordered table-striped table-hover">
-      <thead>
-        <tr class="text-center align-middle" app-tipoproducto-plistheader-admin-unrouted (sort)="onSetOrder($event)" [mode]="false">
-          <div action_column_title>
-            <i [ngClass]="oMetadataService.getIcon('seleccion')"></i> Selecciona un tipo de producto
-          </div>
-        </tr>
-      </thead>
-      <tbody>
+  <div class="row justify-content-center">
+    <div class="col-md table-responsive-md">
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr class="text-center align-middle" app-tipoproducto-plistheader-admin-unrouted (sort)="onSetOrder($event)"
+            [mode]="false">
+            <div action_column_title>
+              <i [ngClass]="oMetadataService.getIcon('seleccion')"></i> Selecciona un tipo de producto
+            </div>
+          </tr>
+        </thead>
+        <tbody>
 
-        <tr *ngFor="let oTipoproducto of aTipoproductos" class="align-middle" app-tipoproducto-plistrow-admin-unrouted
-          [oTipoproducto]="oTipoproducto" [mode]="false" (selection)="onSelection($event)">
+          <tr *ngFor="let oTipoproducto of aTipoproductos" class="align-middle" app-tipoproducto-plistrow-admin-unrouted
+            [oTipoproducto]="oTipoproducto" [mode]="false" (selection)="onSelection($event)">
 
-        </tr>
-      </tbody>
-    </table>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>

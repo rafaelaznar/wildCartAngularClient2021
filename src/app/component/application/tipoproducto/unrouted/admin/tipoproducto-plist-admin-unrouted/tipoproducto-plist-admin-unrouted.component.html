@@ -4,7 +4,7 @@
       <h6>{{strFilteredMessage}}</h6>
     </div>
     <div class="col-md text-center">
-      <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + strTitlePlural"
+      <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
         (eeFilter)="onSetFilter($event)"></app-search-unrouted>
     </div>
     <div class="col-md text-end">

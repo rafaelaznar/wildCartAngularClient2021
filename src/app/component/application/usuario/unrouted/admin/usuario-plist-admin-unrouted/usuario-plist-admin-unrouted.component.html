@@ -3,7 +3,9 @@
     <h6>{{strFilteredMessage}}</h6>
   </div>
   <div class="col-md text-center">
-    <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + strTitlePlural" (eeFilter)="onSetFilter($event)" ></app-search-unrouted>
+    <app-search-unrouted [strFilter]="strFilter"
+      [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
+      (eeFilter)="onSetFilter($event)"></app-search-unrouted>
   </div>
   <div class="col-md text-end">
     <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{strTitlePlural}}</h4>
@@ -12,7 +14,8 @@
 
 <div class="row justify-content-between">
   <div class="col-md text-start">
-    <app-pagination-unrouted [nPage]="nPage" [nTotalPages]="nTotalPages" (eePage)="onSetPage($event)" ></app-pagination-unrouted>
+    <app-pagination-unrouted [nPage]="nPage" [nTotalPages]="nTotalPages" (eePage)="onSetPage($event)">
+    </app-pagination-unrouted>
   </div>
   <div class="col-md text-center">
     <ng-content select="header"></ng-content>
@@ -34,8 +37,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let oUsuarioRow of aUsuarios" class="align-middle" app-usuario-plistrow-admin-unrouted [oUsuario]="oUsuarioRow"
-        [mode]="true">
+        <tr *ngFor="let oUsuarioRow of aUsuarios" class="align-middle" app-usuario-plistrow-admin-unrouted
+          [oUsuario]="oUsuarioRow" [mode]="true">
       </tbody>
     </table>
 
