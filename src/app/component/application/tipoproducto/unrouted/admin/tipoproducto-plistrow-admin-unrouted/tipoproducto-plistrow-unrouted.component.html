@@ -8,6 +8,10 @@
   </button>
 </td>
 <td class="text-center">
+  <ng-content select="[action_column]"></ng-content>
+</td>
+<!-- 
+<td class="text-center">
   <div class="btn-group btn-group-sm" role="group" *ngIf="!mode">
     <button type="button" class="btn btn-success" (click)="onSelection(oTipoproducto.id)">
       <i class="fas fa-eye"></i>
@@ -26,8 +30,7 @@
       <i class="fas fa-trash"></i>
     </button>
 
-    <!-- 
-    <ng-container *ngTemplateOutlet="toolTemplate; context: { $implicit: oTipoproducto }"></ng-container>
-    -->
+
   </div>
 </td>
+-->

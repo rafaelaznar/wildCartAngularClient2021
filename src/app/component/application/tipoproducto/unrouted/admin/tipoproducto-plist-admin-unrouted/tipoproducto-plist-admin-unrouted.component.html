@@ -4,11 +4,13 @@
       <h6>{{strFilteredMessage}}</h6>
     </div>
     <div class="col-md text-center">
-      <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
+      <app-search-unrouted [strFilter]="strFilter"
+        [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
         (eeFilter)="onSetFilter($event)"></app-search-unrouted>
     </div>
     <div class="col-md text-end">
-      <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getPluralName4Entity(strEntity)}}</h4>
+      <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getPluralName4Entity(strEntity)}}
+      </h4>
     </div>
   </div>
 
@@ -35,13 +37,19 @@
             <div action_column_title>
               <i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getSystemLabel('actions')}}
             </div>
-            
+
           </tr>
         </thead>
         <tbody>
 
-          <tr *ngFor="let oTipoproducto of aTipoproductos" class="align-middle" app-tipoproducto-plistrow-admin-unrouted
-            [oTipoproducto]="oTipoproducto" [mode]="true" (selection)="onSelection($event)">
+          <tr *ngFor="let oTipoproductoRow of aTipoproductos" class="align-middle"
+            app-tipoproducto-plistrow-admin-unrouted [oTipoproducto]="oTipoproductoRow" [mode]="true">
+
+            <div action_column>
+              <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oTipoproductoRow.id"
+                [strEntity]="strEntity">               
+              </div>
+            </div>
 
           </tr>
         </tbody>

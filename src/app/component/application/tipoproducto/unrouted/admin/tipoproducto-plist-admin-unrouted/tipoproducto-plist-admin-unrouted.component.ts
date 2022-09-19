@@ -15,9 +15,6 @@ import { IOrder } from 'src/app/model/model-interfaces';
 
 export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
 
-  @Output() selection = new EventEmitter<number>();
-  //@ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
-
   strEntity: string = 'tipoproducto';
   strOperation: string = 'plist';
   strTitleSingular: string = 'Tipo Producto';
@@ -102,7 +99,4 @@ export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  onSelection(id: number) {
-    this.selection.emit(id);
-  }
 }

@@ -16,7 +16,6 @@ import { IOrder } from 'src/app/model/model-interfaces';
 export class TipoproductoSelectionAdminUnroutedComponent implements OnInit {
   
   @Output() selection = new EventEmitter<number>();
-  //@ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
 
   strEntity: string = 'tipoproducto';
   strOperation: string = 'plist';

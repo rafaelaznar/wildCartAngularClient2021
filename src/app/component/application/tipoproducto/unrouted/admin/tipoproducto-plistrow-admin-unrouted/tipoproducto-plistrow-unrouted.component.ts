@@ -16,19 +16,13 @@ export class TipoproductoPlistRowAdminUnroutedComponent implements OnInit {
 
   strEntity: string = "producto";
   strOperation: string = "plist";
-  oUsuarioSession: IUsuario;
 
   constructor(
     public oMetadataService: MetadataService
-  ) {
-    //console.log("user=" +localStorage.getItem("user"));
-    this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
+  ) {    
   }
 
   ngOnInit() {
-  }
-  onSelection(id: number) {
-    this.selection.emit(id);
   }
 
 }

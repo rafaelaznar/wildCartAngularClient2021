@@ -9,7 +9,8 @@
         (eeFilter)="onSetFilter($event)"></app-search-unrouted>
     </div>
     <div class="col-md text-end">
-      <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getPluralName4Entity(strEntity)}}</h4>
+      <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getPluralName4Entity(strEntity)}}
+      </h4>
     </div>
   </div>
 
@@ -39,8 +40,15 @@
         </thead>
         <tbody>
 
-          <tr *ngFor="let oTipoproducto of aTipoproductos" class="align-middle" app-tipoproducto-plistrow-admin-unrouted
-            [oTipoproducto]="oTipoproducto" [mode]="false" (selection)="onSelection($event)">
+          <tr *ngFor="let oTipoproductoRow of aTipoproductos" class="align-middle"
+            app-tipoproducto-plistrow-admin-unrouted [oTipoproducto]="oTipoproductoRow" [mode]="false"
+            (selection)="onSelection($event)">
+            <div action_column>
+              <div class="btn-group btn-group-sm" role="group">
+                <button type="button" class="btn btn-success" (click)="onSelection(oTipoproductoRow.id)"><i
+                    class="fas fa-check"></i></button>
+              </div>
+            </div>
 
           </tr>
         </tbody>
