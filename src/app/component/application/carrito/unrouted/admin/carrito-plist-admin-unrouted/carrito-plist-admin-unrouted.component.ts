@@ -21,10 +21,6 @@ export class CarritoPlistAdminUnroutedComponent implements OnInit {
 
   strEntity: string = 'carrito';
   strOperation: string = 'plist';
-  strTitleSingular: string = 'Carrito';
-  strATitleSingular: string = "El carrito";
-  strTitlePlural: string = 'carritos';
-  strATitlePlural: string = 'Los Carritos';
   //
   aCarritos: ICarrito[];
   //

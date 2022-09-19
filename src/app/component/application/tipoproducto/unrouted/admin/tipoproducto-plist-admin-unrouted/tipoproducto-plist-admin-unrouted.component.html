@@ -8,7 +8,7 @@
         (eeFilter)="onSetFilter($event)"></app-search-unrouted>
     </div>
     <div class="col-md text-end">
-      <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{strTitlePlural}}</h4>
+      <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getPluralName4Entity(strEntity)}}</h4>
     </div>
   </div>
 
