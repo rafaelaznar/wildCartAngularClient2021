@@ -13,8 +13,6 @@ import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 export class TipousuarioPlistAdminUnroutedComponent implements OnInit {
 
-  @Output() selection = new EventEmitter<number>();
-
   strEntity: string = 'tipousuario';
   strOperation: string = 'plist';
   strTitleSingular: string = 'Tipo de usuario';
@@ -80,7 +78,4 @@ export class TipousuarioPlistAdminUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  onSelection(id: number) {
-    this.selection.emit(id);
-  }
 }

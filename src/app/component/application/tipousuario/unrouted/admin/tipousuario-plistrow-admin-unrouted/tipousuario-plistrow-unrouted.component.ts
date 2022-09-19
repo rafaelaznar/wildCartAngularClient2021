@@ -12,17 +12,15 @@ export class TipousuarioPlistrowAdminUnroutedComponent implements OnInit {
   
   @Input() oTipousuario: ITipousuario = null;  
   @Input() mode: boolean = true; //true=edición; false=selección
-  @Output() selection = new EventEmitter<number>();
   
   strEntity: string = "tipousuario";
   strOperation: string = "plist";
+
   constructor(
     public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {
   }
-  onSelection(id: number) {
-    this.selection.emit(id);
-  }
+
 }

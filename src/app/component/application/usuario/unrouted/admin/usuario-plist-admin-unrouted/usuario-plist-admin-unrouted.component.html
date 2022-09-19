@@ -39,7 +39,7 @@
       <tbody>
         <tr *ngFor="let oUsuarioRow of aUsuarios" class="align-middle" app-usuario-plistrow-admin-unrouted
           [oUsuario]="oUsuarioRow" [mode]="true">
-          
+
           <div action_column>
             <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oUsuarioRow.id"
               [strEntity]="strEntity">
@@ -49,6 +49,7 @@
                   [ngClass]="oMetadataService.getIcon('activado')"></i></button>
             </div>
           </div>
+        </tr>
 
       </tbody>
     </table>

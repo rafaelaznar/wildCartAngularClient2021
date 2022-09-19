@@ -1,6 +1,7 @@
 <div class="row justify-content-between my-3">
     <div class="col-md text-end">
-        <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getPluralName4Entity(strEntity)}}</h4>
+        <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getPluralName4Entity(strEntity)}}
+        </h4>
     </div>
 </div>
 <div class="row justify-content-center">
@@ -15,9 +16,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let oTipousuario of aTipoUsuarios" class="align-middle"
-                    app-tipousuario-plistrow-admin-unrouted [oTipousuario]="oTipousuario" [mode]="false"
-                    (selection)="onSelection($event)">
+                <tr *ngFor="let oTipousuarioRow of aTipoUsuarios" class="align-middle"
+                    app-tipousuario-plistrow-admin-unrouted [oTipousuario]="oTipousuarioRow" [mode]="false">
+                    <div action_column>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button type="button" class="btn btn-success" (click)="onSelection(oTipousuarioRow.id)"><i
+                                    class="fas fa-check"></i></button>
+                        </div>
+                    </div>
                 </tr>
             </tbody>
         </table>
