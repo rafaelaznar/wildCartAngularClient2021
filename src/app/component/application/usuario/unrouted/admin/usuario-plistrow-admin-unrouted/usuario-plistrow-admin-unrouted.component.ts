@@ -12,8 +12,8 @@ export class UsuarioPlistRowAdminUnroutedComponent implements OnInit {
 
   @Input() oUsuario: IUsuario = null;  
   @Input() mode: boolean = true; //true=edición; false=selección
-  @Output() selection = new EventEmitter<number>();
-  
+
+
   strEntity: string = "usuario";
   strOperation: string = "plist";
 
@@ -22,15 +22,6 @@ export class UsuarioPlistRowAdminUnroutedComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  }
-  onSelection(id: number) {
-    this.selection.emit(id);
-  }
-  flipValidateUser(id:number){
-    //console.log("todo: flip validate user " + id);
-  }
-  flipActivateUser(id:number){
-    //console.log("todo: flip activate user " + id);
   }
 
 }

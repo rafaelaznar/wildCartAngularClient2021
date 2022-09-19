@@ -4,6 +4,7 @@
 <td>{{oUsuario.apellido1}}</td>
 <td>{{oUsuario.apellido2}}</td>
 <td *ngIf="mode">{{oUsuario.email| trim:18}}</td>
+
 <td style="text-align: center" *ngIf="mode">
   <button *ngIf="!mode || oUsuario.carritos==0" class="btn btn-outline-secondary btn-sm"
     [disabled]="oUsuario?.carritos<=0"> {{ oUsuario.carritos }}
@@ -37,16 +38,5 @@
 <td *ngIf="mode" class="text-center" [innerHTML]="oUsuario.validado | showBoolean"></td>
 <td *ngIf="mode" class="text-center" [innerHTML]="oUsuario.activo | showBoolean"></td>
 <td class="text-center">
-  <div class="btn-group btn-group-sm" role="group" *ngIf="!mode">
-    <button type="button" class="btn btn-success" (click)="onSelection(oUsuario.id)"><i
-        class="fas fa-check"></i></button>
-  </div>
-  <div class="btn-group btn-group-sm" role="group" *ngIf="mode" app-plistrowbuttons-unrouted [id]="oUsuario.id"
-    [strEntity]="strEntity">
-    <button type="button" class="btn btn-secondary" (click)="flipValidateUser(oUsuario.id)"><i
-        [ngClass]="oMetadataService.getIcon('validado')"></i></button>
-    <button type="button" class="btn btn-secondary" (click)="flipActivateUser(oUsuario.id)"><i
-        [ngClass]="oMetadataService.getIcon('activado')"></i></button>
-  </div>
-
+  <ng-content select="[action_column]"></ng-content>
 </td>

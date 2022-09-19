@@ -39,7 +39,15 @@
       </thead>
       <tbody>
         <tr *ngFor="let oUsuarioRow of aUsuarios" class="align-middle" app-usuario-plistrow-admin-unrouted
-          [oUsuario]="oUsuarioRow" [mode]="false" (selection)="onSelection($event)">
+          [oUsuario]="oUsuarioRow" [mode]="false">
+
+          <div action_column>
+            <div class="btn-group btn-group-sm" role="group">
+              <button type="button" class="btn btn-success" (click)="onSelection(oUsuarioRow.id)"><i
+                  class="fas fa-check"></i></button>
+            </div>
+          </div>
+          
       </tbody>
     </table>
 
