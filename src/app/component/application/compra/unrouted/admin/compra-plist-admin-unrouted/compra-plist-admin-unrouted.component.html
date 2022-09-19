@@ -3,7 +3,8 @@
     <h6>{{strFilteredMessage}}</h6>
   </div>
   <div class="col-md text-center">
-    <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + strTitlePlural" (eeFilter)="onSetFilter($event)">
+    <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + strTitlePlural"
+      (eeFilter)="onSetFilter($event)">
     </app-search-unrouted>
   </div>
   <div class="col-md text-end">
@@ -28,7 +29,11 @@
   <div class="col-md table-responsive-md">
     <table class="table table-bordered table-striped table-hover">
       <thead>
-        <tr class="text-center align-middle" app-compra-plistheader-admin-unrouted (sort)="onSetOrder($event)" [mode]="mode">
+        <tr class="text-center align-middle" app-compra-plistheader-admin-unrouted (sort)="onSetOrder($event)"
+          [mode]="mode">
+          <div action_column_title>
+            <i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getSystemLabel('actions')}}
+          </div>
         </tr>
       </thead>
       <tbody>

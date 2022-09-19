@@ -49,6 +49,4 @@
   <i [ngClass]="oMetadataService.getIcon('flechaUp')" *ngIf="strSortField == 'factura' && strSortDirection == 'asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('flechaDown')" *ngIf="strSortField == 'factura' && strSortDirection == 'desc'"></i>
 </th>
-<th>
-  <i [ngClass]="oMetadataService.getIcon('acciones')"></i> Acciones
-</th>
+<th><ng-content select="[action_column_title]"></ng-content></th>

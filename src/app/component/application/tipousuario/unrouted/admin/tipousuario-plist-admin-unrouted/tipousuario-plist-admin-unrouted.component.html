@@ -10,7 +10,7 @@
                 <tr class="text-center align-middle" app-tipousuario-plistheader-admin-unrouted
                     (sort)="onSetOrder($event)" [mode]="true">
                     <div action_column_title>
-                        <i [ngClass]="oMetadataService.getIcon('acciones')"></i> Acciones
+                        <i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getSystemLabel('actions')}}
                     </div>
                 </tr>
             </thead>

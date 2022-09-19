@@ -60,12 +60,13 @@ export class MetadataService {
 
 
 
-  getSystemTitle(strSystemOperation: string): string {
+  getSystemLabel(strSystemOperation: string): string {
     switch (true) {
       case strSystemOperation == "home": return "Página principal";
       case strSystemOperation == "user": return "Detalle de usuario en sesión";
       case strSystemOperation == "random": return "Generación aleatoria de registros";
       case strSystemOperation == "print": return "Impresión de informes";
+      case strSystemOperation == "actions": return "Acciones";
       default: return 'Desconocido';
     }
   }
@@ -148,7 +149,7 @@ export class MetadataService {
 
   getTitle(strEntity: string, strOperation: string): string {
     switch (true) {
-      case strEntity == "system": return this.getSystemTitle(strOperation);
+      case strEntity == "system": return this.getSystemLabel(strOperation);
       default: return this.getOperationTitle(strOperation) + this.getPluralName4Entity(strEntity);
     }
   }
@@ -183,7 +184,7 @@ export class MetadataService {
 
   getActionTitle(strEntity: string, strOperation: string): string {
     switch (true) {
-      case strEntity == "system": return this.getSystemTitle(strOperation);
+      case strEntity == "system": return this.getSystemLabel(strOperation);
       default: return this.getOperationAction(strOperation) + this.getSingularName4Entity(strEntity).toLowerCase();
     }
   }
