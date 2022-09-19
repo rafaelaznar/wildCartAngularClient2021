@@ -2,15 +2,15 @@
 
 <div class="container my-3">
 
-    <app-header [title]="'Contenido de tu carrito'" [icon]="oIconService.getIcon(this.strOperation)"
-    [iconEntity]="oIconService.getIcon(this.strEntity)">
+    <app-header [title]="'Contenido de tu carrito'" [icon]="oMetadataService.getIcon(this.strOperation)"
+    [iconEntity]="oMetadataService.getIcon(this.strEntity)">
 </app-header>
 
 <app-carrito-cplist-user-unrouted [id_usuario]="id_usuario"  [id_tipousuario_session]="tipousuarioSession_id"  [id_producto]="id_producto"  (addCarritoEE)="onAddCarrito($event)">
 
     <header>
         <a [routerLink]="['/carrito/new']" type="button" class="btn btn-success mb-2">
-            <i [ngClass]="oIconService.getIcon('new')"></i> Añadir nueva carrito
+            <i [ngClass]="oMetadataService.getIcon('new')"></i> Añadir nueva carrito
         </a>
     </header>
 

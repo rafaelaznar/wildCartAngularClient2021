@@ -3,12 +3,12 @@
 <td class="text-end">{{ oCarrito.precio }}€</td>
 <td>
   <button class="btn btn-light btn-sm" [routerLink]="['/carrito/plist/producto/' + oCarrito.producto.id]">
-    <i [ngClass]="oIconService.getIcon('producto')"></i> ({{ oCarrito.producto.id }}) {{ oCarrito.producto.nombre | trim
+    <i [ngClass]="oMetadataService.getIcon('producto')"></i> ({{ oCarrito.producto.id }}) {{ oCarrito.producto.nombre | trim
     :60}}</button>
 </td>
 <td>
   <button class="btn btn-light btn-sm" [routerLink]="['/carrito/plist/usuario/' + oCarrito.usuario.id]">
-    <i [ngClass]="oIconService.getIcon('usuario')"></i> ({{ oCarrito.usuario.id }}) {{ oCarrito.usuario.nombre + "
+    <i [ngClass]="oMetadataService.getIcon('usuario')"></i> ({{ oCarrito.usuario.id }}) {{ oCarrito.usuario.nombre + "
     " + oCarrito.usuario.apellido1 + " " + oCarrito.usuario.apellido2 | trim:50 }}
   </button>
 </td>
@@ -16,14 +16,14 @@
 <td class="text-center">
   <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
     <button type="button" class="btn btn-success" [routerLink]="['/carrito/view/' + oCarrito.id]">
-      <i [ngClass]="oIconService.getIcon('view')"></i>
+      <i [ngClass]="oMetadataService.getIcon('view')"></i>
     </button>
 
     <button type="button" class="btn btn-warning" [routerLink]="['/carrito/edit/' + oCarrito.id]">
-      <i [ngClass]="oIconService.getIcon('edit')"></i>
+      <i [ngClass]="oMetadataService.getIcon('edit')"></i>
     </button>
     <button type="button" class="btn btn-danger" [routerLink]="['/carrito/remove/' + oCarrito.id]">
-      <i [ngClass]="oIconService.getIcon('remove')"></i>
+      <i [ngClass]="oMetadataService.getIcon('remove')"></i>
     </button>
   </div>
 </td>

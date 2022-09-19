@@ -2,7 +2,7 @@ import { CarritoService } from './../../../../service/carrito.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oCarritoService: CarritoService,
   ) {
 

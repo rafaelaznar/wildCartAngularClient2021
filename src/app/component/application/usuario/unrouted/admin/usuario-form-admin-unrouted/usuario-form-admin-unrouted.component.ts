@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { IUsuario, IUsuario2Send } from 'src/app/model/usuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
@@ -40,7 +40,7 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
     private oFormBuilder: UntypedFormBuilder,
     private oUsuarioService: UsuarioService,
     private oTipousuarioService: TipousuarioService,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oRouter: Router,
     private oErrorHandlerService: ErrorHandlerService
   ) { }

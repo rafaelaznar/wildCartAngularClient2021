@@ -2,19 +2,19 @@
 
 <div class="container my-3">
 
-    <app-header [title]="'Listado de ' + strTitlePlural" [icon]="oIconService.getIcon(this.strOperation)"
-    [iconEntity]="oIconService.getIcon(this.strEntity)">
-</app-header>
+    <app-header [title]="oMetadataService.getTitle(strEntity,strOperation)"
+        [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(this.strEntity)">
+    </app-header>
 
-<app-carrito-plist-admin-unrouted [id_usuario]="id_usuario" [id_producto]="id_producto">
+    <app-carrito-plist-admin-unrouted [id_usuario]="id_usuario" [id_producto]="id_producto">
 
-    <header>
-        <a [routerLink]="['/carrito/new']" type="button" class="btn btn-success mb-2">
-            <i [ngClass]="oIconService.getIcon('new')"></i> Añadir nueva carrito
-        </a>
-    </header>
+        <header>
+            <a [routerLink]="['/carrito/new']" type="button" class="btn btn-success mb-2">
+                <i [ngClass]="oMetadataService.getIcon('new')"></i> Añadir nuevo carrito
+            </a>
+        </header>
 
-    <!--
+        <!--
     <ng-template let-fila>
         <button type="button" class="btn btn-success" [routerLink]="['/usuario/view/' + fila.id]"><i
                 class="fas fa-eye"></i></button>
@@ -25,7 +25,7 @@
     </ng-template>
     -->
 
-</app-carrito-plist-admin-unrouted>
+    </app-carrito-plist-admin-unrouted>
 
 </div>
 

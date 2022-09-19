@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-compra-plist-admin-routed',
@@ -26,7 +26,7 @@ export class CompraPlistAdminRoutedComponent implements OnInit {
   constructor(
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oActivatedRoute: ActivatedRoute
   ) {
     if (this.oRoute.snapshot.data.message) {

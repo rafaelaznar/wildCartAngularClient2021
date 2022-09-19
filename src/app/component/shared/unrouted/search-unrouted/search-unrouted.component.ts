@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-search-unrouted',
@@ -18,7 +18,7 @@ export class SearchUnroutedComponent implements OnInit {
   subjectFilter = new Subject();
 
   constructor(
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {

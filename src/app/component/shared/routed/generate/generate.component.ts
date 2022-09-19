@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { GenerateService } from 'src/app/service/generate.service';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
@@ -32,7 +32,7 @@ export class GenerateComponent implements OnInit {
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oLocation: Location,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
     if (this.oRoute.snapshot.data.message) {
       this.oUserSession = this.oRoute.snapshot.data.message;

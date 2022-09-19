@@ -1,4 +1,4 @@
-import { IconService } from '../../../../../../service/icon.service';
+import { MetadataService } from '../../../../../../service/metadata.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -27,7 +27,7 @@ export class FacturaNewAdminRoutedComponent implements OnInit {
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;

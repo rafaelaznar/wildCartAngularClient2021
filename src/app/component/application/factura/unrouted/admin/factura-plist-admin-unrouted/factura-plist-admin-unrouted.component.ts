@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IFactura, IFacturaPage } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { CompraService } from 'src/app/service/compra.service';
 import { ICompra, ICompraPage } from 'src/app/model/compra-interfaces';
@@ -47,7 +47,7 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oFacturaService: FacturaService,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oCompraService: CompraService,
     private oPaginationService: PaginationService
   ) {

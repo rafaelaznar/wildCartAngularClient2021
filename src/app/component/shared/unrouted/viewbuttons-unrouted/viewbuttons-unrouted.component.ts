@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-viewbuttons-unrouted',
@@ -10,12 +10,11 @@ import { IconService } from 'src/app/service/icon.service';
 export class ViewbuttonsUnroutedComponent implements OnInit {
 
   @Input() strEntity: string = "";
-  @Input() strTitlePlural: string = "";
-
+  @Input() id: number = 0;
 
   constructor(
     private oLocation: Location,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {

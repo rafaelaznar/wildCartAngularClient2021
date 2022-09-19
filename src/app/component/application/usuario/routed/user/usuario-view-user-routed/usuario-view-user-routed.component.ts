@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -22,7 +22,7 @@ export class UsuarioViewUserRoutedComponent implements OnInit {
   constructor(
     private oActivatedRoute: ActivatedRoute,
     oRouter: Router,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oLocation: Location
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {

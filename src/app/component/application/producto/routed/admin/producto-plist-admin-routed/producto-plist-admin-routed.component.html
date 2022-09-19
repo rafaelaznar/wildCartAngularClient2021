@@ -1,19 +1,19 @@
 <app-menu></app-menu>
 <div class="container my-3">
 
-  <app-header [title]="'Listado de ' + strTitlePlural" [icon]="oIconService.getIcon(this.strOperation)"
-      [iconEntity]="oIconService.getIcon(this.strEntity)">
-  </app-header>
+    <app-header [title]="oMetadataService.getTitle(strEntity,strOperation)"
+        [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(this.strEntity)">
+    </app-header>
 
-  <app-producto-plist-admin-unrouted [id_tipoproducto]="id_tipoproducto">
+    <app-producto-plist-admin-unrouted [id_tipoproducto]="id_tipoproducto">
 
-      <header>
-          <a [routerLink]="['/producto/new']" type="button" class="btn btn-success mb-2">
-              <i class="fas fa-plus"></i> Añadir nuevo Producto
-          </a>
-      </header>
+        <header>
+            <a [routerLink]="['/producto/new']" type="button" class="btn btn-success mb-2">
+                <i class="fas fa-plus"></i> Añadir nuevo Producto
+            </a>
+        </header>
 
-      <!--
+        <!--
       <ng-template let-fila>
           <button type="button" class="btn btn-success" [routerLink]="['/usuario/view/' + fila.id]"><i
                   class="fas fa-eye"></i></button>
@@ -24,7 +24,7 @@
       </ng-template>
       -->
 
-  </app-producto-plist-admin-unrouted>
+    </app-producto-plist-admin-unrouted>
 
 </div>
 <app-footer></app-footer>

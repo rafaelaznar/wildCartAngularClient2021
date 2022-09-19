@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ICompra } from 'src/app/model/compra-interfaces';
 import { CompraService } from 'src/app/service/compra.service';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-compra-detail-admin-unrouted',
@@ -16,7 +16,7 @@ export class CompraDetailAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oCompraService: CompraService,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {

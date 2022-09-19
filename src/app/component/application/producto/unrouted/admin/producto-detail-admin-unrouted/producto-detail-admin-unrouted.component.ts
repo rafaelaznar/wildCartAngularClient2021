@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IProducto } from 'src/app/model/producto-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { ProductoService } from 'src/app/service/producto.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class ProductoDetailAdminUnroutedComponent implements OnInit {
   oProducto: IProducto;
   constructor(
     private oProductoService: ProductoService,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {

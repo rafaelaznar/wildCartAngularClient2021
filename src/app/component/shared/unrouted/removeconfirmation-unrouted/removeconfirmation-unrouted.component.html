@@ -1,0 +1,14 @@
+<div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
+  <div class="col-md-5 control-group text-center">
+    <div class="alert alert-danger my-3" role="alert">
+      <h3>{{oMetadataService.getConfirmationMessage(strEntity,'remove')}}</h3>
+      <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center my-4">
+        <a class="btn btn-danger mx-2" (click)="removeOne()"><i [ngClass]="oMetadataService.getIcon('aceptar')"></i>
+          {{oMetadataService.getSystemAction('yes')}}</a>
+        <a class="btn btn-success mx-2" (click)="goBack()"><i [ngClass]="oMetadataService.getIcon('rechazar')"></i>
+          {{oMetadataService.getSystemAction('no')}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

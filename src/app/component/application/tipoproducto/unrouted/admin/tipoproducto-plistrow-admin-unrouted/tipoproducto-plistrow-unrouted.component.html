@@ -4,7 +4,7 @@
   <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/producto/plist/tipoproducto/', oTipoproducto.id]"
     [disabled]="oTipoproducto?.productos<=0">
     {{ oTipoproducto?.productos }}
-    <i [ngClass]="oIconService.getIcon('producto')"></i>
+    <i [ngClass]="oMetadataService.getIcon('producto')"></i>
   </button>
 </td>
 <td class="text-center">

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 @Component({
@@ -24,7 +24,7 @@ export class ProductoPlistAdminRoutedComponent implements OnInit {
   constructor(    
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
 
     if (this.oActivatedRoute.snapshot.data.message) {

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { IFactura, IFactura2Send } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
 import { Subject } from 'rxjs/internal/Subject';
@@ -52,7 +52,7 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
   constructor(
     private oFormBuilder: UntypedFormBuilder,
     private oFacturaService: FacturaService,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oRouter: Router,
     private oErrorHandlerService: ErrorHandlerService,
     private oUsuarioService: UsuarioService,

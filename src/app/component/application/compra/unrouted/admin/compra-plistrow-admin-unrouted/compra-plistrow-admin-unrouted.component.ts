@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ICompra } from 'src/app/model/compra-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { API_URL } from 'src/environments/environment';
 
 
@@ -20,7 +20,7 @@ export class CompraPlistrowAdminUnroutedComponent implements OnInit {
   strOperation: string = "plist";
   
   constructor(
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {

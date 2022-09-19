@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-producto-new-admin-routed',
@@ -24,7 +24,7 @@ export class ProductoNewAdminRoutedComponent implements OnInit {
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
 
     if (this.oActivatedRoute.snapshot.data.message) {

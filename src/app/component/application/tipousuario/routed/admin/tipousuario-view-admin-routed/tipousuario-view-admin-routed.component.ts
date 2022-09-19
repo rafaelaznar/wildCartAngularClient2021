@@ -1,4 +1,4 @@
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -21,7 +21,7 @@ export class TipousuarioViewAdminRoutedComponent implements OnInit {
   constructor(    
     private oActivatedRoute: ActivatedRoute,
     oRouter: Router,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from 'src/app/service/producto.service';
 import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 @Component({
@@ -29,7 +29,7 @@ export class ProductoRemoveAdminRoutedComponent implements OnInit {
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oLocation: Location,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
     if (this.oRoute.snapshot.data.message) {
       this.oUserSession = this.oRoute.snapshot.data.message;

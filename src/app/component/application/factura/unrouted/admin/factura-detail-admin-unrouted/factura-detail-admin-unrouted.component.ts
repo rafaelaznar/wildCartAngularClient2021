@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IFactura } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-factura-detail-admin-unrouted',
@@ -15,7 +15,7 @@ export class FacturaDetailAdminUnroutedComponent implements OnInit {
   oFactura: IFactura;
   constructor(
     private oFacturaService: FacturaService,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { ICarrito, ICarrito2Send } from 'src/app/model/carrito-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { Subject } from 'rxjs/internal/Subject';
@@ -53,7 +53,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
   constructor(
     private oFormBuilder: UntypedFormBuilder,
     private oCarritoService: CarritoService,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oRouter: Router,
     private oErrorHandlerService: ErrorHandlerService,
     private oUsuarioService: UsuarioService,

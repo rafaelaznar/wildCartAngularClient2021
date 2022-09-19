@@ -3,7 +3,7 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CryptoService } from 'src/app/service/crypto.service';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { SessionService } from 'src/app/service/session.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     private oRouter: Router,
     private oSessionService: SessionService,
     private oCryptoService: CryptoService,
-    public oIconService: IconService    
+    public oMetadataService: MetadataService    
   ) {
 
     if (oRoute.snapshot.data.message) {

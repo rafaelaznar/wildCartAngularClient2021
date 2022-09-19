@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { IUsuarioPage, IUsuario } from 'src/app/model/usuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 
 @Component({
@@ -40,7 +40,7 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oUsuarioService: UsuarioService,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
   ) {
   }
 

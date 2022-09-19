@@ -1,7 +1,7 @@
 import { IProductoPage, IProducto } from 'src/app/model/producto-interfaces';
 import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { debounceTime } from 'rxjs/operators';
 import { CarritoService } from 'src/app/service/carrito.service';
@@ -43,7 +43,7 @@ export class ProductoPlistUserUnroutedComponent implements OnInit {
   constructor(
     private oProductoService: ProductoCarritoViewService,
     private oCarritoService: CarritoService,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {   
 
     if (this.id_tipoproducto) {

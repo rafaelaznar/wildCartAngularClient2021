@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SessionService } from 'src/app/service/session.service';
 import { Location } from '@angular/common';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 @Component({
@@ -20,7 +20,7 @@ export class LogoutComponent implements OnInit {
     private oRouter: Router,
     private oSessionService: SessionService,
     private _location: Location,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
 
     if (this.oRoute.snapshot.data.message) {

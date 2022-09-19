@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: '[app-plistrowbuttons-unrouted]',
@@ -12,7 +12,7 @@ export class PlistrowbuttonsUnroutedComponent implements OnInit {
   @Input() strEntity: string = null;
 
   constructor(
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {

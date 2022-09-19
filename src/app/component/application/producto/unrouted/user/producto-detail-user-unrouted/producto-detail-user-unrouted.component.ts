@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { ProductoService } from 'src/app/service/producto.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
   oProducto: IProducto;
   constructor(
     private oProductoService: ProductoService,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oCarritoService: CarritoService,
   ) { }
 

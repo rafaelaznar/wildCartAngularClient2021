@@ -1,13 +1,9 @@
 <app-menu></app-menu>
-
 <div class="container my-3">
-
-  <app-header [title]="'Listado de ' + strTitlePlural" [icon]="oIconService.getIcon(this.strOperation)"
-    [iconEntity]="oIconService.getIcon(this.strEntity)">
+  <app-header [title]="oMetadataService.getTitle(strEntity,strOperation)"
+    [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(this.strEntity)">
   </app-header>
-
   <app-tipousuario-plist-admin-unrouted>
-
     <!--
     <ng-template let-fila>
         <button type="button" class="btn btn-success" [routerLink]="['/usuario/view/' + fila.id]"><i
@@ -18,8 +14,6 @@
                 class="fas fa-trash"></i></button>
     </ng-template>
     -->
-
   </app-tipousuario-plist-admin-unrouted>
 </div>
-
 <app-footer></app-footer>

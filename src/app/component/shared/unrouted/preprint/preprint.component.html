@@ -1,7 +1,7 @@
 <div class="container my-3">
 
-    <app-header [title]="'Impresión de informe: ' + nombreinforme" [icon]="oIconService.getIcon(this.strOperation)"
-        [iconEntity]="oIconService.getIcon(this.strEntity)">
+    <app-header [title]="'Impresión de informe: ' + nombreinforme" [icon]="oMetadataService.getIcon(this.strOperation)"
+        [iconEntity]="oMetadataService.getIcon(this.strEntity)">
     </app-header>
 
     <div class="row justify-content-center">
@@ -9,7 +9,7 @@
 
             <div class="row mb-3" *ngIf="showcantidad">
                 <label for="cantidad" class="col-sm-3 col-form-label"> <i
-                        [ngClass]="oIconService.getIcon('cantidad')"></i>
+                        [ngClass]="oMetadataService.getIcon('cantidad')"></i>
                     Cantidad</label>
                 <div class="col-sm-9">
                     <input class="form-control" name="cantidad" formControlName="cantidad" type="text"
@@ -19,7 +19,7 @@
 
             <div class="row mb-3" [hidden]="!showfechas">
                 <label for="fechaincio" class="col-sm-3 col-form-label"> <i
-                        [ngClass]="oIconService.getIcon('fecha')"></i>
+                        [ngClass]="oMetadataService.getIcon('fecha')"></i>
                     Fecha Inicio</label>
                 <div class="col-sm-9">
                     <input type="text" name="fechainicio" id="fechainicio" formControlName="fechainicio"
@@ -33,7 +33,7 @@
             </div>
 
             <div class="row mb-3">
-                <label for="fechafin" class="col-sm-3 col-form-label"> <i [ngClass]="oIconService.getIcon('fecha')"></i>
+                <label for="fechafin" class="col-sm-3 col-form-label"> <i [ngClass]="oMetadataService.getIcon('fecha')"></i>
                     Fecha Fin</label>
                 <div class="col-sm-9">
                     <input type="text" name="fechafin" id="fechafin" formControlName="fechafin"
@@ -49,7 +49,7 @@
             <div class="row mb-3 justify-content-center">
                 <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
                     <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine">
-                        <i [ngClass]="oIconService.getIcon('imprimir')"></i>Imprimir</button>
+                        <i [ngClass]="oMetadataService.getIcon('imprimir')"></i>Imprimir</button>
                 </div>
             </div>
 

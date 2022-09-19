@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { ITipousuario, ITipousuarioPage } from 'src/app/model/tipousuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 @Component({
@@ -40,7 +40,7 @@ export class TipousuarioPlistAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oTipoUsuarioService: TipousuarioService,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
 
     this.nPage = 1;

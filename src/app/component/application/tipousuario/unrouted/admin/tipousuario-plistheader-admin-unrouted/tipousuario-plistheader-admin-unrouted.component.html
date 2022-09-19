@@ -1,14 +1,14 @@
 <th (click)="doSetOrder('id')">
-  <i [ngClass]="oIconService.getIcon('id')"></i> ID
-  <i [ngClass]="oIconService.getIcon('orderUp')" *ngIf="strSortField == 'id' && strSortDirection == 'asc'"></i>
-  <i [ngClass]="oIconService.getIcon('orderDown')" *ngIf="strSortField == 'id' && strSortDirection == 'desc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('id')"></i> ID
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField == 'id' && strSortDirection == 'asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField == 'id' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('nombre')">
-  <i [ngClass]="oIconService.getIcon('nombre')"></i> Nombre
-  <i [ngClass]="oIconService.getIcon('orderUp')" *ngIf="strSortField == 'nombre' && strSortDirection == 'asc'"></i>
-  <i [ngClass]="oIconService.getIcon('orderDown')" *ngIf="strSortField == 'nombre' && strSortDirection == 'desc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('nombre')"></i> Nombre
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField == 'nombre' && strSortDirection == 'asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField == 'nombre' && strSortDirection == 'desc'"></i>
 </th>
 <th *ngIf="mode">
-  <i [ngClass]="oIconService.getIcon('usuario')"></i> Usuarios 
+  <i [ngClass]="oMetadataService.getIcon('usuario')"></i> Usuarios 
 </th>
 <th><ng-content select="[action_column_title]"></ng-content></th>

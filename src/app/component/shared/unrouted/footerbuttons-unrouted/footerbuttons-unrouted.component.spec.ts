@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { TipousuarioViewAdminUnroutedComponent } from './tipousuario-view-admin-unrouted.component';
+import { ViewbuttonsUnroutedComponent } from './viewbuttons-unrouted.component';
 
-describe('TipousuarioViewAdminUnroutedComponent', () => {
-  let component: TipousuarioViewAdminUnroutedComponent;
-  let fixture: ComponentFixture<TipousuarioViewAdminUnroutedComponent>;
+describe('ViewbuttonsUnroutedComponent', () => {
+  let component: ViewbuttonsUnroutedComponent;
+  let fixture: ComponentFixture<ViewbuttonsUnroutedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TipousuarioViewAdminUnroutedComponent ]
+      declarations: [ ViewbuttonsUnroutedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TipousuarioViewAdminUnroutedComponent);
+    fixture = TestBed.createComponent(ViewbuttonsUnroutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

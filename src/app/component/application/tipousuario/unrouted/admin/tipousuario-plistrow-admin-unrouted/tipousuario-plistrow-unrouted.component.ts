@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: '[app-tipousuario-plistrow-admin-unrouted]',
@@ -17,7 +17,7 @@ export class TipousuarioPlistrowAdminUnroutedComponent implements OnInit {
   strEntity: string = "tipousuario";
   strOperation: string = "plist";
   constructor(
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {

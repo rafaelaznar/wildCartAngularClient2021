@@ -2,7 +2,7 @@ import { ProductoService } from '../../../../../../service/producto.service';
 import { IProductoPage, IProducto } from 'src/app/model/producto-interfaces';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 
 @Component({
@@ -41,7 +41,7 @@ export class ProductoPlistAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oProductoService: ProductoService,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
   }
 

@@ -2,7 +2,7 @@
 <td class="text-center">{{oFactura?.iva}}%</td>
 <td>
   <button class="btn btn-light btn-sm" [routerLink]="['/factura/plist/usuario/' + oFactura?.usuario?.id]" *ngIf="mode">
-    <i [ngClass]="oIconService.getIcon('usuario')"></i>
+    <i [ngClass]="oMetadataService.getIcon('usuario')"></i>
     ({{oFactura?.usuario?.id }})
     {{oFactura?.usuario?.nombre + ' ' + oFactura?.usuario?.apellido1 + ' ' + oFactura?.usuario?.apellido2 }}
   </button>
@@ -14,7 +14,7 @@
 <td style="text-align: center;">
   <button class="btn btn-outline-secondary btn-sm"  *ngIf="mode"
     [routerLink]="['/compra/plist/factura/',oFactura.id]">{{oFactura?.compras}}
-    <i [ngClass]="oIconService.getIcon('compra')"></i>
+    <i [ngClass]="oMetadataService.getIcon('compra')"></i>
   </button>
   <div *ngIf="!mode">{{oFactura?.compras}}
   </div>
@@ -31,6 +31,6 @@
           class="fas fa-eye"></i></button>
     </div>
     <button type="button" class="btn btn-secondary" (click)="print(oFactura.id)"><i
-        [ngClass]="oIconService.getIcon('validado')"></i></button>
+        [ngClass]="oMetadataService.getIcon('validado')"></i></button>
   </div>
 </td>

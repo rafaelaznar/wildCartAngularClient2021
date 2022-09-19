@@ -6,13 +6,13 @@
 <td class="text-center">{{ oCompra.descuento_producto }}%</td>
 <td>
   <button class="btn btn-light btn-sm" [routerLink]="['/compra/plist/producto/' + oCompra.producto.id]">
-    <i [ngClass]="oIconService.getIcon('producto')"></i> ({{ oCompra.producto.id }}) {{ oCompra.producto.nombre |
+    <i [ngClass]="oMetadataService.getIcon('producto')"></i> ({{ oCompra.producto.id }}) {{ oCompra.producto.nombre |
     trim: 40 }}
   </button>
 </td>
 <td>
   <button class="btn btn-light btn-sm" [routerLink]="['/compra/plist/factura/' + oCompra?.factura?.id]">
-    <i [ngClass]="oIconService.getIcon('factura')"></i>
+    <i [ngClass]="oMetadataService.getIcon('factura')"></i>
     ({{ oCompra?.factura?.id }}) {{ oCompra?.factura?.usuario?.nombre + " " + oCompra?.factura?.usuario?.apellido1 +
     " " + oCompra?.factura?.usuario?.apellido2 | trim: 30 }}
   </button>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
@@ -32,7 +32,7 @@ export class ProductoViewUserRoutedComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oLocation: Location
 
   ) {

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { ICompra, ICompra2Send } from 'src/app/model/compra-interfaces';
 import { CompraService } from 'src/app/service/compra.service';
 import { Subject } from 'rxjs/internal/Subject';
@@ -53,7 +53,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
   constructor(
     private oFormBuilder: UntypedFormBuilder,
     private oCompraService: CompraService,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oRouter: Router,
     private oErrorHandlerService: ErrorHandlerService,
     private oFacturaService: FacturaService,

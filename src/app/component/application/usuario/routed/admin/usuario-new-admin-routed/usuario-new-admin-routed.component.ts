@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-usuario-new-admin-routed',
@@ -14,9 +14,7 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
 
   strEntity: string = "usuario"
   strOperation: string = "new"
-  strTitleSingular: string = "Usuario";
-  strATitleSingular: string = "El usuario";
-  strTitlePlural: string = "Usuarios";
+  //
   id: number = null;
   strResult: string = null;
   strUsuarioSession: string;
@@ -25,7 +23,7 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ICarrito } from 'src/app/model/carrito-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: '[app-carrito-plistrow-admin-unrouted]',
@@ -17,7 +17,7 @@ export class CarritoPlistrowAdminUnroutedComponent implements OnInit {
   oUsuarioSession: IUsuario;
 
   constructor(
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
     console.log("user=" +localStorage.getItem("user"));
     this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));

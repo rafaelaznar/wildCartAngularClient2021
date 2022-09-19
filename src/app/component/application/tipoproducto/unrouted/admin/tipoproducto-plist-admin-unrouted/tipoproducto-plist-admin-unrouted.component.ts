@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { debounceTime } from 'rxjs/operators';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
@@ -45,7 +45,7 @@ export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
   constructor(
     private oPaginationService: PaginationService,
     private oPostService: TipoproductoService,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
   ) {
   }
 

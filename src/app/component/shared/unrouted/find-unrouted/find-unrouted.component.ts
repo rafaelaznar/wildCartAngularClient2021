@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 
 
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: '[app-find-unrouted]',
@@ -16,7 +16,7 @@ export class findUnroutedComponent implements OnInit {
   @Output() selection = new EventEmitter<number>();
 
   constructor(
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {

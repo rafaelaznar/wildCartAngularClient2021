@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-compra-edit-admin-routed',
@@ -28,7 +28,7 @@ export class CompraEditAdminRoutedComponent implements OnInit {
   constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oLocation: Location
   ) {
     if (this.oActivatedRoute.snapshot.data && this.oActivatedRoute.snapshot.data.message) {

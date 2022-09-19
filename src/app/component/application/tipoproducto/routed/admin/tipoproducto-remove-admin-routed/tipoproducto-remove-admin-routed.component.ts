@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
 
 @Component({
@@ -32,7 +32,7 @@ export class TipoproductoRemoveAdminRoutedComponent implements OnInit {
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private _location: Location,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
     if (this.oRoute.snapshot.data.message) {
       this.oUserSession = this.oRoute.snapshot.data.message;
@@ -80,6 +80,6 @@ export class TipoproductoRemoveAdminRoutedComponent implements OnInit {
   }
 
   onClosePopup(): void {
-    this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
+    this.oRouter.navigate([this.strEntity + '/plist']);
   }
 }

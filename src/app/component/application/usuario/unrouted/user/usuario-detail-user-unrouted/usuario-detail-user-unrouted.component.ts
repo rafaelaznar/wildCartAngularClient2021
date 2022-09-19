@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class UsuarioDetailUserUnroutedComponent implements OnInit {
 
   constructor(
     private oUsuarioService: UsuarioService,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
     
   }

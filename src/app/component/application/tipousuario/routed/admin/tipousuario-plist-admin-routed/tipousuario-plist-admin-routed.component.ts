@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-tipousuario-plist-admin-routed',
@@ -22,7 +22,7 @@ export class TipousuarioPlistAdminRoutedComponent implements OnInit {
   constructor(
     private oActivatedRoute: ActivatedRoute,
     oRouter: Router,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
       this.oUserSession = this.oActivatedRoute.snapshot.data.message;

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } fro
 import { ICarrito } from 'src/app/model/carrito-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { API_URL } from 'src/environments/environment';
 
 @Component({
@@ -27,7 +27,7 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
   strAPI_URL: string = API_URL;
 
   constructor(
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oCarritoService: CarritoService
   ) {
     //console.log("user=" + localStorage.getItem("user"));

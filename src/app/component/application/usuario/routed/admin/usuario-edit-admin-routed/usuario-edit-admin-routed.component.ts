@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-usuario-edit-admin-routed',
@@ -14,10 +14,6 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
 
   strEntity: string = 'usuario';
   strOperation: string = 'edit';
-  strTitleSingular: string = 'Usuario';
-  strTitlePlural: string = 'Usuarios';
-  strATitleSingular: string = 'El usuario';
-  strATitlePlural: string = 'Los usuarios';
   //
   id: number = null;
   strResult: string = null;
@@ -27,7 +23,7 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
   constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oLocation: Location
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {

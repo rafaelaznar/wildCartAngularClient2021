@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: '[app-usuario-plistrow-admin-unrouted]',
@@ -18,7 +18,7 @@ export class UsuarioPlistRowAdminUnroutedComponent implements OnInit {
   strOperation: string = "plist";
 
   constructor(
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {

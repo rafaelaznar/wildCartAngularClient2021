@@ -7,31 +7,31 @@
 <td style="text-align: center" *ngIf="mode">
   <button *ngIf="!mode || oUsuario.carritos==0" class="btn btn-outline-secondary btn-sm"
     [disabled]="oUsuario?.carritos<=0"> {{ oUsuario.carritos }}
-    <i [ngClass]="oIconService.getIcon('carrito')"></i>
+    <i [ngClass]="oMetadataService.getIcon('carrito')"></i>
   </button>
   <button *ngIf="mode && oUsuario.carritos>0" class="btn btn-outline-secondary btn-sm"
     [routerLink]="['/carrito/plist/usuario/' + oUsuario.id]">
-    {{ oUsuario.carritos }} <i [ngClass]="oIconService.getIcon('carrito')"></i>
+    {{ oUsuario.carritos }} <i [ngClass]="oMetadataService.getIcon('carrito')"></i>
   </button>
 </td>
 
 <td style="text-align: center" *ngIf="mode">
   <button *ngIf="!mode || oUsuario.facturas==0" class="btn btn-outline-secondary btn-sm"> {{ oUsuario.facturas }}
-    <i [ngClass]="oIconService.getIcon('factura')"></i>
+    <i [ngClass]="oMetadataService.getIcon('factura')"></i>
   </button>
   <button *ngIf="mode && oUsuario.facturas>0" class="btn btn-outline-secondary btn-sm"
     [routerLink]="['/factura/plist/usuario/' + oUsuario.id]" [disabled]="oUsuario?.facturas<=0">
     {{ oUsuario.facturas }}
-    <i [ngClass]="oIconService.getIcon('factura')"></i>
+    <i [ngClass]="oMetadataService.getIcon('factura')"></i>
   </button>
 </td>
 
 <td>
   <button *ngIf="mode" class="btn btn-light btn-sm"
     [routerLink]="['/usuario/plist/tipousuario/' + oUsuario.tipousuario.id]">
-    <i [ngClass]="oIconService.getIcon('usuario')"></i> ({{oUsuario.tipousuario.id}})
+    <i [ngClass]="oMetadataService.getIcon('usuario')"></i> ({{oUsuario.tipousuario.id}})
     {{oUsuario.tipousuario.nombre}}</button>
-  <div *ngIf="!mode"><i [ngClass]="oIconService.getIcon('usuario')"></i> {{oUsuario.tipousuario.nombre}}</div>
+  <div *ngIf="!mode"><i [ngClass]="oMetadataService.getIcon('usuario')"></i> {{oUsuario.tipousuario.nombre}}</div>
 </td>
 
 <td *ngIf="mode" class="text-center" [innerHTML]="oUsuario.validado | showBoolean"></td>
@@ -44,9 +44,9 @@
   <div class="btn-group btn-group-sm" role="group" *ngIf="mode" app-plistrowbuttons-unrouted [id]="oUsuario.id"
     [strEntity]="strEntity">
     <button type="button" class="btn btn-secondary" (click)="flipValidateUser(oUsuario.id)"><i
-        [ngClass]="oIconService.getIcon('validado')"></i></button>
+        [ngClass]="oMetadataService.getIcon('validado')"></i></button>
     <button type="button" class="btn btn-secondary" (click)="flipActivateUser(oUsuario.id)"><i
-        [ngClass]="oIconService.getIcon('activado')"></i></button>
+        [ngClass]="oMetadataService.getIcon('activado')"></i></button>
   </div>
 
 </td>

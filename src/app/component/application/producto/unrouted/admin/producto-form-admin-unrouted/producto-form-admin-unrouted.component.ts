@@ -2,7 +2,7 @@ import { IProducto, IProducto2Send } from '../../../../../../model/producto-inte
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ProductoService } from 'src/app/service/producto.service';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { FileService } from 'src/app/service/file.service';
 import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
@@ -44,7 +44,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
     private oFormBuilder: UntypedFormBuilder,
     private oProductoService: ProductoService,
     private oFileService: FileService,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     public oTipoproductoService: TipoproductoService
   ) {
   }

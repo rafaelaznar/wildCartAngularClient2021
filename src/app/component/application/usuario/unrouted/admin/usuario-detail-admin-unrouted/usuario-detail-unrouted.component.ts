@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
-  selector: 'app-usuario-view-admin-unrouted',
-  templateUrl: './usuario-view-unrouted.component.html',
-  styleUrls: ['./usuario-view-unrouted.component.css']
+  selector: 'app-usuario-detail-admin-unrouted',
+  templateUrl: './usuario-detail-unrouted.component.html',
+  styleUrls: ['./usuario-detail-unrouted.component.css']
 })
 
-export class UsuarioViewAdminUnroutedComponent implements OnInit {
+export class UsuarioDetailAdminUnroutedComponent implements OnInit {
 
   @Input() id: number = null;  
   
@@ -21,7 +21,7 @@ export class UsuarioViewAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oUsuarioService: UsuarioService,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
     
   }

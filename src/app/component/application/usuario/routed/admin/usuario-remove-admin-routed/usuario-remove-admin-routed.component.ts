@@ -3,7 +3,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-usuario-remove-admin-routed',
@@ -26,7 +26,7 @@ export class UsuarioRemoveAdminRoutedComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRouter: Router,
     private _location: Location,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
 
   ) {
     // control de sesión

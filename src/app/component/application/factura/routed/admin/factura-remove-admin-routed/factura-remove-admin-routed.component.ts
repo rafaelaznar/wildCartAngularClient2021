@@ -4,7 +4,7 @@ import { IFactura } from 'src/app/model/factura-interfaces';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { FacturaService } from 'src/app/service/factura.service';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-factura-remove-admin-routed',
@@ -29,7 +29,7 @@ export class FacturaRemoveAdminRoutedComponent implements OnInit {
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private _location: Location,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
     if (this.oRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oRoute.snapshot.data.message;

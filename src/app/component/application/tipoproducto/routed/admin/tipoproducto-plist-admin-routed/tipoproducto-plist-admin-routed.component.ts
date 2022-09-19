@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-tipoproducto-plist-admin-routed',
@@ -20,7 +20,7 @@ export class TipoproductoPlistAdminRoutedComponent implements OnInit {
   constructor(
     private oActivatedRoute: ActivatedRoute,
     private oRouter: Router,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
 
     if (this.oActivatedRoute.snapshot.data.message) {

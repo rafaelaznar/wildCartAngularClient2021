@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 @Component({
   selector: 'app-carrito-view-admin-routed',
@@ -28,7 +28,7 @@ export class CarritoViewAdminRoutedComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
 
   ) {
 

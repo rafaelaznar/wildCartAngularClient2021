@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IOrder } from 'src/app/model/model-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: '[app-usuario-plistheader-admin-unrouted]',
@@ -18,7 +18,7 @@ export class UsuarioPlistheaderAdminUnroutedComponent implements OnInit {
   strEntity: string = "usuario";
   strOperation: string = "plist";
   constructor(
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {

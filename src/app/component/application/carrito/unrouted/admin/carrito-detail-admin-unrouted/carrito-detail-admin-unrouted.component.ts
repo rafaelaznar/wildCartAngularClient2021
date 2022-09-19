@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ICarrito } from 'src/app/model/carrito-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-carrito-detail-admin-unrouted',
@@ -16,7 +16,7 @@ export class CarritoDetailAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oCarritoService: CarritoService,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {

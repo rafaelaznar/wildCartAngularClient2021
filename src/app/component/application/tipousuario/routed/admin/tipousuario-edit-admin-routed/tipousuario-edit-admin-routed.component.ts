@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-tipousuario-edit-admin-routed',
@@ -26,7 +26,7 @@ export class TipousuarioEditAdminRoutedComponent implements OnInit {
   constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oLocation: Location
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {

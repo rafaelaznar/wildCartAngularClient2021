@@ -1,54 +1,54 @@
 <th (click)="doSetOrder('id')">
-  <i [ngClass]="oIconService.getIcon('id')"></i> ID
-  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField == 'id' && strSortDirection == 'asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField == 'id' && strSortDirection == 'desc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('id')"></i> ID
+  <i [ngClass]="oMetadataService.getIcon('flechaUp')" *ngIf="strSortField == 'id' && strSortDirection == 'asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('flechaDown')" *ngIf="strSortField == 'id' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('cantidad')">
-  <i [ngClass]="oIconService.getIcon('cantidad')"></i> Cantidad
-  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField == 'cantidad' && strSortDirection == 'asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
+  <i [ngClass]="oMetadataService.getIcon('cantidad')"></i> Cantidad
+  <i [ngClass]="oMetadataService.getIcon('flechaUp')" *ngIf="strSortField == 'cantidad' && strSortDirection == 'asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('flechaDown')"
     *ngIf="strSortField == 'cantidad' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('precio')">
-  <i [ngClass]="oIconService.getIcon('euro')"></i> Precio
-  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField == 'precio' && strSortDirection == 'asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField == 'precio' && strSortDirection == 'desc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('euro')"></i> Precio
+  <i [ngClass]="oMetadataService.getIcon('flechaUp')" *ngIf="strSortField == 'precio' && strSortDirection == 'asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('flechaDown')" *ngIf="strSortField == 'precio' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('fecha')">
-  <i [ngClass]="oIconService.getIcon('fecha')"></i> Fecha
-  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField == 'fecha' && strSortDirection == 'asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField == 'fecha' && strSortDirection == 'desc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('fecha')"></i> Fecha
+  <i [ngClass]="oMetadataService.getIcon('flechaUp')" *ngIf="strSortField == 'fecha' && strSortDirection == 'asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('flechaDown')" *ngIf="strSortField == 'fecha' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('descuento_usuario')">
-  <i [ngClass]="oIconService.getIcon('porcentaje')"></i> Desc.
+  <i [ngClass]="oMetadataService.getIcon('porcentaje')"></i> Desc.
   usuario
-  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="
+  <i [ngClass]="oMetadataService.getIcon('flechaUp')" *ngIf="
       strSortField == 'descuento_usuario' &&
       strSortDirection == 'asc'
     "></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="
+  <i [ngClass]="oMetadataService.getIcon('flechaDown')" *ngIf="
       strSortField == 'descuento_usuario' &&
       strSortDirection == 'desc'
     "></i>
 </th>
 <th (click)="doSetOrder('descuento_producto')">
-  <i [ngClass]="oIconService.getIcon('porcentaje')"></i> Desc. producto
-  <i [ngClass]="oIconService.getIcon('flechaUp')"
+  <i [ngClass]="oMetadataService.getIcon('porcentaje')"></i> Desc. producto
+  <i [ngClass]="oMetadataService.getIcon('flechaUp')"
     *ngIf="strSortField == 'descuento_producto' && strSortDirection == 'asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
+  <i [ngClass]="oMetadataService.getIcon('flechaDown')"
     *ngIf="strSortField == 'descuento_producto' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('producto')">
-  <i [ngClass]="oIconService.getIcon('producto')"></i> Producto
-  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField == 'producto' && strSortDirection == 'asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')"
+  <i [ngClass]="oMetadataService.getIcon('producto')"></i> Producto
+  <i [ngClass]="oMetadataService.getIcon('flechaUp')" *ngIf="strSortField == 'producto' && strSortDirection == 'asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('flechaDown')"
     *ngIf="strSortField == 'producto' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('factura')">
-  <i [ngClass]="oIconService.getIcon('factura')"></i> Factura
-  <i [ngClass]="oIconService.getIcon('flechaUp')" *ngIf="strSortField == 'factura' && strSortDirection == 'asc'"></i>
-  <i [ngClass]="oIconService.getIcon('flechaDown')" *ngIf="strSortField == 'factura' && strSortDirection == 'desc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('factura')"></i> Factura
+  <i [ngClass]="oMetadataService.getIcon('flechaUp')" *ngIf="strSortField == 'factura' && strSortDirection == 'asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('flechaDown')" *ngIf="strSortField == 'factura' && strSortDirection == 'desc'"></i>
 </th>
 <th>
-  <i [ngClass]="oIconService.getIcon('acciones')"></i> Acciones
+  <i [ngClass]="oMetadataService.getIcon('acciones')"></i> Acciones
 </th>

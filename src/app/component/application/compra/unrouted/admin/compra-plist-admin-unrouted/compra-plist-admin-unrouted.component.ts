@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { CompraService } from 'src/app/service/compra.service';
 import { IOrder } from 'src/app/model/model-interfaces';
@@ -44,7 +44,7 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oCompraService: CompraService,
-    public oIconService: IconService    
+    public oMetadataService: MetadataService    
   ) {
   }
 

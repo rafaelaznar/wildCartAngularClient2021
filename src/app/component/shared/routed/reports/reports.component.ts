@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { IReport } from 'src/app/model/model-interfaces';
 import { Subject } from 'rxjs';
 
@@ -52,7 +52,7 @@ export class ReportsComponent implements OnInit {
 
   constructor(
     private oLocation: Location,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() { }

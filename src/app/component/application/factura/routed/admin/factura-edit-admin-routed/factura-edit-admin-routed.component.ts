@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IFactura, IFactura2Send } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
 import { DateTimeService } from 'src/app/service/datetime.service';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Component, OnInit } from '@angular/core';
@@ -43,7 +43,7 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
     private oDateTimeService: DateTimeService,
-    public oIconService: IconService
+    public oMetadataService: MetadataService
 
   ) {
 

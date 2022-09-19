@@ -2,7 +2,7 @@
 
     <div class="row mb-3">
         <label for="id" class="col-sm-2 col-form-label">
-            <i [ngClass]="oIconService.getIcon('id')"></i> ID</label>
+            <i [ngClass]="oMetadataService.getIcon('id')"></i> ID</label>
         <div class="col-sm-1">
             <input class="form-control" name="id" formControlName="id" type="text" placeholder="{{ id }}" readonly />
         </div>
@@ -10,7 +10,7 @@
 
     <div class="row mb-3">
         <label for="fecha" class="col-sm-2 col-form-label">
-            <i [ngClass]="oIconService.getIcon('fecha')"></i> Fecha</label>
+            <i [ngClass]="oMetadataService.getIcon('fecha')"></i> Fecha</label>
         <div class="col-sm-10">
             <p-calendar formControlName="fecha" [locale]="es" dateFormat="dd/mm/yy" inputId="spanish" [showIcon]="true"
                 inputId="spanish"></p-calendar>
@@ -22,7 +22,7 @@
 
     <div class="row mb-3">
         <label for="iva" class="col-sm-2 col-form-label">
-            <i [ngClass]="oIconService.getIcon('porcentaje')"></i> IVA</label>
+            <i [ngClass]="oMetadataService.getIcon('porcentaje')"></i> IVA</label>
         <div class="col-sm-1">
             <input type="text" class="form-control" id="iva" formControlName="iva"
                 [ngClass]="{'is-valid':f.iva.dirty && !(f.iva.errors?.required || f.iva.errors?.minlength)}" />
@@ -34,7 +34,7 @@
 
     <div class="row mb-3">
         <label for="pagado" class="col-sm-2 col-form-label">
-            <i [ngClass]="oIconService.getIcon('pagado')"></i> Pagado</label>
+            <i [ngClass]="oMetadataService.getIcon('pagado')"></i> Pagado</label>
         <div class="col-sm-1">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="pagado">
         </div>
@@ -54,7 +54,7 @@
     <div class="row mb-3 justify-content-center">
         <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
             <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine"><i
-                    [ngClass]="oIconService.getIcon('ok')"></i>
+                    [ngClass]="oMetadataService.getIcon('ok')"></i>
                 Guardar {{strTitleSingular}}
             </button>
         </div>

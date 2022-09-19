@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +8,7 @@ import { IconService } from 'src/app/service/icon.service';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(public oIconService: IconService) { }
+  constructor(public oMetadataService: MetadataService) { }
 
   ngOnInit() {
   }

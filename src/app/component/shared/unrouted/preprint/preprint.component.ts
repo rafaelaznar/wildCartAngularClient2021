@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { IPrint } from 'src/app/model/model-interfaces';
 import { DateTimeService } from 'src/app/service/datetime.service';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 declare let $: any;
 
@@ -31,7 +31,7 @@ export class PrePrintComponent implements OnInit {
 
   constructor(
     private oDateTimeService: DateTimeService,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
     private oFormBuilder: UntypedFormBuilder,
   ) { }
 

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { debounceTime } from 'rxjs/operators';
 import { PaginationService } from 'src/app/service/pagination.service';
 import { CarritoService } from 'src/app/service/carrito.service';
@@ -52,7 +52,7 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
   constructor(
     private oPaginationService: PaginationService,
     private oCarritoService: CarritoService,
-    public oIconService: IconService,
+    public oMetadataService: MetadataService,
   ) {
   }
 

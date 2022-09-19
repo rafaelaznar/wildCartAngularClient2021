@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { IconService } from 'src/app/service/icon.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: '[app-tipoproducto-plistrow-admin-unrouted]',
@@ -19,7 +19,7 @@ export class TipoproductoPlistRowAdminUnroutedComponent implements OnInit {
   oUsuarioSession: IUsuario;
 
   constructor(
-    public oIconService: IconService
+    public oMetadataService: MetadataService
   ) {
     //console.log("user=" +localStorage.getItem("user"));
     this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
