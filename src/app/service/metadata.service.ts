@@ -160,7 +160,7 @@ export class MetadataService {
       case strOperation == "selection": return "Seleccionar ";
       case strOperation == "list": return "Ir al listado de ";
       case strOperation == "remove": return "Eliminar ";
-      case strOperation == "new": return "Crear ";
+      case strOperation == "new": return "Añadir ";
       case strOperation == "edit": return "Editar ";
       default: return 'Desconocido';
     }
