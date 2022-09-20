@@ -1,6 +1,6 @@
 import { ProductoService } from '../../../../../../service/producto.service';
 import { IProductoPage, IProducto } from 'src/app/model/producto-interfaces';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
@@ -14,7 +14,6 @@ import { IOrder } from 'src/app/model/model-interfaces';
 export class ProductoPlistAdminUnroutedComponent implements OnInit {
 
   @Input() id_tipoproducto: number = null;
-  @Output() selection = new EventEmitter<number>();
 
   strEntity: string = "producto"
   strOperation: string = "plist"
@@ -95,10 +94,6 @@ export class ProductoPlistAdminUnroutedComponent implements OnInit {
     this.strSortField = order.sortField;
     this.strSortDirection = order.sortDirection;
     this.getPage();
-  }
-
-  onSelection(id: number) {
-    this.selection.emit(id);
   }
 
 }

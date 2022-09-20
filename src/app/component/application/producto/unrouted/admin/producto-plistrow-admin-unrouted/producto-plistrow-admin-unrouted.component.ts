@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { API_URL } from '../../../../../../../environments/environment';
+import { API_URL } from 'src/environments/environment';
 
 @Component({
   selector: '[app-producto-plistrow-admin-unrouted]',
@@ -11,7 +11,6 @@ import { API_URL } from '../../../../../../../environments/environment';
 export class ProductoPlistRowAdminUnroutedComponent implements OnInit {
   @Input() oProducto: IProducto = null;
   @Input() mode: boolean = true; //true=edición; false=selección
-  @Output() selection = new EventEmitter<number>();
 
   strAPI_URL: string = API_URL;
   strEntity: string = "producto";
@@ -21,9 +20,6 @@ export class ProductoPlistRowAdminUnroutedComponent implements OnInit {
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
-  onSelection(id: number) {
-    this.selection.emit(id);
-  }
+  ngOnInit() { }
+
 }

@@ -1,9 +1,9 @@
-import { ProductoService } from '../../../../../../service/producto.service';
 import { IProductoPage, IProducto } from 'src/app/model/producto-interfaces';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
+import { ProductoService } from 'src/app/service/producto.service';
 
 @Component({
   selector: 'app-producto-selection-admin-unrouted',
