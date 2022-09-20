@@ -3,7 +3,8 @@
     <h6>{{strFilteredMessage}}</h6>
   </div>
   <div class="col-md text-center">
-    <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
+    <app-search-unrouted [strFilter]="strFilter"
+      [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
       (eeFilter)="onSetFilter($event)">
     </app-search-unrouted>
   </div>
@@ -37,8 +38,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let oFactura of aFacturas" class="align-middle" app-factura-plistrow-unrouted [oFactura]="oFactura"
-          [mode]="true" (selection)="onSelection($event)" (printFactura)="onPrintFactura($event)">
+        <tr *ngFor="let oFacturaRow of aFacturas" class="align-middle" app-factura-plistrow-unrouted
+          [oFactura]="oFacturaRow" [mode]="true">
+
+          <div action_column>
+            <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oFacturaRow.id"
+              [strEntity]="strEntity">
+              <button type="button" class="btn btn-secondary" (click)="printFactura(oFacturaRow.id)"><i
+                  [ngClass]="oMetadataService.getIcon('print')"></i></button>
+            </div>
+          </div>
+
         </tr>
       </tbody>
     </table>

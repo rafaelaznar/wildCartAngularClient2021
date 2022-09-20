@@ -18,9 +18,7 @@ declare let jsPDF: any;
 
 export class FacturaPlistAdminUnroutedComponent implements OnInit {
 
-  @Input() id_usuario: number = null;
-  @Output() selection = new EventEmitter<number>();
-  //@ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
+  @Input() id_usuario: number = null; 
 
   strEntity: string = "factura"
   strOperation: string = "plist"
@@ -103,10 +101,6 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
     this.strSortField = order.sortField;
     this.strSortDirection = order.sortDirection;
     this.getPage();
-  }
-
-  onSelection(id: number) {
-    this.selection.emit(id);
   }
 
   cabecera(doc: any, oFactura: IFactura): any {
@@ -238,11 +232,6 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
         doc.save("Factura.pdf");
       })
     })
-  }
-
-  onPrintFactura($event: any) {
-    alert("print factura" + $event);
-    this.printFactura($event);
   }
 
 }

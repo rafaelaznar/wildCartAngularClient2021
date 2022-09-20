@@ -37,8 +37,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let oFactura of aFacturas" class="align-middle" app-factura-plistrow-unrouted [oFactura]="oFactura"
-          [mode]="false" (selection)="onSelection($event)" (printFactura)="onPrintFactura($event)">
+        <tr *ngFor="let oFacturaRow of aFacturas" class="align-middle" app-factura-plistrow-unrouted [oFactura]="oFacturaRow"
+          [mode]="false">
+
+          <div action_column>
+            <div class="btn-group btn-group-sm" role="group">
+              <button type="button" class="btn btn-success" (click)="onSelection(oFacturaRow.id)"><i
+                  class="fas fa-check"></i></button>
+            </div>
+          </div>
+
         </tr>
       </tbody>
     </table>

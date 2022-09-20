@@ -221,6 +221,7 @@ export class MetadataService {
       case strIcon == "codigo": return "fas fa-barcode"; //code
       case strIcon == "imagen": return "fas fa-camera"; //image
       //
+      case strIcon == "print": return "fas fa-print";
       case strIcon == "imprimir": return "fas fa-print";
       case strIcon == "informe": return "fas fa-file-alt"; //cambiar a report
       case strIcon.startsWith("report"): return "fas fa-copy";
