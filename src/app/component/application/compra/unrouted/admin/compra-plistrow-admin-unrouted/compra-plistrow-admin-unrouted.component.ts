@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ICompra } from 'src/app/model/compra-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { API_URL } from 'src/environments/environment';
-
 
 @Component({
   selector: '[app-compra-plistrow-admin-unrouted]',
@@ -10,9 +9,9 @@ import { API_URL } from 'src/environments/environment';
   styleUrls: ['./compra-plistrow-admin-unrouted.component.css']
 })
 export class CompraPlistrowAdminUnroutedComponent implements OnInit {
+
   @Input() oCompra: ICompra = null;
-  @Input() mode: boolean = true; //true=edición; false=selección
-  @Output() selection = new EventEmitter<number>();
+  @Input() mode: boolean = true; //true=edición; false=selección  
 
 
   strAPI_URL: string = API_URL;
@@ -24,9 +23,6 @@ export class CompraPlistrowAdminUnroutedComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  }
-  onSelection(id: number) {
-    this.selection.emit(id);
   }
 
 }

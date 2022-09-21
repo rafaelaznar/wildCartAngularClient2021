@@ -3,7 +3,8 @@
     <h6>{{strFilteredMessage}}</h6>
   </div>
   <div class="col-md text-center">
-    <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
+    <app-search-unrouted [strFilter]="strFilter"
+      [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
       (eeFilter)="onSetFilter($event)">
     </app-search-unrouted>
   </div>
@@ -37,8 +38,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let oCompra of aCompras" class="align-middle" app-compra-plistrow-admin-unrouted [oCompra]="oCompra"
-          [mode]="mode" (selection)="onSelection($event)">
+        <tr *ngFor="let oCompraRow of aCompras" class="align-middle" app-compra-plistrow-admin-unrouted [oCompra]="oCompraRow"
+          [mode]="mode">
+
+          <div action_column>
+            <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oCompraRow.id"
+              [strEntity]="strEntity">
+            </div>
+          </div>
+
         </tr>
       </tbody>
     </table>

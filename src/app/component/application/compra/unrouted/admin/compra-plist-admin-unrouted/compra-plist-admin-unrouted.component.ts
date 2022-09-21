@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { PaginationService } from 'src/app/service/pagination.service';
 import { CompraService } from 'src/app/service/compra.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { ICompra, ICompraPage } from 'src/app/model/compra-interfaces';
@@ -17,7 +16,6 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
   @Input() id_factura: number = null;
   @Input() id_producto: number = null;
   @Input() mode: boolean = true; //true=edición; false=selección
-  @Output() selection = new EventEmitter<number>();
 
   strEntity: string = "compra"
   strOperation: string = "plist"
@@ -121,10 +119,6 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
     this.strSortField = order.sortField;
     this.strSortDirection = order.sortDirection;
     this.getPage();
-  }
-
-  onSelection(id: number) {
-    this.selection.emit(id);
   }
 
 }
