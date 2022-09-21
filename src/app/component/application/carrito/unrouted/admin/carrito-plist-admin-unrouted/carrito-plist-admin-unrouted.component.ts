@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { debounceTime } from 'rxjs/operators';
@@ -13,12 +13,11 @@ import { IOrder } from 'src/app/model/model-interfaces';
   styleUrls: ['./carrito-plist-admin-unrouted.component.css'],
 })
 export class CarritoPlistAdminUnroutedComponent implements OnInit {
+  
   @Input() id_producto: number = null;
   @Input() id_usuario: number = null;
   @Input() mode: boolean = true; //true=edición; false=selección
-  @Output() selection = new EventEmitter<number>();
-  //@ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
-
+  
   strEntity: string = 'carrito';
   strOperation: string = 'plist';
   //
@@ -99,7 +98,4 @@ export class CarritoPlistAdminUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  onSelection(id: number) {
-    this.selection.emit(id);
-  }
 }

@@ -43,6 +43,8 @@ export class CarritoPlistAdminRoutedComponent implements OnInit {
     }
     this.id_producto = this.oActivatedRoute.snapshot.params.id_producto;
     this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
+    console.log(this.oActivatedRoute);
+    console.log(this.id_usuario);
   }
 
   ngOnInit(): void {}

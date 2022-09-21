@@ -99,6 +99,7 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
   flipValidateUser(id:number){
     console.log("todo: flip validate user " + id);
   }
+  
   flipActivateUser(id:number){
     console.log("todo: flip activate user " + id);
   }

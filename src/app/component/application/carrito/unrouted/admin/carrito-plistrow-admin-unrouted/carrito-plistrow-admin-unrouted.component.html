@@ -13,17 +13,4 @@
   </button>
 </td>
 
-<td class="text-center">
-  <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-    <button type="button" class="btn btn-success" [routerLink]="['/carrito/view/' + oCarrito.id]">
-      <i [ngClass]="oMetadataService.getIcon('view')"></i>
-    </button>
-
-    <button type="button" class="btn btn-warning" [routerLink]="['/carrito/edit/' + oCarrito.id]">
-      <i [ngClass]="oMetadataService.getIcon('edit')"></i>
-    </button>
-    <button type="button" class="btn btn-danger" [routerLink]="['/carrito/remove/' + oCarrito.id]">
-      <i [ngClass]="oMetadataService.getIcon('remove')"></i>
-    </button>
-  </div>
-</td>
+<td class="text-center"><ng-content select="[action_column]"></ng-content></td>

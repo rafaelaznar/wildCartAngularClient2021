@@ -13,7 +13,6 @@ export class UsuarioPlistRowAdminUnroutedComponent implements OnInit {
   @Input() oUsuario: IUsuario = null;  
   @Input() mode: boolean = true; //true=edición; false=selección
 
-
   strEntity: string = "usuario";
   strOperation: string = "plist";
 

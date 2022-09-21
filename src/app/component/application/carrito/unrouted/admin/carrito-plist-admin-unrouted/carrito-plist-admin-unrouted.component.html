@@ -4,11 +4,13 @@
       <h6>{{strFilteredMessage}}</h6>
     </div>
     <div class="col-md text-center">
-      <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
+      <app-search-unrouted [strFilter]="strFilter"
+        [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
         (eeFilter)="onSetFilter($event)"></app-search-unrouted>
     </div>
     <div class="col-md text-end">
-      <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getPluralName4Entity(strEntity)}}</h4>
+      <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getPluralName4Entity(strEntity)}}
+      </h4>
     </div>
   </div>
 
@@ -38,8 +40,14 @@
         </thead>
         <tbody>
 
-          <tr *ngFor="let oCarrito of aCarritos" class="align-middle" app-carrito-plistrow-admin-unrouted
-            [oCarrito]="oCarrito" [mode]="mode" (selection)="onSelection($event)">
+          <tr *ngFor="let oCarritoRow of aCarritos" class="align-middle" app-carrito-plistrow-admin-unrouted
+            [oCarrito]="oCarritoRow" [mode]="mode">
+
+            <div action_column>
+              <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oCarritoRow.id"
+                [strEntity]="strEntity">
+              </div>
+            </div>
 
           </tr>
         </tbody>
