@@ -13,6 +13,38 @@ export class MetadataService {
 
   //pruebas:
 
+  public getFilterMsg(strFilter: string, strEntity1: string, entity1Filter: number, strEntity2: string, entity2Filter: number): string {
+    if (entity1Filter !== null && entity1Filter !== undefined) {
+      if (entity2Filter !== null && entity2Filter !== undefined) {
+        if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
+          return 'Filtrando por ' + this.getArticledName4Entity(strEntity1) + ' con id=' + entity1Filter + ', por ' + this.getArticledName4Entity(strEntity2) + ' con id=' + entity2Filter + ' y por el filtro ' + strFilter;
+        } else {
+          return 'Filtrando por ' + this.getArticledName4Entity(strEntity1) + ' con id=' + entity1Filter + ', por ' + this.getArticledName4Entity(strEntity2) + ' con id=' + entity2Filter + ' y sin filtro';
+        }
+      } else {
+        if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
+          return 'Filtrando por ' + this.getArticledName4Entity(strEntity1) + ' con id=' + entity1Filter + ' y por el filtro ' + strFilter;
+        } else {
+          return 'Filtrando por ' + this.getArticledName4Entity(strEntity1) + ' con id=' + entity1Filter + ' y sin filtro';
+        }
+      }
+    } else {
+      if (entity2Filter !== null && entity2Filter !== undefined) {
+        if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
+          return 'Filtrando por ' + this.getArticledName4Entity(strEntity2) + ' con id=' + entity2Filter + ' y por el filtro ' + strFilter;
+        } else {
+          return 'Filtrando por ' + this.getArticledName4Entity(strEntity2) + ' con id=' + entity2Filter + ' y sin filtro';
+        }
+      } else {
+        if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
+          return 'Filtrando por el filtro ' + strFilter;
+        } else {
+          return 'Sin filtro';
+        }
+      }
+    }
+  }
+
   public getIcon4Entity(strEntity: string): string {
     switch (true) {
       case strEntity == "system": return "fas fa-shopping-basket";

@@ -52,19 +52,7 @@ export class UsuarioSelectionAdminUnroutedComponent implements OnInit {
 
   getPage = () => {
     this.oUsuarioService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipousuario).subscribe((oPage: IUsuarioPage) => {
-      if (this.id_tipousuario) {
-        if (this.strFilter) {
-          this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipousuario + " y por " + this.strFilter;
-        } else {
-          this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipousuario;
-        }
-      } else {
-        if (this.strFilter) {
-          this.strFilteredMessage = "Listado filtrado por " + this.strFilter;
-        } else {
-          this.strFilteredMessage = "Listado NO filtrado";
-        }
-      }
+      this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, 'tipousuario', this.id_tipousuario, null, null);
       this.aUsuarios = oPage.content;
       this.nTotalElements = oPage.totalElements;
       this.nTotalPages = oPage.totalPages;

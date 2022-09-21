@@ -51,28 +51,17 @@ export class ProductoSelectionAdminUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oProductoService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipoproducto).subscribe((oPage: IProductoPage) => {
-      if (this.id_tipoproducto) {
-        if (this.strFilter) {
-          this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto + " y por " + this.strFilter;
-        } else {
-          this.strFilteredMessage = "Listado filtrado por el tipo de producto " + this.id_tipoproducto;
+    this.oProductoService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipoproducto)
+      .subscribe((oPage: IProductoPage) => {
+        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, 'tipoproducto', this.id_tipoproducto, null, null);
+        this.aProductos = oPage.content;
+        this.nTotalElements = oPage.totalElements;
+        this.nTotalPages = oPage.totalPages;
+        if (this.nPage > this.nTotalPages) {
+          this.nPage = this.nTotalPages;
+          this.getPage();
         }
-      } else {
-        if (this.strFilter) {
-          this.strFilteredMessage = "Listado filtrado por " + this.strFilter;
-        } else {
-          this.strFilteredMessage = "Listado NO filtrado";
-        }
-      }
-      this.aProductos = oPage.content;
-      this.nTotalElements = oPage.totalElements;
-      this.nTotalPages = oPage.totalPages;
-      if (this.nPage > this.nTotalPages) {
-        this.nPage = this.nTotalPages;
-        this.getPage();
-      }
-    })
+      })
   }
 
   onSetPage = (nPage: number) => {

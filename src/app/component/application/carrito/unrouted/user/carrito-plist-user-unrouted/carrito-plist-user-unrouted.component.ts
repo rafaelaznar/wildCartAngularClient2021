@@ -68,11 +68,7 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
     this.oCarritoService
       .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_producto, this.id_usuario)
       .subscribe((oPage: ICarritoPage) => {
-        if (this.strFilter) {
-          this.strFilteredMessage = 'Listado filtrado por ' + this.strFilter;
-        } else {
-          this.strFilteredMessage = 'Listado NO filtrado';
-        }
+        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
         this.aCarritos = oPage.content;
         this.nTotalElements = oPage.totalElements;
         this.nTotalPages = oPage.totalPages;

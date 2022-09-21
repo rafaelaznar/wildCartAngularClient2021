@@ -51,28 +51,17 @@ export class FacturaSelectionAdminUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oFacturaService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_usuario).subscribe((oPage: IFacturaPage) => {
-      if (this.id_usuario) {
-        if (this.strFilter) {
-          this.strFilteredMessage = "Listado filtrado por el usuario " + this.id_usuario + " y por " + this.strFilter;
-        } else {
-          this.strFilteredMessage = "Listado filtrado por el usuario " + this.id_usuario;
+    this.oFacturaService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_usuario)
+      .subscribe((oPage: IFacturaPage) => {
+        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, 'usuario', this.id_usuario, null, null);
+        this.aFacturas = oPage.content;
+        this.nTotalElements = oPage.totalElements;
+        this.nTotalPages = oPage.totalPages;
+        if (this.nPage > this.nTotalPages) {
+          this.nPage = this.nTotalPages;
+          this.getPage();
         }
-      } else {
-        if (this.strFilter) {
-          this.strFilteredMessage = "Listado filtrado por " + this.strFilter;
-        } else {
-          this.strFilteredMessage = "Listado NO filtrado";
-        }
-      }
-      this.aFacturas = oPage.content;
-      this.nTotalElements = oPage.totalElements;
-      this.nTotalPages = oPage.totalPages;
-      if (this.nPage > this.nTotalPages) {
-        this.nPage = this.nTotalPages;
-        this.getPage();
-      }
-    })
+      })
   }
 
   onSetPage = (nPage: number) => {

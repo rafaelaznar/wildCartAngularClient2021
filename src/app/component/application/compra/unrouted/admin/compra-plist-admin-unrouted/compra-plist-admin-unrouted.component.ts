@@ -52,42 +52,8 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oCompraService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_factura, this.id_producto).subscribe((oPage: ICompraPage) => {
-      if (this.id_factura) {
-
-        if (this.id_producto) {
-          if (this.strFilter) {
-            this.strFilteredMessage = "Listado filtrado por la factura " + this.id_factura + ", por el producto " + this.id_producto + " y por " + this.strFilter;
-          } else {
-            this.strFilteredMessage = "Listado filtrado por la factura " + this.id_factura + " y por el producto " + this.id_producto;
-          }
-        } else { //no producto
-
-          if (this.strFilter) {
-            this.strFilteredMessage = "Listado filtrado por  la factura " + this.id_factura + " y por " + this.strFilter;
-          } else {
-            this.strFilteredMessage = "Listado filtrado por  la factura " + this.id_factura;
-          }
-
-        }
-
-      } else { // no factura
-        if (this.id_producto) {
-          if (this.strFilter) {
-            this.strFilteredMessage = "Listado filtrado por el producto " + this.id_producto + " y por " + this.strFilter;
-          } else {
-            this.strFilteredMessage = "Listado filtrado por el producto " + this.id_producto;
-          }
-        } else { //no producto
-
-          if (this.strFilter) {
-            this.strFilteredMessage = "Listado filtrado por " + this.strFilter;
-          } else {
-            this.strFilteredMessage = "Listado NO filtrado";
-          }
-
-        }
-      }
+    this.oCompraService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_factura, this.id_producto).subscribe((oPage: ICompraPage) => {    
+      this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, 'factura', this.id_factura, 'producto', this.id_producto);
       this.aCompras = oPage.content;
       this.nTotalElements = oPage.totalElements;
       this.nTotalPages = oPage.totalPages;

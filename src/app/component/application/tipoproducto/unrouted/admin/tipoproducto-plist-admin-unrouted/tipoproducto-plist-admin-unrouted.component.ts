@@ -58,11 +58,7 @@ export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
     this.oPostService
       .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter)
       .subscribe((oPage: ITipoproductoPage) => {
-        if (this.strFilter) {
-          this.strFilteredMessage = 'Listado filtrado por ' + this.strFilter;
-        } else {
-          this.strFilteredMessage = 'Listado NO filtrado';
-        }
+        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, null, null, null, null);
         this.aTipoproductos = oPage.content;
         this.nTotalElements = oPage.totalElements;
         this.nTotalPages = oPage.totalPages;

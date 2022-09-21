@@ -54,11 +54,7 @@ export class TipousuarioSelectionAdminUnroutedComponent implements OnInit {
     this.oTipoUsuarioService
       .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter)
       .subscribe((oPage: ITipousuarioPage) => {
-        if (this.strFilter) {
-          this.strFilteredMessage = 'Listado filtrado: ' + this.strFilter;
-        } else {
-          this.strFilteredMessage = '';
-        }
+        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, null, null, null, null);
         this.aTipoUsuarios = oPage.content;
         this.nTotalElements = oPage.totalElements;
         this.nTotalPages = oPage.totalPages;
