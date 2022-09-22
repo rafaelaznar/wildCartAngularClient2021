@@ -77,30 +77,13 @@
           <td class="text-center">
             <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
               <button type="button" class="btn btn-success mx-2" (click)="generateProductos(10)"><i
-                  [ngClass]="oMetadataService.getIcon('random')"></i>
+                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nTiposProducto<=0"></i>
                 10</button>
               <button type="button" class="btn btn-success mx-2" (click)="generateProductos(100)"><i
-                  [ngClass]="oMetadataService.getIcon('random')"></i>
+                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nTiposProducto<=0"></i>
                 100</button>
               <button type="button" class="btn btn-success mx-2" (click)="generateProductos(1000)"><i
-                  [ngClass]="oMetadataService.getIcon('random')"></i>
-                1000</button>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th><i [ngClass]="oMetadataService.getIcon('compra')"></i> Compras</th>
-          <td class="text-center">{{nCompras}}</td>
-          <td class="text-center">
-            <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
-              <button type="button" class="btn btn-success mx-2" (click)="generateCompras(10)"><i
-                  [ngClass]="oMetadataService.getIcon('random')"></i>
-                10</button>
-              <button type="button" class="btn btn-success mx-2" (click)="generateCompras(100)"><i
-                  [ngClass]="oMetadataService.getIcon('random')"></i>
-                100</button>
-              <button type="button" class="btn btn-success mx-2" (click)="generateCompras(1000)"><i
-                  [ngClass]="oMetadataService.getIcon('random')"></i>
+                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nTiposProducto<=0"></i>
                 1000</button>
             </div>
           </td>
@@ -111,13 +94,30 @@
           <td class="text-center">
             <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
               <button type="button" class="btn btn-success mx-2" (click)="generateFacturas(10)"><i
-                  [ngClass]="oMetadataService.getIcon('random')"></i>
+                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nUsuarios<=0"></i>
                 10</button>
               <button type="button" class="btn btn-success mx-2" (click)="generateFacturas(100)"><i
-                  [ngClass]="oMetadataService.getIcon('random')"></i>
+                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nUsuarios<=0"></i>
                 100</button>
               <button type="button" class="btn btn-success mx-2" (click)="generateFacturas(1000)"><i
-                  [ngClass]="oMetadataService.getIcon('random')"></i>
+                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nUsuarios<=0"></i>
+                1000</button>
+            </div>
+          </td>
+        </tr>        
+        <tr>
+          <th><i [ngClass]="oMetadataService.getIcon('compra')"></i> Compras</th>
+          <td class="text-center">{{nCompras}}</td>
+          <td class="text-center">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
+              <button type="button" class="btn btn-success mx-2" (click)="generateCompras(10)"><i
+                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nFacturas<=0"></i>
+                10</button>
+              <button type="button" class="btn btn-success mx-2" (click)="generateCompras(100)"><i
+                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nFacturas<=0"></i>
+                100</button>
+              <button type="button" class="btn btn-success mx-2" (click)="generateCompras(1000)"><i
+                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nFacturas<=0"></i>
                 1000</button>
             </div>
           </td>
@@ -128,13 +128,13 @@
           <td class="text-center">
             <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
               <button type="button" class="btn btn-success mx-2" (click)="generateCarritos(2)"><i
-                  [ngClass]="oMetadataService.getIcon('random')"></i>
+                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nProductos<=0||nUsuarios<=0"></i>
                 2</button>
               <button type="button" class="btn btn-success mx-2" (click)="generateCarritos(3)"><i
-                  [ngClass]="oMetadataService.getIcon('random')"></i>
+                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nProductos<=0||nUsuarios<=0"></i>
                 3</button>
               <button type="button" class="btn btn-success mx-2" (click)="generateCarritos(5)"><i
-                  [ngClass]="oMetadataService.getIcon('random')"></i>
+                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nProductos<=0||nUsuarios<=0"></i>
                 5</button>
             </div>
           </td>
