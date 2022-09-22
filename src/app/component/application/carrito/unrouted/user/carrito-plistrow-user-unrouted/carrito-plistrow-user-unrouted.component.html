@@ -5,7 +5,7 @@
 </td>
 <td>
   <button class="btn btn-light" style="text-align: start;"
-    [routerLink]="['/carrito/plist/producto/' + oCarrito.producto.id]">
+    [routerLink]="['/producto/cview/' + oCarrito.producto.id]">
     <i [ngClass]="oMetadataService.getIcon('producto')"></i> {{ oCarrito.producto.nombre | trim
     :60}}<br>
     Código: {{ oCarrito.producto.codigo }}<br>
@@ -37,6 +37,6 @@
       *ngIf="id_tipousuario_session==2&&oCarrito?.producto.existencias>0&&oCarrito?.cantidad<oCarrito?.producto.existencias"
       (click)="addCarrito(oCarrito.producto.id)"><i class="fas fa-cart-plus"></i></button>
     <button type="button" class="btn btn-danger" *ngIf="id_tipousuario_session==2&&oCarrito?.cantidad>0"
-      (click)="removeCarrito(oCarrito.producto.id)"><i class="fas fa-cart-admin-routedrow-down"></i></button>
+      (click)="removeCarrito(oCarrito.producto.id)"><i class="fas fa-cart-arrow-down"></i></button>
   </div>
 </td>

@@ -60,7 +60,7 @@
             *ngIf="id_tipousuario_session==2&&producto.existencias>0&&producto.cantidad<producto.existencias"
             (click)="addCarrito(producto.id)"><i class="fas fa-cart-plus" style="font-size: 2rem"></i></button>
           <button type="button" class="btn btn-danger m-1" *ngIf="id_tipousuario_session==2&&producto.cantidad>0"
-            (click)="removeCarrito(producto.id)"><i class="fas fa-cart-admin-routedrow-down"
+            (click)="removeCarrito(producto.id)"><i class="fas fa-cart-arrow-down"
               style="font-size: 2rem"></i></button>
         </div>
       </div>
