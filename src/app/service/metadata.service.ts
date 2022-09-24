@@ -74,6 +74,185 @@ export class MetadataService {
     }
   }
 
+  metaData = {
+    system: {
+      
+    },
+    operation: {
+      view: {
+        icon: "fas fa-eye",
+        languages: {
+          sp: {
+            verb: "Ver",
+            action: "Viendo",
+            object: "Vista"
+          }
+        }
+      },
+      plist: {
+        icon: "fas fa-list",
+        languages: {
+          sp: {
+            verb: "Listar",
+            action: "Listando",
+            object: "Listado"
+          }
+        },
+      },
+      selection: {
+        icon: "fas fa-bullseye",
+        languages: {
+          sp: {
+            verb: "Seleccionar",
+            action: "Seleccionado",
+            object: "Selección"
+          }
+        },
+      },
+      list: {
+        icon: "fas fa-stream",
+        languages: {
+          sp: {
+            verb: "Listar",
+            action: "Listando",
+            object: "Listado"
+          }
+        }
+      },
+      remove: {
+        icon: "fas fa-trash",
+        languages: {
+          sp: {
+            verb: "Borrar",
+            action: "Eliminando",
+            object: "Borrado"
+          }
+        },
+      },
+      new: {
+        icon: "fas fa-plus",
+        languages: {
+          sp: {
+            verb: "Nuevo",
+            action: "Creando",
+            object: "Alta"
+          }
+        },
+      },
+      edit: {
+        icon: "fas fa-pen",
+        languages: {
+          sp: {
+            verb: "Editar",
+            action: "Editando",
+            object: "Edición"
+          }
+        },
+      },
+      generate: {
+        icon: "fas fa-random",
+        languages: {
+          sp: {
+            verb: "Generar aleatoriamente",
+            action: "Generando aleatoriamente",
+            object: "Generación aleatoria"
+          }
+        },
+      }
+    },
+    entity: {
+      system: {
+        icon: "fas fa-shopping-basket",
+        languages: {
+          sp: {
+            singular: "Sistema",
+            plural: "Sistemas",
+            aSingular: "El sistema",
+            aPlural: "Los sistemas",
+          }
+        },
+      },
+      product: {
+        icon: "fas fa-gift",
+        languages: {
+          sp: {
+            singular: "Producto",
+            plural: "Productos",
+            aSingular: "El producto",
+            aPlural: "Los productos",
+          }
+        },
+      },
+      producttype: {
+        icon: "fas fa-tag",
+        languages: {
+          sp: {
+            singular: "Tipo de producto",
+            plural: "Tipos de producto",
+            aSingular: "El tipo de producto",
+            aPlural: "Los tipos de producto",
+          }
+        },
+      },
+      user: {
+        icon: "fas fa-user",
+        languages: {
+          sp: {
+            singular: "Usuario",
+            plural: "Usuarios",
+            aSingular: "El usuario",
+            aPlural: "Los usuarios",
+          }
+        },
+      },
+      usertype: {        
+        icon: "fas fa-user-tag",
+        languages: {
+          sp: {
+            singular: "Tipo de usuario",
+            plural: "Tipos de usuario",
+            aSingular: "El tipo de usuario",
+            aPlural: "Los tipos de usuario",
+          }
+        },
+      },
+      purchase: {        
+        icon: "fas fa-cash-register",
+        languages: {
+          sp: {
+            singular: "Compra",
+            plural: "Compras",
+            aSingular: "La compra",
+            aPlural: "Las compras",
+          }
+        },
+      },
+      factura: {        
+        icon: "fas fa-file-invoice-dollar",
+        languages: {
+          sp: {
+            singular: "Factura",
+            plural: "Facturas",
+            aSingular: "La factura",
+            aPlural: "Las facturas",
+          }
+        },
+      },
+      carrito: {        
+        icon: "fas fa-shopping-cart",
+        languages: {
+          sp: {
+            singular: "Carrito",
+            plural: "Carritos",
+            aSingular: "El carrito",
+            aPlural: "Los carritos",
+          }
+        },
+      }
+    }
+  }
+
+
 
 
   getName4Operation(strOperation: string): string {
