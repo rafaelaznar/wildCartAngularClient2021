@@ -76,7 +76,204 @@ export class MetadataService {
 
   metaData = {
     system: {
-      
+      returnback: {
+        icon: "fas fa-arrow-left",
+        languages: {
+          sp: {
+            shortTitle: "Volver",
+            longTitle: "Volver atrás",
+          }
+        },
+      },    
+      id: {
+        icon: "fas fa-hashtag",
+        languages: {
+          sp: {
+            shortTitle: "ID",
+            longTitle: "Identificador"
+          }
+        },
+      },
+      home: {
+        icon: "fas fa-home",
+        languages: {
+          sp: {
+            shortTitle: "Página principal",
+            longTitle: "Ir a la página principal",
+          }
+        },
+      },
+      user: {
+        icon: "fas fa-user",
+        languages: {
+          sp: {
+            shortTitle: "Usuario",
+            longTitle: "Detalle de usuario en sesión",
+          }
+        },
+      },
+      random: {
+        icon: "fas fa-random",
+        languages: {
+          sp: {
+            shortTitle: "Aleatorio",
+            longTitle: "Generación aleatoria de registros",
+          }
+        },
+      },
+      reports: {
+        icon: "fas fa-print",
+        languages: {
+          sp: {
+            shortTitle: "Informes",
+            longTitle: "Impresión de informes",
+          }
+        },
+      },
+      actions: {
+        icon: "fas fa-cogs",
+        languages: {
+          sp: {
+            shortTitle: "",
+            longTitle: "Acciones",
+          }
+        },
+      },
+      orderUp: {
+        icon: "fas fa-arrow-up",
+        languages: {
+          sp: {
+            shortTitle: "Orden ascendente",
+            longTitle: "Orden ascendente",
+          }
+        },
+      },
+      orderDown: {
+        icon: "fas fa-arrow-down",
+        languages: {
+          sp: {
+            shortTitle: "Orden descendente",
+            longTitle: "Orden descendente",
+          }
+        },
+      },
+      gitHub: {
+        icon: "fas fa-github",
+        languages: {
+          sp: {
+            shortTitle: "Github",
+            longTitle: "Github",
+          }
+        },
+      },
+      save: {
+        icon: "fas fa-floppy-disk",
+        languages: {
+          sp: {
+            shortTitle: "Guardar",
+            longTitle: "Guardar",
+          }
+        },
+      },
+      selection: {
+        icon: "fas fa-bullseye",
+        languages: {
+          sp: {
+            shortTitle: "Seleccionar",
+            longTitle: "Selección",
+          }
+        },
+      },
+      image: {
+        icon: "fas fa-camera",
+        languages: {
+          sp: {
+            shortTitle: "Imagen",
+            longTitle: "Imagen",
+          }
+        },
+      },
+      logIn: {
+        icon: "fas fa-sign-in-alt",
+        languages: {
+          sp: {
+            shortTitle: "Entrada al sistema",
+            longTitle: "Entrada al sistema",
+          }
+        },
+      },
+      logOut: {
+        icon: "fas fa-sign-in",
+        languages: {
+          sp: {
+            shortTitle: "Salida del sistema",
+            longTitle: "Salida del sistema",
+          }
+        },
+      },
+      reset: {
+        icon: "fas fa-brush",
+        languages: {
+          sp: {
+            shortTitle: "Reset",
+            longTitle: "Reset",
+          }
+        },
+      },
+      fiter: {
+        icon: "fas fa-filter",
+        languages: {
+          sp: {
+            shortTitle: "Filtro",
+            longTitle: "Filtro",
+          }
+        },
+      },
+      find: {
+        icon: "fas fa-search",
+        languages: {
+          sp: {
+            shortTitle: "Buscar",
+            longTitle: "Búsqueda",
+          }
+        },
+      },
+      rpp: {
+        icon: "fas fa-file-alt",
+        languages: {
+          sp: {
+            shortTitle: "RPP",
+            longTitle: "Registros por página",
+          }
+        },
+      },
+      page: {
+        icon: "fas fa-file-alt",
+        languages: {
+          sp: {
+            shortTitle: "Página",
+            longTitle: "Paginación",
+          }
+        },
+      },
+      accept: {
+        icon: "fas fa-check-circle",
+        languages: {
+          sp: {
+            shortTitle: "Sí",
+            longTitle: "Aceptar",
+          }
+        },
+      },
+      reject: {
+        icon: "fas fa-times-circle",
+        languages: {
+          sp: {
+            shortTitle: "No",
+            longTitle: "Rechazar",
+          }
+        },
+      },      
     },
     operation: {
       view: {
@@ -182,75 +379,322 @@ export class MetadataService {
             aPlural: "Los productos",
           }
         },
-      },
-      producttype: {
-        icon: "fas fa-tag",
-        languages: {
-          sp: {
-            singular: "Tipo de producto",
-            plural: "Tipos de producto",
-            aSingular: "El tipo de producto",
-            aPlural: "Los tipos de producto",
-          }
-        },
-      },
-      user: {
-        icon: "fas fa-user",
-        languages: {
-          sp: {
-            singular: "Usuario",
-            plural: "Usuarios",
-            aSingular: "El usuario",
-            aPlural: "Los usuarios",
-          }
-        },
-      },
-      usertype: {        
-        icon: "fas fa-user-tag",
-        languages: {
-          sp: {
-            singular: "Tipo de usuario",
-            plural: "Tipos de usuario",
-            aSingular: "El tipo de usuario",
-            aPlural: "Los tipos de usuario",
-          }
-        },
-      },
-      purchase: {        
-        icon: "fas fa-cash-register",
-        languages: {
-          sp: {
-            singular: "Compra",
-            plural: "Compras",
-            aSingular: "La compra",
-            aPlural: "Las compras",
-          }
-        },
-      },
-      factura: {        
-        icon: "fas fa-file-invoice-dollar",
-        languages: {
-          sp: {
-            singular: "Factura",
-            plural: "Facturas",
-            aSingular: "La factura",
-            aPlural: "Las facturas",
-          }
-        },
-      },
-      carrito: {        
-        icon: "fas fa-shopping-cart",
-        languages: {
-          sp: {
-            singular: "Carrito",
-            plural: "Carritos",
-            aSingular: "El carrito",
-            aPlural: "Los carritos",
-          }
-        },
+        fields: {
+          codigo: {
+            icon: "fas fa-barcode",
+            languages: {
+              sp: {
+                shortTitle: "Código",
+                longTitle: "Código del producto",
+              }
+            },
+          },
+          nombre: {
+            icon: "fas fa-signature",
+            languages: {
+              sp: {
+                shortTitle: "Nombre",
+                longTitle: "Nombre del producto",
+              }
+            },
+          },
+          existencias: {
+            icon: "fas fa-boxes",
+            languages: {
+              sp: {
+                shortTitle: "Existencias",
+                longTitle: "Existencias del producto",
+              }
+            },
+          },
+          precio: {
+            icon: "fas fa-money-bill",
+            languages: {
+              sp: {
+                shortTitle: "Precio",
+                longTitle: "Precio del producto en euros",
+              }
+            },
+          },
+          descuento: {
+            icon: "fas fa-percentage",
+            languages: {
+              sp: {
+                shortTitle: "Descuento",
+                longTitle: "Descuento del producto",
+              }
+            },
+          },
+        },        
       }
+    },
+    producttype: {
+      icon: "fas fa-tag",
+      languages: {
+        sp: {
+          singular: "Tipo de producto",
+          plural: "Tipos de producto",
+          aSingular: "El tipo de producto",
+          aPlural: "Los tipos de producto",
+        }
+      },
+      fields: {
+        description: {
+          icon: "fas fa-signature",
+          languages: {
+            sp: {
+              shortTitle: "Descripción",
+              longTitle: "Descripción del tipo de producto",
+            }
+          },
+        },
+      },
+    },
+    user: {
+      icon: "fas fa-user",
+      languages: {
+        sp: {
+          singular: "Usuario",
+          plural: "Usuarios",
+          aSingular: "El usuario",
+          aPlural: "Los usuarios",
+        }
+      },
+      fields: {
+        dni: {
+          icon: "fas fa-id-card",
+          languages: {
+            sp: {
+              shortTitle: "DNI",
+              longTitle: "Documento nacional de identidad",
+            }
+          },
+        },
+        nombre: {
+          icon: "fas fa-user",
+          languages: {
+            sp: {
+              shortTitle: "Nombre",
+              longTitle: "Nombre de usuario",
+            }
+          },
+        },
+        apellido1: {
+          icon: "fas fa-user",
+          languages: {
+            sp: {
+              shortTitle: "Apellido1",
+              longTitle: "Primer apellido",
+            }
+          },
+        },
+        apellido2: {
+          icon: "fas fa-user",
+          languages: {
+            sp: {
+              shortTitle: "Apellido2",
+              longTitle: "Segundo apellido",
+            }
+          },
+        },
+        userLogin: {
+          icon: "fas fa-sign-in-alt",
+          languages: {
+            sp: {
+              shortTitle: "Login",
+              longTitle: "Login del usuario",
+            }
+          },
+        },
+        password: {
+          icon: "fas fa-key",
+          languages: {
+            sp: {
+              shortTitle: "Password",
+              longTitle: "Password del usuario",
+            }
+          },
+        },
+        email: {
+          icon: "fas fa-envelope",
+          languages: {
+            sp: {
+              shortTitle: "Email",
+              longTitle: "Email del usuario",
+            }
+          },
+        },
+        descuento: {
+          icon: "fas fa-percent",
+          languages: {
+            sp: {
+              shortTitle: "Descuento",
+              longTitle: "Descuento del usuario",
+            }
+          },
+        },
+        token: {
+          icon: "fas fa-key",
+          languages: {
+            sp: {
+              shortTitle: "Token",
+              longTitle: "Token del usuario",
+            }
+          },
+        },
+        validado: {
+          icon: "fas fa-check",
+          languages: {
+            sp: {
+              shortTitle: "Validado",
+              longTitle: "¿Usuario validado?",
+            }
+          },
+        },
+        activo: {
+          icon: "fas fa-checkered",
+          languages: {
+            sp: {
+              shortTitle: "Activo",
+              longTitle: "¿Usuario activo?",
+            }
+          },
+        },
+      },
+    },
+    usertype: {
+      icon: "fas fa-user-tag",
+      languages: {
+        sp: {
+          singular: "Tipo de usuario",
+          plural: "Tipos de usuario",
+          aSingular: "El tipo de usuario",
+          aPlural: "Los tipos de usuario",
+        }
+      },
+      fields: {
+        descripcion: {
+          icon: "fas fa-signature",
+          languages: {
+            sp: {
+              shortTitle: "Descripción",
+              longTitle: "Descripción del tipo de usuario",
+            }
+          },
+        },
+      },
+    },
+    purchase: {
+      icon: "fas fa-cash-register",
+      languages: {
+        sp: {
+          singular: "Compra",
+          plural: "Compras",
+          aSingular: "La compra",
+          aPlural: "Las compras",
+        }
+      },
+      fields: {
+        cantidad: {
+          icon: "fas fa-mountain",
+          languages: {
+            sp: {
+              shortTitle: "Cantidad",
+              longTitle: "Cantidad de producto",
+            }
+          },
+        },
+        precio: {
+          icon: "fas fa-euro-sign",
+          languages: {
+            sp: {
+              shortTitle: "Precio",
+              longTitle: "Precio del producto en euros",
+            }
+          },
+        },
+        fecha: {
+          icon: "fas fa-calendar-alt",
+          languages: {
+            sp: {
+              shortTitle: "Fecha",
+              longTitle: "Fecha de la compra",
+            }
+          },
+        },
+        descuento_usuario: {
+          icon: "fas fa-percent",
+          languages: {
+            sp: {
+              shortTitle: "Descuento usuario",
+              longTitle: "Descuento del usuario",
+            }
+          },
+        },
+        descuento_producto: {
+          icon: "fas fa-percent",
+          languages: {
+            sp: {
+              shortTitle: "Descuento producto",
+              longTitle: "Descuento del producto",
+            }
+          },
+        },
+      },
+    },
+    factura: {
+      icon: "fas fa-file-invoice-dollar",
+      languages: {
+        sp: {
+          singular: "Factura",
+          plural: "Facturas",
+          aSingular: "La factura",
+          aPlural: "Las facturas",
+        }
+      },
+      fields: {
+        iva: {
+          icon: "fas fa-percent",
+          languages: {
+            sp: {
+              shortTitle: "IVA",
+              longTitle: "IVA de la factura",
+            }
+          },
+        },
+        fecha: {
+          icon: "fas fa-calendar-alt",
+          languages: {
+            sp: {
+              shortTitle: "Fecha",
+              longTitle: "Fecha de la factura",
+            }
+          },
+        },
+        pagado: {
+          icon: "fas fa-check",
+          languages: {
+            sp: {
+              shortTitle: "Pagada",
+              longTitle: "¿Factura pagada?",
+            }
+          },
+        },
+      },
+    },
+    carrito: {
+      icon: "fas fa-shopping-cart",
+      languages: {
+        sp: {
+          singular: "Carrito",
+          plural: "Carritos",
+          aSingular: "El carrito",
+          aPlural: "Los carritos",
+        }
+      },
     }
   }
+
 
 
 
