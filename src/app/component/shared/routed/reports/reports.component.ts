@@ -11,8 +11,8 @@ import { Subject } from 'rxjs';
 })
 export class ReportsComponent implements OnInit {
 
-  strEntity: string = "informe"
-  strOperation: string = "imprimir"
+  strEntity: string = "report"
+  strOperation: string = "print"
 
   aReports: IReport[] = [
     { nombre: "N Productos con más descuento", codigo: "i01" },

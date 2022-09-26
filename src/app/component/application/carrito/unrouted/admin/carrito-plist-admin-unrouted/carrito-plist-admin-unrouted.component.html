@@ -5,11 +5,11 @@
     </div>
     <div class="col-md text-center">
       <app-search-unrouted [strFilter]="strFilter"
-        [strTitlePlural]="'Filtro de ' + oMetadataService.getPluralName4Entity(strEntity).toLowerCase()"
+        [strTitlePlural]="'Filtro de ' + oMetadataService.getName(strEntity+'s').toLowerCase()"
         (eeFilter)="onSetFilter($event)"></app-search-unrouted>
     </div>
     <div class="col-md text-end">
-      <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getPluralName4Entity(strEntity)}}
+      <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}
       </h4>
     </div>
   </div>
@@ -34,7 +34,7 @@
           <tr class="text-center align-middle" app-carrito-plistheader-admin-unrouted (sort)="onSetOrder($event)"
             [mode]="mode">
             <div action_column_title>
-              <i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getSystemLabel('actions')}}
+              <i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getName('actions')}}
             </div>
           </tr>
         </thead>

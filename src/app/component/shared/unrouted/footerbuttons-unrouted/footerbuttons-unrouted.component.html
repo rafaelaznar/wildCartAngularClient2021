@@ -1,11 +1,11 @@
 <div class="control-group text-center mt-5">
   <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
     <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i>
-      {{oMetadataService.getSystemAction('home')}}</a>
+      {{oMetadataService.getName('home')}}</a>
     <a class="btn btn-primary mx-2" [routerLink]="['/' + strEntity + '/plist']">
       <i [ngClass]="oMetadataService.getIcon('plist')"></i> {{oMetadataService.getActionTitle(strEntity,'plist')}}</a>
     <a class="btn btn-primary mx-2" (click)="goBack()"><i [ngClass]="oMetadataService.getIcon('volver')"></i>
-      {{oMetadataService.getSystemAction('return')}}
+      {{oMetadataService.getName('return')}}
     </a>
   </div>
 </div>
