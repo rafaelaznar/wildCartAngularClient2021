@@ -35,7 +35,7 @@ import { FileService } from './service/file.service';
 import { LoginComponent } from './component/shared/routed/login/login.component';
 import { HomeComponent } from './component/shared/routed/home/home.component';
 import { LogoutComponent } from './component/shared/routed/logout/logout.component';
-import { MenuComponent } from './component/shared/unrouted/menu/menu.component';
+import { MenuUnroutedComponent } from './component/shared/unrouted/menu-unrouted/menu-unrouted.component';
 import { SessionService } from './service/session.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SessionResolver } from './resolve/session.resolve';
@@ -155,7 +155,7 @@ import { RemoveconfirmationUnroutedComponent } from './component/shared/unrouted
     PopupComponent,
     HeaderComponent,
     FooterComponent,
-    MenuComponent,
+    MenuUnroutedComponent,
     PrePrintComponent,
     findUnroutedComponent,
     RppUnroutedComponent,

@@ -1,4 +1,4 @@
-import { CarritoService } from './../../../../service/carrito.service';
+import { CarritoService } from '../../../../service/carrito.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
@@ -6,11 +6,11 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  selector: 'app-menu-unrouted',
+  templateUrl: './menu-unrouted.component.html',
+  styleUrls: ['./menu-unrouted.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuUnroutedComponent implements OnInit {
 
   private carritoEventsSubscription: Subscription;
   @Input() carritoMenuObservable: Observable<{ action: string, data: number }>;

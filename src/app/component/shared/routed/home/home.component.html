@@ -1,4 +1,4 @@
-<app-menu [carritoMenuObservable]="carritoHomeEventsSubject.asObservable()"></app-menu>
+<app-menu-unrouted [carritoMenuObservable]="carritoHomeEventsSubject.asObservable()"></app-menu-unrouted>
 
 <div class="container mt-4">
     <app-producto-plist-user-unrouted [id_tipousuario_session]="tipousuarioSession_id" (addCarritoEE)="onAddCarrito($event)">
