@@ -1,7 +1,7 @@
 <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()" *ngIf="oForm">
 
     <div class="row mb-3">
-        <label for="id" class="col-sm-2 col-form-label"> <i [ngClass]="oMetadataService.getIcon('id')"></i> ID</label>
+        <label for="id" class="col-sm-2 col-form-label"> <i [ngClass]="oMetadataService.getIcon('id')"></i> {{oMetadataService.getName('id')}}</label>
         <div class="col-sm-1">
             <input class="form-control" type="text" name="id" formControlName="id" id="id" readonly>
         </div>

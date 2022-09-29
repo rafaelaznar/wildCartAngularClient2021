@@ -2,7 +2,7 @@
 
     <div class="row mb-3">
         <label for="id" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('id')"></i>
-            ID</label>
+            {{oMetadataService.getName('id')}}</label>
         <div class="col-sm-1">
             <input class="form-control" type="text" placeholder="{{id}}" readonly>
         </div>
@@ -45,7 +45,7 @@
 
     <div class="row mb-3">
         <label for="precio" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('precio')"></i>
-            Precio</label>
+            {{oMetadataService.getName('precio')}}</label>
         <div class="col-sm-2">
             <input type="text" class="form-control" id="precio" formControlName="precio">
         </div>

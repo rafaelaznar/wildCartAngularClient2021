@@ -264,6 +264,7 @@ export class MetadataService {
       case str == "accept": return "Aceptar";
       case str == "reject": return "Rechazar";
       case str == "description": return "Descripcion";
+      case str == "units": return "Unidades";
       //
       case str == "user-carritocontent": return "Contenido de tu carrito";
       case str == "productDetail": return "Detalle de producto";

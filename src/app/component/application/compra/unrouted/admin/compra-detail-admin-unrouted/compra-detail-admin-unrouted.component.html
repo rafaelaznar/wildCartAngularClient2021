@@ -1,7 +1,7 @@
 <table class="table table-striped">
   <tbody>
       <tr>
-          <th><i [ngClass]="oMetadataService.getIcon('id')"></i> ID</th>
+          <th><i [ngClass]="oMetadataService.getIcon('id')"></i> {{oMetadataService.getName('id')}}</th>
           <td>{{oCompra?.id}}</td>
       </tr>
       <tr>
@@ -9,7 +9,7 @@
           <td>{{oCompra?.cantidad}}</td>
       </tr>
       <tr>
-          <th>Precio</th>
+          <th>{{oMetadataService.getName('precio')}}</th>
           <td>{{oCompra?.precio}}</td>
       </tr>
       <tr>

@@ -26,7 +26,7 @@
           <div class="d-flex justify-content-end my-3">
             <h3 class="flex-grow-1 m-1" *ngIf="oProducto?.cantidad==1">Tienes {{oProducto?.cantidad}} unidad en el
               carrito</h3>
-            <h3 class="flex-grow-1 m-1" *ngIf="oProducto?.cantidad>1">Tienes {{oProducto?.cantidad}} unidades en el
+            <h3 class="flex-grow-1 m-1" *ngIf="oProducto?.cantidad>1">Tienes {{oProducto?.cantidad}} {{oMetadataService.getName('units')}} en el
               carrito</h3>
             <button type="button" class="btn btn-danger m-1" *ngIf="id_tipousuario_session==2&&oProducto?.cantidad>0"
               (click)="removeCarrito(oProducto.id)"><i class="fas fa-cart-arrow-down"
