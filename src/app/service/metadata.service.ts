@@ -110,46 +110,55 @@ export class MetadataService {
     switch (true) {
       // entidades
       case str == "system": return "Sistema";
+      case str == "asystem": return "Un sistema";
       case str == "systems": return "Sistemas";
       case str == "thesystem": return "El sistema";
       case str == "thesystems": return "Los sistemas";
       //
       case str == "producto": return "Producto";
+      case str == "aproducto": return "Un producto";
       case str == "productos": return "Productos";
       case str == "theproduct": return "El producto";
       case str == "theproducts": return "Los productos";
       //
       case str == "tipoproducto": return "Tipo de producto";
+      case str == "atipoproducto": return "Un tipo de producto";
       case str == "tipoproductos": return "Tipos de producto";
       case str == "thetipoproducto": return "El tipo de producto";
       case str == "thetipoproductos": return "Los tipos de producto";
       //
       case str == "usuario": return "Usuario";
+      case str == "ausuario": return "Un usuario";
       case str == "usuarios": return "Usuarios";
       case str == "theusuario": return "El usuario";
       case str == "theusuarios": return "Los usuarios";
       //
       case str == "tipousuario": return "Tipo de usuario";
+      case str == "atipousuario": return "Un tipo de usuario";
       case str == "tipousuarios": return "Tipos de usuario";
       case str == "thetipousuario": return "El tipo de usuario";
       case str == "thetipousuarios": return "Los tipos de usuario";
       //
       case str == "compra": return "Compra";
+      case str == "acompra": return "Una compra";
       case str == "compras": return "Compras";
       case str == "thecompra": return "La compra";
       case str == "thecompras": return "Las compras";
       //
       case str == "factura": return "Factura";
+      case str == "afactura": return "Una factura";
       case str == "facturas": return "Facturas";
       case str == "thefactura": return "La factura";
       case str == "thefacturas": return "Las facturas";
       //
-      case str == "carrito": return "carrito";
-      case str == "carritos": return "carritos";
-      case str == "thecarrito": return "el carrito";
-      case str == "thecarritos": return "los carritos";
+      case str == "carrito": return "Carrito";
+      case str == "acarrito": return "Un Carrito";
+      case str == "carritos": return "Carritos";
+      case str == "thecarrito": return "El carrito";
+      case str == "thecarritos": return "Los carritos";
       //operaciones
       case str == "view": return "Ver";
+      case str == "viewof": return "Vista de";
       case str == "goview": return "Ir a la vista";
       case str == "views": return "Vistas";
       case str == "viewing": return "Viendo";
@@ -157,6 +166,7 @@ export class MetadataService {
       case str == "theviews": return "Las vistas";
       //
       case str == "plist": return "Listado";
+      case str == "plistof": return "Listado de";
       case str == "goplist": return "Ir al listado";
       case str == "plists": return "Listados";
       case str == "plisting": return "Listando";
@@ -164,6 +174,7 @@ export class MetadataService {
       case str == "theplists": return "Los listados";
       //
       case str == "selection": return "Selección";
+      case str == "selectionof": return "Selección de";
       case str == "goselection": return "Ir a la selección";
       case str == "selections": return "Selecciones";
       case str == "selecting": return "Seleccionando";
@@ -171,6 +182,7 @@ export class MetadataService {
       case str == "theselections": return "Las selecciones";
       //
       case str == "list": return "Listado";
+      case str == "listof": return "Listado de";
       case str == "golist": return "Ir al listado";
       case str == "lists": return "Listados";
       case str == "listing": return "Listando";
@@ -178,20 +190,23 @@ export class MetadataService {
       case str == "thelists": return "Los listados";
       //
       case str == "remove": return "Eliminar";
+      case str == "removeof": return "Borrado de";
       case str == "goremove": return "Ir a la eliminación";
       case str == "removes": return "Borrados";
       case str == "removing": return "Eliminando";
       case str == "theremove": return "El borrado";
       case str == "theremoves": return "Los borrados";
       //
-      case str == "new": return "Nuevo";
+      case str == "new": return "Crear";
+      case str == "newof": return "Alta de";
       case str == "gonew": return "Ir a la creación";
       case str == "news": return "Altas";
       case str == "newing": return "Creando";
       case str == "thenew": return "El alta";
       case str == "thenews": return "Las altas";
       //
-      case str == "edit": return "Editar";
+      case str == "edit": return "Modificar";
+      case str == "editof": return "Edición de";
       case str == "goedit": return "Ir a la edición";
       case str == "edits": return "Ediciones";
       case str == "editing": return "Editando";
@@ -199,6 +214,7 @@ export class MetadataService {
       case str == "theedits": return "Las ediciones";
       //
       case str == "random": return "Aleatorio";
+      case str == "random": return "Creación de registros aleatorios de";
       case str == "gorandom": return "Ir a la creación aleatoria";
       case str == "randoms": return "Aleatorios";
       case str == "randoming": return "Creando registros aleatorios";
@@ -220,8 +236,10 @@ export class MetadataService {
       case str == "codigo": return "Código";
       case str == "existencias": return "Existencias";
       case str == "precio": return "Precio";
+      case str == "precioError": return "Se debe introducir un número entre 1 y 100000. Se pueden poner dos decimales.";
       // campos compra
       case str == "cantidad": return "Cantidad";
+      case str == "cantidadError": return "Se debe introducir un número entero entre 1 y 10000.";
       case str == "fecha": return "Fecha";
       case str == "descuento_usuario": return "Descuento usuario";
       case str == "descuento_producto": return "Descuento producto";
@@ -268,8 +286,9 @@ export class MetadataService {
       //
       case str == "user-carritocontent": return "Contenido de tu carrito";
       case str == "productDetail": return "Detalle de producto";
-      case str == "randomRegistersLoad": return "Carga aleatoria de registros";
+      case str == "randomRegistersLoad": return "Carga aleatoria de registros";      
       //
+      case str == "selectionHelp": return "Por favor, selecciona ";
       default: return 'Desconocido';
     }
   }
@@ -284,7 +303,7 @@ export class MetadataService {
 
   getConfirmationMessage(strEntity: string, strOperation: string): string {
     return "¿Está vd. seguro de que quiere " + this.getName(strOperation).toLowerCase() + ' ' + this.getName('the' + strEntity) + "?";
-  }
+  }  
 
   public getFilterMsg(strFilter: string, strEntity1: string, entity1Filter: number, strEntity2: string, entity2Filter: number): string {
     if (entity1Filter !== null && entity1Filter !== undefined) {

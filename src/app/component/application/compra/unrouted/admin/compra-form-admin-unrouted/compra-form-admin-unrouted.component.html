@@ -82,8 +82,7 @@
   <div class="row mb-3 justify-content-center">
     <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
       <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine"><i
-          [ngClass]="oMetadataService.getIcon('ok')"></i> Modificar
-        la {{strTitleSingular}}</button>
+          [ngClass]="oMetadataService.getIcon('ok')"></i>  {{oMetadataService.getName('save') + ' ' + oMetadataService.getName('the' + strEntity).toLowerCase()}}</button>
     </div>
   </div>
 

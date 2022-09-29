@@ -7,7 +7,7 @@
             <input class="form-control" type="text" placeholder="{{id}}" readonly>
         </div>
     </div>
-    
+
     <div class="row mb-3">
         <label for="codigo" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('codigo')"></i>
             Código</label>
@@ -36,7 +36,8 @@
     </div>
 
     <div class="row mb-3">
-        <label for="existencias" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('existencias')"></i>
+        <label for="existencias" class="col-sm-2 col-form-label"><i
+                [ngClass]="oMetadataService.getIcon('existencias')"></i>
             Existencias</label>
         <div class="col-sm-1">
             <input type="text" class="form-control" name="existencias" id="existencias" formControlName="existencias">
@@ -77,8 +78,7 @@
     </div>
 
     <div class="row mb-3" app-find-unrouted [entity]="'tipoproducto'" [id]="oProducto2Show?.tipoproducto.id"
-        [description]="oProducto2Show?.tipoproducto.nombre"
-        (selection)="onFindSelection($event)">
+        [description]="oProducto2Show?.tipoproducto.nombre" (selection)="onFindSelection($event)">
         <div plist-finder-title>
             <h4 class="text-center">Por favor, selecciona un tipo de producto</h4>
         </div>
@@ -87,10 +87,9 @@
     <div class="row mb-3 justify-content-center">
         <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
             <button type="submit" class="btn btn-warning" [disabled]="oForm.invalid || oForm.pristine"><i
-                    [ngClass]="oMetadataService.getIcon('ok')"></i> {{strOperation=='new'?'Crear':'Modificar'}} el
-                {{strTitleSingular}}</button>
+                    [ngClass]="oMetadataService.getIcon('ok')"></i> {{oMetadataService.getName('save') + ' ' +
+                oMetadataService.getName('the' + strEntity).toLowerCase()}}</button>
         </div>
     </div>
 
 </form>
-
