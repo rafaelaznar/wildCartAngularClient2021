@@ -232,7 +232,7 @@ export class MetadataService {
       // sistema      
       case str == "id": return "ID";
       case str == "report": return "Informe";
-      case str == "report": return "Informes";
+      case str == "reports": return "Informes";
       case str == "action": return "Acción";
       case str == "actions": return "Acciones";
       case str == "order": return "Orden";
@@ -241,7 +241,8 @@ export class MetadataService {
       case str == "home": return "Página principal";
       case str == "userprofile": return "Detalles del usuario en sesión";
       case str == "random": return "Generación aleatoria de registros";
-      case str == "print": return "Impresión de informes";
+      case str == "print": return "Impresión de informe";
+      case str == "prints": return "Impresión de informes";
       case str == "actions": return "Acciones";
       case str == "return": return "Volver";
       case str == "home": return "Ir a la página principal";
@@ -250,8 +251,8 @@ export class MetadataService {
       case str == "selection": return "Seleccionar";
       case str == "image": return "Imagen";
       case str == "form": return "Formulario";
-      case str == "systemLogin": return "entrada al sistema";
-      case str == "systemLogout": return "salida del sistema";
+      case str == "systemLogin": return "Entrada al sistema";
+      case str == "systemLogout": return "Salida del sistema";
       case str == "reset": return "Limpiar";
       case str == "filter": return "Filtro";
       case str == "search": return "Buscar";
@@ -263,6 +264,10 @@ export class MetadataService {
       case str == "accept": return "Aceptar";
       case str == "reject": return "Rechazar";
       case str == "description": return "Descripcion";
+      //
+      case str == "user-carritocontent": return "Contenido de tu carrito";
+      case str == "productDetail": return "Detalle de producto";
+      case str == "randomRegistersLoad": return "Carga aleatoria de registros";
       //
       default: return 'Desconocido';
     }

@@ -22,7 +22,7 @@
     *ngIf="strSortField == 'producto' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('cantidad')">
-  <i [ngClass]="oMetadataService.getIcon('cantidad')"></i> Cantidad
+  <i [ngClass]="oMetadataService.getIcon('cantidad')"></i> {{oMetadataService.getName('cantidad')}}
   <i [ngClass]="oMetadataService.getIcon('flechaUp')"
     *ngIf="strSortField == 'cantidad' && strSortDirection == 'asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('flechaDown')"

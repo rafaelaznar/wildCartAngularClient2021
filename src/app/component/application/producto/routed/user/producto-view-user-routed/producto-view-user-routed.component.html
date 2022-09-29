@@ -1,7 +1,7 @@
 <app-menu-unrouted [carritoMenuObservable]="carritoHomeEventsSubject.asObservable()"></app-menu-unrouted>
 <div class="container my-3">
 
-    <app-header [title]="'Detalle de producto'" [icon]="oMetadataService.getIcon(this.strOperation)"
+    <app-header [title]="oMetadataService.getName('productDetail')" [icon]="oMetadataService.getIcon(this.strOperation)"
         [iconEntity]="oMetadataService.getIcon(this.strEntity)">
     </app-header>
 

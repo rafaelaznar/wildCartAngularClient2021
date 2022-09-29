@@ -5,7 +5,7 @@
         <td>{{ oCarrito?.id }}</td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('cantidad')"></i> Cantidad</th>
+        <th><i [ngClass]="oMetadataService.getIcon('cantidad')"></i> {{oMetadataService.getName('cantidad')}}</th>
         <td>{{ oCarrito?.cantidad }} unidades</td>
       </tr>
       <tr>
