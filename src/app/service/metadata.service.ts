@@ -278,7 +278,7 @@ export class MetadataService {
   }
 
   getActionTitle(strEntity: string, strOperation: string): string {
-    return this.getName('go' + strOperation) + 'de' + this.getName(strEntity).toLowerCase();
+    return this.getName('go' + strOperation) + ' de ' + this.getName(strEntity).toLowerCase();
   }
 
   getConfirmationMessage(strEntity: string, strOperation: string): string {

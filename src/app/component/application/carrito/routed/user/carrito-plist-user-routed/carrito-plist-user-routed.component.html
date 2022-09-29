@@ -7,13 +7,13 @@
 </app-header>
 
 <app-carrito-cplist-user-unrouted [id_usuario]="id_usuario"  [id_tipousuario_session]="tipousuarioSession_id"  [id_producto]="id_producto"  (addCarritoEE)="onAddCarrito($event)">
-
+    <!-- 
     <header>
         <a [routerLink]="['/carrito/new']" type="button" class="btn btn-success mb-2">
-            <i [ngClass]="oMetadataService.getIcon('new')"></i> Añadir nueva carrito
+            <i [ngClass]="oMetadataService.getIcon('new')"></i> {{oMetadataService.getName('addNewCarritoItem')}}
         </a>
     </header>
-
+    -->
     <!--
     <ng-template let-fila>
         <button type="button" class="btn btn-success" [routerLink]="['/usuario/view/' + fila.id]"><i
