@@ -6,40 +6,40 @@
         <td>{{oUsuario?.id}}</td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('dni')"></i> DNI</th>
+        <th><i [ngClass]="oMetadataService.getIcon('dni')"></i> {{oMetadataService.getName('dni')}}</th>
         <td>{{oUsuario?.dni}}</td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('nombre')"></i> Nombre</th>
+        <th><i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('nombre')}}</th>
         <td>{{oUsuario?.nombre}}</td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('nombre')"></i> Primer Apellido</th>
+        <th><i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('apellido1')}}</th>
         <td>{{oUsuario?.apellido1}}</td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('nombre')"></i> Segundo Apellido</th>
+        <th><i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('apellido2')}}</th>
         <td>{{oUsuario?.apellido2}}</td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('login')"></i> Login</th>
+        <th><i [ngClass]="oMetadataService.getIcon('login')"></i> {{oMetadataService.getName('login')}}</th>
         <td>{{oUsuario?.login}}</td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('email')"></i> email</th>
+        <th><i [ngClass]="oMetadataService.getIcon('email')"></i> {{oMetadataService.getName('email')}}</th>
         <td>{{oUsuario?.email}}</td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('validado')"></i> validado</th>
+        <th><i [ngClass]="oMetadataService.getIcon('validado')"></i> {{oMetadataService.getName('validado')}}</th>
         <td [innerHTML]="oUsuario?.validado | showBoolean"></td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('activado')"></i> activado</th>
+        <th><i [ngClass]="oMetadataService.getIcon('activado')"></i> {{oMetadataService.getName('activo')}}</th>
         <td [innerHTML]="oUsuario?.activo | showBoolean"></td>
       </tr>
 
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('tipousuario')"></i> Tipo Usuario</th>
+        <th><i [ngClass]="oMetadataService.getIcon('tipousuario')"></i> {{oMetadataService.getName('tipousuario')}}</th>
         <td>({{oUsuario?.tipousuario.id}}) {{oUsuario?.tipousuario.nombre}}</td>
       </tr>
     </tbody>

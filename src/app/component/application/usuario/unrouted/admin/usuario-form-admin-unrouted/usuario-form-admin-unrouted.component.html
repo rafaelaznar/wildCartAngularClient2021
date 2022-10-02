@@ -10,7 +10,7 @@
 
     <div class="row mb-3">
         <label for="dni" class="col-sm-2 col-form-label">
-            <i [ngClass]="oMetadataService.getIcon('dni')"></i> DNI</label>
+            <i [ngClass]="oMetadataService.getIcon('dni')"></i> {{oMetadataService.getName('dni')}}</label>
         <div class="col-sm-2">
             <input type="text" class="form-control" id="dni" formControlName="dni"
                 [ngClass]="{'is-valid' : f.controls.dni.dirty && !(f.controls.dni.errors?.required || f.controls.dni.errors?.minlength) }">
@@ -25,7 +25,7 @@
 
     <div class="row mb-3">
         <label for="nombre" class="col-sm-2 col-form-label">
-            <i [ngClass]="oMetadataService.getIcon('nombre')"></i> Nombre</label>
+            <i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('nombre')}}</label>
         <div class="col-sm-8">
             <input type="text" class="form-control" id="nombre" formControlName="nombre"
                 [ngClass]="{'is-valid' : f.controls.nombre.dirty && !(f.controls.nombre.errors?.required || f.controls.nombre.errors?.minlength) }">
@@ -40,7 +40,7 @@
 
     <div class="row mb-3">
         <label for="apellido1" class="col-sm-2 col-form-label">
-            <i [ngClass]="oMetadataService.getIcon('nombre')"></i> Primer Apellido</label>
+            <i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('apellido1')}}</label>
         <div class="col-sm-9">
             <input type="text" class="form-control" id="apellido1" formControlName="apellido1"
                 [ngClass]="{'is-valid' : f.controls.apellido1.dirty && !(f.controls.apellido1.errors?.required || f.controls.apellido1.errors?.minlength) }">
@@ -56,7 +56,7 @@
 
     <div class="row mb-3">
         <label for="apellido2" class="col-sm-2 col-form-label">
-            <i [ngClass]="oMetadataService.getIcon('nombre')"></i> Segundo Apellido</label>
+            <i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('apellido2')}}</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="apellido2" formControlName="apellido2"
                 [ngClass]="{'is-valid' : f.controls.apellido2.dirty && !(f.controls.apellido2.errors?.required || f.controls.apellido2.errors?.minlength) }">
@@ -71,7 +71,7 @@
 
     <div class="row mb-3">
         <label for="login" class="col-sm-2 col-form-label">
-            <i [ngClass]="oMetadataService.getIcon('login')"></i> Login</label>
+            <i [ngClass]="oMetadataService.getIcon('login')"></i> {{oMetadataService.getName('login')}}</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="login" formControlName="login"
                 [ngClass]="{'is-valid' : f.controls.login.dirty && !(f.controls.login.errors?.required || f.controls.login.errors?.minlength) }">
@@ -86,7 +86,7 @@
 
     <div class="row mb-3">
         <label for="email" class="col-sm-2 col-form-label">
-            <i [ngClass]="oMetadataService.getIcon('email')"></i> email</label>
+            <i [ngClass]="oMetadataService.getIcon('email')"></i> {{oMetadataService.getName('email')}}</label>
         <div class="col-sm-5">
             <input type="text" class="form-control" id="email" formControlName="email"
                 [ngClass]="{'is-valid' : f.controls.email.dirty && !(f.controls.email.errors?.required || f.controls.email.errors?.minlength) }">

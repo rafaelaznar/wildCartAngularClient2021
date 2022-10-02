@@ -22,7 +22,7 @@
 
     <div class="row mb-3">
         <label for="nombre" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('nombre')"></i>
-            Nombre</label>
+            {{oMetadataService.getName('nombre')}}</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="nombre" formControlName="nombre"
                 [ngClass]="{'is-valid' : f.nombre.dirty && !(f.nombre.errors?.required || f.nombre.errors?.minlength) }">

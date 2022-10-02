@@ -15,7 +15,7 @@
           'is-invalid': f.cantidad.invalid
         }" />
       <div *ngIf="f.cantidad.invalid" class="text-danger">        
-        {{oMetadataService.getName('cantidadError')}}
+        {{oMetadataService.getName('invalidCantidad')}}
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
           'is-invalid': f.precio.invalid
         }" />
       <div *ngIf="f.precio.invalid" class="text-danger">
-        {{oMetadataService.getName('precioError')}}        
+        {{oMetadataService.getName('invalidPrecio')}}        
       </div>
     </div>
   </div>

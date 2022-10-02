@@ -8,11 +8,11 @@
         <h1 class="price"><span class="badge bg-danger">{{oUsuario?.login}}</span></h1>
         <h1>{{oUsuario?.nombre}} {{oUsuario?.apellido1}} {{oUsuario?.apellido2}}</h1>
         <h3 class="text-muted"><span>{{oUsuario?.email}}</span></h3>
-        <h6><small class="text-muted">DNI: {{oUsuario?.dni}}</small></h6>
+        <h6><small class="text-muted">{{oMetadataService.getName('dni')}}: {{oUsuario?.dni}}</small></h6>
         <p class="flex-grow-1" style="font-size: 0.95rem; font-style: italic;">
-          Perfil: {{oUsuario?.tipousuario.nombre}}</p>
+          {{oMetadataService.getName('profile')}}: {{oUsuario?.tipousuario.nombre}}</p>
         <p class="flex-grow-1" style="font-size: 0.95rem; font-style: italic;">
-          Descuento actual: {{oUsuario?.descuento}}%</p>
+          {{oMetadataService.getName('currentDescuento')}}: {{oUsuario?.descuento}}%</p>
       </div>
     </div>
   </div>

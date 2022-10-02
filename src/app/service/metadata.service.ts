@@ -100,7 +100,8 @@ export class MetadataService {
       case strIcon == "orderUp": return "fas fa-arrow-up";
       case strIcon == "orderDown": return "fas fa-arrow-down";
       case strIcon == "github": return "fab fa-github";
-      case strIcon == "github2": return "fab fa-github-alt";      
+      case strIcon == "github2": return "fab fa-github-alt";  
+      case strIcon == "return": return "fas fa-arrow-circle-left";    
       //
       default: return 'fas fa-question';
     }
@@ -158,7 +159,7 @@ export class MetadataService {
       case str == "thecarritos": return "Los carritos";
       //operaciones
       case str == "view": return "Ver";
-      case str == "viewof": return "Vista de";
+      case str == "viewof": return "Vista";
       case str == "goview": return "Ir a la vista";
       case str == "views": return "Vistas";
       case str == "viewing": return "Viendo";
@@ -166,7 +167,7 @@ export class MetadataService {
       case str == "theviews": return "Las vistas";
       //
       case str == "plist": return "Listado";
-      case str == "plistof": return "Listado de";
+      case str == "plistof": return "Listado";
       case str == "goplist": return "Ir al listado";
       case str == "plists": return "Listados";
       case str == "plisting": return "Listando";
@@ -174,7 +175,7 @@ export class MetadataService {
       case str == "theplists": return "Los listados";
       //
       case str == "selection": return "Selección";
-      case str == "selectionof": return "Selección de";
+      case str == "selectionof": return "Selección";
       case str == "goselection": return "Ir a la selección";
       case str == "selections": return "Selecciones";
       case str == "selecting": return "Seleccionando";
@@ -182,7 +183,7 @@ export class MetadataService {
       case str == "theselections": return "Las selecciones";
       //
       case str == "list": return "Listado";
-      case str == "listof": return "Listado de";
+      case str == "listof": return "Listado";
       case str == "golist": return "Ir al listado";
       case str == "lists": return "Listados";
       case str == "listing": return "Listando";
@@ -190,7 +191,7 @@ export class MetadataService {
       case str == "thelists": return "Los listados";
       //
       case str == "remove": return "Eliminar";
-      case str == "removeof": return "Borrado de";
+      case str == "removeof": return "Borrado";
       case str == "goremove": return "Ir a la eliminación";
       case str == "removes": return "Borrados";
       case str == "removing": return "Eliminando";
@@ -198,7 +199,7 @@ export class MetadataService {
       case str == "theremoves": return "Los borrados";
       //
       case str == "new": return "Crear";
-      case str == "newof": return "Alta de";
+      case str == "newof": return "Alta";
       case str == "gonew": return "Ir a la creación";
       case str == "news": return "Altas";
       case str == "newing": return "Creando";
@@ -206,7 +207,7 @@ export class MetadataService {
       case str == "thenews": return "Las altas";
       //
       case str == "edit": return "Modificar";
-      case str == "editof": return "Edición de";
+      case str == "editof": return "Edición";
       case str == "goedit": return "Ir a la edición";
       case str == "edits": return "Ediciones";
       case str == "editing": return "Editando";
@@ -214,12 +215,17 @@ export class MetadataService {
       case str == "theedits": return "Las ediciones";
       //
       case str == "random": return "Aleatorio";
-      case str == "random": return "Creación de registros aleatorios de";
+      case str == "random": return "Creación de registros aleatorios";
       case str == "gorandom": return "Ir a la creación aleatoria";
       case str == "randoms": return "Aleatorios";
       case str == "randoming": return "Creando registros aleatorios";
       case str == "therandom": return "La creación de registros aleatorios";
       case str == "therandoms": return "Las creaciones de registros aleatorios";
+      // errores genericos de campos
+      case str == "mandatory": return "El campo es obligatorio, debe introduir los datos";
+      case str == "invalid": return "Los valores del campo no son válidos, debe introducir los datos correctamente";    
+      case str == "tooShort": return "El valor introducido es demasiado corto";
+      case str == "tooLong": return "El valor introducido es demasiado largo";
       // campos usuario
       case str == "dni": return "DNI";
       case str == "nombre": return "Nombre";
@@ -228,7 +234,9 @@ export class MetadataService {
       case str == "login": return "Login";
       case str == "password": return "Contraseña";
       case str == "email": return "Email";
+      case str == "invalidEmail": return "El email no es válido, debe introducir un email válido";
       case str == "descuento": return "Descuento";
+      case str == "currentDescuento": return "Descuento actual";
       case str == "token": return "Token";
       case str == "validado": return "Validado";
       case str == "activo": return "Activo";
@@ -236,10 +244,10 @@ export class MetadataService {
       case str == "codigo": return "Código";
       case str == "existencias": return "Existencias";
       case str == "precio": return "Precio";
-      case str == "precioError": return "Se debe introducir un número entre 1 y 100000. Se pueden poner dos decimales.";
+      case str == "invalidPrecio": return "Se debe introducir un número entre 1 y 100000. Se pueden poner dos decimales.";
       // campos compra
       case str == "cantidad": return "Cantidad";
-      case str == "cantidadError": return "Se debe introducir un número entero entre 1 y 10000.";
+      case str == "invalidCantidad": return "Se debe introducir un número entero entre 1 y 10000.";
       case str == "fecha": return "Fecha";
       case str == "descuento_usuario": return "Descuento usuario";
       case str == "descuento_producto": return "Descuento producto";
@@ -257,6 +265,7 @@ export class MetadataService {
       case str == "ascending": return "Ascendente";
       case str == "descending": return "Descendente";
       case str == "home": return "Página principal";
+      case str == "profile": return "Perfil";
       case str == "userprofile": return "Detalles del usuario en sesión";
       case str == "random": return "Generación aleatoria de registros";
       case str == "print": return "Impresión de informe";
