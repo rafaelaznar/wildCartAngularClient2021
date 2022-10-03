@@ -15,7 +15,7 @@
             <input type="text" class="form-control" id="codigo" formControlName="codigo"
                 [ngClass]="{'is-valid' : f.codigo.dirty && !(f.codigo.errors?.required || f.codigo.errors?.minlength) }">
             <div *ngIf="f.codigo.dirty && f.codigo.errors?.required" class="text-danger">
-                Se debe introducir un código
+                {{oMetadataService.getName('mandatory')}}
             </div>
         </div>
     </div>
@@ -27,10 +27,10 @@
             <input type="text" class="form-control" id="nombre" formControlName="nombre"
                 [ngClass]="{'is-valid' : f.nombre.dirty && !(f.nombre.errors?.required || f.nombre.errors?.minlength) }">
             <div *ngIf="f.nombre.dirty && f.nombre.errors?.required" class="text-danger">
-                Se debe introducir un nombre
+                {{oMetadataService.getName('mandatory')}}
             </div>
             <div *ngIf="f.nombre.dirty && f.nombre.errors?.minlength" class="text-danger">
-                El nombre introducido es demasiado corto
+                {{oMetadataService.getName('tooShort')}}
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
 
     <div class="row mb-3">
         <label for="imagen" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('imagen')"></i>
-            Imagen</label>
+            {{oMetadataService.getName('image')}}</label>
         <div class="col-sm-1">
             <input type="text" class="form-control" id="imagen" formControlName="imagen">
             <input #imageInput type="file" accept="image/*" class="form-control-file mt-4" lang="es" name="imagen"
@@ -70,7 +70,7 @@
 
     <div class="row mb-3">
         <label for="descuento" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('descuento')"></i>
-            Descuento</label>
+            {{oMetadataService.getName('descuento')}}</label>
         <div class="col-sm-1">
             <input type="text" class="form-control" id="descuento" formControlName="descuento">
 
