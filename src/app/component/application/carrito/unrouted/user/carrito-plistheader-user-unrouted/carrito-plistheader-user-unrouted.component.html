@@ -8,14 +8,14 @@
 </th>
 -->
 <th (click)="doSetOrder('producto')">
-  <i [ngClass]="oMetadataService.getIcon('imagen')"></i> Producto
+  <i [ngClass]="oMetadataService.getIcon('imagen')"></i> {{oMetadataService.getName('producto')}}
   <i [ngClass]="oMetadataService.getIcon('flechaUp')"
     *ngIf="strSortField == 'producto' && strSortDirection == 'asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('flechaDown')"
     *ngIf="strSortField == 'producto' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('producto')">
-  <i [ngClass]="oMetadataService.getIcon('producto')"></i> Producto
+  <i [ngClass]="oMetadataService.getIcon('producto')"></i> {{oMetadataService.getName('producto')}}
   <i [ngClass]="oMetadataService.getIcon('flechaUp')"
     *ngIf="strSortField == 'producto' && strSortDirection == 'asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('flechaDown')"
@@ -29,14 +29,14 @@
     *ngIf="strSortField == 'cantidad' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('precio')">
-  <i [ngClass]="oMetadataService.getIcon('euro')"></i> Precio unitario
+  <i [ngClass]="oMetadataService.getIcon('euro')"></i> {{oMetadataService.getName('unitPrice')}}
   <i [ngClass]="oMetadataService.getIcon('flechaUp')"
     *ngIf="strSortField == 'precio' && strSortDirection == 'asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('flechaDown')"
     *ngIf="strSortField == 'precio' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('descuento')">
-  <i [ngClass]="oMetadataService.getIcon('euro')"></i> Descuentos
+  <i [ngClass]="oMetadataService.getIcon('euro')"></i> {{oMetadataService.getName('discounts')}}
   <i [ngClass]="oMetadataService.getIcon('flechaUp')"
     *ngIf="strSortField == 'precio' && strSortDirection == 'asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('flechaDown')"
@@ -52,11 +52,11 @@
 </th>
 -->
 <th>
-  <i [ngClass]="oMetadataService.getIcon('iva')"></i> IVA 21%
+  <i [ngClass]="oMetadataService.getIcon('iva')"></i> {{oMetadataService.getName('iva')}} 21%
 </th>
 <th>
-  <i [ngClass]="oMetadataService.getIcon('total')"></i> TOTAL (con IVA)
+  <i [ngClass]="oMetadataService.getIcon('total')"></i> {{oMetadataService.getName('total')}} ({{oMetadataService.getName('vatIncluded')}})
 </th>
 <th>
-  <i [ngClass]="oMetadataService.getIcon('acciones')"></i> Acciones
+  <i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getName('actions')}}
 </th>

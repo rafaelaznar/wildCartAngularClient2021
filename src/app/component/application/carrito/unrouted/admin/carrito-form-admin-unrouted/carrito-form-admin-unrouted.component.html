@@ -37,7 +37,7 @@
     [description]="oData2Show?.producto?.nombre ? oData2Show?.producto.nombre + '(' + oData2Show?.producto.codigo +')':''"
     (selection)="onFindSelectionProducto($event)">
     <div plist-finder-title>
-      <h4 class="text-center"> oMetadataService.getName('selectionHelp') + oMetadataService.getName('aproducto')</h4>
+      <h4 class="text-center"> {{oMetadataService.getName('selectionHelp') + ' ' + oMetadataService.getName('aproducto')}}</h4>
     </div>
   </div>
 
@@ -45,7 +45,7 @@
     [description]="oData2Show?.usuario?.dni ? oData2Show?.usuario?.dni + '(' + oData2Show?.usuario.nombre + ' ' + oData2Show?.usuario.apellido1 +')':''"
     (selection)="onFindSelectionUsuario($event)">
     <div plist-finder-title>
-      <h4 class="text-center"> oMetadataService.getName('selectionHelp') + oMetadataService.getName('ausuario')</h4>
+      <h4 class="text-center"> {{oMetadataService.getName('selectionHelp') + ' ' + oMetadataService.getName('ausuario')}}</h4>
     </div>
   </div>
 

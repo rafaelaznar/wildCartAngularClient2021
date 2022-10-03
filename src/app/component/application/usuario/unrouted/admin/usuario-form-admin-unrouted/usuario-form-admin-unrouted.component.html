@@ -102,7 +102,7 @@
     <div class="row mb-3" app-find-unrouted [entity]="'tipousuario'" [id]="oData2Show?.tipousuario.id"
         [description]="oData2Show?.tipousuario.nombre" (selection)="onFindSelection($event)">
         <div plist-finder-title>
-            <h4 class="text-center">Por favor, selecciona un tipo de usuario</h4>
+            <h4 class="text-center">{{oMetadataService.getName('selectionHelp') + ' ' +  oMetadataService.getName('atipousuario')}}</h4>
         </div>
     </div>
 

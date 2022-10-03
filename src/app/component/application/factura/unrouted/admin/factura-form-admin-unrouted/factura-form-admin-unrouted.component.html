@@ -47,7 +47,7 @@
         [description]="oFactura2Show?.usuario.nombre && oFactura2Show?.usuario.apellido1 ? ( oFactura2Show?.usuario.nombre + ' ' + oFactura2Show?.usuario.apellido1 + ' ' + oFactura2Show?.usuario.apellido2).trim() : ''"
         (selection)="onFindSelection($event)">
         <div plist-finder-title>
-            <h4 class="text-center">Por favor, selecciona un usuario</h4>
+            <h4 class="text-center">{{oMetadataService.getName('selectionHelp') + ' ' +  oMetadataService.getName('ausuario')}}</h4>
         </div>
     </div>
 

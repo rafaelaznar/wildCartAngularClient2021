@@ -244,15 +244,21 @@ export class MetadataService {
       case str == "codigo": return "Código";
       case str == "existencias": return "Existencias";
       case str == "precio": return "Precio";
+      case str == "unitPrice": return "Precio unitario";
       case str == "invalidPrecio": return "Se debe introducir un número entre 1 y 100000. Se pueden poner dos decimales.";
       // campos compra
-      case str == "cantidad": return "Cantidad";
-      case str == "invalidCantidad": return "Se debe introducir un número entero entre 1 y 10000.";
+      case str == "cantidad": return "Cantidad";      
+      case str == "invalidCantidad": return "Se debe introducir la cantidad: un número entero entre 1 y 10000.";
       case str == "fecha": return "Fecha";
-      case str == "descuento_usuario": return "Descuento usuario";
-      case str == "descuento_producto": return "Descuento producto";
+      case str == "invalidFecha": return "La fecha no es válida, debe introducir una fecha válida";
+      case str == "descuentoCliente": return "Descuento del cliente";
+      case str == "descuentoUsuario": return "Descuento del usuario";
+      case str == "descuentoProducto": return "Descuento del producto";
+      case str == "invalidDescuento": return "Se debe introducir un descuento válido: un número entero entre 0 y 100.";
+      case str == "discounts": return "Descuentos";
       // campos factura
       case str == "iva": return "IVA";
+      case str == "vatIncluded": return "con IVA";
       case str == "pagado": return "Pagado";
       //      
       // sistema      
@@ -292,12 +298,17 @@ export class MetadataService {
       case str == "reject": return "Rechazar";
       case str == "description": return "Descripcion";
       case str == "units": return "Unidades";
+      case str == "total": return "Total";
       //
       case str == "user-carritocontent": return "Contenido de tu carrito";
       case str == "productDetail": return "Detalle de producto";
       case str == "randomRegistersLoad": return "Carga aleatoria de registros";      
       //
-      case str == "selectionHelp": return "Por favor, selecciona ";
+      case str == "selectionHelp": return "Por favor, selecciona";
+      //
+      case str == "productsInCart": return "Productos en el carrito";
+      case str == "totalInCart": return "Total pedido en carrito";
+      case str == "vatIncluded": return "IVA incluido";
       default: return 'Desconocido';
     }
   }
