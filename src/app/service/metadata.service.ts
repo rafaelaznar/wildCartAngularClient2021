@@ -16,7 +16,7 @@ export class MetadataService {
 
 
   public getIcon(strIcon: string): string {
-    switch (true) {  
+    switch (true) {
       case strIcon == "system": return "fas fa-shopping-basket";
       //-- entities  
       case strIcon == "usuario": return "fas fa-user";
@@ -48,7 +48,7 @@ export class MetadataService {
       case strIcon == "descuento": return "fas fa-percentage";
       case strIcon == "token": return "fas fa-barcode";
       case strIcon == "validado": return "fas fa-user-check";
-      case strIcon == "activo": return "fas fa-flag-checkered";
+      case strIcon == "activo": return "fas fa-flag-checkered";      
       //
       case strIcon == "descripcion": return "fas fa-signature";
       //
@@ -100,8 +100,13 @@ export class MetadataService {
       case strIcon == "orderUp": return "fas fa-arrow-up";
       case strIcon == "orderDown": return "fas fa-arrow-down";
       case strIcon == "github": return "fab fa-github";
-      case strIcon == "github2": return "fab fa-github-alt";  
-      case strIcon == "return": return "fas fa-arrow-circle-left";    
+      case strIcon == "github2": return "fab fa-github-alt";
+      case strIcon == "return": return "fas fa-arrow-circle-left";
+      //ptes
+      case strIcon == "tools": return "fas fa-tools";
+      case strIcon == "acciones": return "fas fa-tools";
+      case strIcon == "porcentaje": return "fas fa-percent"; //percent
+      case strIcon == "activado": return "fas fa-flag-checkered";
       //
       default: return 'fas fa-question';
     }
@@ -119,8 +124,8 @@ export class MetadataService {
       case str == "producto": return "Producto";
       case str == "aproducto": return "Un producto";
       case str == "productos": return "Productos";
-      case str == "theproduct": return "El producto";
-      case str == "theproducts": return "Los productos";
+      case str == "theproducto": return "El producto";
+      case str == "theproductos": return "Los productos";
       //
       case str == "tipoproducto": return "Tipo de producto";
       case str == "atipoproducto": return "Un tipo de producto";
@@ -223,7 +228,7 @@ export class MetadataService {
       case str == "therandoms": return "Las creaciones de registros aleatorios";
       // errores genericos de campos
       case str == "mandatory": return "El campo es obligatorio, debe introduir los datos";
-      case str == "invalid": return "Los valores del campo no son válidos, debe introducir los datos correctamente";    
+      case str == "invalid": return "Los valores del campo no son válidos, debe introducir los datos correctamente";
       case str == "tooShort": return "El valor introducido es demasiado corto";
       case str == "tooLong": return "El valor introducido es demasiado largo";
       // campos usuario
@@ -247,7 +252,7 @@ export class MetadataService {
       case str == "unitPrice": return "Precio unitario";
       case str == "invalidPrecio": return "Se debe introducir un número entre 1 y 100000. Se pueden poner dos decimales.";
       // campos compra
-      case str == "cantidad": return "Cantidad";      
+      case str == "cantidad": return "Cantidad";
       case str == "invalidCantidad": return "Se debe introducir la cantidad: un número entero entre 1 y 10000.";
       case str == "fecha": return "Fecha";
       case str == "invalidFecha": return "La fecha no es válida, debe introducir una fecha válida";
@@ -302,7 +307,7 @@ export class MetadataService {
       //
       case str == "user-carritocontent": return "Contenido de tu carrito";
       case str == "productDetail": return "Detalle de producto";
-      case str == "randomRegistersLoad": return "Carga aleatoria de registros";      
+      case str == "randomRegistersLoad": return "Carga aleatoria de registros";
       //
       case str == "selectionHelp": return "Por favor, selecciona";
       //
@@ -323,7 +328,7 @@ export class MetadataService {
 
   getConfirmationMessage(strEntity: string, strOperation: string): string {
     return "¿Está vd. seguro de que quiere " + this.getName(strOperation).toLowerCase() + ' ' + this.getName('the' + strEntity) + "?";
-  }  
+  }
 
   public getFilterMsg(strFilter: string, strEntity1: string, entity1Filter: number, strEntity2: string, entity2Filter: number): string {
     if (entity1Filter !== null && entity1Filter !== undefined) {
