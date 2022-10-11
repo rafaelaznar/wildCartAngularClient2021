@@ -6,23 +6,106 @@
     [iconEntity]="oMetadataService.getIcon(this.strEntity)">
   </app-header>
 
+
+
+  <form novalidate [formGroup]="oForm" *ngIf="oForm">
+
+    <div class="row mb-3">
+      <label for="dni" class="col-sm-2 col-form-label">
+        <i [ngClass]="oMetadataService.getIcon('amount')"></i> {{oMetadataService.getName('amount')}}</label>
+      <div class="col-sm-2">
+        <select class="form-select" aria-label="Default select example">
+          <option value="10" selected>10</option>
+          <option value="100">100</option>
+          <option value="1000">1000</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="row mb-3">
+      <label for="fecha" class="col-sm-2 col-form-label">
+        <i [ngClass]="oMetadataService.getIcon('fecha')"></i> Entre dos fechas</label>
+      <div class="col-sm-10">
+        <p-calendar formControlName="fecha_inicio" [locale]="es" dateFormat="dd/mm/yy" inputId="spanish" class="me-3"
+          [showIcon]="true" inputId="spanish"></p-calendar>
+        <div *ngIf="f.fecha_inicio.dirty && f.fecha_inicio.errors?.required" class="text-danger" >
+          Se debe introducir una fecha de inicio correcta
+        </div>
+        <!--    -->
+        <p-calendar formControlName="fecha_fin" [locale]="es" dateFormat="dd/mm/yy" inputId="spanish" [showIcon]="true"
+          inputId="spanish"></p-calendar>
+        <div *ngIf="f.fecha_fin.dirty && f.fecha_fin.errors?.required" class="text-danger">
+          Se debe introducir una fecha de fin correcta
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row mb-3" app-find-unrouted [entity]="'producto'" [id]="oProduct?.id"
+      [description]="!f.id_producto.dirty ? '' : oProduct ?  oProduct?.nombre : 'ERROR'"
+      (selection)="onProductFindSelection($event)">
+      <div plist-finder-title>
+        <h4 class="text-center">{{oMetadataService.getName('selectionHelp') + ' ' +
+          oMetadataService.getName('aproducto')}}</h4>
+      </div>
+    </div>
+
+    <div class="row mb-3" app-find-unrouted [entity]="'usuario'" [id]="oClient?.id"
+      [description]="!f.id_usuario.dirty ? '' : oClient ? ( oClient?.nombre + ' ' + oClient?.apellido1 + ' ' + oClient?.apellido2).trim() : 'ERROR'"
+      (selection)="onClientFindSelection($event)">
+      <div plist-finder-title>
+        <h4 class="text-center">{{oMetadataService.getName('selectionHelp') + ' ' +
+          oMetadataService.getName('ausuario')}}</h4>
+      </div>
+    </div>
+
+  </form>
+
+
   <div class="row justify-content-center">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th class="text-center"> codigo</th>
-          <th class="text-center"> nombre </th>          
-          <th style="width: 5%" class="text-center"> herramientas </th>
+          <th class="text-left"> {{oMetadataService.getName('code')}}</th>
+          <th class="text-center"> {{oMetadataService.getName('reportname')}}</th>
+          <th class="text-center"> {{oMetadataService.getName('reportdata')}}</th>
+          <th style="width: 5%" class="text-center"> {{oMetadataService.getName('tools')}}</th>
         </tr>
       </thead>
       <tbody>
+
+        <tr class="align-middle">
+          <td>i01</td>
+          <td>N Productos con más descuento</td>
+          <td>
+
+
+
+
+          </td>
+          <td class="text-center">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
+              <button type="button" class="btn btn-success" (click)="print()">
+                <i [ngClass]="oMetadataService.getIcon('print')"></i> {{oMetadataService.getName('print')}}
+              </button>
+            </div>
+          </td>
+        </tr>
+
+
+
+
+
+
         <tr *ngFor="let oReport of aReports" class="align-middle">
           <td>{{oReport.codigo}}</td>
+          <td>{{oReport.nombre}}</td>
           <td>{{oReport.nombre}}</td>
           <td class="text-center">
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
               <button type="button" class="btn btn-success" (click)="print()">
-                <i [ngClass]="oMetadataService.getIcon('imprimir')"></i> Imprimir
+                <i [ngClass]="oMetadataService.getIcon('print')"></i> {{oMetadataService.getName('print')}}
               </button>
             </div>
           </td>
@@ -32,10 +115,10 @@
   </div>
 
   <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
-    <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i [ngClass]="oMetadataService.getIcon('home')"></i> Página
-      principal</a>
-    <a class="btn btn-primary mx-2" (click)="goBack()"><i [ngClass]="oMetadataService.getIcon('return')"></i> Volver
-    </a>
+    <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i [ngClass]="oMetadataService.getIcon('home')"></i>
+      {{oMetadataService.getName('home')}}</a>
+    <a class="btn btn-primary mx-2" (click)="goBack()"><i [ngClass]="oMetadataService.getIcon('return')"></i>
+      {{oMetadataService.getName('return')}}</a>
   </div>
 
 </div>
@@ -43,11 +126,13 @@
 <app-footer></app-footer>
 
 <app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'lg'" [hide]="eventsSubjectHideModal.asObservable()"
-    (close)="onCloseModal()">
-    
-    <app-preprint-unrouted [nombreinforme]="nombreinforme" [showcantidad]="showcantidad" [showfechas]="showfechas" (selection)="onSelection($event)">        
-    </app-preprint-unrouted>
-    
+  (close)="onCloseModal()">
+
+  <app-preprint-unrouted [nombreinforme]="nombreinforme" [showcantidad]="showcantidad" [showfechas]="showfechas"
+    (selection)="onSelection($event)">
+  </app-preprint-unrouted>
+
 </app-modal>
 
-<app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()" [size]="'sm'"></app-popup>
+<app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()" [size]="'sm'">
+</app-popup>

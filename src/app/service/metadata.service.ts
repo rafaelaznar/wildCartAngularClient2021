@@ -91,8 +91,7 @@ export class MetadataService {
       case strIcon == "rpp": return "fas fa-file-alt";
       case strIcon == "selection": return "fas fa-bullseye";
       case strIcon == "ok": return "fas fa-check-square";
-      case strIcon == "return": return "fas fa-arrow-circle-left";
-      case strIcon == "tools": return "fas fa-tools";
+      case strIcon == "return": return "fas fa-arrow-circle-left";      
       case strIcon == "random": return "fas fa-random";
       case strIcon == "save": return "fas fa-floppy-disk";
       case strIcon == "accept": return "fas fa-check-circle";
@@ -102,6 +101,7 @@ export class MetadataService {
       case strIcon == "github": return "fab fa-github";
       case strIcon == "github2": return "fab fa-github-alt";
       case strIcon == "return": return "fas fa-arrow-circle-left";
+      case strIcon == "amount": return "fas fa-mountain";
       //ptes
       case strIcon == "tools": return "fas fa-tools";
       case strIcon == "acciones": return "fas fa-tools";
@@ -226,6 +226,24 @@ export class MetadataService {
       case str == "randoming": return "Creando registros aleatorios";
       case str == "therandom": return "La creación de registros aleatorios";
       case str == "therandoms": return "Las creaciones de registros aleatorios";
+      //
+      case str == "print": return "Imprimir";
+      case str == "printof": return "Impresión";
+      case str == "goprint": return "Ir a la impresión";
+      case str == "prints": return "Impresiones";
+      case str == "printing": return "Imprimiendo";
+      case str == "theprint": return "La impresión";
+      case str == "theprints": return "Las impresiones";
+      //
+      case str == "report": return "Informe";
+      case str == "reportof": return "Informes";
+      case str == "goreport": return "Ir al informe";
+      case str == "reports": return "Informes";
+      case str == "reporting": return "Generando el informe";
+      case str == "thereport": return "El informe";
+      case str == "ofthereport": return "Del informe";
+      case str == "thereports": return "Los informes";
+      case str == "ofthereports": return "De los informes";      
       // errores genericos de campos
       case str == "mandatory": return "El campo es obligatorio, debe introduir los datos";
       case str == "invalid": return "Los valores del campo no son válidos, debe introducir los datos correctamente";
@@ -268,8 +286,6 @@ export class MetadataService {
       //      
       // sistema      
       case str == "id": return "ID";
-      case str == "report": return "Informe";
-      case str == "reports": return "Informes";
       case str == "action": return "Acción";
       case str == "actions": return "Acciones";
       case str == "order": return "Orden";
@@ -279,8 +295,6 @@ export class MetadataService {
       case str == "profile": return "Perfil";
       case str == "userprofile": return "Detalles del usuario en sesión";
       case str == "random": return "Generación aleatoria de registros";
-      case str == "print": return "Impresión de informe";
-      case str == "prints": return "Impresión de informes";
       case str == "actions": return "Acciones";
       case str == "return": return "Volver";
       case str == "home": return "Ir a la página principal";
@@ -304,6 +318,14 @@ export class MetadataService {
       case str == "description": return "Descripcion";
       case str == "units": return "Unidades";
       case str == "total": return "Total";
+      case str == "tools": return "Herramientas";
+      case str == "code": return "Código";
+      case str == "name": return "Nombre";
+      case str == "data": return "Datos";
+      case str == "reportdata": return "Datos del informe";
+      case str == "reportname": return "Nombre del informe";
+      case str == "amount": return "Cantidad";
+
       //
       case str == "user-carritocontent": return "Contenido de tu carrito";
       case str == "productDetail": return "Detalle de producto";
