@@ -36,7 +36,10 @@ export interface IFecha {
 
 export interface IReport {
     codigo: string,
-    nombre: string
+    nombre: string,
+    fechas: boolean,
+    usuario: boolean,
+    producto: boolean
 }
 
 export interface IPrint {

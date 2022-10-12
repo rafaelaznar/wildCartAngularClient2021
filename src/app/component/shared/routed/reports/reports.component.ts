@@ -30,38 +30,38 @@ export class ReportsComponent implements OnInit {
   }
 
   aReports: IReport[] = [
-    { nombre: "N Productos con más descuento", codigo: "i01" },
-    { nombre: "N Productos con menos descuento", codigo: "i02" },
+    { nombre: "N Productos con más descuento", codigo: "i01", fechas: false, usuario: false, producto: false },
+    { nombre: "N Productos con menos descuento", codigo: "i02", fechas: false, usuario: false, producto: false },
 
-    { nombre: "N Clientes con más descuento", codigo: "i03" },
-    { nombre: "N Clientes con menos descuento", codigo: "i04" },
+    { nombre: "N Clientes con más descuento", codigo: "i03", fechas: false, usuario: false, producto: false },
+    { nombre: "N Clientes con menos descuento", codigo: "i04", fechas: false, usuario: false, producto: false },
 
-    { nombre: "N Productos con más existencias", codigo: "i05" },
-    { nombre: "N Productos con menos existencias", codigo: "i06" },
+    { nombre: "N Productos con más existencias", codigo: "i05", fechas: false, usuario: false, producto: false },
+    { nombre: "N Productos con menos existencias", codigo: "i06", fechas: false, usuario: false, producto: false },
 
-    { nombre: "N Productos más vendidos entre dos fechas", codigo: "i07" },
-    { nombre: "N Productos menos vendidos entre dos fechas", codigo: "i08" },
+    { nombre: "N Productos más vendidos entre dos fechas", codigo: "i07", fechas: true, usuario: false, producto: false },
+    { nombre: "N Productos menos vendidos entre dos fechas", codigo: "i08", fechas: true, usuario: false, producto: false },
 
-    { nombre: "N Tipos de producto más vendidos entre dos fechas", codigo: "i09" },
-    { nombre: "N Tipos de producto menos vendidos entre dos fechas", codigo: "i10" },
+    { nombre: "N Tipos de producto más vendidos entre dos fechas", codigo: "i09", fechas: true, usuario: false, producto: false },
+    { nombre: "N Tipos de producto menos vendidos entre dos fechas", codigo: "i10", fechas: true, usuario: false, producto: false },
 
-    { nombre: "N Clientes que más compran entre dos fechas", codigo: "i11" },
-    { nombre: "N Clientes que menos compran entre dos fechas", codigo: "i12" },
+    { nombre: "N Clientes que más compran entre dos fechas", codigo: "i11", fechas: true, usuario: false, producto: false },
+    { nombre: "N Clientes que menos compran entre dos fechas", codigo: "i12", fechas: true, usuario: false, producto: false },
 
-    { nombre: "N Facturas de más importe entre dos fechas", codigo: "i13" },
-    { nombre: "N Facturas de menos importe entre dos fechas", codigo: "i14" },
+    { nombre: "N Facturas de más importe entre dos fechas", codigo: "i13", fechas: true, usuario: false, producto: false },
+    { nombre: "N Facturas de menos importe entre dos fechas", codigo: "i14", fechas: true, usuario: false, producto: false },
 
-    { nombre: "N Facturas de un cliente entre dos fechas", codigo: "i15" },
+    { nombre: "N Facturas de un cliente entre dos fechas", codigo: "i15", fechas: true, usuario: true, producto: false },
 
-    { nombre: "N Facturas de un producto entre dos fechas", codigo: "i16" },
+    { nombre: "N Facturas de un producto entre dos fechas", codigo: "i16", fechas: true, usuario: true, producto: true },
 
-    { nombre: "N Productos que más compra un cliente entre dos fechas", codigo: "i17" },
+    { nombre: "N Productos que más compra un cliente entre dos fechas", codigo: "i17", fechas: true, usuario: true, producto: false },
 
-    { nombre: "N Clientes que más compran un producto entre dos fechas", codigo: "i18" },
+    { nombre: "N Clientes que más compran un producto entre dos fechas", codigo: "i18", fechas: true, usuario: false, producto: false },
 
-    { nombre: "N Productos que más compra un cliente entre dos fechas", codigo: "i19" },
+    { nombre: "N Productos que más compra un cliente entre dos fechas", codigo: "i19", fechas: true, usuario: true, producto: false },
 
-    { nombre: "N Clientes que más compran un producto entre dos fechas", codigo: "i20" }
+    { nombre: "N Clientes que más compran un producto entre dos fechas", codigo: "i20", fechas: true, usuario: false, producto: true },
 
   ];
 

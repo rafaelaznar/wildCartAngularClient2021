@@ -68,39 +68,16 @@
       <thead>
         <tr>
           <th class="text-left"> {{oMetadataService.getName('code')}}</th>
-          <th class="text-center"> {{oMetadataService.getName('reportname')}}</th>
-          <th class="text-center"> {{oMetadataService.getName('reportdata')}}</th>
+          <th class="text-center"> {{oMetadataService.getName('reportname')}}</th>          
           <th style="width: 5%" class="text-center"> {{oMetadataService.getName('tools')}}</th>
         </tr>
       </thead>
       <tbody>
 
-        <tr class="align-middle">
-          <td>i01</td>
-          <td>N Productos con más descuento</td>
-          <td>
-
-
-
-
-          </td>
-          <td class="text-center">
-            <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-              <button type="button" class="btn btn-success" (click)="print()">
-                <i [ngClass]="oMetadataService.getIcon('print')"></i> {{oMetadataService.getName('print')}}
-              </button>
-            </div>
-          </td>
-        </tr>
-
-
-
-
-
+       
 
         <tr *ngFor="let oReport of aReports" class="align-middle">
           <td>{{oReport.codigo}}</td>
-          <td>{{oReport.nombre}}</td>
           <td>{{oReport.nombre}}</td>
           <td class="text-center">
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
