@@ -53,11 +53,11 @@ export class ReportsComponent implements OnInit {
 
     { nombre: "N Facturas de un cliente entre dos fechas", codigo: "i15", fechas: true, usuario: true, producto: false },
 
-    { nombre: "N Facturas de un producto entre dos fechas", codigo: "i16", fechas: true, usuario: true, producto: true },
+    { nombre: "N Facturas de un producto entre dos fechas", codigo: "i16", fechas: true, usuario: false, producto: true },
 
     { nombre: "N Productos que más compra un cliente entre dos fechas", codigo: "i17", fechas: true, usuario: true, producto: false },
 
-    { nombre: "N Clientes que más compran un producto entre dos fechas", codigo: "i18", fechas: true, usuario: false, producto: false },
+    { nombre: "N Clientes que más compran un producto entre dos fechas", codigo: "i18", fechas: true, usuario: false, producto: true },
 
     { nombre: "N Productos que más compra un cliente entre dos fechas", codigo: "i19", fechas: true, usuario: true, producto: false },
 

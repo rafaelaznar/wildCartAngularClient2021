@@ -29,7 +29,7 @@
       <div class="col-sm-10">
         <p-calendar formControlName="fecha_inicio" [locale]="es" dateFormat="dd/mm/yy" inputId="spanish" class="me-3"
           [showIcon]="true" inputId="spanish"></p-calendar>
-        <div *ngIf="f.fecha_inicio.dirty && f.fecha_inicio.errors?.required" class="text-danger" >
+        <div *ngIf="f.fecha_inicio.dirty && f.fecha_inicio.errors?.required" class="text-danger">
           Se debe introducir una fecha de inicio correcta
         </div>
         <!--    -->
@@ -68,17 +68,27 @@
       <thead>
         <tr>
           <th class="text-left"> {{oMetadataService.getName('code')}}</th>
-          <th class="text-center"> {{oMetadataService.getName('reportname')}}</th>          
+          <th class="text-center"> {{oMetadataService.getName('reportname')}}</th>
+
+          <th style="width: 5%" class="text-center"> Fechas</th>
+          <th style="width: 5%" class="text-center"> Usuario</th>
+          <th style="width: 5%" class="text-center"> Producto</th>
+
           <th style="width: 5%" class="text-center"> {{oMetadataService.getName('tools')}}</th>
         </tr>
       </thead>
       <tbody>
 
-       
+
 
         <tr *ngFor="let oReport of aReports" class="align-middle">
           <td>{{oReport.codigo}}</td>
           <td>{{oReport.nombre}}</td>
+
+          <td class="text-center"><i [ngClass]="oReport.fechas?oMetadataService.getIcon('true'):oMetadataService.getIcon('false')"></i></td>
+          <td class="text-center"><i [ngClass]="oReport.usuario?oMetadataService.getIcon('true'):oMetadataService.getIcon('false')"></i></td>
+          <td class="text-center"><i [ngClass]="oReport.producto?oMetadataService.getIcon('true'):oMetadataService.getIcon('false')"></i></td>
+
           <td class="text-center">
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
               <button type="button" class="btn btn-success" (click)="print()">

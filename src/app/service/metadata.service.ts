@@ -90,7 +90,7 @@ export class MetadataService {
       case strIcon == "search": return "fas fa-search";
       case strIcon == "rpp": return "fas fa-file-alt";
       case strIcon == "selection": return "fas fa-bullseye";
-      case strIcon == "ok": return "fas fa-check-square";
+      case strIcon == "ok": return "fas fa-check-square";      
       case strIcon == "return": return "fas fa-arrow-circle-left";      
       case strIcon == "random": return "fas fa-random";
       case strIcon == "save": return "fas fa-floppy-disk";
@@ -102,6 +102,8 @@ export class MetadataService {
       case strIcon == "github2": return "fab fa-github-alt";
       case strIcon == "return": return "fas fa-arrow-circle-left";
       case strIcon == "amount": return "fas fa-mountain";
+      case strIcon == "true": return "fas fa-check";
+      case strIcon == "false": return "fas fa-times";
       //ptes
       case strIcon == "tools": return "fas fa-tools";
       case strIcon == "acciones": return "fas fa-tools";
