@@ -90,8 +90,10 @@
           <td class="text-center"><i [ngClass]="oReport.producto?oMetadataService.getIcon('true'):oMetadataService.getIcon('false')"></i></td>
 
           <td class="text-center">
+            
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-              <button type="button" class="btn btn-success" (click)="print()">
+              
+              <button type="button" class="btn btn-success" (click)="print()" *ngIf="(!oReport.producto&&!oReport.usuario)||(oForm.value.id_usuario && oReport.usuario)||(oForm.value.id_producto && oReport.producto)||((oForm.value.id_usuario && oReport.usuario)&&(oForm.value.id_producto && oReport.producto))">
                 <i [ngClass]="oMetadataService.getIcon('print')"></i> {{oMetadataService.getName('print')}}
               </button>
             </div>

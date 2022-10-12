@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { formatDate, Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IReport } from 'src/app/model/model-interfaces';
 import { Subject } from 'rxjs';
@@ -8,6 +8,7 @@ import { IProducto } from 'src/app/model/producto-interfaces';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ProductoService } from 'src/app/service/producto.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -24,6 +25,9 @@ export class ReportsComponent implements OnInit {
   oProduct: IProducto;
 
   oForm: UntypedFormGroup = null;
+  currentDate = new Date();
+
+  strUsuarioSession: string;
 
   get f() {
     return this.oForm.controls;
@@ -70,8 +74,18 @@ export class ReportsComponent implements OnInit {
     public oMetadataService: MetadataService,
     private oUsuarioService: UsuarioService,
     private oFormBuilder: UntypedFormBuilder,
-    private oProductoService: ProductoService
-  ) { }
+    private oProductoService: ProductoService,
+    private oActivatedRoute: ActivatedRoute,
+    private oRouter: Router,
+  ) {
+    if (this.oActivatedRoute.snapshot.data.message) {
+      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
+      localStorage.setItem('user', JSON.stringify(this.oActivatedRoute.snapshot.data.message));
+    } else {
+      localStorage.clear();
+      oRouter.navigate(['/home']);
+    }
+  }
 
   es: any = {
     firstDayOfWeek: 1,
@@ -86,13 +100,15 @@ export class ReportsComponent implements OnInit {
   };
 
   ngOnInit() {
+    console.log(formatDate(this.currentDate, 'dd-MM-yyyy', 'es'));
     this.oForm = this.oFormBuilder.group({
       cantidad: ['', [Validators.required]],
       id_usuario: ['', [Validators.required, Validators.maxLength(1)]],
       id_producto: ['', [Validators.required, Validators.maxLength(1)]],
       fecha_inicio: ['', Validators.required],
-      fecha_fin: ['', Validators.required],
+      fecha_fin: [this.currentDate, Validators.required],
     });
+    this.onChanges();
   }
 
   goBack() {
@@ -139,6 +155,18 @@ export class ReportsComponent implements OnInit {
       });
     return false;
   }
+
+  onChanges(): void {
+    console.log("onChanges",this.oForm);
+    this.oForm.valueChanges.subscribe(val => {
+      console.log("onChanges", val, this.oForm.value.fecha_inicio, this.oForm.value.fecha_fin);
+    });
+  }
+
+
+
+
+//this.oForm.value.id,
 
   //modal
 
