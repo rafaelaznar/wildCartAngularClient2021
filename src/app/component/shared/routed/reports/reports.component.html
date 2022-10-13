@@ -33,13 +33,14 @@
           Se debe introducir una fecha de inicio correcta
         </div>
         <!--    -->
-        <p-calendar formControlName="fecha_fin" [locale]="es" dateFormat="dd/mm/yy" inputId="spanish" [showIcon]="true"
+        <p-calendar formControlName="fecha_fin" [locale]="es" dateFormat="dd/mm/yy" inputId="spanish" class="me-3" [showIcon]="true"
           inputId="spanish"></p-calendar>
         <div *ngIf="f.fecha_fin.dirty && f.fecha_fin.errors?.required" class="text-danger">
           Se debe introducir una fecha de fin correcta
         </div>
-
+        <div *ngIf="errorDateRange" class="badge bg-danger text-wrap">La fecha de inicio debe ser anterior a la fecha final</div>
       </div>
+      
     </div>
 
     <div class="row mb-3" app-find-unrouted [entity]="'producto'" [id]="oProduct?.id"
@@ -84,17 +85,27 @@
         <tr *ngFor="let oReport of aReports" class="align-middle">
           <td>{{oReport.codigo}}</td>
           <td>{{oReport.nombre}}</td>
-
-          <td class="text-center"><i [ngClass]="oReport.fechas?oMetadataService.getIcon('true'):oMetadataService.getIcon('false')"></i></td>
-          <td class="text-center"><i [ngClass]="oReport.usuario?oMetadataService.getIcon('true'):oMetadataService.getIcon('false')"></i></td>
-          <td class="text-center"><i [ngClass]="oReport.producto?oMetadataService.getIcon('true'):oMetadataService.getIcon('false')"></i></td>
-
+          <td class="text-center"><i
+              [ngClass]="oReport.fechas?oMetadataService.getIcon('true'):oMetadataService.getIcon('false')"></i></td>
+          <td class="text-center"><i
+              [ngClass]="oReport.usuario?oMetadataService.getIcon('true'):oMetadataService.getIcon('false')"></i></td>
+          <td class="text-center"><i
+              [ngClass]="oReport.producto?oMetadataService.getIcon('true'):oMetadataService.getIcon('false')"></i></td>
           <td class="text-center">
-            
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-              
-              <button type="button" class="btn btn-success" (click)="print()" *ngIf="(!oReport.producto&&!oReport.usuario)||(oForm.value.id_usuario && oReport.usuario)||(oForm.value.id_producto && oReport.producto)||((oForm.value.id_usuario && oReport.usuario)&&(oForm.value.id_producto && oReport.producto))">
-                <i [ngClass]="oMetadataService.getIcon('print')"></i> {{oMetadataService.getName('print')}}
+              <button type="button" class="btn btn-success" (click)="print(oReport.codigo)" *ngIf="
+              (!oReport.producto&&!oReport.usuario&&!oReport.fechas)
+              ||(!oReport.producto&&!oReport.usuario&&oReport.fechas&&dateRangeOK)
+              ||(!oReport.producto&&oForm.value.id_usuario&&oReport.usuario&&oReport.fechas&&dateRangeOK)
+              ||(oForm.value.id_producto&&oReport.producto&&!oReport.usuario&&oReport.fechas&&dateRangeOK)
+              ||(oForm.value.id_producto&&oReport.producto&&oForm.value.id_usuario&&oReport.usuario&&oReport.fechas&&dateRangeOK)
+              ||(!oReport.producto&&!oReport.usuario&&!oReport.fechas)
+              ||(!oReport.producto&&oForm.value.id_usuario&&!oReport.usuario&&!oReport.fechas)
+              ||(oForm.value.id_producto&&oReport.producto&&!oReport.usuario&&!oReport.fechas)
+              ||(oForm.value.id_producto&&oReport.producto&&oForm.value.id_usuario&&!oReport.usuario&&!oReport.fechas)              
+              ">
+                <i [ngClass]="oMetadataService.getIcon('print')"></i>
+                {{oMetadataService.getName('print')}}
               </button>
             </div>
           </td>

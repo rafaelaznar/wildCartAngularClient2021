@@ -29,6 +29,9 @@ export class ReportsComponent implements OnInit {
 
   strUsuarioSession: string;
 
+  dateRangeOK: boolean = false;
+  errorDateRange: boolean = false;
+
   get f() {
     return this.oForm.controls;
   }
@@ -115,7 +118,8 @@ export class ReportsComponent implements OnInit {
     this.oLocation.back();
   }
 
-  print() {
+  print(codigo:string) {
+
     this.openModal();
   }
 
@@ -156,17 +160,38 @@ export class ReportsComponent implements OnInit {
     return false;
   }
 
+
+
   onChanges(): void {
-    console.log("onChanges",this.oForm);
+    //console.log("onChanges", this.oForm);
     this.oForm.valueChanges.subscribe(val => {
-      console.log("onChanges", val, this.oForm.value.fecha_inicio, this.oForm.value.fecha_fin);
+
+      if (Object.prototype.toString.call(this.oForm.value.fecha_inicio) === "[object Date]" && !isNaN(this.oForm.value.fecha_inicio)) {
+        if (Object.prototype.toString.call(this.oForm.value.fecha_fin) === "[object Date]" && !isNaN(this.oForm.value.fecha_inicio)) {
+          const ini = new Date(this.oForm.value.fecha_inicio);
+          const fin = new Date(this.oForm.value.fecha_fin);
+          if (ini <= fin) {
+            this.dateRangeOK = true;
+            this.errorDateRange = false;
+          } else {
+            this.dateRangeOK = false;
+            this.errorDateRange = true;
+          }
+        } else {
+          this.dateRangeOK = false;
+        }
+      } else {
+        this.dateRangeOK = false;
+      }
+      //console.log("onChanges fechas " + this.dateRangeOK);
+
     });
   }
 
 
 
 
-//this.oForm.value.id,
+  //this.oForm.value.id,
 
   //modal
 
