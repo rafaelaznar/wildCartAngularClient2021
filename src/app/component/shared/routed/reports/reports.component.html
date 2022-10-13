@@ -125,14 +125,5 @@
 
 <app-footer></app-footer>
 
-<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'lg'" [hide]="eventsSubjectHideModal.asObservable()"
-  (close)="onCloseModal()">
-
-  <app-preprint-unrouted [nombreinforme]="nombreinforme" [showcantidad]="showcantidad" [showfechas]="showfechas"
-    (selection)="onSelection($event)">
-  </app-preprint-unrouted>
-
-</app-modal>
-
 <app-popup [show]="eventsSubjectShowPopup.asObservable()" [body]="strResult" (close)="onClosePopup()" [size]="'sm'">
 </app-popup>

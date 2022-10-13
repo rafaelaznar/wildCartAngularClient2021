@@ -118,9 +118,11 @@ export class ReportsComponent implements OnInit {
     this.oLocation.back();
   }
 
-  print(codigo:string) {
+  print(codigo: string) {
 
-    this.openModal();
+    this.strResult = 'Imprimiendo el informe ' + codigo;
+    this.openPopup();
+
   }
 
 
@@ -191,37 +193,7 @@ export class ReportsComponent implements OnInit {
 
 
 
-  //this.oForm.value.id,
 
-  //modal
-
-  nombreinforme = "";
-  codigoinforme = "";
-  showcantidad = true;
-  showfechas = true;
-  showingModal: boolean = false;
-
-  eventsSubjectShowModal: Subject<void> = new Subject<void>();
-  eventsSubjectHideModal: Subject<void> = new Subject<void>();
-
-  openModal(): void {
-    this.eventsSubjectShowModal.next();
-    this.showingModal = true;
-  }
-
-  onCloseModal(): void {
-    //this.oRouter.navigate(['factura/view/' + this.id]);
-  }
-
-  closeModal(): void {
-    this.eventsSubjectHideModal.next();
-    this.showingModal = false;
-  }
-
-  onSelection($event: any) {
-    console.log("edit evento recibido: " + $event)
-    //this.oForm.controls['id_usuario'].setValue($event);
-  }
 
   //popup
 
