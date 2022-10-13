@@ -46,7 +46,6 @@ import { HeaderComponent } from './component/shared/unrouted/header/header.compo
 import { findUnroutedComponent } from './component/shared/unrouted/find-unrouted/find-unrouted.component';
 import { ReportsComponent } from './component/shared/routed/reports/reports.component';
 import { PopupComponent } from './component/shared/unrouted/popup/popup.component';
-import { PrePrintComponent } from './component/shared/unrouted/preprint/preprint.component';
 import { RppUnroutedComponent } from './component/shared/unrouted/rpp-unrouted/rpp-unrouted.component';
 import { SearchUnroutedComponent } from './component/shared/unrouted/search-unrouted/search-unrouted.component';
 import { PaginationUnroutedComponent } from './component/shared/unrouted/pagination-unrouted/pagination-unrouted.component';
@@ -156,7 +155,6 @@ import { RemoveconfirmationUnroutedComponent } from './component/shared/unrouted
     HeaderComponent,
     FooterComponent,
     MenuUnroutedComponent,
-    PrePrintComponent,
     findUnroutedComponent,
     RppUnroutedComponent,
     SearchUnroutedComponent,

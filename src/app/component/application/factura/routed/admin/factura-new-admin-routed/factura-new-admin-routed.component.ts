@@ -4,8 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 
-declare let $: any;
-
 @Component({
   selector: 'app-factura-new-admin-routed',
   templateUrl: './factura-new-admin-routed.component.html',

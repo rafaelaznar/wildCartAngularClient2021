@@ -11,8 +11,6 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { Location } from '@angular/common';
 
-declare let $: any;
-
 @Component({
   selector: 'app-factura-edit-admin-routed',
   templateUrl: './factura-edit-admin-routed.component.html',
@@ -74,7 +72,7 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
         pagado: [this.oData2Show.pagado],
         id_usuario: [this.oData2Show.usuario.id, Validators.required]
       });
-      $('#fecha').val(this.oData2Show.fecha);
+      //$('#fecha').val(this.oData2Show.fecha);
 
     })
   }
