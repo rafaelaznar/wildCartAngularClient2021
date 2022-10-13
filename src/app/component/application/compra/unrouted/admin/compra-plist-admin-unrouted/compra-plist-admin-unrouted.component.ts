@@ -38,7 +38,7 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
   //
-  strResult: string = null;
+  
 
   constructor(
     private oCompraService: CompraService,

@@ -17,7 +17,7 @@ export class CompraViewAdminRoutedComponent implements OnInit {
   strTitlePlural: string = "Compras";
   id: number = null;
   strUsuarioSession: string;
-  strResult: string = null;
+  
  
   oUserSession: IUsuario;
 

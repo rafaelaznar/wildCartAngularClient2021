@@ -176,17 +176,17 @@ export class GenerateComponent implements OnInit {
   }
 
 
-  //modal 
+//modal 
 
-  eventsModalSubject: Subject<void> = new Subject<void>();
+eventsModalSubject: Subject<string> = new Subject<string>();
 
-  openModal() {
-    this.eventsModalSubject.next();
-  }
+openModal() {
+  this.eventsModalSubject.next();
+}
 
-  onCloseModal() {
-    this.getCount();
-    this.strResult = "";
-  }
+onCloseModal() {
+  this.getCount();
+  this.strResult = "";
+}
 
 }

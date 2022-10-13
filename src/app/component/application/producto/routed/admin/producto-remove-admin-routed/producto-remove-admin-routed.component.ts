@@ -21,7 +21,7 @@ export class ProductoRemoveAdminRoutedComponent implements OnInit {
 
   id: number = 0;
   oUserSession: IUsuario;
-  strResult: string = null;
+  
 
   constructor(
     private oProductoService: ProductoService,
@@ -47,13 +47,14 @@ export class ProductoRemoveAdminRoutedComponent implements OnInit {
   }
 
   removeOne() {
+    let strResult: string = '';
     this.oProductoService.removeOne(this.id).subscribe((id: number) => {    
       if (id) {                
-        this.strResult = this.strTitleArtSingular + " con id = " + this.id + " se ha eliminado.";
+        strResult = this.strTitleArtSingular + " con id = " + this.id + " se ha eliminado.";
       } else {
-        this.strResult = 'Error en el borrado de ' + this.strTitleSingular;
+        strResult = 'Error en el borrado de ' + this.strTitleSingular;
       }
-      this.openPopup();
+      this.openPopup(strResult);
     })
   }
 
@@ -63,10 +64,10 @@ export class ProductoRemoveAdminRoutedComponent implements OnInit {
 
   //popup
 
-  eventsSubjectShowPopup: Subject<void> = new Subject<void>();
+  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(): void {
-    this.eventsSubjectShowPopup.next();
+  openPopup(str:string): void {
+    this.eventsSubjectShowPopup.next(str);
   }
 
   onClosePopup(): void {

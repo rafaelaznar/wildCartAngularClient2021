@@ -37,7 +37,7 @@ export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
   //  
-  strResult: string = null;
+  
 
   constructor(
     private oPaginationService: PaginationService,

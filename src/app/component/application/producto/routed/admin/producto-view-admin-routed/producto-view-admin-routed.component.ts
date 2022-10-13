@@ -16,7 +16,7 @@ export class ProductoViewAdminRoutedComponent implements OnInit {
   strTitlePlural: string = "Productos";
   id: number = null;
   strUsuarioSession: string;
-  strResult: string = null;
+  
  
   oUserSession: IUsuario;
 

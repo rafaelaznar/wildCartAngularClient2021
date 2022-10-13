@@ -27,7 +27,7 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
   strATitleSingular: string = 'El tipo de producto';
 
   oForm: UntypedFormGroup = null;
-  strResult: string = null;
+  
   strStatus: string = null;  
 
   get f() {
@@ -80,22 +80,23 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
   }
 
   save(): void {
+    let strResult: string = '';
     if (this.strOperation == "new") {
       this.oTipoproductoService.newOne(this.oData2Send)
         .subscribe(
           (id: number) => {
             if (id>0) {
               this.id = id;
-              this.strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
+              strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
             } else {
-              this.strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
+              strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
             }
-            this.msg.emit({ strMsg: this.strResult, id: this.id });
+            this.msg.emit({ strMsg: strResult, id: this.id });
           },
           (error) => {
-            this.strResult = "Error al guardar " +
+            strResult = "Error al guardar " +
               this.strATitleSingular.toLowerCase() + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
-            this.openPopup();
+            this.openPopup(strResult);
           });
     } else {
       this.oTipoproductoService
@@ -103,26 +104,26 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
         .subscribe((id: number) => {
           if (id>0) {
             this.id = id;
-            this.strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+            strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
           } else {
-            this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+            strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
           }
-          this.msg.emit({ strMsg: this.strResult, id: this.id });
+          this.msg.emit({ strMsg: strResult, id: this.id });
         },
           (error) => {
             this.strStatus = error.status;
-            this.strResult = this.oErrorHandlerService.componentHandleError(error);
-            this.openPopup();
+            strResult = this.oErrorHandlerService.componentHandleError(error);
+            this.openPopup(strResult);
           });
     }
   };
   
   //popup
 
-  eventsSubjectShowPopup: Subject<void> = new Subject<void>();
+  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(): void {
-    this.eventsSubjectShowPopup.next();
+  openPopup(str:string): void {
+    this.eventsSubjectShowPopup.next(str);
   }
 
   onClosePopup(): void {

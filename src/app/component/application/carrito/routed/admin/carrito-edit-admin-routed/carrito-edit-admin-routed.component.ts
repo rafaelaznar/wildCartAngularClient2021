@@ -19,7 +19,6 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
   strATitlePlural: string = 'Los carritos';
   //
   id: number = null;
-  strResult: string = null;
   strUsuarioSession: string;
 
 
@@ -44,10 +43,9 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  reportResult = (oResult: any): void => {
-    this.strResult = oResult.strMsg;
+  reportResult = (oResult: any): void => {    
     this.id = oResult.id;
-    this.openPopup();
+    this.openPopup(oResult.strMsg);
   };
 
   goBack(): void {
@@ -56,10 +54,10 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
 
   //popup
 
-  eventsSubjectShowPopup: Subject<void> = new Subject<void>();
+  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(): void {
-    this.eventsSubjectShowPopup.next();
+  openPopup(str:string): void {
+    this.eventsSubjectShowPopup.next(str);
   }
 
   onClosePopup(): void {

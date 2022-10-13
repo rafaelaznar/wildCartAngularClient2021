@@ -118,11 +118,8 @@ export class ReportsComponent implements OnInit {
     this.oLocation.back();
   }
 
-  print(codigo: string) {
-
-    this.strResult = 'Imprimiendo el informe ' + codigo;
-    this.openPopup();
-
+  print(codigo: string) {    
+    this.openPopup('Imprimiendo el informe ' + codigo);
   }
 
 
@@ -190,22 +187,16 @@ export class ReportsComponent implements OnInit {
     });
   }
 
-
-
-
-
-
   //popup
 
-  eventsSubjectShowPopup: Subject<void> = new Subject<void>();
+  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
   strResult = "";
 
-  openPopup(): void {
-    this.eventsSubjectShowPopup.next();
+  openPopup(str:string): void {
+    this.eventsSubjectShowPopup.next(str);
   }
 
-  onClosePopup(): void {
-    //this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
+  onClosePopup(): void {    
   }
 
 

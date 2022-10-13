@@ -20,7 +20,7 @@ export class TipousuarioEditAdminRoutedComponent implements OnInit {
   strTitlePlural: string = 'Tipos de usuario';
   //
   id: number = null;
-  strResult: string = null;
+
   strUsuarioSession: IUsuario = null;
 
   constructor(
@@ -44,9 +44,8 @@ export class TipousuarioEditAdminRoutedComponent implements OnInit {
   ngOnInit(): void { }
 
   reportResult = (oResult: any): void => {
-    this.strResult = oResult.strMsg;
     this.id = oResult.id;
-    this.openPopup();
+    this.openPopup(oResult.strMsg);
   };
 
   goBack(): void {
@@ -55,10 +54,10 @@ export class TipousuarioEditAdminRoutedComponent implements OnInit {
 
   //popup
 
-  eventsSubjectShowPopup: Subject<void> = new Subject<void>();
+  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(): void {
-    this.eventsSubjectShowPopup.next();
+  openPopup(str: string): void {
+    this.eventsSubjectShowPopup.next(str);
   }
 
   onClosePopup(): void {

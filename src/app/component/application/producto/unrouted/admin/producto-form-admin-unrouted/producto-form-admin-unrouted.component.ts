@@ -30,7 +30,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   oProducto2Show: IProducto = null;
   oForm: UntypedFormGroup = null;
   //id: number = null;
-  strResult: string = null;
+  
   //oUserSession: IUsuario;
 
   //selectedFile: ImageSnippet;
@@ -108,15 +108,16 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
     //console.log("-->nombre: ", this.selectedFile);
     //const file: File = imageInput.files[0];
     //this.selectedFile = new ImageSnippet(  this.imageSrc , file);
+    let strResult: string = '';
     if (this.imageSrc) {
       this.oFileService.uploadImage(this.file2Send).subscribe(
         (serverResponse) => {
           this.save(serverResponse);
         },
         (err) => {
-          this.strResult = this.strTitleSingular + 'Error al cambiar el registro: ' + err.error.message;
+          strResult = this.strTitleSingular + 'Error al cambiar el registro: ' + err.error.message;
           //console.log("Img Upload error:", err.error.message);
-          this.msg.emit({ strMsg: this.strResult, id: 0 });
+          this.msg.emit({ strMsg: strResult, id: 0 });
         })
     } else {
       this.save(this.oForm.value.imagen);
@@ -129,6 +130,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   selectedFile: string;
 
   save(img: number): void {
+    let strResult: string = '';
     if (this.oForm) {
       if (this.oForm.valid) {
         this.oProducto2Send = {
@@ -147,11 +149,11 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
             .subscribe((id: number) => {
               if (id > 0) {
                 this.id = id;
-                this.strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
+                strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
               } else {
-                this.strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
+                strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
               }
-              this.msg.emit({ strMsg: this.strResult, id: this.id });
+              this.msg.emit({ strMsg: strResult, id: this.id });
             });
         } else {
           this.oProductoService
@@ -159,11 +161,11 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
             .subscribe((id: number) => {
               if (id) {
                 this.id = id;
-                this.strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+                strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
               } else {
-                this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+                strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
               }
-              this.msg.emit({ strMsg: this.strResult, id: this.id });
+              this.msg.emit({ strMsg: strResult, id: this.id });
             });
         }
       }

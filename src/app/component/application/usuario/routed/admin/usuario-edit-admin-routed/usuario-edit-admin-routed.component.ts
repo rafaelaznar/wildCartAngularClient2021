@@ -16,7 +16,7 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
   strOperation: string = 'edit';
   //
   id: number = null;
-  strResult: string = null;
+
   strUsuarioSession: string;
 
 
@@ -42,9 +42,8 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
   }
 
   reportResult = (oResult: any): void => {
-    this.strResult = oResult.strMsg;
     this.id = oResult.id;
-    this.openPopup();
+    this.openPopup(oResult.strMsg);
   };
 
   goBack(): void {
@@ -53,10 +52,10 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
 
   //popup
 
-  eventsSubjectShowPopup: Subject<void> = new Subject<void>();
+  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(): void {
-    this.eventsSubjectShowPopup.next();
+  openPopup(str: string): void {
+    this.eventsSubjectShowPopup.next(str);
   }
 
   onClosePopup(): void {

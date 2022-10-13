@@ -20,7 +20,7 @@ export class FacturaNewAdminRoutedComponent implements OnInit {
   strATitleSingular: string = "La factura";
   strTitlePlural: string = "Facturas";
   id: number = null;
-  strResult: string = null;
+  
   strUsuarioSession: string;
 
   constructor(
@@ -45,10 +45,9 @@ export class FacturaNewAdminRoutedComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  reportResult = (oResult: any): void => {
-    this.strResult = oResult.strMsg;
+  reportResult = (oResult: any): void => {    
     this.id = oResult.id;
-    this.openPopup();
+    this.openPopup(oResult.strMsg);
   };
 
   goBack(): void {
@@ -57,10 +56,10 @@ export class FacturaNewAdminRoutedComponent implements OnInit {
 
   //popup
 
-  eventsSubjectShowPopup: Subject<void> = new Subject<void>();
+  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(): void {
-    this.eventsSubjectShowPopup.next();
+  openPopup(str:string): void {
+    this.eventsSubjectShowPopup.next(str);
   }
 
   onClosePopup(): void {

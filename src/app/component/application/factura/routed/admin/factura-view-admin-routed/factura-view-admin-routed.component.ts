@@ -18,7 +18,7 @@ export class FacturaViewAdminRoutedComponent implements OnInit {
   
   id: number = null;
   strUsuarioSession: string;
-  strResult: string = null;
+  
 
   oUserSession: IUsuario;
 

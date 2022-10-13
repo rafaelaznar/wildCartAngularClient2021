@@ -34,7 +34,7 @@ export class TipousuarioPlistAdminUnroutedComponent implements OnInit {
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
   //
-  strResult: string = null;
+  
 
   constructor(
     private oTipoUsuarioService: TipousuarioService,

@@ -37,7 +37,7 @@ export class FacturaSelectionAdminUnroutedComponent implements OnInit {
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
   //
-  strResult: string = null;
+  
 
   constructor(
     private oFacturaService: FacturaService,

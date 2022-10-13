@@ -37,7 +37,7 @@ export class UsuarioSelectionAdminUnroutedComponent implements OnInit {
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
   //
-  strResult: string = null;
+  
 
   constructor(
     private oUsuarioService: UsuarioService,

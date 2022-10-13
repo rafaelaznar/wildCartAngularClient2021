@@ -24,7 +24,7 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
   strATitleSingular: string = 'El tipo de usuario';
 
   oForm: UntypedFormGroup = null;
-  strResult: string = null;
+
 
   get f() {
     return this.oForm.controls;
@@ -68,16 +68,17 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
   }
 
   save(): void {
+    let strResult: string = '';
     this.oTipousuarioService
       .updateOne(this.oData2Send)
       .subscribe((id: number) => {
         if (id) {
           this.id = id;
-          this.strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+          strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
         } else {
-          this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+          strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
         }
-        this.msg.emit({ strMsg: this.strResult, id: this.id });
+        this.msg.emit({ strMsg: strResult, id: this.id });
       });
 
   };

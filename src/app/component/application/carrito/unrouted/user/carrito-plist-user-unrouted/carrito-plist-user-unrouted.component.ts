@@ -44,7 +44,7 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
   //  
-  strResult: string = null;
+  
   nTotal: number = 0;
 
 

@@ -24,7 +24,7 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
   oData2Send: IFactura2Send = null;
   id: number = null;
   oForm: UntypedFormGroup = null;
-  strResult: string = null;
+  
   strUsuarioSession: string;
   strEntity: string = "factura"
   strOperation: string = "edit"
@@ -95,21 +95,21 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
   }
 
   update = (): void => {
+    let strResult: string = '';
     //console.log(this.oData2Send);
     this.oFacturaService.updateOne(this.oData2Send).subscribe((id: number) => {
       if (id > 0) {
-        this.strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+        strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
       } else {
-        this.strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+        strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
       }
-      this.openPopup();
+      this.openPopup(strResult);
     })
   }
 
   reportResult = (oResult: any): void => {
-    this.strResult = oResult.strMsg;
     this.id = oResult.id;
-    this.openPopup();
+    this.openPopup(oResult.strMsg);
   };
 
   goBack(): void {
@@ -142,10 +142,10 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
 
   //popup
 
-  eventsSubjectShowPopup: Subject<void> = new Subject<void>();
+  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(): void {
-    this.eventsSubjectShowPopup.next();
+  openPopup(str:string): void {
+    this.eventsSubjectShowPopup.next(str);
   }
 
   onClosePopup(): void {

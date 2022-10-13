@@ -31,7 +31,7 @@ export class ProductoPlistUserUnroutedComponent implements OnInit {
   nTotalPages: number;
   nPage: number;
   nPageSize: number = 10;
-  strResult: string = null;
+  
   strFilter: string = "";
   strSortField: string = "";
   strSortDirection: string = "";

@@ -104,6 +104,8 @@ export class MetadataService {
       case strIcon == "amount": return "fas fa-mountain";
       case strIcon == "true": return "fas fa-check";
       case strIcon == "false": return "fas fa-times";
+      case strIcon == "yes": return "fas fa-check";
+      case strIcon == "no": return "fas fa-times";
       //ptes
       case strIcon == "tools": return "fas fa-tools";
       case strIcon == "acciones": return "fas fa-tools";

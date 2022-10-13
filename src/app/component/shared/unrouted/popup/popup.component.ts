@@ -13,7 +13,7 @@ export class PopupComponent implements OnInit {
 
   // https://stackoverflow.com/questions/44053227/how-to-emit-an-event-from-parent-to-child
 
-  @Input() show: Observable<void>;
+  @Input() show: Observable<string>;
   @Input() title: string = "wildCART";
   @Input() body: string = "";
   @Input() size: string = "";
@@ -23,18 +23,20 @@ export class PopupComponent implements OnInit {
   private eventsSubscriptionShow: Subscription;
 
   myPopup: any;
+  strMsg:string = "";
 
   constructor() { }
 
   ngOnInit() {
-    this.eventsSubscriptionShow = this.show.subscribe(() => this.showModal());
+    this.eventsSubscriptionShow = this.show.subscribe((str:string) => this.showModal(str));
   }
 
   ngOnDestroy() {
     this.eventsSubscriptionShow.unsubscribe();
   }
 
-  showModal = () => {
+  showModal = (str:string) => {
+    this.strMsg = str;
     this.myPopup = new bootstrap.Modal(document.getElementById('myPopup'), {
       keyboard: false
     })
