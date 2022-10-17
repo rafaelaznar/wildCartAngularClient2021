@@ -5,19 +5,19 @@
         <td>{{ oCarrito?.id }}</td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('cantidad')"></i> {{oMetadataService.getName('cantidad')}}</th>
+        <th><i [ngClass]="oMetadataService.getIcon('cantidad')"></i> {{oMetadataService.getName('amount')}}</th>
         <td>{{ oCarrito?.cantidad }} {{oMetadataService.getName('units')}}</td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('precio')"></i> {{oMetadataService.getName('precio')}}</th>
+        <th><i [ngClass]="oMetadataService.getIcon('precio')"></i> {{oMetadataService.getName('price')}}</th>
         <td>{{ oCarrito?.precio }} €</td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('producto')"></i> {{oMetadataService.getName('produto')}}</th>
+        <th><i [ngClass]="oMetadataService.getIcon('producto')"></i> {{oMetadataService.getName('product')}}</th>
         <td>{{ oCarrito?.producto?.id }} - {{ oCarrito?.producto?.nombre }} ({{ oCarrito?.producto?.codigo }})</td>
       </tr>
       <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('usuario')"></i> {{oMetadataService.getName('usuario')}}</th>
+        <th><i [ngClass]="oMetadataService.getIcon('usuario')"></i> {{oMetadataService.getName('user')}}</th>
         <td>{{ oCarrito?.usuario?.id }} - {{ oCarrito?.usuario?.nombre }} {{ oCarrito?.usuario?.apellido1 }} {{ oCarrito?.usuario?.apellido2 }} ({{ oCarrito?.usuario?.dni }})</td>
       </tr>
     </tbody>

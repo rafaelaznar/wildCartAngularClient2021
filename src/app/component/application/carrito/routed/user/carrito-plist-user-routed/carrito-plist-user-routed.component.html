@@ -2,29 +2,11 @@
 
 <div class="container my-3">
 
-    <app-header [title]="oMetadataService.getName('user-carritocontent')" [icon]="oMetadataService.getIcon(this.strOperation)"
-    [iconEntity]="oMetadataService.getIcon(this.strEntity)">
+    <app-header [title]="oMetadataService.getName('user cart items')" [icon]="oMetadataService.getIcon(strOperation)"
+    [iconEntity]="oMetadataService.getIcon(strEntity)">
 </app-header>
 
 <app-carrito-cplist-user-unrouted [id_usuario]="id_usuario"  [id_tipousuario_session]="tipousuarioSession_id"  [id_producto]="id_producto"  (addCarritoEE)="onAddCarrito($event)">
-    <!-- 
-    <header>
-        <a [routerLink]="['/carrito/new']" type="button" class="btn btn-success mb-2">
-            <i [ngClass]="oMetadataService.getIcon('new')"></i> {{oMetadataService.getName('addNewCarritoItem')}}
-        </a>
-    </header>
-    -->
-    <!--
-    <ng-template let-fila>
-        <button type="button" class="btn btn-success" [routerLink]="['/usuario/view/' + fila.id]"><i
-                class="fas fa-eye"></i></button>
-        <button type="button" class="btn btn-warning" [routerLink]="['/usuario/edit/' + fila.id]"><i
-                class="fas fa-pen"></i></button>
-        <button type="button" class="btn btn-danger" [routerLink]="['/usuario/remove/' + fila.id]"><i
-                class="fas fa-trash"></i></button>
-    </ng-template>
-    -->
-
 </app-carrito-cplist-user-unrouted>
 
 </div>

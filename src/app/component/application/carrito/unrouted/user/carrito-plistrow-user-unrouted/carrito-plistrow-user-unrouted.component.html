@@ -6,9 +6,9 @@
 <td>
   <button class="btn btn-light" style="text-align: start;" [routerLink]="['/producto/cview/' + oCarrito.producto.id]">
     <i [ngClass]="oMetadataService.getIcon('producto')"></i> {{ oCarrito.producto.nombre | trim :60}}<br>
-    {{oMetadataService.getName('codigo')}}: {{ oCarrito.producto.codigo }}<br>
-    {{oMetadataService.getName('descuentoProducto')}}: {{ oCarrito.producto.descuento }}%<br>
-    {{oMetadataService.getName('descuentoCliente')}}: {{ oCarrito.usuario.descuento }}%
+    {{oMetadataService.getName('code')}}: {{ oCarrito.producto.codigo }}<br>
+    {{oMetadataService.getName('product discouunt')}}: {{ oCarrito.producto.descuento }}%<br>
+    {{oMetadataService.getName('client discount')}}: {{ oCarrito.usuario.descuento }}%
   </button>
 </td>
 <td class="text-center" style="font-size: 25px;">{{ oCarrito.cantidad }}</td>

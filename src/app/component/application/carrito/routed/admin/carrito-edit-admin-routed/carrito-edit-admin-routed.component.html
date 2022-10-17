@@ -1,7 +1,7 @@
 <app-menu-unrouted></app-menu-unrouted>
 <div class="container my-3">
-  <app-header [title]="oMetadataService.getName(strOperation + 'of')  + ' ' +  oMetadataService.getName(strEntity + 's').toLowerCase()"
-    [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(this.strEntity)">
+  <app-header [title]="oMetadataService.getName('cart item edition')"
+    [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(strEntity)">
   </app-header>
   <div class="row justify-content-center">
     <app-carrito-form-admin-unrouted [strOperation]="strOperation" [id]="id" (msg)="reportResult($event)">

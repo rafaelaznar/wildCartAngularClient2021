@@ -3,7 +3,7 @@
     <h6>{{strFilteredMessage}}</h6>
   </div>
   <div class="col-md text-center">
-    <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="'Busca un producto en tu carrito'"
+    <app-search-unrouted [strFilter]="strFilter" [strTitlePlural]="oMetadataService.getName('search for a product in cart')"
       (eeFilter)="onSetFilter($event)"></app-search-unrouted>
   </div>
   <div class="col-md text-end">
@@ -25,9 +25,9 @@
 </div>
 
 <div class="d-flex align-items-end flex-column">
-  <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getName('productsInCart')}}</h4>
-  <h4 class="text-muted">{{oMetadataService.getName('totalInCart').toUpperCase()}}: {{nTotal + (nTotal * 0.21)|number: '1.2-2':'es-ES'}} €</h4>
-  <h6 class="text-muted">({{oMetadataService.getName('vatIncluded')}})</h6>
+  <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getName('products in cart')}}</h4>
+  <h4 class="text-muted">{{oMetadataService.getName('total in cart').toUpperCase()}}: {{nTotal + (nTotal * 0.21)|number: '1.2-2':'es-ES'}} €</h4>
+  <h6 class="text-muted">({{oMetadataService.getName('vat included')}})</h6>
 </div>
 
 <div class="row justify-content-center">

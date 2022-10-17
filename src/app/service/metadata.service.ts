@@ -118,6 +118,45 @@ export class MetadataService {
 
   public getName(str: string): string {
     switch (true) {
+      // refactoring
+      case str == "cart item edition": return "Edición de línea de carrito";
+      case str == "new cart item": return "Nueva línea de carrito";
+      case str == "carts items list": return "Listado de líneas de carrito";
+      case str == "cart item removal": return "Borrado de línea de carrito";
+      case str == "cart item view": return "Vista de línea de carrito";      
+      case str == "id": return "Id";
+      case str == "amount": return "Cantidad";
+      case str == "price": return "Precio";
+      case str == "product": return "Producto";
+      case str == "user": return "Usuario";
+      case str == "invalid amount": return "La cantidad introducida no es válida";
+      case str == "invalid price": return "El precio introducido no es válido";
+      case str == "please select a product": return "Por favor, seleccione un producto";
+      case str == "please select a user": return "Por favor, seleccione un usuario";
+      case str == "save cart item": return "Guardar la línea de carrito";
+      case str == "item cart filter": return "Filtro de línea de carrito";
+      case str == "cart items": return "líneas de carrito";
+      case str == "actions": return "Acciones";
+      case str == "products in cart": return "Productos en el carrito";
+      case str == "total in cart": return "Total en el carrito";
+      case str == "vat included": return "IVA incluido";
+      case str == "search for a product in cart": return "Busca un producto en tu carrito";
+      case str == "unit price": return "Precio unitario";
+      case str == "discounts": return "Descuentos";
+      case str == "vat": return "IVA";
+      case str == "total": return "Total";
+      case str == "code": return "Código";
+      case str == "product discount": return "Descuento del producto";
+      case str == "client discount": return "Descuento del cliente";
+      case str == "": return "";
+      case str == "": return "";
+      case str == "": return "";
+
+
+
+
+
+
       // entidades
       case str == "system": return "Sistema";
       case str == "asystem": return "Un sistema";
