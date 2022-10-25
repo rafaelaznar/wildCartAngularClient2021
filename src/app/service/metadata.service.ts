@@ -219,12 +219,23 @@ export class MetadataService {
       case str == "paid": return "Pagado";
       case str == "paid?": return "¿Pagado?";
       case str == "purchases": return "Compras";
+      case str == "code": return "Código";
+      case str == "discount of": return "Descuento de";
+      case str == "only": return "Sólo";
+      case str == "availables": return "Disponibles";
+      case str == "unit": return "Unidad";
+      case str == "you have": return "Tienes";
+      case str == "in the cart": return "En el carrito";
 
       case str == "you must set a valid date": return "Se debe introducir una fecha correcta";
       case str == "you must set a valid vat": return "Se debe introducir una iva correcto";
       case str == "select an invoice": return "Seleccione una factura";
+      case str == "select a product": return "Seleccione un producto";
       
-      
+      case str == "image": return "Imagen";
+      case str == "discount": return "Descuento";
+      case str == "product type": return "Tipo de producto";
+      case str == "stock": return "Existencias";
       case str == "": return "";
 
 

@@ -9,25 +9,29 @@
           <h2 class="card-title">{{oProducto?.nombre}}</h2>
           <p class="card-text flex-grow-1" style="font-size: 0.95rem; font-style: italic;">
             {{oProducto?.tipoproducto.nombre}}</p>
-          <p class="card-text"><small class="text-muted">Código {{oProducto?.codigo}}</small></p>
-          <h1 class="price">Precio: <span>{{oProducto?.precio|number: '1.2-2':'es-ES'}}€</span></h1>
-          <h2><span class="badge bg-danger">Descuento del {{oProducto?.descuento}}%</span></h2>
+          <p class="card-text"><small class="text-muted"> {{oMetadataService.getName('code')}}
+              {{oProducto?.codigo}}</small></p>
+          <h1 class="price">{{oMetadataService.getName('price')}}: <span>{{oProducto?.precio|number:
+              '1.2-2':'es-ES'}}€</span></h1>
+          <h2><span class="badge bg-danger">{{oMetadataService.getName('discount of')}} {{oProducto?.descuento}}%</span>
+          </h2>
           <div class="d-flex justify-content-left my-3">
             <h3>
               <span class="badge rounded-pill bg-warning"
                 *ngIf="oProducto?.existencias>20">{{oProducto.existencias|number:
-                '1.0-0':'es-ES'}} disponibles</span>
-              <span class="badge rounded-pill bg-danger" *ngIf="oProducto?.existencias<=20">Sólo
-                {{oProducto?.existencias}} disponibles</span>
+                '1.0-0':'es-ES'}} {{oMetadataService.getName('availables').toLowerCase()}}</span>
+              <span class="badge rounded-pill bg-danger"
+                *ngIf="oProducto?.existencias<=20">{{oMetadataService.getName('only')}}
+                {{oProducto?.existencias}} {{oMetadataService.getName('availables').toLowerCase()}}</span>
             </h3>
           </div>
           <div>
           </div>
           <div class="d-flex justify-content-end my-3">
-            <h3 class="flex-grow-1 m-1" *ngIf="oProducto?.cantidad==1">Tienes {{oProducto?.cantidad}} unidad en el
-              carrito</h3>
-            <h3 class="flex-grow-1 m-1" *ngIf="oProducto?.cantidad>1">Tienes {{oProducto?.cantidad}} {{oMetadataService.getName('units')}} en el
-              carrito</h3>
+            <h3 class="flex-grow-1 m-1" *ngIf="oProducto?.cantidad==1">{{oMetadataService.getName('you have')}}
+              {{oProducto?.cantidad}} {{oMetadataService.getName('unit').toLowerCase()}} {{oMetadataService.getName('in the cart'.toLowerCase())}}</h3>
+            <h3 class="flex-grow-1 m-1" *ngIf="oProducto?.cantidad>1">{{oMetadataService.getName('you have')}}
+              {{oProducto?.cantidad}} {{oMetadataService.getName('units')}} {{oMetadataService.getName('in the cart'.toLowerCase())}}</h3>
             <button type="button" class="btn btn-danger m-1" *ngIf="id_tipousuario_session==2&&oProducto?.cantidad>0"
               (click)="removeCarrito(oProducto.id)"><i class="fas fa-cart-arrow-down"
                 style="font-size: 2rem"></i></button>

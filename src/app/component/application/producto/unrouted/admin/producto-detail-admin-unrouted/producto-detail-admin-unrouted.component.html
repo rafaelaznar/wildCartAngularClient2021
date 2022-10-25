@@ -21,18 +21,17 @@
       <td>{{oProducto?.precio}}</td>
     </tr>
     <tr>
-      <th>Imagen</th>
+      <th>{{oMetadataService.getName('image')}}</th>
       <td>({{oProducto?.imagen}}) <img [src]="'http://localhost:8082/file/' + oProducto?.imagen" style="height:100px"
           class="my-3" /></td>
     </tr>
     <tr>
-      <th>Descuento</th>
+      <th>{{oMetadataService.getName('discount')}}</th>
       <td>{{oProducto?.descuento}}</td>
     </tr>
     <tr>
-      <th>Tipo producto</th>
+      <th>{{oMetadataService.getName('product type')}}</th>
       <td>{{oProducto?.tipoproducto.nombre}}</td>
     </tr>
-
   </tbody>
 </table>

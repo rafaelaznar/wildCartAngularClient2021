@@ -46,11 +46,10 @@
 
       <div class="mt-auto">
         <div class="d-flex justify-content-center m-3">
-          <span class="badge rounded-pill bg-warning" *ngIf="producto.existencias>20">{{producto.existencias|number:
-            '1.0-0':'es-ES'}}
-            disponibles</span>
-          <span class="badge rounded-pill bg-danger" *ngIf="producto.existencias<=20">Sólo {{producto.existencias}}
-            disponibles</span>
+          <span class="badge rounded-pill bg-warning"
+            *ngIf="producto.existencias>20">{{producto.existencias|number:'1.0-0':'es-ES'}} {{oMetadataService.getName('availables')}}</span>
+          <span class="badge rounded-pill bg-danger" *ngIf="producto.existencias<=20">{{oMetadataService.getName('only')}} {{producto.existencias}}
+            {{oMetadataService.getName('availables')}}</span>
         </div>
         <div class="d-flex justify-content-center">
           <h1><span class="badge bg-secondary">{{producto.precio.toFixed(2)|number: '1.2-2':'es-ES'}}€</span></h1>
@@ -60,8 +59,7 @@
             *ngIf="id_tipousuario_session==2&&producto.existencias>0&&producto.cantidad<producto.existencias"
             (click)="addCarrito(producto.id)"><i class="fas fa-cart-plus" style="font-size: 2rem"></i></button>
           <button type="button" class="btn btn-danger m-1" *ngIf="id_tipousuario_session==2&&producto.cantidad>0"
-            (click)="removeCarrito(producto.id)"><i class="fas fa-cart-arrow-down"
-              style="font-size: 2rem"></i></button>
+            (click)="removeCarrito(producto.id)"><i class="fas fa-cart-arrow-down" style="font-size: 2rem"></i></button>
         </div>
       </div>
 

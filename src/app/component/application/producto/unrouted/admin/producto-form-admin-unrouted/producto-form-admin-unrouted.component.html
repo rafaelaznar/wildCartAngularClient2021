@@ -38,7 +38,7 @@
     <div class="row mb-3">
         <label for="existencias" class="col-sm-2 col-form-label"><i
                 [ngClass]="oMetadataService.getIcon('existencias')"></i>
-            Existencias</label>
+                {{oMetadataService.getName('stock')}}</label>
         <div class="col-sm-1">
             <input type="text" class="form-control" name="existencias" id="existencias" formControlName="existencias">
         </div>
