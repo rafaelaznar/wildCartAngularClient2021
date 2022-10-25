@@ -214,7 +214,15 @@ export class MetadataService {
       case str == "product desc": return "Desc. producto";
       case str == "product": return "Producto";
       case str == "invoice": return "Factura";
-      
+      case str == "VAT": return "IVA";
+      case str == "user": return "Usuario";
+      case str == "paid": return "Pagado";
+      case str == "paid?": return "¿Pagado?";
+      case str == "purchases": return "Compras";
+
+      case str == "you must set a valid date": return "Se debe introducir una fecha correcta";
+      case str == "you must set a valid vat": return "Se debe introducir una iva correcto";
+      case str == "select an invoice": return "Seleccione una factura";
       
       
       case str == "": return "";

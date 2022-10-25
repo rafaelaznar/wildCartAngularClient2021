@@ -5,20 +5,20 @@
           <td>{{oFactura?.id}}</td>
       </tr>
       <tr>
-          <th> <i [ngClass]="oMetadataService.getIcon('porcentaje')"></i> Iva</th>
+          <th> <i [ngClass]="oMetadataService.getIcon('porcentaje')"></i> {{oMetadataService.getName('VAT')}}</th>
           <td>{{oFactura?.iva}}</td>
       </tr>
       <tr>
-          <th><i [ngClass]="oMetadataService.getIcon('usuario')"></i> Usuario</th>
+          <th><i [ngClass]="oMetadataService.getIcon('usuario')"></i> {{oMetadataService.getName('user')}}</th>
           <td>{{oFactura?.usuario.nombre}} {{oFactura?.usuario.apellido1}} {{oFactura?.usuario.apellido2}}</td>
       </tr>
       <tr>
-          <th> <i [ngClass]="oMetadataService.getIcon('fecha')"></i> Fecha</th>
+          <th> <i [ngClass]="oMetadataService.getIcon('fecha')"></i> {{oMetadataService.getName('date')}}</th>
           <td>{{oFactura?.fecha | date: 'dd/MM/yyyy' }}</td>
       </tr>
      
       <tr>
-          <th><i [ngClass]="oMetadataService.getIcon('pagado')"></i> Pagado</th>
+          <th><i [ngClass]="oMetadataService.getIcon('pagado')"></i> {{oMetadataService.getName('paid')}}</th>
           <td [innerHTML]="oFactura?.pagado | showBoolean"></td>
       </tr>
   </tbody>

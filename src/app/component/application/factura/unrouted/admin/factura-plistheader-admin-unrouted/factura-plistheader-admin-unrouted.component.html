@@ -1,31 +1,38 @@
-<th (click)="doSetOrder('id')"> <i [ngClass]="oMetadataService.getIcon('id')"></i> ID
+<th (click)="doSetOrder('id')"> <i [ngClass]="oMetadataService.getIcon('id')"></i>
+  {{oMetadataService.getName('ID')}}
   <i class="fas fa-arrow-up" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
   <i class="fas fa-arrow-down" *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
 </th>
-<th (click)="doSetOrder('iva')"><i [ngClass]="oMetadataService.getIcon('porcentaje')"></i> Iva
+<th (click)="doSetOrder('iva')"><i [ngClass]="oMetadataService.getIcon('porcentaje')"></i>
+  {{oMetadataService.getName('VAT')}}
   <i class="fas fa-arrow-up" *ngIf="strSortField=='iva'&&strSortDirection=='asc'"></i>
   <i class="fas fa-arrow-down" *ngIf="strSortField=='iva'&&strSortDirection=='desc'"></i>
 
 </th>
 <th (click)="doSetOrder('id_usuario')"><i [ngClass]="oMetadataService.getIcon('usuario')"></i>
-  Usuario
+  {{oMetadataService.getName('user')}}
   <i class="fas fa-arrow-up" *ngIf="strSortField=='cuerpo'&&strSortDirection=='asc'"></i>
   <i class="fas fa-arrow-down" *ngIf="strSortField=='cuerpo'&&strSortDirection=='desc'"></i>
 
 </th>
-<th (click)="doSetOrder('fecha')"><i [ngClass]="oMetadataService.getIcon('fecha')"></i> Fecha
+<th (click)="doSetOrder('fecha')"><i [ngClass]="oMetadataService.getIcon('fecha')"></i>
+  {{oMetadataService.getName('date')}}
   <i class="fas fa-arrow-up" *ngIf="strSortField=='fecha'&&strSortDirection=='asc'"></i>
   <i class="fas fa-arrow-down" *ngIf="strSortField=='fecha'&&strSortDirection=='desc'"></i>
 
 </th>
-<th (click)="doSetOrder('compra')"><i [ngClass]="oMetadataService.getIcon('compra')"></i> Compras
+<th (click)="doSetOrder('compra')"><i [ngClass]="oMetadataService.getIcon('compra')"></i>
+  {{oMetadataService.getName('purchases')}}
   <i class="fas fa-arrow-up" *ngIf="strSortField=='pagado'&&strSortDirection=='asc'"></i>
   <i class="fas fa-arrow-down" *ngIf="strSortField=='pagado'&&strSortDirection=='desc'"></i>
 
 </th>
-<th (click)="doSetOrder('pagado')"><i [ngClass]="oMetadataService.getIcon('euro')"></i> Pagado
+<th (click)="doSetOrder('pagado')"><i [ngClass]="oMetadataService.getIcon('euro')"></i>
+  {{oMetadataService.getName('paid?')}}
   <i class="fas fa-arrow-up" *ngIf="strSortField=='pagado'&&strSortDirection=='asc'"></i>
   <i class="fas fa-arrow-down" *ngIf="strSortField=='pagado'&&strSortDirection=='desc'"></i>
 
 </th>
-<th><ng-content select="[action_column_title]"></ng-content></th>
+<th>
+  <ng-content select="[action_column_title]"></ng-content>
+</th>

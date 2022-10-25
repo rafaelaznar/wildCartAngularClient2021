@@ -10,31 +10,31 @@
 
     <div class="row mb-3">
         <label for="fecha" class="col-sm-2 col-form-label">
-            <i [ngClass]="oMetadataService.getIcon('fecha')"></i> Fecha</label>
+            <i [ngClass]="oMetadataService.getIcon('fecha')"></i> {{oMetadataService.getName('date')}}</label>
         <div class="col-sm-10">
             <p-calendar formControlName="fecha" [locale]="es" dateFormat="dd/mm/yy" inputId="spanish" [showIcon]="true"
                 inputId="spanish"></p-calendar>
             <div *ngIf="f.fecha.dirty && f.fecha.errors?.required" class="text-danger">
-                Se debe introducir una fecha correcta
+                {{oMetadataService.getName('you must set a valid date')}}
             </div>
         </div>
     </div>
 
     <div class="row mb-3">
         <label for="iva" class="col-sm-2 col-form-label">
-            <i [ngClass]="oMetadataService.getIcon('porcentaje')"></i> IVA</label>
+            <i [ngClass]="oMetadataService.getIcon('porcentaje')"></i> {{oMetadataService.getName('VAT')}}</label>
         <div class="col-sm-1">
             <input type="text" class="form-control" id="iva" formControlName="iva"
                 [ngClass]="{'is-valid':f.iva.dirty && !(f.iva.errors?.required || f.iva.errors?.minlength)}" />
             <div *ngIf="f.iva.dirty && f.iva.errors?.required" class="text-danger">
-                Se debe introducir un IVA. El mínimo es de un 4% y máximo de 21%.
+                {{oMetadataService.getName('you must set a valid vat')}}                
             </div>
         </div>
     </div>
 
     <div class="row mb-3">
         <label for="pagado" class="col-sm-2 col-form-label">
-            <i [ngClass]="oMetadataService.getIcon('pagado')"></i> Pagado</label>
+            <i [ngClass]="oMetadataService.getIcon('pagado')"></i> {{oMetadataService.getName('paid?')}}</label>
         <div class="col-sm-1">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="pagado">
         </div>
