@@ -5,31 +5,31 @@
           <td>{{oCompra?.id}}</td>
       </tr>
       <tr>
-          <th>{{oMetadataService.getName('cantidad')}}</th>
+          <th>{{oMetadataService.getName('amount')}}</th>
           <td>{{oCompra?.cantidad}}</td>
       </tr>
       <tr>
-          <th>{{oMetadataService.getName('precio')}}</th>
+          <th>{{oMetadataService.getName('price')}}</th>
           <td>{{oCompra?.precio}}</td>
       </tr>
       <tr>
-          <th>Fecha</th>
+          <th>{{oMetadataService.getName('date')}}</th>
           <td>{{oCompra?.fecha | date: 'dd/MM/yyyy'}}</td>
       </tr>
       <tr>
-          <th>Descuento usuario</th>
+          <th>{{oMetadataService.getName('user discount')}}</th>
           <td>{{oCompra?.descuento_usuario}}</td>
       </tr>
       <tr>
-          <th>Descuento producto</th>
+          <th>{{oMetadataService.getName('product discount')}}</th>
           <td>{{oCompra?.descuento_producto}}</td>
       </tr>
       <tr>
-          <th>Id producto</th>
+          <th>{{oMetadataService.getName('product id')}}</th>
           <td>{{oCompra?.producto.id  }}</td>
       </tr>
       <tr>
-          <th>Id factura</th>
+          <th>{{oMetadataService.getName('invoice id')}}</th>
           <td>{{oCompra?.factura?.id}}</td>
       </tr>
   </tbody>

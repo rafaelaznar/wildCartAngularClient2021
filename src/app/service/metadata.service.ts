@@ -125,6 +125,7 @@ export class MetadataService {
       case str == "cart item removal": return "Borrado de línea de carrito";
       case str == "cart item view": return "Vista de línea de carrito";      
       case str == "id": return "Id";
+      case str == "ID": return "ID";
       case str == "amount": return "Cantidad";
       case str == "price": return "Precio";
       case str == "product": return "Producto";
@@ -204,8 +205,15 @@ export class MetadataService {
       case str == 'go to home page': return "Ir a la página principal";
       case str == 'return': return "Volver";
 
-
-      
+      case str == "date": return "Fecha";
+      case str == "user discount": return "Descuento usuario";
+      case str == "descuento producto": return "Descuento producto";
+      case str == "product id": return "Id producto";
+      case str == "invoice id": return "Id factura";
+      case str == "user desc": return "Desc. usuario";
+      case str == "product desc": return "Desc. producto";
+      case str == "product": return "Producto";
+      case str == "invoice": return "Factura";
       
       
       
