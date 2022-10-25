@@ -3,7 +3,7 @@
     <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i class="fas fa-home"></i>
       {{oMetadataService.getName('home')}}</a>
     <a class="btn btn-primary mx-2" [routerLink]="['/' + strEntity + '/plist']">
-      <i [ngClass]="oMetadataService.getIcon('plist')"></i> {{oMetadataService.getActionTitle(strEntity,'plist')}}</a>
+      <i [ngClass]="oMetadataService.getIcon('plist')"></i> {{oMetadataService.getName('go to ' + strEntity + ' list' )}}</a>
     <a class="btn btn-primary mx-2" (click)="goBack()"><i [ngClass]="oMetadataService.getIcon('return')"></i>
       {{oMetadataService.getName('return')}}
     </a>

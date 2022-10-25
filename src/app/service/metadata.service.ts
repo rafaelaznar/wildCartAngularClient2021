@@ -148,8 +148,67 @@ export class MetadataService {
       case str == "code": return "Código";
       case str == "product discount": return "Descuento del producto";
       case str == "client discount": return "Descuento del cliente";
-      case str == "": return "";
-      case str == "": return "";
+
+      case str == "go to carrito list": return "Ir al listado de productos en carritos";
+      case str == "go to carrito view": return "Ir a la vista de producto en carrito";
+      case str == "go to carrito edition": return "Ir a la edición de producto en carrito";
+      case str == "go to carrito creation": return "Ir a la creación de producto en carrito";
+      case str == "go to carrito removal": return "Ir al borrado de producto en carrito";
+
+      case str == "go to compra list": return "Ir al listado de compras";
+      case str == "go to compra view": return "Ir a la vista de compra";
+      case str == "go to compra edition": return "Ir a la edición de compra";
+      case str == "go to compra creation": return "Ir a la creación de compra";
+      case str == "go to compra removal": return "Ir al borrado de compra";
+
+      case str == "go to factura list": return "Ir al listado de facturas";
+      case str == "go to factura view": return "Ir a la vista de factura";
+      case str == "go to factura edition": return "Ir a la edición de factura";
+      case str == "go to factura creation": return "Ir a la creación de factura";
+      case str == "go to factura removal": return "Ir al borrado de factura";
+
+      case str == "go to producto list": return "Ir al listado de productos";
+      case str == "go to producto view": return "Ir a la vista de producto";
+      case str == "go to producto edition": return "Ir a la edición de producto";
+      case str == "go to producto creation": return "Ir a la creación de producto";
+      case str == "go to producto removal": return "Ir al borrado de producto";
+
+      case str == "go to usuario list": return "Ir al listado de usuarios";
+      case str == "go to usuario view": return "Ir a la vista de usuario";
+      case str == "go to usuario edition": return "Ir a la edición de usuario";
+      case str == "go to usuario creation": return "Ir a la creación de usuario";
+      case str == "go to usuario removal": return "Ir al borrado de usuario";
+
+      case str == "go to tipoproducto list": return "Ir al listado de productos";
+      case str == "go to tipoproducto view": return "Ir a la vista de producto";
+      case str == "go to tipoproducto edition": return "Ir a la edición de producto";
+      case str == "go to tipoproducto creation": return "Ir a la creación de producto";
+      case str == "go to tipoproducto removal": return "Ir al borrado de producto";
+
+      case str == "go to tipousuario list": return "Ir al listado de usuarios";
+      case str == "go to tipousuario view": return "Ir a la vista de usuario";
+      case str == "go to tipousuario edition": return "Ir a la edición de usuario";
+      case str == "go to tipousuario creation": return "Ir a la creación de usuario";
+      case str == "go to tipousuario removal": return "Ir al borrado de usuario";
+
+      case str == 'are you sure you want to remove the carrito': return "¿Está vd. seguro de que quiere borrar el producto en carrito?";
+      case str == 'are you sure you want to remove the compra': return "¿Está vd. seguro de que quiere borrar la compra?";
+      case str == 'are you sure you want to remove the factura': return "¿Está vd. seguro de que quiere borrar la factura?";
+      case str == 'are you sure you want to remove the producto': return "¿Está vd. seguro de que quiere borrar el producto?";
+      case str == 'are you sure you want to remove the usuario': return "¿Está vd. seguro de que quiere borrar el usuario?";
+      case str == 'are you sure you want to remove the tipoproducto': return "¿Está vd. seguro de que quiere borrar el tipo de producto?";
+      case str == 'are you sure you want to remove the tipousuario': return "¿Está vd. seguro de que quiere borrar el tipo de usuario?";
+
+      case str == 'are you sure you want to end session': return "¿Está vd. seguro de que quiere salir de la sesión?";
+      case str == 'end session': return "Salir de la sesión";
+      case str == 'go to home page': return "Ir a la página principal";
+      case str == 'return': return "Volver";
+
+
+      
+      
+      
+      
       case str == "": return "";
 
 
@@ -381,18 +440,6 @@ export class MetadataService {
       case str == "vatIncluded": return "IVA incluido";
       default: return 'Desconocido';
     }
-  }
-
-  getTitle(strEntity: string, strOperation: string): string {
-    return this.getName(strOperation) + ' de ' + this.getName(strEntity + 's').toLowerCase();
-  }
-
-  getActionTitle(strEntity: string, strOperation: string): string {
-    return this.getName('go' + strOperation) + ' de ' + this.getName(strEntity).toLowerCase();
-  }
-
-  getConfirmationMessage(strEntity: string, strOperation: string): string {
-    return "¿Está vd. seguro de que quiere " + this.getName(strOperation).toLowerCase() + ' ' + this.getName('the' + strEntity) + "?";
   }
 
   public getFilterMsg(strFilter: string, strEntity1: string, entity1Filter: number, strEntity2: string, entity2Filter: number): string {

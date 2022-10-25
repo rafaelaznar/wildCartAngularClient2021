@@ -27,7 +27,7 @@
 
     <div class="d-flex justify-content-center">
         <a class="btn btn-primary m-2" [routerLink]="['/home']"><i class="fas fa-home"></i>
-            {{oMetadataService.getActionTitle(strEntity + 's','plist')}}</a>
+            {{oMetadataService.getName('go to ' + strEntity + ' list' )}}</a>
         <a class="btn btn-primary m-2" (click)="goBack()"><i [ngClass]="oMetadataService.getIcon('return')"></i>
             {{oMetadataService.getName('return')}}</a>
     </div>

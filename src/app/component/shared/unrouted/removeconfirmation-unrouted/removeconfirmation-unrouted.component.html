@@ -1,7 +1,7 @@
 <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
   <div class="col-md-5 control-group text-center">
     <div class="alert alert-danger my-3" role="alert">
-      <h3>{{oMetadataService.getConfirmationMessage(strEntity,'remove')}}</h3>
+      <h3>{{oMetadataService.getName('are you sure you want to remove the ' + strEntity)}}</h3>
       <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center my-4">
         <a class="btn btn-danger mx-2" (click)="removeOne()"><i [ngClass]="oMetadataService.getIcon('yes')"></i>
           {{oMetadataService.getName('yes')}}</a>
