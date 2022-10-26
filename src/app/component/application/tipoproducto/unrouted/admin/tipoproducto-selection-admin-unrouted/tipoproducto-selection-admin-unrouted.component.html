@@ -34,7 +34,7 @@
           <tr class="text-center align-middle" app-tipoproducto-plistheader-admin-unrouted (sort)="onSetOrder($event)"
             [mode]="false">
             <div action_column_title>
-              <i [ngClass]="oMetadataService.getIcon('seleccion')"></i> Selecciona un tipo de producto
+              <i [ngClass]="oMetadataService.getIcon('seleccion')"></i> {{oMetadataService.getName('please select a product type')}}
             </div>
           </tr>
         </thead>

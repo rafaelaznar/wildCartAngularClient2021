@@ -11,7 +11,7 @@
                 <tr class="text-center align-middle" app-tipousuario-plistheader-admin-unrouted
                     (sort)="onSetOrder($event)" [mode]="false">
                     <div action_column_title>
-                        <i [ngClass]="oMetadataService.getIcon('seleccion')"></i> Selecciona un usuario
+                        <i [ngClass]="oMetadataService.getIcon('seleccion')"></i> {{oMetadataService.getName('select a user')}}
                     </div>
                 </tr>
             </thead>

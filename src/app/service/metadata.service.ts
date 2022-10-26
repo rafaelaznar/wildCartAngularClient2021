@@ -132,6 +132,7 @@ export class MetadataService {
       case str == "user": return "Usuario";
       case str == "invalid amount": return "La cantidad introducida no es válida";
       case str == "invalid price": return "El precio introducido no es válido";
+      case str == "please select a product type": return "Por favor, seleccione un tipo de producto";
       case str == "please select a product": return "Por favor, seleccione un producto";
       case str == "please select a user": return "Por favor, seleccione un usuario";
       case str == "save cart item": return "Guardar la línea de carrito";
@@ -229,13 +230,18 @@ export class MetadataService {
 
       case str == "you must set a valid date": return "Se debe introducir una fecha correcta";
       case str == "you must set a valid vat": return "Se debe introducir una iva correcto";
+      case str == "you must set a valid name": return "Se debe introducir un nombre correcto";
+
       case str == "select an invoice": return "Seleccione una factura";
       case str == "select a product": return "Seleccione un producto";
+      case str == "select a user": return "Seleccione un usuario";
       
       case str == "image": return "Imagen";
       case str == "discount": return "Descuento";
       case str == "product type": return "Tipo de producto";
       case str == "stock": return "Existencias";
+      case str == "actions": return "Acciones";
+
       case str == "": return "";
 
 

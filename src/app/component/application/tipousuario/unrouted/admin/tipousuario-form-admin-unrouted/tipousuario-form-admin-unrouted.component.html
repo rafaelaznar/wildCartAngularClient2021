@@ -14,7 +14,7 @@
             <input type="text" class="form-control" id="nombre" formControlName="nombre"
                 [ngClass]="{'is-valid': f.nombre.valid,'is-invalid': f.nombre.invalid}" />
             <div *ngIf="f.nombre.invalid" class="text-danger">
-                Se debe introducir minimo 4 caracteres
+                {{oMetadataService.getName('you must set a valid name')}}
             </div>
         </div>
     </div>

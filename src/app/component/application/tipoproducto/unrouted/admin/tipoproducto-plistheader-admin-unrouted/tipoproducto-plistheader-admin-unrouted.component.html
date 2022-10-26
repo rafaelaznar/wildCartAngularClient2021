@@ -1,5 +1,5 @@
 <th (click)="doSetOrder('id')">
-  <i [ngClass]="oMetadataService.getIcon('id')"></i> ID
+  <i [ngClass]="oMetadataService.getIcon('id')"></i> {{oMetadataService.getName('ID')}}
   <i [ngClass]="oMetadataService.getIcon('flechaUp')" *ngIf="strSortField == 'id' && strSortDirection == 'asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('flechaDown')" *ngIf="strSortField == 'id' && strSortDirection == 'desc'"></i>
 </th>
@@ -9,6 +9,6 @@
   <i [ngClass]="oMetadataService.getIcon('flechaDown')" *ngIf="strSortField == 'nombre' && strSortDirection == 'desc'"></i>
 </th>
 <th *ngIf="mode">
-  <i [ngClass]="oMetadataService.getIcon('nombre')"></i> Productos
+  <i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('productos')}}
 </th>
-<th><i [ngClass]="oMetadataService.getIcon('acciones')"></i> Acciones</th>
+<th><i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getName('acciones')}}</th>
