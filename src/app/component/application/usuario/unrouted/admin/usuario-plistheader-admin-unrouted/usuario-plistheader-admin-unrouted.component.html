@@ -1,4 +1,4 @@
-<th (click)="doSetOrder('id')"><i [ngClass]="oMetadataService.getIcon('id')"></i> ID
+<th (click)="doSetOrder('id')"><i [ngClass]="oMetadataService.getIcon('id')"></i> {{oMetadataService.getName('ID')}}
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
 </th>
@@ -23,25 +23,28 @@
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='apellido2'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('email')" *ngIf="mode">
-  <i [ngClass]="oMetadataService.getIcon('email')"></i> Email
+  <i [ngClass]="oMetadataService.getIcon('email')"></i> {{oMetadataService.getName('email')}}
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='email'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='email'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('carritos')" *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('carrito')"></i>
-  Productos en Carrito
+  {{oMetadataService.getName('cart products')}}
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='carritos'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='carritos'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('facturas')" *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('factura')"></i>
-  Facturas
+  {{oMetadataService.getName('facturas')}}
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='facturas'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='facturas'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('tipousuario')"><i [ngClass]="oMetadataService.getIcon('tipousuario')"></i>
-  Tipo de Usuario
+  {{oMetadataService.getName('tipousuario')}}
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='tipousuario'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='tipousuario'&&strSortDirection=='desc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')"
+    *ngIf="strSortField=='tipousuario'&&strSortDirection=='desc'"></i>
 </th>
 <th *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('validado')"></i> {{oMetadataService.getName('validado')}}</th>
 <th *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('activado')"></i> {{oMetadataService.getName('activo')}}</th>
-<th><ng-content select="[action_column_title]"></ng-content></th>
+<th>
+  <ng-content select="[action_column_title]"></ng-content>
+</th>

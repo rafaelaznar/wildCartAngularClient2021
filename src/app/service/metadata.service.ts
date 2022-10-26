@@ -48,7 +48,7 @@ export class MetadataService {
       case strIcon == "descuento": return "fas fa-percentage";
       case strIcon == "token": return "fas fa-barcode";
       case strIcon == "validado": return "fas fa-user-check";
-      case strIcon == "activo": return "fas fa-flag-checkered";      
+      case strIcon == "activo": return "fas fa-flag-checkered";
       //
       case strIcon == "descripcion": return "fas fa-signature";
       //
@@ -90,8 +90,8 @@ export class MetadataService {
       case strIcon == "search": return "fas fa-search";
       case strIcon == "rpp": return "fas fa-file-alt";
       case strIcon == "selection": return "fas fa-bullseye";
-      case strIcon == "ok": return "fas fa-check-square";      
-      case strIcon == "return": return "fas fa-arrow-circle-left";      
+      case strIcon == "ok": return "fas fa-check-square";
+      case strIcon == "return": return "fas fa-arrow-circle-left";
       case strIcon == "random": return "fas fa-random";
       case strIcon == "save": return "fas fa-floppy-disk";
       case strIcon == "accept": return "fas fa-check-circle";
@@ -123,7 +123,7 @@ export class MetadataService {
       case str == "new cart item": return "Nueva línea de carrito";
       case str == "carts items list": return "Listado de líneas de carrito";
       case str == "cart item removal": return "Borrado de línea de carrito";
-      case str == "cart item view": return "Vista de línea de carrito";      
+      case str == "cart item view": return "Vista de línea de carrito";
       case str == "id": return "Id";
       case str == "ID": return "ID";
       case str == "amount": return "Cantidad";
@@ -150,6 +150,9 @@ export class MetadataService {
       case str == "code": return "Código";
       case str == "product discount": return "Descuento del producto";
       case str == "client discount": return "Descuento del cliente";
+
+      case str == "cart products": return "productos en carrito";
+      
 
       case str == "go to carrito list": return "Ir al listado de productos en carritos";
       case str == "go to carrito view": return "Ir a la vista de producto en carrito";
@@ -228,14 +231,25 @@ export class MetadataService {
       case str == "you have": return "Tienes";
       case str == "in the cart": return "En el carrito";
 
+
+      // errores genericos de campos
+      case str == "mandatory": return "El campo es obligatorio.";
+      case str == "invalid": return "Los valores del campo no son válidos, debe introducir los datos correctamente";
+      case str == "tooShort": return "El valor introducido es demasiado corto";
+      case str == "tooLong": return "El valor introducido es demasiado largo";
       case str == "you must set a valid date": return "Se debe introducir una fecha correcta";
       case str == "you must set a valid vat": return "Se debe introducir una iva correcto";
       case str == "you must set a valid name": return "Se debe introducir un nombre correcto";
+      case str == "you must set a valid surname": return "Se debe introducir un primer apellido correcto";
+      case str == "you must set a valid lastname": return "Se debe introducir un segundo apellido correcto";
+      case str == "you must set a valid login": return "Se debe introducir un login correcto";
+      case str == "you must set a valid email": return "Se debe introducir un email correcto";
+      case str == "you must set a valid DNI": return "Se debe introducir un DNI correcto";
 
       case str == "select an invoice": return "Seleccione una factura";
       case str == "select a product": return "Seleccione un producto";
       case str == "select a user": return "Seleccione un usuario";
-      
+
       case str == "image": return "Imagen";
       case str == "discount": return "Descuento";
       case str == "product type": return "Tipo de producto";
@@ -378,12 +392,7 @@ export class MetadataService {
       case str == "thereport": return "El informe";
       case str == "ofthereport": return "Del informe";
       case str == "thereports": return "Los informes";
-      case str == "ofthereports": return "De los informes";      
-      // errores genericos de campos
-      case str == "mandatory": return "El campo es obligatorio, debe introduir los datos";
-      case str == "invalid": return "Los valores del campo no son válidos, debe introducir los datos correctamente";
-      case str == "tooShort": return "El valor introducido es demasiado corto";
-      case str == "tooLong": return "El valor introducido es demasiado largo";
+      case str == "ofthereports": return "De los informes";
       // campos usuario
       case str == "dni": return "DNI";
       case str == "nombre": return "Nombre";

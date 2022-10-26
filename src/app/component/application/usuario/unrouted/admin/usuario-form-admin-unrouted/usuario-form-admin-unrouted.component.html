@@ -2,7 +2,7 @@
 
     <div class="row mb-3">
         <label for="id" class="col-sm-2 col-form-label"> <i [ngClass]="oMetadataService.getIcon('id')"></i>
-            {{oMetadataService.getName('id')}}</label>
+            {{oMetadataService.getName('ID')}}</label>
         <div class="col-sm-1">
             <input class="form-control" type="text" name="id" formControlName="id" id="id" readonly>
         </div>
@@ -15,10 +15,10 @@
             <input type="text" class="form-control" id="dni" formControlName="dni"
                 [ngClass]="{'is-valid' : f.controls.dni.dirty && !(f.controls.dni.errors?.required || f.controls.dni.errors?.minlength) }">
             <div *ngIf="f.controls.dni.dirty && f.controls.dni.errors?.required" class="text-danger">
-                Se debe introducir un DNI
+                {{oMetadataService.getName('mandatory')}}: {{oMetadataService.getName('you must set a valid DNI')}}
             </div>
             <div *ngIf="f.controls.dni.dirty && f.controls.dni.errors?.minlength" class="text-danger">
-                El DNI introducido es demasiado corto
+                {{oMetadataService.getName('tooShort')}}: {{oMetadataService.getName('you must set a valid DNI')}}
             </div>
         </div>
     </div>
@@ -30,10 +30,10 @@
             <input type="text" class="form-control" id="nombre" formControlName="nombre"
                 [ngClass]="{'is-valid' : f.controls.nombre.dirty && !(f.controls.nombre.errors?.required || f.controls.nombre.errors?.minlength) }">
             <div *ngIf="f.controls.nombre.dirty && f.controls.nombre.errors?.required" class="text-danger">
-                Se debe introducir un nombre
+                {{oMetadataService.getName('mandatory')}}: {{oMetadataService.getName('you must set a valid name')}}
             </div>
             <div *ngIf="f.controls.nombre.dirty && f.controls.nombre.errors?.minlength" class="text-danger">
-                El nombre introducido es demasiado corto
+                {{oMetadataService.getName('tooShort')}}: {{oMetadataService.getName('you must set a valid name')}}
             </div>
         </div>
     </div>
@@ -45,10 +45,10 @@
             <input type="text" class="form-control" id="apellido1" formControlName="apellido1"
                 [ngClass]="{'is-valid' : f.controls.apellido1.dirty && !(f.controls.apellido1.errors?.required || f.controls.apellido1.errors?.minlength) }">
             <div *ngIf="f.controls.apellido1.dirty && f.controls.apellido1.errors?.required" class="text-danger">
-                Se debe introducir un Primer Apellido
+                {{oMetadataService.getName('mandatory')}}: {{oMetadataService.getName('you must set a valid surname')}}
             </div>
             <div *ngIf="f.controls.apellido1.dirty && f.controls.apellido1.errors?.minlength" class="text-danger">
-                El Primer Apellido introducido es demasiado corto
+                {{oMetadataService.getName('tooShort')}}: {{oMetadataService.getName('you must set a valid surname')}}
             </div>
         </div>
     </div>
@@ -61,10 +61,10 @@
             <input type="text" class="form-control" id="apellido2" formControlName="apellido2"
                 [ngClass]="{'is-valid' : f.controls.apellido2.dirty && !(f.controls.apellido2.errors?.required || f.controls.apellido2.errors?.minlength) }">
             <div *ngIf="f.controls.apellido2.dirty && f.controls.apellido2.errors?.required" class="text-danger">
-                Se debe introducir un Segundo Apellido
+                {{oMetadataService.getName('mandatory')}}: {{oMetadataService.getName('you must set a valid lastname')}}
             </div>
             <div *ngIf="f.controls.apellido2.dirty && f.controls.apellido2.errors?.minlength" class="text-danger">
-                El Segundo Apellido introducido es demasiado corto
+                {{oMetadataService.getName('tooShort')}}: {{oMetadataService.getName('you must set a valid lastname')}}
             </div>
         </div>
     </div>
@@ -76,10 +76,10 @@
             <input type="text" class="form-control" id="login" formControlName="login"
                 [ngClass]="{'is-valid' : f.controls.login.dirty && !(f.controls.login.errors?.required || f.controls.login.errors?.minlength) }">
             <div *ngIf="f.controls.login.dirty && f.controls.login.errors?.required" class="text-danger">
-                Se debe introducir un Login
+                {{oMetadataService.getName('mandatory')}}: {{oMetadataService.getName('you must set a valid login')}}
             </div>
             <div *ngIf="f.controls.login.dirty && f.controls.login.errors?.minlength" class="text-danger">
-                El Login introducido es demasiado corto
+                {{oMetadataService.getName('tooShort')}}: {{oMetadataService.getName('you must set a valid login')}}
             </div>
         </div>
     </div>
@@ -91,10 +91,10 @@
             <input type="text" class="form-control" id="email" formControlName="email"
                 [ngClass]="{'is-valid' : f.controls.email.dirty && !(f.controls.email.errors?.required || f.controls.email.errors?.minlength) }">
             <div *ngIf="f.controls.email.dirty && f.controls.email.errors?.required" class="text-danger">
-                Se debe introducir un email
+                {{oMetadataService.getName('mandatory')}}: {{oMetadataService.getName('you must set a valid email')}}
             </div>
             <div *ngIf="f.controls.email.dirty && f.controls.email.errors?.minlength" class="text-danger">
-                El email introducido es demasiado corto
+                {{oMetadataService.getName('tooShort')}}: {{oMetadataService.getName('you must set a valid email')}}
             </div>
         </div>
     </div>
@@ -102,7 +102,8 @@
     <div class="row mb-3" app-find-unrouted [entity]="'tipousuario'" [id]="oData2Show?.tipousuario.id"
         [description]="oData2Show?.tipousuario.nombre" (selection)="onFindSelection($event)">
         <div plist-finder-title>
-            <h4 class="text-center">{{oMetadataService.getName('selectionHelp') + ' ' +  oMetadataService.getName('atipousuario')}}</h4>
+            <h4 class="text-center">{{oMetadataService.getName('selectionHelp') + ' ' +
+                oMetadataService.getName('atipousuario')}}</h4>
         </div>
     </div>
 
