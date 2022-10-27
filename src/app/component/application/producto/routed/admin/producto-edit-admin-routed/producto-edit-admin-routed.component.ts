@@ -15,20 +15,17 @@ import { Constants } from 'src/app/model/constants';
 export class ProductoEdiAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.product
-  strOperation: string = Constants.OPERATIONS.edit //new or edit depends on the url
-  //
+  strOperation: string = Constants.OPERATIONS.edit
   id: number = null;
-  
   oUserSession: IUsuario;
   strUsuarioSession: string;
 
   constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
-    private oLocation: Location,    
+    private oLocation: Location,
     public oMetadataService: MetadataService
   ) {
-
     if (this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.strUsuarioSession));
@@ -36,20 +33,16 @@ export class ProductoEdiAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id
     this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
-
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   reportResult = (oResult: any): void => {
     this.id = oResult.id;
     this.openPopup(oResult.strMsg);
   };
-
 
   goBack(): void {
     this.oLocation.back();
@@ -59,7 +52,7 @@ export class ProductoEdiAdminRoutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 

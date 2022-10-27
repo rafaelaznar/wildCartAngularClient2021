@@ -13,7 +13,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 export class FacturaViewAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.invoice
-  strOperation: string = Constants.OPERATIONS.view  
+  strOperation: string = Constants.OPERATIONS.view
   id: number = null;
   strUsuarioSession: string;
   oUserSession: IUsuario;
@@ -32,11 +32,9 @@ export class FacturaViewAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id
-
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

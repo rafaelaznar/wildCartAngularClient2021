@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IFactura, IFacturaPage } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
@@ -40,8 +40,7 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
     public oMetadataService: MetadataService,
     private oCompraService: CompraService,
     private oPaginationService: PaginationService
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.nPage = 1;
@@ -139,10 +138,6 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
 
   printFactura = (id_factura: number) => {
     this.oFacturaService.getOne(id_factura).subscribe((oFactura2Print: IFactura) => {
-
-      //console.log(oFactura2Print);
-
-      //console.log("buscando...", this.strFilter);
       this.oCompraService.getPage(1, oFactura2Print.compras, this.strSortField, this.strSortDirection, this.strFilter, id_factura, null).subscribe((oPage: ICompraPage) => {
         if (this.strFilter) {
           this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
@@ -153,28 +148,17 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
         this.nTotalElements = oPage.totalElements;
         this.nTotalPages = oPage.totalPages;
         this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
-        //console.log(aCompras);
-
         // You'll need to make your image into a Data URL
         // Use http://dataurl.net/#dataurlmaker
-
         var doc = new jsPDF()
-
         //doc.addFont('Arial', 'Arial', 'normal');
         //doc.setFont('Arial');
-
         //Cabecera
         doc = this.cabecera(doc, oFactura2Print);
         //Fin de cabecera
-
         doc.setFontSize(12)
-
-        //console.log(oFactura2Print.compras);
-        //console.log(this.aCompras);
-
         var linea = 155;
         var totalFactura = 0;
-
         doc.setFont('Courier');
         for (let i = 0; i < oFactura2Print.compras; i++) {
           doc.setFontSize(8)
@@ -184,13 +168,10 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
           doc.text(this.sp(aCompras[i].producto.precio), 160, linea, "right");
           //let total: number = this.aCompras[i].cantidad * this.aCompras[i].producto.precio;
           //let total_round:string = (Math.round(total * 100) / 100).toFixed(2);
-
           //let total_miles = total.toLocaleString('es', { minimumFractionDigits: 2 });
           doc.text(this.sp(aCompras[i].cantidad * aCompras[i].producto.precio), 194, linea, "right");
-
           totalFactura = totalFactura + (aCompras[i].cantidad * aCompras[i].producto.precio);
           linea = linea + 7;
-
           if (linea > 230) {
             doc.addPage();
             doc = this.cabecera(doc, oFactura2Print);
@@ -209,7 +190,6 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
         doc.text(oFactura2Print.iva + "%", xnum, linea + 14, "right")
         doc.text('Total + IVA:', xtit, linea + 21, "right")
         doc.text(this.sp(totalFactura + (totalFactura * oFactura2Print.iva) / 100) + " €", xnum, linea + 21, "right");
-
         doc.save("Factura.pdf");
       })
     })

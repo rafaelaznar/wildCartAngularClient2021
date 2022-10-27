@@ -11,6 +11,7 @@ import { API_URL } from 'src/environments/environment';
 })
 
 export class FacturaPlistrowAdminUnroutedComponent implements OnInit {
+  
   @Input() oFactura: IFactura = null;
   @Input() mode: boolean = true; //true=edición; false=selección
 

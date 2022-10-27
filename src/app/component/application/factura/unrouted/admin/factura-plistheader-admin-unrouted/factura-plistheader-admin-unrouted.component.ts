@@ -8,8 +8,9 @@ import { MetadataService } from 'src/app/service/metadata.service';
   templateUrl: './factura-plistheader-admin-unrouted.component.html',
   styleUrls: ['./factura-plistheader-admin-unrouted.component.css']
 })
+
 export class FacturaPlistheaderAdminUnroutedComponent implements OnInit {
-  
+
   @Input() strSortField: string = "";
   @Input() strSortDirection: string = "";
   @Input() mode: boolean = true; //true=edición; false=selección
@@ -22,9 +23,8 @@ export class FacturaPlistheaderAdminUnroutedComponent implements OnInit {
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
-  
+  ngOnInit() { }
+
   doSetOrder(order: string) {
     this.strSortField = order;
     if (this.strSortDirection == 'asc') {
@@ -36,6 +36,5 @@ export class FacturaPlistheaderAdminUnroutedComponent implements OnInit {
     }
     this.sort.emit({ sortField: order, sortDirection: this.strSortDirection });
   }
-
 
 }

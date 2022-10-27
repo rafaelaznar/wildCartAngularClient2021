@@ -51,7 +51,7 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
   ngOnInit(): void { }
 
   get = (): void => {
-    this.oFacturaService.getOne(this.id).subscribe((oData: IFactura) => {      
+    this.oFacturaService.getOne(this.id).subscribe((oData: IFactura) => {
       this.oData2Show = oData;
       this.oForm = this.oFormBuilder.group({
         id: [this.oData2Show.id],
@@ -59,7 +59,7 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
         iva: [this.oData2Show.iva, Validators.required],
         pagado: [this.oData2Show.pagado],
         id_usuario: [this.oData2Show.usuario.id, Validators.required]
-      });      
+      });
     })
   }
 
@@ -80,7 +80,6 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
 
   update = (): void => {
     let strResult: string = '';
-    //console.log(this.oData2Send);
     this.oFacturaService.updateOne(this.oData2Send).subscribe((id: number) => {
       if (id > 0) {
         strResult = this.oMetadataService.getName('the' + this.strEntity) + ' con id=' + id + ' se ha modificado correctamente';

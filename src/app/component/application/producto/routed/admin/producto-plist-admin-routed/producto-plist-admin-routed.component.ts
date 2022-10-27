@@ -19,12 +19,11 @@ export class ProductoPlistAdminRoutedComponent implements OnInit {
   subjectFiltro$ = new Subject();
   id_tipoproducto: number = null;
 
-  constructor(    
+  constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
     public oMetadataService: MetadataService
   ) {
-
     if (this.oActivatedRoute.snapshot.data.message) {
       this.oUserSession = this.oActivatedRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
@@ -32,13 +31,11 @@ export class ProductoPlistAdminRoutedComponent implements OnInit {
       localStorage.clear();
       this.oRouter.navigate(['/home']);
     }
-
     this.id_tipoproducto = this.oActivatedRoute.snapshot.params.id_tipoproducto;
     this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }
 

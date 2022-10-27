@@ -11,13 +11,11 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 
 export class FacturaPlistAdminRoutedComponent implements OnInit {
+
   strEntity: string = Constants.ENTITIES.invoice;
   strOperation: string = Constants.OPERATIONS.plist;
-
   strUsuarioSession: string;
-
   id_usuario: number = null;
-
   fila: IUsuario;
 
   constructor(
@@ -39,5 +37,6 @@ export class FacturaPlistAdminRoutedComponent implements OnInit {
     this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
 }

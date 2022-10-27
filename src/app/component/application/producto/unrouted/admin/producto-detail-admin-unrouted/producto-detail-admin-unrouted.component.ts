@@ -30,4 +30,5 @@ export class ProductoDetailAdminUnroutedComponent implements OnInit {
         this.oProducto = oData;
       });
   };
+  
 }

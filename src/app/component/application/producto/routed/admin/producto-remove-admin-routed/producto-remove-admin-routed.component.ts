@@ -13,13 +13,11 @@ import { Constants } from 'src/app/model/constants';
   styleUrls: ['./producto-remove-admin-routed.component.css']
 })
 export class ProductoRemoveAdminRoutedComponent implements OnInit {
-  
+
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.remove
-
   id: number = 0;
   oUserSession: IUsuario;
-  
 
   constructor(
     private oProductoService: ProductoService,
@@ -36,18 +34,15 @@ export class ProductoRemoveAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-    // recogida de parámetros
     this.id = this.oActivatedRoute.snapshot.params.id
-
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   removeOne() {
     let strResult: string = '';
-    this.oProductoService.removeOne(this.id).subscribe((id: number) => {    
-      if (id) {                
+    this.oProductoService.removeOne(this.id).subscribe((id: number) => {
+      if (id) {
         strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
       } else {
         strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
@@ -64,7 +59,7 @@ export class ProductoRemoveAdminRoutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 

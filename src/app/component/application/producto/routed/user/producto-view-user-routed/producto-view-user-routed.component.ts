@@ -17,26 +17,19 @@ export class ProductoViewUserRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.view
-
   id: number = null;
   strUsuarioSession: string;
-  
-
   oUserSession: IUsuario;
-
   tipousuarioSession_id: number = null;
   carritoHomeEventsSubject: Subject<{ action: string, data: number }> = new Subject<{ action: string, data: number }>();
 
   constructor(
-
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     public oMetadataService: MetadataService,
     private oLocation: Location
-
   ) {
-
     if (this.oRoute.snapshot.data.message) {
       this.oUserSession = this.oRoute.snapshot.data.message;
       this.tipousuarioSession_id = this.oUserSession.tipousuario.id;
@@ -45,13 +38,10 @@ export class ProductoViewUserRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id
-
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onAddCarrito(id_producto: number) {
     this.carritoHomeEventsSubject.next({ action: 'add', data: id_producto });
@@ -60,5 +50,5 @@ export class ProductoViewUserRoutedComponent implements OnInit {
   goBack(): void {
     this.oLocation.back();
   }
-  
+
 }

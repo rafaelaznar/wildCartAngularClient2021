@@ -15,9 +15,7 @@ export class ProductoNewAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.product;
   strOperation: string = Constants.OPERATIONS.new;
-
   id: number = null;
-  
   strUsuarioSession: string;
 
   constructor(
@@ -26,7 +24,6 @@ export class ProductoNewAdminRoutedComponent implements OnInit {
     private oLocation: Location,
     public oMetadataService: MetadataService
   ) {
-
     if (this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.strUsuarioSession));
@@ -34,20 +31,16 @@ export class ProductoNewAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id
     this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
-
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   reportResult = (oResult: any): void => {
     this.id = oResult.id;
     this.openPopup(oResult.strMsg);
   };
-
 
   goBack(): void {
     this.oLocation.back();
@@ -57,7 +50,7 @@ export class ProductoNewAdminRoutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 

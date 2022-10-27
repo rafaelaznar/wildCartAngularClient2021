@@ -8,6 +8,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
   templateUrl: './factura-detail-admin-unrouted.component.html',
   styleUrls: ['./factura-detail-admin-unrouted.component.css']
 })
+
 export class FacturaDetailAdminUnroutedComponent implements OnInit {
 
   @Input() id: number = null;  
@@ -29,4 +30,5 @@ export class FacturaDetailAdminUnroutedComponent implements OnInit {
         this.oFactura = oData;
       });
   };
+  
 }

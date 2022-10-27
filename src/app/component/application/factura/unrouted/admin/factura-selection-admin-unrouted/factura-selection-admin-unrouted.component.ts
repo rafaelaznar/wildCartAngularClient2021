@@ -29,13 +29,12 @@ export class FacturaSelectionAdminUnroutedComponent implements OnInit {
   strSortDirection: string = "";
   strFilter: string = "";
   strFilteredMessage: string = "";
-  subjectFilter = new Subject();  
+  subjectFilter = new Subject();
 
   constructor(
     private oFacturaService: FacturaService,
     public oMetadataService: MetadataService
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.nPage = 1;

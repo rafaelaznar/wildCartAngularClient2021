@@ -15,6 +15,7 @@ import { Constants } from 'src/app/model/constants';
   templateUrl: './factura-form-admin-unrouted.component.html',
   styleUrls: ['./factura-form-admin-unrouted.component.css']
 })
+
 export class FacturaFormAdminUnroutedComponent implements OnInit {
 
   @Input() strOperation: string = null;
@@ -50,8 +51,7 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
     private oRouter: Router,
     private oErrorHandlerService: ErrorHandlerService,
     private oUsuarioService: UsuarioService,
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
 
@@ -106,7 +106,7 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
       this.oFacturaService
         .newOne(this.oFactura2Send)
         .subscribe(
-          (id: number) => {            
+          (id: number) => {
             if (id) {
               this.id = id;
               strResult = this.oMetadataService.getName('the' + this.strEntity) + ' se ha creado correctamente con el id: ' + id;
@@ -117,13 +117,13 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
           },
           (error) => {
             strResult = "Error al guardar " +
-            this.oMetadataService.getName(this.strEntity) + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
+              this.oMetadataService.getName(this.strEntity) + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
             this.openPopup(strResult);
           });
     } else {
       this.oFacturaService
         .updateOne(this.oFactura2Send)
-        .subscribe((id: number) => {          
+        .subscribe((id: number) => {
           if (id) {
             this.id = id;
             strResult = this.oMetadataService.getName('the' + this.strEntity) + ' con id=' + id + ' se ha modificado correctamente';

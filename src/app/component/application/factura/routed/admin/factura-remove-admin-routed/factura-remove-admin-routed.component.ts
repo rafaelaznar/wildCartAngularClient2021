@@ -18,7 +18,6 @@ export class FacturaRemoveAdminRoutedComponent implements OnInit {
   id: number = 0;
   oFactura: IFactura;
   strUsuarioSession: string;
-
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.remove
 
@@ -37,14 +36,11 @@ export class FacturaRemoveAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-    // recogida de parámetros
     this.id = this.oActivatedRoute.snapshot.params.id
-    // llamada al servidor
     this.getOne();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   getOne = () => {
     this.oFacturaService.getOne(this.id).subscribe((oData: IFactura) => {
