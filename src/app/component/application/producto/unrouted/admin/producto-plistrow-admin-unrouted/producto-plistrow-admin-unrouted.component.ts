@@ -10,13 +10,14 @@ import { API_URL } from 'src/environments/environment';
   styleUrls: ['./producto-plistrow-admin-unrouted.component.css']
 })
 export class ProductoPlistRowAdminUnroutedComponent implements OnInit {
+
   @Input() oProducto: IProducto = null;
   @Input() mode: boolean = true; //true=edición; false=selección
 
   strAPI_URL: string = API_URL;
   strEntity: string = Constants.ENTITIES.product;
   strOperation: string = Constants.OPERATIONS.plist;
-  
+
   constructor(
     public oMetadataService: MetadataService
   ) { }

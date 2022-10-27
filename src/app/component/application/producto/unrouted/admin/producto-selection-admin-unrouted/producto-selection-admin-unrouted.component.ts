@@ -22,29 +22,22 @@ export class ProductoSelectionAdminUnroutedComponent implements OnInit {
   strTitleSingular: string = "Producto";
   strATitleSingular: string = "El producto";
   strTitlePlural: string = "Productos";
-  //
   aProductos: IProducto[];
-  //  
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
   aPaginationBar: string[];
   nPageSize: number = 10;
-  //
   strSortField: string = "";
   strSortDirection: string = "";
-  //
   strFilter: string = "";
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
-  //
-  
 
   constructor(
     private oProductoService: ProductoService,
     public oMetadataService: MetadataService
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.nPage = 1;

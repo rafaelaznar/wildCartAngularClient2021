@@ -17,6 +17,7 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
   @Output() addCarritoEE = new EventEmitter<number>();
 
   oProducto: IProducto;
+
   constructor(
     private oProductoService: ProductoService,
     public oMetadataService: MetadataService,
@@ -37,7 +38,6 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
 
   addCarrito(id_producto: number) {
     this.oCarritoService.add(id_producto, 1).subscribe((result: number) => {
-      //console.log("addCarrito:" + result);
       this.addCarritoEE.emit(id_producto);
       this.getOne();
     })
@@ -45,12 +45,9 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
 
   removeCarrito(id_producto: number) {
     this.oCarritoService.reduce(id_producto, 1).subscribe((result: number) => {
-      //console.log("addCarrito:" + result);
       this.addCarritoEE.emit(id_producto);
       this.getOne();
     })
   }
-
-
 
 }

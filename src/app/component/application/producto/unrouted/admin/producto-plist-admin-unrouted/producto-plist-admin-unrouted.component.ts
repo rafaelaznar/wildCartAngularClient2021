@@ -29,12 +29,11 @@ export class ProductoPlistAdminUnroutedComponent implements OnInit {
   strFilter: string = "";
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
-  
+
   constructor(
     private oProductoService: ProductoService,
     public oMetadataService: MetadataService
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.nPage = 1;

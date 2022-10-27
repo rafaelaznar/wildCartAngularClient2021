@@ -10,7 +10,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 
 export class ProductoPlistheaderAdminUnroutedComponent implements OnInit {
-  
+
   @Input() strSortField: string = "";
   @Input() strSortDirection: string = "";
   @Input() mode: boolean = true; //true=edición; false=selección
@@ -18,13 +18,13 @@ export class ProductoPlistheaderAdminUnroutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.product;
   strOperation: string = Constants.OPERATIONS.plist;
+
   constructor(
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
-  
+  ngOnInit() { }
+
   doSetOrder(order: string) {
     this.strSortField = order;
     if (this.strSortDirection == 'asc') {
@@ -36,6 +36,5 @@ export class ProductoPlistheaderAdminUnroutedComponent implements OnInit {
     }
     this.sort.emit({ sortField: order, sortDirection: this.strSortDirection });
   }
-
 
 }

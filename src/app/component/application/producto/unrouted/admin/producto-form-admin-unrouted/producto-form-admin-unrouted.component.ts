@@ -8,8 +8,6 @@ import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { Constants } from 'src/app/model/constants';
 
-declare let $: any;
-
 @Component({
   selector: 'app-producto-form-admin-unrouted',
   templateUrl: './producto-form-admin-unrouted.component.html',
@@ -37,8 +35,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
     private oFileService: FileService,
     public oMetadataService: MetadataService,
     public oTipoproductoService: TipoproductoService
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     if (this.strOperation == "edit") {
@@ -71,7 +68,6 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
       });
     });
   };
-
 
   processFile($event: any) {
     const reader = new FileReader();

@@ -14,6 +14,7 @@ export class ProductoDetailAdminUnroutedComponent implements OnInit {
   @Input() id: number = null;  
 
   oProducto: IProducto;
+  
   constructor(
     private oProductoService: ProductoService,
     public oMetadataService: MetadataService
@@ -30,5 +31,5 @@ export class ProductoDetailAdminUnroutedComponent implements OnInit {
         this.oProducto = oData;
       });
   };
-  
+
 }

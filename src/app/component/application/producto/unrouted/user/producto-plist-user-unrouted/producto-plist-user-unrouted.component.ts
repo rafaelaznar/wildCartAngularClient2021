@@ -62,8 +62,7 @@ export class ProductoPlistUserUnroutedComponent implements OnInit {
         if (this.nPage > this.nTotalPages) {
           this.nPage = this.nTotalPages;
           this.getPage();
-        }
-        //this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
+        }        
       })
   }
 
@@ -96,7 +95,6 @@ export class ProductoPlistUserUnroutedComponent implements OnInit {
 
   addCarrito(id_producto: number) {
     this.oCarritoService.add(id_producto, 1).subscribe((result: number) => {
-      //console.log("addCarrito:" + result);
       this.addCarritoEE.emit(id_producto);
       this.getPage();
     })
@@ -104,7 +102,6 @@ export class ProductoPlistUserUnroutedComponent implements OnInit {
 
   removeCarrito(id_producto: number) {
     this.oCarritoService.reduce(id_producto, 1).subscribe((result: number) => {
-      //console.log("addCarrito:" + result);
       this.addCarritoEE.emit(id_producto);
       this.getPage();
     })
