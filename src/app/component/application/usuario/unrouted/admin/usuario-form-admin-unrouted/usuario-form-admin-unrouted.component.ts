@@ -8,6 +8,7 @@ import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/service/errorHandler.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-usuario-form-admin-unrouted',
@@ -24,7 +25,7 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
   oData2Show: IUsuario = null;
   oData2Send: IUsuario2Send = null;
 
-  strEntity: string = 'usuario';
+  strEntity: string = Constants.ENTITIES.user;
   strTitleSingular: string = 'Usuario';
   strATitleSingular: string = 'El usuario';
 

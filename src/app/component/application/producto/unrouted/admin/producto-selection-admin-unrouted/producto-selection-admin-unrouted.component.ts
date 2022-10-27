@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { ProductoService } from 'src/app/service/producto.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-producto-selection-admin-unrouted',
@@ -16,8 +17,8 @@ export class ProductoSelectionAdminUnroutedComponent implements OnInit {
   @Input() id_tipoproducto: number = null;
   @Output() selection = new EventEmitter<number>();
 
-  strEntity: string = "producto"
-  strOperation: string = "plist"
+  strEntity: string = Constants.ENTITIES.product
+  strOperation: string = Constants.OPERATIONS.plist
   strTitleSingular: string = "Producto";
   strATitleSingular: string = "El producto";
   strTitlePlural: string = "Productos";

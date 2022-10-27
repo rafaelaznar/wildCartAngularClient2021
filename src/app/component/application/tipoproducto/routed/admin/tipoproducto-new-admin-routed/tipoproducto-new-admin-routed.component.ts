@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-tipoproducto-new-admin-routed',
@@ -12,11 +13,9 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class TipoproductoNewAdminRoutedComponent implements OnInit {
 
-  strEntity: string = "tipoproducto"
-  strOperation: string = "new"
-  strTitleSingular: string = "Tipo de producto";
-  strATitleSingular: string = "El tipo de producto";
-  strTitlePlural: string = "Tipos de producto";
+  strEntity: string = Constants.ENTITIES.producttype
+  strOperation: string = Constants.OPERATIONS.new
+
   id: number = null;
   
   strUsuarioSession: string;

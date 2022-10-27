@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Constants } from 'src/app/model/constants';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 
@@ -15,8 +16,8 @@ export class TipoproductoPlistheaderAdminUnroutedComponent implements OnInit {
   @Input() strSortDirection: string = "";
   @Output() sort = new EventEmitter<IOrder>();
 
-  strEntity: string = "tipoproducto";
-  strOperation: string = "plist";
+  strEntity: string = Constants.ENTITIES.producttype;
+  strOperation: string = Constants.OPERATIONS.plist;
   constructor(
     public oMetadataService: MetadataService
   ) { }

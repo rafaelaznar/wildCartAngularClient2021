@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
@@ -14,9 +15,8 @@ export class UsuarioDetailUserUnroutedComponent implements OnInit {
   
   oUsuario: IUsuario;
 
-  strEntity: string = "usuario"
-  strOperation: string = "view"
-  strTitleSingular:string= "usuario"
+  strEntity: string = Constants.ENTITIES.user
+  strOperation: string = Constants.OPERATIONS.view
 
   constructor(
     private oUsuarioService: UsuarioService,

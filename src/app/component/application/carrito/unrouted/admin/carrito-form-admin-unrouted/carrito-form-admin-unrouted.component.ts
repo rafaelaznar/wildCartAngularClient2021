@@ -10,6 +10,7 @@ import { ProductoService } from 'src/app/service/producto.service';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-carrito-form-admin-unrouted',
@@ -26,7 +27,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
   oData2Show: ICarrito = null;
   oData2Send: ICarrito2Send = null;
 
-  strEntity: string = 'carrito';
+  strEntity: string = Constants.ENTITIES.cart;
   strTitleSingular: string = 'Carrito';
   strATitleSingular: string = 'La carrito';
 

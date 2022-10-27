@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Constants } from 'src/app/model/constants';
 import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
@@ -10,10 +11,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class UsuarioPlistAdminRoutedComponent implements OnInit {
 
-  strEntity: string = "usuario"
-  strOperation: string = "plist"
-  strTitleSingular: string = "Usuario";
-  strTitlePlural: string = "Usuarios";
+  strEntity: string = Constants.ENTITIES.user
+  strOperation: string = Constants.OPERATIONS.plist
 
   strUsuarioSession: string;
 

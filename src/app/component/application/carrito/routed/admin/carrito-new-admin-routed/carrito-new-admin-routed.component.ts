@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-carrito-new-admin-routed',
@@ -12,12 +13,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class CarritoNewAdminRoutedComponent implements OnInit {
 
-  strEntity: string = "carrito"
-  strOperation: string = "new"
-  strTitleSingular: string = "Carrito";
-  strTitlePlural: string = "Carritos";
-  strATitleSingular: string = "El carrito";
-  strATitlePlural: string = "Los carritos";
+  strEntity: string = Constants.ENTITIES.cart
+  strOperation: string = Constants.OPERATIONS.new
   //
   id: number = null;
   

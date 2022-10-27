@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Constants } from 'src/app/model/constants';
 import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
@@ -10,11 +11,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class TipoproductoPlistAdminRoutedComponent implements OnInit {
 
-  strEntity: string = "tipoproducto"
-  strOperation: string = "plist"
-  strTitleSingular: string = "Tipo de producto";
-  strTitlePlural: string = "Tipos de producto";
-
+  strEntity: string = Constants.ENTITIES.producttype
+  strOperation: string = Constants.OPERATIONS.plist
   strUsuarioSession: string;
 
   constructor(

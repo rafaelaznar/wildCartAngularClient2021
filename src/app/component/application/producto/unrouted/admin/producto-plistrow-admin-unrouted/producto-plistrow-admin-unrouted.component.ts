@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Constants } from 'src/app/model/constants';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { API_URL } from 'src/environments/environment';
@@ -13,8 +14,8 @@ export class ProductoPlistRowAdminUnroutedComponent implements OnInit {
   @Input() mode: boolean = true; //true=edición; false=selección
 
   strAPI_URL: string = API_URL;
-  strEntity: string = "producto";
-  strOperation: string = "plist";
+  strEntity: string = Constants.ENTITIES.product;
+  strOperation: string = Constants.OPERATIONS.plist;
   
   constructor(
     public oMetadataService: MetadataService

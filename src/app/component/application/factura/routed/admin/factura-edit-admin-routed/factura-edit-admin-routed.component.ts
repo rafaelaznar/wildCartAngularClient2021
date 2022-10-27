@@ -10,6 +10,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { Location } from '@angular/common';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-factura-edit-admin-routed',
@@ -24,12 +25,8 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
   oForm: UntypedFormGroup = null;
   
   strUsuarioSession: string;
-  strEntity: string = "factura"
-  strOperation: string = "edit"
-  strTitleSingular: string = "Factura";
-  strTitlePlural: string = "Facturas";
-  strATitleSingular: string = 'La factura';
-  strATitlePlural: string = 'Las facturas';
+  strEntity: string = Constants.ENTITIES.invoice
+  strOperation: string = Constants.OPERATIONS.edit
 
   get f() { return this.oForm.controls; }
 
@@ -97,9 +94,9 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
     //console.log(this.oData2Send);
     this.oFacturaService.updateOne(this.oData2Send).subscribe((id: number) => {
       if (id > 0) {
-        strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+        strResult = this.oMetadataService.getName('the' + this.strEntity) + ' con id=' + id + ' se ha modificado correctamente';
       } else {
-        strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+        strResult = 'Error en la modificación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
       }
       this.openPopup(strResult);
     })

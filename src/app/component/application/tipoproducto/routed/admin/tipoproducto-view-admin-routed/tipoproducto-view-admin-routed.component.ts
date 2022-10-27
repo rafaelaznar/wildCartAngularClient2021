@@ -5,6 +5,7 @@ import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-tipoproducto-view-admin-routed',
@@ -14,10 +15,9 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 export class TipoproductoViewAdminRoutedComponent implements OnInit {
 
-  strEntity: string = "tipoproducto"
-  strOperation: string = "view"
-  strTitleSingular: string = "Tipo de producto";
-  strTitlePlural: string = "Tipos de producto";
+  strEntity: string = Constants.ENTITIES.producttype
+  strOperation: string = Constants.OPERATIONS.view
+
   id: number = 0;
   oTipoProducto: ITipoproducto;
   oUserSession: IUsuario;

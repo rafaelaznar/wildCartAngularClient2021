@@ -52,7 +52,7 @@ import { PaginationUnroutedComponent } from './component/shared/unrouted/paginat
 import { PlistrowbuttonsUnroutedComponent } from './component/shared/unrouted/plistrowbuttons-unrouted/plistrowbuttons-unrouted.component';
 import { ViewbuttonsUnroutedComponent } from './component/shared/unrouted/viewbuttons-unrouted/viewbuttons-unrouted.component';
 // usuario components
-import { UsuarioViewUserRoutedComponent } from './component/application/usuario/routed/user/usuario-view-user-routed/usuario-view-user-routed.component';
+import { UsuarioViewUserRoutedComponent } from './component/application/usuario/routed/usuario/usuario-view-user-routed/usuario-view-user-routed.component';
 import { UsuarioPlistAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-plist-admin-routed/usuario-plist-admin-routed.component';
 import { UsuarioNewAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-new-admin-routed/usuario-new-admin-routed.component';
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-edit-admin-routed/usuario-edit-admin-routed.component';

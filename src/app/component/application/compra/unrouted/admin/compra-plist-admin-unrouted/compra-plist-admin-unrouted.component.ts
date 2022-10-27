@@ -4,6 +4,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { CompraService } from 'src/app/service/compra.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { ICompra, ICompraPage } from 'src/app/model/compra-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-compra-plist-admin-unrouted',
@@ -17,29 +18,20 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
   @Input() id_producto: number = null;
   @Input() mode: boolean = true; //true=edición; false=selección
 
-  strEntity: string = "compra"
-  strOperation: string = "plist"
-  strTitleSingular: string = "Compra";
-  strATitleSingular: string = "La compra";
-  strTitlePlural: string = "Compras";
-  //
+  strEntity: string = Constants.ENTITIES.purchase
+  strOperation: string = Constants.OPERATIONS.plist
   aCompras: ICompra[];
-  //  
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
   aPaginationBar: string[];
   nPageSize: number = 10;
-  //
   strSortField: string = "";
   strSortDirection: string = "";
-  //
   strFilter: string = "";
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
-  //
   
-
   constructor(
     private oCompraService: CompraService,
     public oMetadataService: MetadataService    
@@ -63,7 +55,6 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
       }
     })
   }
-
 
   onSetPage = (nPage: number) => {
     this.nPage = nPage;

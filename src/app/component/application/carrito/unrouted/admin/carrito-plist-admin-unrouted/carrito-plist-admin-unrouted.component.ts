@@ -6,6 +6,7 @@ import { PaginationService } from 'src/app/service/pagination.service';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { ICarrito, ICarritoPage } from 'src/app/model/carrito-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-carrito-plist-admin-unrouted',
@@ -18,8 +19,8 @@ export class CarritoPlistAdminUnroutedComponent implements OnInit {
   @Input() id_usuario: number = null;
   @Input() mode: boolean = true; //true=edición; false=selección
   
-  strEntity: string = 'carrito';
-  strOperation: string = 'plist';
+  strEntity: string = Constants.ENTITIES.cart;
+  strOperation: string = Constants.OPERATIONS.plist;
   //
   aCarritos: ICarrito[];
   //

@@ -10,6 +10,7 @@ import { ProductoService } from 'src/app/service/producto.service';
 import { FacturaService } from 'src/app/service/factura.service';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { IFactura } from 'src/app/model/factura-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-compra-form-admin-unrouted',
@@ -26,12 +27,10 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
   oData2Show: ICompra = null;
   oData2Send: ICompra2Send = null;
 
-  strEntity: string = 'compra';
-  strTitleSingular: string = 'Compra';
-  strATitleSingular: string = 'La compra';
+  strEntity: string = Constants.ENTITIES.purchase;
 
   oForm: UntypedFormGroup = null;
-  
+
   strStatus: string = null;
 
   es: any = {
@@ -129,15 +128,15 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
           (id: number) => {
             if (id > 0) {
               this.id = id;
-              strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
+              strResult = this.oMetadataService.getName('the' + this.strEntity) + ' se ha creado correctamente con el id: ' + id;
             } else {
-              strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
+              strResult = 'Error en la creación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
             }
             this.msg.emit({ strMsg: strResult, id: this.id });
           },
           (error) => {
             strResult = "Error al guardar " +
-              this.strATitleSingular.toLowerCase() + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
+              this.oMetadataService.getName('the' + this.strEntity).toLowerCase() + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
             this.openPopup(strResult);
           });
     } else {
@@ -146,9 +145,9 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
         .subscribe((id: number) => {
           if (id > 0) {
             this.id = id;
-            strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+            strResult = this.oMetadataService.getName('the' + this.strEntity) + ' con id=' + id + ' se ha modificado correctamente';
           } else {
-            strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+            strResult = 'Error en la modificación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
           }
           this.msg.emit({ strMsg: strResult, id: this.id });
         },
@@ -215,7 +214,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 

@@ -6,6 +6,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { FileService } from 'src/app/service/file.service';
 import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
+import { Constants } from 'src/app/model/constants';
 
 declare let $: any;
 
@@ -21,20 +22,10 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   @Input() id: number = null;
   @Output() msg = new EventEmitter<any>();
 
-  strEntity: string = "producto"
-  //strOperation: string = "newedit" //new or edit depends on the url
-  strTitleSingular: string = "Producto";
-  strATitleSingular: string = "El producto";
-  strTitlePlural: string = "Productos";
+  strEntity: string = Constants.ENTITIES.product
   oProducto2Send: IProducto2Send = null;
   oProducto2Show: IProducto = null;
   oForm: UntypedFormGroup = null;
-  //id: number = null;
-  
-  //oUserSession: IUsuario;
-
-  //selectedFile: ImageSnippet;
-  //previewImage:any;
 
   get f() {
     return this.oForm.controls;
@@ -115,7 +106,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
           this.save(serverResponse);
         },
         (err) => {
-          strResult = this.strTitleSingular + 'Error al cambiar el registro: ' + err.error.message;
+          strResult = this.oMetadataService.getName(this.strEntity).toLowerCase() + ': Error al cambiar el registro: ' + err.error.message;
           //console.log("Img Upload error:", err.error.message);
           this.msg.emit({ strMsg: strResult, id: 0 });
         })
@@ -149,9 +140,9 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
             .subscribe((id: number) => {
               if (id > 0) {
                 this.id = id;
-                strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
+                strResult = this.oMetadataService.getName('the' + this.strEntity) + ' se ha creado correctamente con el id: ' + id;
               } else {
-                strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
+                strResult = 'Error en la creación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
               }
               this.msg.emit({ strMsg: strResult, id: this.id });
             });
@@ -161,9 +152,9 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
             .subscribe((id: number) => {
               if (id) {
                 this.id = id;
-                strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+                strResult = this.oMetadataService.getName('the' + this.strEntity) + ' con id=' + id + ' se ha modificado correctamente';
               } else {
-                strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+                strResult = 'Error en la modificación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
               }
               this.msg.emit({ strMsg: strResult, id: this.id });
             });

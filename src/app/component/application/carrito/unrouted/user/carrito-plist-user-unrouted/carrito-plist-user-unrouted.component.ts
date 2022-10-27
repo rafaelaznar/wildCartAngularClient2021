@@ -6,6 +6,7 @@ import { PaginationService } from 'src/app/service/pagination.service';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { ICarrito, ICarritoPage } from 'src/app/model/carrito-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-carrito-cplist-user-unrouted',
@@ -22,12 +23,8 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
   @Output() addCarritoEE = new EventEmitter<number>();
   //@ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
 
-  strEntity: string = 'carrito';
-  strOperation: string = 'plist';
-  strTitleSingular: string = 'Carrito';
-  strATitleSingular: string = "El carrito";
-  strTitlePlural: string = 'carritos';
-  strATitlePlural: string = 'Los Carritos';
+  strEntity: string = Constants.ENTITIES.cart;
+  strOperation: string = Constants.OPERATIONS.plist;
   //
   aCarritos: ICarrito[];
   //

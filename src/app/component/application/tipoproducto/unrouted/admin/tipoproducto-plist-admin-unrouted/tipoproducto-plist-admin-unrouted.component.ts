@@ -6,6 +6,7 @@ import { PaginationService } from 'src/app/service/pagination.service';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { ITipoproducto, ITipoproductoPage } from 'src/app/model/tipoproducto-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-tipoproducto-plist-admin-unrouted',
@@ -15,12 +16,8 @@ import { IOrder } from 'src/app/model/model-interfaces';
 
 export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
 
-  strEntity: string = 'tipoproducto';
-  strOperation: string = 'plist';
-  strTitleSingular: string = 'Tipo Producto';
-  strATitleSingular: string = "El tipo de producto";
-  strTitlePlural: string = 'Tipos de producto';
-  strATitlePlural: string = 'Los tipos de producto';
+  strEntity: string = Constants.ENTITIES.producttype;
+  strOperation: string = Constants.OPERATIONS.plist;
   //
   aTipoproductos: ITipoproducto[];
   //

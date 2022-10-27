@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-producto-edit-admin-routed',
@@ -13,10 +14,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class ProductoEdiAdminRoutedComponent implements OnInit {
 
-  strEntity: string = "producto"
-  strOperation: string = "edit" //new or edit depends on the url
-  strTitleSingular: string = "Producto";
-  strTitlePlural: string = "Productos";
+  strEntity: string = Constants.ENTITIES.product
+  strOperation: string = Constants.OPERATIONS.edit //new or edit depends on the url
   //
   id: number = null;
   

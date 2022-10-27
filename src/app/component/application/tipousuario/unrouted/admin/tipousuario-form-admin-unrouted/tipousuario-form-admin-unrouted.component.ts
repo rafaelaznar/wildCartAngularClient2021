@@ -3,6 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { MetadataService } from 'src/app/service/metadata.service';
 import { ITipousuario, ITipousuario2Send } from 'src/app/model/tipousuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-tipousuario-form-admin-unrouted',
@@ -19,9 +20,7 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
   oData2Show: ITipousuario = null;
   oData2Send: ITipousuario2Send = null;
 
-  strEntity: string = 'tipousuario';
-  strTitleSingular: string = 'Tipo de usuario';
-  strATitleSingular: string = 'El tipo de usuario';
+  strEntity: string = Constants.ENTITIES.usertype;
 
   oForm: UntypedFormGroup = null;
 
@@ -74,9 +73,9 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
       .subscribe((id: number) => {
         if (id) {
           this.id = id;
-          strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+          strResult = this.oMetadataService.getName('the' + this.strEntity).toLowerCase() + ' con id=' + id + ' se ha modificado correctamente';
         } else {
-          strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+          strResult = 'Error en la modificación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
         }
         this.msg.emit({ strMsg: strResult, id: this.id });
       });

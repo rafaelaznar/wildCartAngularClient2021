@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 
@@ -11,15 +12,10 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class FacturaViewAdminRoutedComponent implements OnInit {
 
-  strEntity: string = "factura"
-  strOperation: string = "view"
-  strTitleSingular: string = "Factura";
-  strTitlePlural: string = "Facturas";
-  
+  strEntity: string = Constants.ENTITIES.invoice
+  strOperation: string = Constants.OPERATIONS.view  
   id: number = null;
   strUsuarioSession: string;
-  
-
   oUserSession: IUsuario;
 
   constructor(

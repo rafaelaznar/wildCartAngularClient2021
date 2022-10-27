@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-producto-plist-admin-routed',
@@ -12,11 +13,8 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 export class ProductoPlistAdminRoutedComponent implements OnInit {
 
-  strEntity: string = "producto"
-  strOperation: string = "plist"
-  strTitleSingular: string = "Producto";
-  strTitlePlural: string = "Productos";
-
+  strEntity: string = Constants.ENTITIES.product
+  strOperation: string = Constants.OPERATIONS.plist
   oUserSession: IUsuario;
   subjectFiltro$ = new Subject();
   id_tipoproducto: number = null;

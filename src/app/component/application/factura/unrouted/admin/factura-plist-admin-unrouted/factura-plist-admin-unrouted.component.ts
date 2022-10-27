@@ -7,6 +7,7 @@ import { PaginationService } from 'src/app/service/pagination.service';
 import { CompraService } from 'src/app/service/compra.service';
 import { ICompra, ICompraPage } from 'src/app/model/compra-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 declare let jsPDF: any;
 
@@ -20,28 +21,19 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
 
   @Input() id_usuario: number = null;
 
-  strEntity: string = "factura"
-  strOperation: string = "plist"
-  strTitleSingular: string = "Factura";
-  strATitleSingular: string = "La factura";
-  strTitlePlural: string = "Facturas";
-  //
+  strEntity: string = Constants.ENTITIES.invoice
+  strOperation: string = Constants.OPERATIONS.plist
   aFacturas: IFactura[];
-  //  
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
   aPaginationBar: string[];
   nPageSize: number = 10;
-  //
   strSortField: string = "";
   strSortDirection: string = "";
-  //
   strFilter: string = "";
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
-  //
-  
 
   constructor(
     private oFacturaService: FacturaService,

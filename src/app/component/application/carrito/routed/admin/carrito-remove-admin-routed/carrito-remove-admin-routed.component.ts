@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-carrito-remove-admin-routed',
@@ -13,12 +14,8 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 })
 export class CarritoRemoveAdminRoutedComponent implements OnInit {
 
-  strEntity: string = 'carrito';
-  strOperation: string = 'remove';
-  strTitleSingular: string = 'Carrito';
-  strTitlePlural: string = 'Carritos';
-  strATitleSingular: string = 'El carrito';
-  strATitlePlural: string = 'Los carritos';
+  strEntity: string = Constants.ENTITIES.cart;
+  strOperation: string = Constants.OPERATIONS.remove;
 
   id: number = 0;  
   oUserSession: IUsuario;
@@ -51,9 +48,9 @@ export class CarritoRemoveAdminRoutedComponent implements OnInit {
     let strResult: string = '';
     this.oCarritoService.removeOne(this.id).subscribe((id: number) => {    
       if (id) {                
-        strResult = this.strATitleSingular + " con id = " + this.id + " se ha eliminado.";
+        strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
       } else {
-        strResult = 'Error en el borrado de ' + this.strTitleSingular;
+        strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
       }
       this.openPopup(strResult);
     })

@@ -6,6 +6,7 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { debounceTime } from 'rxjs/operators';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { ProductoCarritoViewService } from 'src/app/service/productocarritoview.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-producto-plist-user-unrouted',
@@ -17,21 +18,17 @@ export class ProductoPlistUserUnroutedComponent implements OnInit {
 
   @Input() id_tipousuario_session: number = null;
   @Input() id_tipoproducto: number = null;
-
   @Output() addCarritoEE = new EventEmitter<number>();
   @ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
 
-  strEntity: string = "producto"
-  strOperation: string = "plist"
-  strTitleSingular: string = "Producto";
-  strTitlePlural: string = "Productos";
+  strEntity: string = Constants.ENTITIES.product
+  strOperation: string = Constants.OPERATIONS.plist
   aProductos: IProducto[];
   aPaginationBar: string[];
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
-  nPageSize: number = 10;
-  
+  nPageSize: number = 10;  
   strFilter: string = "";
   strSortField: string = "";
   strSortDirection: string = "";
@@ -74,6 +71,7 @@ export class ProductoPlistUserUnroutedComponent implements OnInit {
     this.getPage();
     return false;
   }
+
   onKeyUpFilter(event: KeyboardEvent): void {
     this.subjectFiltro$.next();
   }

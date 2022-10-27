@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { FacturaService } from 'src/app/service/factura.service';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-factura-remove-admin-routed',
@@ -17,12 +18,9 @@ export class FacturaRemoveAdminRoutedComponent implements OnInit {
   id: number = 0;
   oFactura: IFactura;
   strUsuarioSession: string;
-  
-  strEntity: string = "factura"
-  strOperation: string = "remove"
-  strTitleSingular: string = "Factura";
-  strTitlePlural: string = "Facturas";
-  strTitleArtSingular: string = "La factura";
+
+  strEntity: string = Constants.ENTITIES.invoice
+  strOperation: string = Constants.OPERATIONS.remove
 
   constructor(
     private oFacturaService: FacturaService,
@@ -58,9 +56,9 @@ export class FacturaRemoveAdminRoutedComponent implements OnInit {
     let strResult: string = '';
     this.oFacturaService.removeOne(this.id).subscribe((id: number) => {
       if (id) {
-        strResult = this.strTitleArtSingular + " con id = " + this.id + " se ha eliminado.";
+        strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
       } else {
-        strResult = 'Error en el borrado de ' + this.strTitleSingular;
+        strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
       }
       this.openPopup(strResult);
     })
@@ -74,7 +72,7 @@ export class FacturaRemoveAdminRoutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-usuario-remove-admin-routed',
@@ -15,11 +16,8 @@ export class UsuarioRemoveAdminRoutedComponent implements OnInit {
   id: number = 0;
   strUsuarioSession: string;
   
-  strEntity: string = "usuario"
-  strOperation: string = "remove"
-  strTitleSingular: string = "Usuario";
-  strTitlePlural: string = "Usuarios";
-  strTitleArtSingular: string = "El usuario";
+  strEntity: string = Constants.ENTITIES.user
+  strOperation: string = Constants.OPERATIONS.remove
 
   constructor(
     private oUsuarioService: UsuarioService,
@@ -47,9 +45,9 @@ export class UsuarioRemoveAdminRoutedComponent implements OnInit {
     this.oUsuarioService.removeOne(this.id).subscribe((id: number) => {
       let strResult: string = '';
       if (id) {
-        strResult = this.strTitleArtSingular + " con id = " + this.id + " se ha eliminado.";
+        strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
       } else {
-        strResult = 'Error en el borrado de ' + this.strTitleSingular;
+        strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
       }
       this.openPopup(strResult);
     })

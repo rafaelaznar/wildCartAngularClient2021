@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { Constants } from 'src/app/model/constants';
 @Component({
   selector: 'app-carrito-view-admin-routed',
   templateUrl: './carrito-view-admin-routed.component.html',
@@ -10,12 +11,8 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 export class CarritoViewAdminRoutedComponent implements OnInit {
 
-  strEntity: string = 'carrito';
-  strOperation: string = 'view';
-  strTitleSingular: string = 'Carrito';
-  strTitlePlural: string = 'Carritos';
-  strATitleSingular: string = 'El carrito';
-  strATitlePlural: string = 'Los carritos';
+  strEntity: string = Constants.ENTITIES.cart;
+  strOperation: string = Constants.OPERATIONS.view;
 
   id: number = null;
   strUsuarioSession: string;

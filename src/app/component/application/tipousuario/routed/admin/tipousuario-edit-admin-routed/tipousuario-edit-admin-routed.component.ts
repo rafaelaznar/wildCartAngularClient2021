@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-tipousuario-edit-admin-routed',
@@ -13,11 +14,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class TipousuarioEditAdminRoutedComponent implements OnInit {
 
-  strEntity: string = 'tipousuario';
-  strOperation: string = 'edit'; //only edit; it can't be new
-  strTitleSingular: string = 'Tipo de usuario';
-  strATitleSingular: string = 'El tipo de usuario';
-  strTitlePlural: string = 'Tipos de usuario';
+  strEntity: string = Constants.ENTITIES.usertype;
+  strOperation: string = Constants.OPERATIONS.edit; //only edit; it can't be new
   //
   id: number = null;
 

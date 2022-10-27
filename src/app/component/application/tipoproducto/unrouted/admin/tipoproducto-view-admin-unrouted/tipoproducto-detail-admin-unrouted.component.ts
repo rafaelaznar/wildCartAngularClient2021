@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Constants } from 'src/app/model/constants';
 import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
@@ -15,9 +16,8 @@ export class TipoproductoDetailAdminUnroutedComponent implements OnInit {
   
   oTipoproducto: ITipoproducto;
 
-  strEntity: string = "tipoproducto"
-  strOperation: string = "view"
-  strTitleSingular:string= "tipoproducto"
+  strEntity: string = Constants.ENTITIES.producttype
+  strOperation: string = Constants.OPERATIONS.view
 
   constructor(
     private oTipoproductoService: TipoproductoService,

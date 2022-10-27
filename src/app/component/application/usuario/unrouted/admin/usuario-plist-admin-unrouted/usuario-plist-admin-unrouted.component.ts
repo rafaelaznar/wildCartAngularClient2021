@@ -4,6 +4,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { IUsuarioPage, IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-usuario-plist-admin-unrouted',
@@ -15,11 +16,8 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
 
   @Input() id_tipousuario: number = null;
   
-  strEntity: string = "usuario"
-  strOperation: string = "plist"
-  strTitleSingular: string = "Usuario";
-  strATitleSingular: string = "El usuario";
-  strTitlePlural: string = "Usuarios";
+  strEntity: string = Constants.ENTITIES.user
+  strOperation: string = Constants.OPERATIONS.plist
   //
   aUsuarios: IUsuario[];
   //

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-carrito-edit-admin-routed',
@@ -11,12 +12,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 export class CarritoEditAdminRoutedComponent implements OnInit {
 
-  strEntity: string = 'carrito';
-  strOperation: string = 'edit';
-  strTitleSingular: string = 'Carrito';
-  strTitlePlural: string = 'Carritos';
-  strATitleSingular: string = 'El carrito';
-  strATitlePlural: string = 'Los carritos';
+  strEntity: string = Constants.ENTITIES.cart;
+  strOperation: string = Constants.OPERATIONS.edit;
   //
   id: number = null;
   strUsuarioSession: string;

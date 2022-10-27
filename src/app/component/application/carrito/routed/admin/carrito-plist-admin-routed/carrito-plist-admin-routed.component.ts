@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 
@@ -11,12 +12,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class CarritoPlistAdminRoutedComponent implements OnInit {
 
-  strEntity: string = 'carrito';
-  strOperation: string = 'plist';
-  strTitleSingular: string = 'Carrito';
-  strTitlePlural: string = 'Carritos';
-  strATitleSingular: string = 'El carrito';
-  strATitlePlural: string = 'Los carritos';
+  strEntity: string = Constants.ENTITIES.cart;
+  strOperation: string = Constants.OPERATIONS.plist;
 
   strUsuarioSession: string;
 

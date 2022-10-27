@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-compra-edit-admin-routed',
@@ -13,12 +14,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class CompraEditAdminRoutedComponent implements OnInit {
 
-  strEntity: string = 'compra';
-  strOperation: string = 'edit';
-  strTitleSingular: string = 'Compra';
-  strTitlePlural: string = 'Compras';
-  strATitleSingular: string = 'La compra';
-  strATitlePlural: string = 'Las compras';
+  strEntity: string = Constants.ENTITIES.purchase;
+  strOperation: string = Constants.OPERATIONS.edit;
   //
   id: number = null;
   

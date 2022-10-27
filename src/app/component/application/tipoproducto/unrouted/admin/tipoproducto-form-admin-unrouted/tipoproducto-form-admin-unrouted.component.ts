@@ -6,6 +6,7 @@ import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { Subject } from 'rxjs/internal/Subject';
 import { Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/service/errorHandler.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-tipoproducto-form-admin-unrouted',
@@ -22,9 +23,7 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
   oData2Show: ITipoproducto = null;
   oData2Send: ITipoproducto2Send = null;
 
-  strEntity: string = 'tipoproducto';
-  strTitleSingular: string = 'Tipo de producto';
-  strATitleSingular: string = 'El tipo de producto';
+  strEntity: string = Constants.ENTITIES.producttype;
 
   oForm: UntypedFormGroup = null;
   
@@ -87,15 +86,15 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
           (id: number) => {
             if (id>0) {
               this.id = id;
-              strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
+              strResult = this.oMetadataService.getName('the' + this.strEntity).toLowerCase() + ' se ha creado correctamente con el id: ' + id;
             } else {
-              strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
+              strResult = 'Error en la creación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
             }
             this.msg.emit({ strMsg: strResult, id: this.id });
           },
           (error) => {
             strResult = "Error al guardar " +
-              this.strATitleSingular.toLowerCase() + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
+            this.oMetadataService.getName('the' + this.strEntity).toLowerCase() + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
             this.openPopup(strResult);
           });
     } else {
@@ -104,9 +103,9 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
         .subscribe((id: number) => {
           if (id>0) {
             this.id = id;
-            strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+            strResult = this.oMetadataService.getName('the' + this.strEntity).toLowerCase() + ' con id=' + id + ' se ha modificado correctamente';
           } else {
-            strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+            strResult = 'Error en la modificación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
           }
           this.msg.emit({ strMsg: strResult, id: this.id });
         },

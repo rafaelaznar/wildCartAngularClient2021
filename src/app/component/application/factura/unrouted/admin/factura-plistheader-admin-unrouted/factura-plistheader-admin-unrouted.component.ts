@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Constants } from 'src/app/model/constants';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 
@@ -14,8 +15,9 @@ export class FacturaPlistheaderAdminUnroutedComponent implements OnInit {
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() sort = new EventEmitter<IOrder>();
 
-  strEntity: string = "factura";
-  strOperation: string = "plist";
+  strEntity: string = Constants.ENTITIES.invoice;
+  strOperation: string = Constants.OPERATIONS.plist;
+
   constructor(
     public oMetadataService: MetadataService
   ) { }

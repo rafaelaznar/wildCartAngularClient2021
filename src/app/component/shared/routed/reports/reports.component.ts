@@ -9,6 +9,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ProductoService } from 'src/app/service/producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Constants } from 'src/app/model/constants';
 
 
 @Component({
@@ -18,17 +19,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ReportsComponent implements OnInit {
 
-  strEntity: string = "report"
-  strOperation: string = "print"
-
+  strEntity: string = Constants.ENTITIES.report;
+  strOperation: string = Constants.OPERATIONS.print;
   oClient: IUsuario;
   oProduct: IProducto;
-
   oForm: UntypedFormGroup = null;
   currentDate = new Date();
-
   strUsuarioSession: string;
-
   dateRangeOK: boolean = false;
   errorDateRange: boolean = false;
 

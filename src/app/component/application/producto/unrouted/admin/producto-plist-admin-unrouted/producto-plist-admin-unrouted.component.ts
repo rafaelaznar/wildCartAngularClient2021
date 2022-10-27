@@ -4,6 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-producto-plist-admin-unrouted',
@@ -15,29 +16,20 @@ export class ProductoPlistAdminUnroutedComponent implements OnInit {
 
   @Input() id_tipoproducto: number = null;
 
-  strEntity: string = "producto"
-  strOperation: string = "plist"
-  strTitleSingular: string = "Producto";
-  strATitleSingular: string = "El producto";
-  strTitlePlural: string = "Productos";
-  //
+  strEntity: string = Constants.ENTITIES.product
+  strOperation: string = Constants.OPERATIONS.plist
   aProductos: IProducto[];
-  //  
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
   aPaginationBar: string[];
   nPageSize: number = 10;
-  //
   strSortField: string = "";
   strSortDirection: string = "";
-  //
   strFilter: string = "";
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
-  //
   
-
   constructor(
     private oProductoService: ProductoService,
     public oMetadataService: MetadataService

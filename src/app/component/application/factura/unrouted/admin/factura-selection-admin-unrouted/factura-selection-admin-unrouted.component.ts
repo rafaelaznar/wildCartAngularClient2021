@@ -4,6 +4,7 @@ import { IFactura, IFacturaPage } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-factura-selection-admin-unrouted',
@@ -16,28 +17,19 @@ export class FacturaSelectionAdminUnroutedComponent implements OnInit {
   @Input() id_usuario: number = null;
   @Output() selection = new EventEmitter<number>();
 
-  strEntity: string = "factura"
-  strOperation: string = "plist"
-  strTitleSingular: string = "Factura";
-  strATitleSingular: string = "La factura";
-  strTitlePlural: string = "Facturas";
-  //
+  strEntity: string = Constants.ENTITIES.invoice
+  strOperation: string = Constants.OPERATIONS.plist
   aFacturas: IFactura[];
-  //  
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
   aPaginationBar: string[];
   nPageSize: number = 10;
-  //
   strSortField: string = "";
   strSortDirection: string = "";
-  //
   strFilter: string = "";
   strFilteredMessage: string = "";
-  subjectFilter = new Subject();
-  //
-  
+  subjectFilter = new Subject();  
 
   constructor(
     private oFacturaService: FacturaService,

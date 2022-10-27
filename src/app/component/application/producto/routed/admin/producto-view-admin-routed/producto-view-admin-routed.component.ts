@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { Constants } from 'src/app/model/constants';
 @Component({
   selector: 'app-producto-view-admin-routed',
   templateUrl: './producto-view-admin-routed.component.html',
@@ -10,14 +11,10 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 export class ProductoViewAdminRoutedComponent implements OnInit {
   
-  strEntity: string = "producto"
-  strOperation: string = "view"
-  strTitleSingular: string = "Producto";
-  strTitlePlural: string = "Productos";
+  strEntity: string = Constants.ENTITIES.product
+  strOperation: string = Constants.OPERATIONS.view
   id: number = null;
-  strUsuarioSession: string;
-  
- 
+  strUsuarioSession: string;  
   oUserSession: IUsuario;
 
   constructor(

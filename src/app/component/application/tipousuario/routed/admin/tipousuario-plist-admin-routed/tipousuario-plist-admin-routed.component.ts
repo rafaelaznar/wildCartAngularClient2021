@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 
@@ -11,10 +12,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 
 export class TipousuarioPlistAdminRoutedComponent implements OnInit {
-  strEntity: string = 'tipousuario';
-  strOperation: string = 'plist';
-  strTitleSingular: string = 'Tipo de usuario';
-  strTitlePlural: string = 'Tipos de usuario';
+  strEntity: string = Constants.ENTITIES.usertype;
+  strOperation: string = Constants.OPERATIONS.plist;
 
   oUserSession: IUsuario;
   subjectFiltro$ = new Subject();

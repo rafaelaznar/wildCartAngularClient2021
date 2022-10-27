@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-compra-remove-admin-routed',
@@ -12,11 +13,8 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
   styleUrls: ['./compra-remove-admin-routed.component.css']
 })
 export class CompraRemoveAdminRoutedComponent implements OnInit {
-  strEntity: string = "compra"
-  strOperation: string = "remove"
-  strTitleSingular: string = "Compra";
-  strTitlePlural: string = "Compras";
-  strTitleArtSingular: string = "El compra";
+  strEntity: string = Constants.ENTITIES.purchase
+  strOperation: string = Constants.OPERATIONS.remove
 
   id: number = 0;
   oUserSession: IUsuario;
@@ -49,9 +47,9 @@ export class CompraRemoveAdminRoutedComponent implements OnInit {
     this.oCompraService.removeOne(this.id).subscribe((id: number) => {
       let strResult: string = '';
       if (id) {
-        strResult = this.strTitleArtSingular + " con id = " + this.id + " se ha eliminado.";
+        strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
       } else {
-        strResult = 'Error en el borrado de ' + this.strTitleSingular;
+        strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
       }
       this.openPopup(strResult);
     })

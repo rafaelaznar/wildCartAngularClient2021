@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 
@@ -11,10 +12,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class CompraPlistAdminRoutedComponent implements OnInit {
 
-  strEntity: string = 'compra';
-  strOperation: string = 'plist';
-  strTitleSingular: string = 'Compra';
-  strTitlePlural: string = 'Compras';
+  strEntity: string = Constants.ENTITIES.purchase;
+  strOperation: string = Constants.OPERATIONS.plist;
 
   strUsuarioSession: string;
 

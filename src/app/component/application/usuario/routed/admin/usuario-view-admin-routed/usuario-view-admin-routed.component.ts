@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Constants } from 'src/app/model/constants';
 import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
@@ -10,10 +11,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class UsuarioViewAdminRoutedComponent implements OnInit {
   
-  strEntity: string = "usuario"
-  strOperation: string = "view"
-  strTitleSingular:string= "usuario"
-  strTitlePlural:string= "usuarios"
+  strEntity: string = Constants.ENTITIES.user
+  strOperation: string = Constants.OPERATIONS.view
   //
   id: number;
   strUsuarioSession: string;

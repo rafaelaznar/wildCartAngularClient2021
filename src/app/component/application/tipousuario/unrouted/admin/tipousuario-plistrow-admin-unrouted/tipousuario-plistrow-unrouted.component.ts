@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Constants } from 'src/app/model/constants';
 import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 
@@ -13,8 +14,8 @@ export class TipousuarioPlistrowAdminUnroutedComponent implements OnInit {
   @Input() oTipousuario: ITipousuario = null;  
   @Input() mode: boolean = true; //true=edición; false=selección
   
-  strEntity: string = "tipousuario";
-  strOperation: string = "plist";
+  strEntity: string = Constants.ENTITIES.usertype;
+  strOperation: string = Constants.OPERATIONS.plist;
 
   constructor(
     public oMetadataService: MetadataService

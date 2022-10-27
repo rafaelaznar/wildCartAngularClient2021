@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Constants } from 'src/app/model/constants';
 import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
-import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
@@ -14,8 +14,8 @@ export class TipoproductoPlistRowAdminUnroutedComponent implements OnInit {
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() selection = new EventEmitter<number>();
 
-  strEntity: string = "producto";
-  strOperation: string = "plist";
+  strEntity: string = Constants.ENTITIES.product;
+  strOperation: string = Constants.OPERATIONS.plist;
 
   constructor(
     public oMetadataService: MetadataService

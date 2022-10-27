@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Location } from '@angular/common';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-usuario-view-user-routed',
@@ -11,10 +12,8 @@ import { Location } from '@angular/common';
 
 export class UsuarioViewUserRoutedComponent implements OnInit {
 
-  strEntity: string = "usuario"
-  strOperation: string = "view"
-  strTitleSingular: string = "usuario"
-  strTitlePlural: string = "usuarios"
+  strEntity: string = Constants.ENTITIES.user
+  strOperation: string = Constants.OPERATIONS.view
   //
   id: number;
   strUsuarioSession: string;

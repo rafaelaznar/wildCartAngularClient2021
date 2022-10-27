@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Constants } from 'src/app/model/constants';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { ITipousuario, ITipousuarioPage } from 'src/app/model/tipousuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
@@ -13,11 +14,8 @@ import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 export class TipousuarioPlistAdminUnroutedComponent implements OnInit {
 
-  strEntity: string = 'tipousuario';
-  strOperation: string = 'plist';
-  strTitleSingular: string = 'Tipo de usuario';
-  strATitleSingular: string = "El tipo de usuario";
-  strTitlePlural: string = 'Tipos de usuario';
+  strEntity: string = Constants.ENTITIES.usertype;
+  strOperation: string = Constants.OPERATIONS.plist;
   //
   aTipoUsuarios: ITipousuario[];
   //

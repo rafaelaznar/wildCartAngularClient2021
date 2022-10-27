@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-tipoproducto-edit-admin-routed',
@@ -12,12 +13,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class TipoproductoEditAdminRoutedComponent implements OnInit {
 
-  strEntity: string = 'tipoproducto';
-  strOperation: string = 'edit';
-  strTitleSingular: string = 'Tipo de producto';
-  strTitlePlural: string = 'Tipos de producto';
-  strATitleSingular: string = 'El tipo de producto';
-  strATitlePlural: string = 'Los tipos de producto';
+  strEntity: string = Constants.ENTITIES.producttype;
+  strOperation: string = Constants.OPERATIONS.edit;
   //
   id: number = null;
   

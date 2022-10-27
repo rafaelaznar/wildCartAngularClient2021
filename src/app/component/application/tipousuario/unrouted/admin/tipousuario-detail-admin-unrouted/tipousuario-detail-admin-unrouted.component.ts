@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Constants } from 'src/app/model/constants';
 import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
@@ -15,10 +16,8 @@ export class TipousuarioDetailAdminUnroutedComponent implements OnInit {
 
   oTipousuario: ITipousuario;
 
-  strEntity: string = "tipousuario"
-  strOperation: string = "view"
-  strATitleSingular: string = "El tipo de usuario"
-  strTitleSingular: string = "Tipo de usuario"
+  strEntity: string = Constants.ENTITIES.usertype
+  strOperation: string = Constants.OPERATIONS.view
 
   constructor(
     private oTipousuarioService: TipousuarioService,

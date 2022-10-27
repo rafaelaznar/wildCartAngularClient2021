@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Constants } from 'src/app/model/constants';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 
@@ -16,15 +17,16 @@ export class CarritoPlistheaderUserUnroutedComponent implements OnInit {
   @Input() strSortDirection: string = "";
   @Output() sort = new EventEmitter<IOrder>();
 
-  strEntity: string = "carrito";
-  strOperation: string = "plist";
+  strEntity: string = Constants.ENTITIES.cart;
+  strOperation: string = Constants.OPERATIONS.plist;
+
   constructor(
     public oMetadataService: MetadataService
   ) { }
 
   ngOnInit() {
   }
-  
+
   doSetOrder(order: string) {
     this.strSortField = order;
     if (this.strSortDirection == 'asc') {

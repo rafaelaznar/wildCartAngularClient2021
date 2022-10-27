@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-factura-new-admin-routed',
@@ -12,11 +13,9 @@ import { Subject } from 'rxjs';
 
 export class FacturaNewAdminRoutedComponent implements OnInit {
 
-  strEntity: string = "factura"
-  strOperation: string = "new"
-  strTitleSingular: string = "Factura";
-  strATitleSingular: string = "La factura";
-  strTitlePlural: string = "Facturas";
+  strEntity: string = Constants.ENTITIES.invoice
+  strOperation: string = Constants.OPERATIONS.new
+
   id: number = null;
   
   strUsuarioSession: string;

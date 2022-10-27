@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 
@@ -13,8 +14,8 @@ export class UsuarioPlistRowAdminUnroutedComponent implements OnInit {
   @Input() oUsuario: IUsuario = null;  
   @Input() mode: boolean = true; //true=edición; false=selección
 
-  strEntity: string = "usuario";
-  strOperation: string = "plist";
+  strEntity: string = Constants.ENTITIES.user;
+  strOperation: string = Constants.OPERATIONS.plist;
 
   constructor(
     public oMetadataService: MetadataService

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-usuario-edit-admin-routed',
@@ -12,8 +13,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class UsuarioEditAdminRoutedComponent implements OnInit {
 
-  strEntity: string = 'usuario';
-  strOperation: string = 'edit';
+  strEntity: string = Constants.ENTITIES.user;
+  strOperation: string = Constants.OPERATIONS.edit;
   //
   id: number = null;
 

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { ICarrito } from 'src/app/model/carrito-interfaces';
+import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { MetadataService } from 'src/app/service/metadata.service';
@@ -20,8 +21,8 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
   @Output() selection = new EventEmitter<number>();
   @Output() addCarritoEE = new EventEmitter<number>();
 
-  strEntity: string = "carrito";
-  strOperation: string = "plist";
+  strEntity: string = Constants.ENTITIES.cart;
+  strOperation: string = Constants.OPERATIONS.plist;
   oUsuarioSession: IUsuario;
 
   strAPI_URL: string = API_URL;

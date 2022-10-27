@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-compra-view-admin-routed',
@@ -11,23 +12,17 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 export class CompraViewAdminRoutedComponent implements OnInit {
 
-  strEntity: string = "compra"
-  strOperation: string = "view"
-  strTitleSingular: string = "Compra";
-  strTitlePlural: string = "Compras";
+  strEntity: string = Constants.ENTITIES.purchase
+  strOperation: string = Constants.OPERATIONS.view
   id: number = null;
-  strUsuarioSession: string;
-  
- 
+  strUsuarioSession: string; 
   oUserSession: IUsuario;
 
   constructor(
-  
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     public oMetadataService: MetadataService
-
   ) {
 
     if (this.oRoute.snapshot.data.message) {

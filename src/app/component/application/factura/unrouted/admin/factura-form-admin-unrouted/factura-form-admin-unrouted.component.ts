@@ -8,6 +8,7 @@ import { ErrorHandlerService } from 'src/app/service/errorHandler.service';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-factura-form-admin-unrouted',
@@ -20,18 +21,11 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
   @Input() id: number = null;
   @Output() msg = new EventEmitter<any>();
 
-  strEntity: string = "factura";
-  strTitleSingular: string = "Factura";
-  strATitleSingular: string = "La factura";
-  strTitlePlural: string = "Facturas";
-
+  strEntity: string = Constants.ENTITIES.invoice;
   oFactura2Send: IFactura2Send = null;
   oFactura2Show: IFactura = null;
-
   oForm: UntypedFormGroup = null;
-
   strStatus: string = null;
-
 
   es: any = {
     firstDayOfWeek: 1,
@@ -115,15 +109,15 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
           (id: number) => {            
             if (id) {
               this.id = id;
-              strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
+              strResult = this.oMetadataService.getName('the' + this.strEntity) + ' se ha creado correctamente con el id: ' + id;
             } else {
-              strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
+              strResult = 'Error en la creación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
             }
             this.msg.emit({ strMsg: strResult, id: this.id });
           },
           (error) => {
             strResult = "Error al guardar " +
-              this.strATitleSingular.toLowerCase() + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
+            this.oMetadataService.getName(this.strEntity) + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
             this.openPopup(strResult);
           });
     } else {
@@ -132,9 +126,9 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
         .subscribe((id: number) => {          
           if (id) {
             this.id = id;
-            strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+            strResult = this.oMetadataService.getName('the' + this.strEntity) + ' con id=' + id + ' se ha modificado correctamente';
           } else {
-            strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+            strResult = 'Error en la modificación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
           }
           this.msg.emit({ strMsg: strResult, id: this.id });
         },

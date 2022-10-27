@@ -1,6 +1,7 @@
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Constants } from 'src/app/model/constants';
 
 @Component({
   selector: 'app-tipousuario-view-admin-routed',
@@ -10,10 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class TipousuarioViewAdminRoutedComponent implements OnInit {
 
-  strEntity: string = 'tipousuario';  
-  strOperation: string = 'view';
-  strTitleSingular: string = 'Tipo de Usuario';
-  strTitlePlural: string = 'Tipos de Usuario';
+  strEntity: string = Constants.ENTITIES.usertype;  
+  strOperation: string = Constants.OPERATIONS.view;
   //
   id: number;
   strUsuarioSession: string;
