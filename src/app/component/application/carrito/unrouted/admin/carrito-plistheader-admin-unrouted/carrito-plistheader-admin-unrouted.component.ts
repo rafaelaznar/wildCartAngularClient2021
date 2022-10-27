@@ -9,20 +9,18 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 
 export class CarritoPlistheaderAdminUnroutedComponent implements OnInit {
-  
+
   @Input() mode: boolean = true; //true=edición; false=selección
   @Input() strSortField: string = "";
   @Input() strSortDirection: string = "";
   @Output() sort = new EventEmitter<IOrder>();
 
-
   constructor(
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
-  
+  ngOnInit() { }
+
   doSetOrder(order: string) {
     this.strSortField = order;
     if (this.strSortDirection == 'asc') {
@@ -34,6 +32,5 @@ export class CarritoPlistheaderAdminUnroutedComponent implements OnInit {
     }
     this.sort.emit({ sortField: order, sortDirection: this.strSortDirection });
   }
-
 
 }

@@ -13,22 +13,17 @@ export class CarritoViewAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.view;
-
-  id: number = null;
-  strUsuarioSession: string;
-  
- 
+  id: number = null;  
   oUserSession: IUsuario;
 
   constructor(
-  
+
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     public oMetadataService: MetadataService
 
   ) {
-
     if (this.oRoute.snapshot.data.message) {
       this.oUserSession = this.oRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
@@ -36,12 +31,9 @@ export class CarritoViewAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id
-
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

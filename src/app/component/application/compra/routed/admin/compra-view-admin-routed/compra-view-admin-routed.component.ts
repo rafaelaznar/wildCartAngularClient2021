@@ -15,7 +15,7 @@ export class CompraViewAdminRoutedComponent implements OnInit {
   strEntity: string = Constants.ENTITIES.purchase
   strOperation: string = Constants.OPERATIONS.view
   id: number = null;
-  strUsuarioSession: string; 
+  strUsuarioSession: string;
   oUserSession: IUsuario;
 
   constructor(
@@ -24,7 +24,6 @@ export class CompraViewAdminRoutedComponent implements OnInit {
     private oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-
     if (this.oRoute.snapshot.data.message) {
       this.oUserSession = this.oRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
@@ -32,12 +31,9 @@ export class CompraViewAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id
-
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

@@ -15,15 +15,13 @@ export class CompraPlistrowAdminUnroutedComponent implements OnInit {
   @Input() mode: boolean = true; //true=edición; false=selección  
 
   strAPI_URL: string = API_URL;
-
   strEntity: string = Constants.ENTITIES.purchase;
   strOperation: string = Constants.OPERATIONS.plist;
-  
+
   constructor(
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

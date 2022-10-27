@@ -24,14 +24,12 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
   oUsuarioSession: IUsuario;
-
   strAPI_URL: string = API_URL;
 
   constructor(
     public oMetadataService: MetadataService,
     private oCarritoService: CarritoService
   ) {
-    //console.log("user=" + localStorage.getItem("user"));
     this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
   }
 
@@ -43,14 +41,12 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
 
   addCarrito(id_producto: number) {
     this.oCarritoService.add(id_producto, 1).subscribe((result: number) => {
-      //console.log("addCarrito:" + result);
       this.addCarritoEE.emit(id_producto);
     })
   }
 
   removeCarrito(id_producto: number) {
     this.oCarritoService.reduce(id_producto, 1).subscribe((result: number) => {
-      //console.log("addCarrito:" + result);
       this.addCarritoEE.emit(id_producto);
     })
   }

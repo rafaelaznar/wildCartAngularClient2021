@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Constants } from 'src/app/model/constants';
-import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
@@ -14,13 +13,9 @@ export class CarritoPlistAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
-
   strUsuarioSession: string;
-
   id_producto: number = null;
-  id_usuario: number = null;
-
-  fila: IUsuario;
+  id_usuario: number = null;  
 
   constructor(
     private oRoute: ActivatedRoute,
@@ -40,8 +35,6 @@ export class CarritoPlistAdminRoutedComponent implements OnInit {
     }
     this.id_producto = this.oActivatedRoute.snapshot.params.id_producto;
     this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
-    console.log(this.oActivatedRoute);
-    console.log(this.id_usuario);
   }
 
   ngOnInit(): void {}

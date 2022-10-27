@@ -21,37 +21,27 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
   @Input() id_tipousuario_session: number = null;
   @Output() selection = new EventEmitter<number>();
   @Output() addCarritoEE = new EventEmitter<number>();
-  //@ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
 
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
-  //
   aCarritos: ICarrito[];
-  //
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
   aPaginationBar: string[];
   nPageSize: number = 10;
-  //
   strSortField: string = "";
   strSortDirection: string = "";
-  //
   strFilter: string = "";
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
-  //  
-  
   nTotal: number = 0;
-
-
 
   constructor(
     private oPaginationService: PaginationService,
     private oCarritoService: CarritoService,
     public oMetadataService: MetadataService,
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.subjectFilter
@@ -117,4 +107,5 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
       this.nTotal = nTotal;
     });
   }
+  
 }

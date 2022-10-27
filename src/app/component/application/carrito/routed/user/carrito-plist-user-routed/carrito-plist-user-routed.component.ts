@@ -16,16 +16,10 @@ export class CarritoPlistUserRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
-
   oUserSession: IUsuario;
-
   id_producto: number = null;
-  id_usuario: number = null;
-
-  fila: IUsuario;
-
+  id_usuario: number = null;  
   tipousuarioSession_id: number = null;
-
   carritoHomeEventsSubject: Subject<{ action: string, data: number }> = new Subject<{ action: string, data: number }>();
 
   constructor(

@@ -3,7 +3,6 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { ActivatedRoute, Router } from '@angular/router';
 import { IFactura, IFactura2Send } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
-import { DateTimeService } from 'src/app/service/datetime.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { UsuarioService } from 'src/app/service/usuario.service';
@@ -23,7 +22,6 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
   oData2Send: IFactura2Send = null;
   id: number = null;
   oForm: UntypedFormGroup = null;
-  
   strUsuarioSession: string;
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.edit
@@ -37,11 +35,8 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
     private oUsuarioService: UsuarioService,
     private oActivatedRoute: ActivatedRoute,
     private oLocation: Location,
-    private oDateTimeService: DateTimeService,
     public oMetadataService: MetadataService
-
   ) {
-
     if (this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
@@ -49,18 +44,14 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id
     this.get();
-
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   get = (): void => {
-    this.oFacturaService.getOne(this.id).subscribe((oData: IFactura) => {
-      // console.log(oData);
+    this.oFacturaService.getOne(this.id).subscribe((oData: IFactura) => {      
       this.oData2Show = oData;
       this.oForm = this.oFormBuilder.group({
         id: [this.oData2Show.id],
@@ -68,9 +59,7 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
         iva: [this.oData2Show.iva, Validators.required],
         pagado: [this.oData2Show.pagado],
         id_usuario: [this.oData2Show.usuario.id, Validators.required]
-      });
-      //$('#fecha').val(this.oData2Show.fecha);
-
+      });      
     })
   }
 
@@ -112,6 +101,7 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
   }
 
   //ajenas 
+
   onFindSelection($event: any) {
     this.oForm.controls['id_usuario'].setValue($event);
     this.oForm.controls['id_usuario'].markAsDirty();
@@ -139,7 +129,7 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 

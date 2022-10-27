@@ -12,14 +12,13 @@ import { Constants } from 'src/app/model/constants';
   templateUrl: './carrito-remove-admin-routed.component.html',
   styleUrls: ['./carrito-remove-admin-routed.component.css']
 })
+
 export class CarritoRemoveAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.remove;
-
-  id: number = 0;  
+  id: number = 0;
   oUserSession: IUsuario;
-
 
   constructor(
     private oCarritoService: CarritoService,
@@ -36,18 +35,15 @@ export class CarritoRemoveAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-    // recogida de parámetros
     this.id = this.oActivatedRoute.snapshot.params.id
-
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   removeOne() {
     let strResult: string = '';
-    this.oCarritoService.removeOne(this.id).subscribe((id: number) => {    
-      if (id) {                
+    this.oCarritoService.removeOne(this.id).subscribe((id: number) => {
+      if (id) {
         strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
       } else {
         strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
@@ -64,7 +60,7 @@ export class CarritoRemoveAdminRoutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 

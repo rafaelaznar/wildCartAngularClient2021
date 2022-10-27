@@ -26,13 +26,8 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
 
   oData2Show: ICarrito = null;
   oData2Send: ICarrito2Send = null;
-
   strEntity: string = Constants.ENTITIES.cart;
-  strTitleSingular: string = 'Carrito';
-  strATitleSingular: string = 'La carrito';
-
   oForm: UntypedFormGroup = null;
-  
   strStatus: string = null;
 
   es: any = {
@@ -117,15 +112,15 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
           (id: number) => {
             if (id > 0) {
               this.id = id;
-              strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
+              strResult = this.oMetadataService.getName('the' + this.strEntity) + ' se ha creado correctamente con el id: ' + id;
             } else {
-              strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
+              strResult = 'Error en la creación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();;
             }
             this.msg.emit({ strMsg: strResult, id: this.id });
           },
           (error) => {
             strResult = "Error al guardar " +
-              this.strATitleSingular.toLowerCase() + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
+              this.oMetadataService.getName('the' + this.strEntity).toLowerCase(); + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
             this.openPopup(strResult);
           });
     } else {
@@ -134,9 +129,9 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
         .subscribe((id: number) => {
           if (id > 0) {
             this.id = id;
-            strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
+            strResult = this.oMetadataService.getName('the' + this.strEntity) + ' con id=' + id + ' se ha modificado correctamente';
           } else {
-            strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
+            strResult = 'Error en la modificación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
           }
           this.msg.emit({ strMsg: strResult, id: this.id });
         },
@@ -147,8 +142,6 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
           });
     }
   };
-
-  //ajenas
 
   //ajenas
 
@@ -203,7 +196,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 

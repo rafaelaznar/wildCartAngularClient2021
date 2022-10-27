@@ -13,12 +13,11 @@ import { Constants } from 'src/app/model/constants';
   styleUrls: ['./compra-remove-admin-routed.component.css']
 })
 export class CompraRemoveAdminRoutedComponent implements OnInit {
+
   strEntity: string = Constants.ENTITIES.purchase
   strOperation: string = Constants.OPERATIONS.remove
-
   id: number = 0;
   oUserSession: IUsuario;
-
 
   constructor(
     private oCompraService: CompraService,
@@ -35,13 +34,10 @@ export class CompraRemoveAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-    // recogida de parámetros
     this.id = this.oActivatedRoute.snapshot.params.id
-
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   removeOne() {
     this.oCompraService.removeOne(this.id).subscribe((id: number) => {

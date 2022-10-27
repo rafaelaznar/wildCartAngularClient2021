@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
@@ -16,11 +15,8 @@ export class CompraEditAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.purchase;
   strOperation: string = Constants.OPERATIONS.edit;
-  //
   id: number = null;
-  
   strUsuarioSession: string;
-
 
   constructor(
     private oRouter: Router,
@@ -35,18 +31,16 @@ export class CompraEditAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id;
     this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   reportResult = (oResult: any): void => {
     this.id = oResult.id;
     this.openPopup(oResult.strMsg);
-  };
+  }
 
   goBack(): void {
     this.oLocation.back();
@@ -56,7 +50,7 @@ export class CompraEditAdminRoutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 

@@ -13,38 +13,32 @@ import { Constants } from 'src/app/model/constants';
   templateUrl: './carrito-plist-admin-unrouted.component.html',
   styleUrls: ['./carrito-plist-admin-unrouted.component.css'],
 })
+
 export class CarritoPlistAdminUnroutedComponent implements OnInit {
-  
+
   @Input() id_producto: number = null;
   @Input() id_usuario: number = null;
   @Input() mode: boolean = true; //true=edición; false=selección
-  
+
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
-  //
   aCarritos: ICarrito[];
-  //
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
   aPaginationBar: string[];
   nPageSize: number = 10;
-  //
   strSortField: string = "";
   strSortDirection: string = "";
-  //
   strFilter: string = "";
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
-  //  
-  
 
   constructor(
     private oPaginationService: PaginationService,
     private oCarritoService: CarritoService,
     public oMetadataService: MetadataService,
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.subjectFilter

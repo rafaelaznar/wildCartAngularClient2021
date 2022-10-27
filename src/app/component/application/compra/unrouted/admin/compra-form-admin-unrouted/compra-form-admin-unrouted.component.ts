@@ -26,11 +26,8 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
 
   oData2Show: ICompra = null;
   oData2Send: ICompra2Send = null;
-
   strEntity: string = Constants.ENTITIES.purchase;
-
   oForm: UntypedFormGroup = null;
-
   strStatus: string = null;
 
   es: any = {
@@ -75,9 +72,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
         id_producto: ['', Validators.required],
         id_factura: ['', Validators.required]
       });
-
     }
-
   }
 
   get = (): void => {
@@ -161,8 +156,6 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
 
   //ajenas
 
-  //ajenas
-
   onFindSelectionProducto($event: any) {
     this.oForm.controls['id_producto'].setValue($event);
     this.oForm.controls['id_producto'].markAsDirty();
@@ -208,8 +201,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
 
     return false;
   }
-
-
+  
   //popup
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();

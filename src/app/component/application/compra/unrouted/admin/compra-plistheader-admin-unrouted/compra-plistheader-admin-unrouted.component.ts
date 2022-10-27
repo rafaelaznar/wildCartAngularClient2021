@@ -9,7 +9,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
   styleUrls: ['./compra-plistheader-admin-unrouted.component.css']
 })
 export class CompraPlistheaderAdminUnroutedComponent implements OnInit {
-  
+
   @Input() strSortField: string = "";
   @Input() strSortDirection: string = "";
   @Input() mode: boolean = true; //true=edición; false=selección
@@ -22,9 +22,8 @@ export class CompraPlistheaderAdminUnroutedComponent implements OnInit {
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
-  
+  ngOnInit() { }
+
   doSetOrder(order: string) {
     this.strSortField = order;
     if (this.strSortDirection == 'asc') {
@@ -36,6 +35,5 @@ export class CompraPlistheaderAdminUnroutedComponent implements OnInit {
     }
     this.sort.emit({ sortField: order, sortDirection: this.strSortDirection });
   }
-
 
 }

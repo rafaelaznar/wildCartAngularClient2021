@@ -24,8 +24,7 @@ export class CarritoPlistheaderUserUnroutedComponent implements OnInit {
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   doSetOrder(order: string) {
     this.strSortField = order;
@@ -38,6 +37,5 @@ export class CarritoPlistheaderUserUnroutedComponent implements OnInit {
     }
     this.sort.emit({ sortField: order, sortDirection: this.strSortDirection });
   }
-
 
 }

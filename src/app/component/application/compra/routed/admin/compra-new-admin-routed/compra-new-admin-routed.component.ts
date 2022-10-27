@@ -15,11 +15,7 @@ export class CompraNewAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.purchase
   strOperation: string = Constants.OPERATIONS.new
-  strTitleSingular: string = "Compra";
-  strATitleSingular: string = "La compra";
-  strTitlePlural: string = "Compras";
   id: number = null;
-  
   strUsuarioSession: string;
 
   constructor(
@@ -35,16 +31,13 @@ export class CompraNewAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id
     this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
-
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  reportResult = (oResult: any): void => {    
+  reportResult = (oResult: any): void => {
     this.id = oResult.id;
     this.openPopup(oResult.strMsg);
   };
@@ -57,11 +50,12 @@ export class CompraNewAdminRoutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 
   onClosePopup(): void {
     this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
   }
+  
 }

@@ -14,12 +14,9 @@ export class CompraPlistAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.purchase;
   strOperation: string = Constants.OPERATIONS.plist;
-
   strUsuarioSession: string;
-
   id_producto: number = null;
   id_factura: number = null;
-
   fila: IUsuario;
 
   constructor(
@@ -42,5 +39,6 @@ export class CompraPlistAdminRoutedComponent implements OnInit {
     this.id_factura = this.oActivatedRoute.snapshot.params.id_factura;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+  
 }

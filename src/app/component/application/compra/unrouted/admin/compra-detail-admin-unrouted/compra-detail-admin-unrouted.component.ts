@@ -28,6 +28,7 @@ export class CompraDetailAdminUnroutedComponent implements OnInit {
       .getOne(this.id)
       .subscribe((oData: ICompra) => {
         this.oCompra = oData;
-      });
-  };
+      })
+  }
+
 }

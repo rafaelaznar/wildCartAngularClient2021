@@ -31,12 +31,11 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
   strFilter: string = "";
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
-  
+
   constructor(
     private oCompraService: CompraService,
-    public oMetadataService: MetadataService    
-  ) {
-  }
+    public oMetadataService: MetadataService
+  ) { }
 
   ngOnInit(): void {
     this.nPage = 1;
@@ -44,7 +43,7 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oCompraService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_factura, this.id_producto).subscribe((oPage: ICompraPage) => {    
+    this.oCompraService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_factura, this.id_producto).subscribe((oPage: ICompraPage) => {
       this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, 'factura', this.id_factura, 'producto', this.id_producto);
       this.aCompras = oPage.content;
       this.nTotalElements = oPage.totalElements;

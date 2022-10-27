@@ -15,10 +15,8 @@ export class CarritoPlistrowAdminUnroutedComponent implements OnInit {
 
   constructor(
     public oMetadataService: MetadataService
-  ) {
-  }
+  ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

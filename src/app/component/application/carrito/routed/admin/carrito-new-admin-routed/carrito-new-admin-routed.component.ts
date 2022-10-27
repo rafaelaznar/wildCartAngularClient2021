@@ -15,9 +15,7 @@ export class CarritoNewAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.cart
   strOperation: string = Constants.OPERATIONS.new
-  //
   id: number = null;
-  
   strUsuarioSession: string;
 
   constructor(
