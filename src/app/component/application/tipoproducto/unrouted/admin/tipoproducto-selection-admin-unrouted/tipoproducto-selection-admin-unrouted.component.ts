@@ -28,17 +28,13 @@ export class TipoproductoSelectionAdminUnroutedComponent implements OnInit {
   strSortDirection: string = "";
   strFilter: string = "";
   strFilteredMessage: string = "";
-  subjectFilter = new Subject();
 
-  constructor(    
+  constructor(
     private oPostService: TipoproductoService,
     public oMetadataService: MetadataService,
   ) { }
 
   ngOnInit(): void {
-    this.subjectFilter
-      .pipe(debounceTime(1000))
-      .subscribe(() => this.getPage());
     this.nPage = 1;
     this.getPage();
   }

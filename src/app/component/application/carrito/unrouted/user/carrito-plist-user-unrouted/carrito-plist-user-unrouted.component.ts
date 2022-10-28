@@ -1,8 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { debounceTime } from 'rxjs/operators';
-import { PaginationService } from 'src/app/service/pagination.service';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { ICarrito, ICarritoPage } from 'src/app/model/carrito-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
@@ -33,19 +30,14 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
   strSortDirection: string = "";
   strFilter: string = "";
   strFilteredMessage: string = "";
-  subjectFilter = new Subject();
   nTotal: number = 0;
 
   constructor(
-    private oPaginationService: PaginationService,
     private oCarritoService: CarritoService,
     public oMetadataService: MetadataService,
   ) { }
 
   ngOnInit(): void {
-    this.subjectFilter
-      .pipe(debounceTime(1000))
-      .subscribe(() => this.getPage());
     this.nPage = 1;
     this.getPage();
   }

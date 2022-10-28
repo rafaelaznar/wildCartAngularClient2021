@@ -30,8 +30,7 @@ export class ProductoSelectionAdminUnroutedComponent implements OnInit {
   strSortField: string = "";
   strSortDirection: string = "";
   strFilter: string = "";
-  strFilteredMessage: string = "";
-  subjectFilter = new Subject();
+  strFilteredMessage: string = "";  
 
   constructor(
     private oProductoService: ProductoService,

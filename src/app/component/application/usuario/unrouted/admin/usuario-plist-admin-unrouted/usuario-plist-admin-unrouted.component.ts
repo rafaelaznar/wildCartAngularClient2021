@@ -27,7 +27,6 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
   strSortDirection: string = "";
   strFilter: string = "";
   strFilteredMessage: string = "";
-  subjectFilter = new Subject();
 
   constructor(
     private oUsuarioService: UsuarioService,
