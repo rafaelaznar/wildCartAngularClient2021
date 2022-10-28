@@ -9,8 +9,6 @@ import { PaginationService } from 'src/app/service/pagination.service';
 
 export class PaginationUnroutedComponent implements OnInit {
 
-
-
   @Input()
   set nPage(value: number) {
     this._nPage = value;
