@@ -1,10 +1,8 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
-import { ICrud } from '../model/crud-interface';
-import { IEntity2Send, IEntity } from '../model/model-interfaces';
-import { IProductoPage, IProducto, IProducto2Send } from '../model/producto-interfaces';
+import { IProductoPage, IProducto } from '../model/producto-interfaces';
 import { IView } from '../model/view-interface';
 
 @Injectable({
@@ -33,6 +31,5 @@ export class ProductoCarritoViewService implements IView  {
   getOne(id: number): Observable<IProducto> {
     return this.http.get<IProducto>(this.sURL + "/" + id, httpOptions);
   }
-
 
 }
