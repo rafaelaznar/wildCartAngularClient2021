@@ -15,32 +15,25 @@ import { Constants } from 'src/app/model/constants';
 export class UsuarioPlistAdminUnroutedComponent implements OnInit {
 
   @Input() id_tipousuario: number = null;
-  
+
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.plist
-  //
   aUsuarios: IUsuario[];
-  //
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
   aPaginationBar: string[];
   nPageSize: number = 10;
-  //
   strSortField: string = "";
   strSortDirection: string = "";
-  //
   strFilter: string = "";
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
-  //
-  
 
   constructor(
     private oUsuarioService: UsuarioService,
     public oMetadataService: MetadataService,
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.nPage = 1;
@@ -82,11 +75,11 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  flipValidateUser(id:number){
+  flipValidateUser(id: number) {
     console.log("todo: flip validate user " + id);
   }
-  
-  flipActivateUser(id:number){
+
+  flipActivateUser(id: number) {
     console.log("todo: flip activate user " + id);
   }
 

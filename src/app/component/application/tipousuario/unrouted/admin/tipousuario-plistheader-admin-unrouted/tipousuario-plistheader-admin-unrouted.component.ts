@@ -10,7 +10,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 
 export class TipousuarioPlistheaderAdminUnroutedComponent implements OnInit {
-  
+
   @Input() strSortField: string = "";
   @Input() strSortDirection: string = "";
   @Input() mode: boolean = true; //mode ... true=normal; false=selection;
@@ -18,14 +18,13 @@ export class TipousuarioPlistheaderAdminUnroutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.user;
   strOperation: string = Constants.OPERATIONS.plist;
-  
+
   constructor(
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
-  
+  ngOnInit() { }
+
   doSetOrder(order: string) {
     this.strSortField = order;
     if (this.strSortDirection == 'asc') {
@@ -34,9 +33,8 @@ export class TipousuarioPlistheaderAdminUnroutedComponent implements OnInit {
       this.strSortDirection = '';
     } else {
       this.strSortDirection = 'asc';
-    }    
+    }
     this.sort.emit({ sortField: order, sortDirection: this.strSortDirection });
   }
-
 
 }

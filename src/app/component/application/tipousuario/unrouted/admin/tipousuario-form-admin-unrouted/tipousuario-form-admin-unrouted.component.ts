@@ -19,11 +19,8 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
 
   oData2Show: ITipousuario = null;
   oData2Send: ITipousuario2Send = null;
-
   strEntity: string = Constants.ENTITIES.usertype;
-
   oForm: UntypedFormGroup = null;
-
 
   get f() {
     return this.oForm.controls;

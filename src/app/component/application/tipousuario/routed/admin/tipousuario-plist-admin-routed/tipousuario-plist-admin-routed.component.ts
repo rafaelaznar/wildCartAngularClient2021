@@ -12,9 +12,9 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 
 export class TipousuarioPlistAdminRoutedComponent implements OnInit {
+
   strEntity: string = Constants.ENTITIES.usertype;
   strOperation: string = Constants.OPERATIONS.plist;
-
   oUserSession: IUsuario;
   subjectFiltro$ = new Subject();
 
@@ -34,6 +34,5 @@ export class TipousuarioPlistAdminRoutedComponent implements OnInit {
   }
 
   ngOnInit(): void { }
-
 
 }

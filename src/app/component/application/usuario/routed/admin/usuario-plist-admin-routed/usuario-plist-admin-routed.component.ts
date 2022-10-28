@@ -13,9 +13,7 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.plist
-
   strUsuarioSession: string;
-
   id_tipousuario: number = null;
 
   constructor(
@@ -23,7 +21,6 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
     private oRouter: Router,    
     public oMetadataService: MetadataService
   ) {
-
     if (this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
@@ -32,7 +29,6 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
       this.oRouter.navigate(['/home']);
     }
     this.id_tipousuario = this.oActivatedRoute.snapshot.params.id_tipousuario;
-
   }
 
   ngOnInit(): void { }

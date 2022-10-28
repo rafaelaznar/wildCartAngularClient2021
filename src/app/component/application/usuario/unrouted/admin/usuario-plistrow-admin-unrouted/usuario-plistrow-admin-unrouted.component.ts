@@ -11,7 +11,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class UsuarioPlistRowAdminUnroutedComponent implements OnInit {
 
-  @Input() oUsuario: IUsuario = null;  
+  @Input() oUsuario: IUsuario = null;
   @Input() mode: boolean = true; //true=edición; false=selección
 
   strEntity: string = Constants.ENTITIES.user;
@@ -21,7 +21,6 @@ export class UsuarioPlistRowAdminUnroutedComponent implements OnInit {
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

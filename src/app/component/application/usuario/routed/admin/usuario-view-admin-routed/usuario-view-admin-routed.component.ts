@@ -13,7 +13,6 @@ export class UsuarioViewAdminRoutedComponent implements OnInit {
   
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.view
-  //
   id: number;
   strUsuarioSession: string;
 
@@ -29,7 +28,6 @@ export class UsuarioViewAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id;    
   }
 

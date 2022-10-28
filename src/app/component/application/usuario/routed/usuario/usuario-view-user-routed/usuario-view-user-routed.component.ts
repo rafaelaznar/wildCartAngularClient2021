@@ -14,7 +14,6 @@ export class UsuarioViewUserRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.view
-  //
   id: number;
   strUsuarioSession: string;
 
@@ -31,7 +30,6 @@ export class UsuarioViewUserRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id;
   }
 
@@ -40,4 +38,5 @@ export class UsuarioViewUserRoutedComponent implements OnInit {
   goBack() {
     this.oLocation.back();
   }
+
 }

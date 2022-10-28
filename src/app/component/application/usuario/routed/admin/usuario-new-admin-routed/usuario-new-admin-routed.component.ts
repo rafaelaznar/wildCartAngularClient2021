@@ -15,9 +15,7 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.new
-  //
   id: number = null;
-  
   strUsuarioSession: string;
 
   constructor(
@@ -33,16 +31,13 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id
     this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
-
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  reportResult = (oResult: any): void => {    
+  reportResult = (oResult: any): void => {
     this.id = oResult.id;
     this.openPopup(oResult.strMsg);
   };
@@ -55,7 +50,7 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 

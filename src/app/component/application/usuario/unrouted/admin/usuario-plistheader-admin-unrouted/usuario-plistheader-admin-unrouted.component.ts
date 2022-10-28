@@ -23,8 +23,7 @@ export class UsuarioPlistheaderAdminUnroutedComponent implements OnInit {
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   doSetOrder(order: string) {
     this.strSortField = order;

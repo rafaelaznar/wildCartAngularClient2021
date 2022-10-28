@@ -10,10 +10,10 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 
 export class TipousuarioPlistrowAdminUnroutedComponent implements OnInit {
-  
-  @Input() oTipousuario: ITipousuario = null;  
+
+  @Input() oTipousuario: ITipousuario = null;
   @Input() mode: boolean = true; //true=edición; false=selección
-  
+
   strEntity: string = Constants.ENTITIES.usertype;
   strOperation: string = Constants.OPERATIONS.plist;
 
@@ -21,7 +21,6 @@ export class TipousuarioPlistrowAdminUnroutedComponent implements OnInit {
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

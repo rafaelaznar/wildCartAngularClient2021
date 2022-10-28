@@ -13,9 +13,9 @@ import { Constants } from 'src/app/model/constants';
 })
 
 export class UsuarioRemoveAdminRoutedComponent implements OnInit {
+
   id: number = 0;
   strUsuarioSession: string;
-  
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.remove
 
@@ -25,9 +25,7 @@ export class UsuarioRemoveAdminRoutedComponent implements OnInit {
     private oRouter: Router,
     private _location: Location,
     public oMetadataService: MetadataService
-
   ) {
-    // control de sesión
     if (this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
       localStorage.setItem('user', JSON.stringify(this.strUsuarioSession));
@@ -35,7 +33,6 @@ export class UsuarioRemoveAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-    // recogida de parámetros
     this.id = this.oActivatedRoute.snapshot.params.id;
   }
 
@@ -61,11 +58,12 @@ export class UsuarioRemoveAdminRoutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 
   onClosePopup(): void {
     this.oRouter.navigate([this.strEntity + '/plist']);
   }
+  
 }

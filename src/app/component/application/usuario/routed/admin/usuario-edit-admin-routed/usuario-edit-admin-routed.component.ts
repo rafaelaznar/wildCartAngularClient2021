@@ -15,11 +15,8 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.user;
   strOperation: string = Constants.OPERATIONS.edit;
-  //
   id: number = null;
-
   strUsuarioSession: string;
-
 
   constructor(
     private oRouter: Router,
@@ -39,8 +36,7 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
     this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   reportResult = (oResult: any): void => {
     this.id = oResult.id;

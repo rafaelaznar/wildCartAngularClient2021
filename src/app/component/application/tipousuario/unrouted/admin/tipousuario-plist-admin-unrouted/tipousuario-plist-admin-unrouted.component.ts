@@ -16,35 +16,27 @@ export class TipousuarioPlistAdminUnroutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.usertype;
   strOperation: string = Constants.OPERATIONS.plist;
-  //
   aTipoUsuarios: ITipousuario[];
-  //
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
   aPaginationBar: string[];
   nPageSize: number = 10;
-  //
   strSortField: string = "";
   strSortDirection: string = "";
-  //
   strFilter: string = "";
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
-  //
-  
 
   constructor(
     private oTipoUsuarioService: TipousuarioService,
     public oMetadataService: MetadataService
   ) {
-
     this.nPage = 1;
     this.getPage();
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   getPage = () => {
     this.oTipoUsuarioService

@@ -16,9 +16,7 @@ export class TipousuarioEditAdminRoutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.usertype;
   strOperation: string = Constants.OPERATIONS.edit; //only edit; it can't be new
-  //
   id: number = null;
-
   strUsuarioSession: IUsuario = null;
 
   constructor(

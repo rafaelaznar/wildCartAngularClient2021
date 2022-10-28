@@ -24,14 +24,11 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
 
   oData2Show: IUsuario = null;
   oData2Send: IUsuario2Send = null;
-
   strEntity: string = Constants.ENTITIES.user;
   strTitleSingular: string = 'Usuario';
   strATitleSingular: string = 'El usuario';
-
   oForm: UntypedFormGroup = null;
   strStatus: string = null;
-
 
   get f() {
     return this.oForm;
@@ -184,7 +181,5 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
       this.oRouter.navigate(['/login']);
     }
   }
-
-
 
 }

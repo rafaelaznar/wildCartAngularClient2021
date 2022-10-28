@@ -11,19 +11,16 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 })
 export class UsuarioDetailUserUnroutedComponent implements OnInit {
 
-  @Input() id: number = null;  
-  
-  oUsuario: IUsuario;
+  @Input() id: number = null;
 
+  oUsuario: IUsuario;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.view
 
   constructor(
     private oUsuarioService: UsuarioService,
     public oMetadataService: MetadataService
-  ) {
-    
-  }
+  ) { }
 
   ngOnInit(): void {
     this.getOne();
