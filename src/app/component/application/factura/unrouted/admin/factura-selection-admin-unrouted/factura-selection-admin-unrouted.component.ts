@@ -22,8 +22,7 @@ export class FacturaSelectionAdminUnroutedComponent implements OnInit {
   aFacturas: IFactura[];
   nTotalElements: number;
   nTotalPages: number;
-  nPage: number;
-  aPaginationBar: string[];
+  nPage: number;  
   nPageSize: number = 10;
   strSortField: string = "";
   strSortDirection: string = "";

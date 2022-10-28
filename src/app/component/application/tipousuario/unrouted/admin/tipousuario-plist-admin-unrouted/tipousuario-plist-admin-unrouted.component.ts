@@ -20,7 +20,6 @@ export class TipousuarioPlistAdminUnroutedComponent implements OnInit {
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
-  aPaginationBar: string[];
   nPageSize: number = 10;
   strSortField: string = "";
   strSortDirection: string = "";

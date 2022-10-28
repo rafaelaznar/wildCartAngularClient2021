@@ -8,22 +8,20 @@ import { PaginationService } from 'src/app/service/pagination.service';
 })
 
 export class PaginationUnroutedComponent implements OnInit {
-  _nPage: number;
-  _nTotalPages: number;
+
+
 
   @Input()
   set nPage(value: number) {
-    //console.log("set npage " + value);
     this._nPage = value;
     this.aPaginationBar = this.oPaginationService.pagination(this._nTotalPages, this._nPage);
-  }  
+  }
   get nPage(): number {
     return this._nPage;
   }
 
   @Input()
   set nTotalPages(value: number) {
-    //console.log("set ntotalpages " + value);
     this._nTotalPages = value;
     this.aPaginationBar = this.oPaginationService.pagination(this._nTotalPages, this._nPage);
   }
@@ -33,14 +31,15 @@ export class PaginationUnroutedComponent implements OnInit {
 
   @Output() eePage = new EventEmitter<number>();
 
+  _nPage: number;
+  _nTotalPages: number;
   aPaginationBar: string[];
 
   constructor(
     private oPaginationService: PaginationService
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   doJumpToPage() {
     this.eePage.emit(this._nPage);

@@ -18,30 +18,22 @@ export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.producttype;
   strOperation: string = Constants.OPERATIONS.plist;
-  //
   aTipoproductos: ITipoproducto[];
-  //
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
-  aPaginationBar: string[];
   nPageSize: number = 10;
-  //
   strSortField: string = "";
   strSortDirection: string = "";
-  //
   strFilter: string = "";
   strFilteredMessage: string = "";
   subjectFilter = new Subject();
-  //  
-  
 
   constructor(
     private oPaginationService: PaginationService,
     private oPostService: TipoproductoService,
     public oMetadataService: MetadataService,
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.subjectFilter
@@ -59,10 +51,6 @@ export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
         this.aTipoproductos = oPage.content;
         this.nTotalElements = oPage.totalElements;
         this.nTotalPages = oPage.totalPages;
-        this.aPaginationBar = this.oPaginationService.pagination(
-          this.nTotalPages,
-          this.nPage
-        );
         if (this.nPage > this.nTotalPages) {
           this.nPage = this.nTotalPages;
           this.getPage();

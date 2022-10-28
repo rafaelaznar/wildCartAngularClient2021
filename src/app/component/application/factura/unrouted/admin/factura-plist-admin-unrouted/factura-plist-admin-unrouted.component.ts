@@ -27,7 +27,6 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
-  aPaginationBar: string[];
   nPageSize: number = 10;
   strSortField: string = "";
   strSortDirection: string = "";
@@ -39,7 +38,6 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
     private oFacturaService: FacturaService,
     public oMetadataService: MetadataService,
     private oCompraService: CompraService,
-    private oPaginationService: PaginationService
   ) { }
 
   ngOnInit(): void {
@@ -147,7 +145,7 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
         let aCompras: ICompra[] = oPage.content;
         this.nTotalElements = oPage.totalElements;
         this.nTotalPages = oPage.totalPages;
-        this.aPaginationBar = this.oPaginationService.pagination(this.nTotalPages, this.nPage);
+        
         // You'll need to make your image into a Data URL
         // Use http://dataurl.net/#dataurlmaker
         var doc = new jsPDF()

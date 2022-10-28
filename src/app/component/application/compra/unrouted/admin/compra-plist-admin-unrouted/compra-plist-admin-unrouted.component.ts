@@ -23,8 +23,7 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
   aCompras: ICompra[];
   nTotalElements: number;
   nTotalPages: number;
-  nPage: number;
-  aPaginationBar: string[];
+  nPage: number;  
   nPageSize: number = 10;
   strSortField: string = "";
   strSortDirection: string = "";

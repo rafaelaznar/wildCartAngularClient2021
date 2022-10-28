@@ -24,7 +24,6 @@ export class ProductoPlistUserUnroutedComponent implements OnInit {
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.plist
   aProductos: IProducto[];
-  aPaginationBar: string[];
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;

@@ -26,7 +26,6 @@ export class CarritoPlistAdminUnroutedComponent implements OnInit {
   nTotalElements: number;
   nTotalPages: number;
   nPage: number;
-  aPaginationBar: string[];
   nPageSize: number = 10;
   strSortField: string = "";
   strSortDirection: string = "";
@@ -56,10 +55,6 @@ export class CarritoPlistAdminUnroutedComponent implements OnInit {
         this.aCarritos = oPage.content;
         this.nTotalElements = oPage.totalElements;
         this.nTotalPages = oPage.totalPages;
-        this.aPaginationBar = this.oPaginationService.pagination(
-          this.nTotalPages,
-          this.nPage
-        );
         if (this.nPage > this.nTotalPages) {
           this.nPage = this.nTotalPages;
           this.getPage();
