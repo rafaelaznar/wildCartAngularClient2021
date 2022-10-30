@@ -15,6 +15,12 @@ export class TipoproductoService implements ICrud {
   sURL = API_URL + '/tipoproducto';
 
   getPage(page: number, rpp: number, order: string, direction: string, filter: string): Observable<ITipoproductoPage> {
+    if (!page) {
+      page = 0;
+    }
+    if (!rpp) {
+      rpp = 10;
+    }
     let strUrl: string = '';
     if (filter) {
       strUrl += '&filter=' + filter;
@@ -23,7 +29,7 @@ export class TipoproductoService implements ICrud {
       strUrl += '&sort=' + order + ',' + direction;
     }
     return this.http.get<ITipoproductoPage>(
-      this.sURL + '/?page=' + (page - 1) + '&size=' + rpp + strUrl, httpOptions);
+      this.sURL + '/?page=' + page + '&size=' + rpp + strUrl, httpOptions);
   }
 
   getOne(id: number): Observable<ITipoproducto> {

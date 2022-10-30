@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { IFactura, IFacturaPage } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { PaginationService } from 'src/app/service/pagination.service';
 import { CompraService } from 'src/app/service/compra.service';
 import { ICompra, ICompraPage } from 'src/app/model/compra-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
@@ -23,62 +21,54 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.plist
-  aFacturas: IFactura[];
-  nTotalElements: number;
-  nTotalPages: number;
-  nPage: number;
-  nPageSize: number = 10;
-  strSortField: string = "";
-  strSortDirection: string = "";
-  strFilter: string = "";
-  strFilteredMessage: string = "";
+  oPage: IFacturaPage;
 
   constructor(
     private oFacturaService: FacturaService,
     public oMetadataService: MetadataService,
     private oCompraService: CompraService,
-  ) { }
+  ) {
+    this.oPage = {} as IFacturaPage;
+  }
 
   ngOnInit(): void {
-    this.nPage = 1;
-    this.getPage(); //important! id_tipoproducto must be initialized before calling getPage()
+    this.getPage(); //important! don't call in constructor; id_usuario must be initialized before calling getPage()
   }
 
   getPage = () => {
-    this.oFacturaService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_usuario)
+    this.oFacturaService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_usuario)
       .subscribe((oPage: IFacturaPage) => {
-        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, 'usuario', this.id_usuario, null, null);
-        this.aFacturas = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        if (this.nPage > this.nTotalPages) {
-          this.nPage = this.nTotalPages;
+        this.oPage = oPage;
+        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, null, null);
+        if (this.oPage.number > this.oPage.totalPages - 1) {
+          this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
         }
       })
   }
 
   onSetPage = (nPage: number) => {
-    this.nPage = nPage;
+    this.oPage.number = nPage - 1; //pagination component starts at 1, but spring data starts at 0
     this.getPage();
     return false;
   }
 
   onSetRpp(nRpp: number) {
-    this.nPageSize = nRpp;
+    this.oPage.size = nRpp;
     this.getPage();
   }
 
   onSetFilter(strFilter: string) {
-    this.strFilter = strFilter;
+    this.oPage.strFilter = strFilter;
     this.getPage();
   }
 
   onSetOrder(order: IOrder) {
-    this.strSortField = order.sortField;
-    this.strSortDirection = order.sortDirection;
+    this.oPage.strSortField = order.sortField;
+    this.oPage.strSortDirection = order.sortDirection;
     this.getPage();
   }
+
 
   cabecera(doc: any, oFactura: IFactura): any {
     var imgData: string = '../../../../../../assets/img/wildCartLogo100.png'
@@ -135,16 +125,16 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
 
   printFactura = (id_factura: number) => {
     this.oFacturaService.getOne(id_factura).subscribe((oFactura2Print: IFactura) => {
-      this.oCompraService.getPage(1, oFactura2Print.compras, this.strSortField, this.strSortDirection, this.strFilter, id_factura, null).subscribe((oPage: ICompraPage) => {
-        if (this.strFilter) {
-          this.strFilteredMessage = "Listado filtrado: " + this.strFilter;
+      this.oCompraService.getPage(1, oFactura2Print.compras, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, id_factura, null).subscribe((oPage: ICompraPage) => {
+        if (this.oPage.strFilter) {
+          this.oPage.strFilteredMessage = "Listado filtrado: " + this.oPage.strFilter;
         } else {
-          this.strFilteredMessage = "";
+          this.oPage.strFilteredMessage = "";
         }
         let aCompras: ICompra[] = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        
+        this.oPage.totalElements = oPage.totalElements;
+        this.oPage.totalPages = oPage.totalPages;
+
         // You'll need to make your image into a Data URL
         // Use http://dataurl.net/#dataurlmaker
         var doc = new jsPDF()

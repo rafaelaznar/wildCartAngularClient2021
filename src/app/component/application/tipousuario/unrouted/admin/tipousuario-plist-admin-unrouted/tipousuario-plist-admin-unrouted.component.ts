@@ -16,49 +16,35 @@ export class TipousuarioPlistAdminUnroutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.usertype;
   strOperation: string = Constants.OPERATIONS.plist;
-  aTipoUsuarios: ITipousuario[];
-  nTotalElements: number;
-  nTotalPages: number;
-  nPage: number;
-  nPageSize: number = 10;
-  strSortField: string = "";
-  strSortDirection: string = "";
-  strFilter: string = "";
-  strFilteredMessage: string = "";
+  oPage: ITipousuarioPage;
 
   constructor(
     private oTipoUsuarioService: TipousuarioService,
     public oMetadataService: MetadataService
   ) {
-    this.nPage = 1;
+    this.oPage = {} as ITipousuarioPage;
+  }
+
+  ngOnInit(): void {
     this.getPage();
   }
 
-  ngOnInit(): void { }
-
   getPage = () => {
     this.oTipoUsuarioService
-      .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter)
+      .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter)
       .subscribe((oPage: ITipousuarioPage) => {
-        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, null, null, null, null);
-        this.aTipoUsuarios = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        if (this.nPage > this.nTotalPages) {
-          this.nPage = this.nTotalPages;
+        this.oPage = oPage; 
+        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, null, null, null, null);
+        if (this.oPage.number > this.oPage.totalPages - 1) {
+          this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
         }
       });
   };
 
-  jumpToPage = () => {
-    this.getPage();
-    return false;
-  };
-
   onSetOrder(order: IOrder) {
-    this.strSortField = order.sortField;
-    this.strSortDirection = order.sortDirection;
+    this.oPage.strSortField = order.sortField;
+    this.oPage.strSortDirection = order.sortDirection;
     this.getPage();
   }
 

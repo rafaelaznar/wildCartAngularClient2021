@@ -16,6 +16,12 @@ export class CompraService implements ICrud {
   sURL = API_URL + '/compra';
 
   getPage(page: number, rpp: number, order: string, direction: string, filter: string, id_factura: number, id_producto: number): Observable<ICompraPage> {
+    if (!page) {
+      page = 0;
+    }
+    if (!rpp) {
+      rpp = 10;
+    }
     let strOrderUrl: string = "";
     if (filter) {
       strOrderUrl += "&filter=" + filter;
@@ -29,7 +35,6 @@ export class CompraService implements ICrud {
     if (id_producto) {
       strOrderUrl += "&producto=" + id_producto;
     }
-    page--;
     return this.http.get<ICompraPage>(this.sURL + "?page=" + page + "&size=" + rpp + strOrderUrl, httpOptions);
   }
 

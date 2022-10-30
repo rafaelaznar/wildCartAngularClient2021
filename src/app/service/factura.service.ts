@@ -16,6 +16,12 @@ export class FacturaService implements ICrud {
   sURL = API_URL + '/factura';
 
   getPage(page: number, rpp: number, order: string, direction: string, filter: string, id_usuario: number): Observable<IFacturaPage> {
+    if (!page) {
+      page = 0;
+    }
+    if (!rpp) {
+      rpp = 10;
+    }
     let strUrl: string = "";
     if (order) {
       strUrl += "&sort=" + order + "," + direction;

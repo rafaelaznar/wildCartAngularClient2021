@@ -1,7 +1,6 @@
 import { ProductoService } from '../../../../../../service/producto.service';
-import { IProductoPage, IProducto } from 'src/app/model/producto-interfaces';
+import { IProductoPage } from 'src/app/model/producto-interfaces';
 import { Component, Input, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/model/constants';
@@ -18,59 +17,50 @@ export class ProductoPlistAdminUnroutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.plist
-  aProductos: IProducto[];
-  nTotalElements: number;
-  nTotalPages: number;
-  nPage: number;
-  nPageSize: number = 10;
-  strSortField: string = "";
-  strSortDirection: string = "";
-  strFilter: string = "";
-  strFilteredMessage: string = "";  
+  oPage: IProductoPage;
 
   constructor(
     private oProductoService: ProductoService,
     public oMetadataService: MetadataService
-  ) { }
+  ) {
+    this.oPage = {} as IProductoPage;
+  }
 
   ngOnInit(): void {
-    this.nPage = 1;
-    this.getPage(); //important! id_tipoproducto must be initialized before calling getPage()
+    this.getPage(); //important! don't call in constructor; id_tipoproducto must be initialized before calling getPage()
   }
 
   getPage = () => {
-    this.oProductoService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_tipoproducto)
+    this.oProductoService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_tipoproducto)
       .subscribe((oPage: IProductoPage) => {
-        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, 'tipoproducto', this.id_tipoproducto, null, null);
-        this.aProductos = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        if (this.nPage > this.nTotalPages) {
-          this.nPage = this.nTotalPages;
+        this.oPage = oPage;
+        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipoproducto', this.id_tipoproducto, null, null);
+        if (this.oPage.number > this.oPage.totalPages - 1) {
+          this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
         }
       })
   }
 
   onSetPage = (nPage: number) => {
-    this.nPage = nPage;
+    this.oPage.number = nPage - 1; //pagination component starts at 1, but spring data starts at 0
     this.getPage();
     return false;
   }
 
   onSetRpp(nRpp: number) {
-    this.nPageSize = nRpp;
+    this.oPage.size = nRpp;
     this.getPage();
   }
 
   onSetFilter(strFilter: string) {
-    this.strFilter = strFilter;
+    this.oPage.strFilter = strFilter;
     this.getPage();
   }
 
   onSetOrder(order: IOrder) {
-    this.strSortField = order.sortField;
-    this.strSortDirection = order.sortDirection;
+    this.oPage.strSortField = order.sortField;
+    this.oPage.strSortDirection = order.sortDirection;
     this.getPage();
   }
 

@@ -8,6 +8,7 @@ import { ICrud } from '../model/crud-interface';
 @Injectable({
   providedIn: 'root',
 })
+
 export class CarritoService implements ICrud {
 
   sURL = API_URL + '/carrito';
@@ -15,6 +16,12 @@ export class CarritoService implements ICrud {
   constructor(private http: HttpClient) { }
 
   getPage(page: number, rpp: number, order: string, direction: string, filter: string, id_producto: number, id_usuario: number): Observable<ICarritoPage> {
+    if (!page) {
+      page = 0;
+    }
+    if (!rpp) {
+      rpp = 10;
+    }
     let strOrderUrl: string = '';
     if (order) {
       strOrderUrl += '&sort=' + order + ',' + direction;
@@ -27,7 +34,6 @@ export class CarritoService implements ICrud {
     } else if (id_usuario) {
       strOrderUrl += '&idusuario=' + id_usuario;
     }
-    page--;
     return this.http.get<ICarritoPage>(this.sURL + '?page=' + page + '&size=' + rpp + strOrderUrl, httpOptions);
   }
 

@@ -1,27 +1,27 @@
 <div class="row justify-content-between my-3">
   <div class="col-md text-start">
-    <h6>{{strFilteredMessage}}</h6>
+    <h6>{{oPage.strFilteredMessage}}</h6>
   </div>
   <div class="col-md text-center">
-    <app-search-unrouted [strFilter]="strFilter"
+    <app-search-unrouted [strFilter]="oPage.strFilter"
       [strTitlePlural]="'Filtro de ' + oMetadataService.getName(strEntity+'s').toLowerCase()"
       (eeFilter)="onSetFilter($event)"></app-search-unrouted>
   </div>
   <div class="col-md text-end">
-    <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}</h4>
+    <h4 class="text-muted">{{oPage.totalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}</h4>
   </div>
 </div>
 
 <div class="row justify-content-between">
   <div class="col-md text-start">
-    <app-pagination-unrouted [nPage]="nPage" [nTotalPages]="nTotalPages" (eePage)="onSetPage($event)">
+    <app-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
     </app-pagination-unrouted>
   </div>
   <div class="col-md text-center">
     <ng-content select="header"></ng-content>
   </div>
   <div class="col-md text-end">
-    <app-rpp-unrouted [nPageSize]="nPageSize" (eeRpp)="onSetRpp($event)"></app-rpp-unrouted>
+    <app-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)"></app-rpp-unrouted>
   </div>
 </div>
 
@@ -37,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let oProductoRow of aProductos" class="align-middle" app-producto-plistrow-admin-unrouted
+        <tr *ngFor="let oProductoRow of oPage.content" class="align-middle" app-producto-plistrow-admin-unrouted
           [oProducto]="oProductoRow" [mode]="true">
           <div action_column>
             <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oProductoRow.id"

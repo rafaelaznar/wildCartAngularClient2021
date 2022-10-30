@@ -16,7 +16,7 @@ export interface IUsuario extends IEntity{
     facturas: number
 }
 
-export interface IUsuarioPage extends IPage<IUsuario> {
+export interface IUsuarioPage extends IPage<IUsuario> {    
 }
 
 export interface IUsuario2Send extends IEntity2Send {    

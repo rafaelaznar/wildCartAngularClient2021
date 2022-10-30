@@ -21,37 +21,28 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
-  aCarritos: ICarrito[];
-  nTotalElements: number;
-  nTotalPages: number;
-  nPage: number;
-  nPageSize: number = 10;
-  strSortField: string = "";
-  strSortDirection: string = "";
-  strFilter: string = "";
-  strFilteredMessage: string = "";
+  oPage: ICarritoPage;
   nTotal: number = 0;
 
   constructor(
     private oCarritoService: CarritoService,
     public oMetadataService: MetadataService,
-  ) { }
+  ) {
+    this.oPage = {} as ICarritoPage;
+  }
 
-  ngOnInit(): void {
-    this.nPage = 1;
+  ngOnInit() {
     this.getPage();
   }
 
   getPage = () => {
     this.oCarritoService
-      .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_producto, this.id_usuario)
+      .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_producto, this.id_usuario)
       .subscribe((oPage: ICarritoPage) => {
-        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
-        this.aCarritos = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        if (this.nPage > this.nTotalPages) {
-          this.nPage = this.nTotalPages;
+        this.oPage = oPage;
+        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
+        if (this.oPage.number > this.oPage.totalPages - 1) {
+          this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
         }
         this.getTotalCarrito4User();
@@ -59,24 +50,24 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
   };
 
   onSetPage = (nPage: number) => {
-    this.nPage = nPage;
+    this.oPage.number = nPage - 1; //pagination component starts at 1, but spring data starts at 0
     this.getPage();
     return false;
   }
 
   onSetRpp(nRpp: number) {
-    this.nPageSize = nRpp;
+    this.oPage.size = nRpp;
     this.getPage();
   }
 
   onSetFilter(strFilter: string) {
-    this.strFilter = strFilter;
+    this.oPage.strFilter = strFilter;
     this.getPage();
   }
 
   onSetOrder(order: IOrder) {
-    this.strSortField = order.sortField;
-    this.strSortDirection = order.sortDirection;
+    this.oPage.strSortField = order.sortField;
+    this.oPage.strSortDirection = order.sortDirection;
     this.getPage();
   }
 
@@ -94,5 +85,5 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
       this.nTotal = nTotal;
     });
   }
-  
+
 }

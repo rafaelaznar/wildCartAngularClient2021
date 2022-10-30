@@ -1,10 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { debounceTime } from 'rxjs/operators';
-import { PaginationService } from 'src/app/service/pagination.service';
 import { CarritoService } from 'src/app/service/carrito.service';
-import { ICarrito, ICarritoPage } from 'src/app/model/carrito-interfaces';
+import { ICarritoPage } from 'src/app/model/carrito-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/model/constants';
 
@@ -18,68 +15,54 @@ export class CarritoPlistAdminUnroutedComponent implements OnInit {
 
   @Input() id_producto: number = null;
   @Input() id_usuario: number = null;
-  @Input() mode: boolean = true; //true=edición; false=selección
 
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
-  aCarritos: ICarrito[];
-  nTotalElements: number;
-  nTotalPages: number;
-  nPage: number;
-  nPageSize: number = 10;
-  strSortField: string = "";
-  strSortDirection: string = "";
-  strFilter: string = "";
-  strFilteredMessage: string = "";
-  subjectFilter = new Subject();
+  oPage: ICarritoPage;
 
-  constructor(    
+  constructor(
     private oCarritoService: CarritoService,
     public oMetadataService: MetadataService,
-  ) { }
+  ) {
+    this.oPage = {} as ICarritoPage;
+  }
 
-  ngOnInit(): void {
-    this.subjectFilter
-      .pipe(debounceTime(1000))
-      .subscribe(() => this.getPage());
-    this.nPage = 1;
-    this.getPage();
+  ngOnInit() {
+    this.getPage(); //important! don't call in constructor; id_usuario & id_producto must be initialized before calling getPage()
   }
 
   getPage = () => {
     this.oCarritoService
-      .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_producto, this.id_usuario)
+      .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_producto, this.id_usuario)
       .subscribe((oPage: ICarritoPage) => {
-        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
-        this.aCarritos = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        if (this.nPage > this.nTotalPages) {
-          this.nPage = this.nTotalPages;
+        this.oPage = oPage;
+        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
+        if (this.oPage.number > this.oPage.totalPages - 1) {
+          this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
         }
       });
   };
 
   onSetPage = (nPage: number) => {
-    this.nPage = nPage;
+    this.oPage.number = nPage - 1; //pagination component starts at 1, but spring data starts at 0
     this.getPage();
     return false;
   }
 
   onSetRpp(nRpp: number) {
-    this.nPageSize = nRpp;
+    this.oPage.size = nRpp;
     this.getPage();
   }
 
   onSetFilter(strFilter: string) {
-    this.strFilter = strFilter;
+    this.oPage.strFilter = strFilter;
     this.getPage();
   }
 
   onSetOrder(order: IOrder) {
-    this.strSortField = order.sortField;
-    this.strSortDirection = order.sortDirection;
+    this.oPage.strSortField = order.sortField;
+    this.oPage.strSortDirection = order.sortDirection;
     this.getPage();
   }
 

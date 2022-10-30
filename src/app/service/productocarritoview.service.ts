@@ -8,13 +8,19 @@ import { IView } from '../model/view-interface';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductoCarritoViewService implements IView  {
+export class ProductoCarritoViewService implements IView {
 
   sURL = API_URL + '/productocarritoview';
 
   constructor(private http: HttpClient) { }
 
-  getPage( page: number, rpp: number, order: string, direction: string, filter: string, tipoproducto: number): Observable<IProductoPage> {
+  getPage(page: number, rpp: number, order: string, direction: string, filter: string, tipoproducto: number): Observable<IProductoPage> {
+    if (!page) {
+      page = 0;
+    }
+    if (!rpp) {
+      rpp = 10;
+    }
     let strUrl: string = "";
     if (order) {
       strUrl += "&sort=" + order + "," + direction;
@@ -25,7 +31,7 @@ export class ProductoCarritoViewService implements IView  {
     if (tipoproducto) {
       strUrl += "&tipoproducto=" + tipoproducto;
     }
-    return this.http.get<IProductoPage>(this.sURL + "?page=" + (page - 1) + "&size=" + rpp + strUrl, httpOptions);
+    return this.http.get<IProductoPage>(this.sURL + "?page=" + page + "&size=" + rpp + strUrl, httpOptions);
   }
 
   getOne(id: number): Observable<IProducto> {

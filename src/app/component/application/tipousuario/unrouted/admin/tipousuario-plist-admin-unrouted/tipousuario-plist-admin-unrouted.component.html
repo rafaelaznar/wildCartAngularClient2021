@@ -1,6 +1,6 @@
 <div class="row justify-content-between my-3">
     <div class="col-md text-end">
-        <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}
+        <h4 class="text-muted">{{oPage.totalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}
         </h4>
     </div>
 </div>
@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let oTipousuarioRow of aTipoUsuarios" class="align-middle"
+                <tr *ngFor="let oTipousuarioRow of oPage.content" class="align-middle"
                     app-tipousuario-plistrow-admin-unrouted [oTipousuario]="oTipousuarioRow" [mode]="true">
                     <div action_column>
                         <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted

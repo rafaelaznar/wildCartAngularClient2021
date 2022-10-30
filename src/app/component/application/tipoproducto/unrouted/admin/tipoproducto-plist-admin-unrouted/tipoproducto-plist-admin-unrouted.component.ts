@@ -1,8 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { debounceTime } from 'rxjs/operators';
-import { PaginationService } from 'src/app/service/pagination.service';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { ITipoproducto, ITipoproductoPage } from 'src/app/model/tipoproducto-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
@@ -18,60 +15,51 @@ export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.producttype;
   strOperation: string = Constants.OPERATIONS.plist;
-  aTipoproductos: ITipoproducto[];
-  nTotalElements: number;
-  nTotalPages: number;
-  nPage: number;
-  nPageSize: number = 10;
-  strSortField: string = "";
-  strSortDirection: string = "";
-  strFilter: string = "";
-  strFilteredMessage: string = "";
+  oPage: ITipoproductoPage;
 
-  constructor(    
+  constructor(
     private oPostService: TipoproductoService,
     public oMetadataService: MetadataService,
-  ) { }
+  ) {
+    this.oPage = {} as ITipoproductoPage;
+  }
 
-  ngOnInit(): void {
-    this.nPage = 1;
+  ngOnInit() {
     this.getPage();
   }
 
   getPage = () => {
     this.oPostService
-      .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter)
+      .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter)
       .subscribe((oPage: ITipoproductoPage) => {
-        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, null, null, null, null);
-        this.aTipoproductos = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        if (this.nPage > this.nTotalPages) {
-          this.nPage = this.nTotalPages;
+        this.oPage = oPage;
+        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, null, null, null, null);
+        if (this.oPage.number > this.oPage.totalPages - 1) {
+          this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
         }
       });
   };
 
   onSetPage = (nPage: number) => {
-    this.nPage = nPage;
+    this.oPage.number = nPage - 1; //pagination component starts at 1, but spring data starts at 0
     this.getPage();
     return false;
   }
 
   onSetRpp(nRpp: number) {
-    this.nPageSize = nRpp;
+    this.oPage.size = nRpp;
     this.getPage();
   }
 
   onSetFilter(strFilter: string) {
-    this.strFilter = strFilter;
+    this.oPage.strFilter = strFilter;
     this.getPage();
   }
 
   onSetOrder(order: IOrder) {
-    this.strSortField = order.sortField;
-    this.strSortDirection = order.sortDirection;
+    this.oPage.strSortField = order.sortField;
+    this.oPage.strSortDirection = order.sortDirection;
     this.getPage();
   }
 

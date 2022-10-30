@@ -21,6 +21,12 @@ export class TipousuarioService implements ICrud {
   ) { }
 
   getPage(page: number, rpp: number, order: string, direction: string, filter: string): Observable<ITipousuarioPage> {
+    if (!page) {
+      page = 0;
+    }
+    if (!rpp) {
+      rpp = 10;
+    }
     let strUrl: string = '';
     if (filter) {
       strUrl += '&filter=' + filter;
@@ -28,7 +34,7 @@ export class TipousuarioService implements ICrud {
     if (order) {
       strUrl += '&sort=' + order + ',' + direction;
     }
-    return this.http.get<ITipousuarioPage>(this.sURL + '/?page=' + (page - 1) + '&size=' + rpp + strUrl, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.get<ITipousuarioPage>(this.sURL + '/?page=' + page + '&size=' + rpp + strUrl, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   getOne(id: number): Observable<ITipousuario> {
