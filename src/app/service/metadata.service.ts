@@ -106,6 +106,7 @@ export class MetadataService {
       case strIcon == "false": return "fas fa-times";
       case strIcon == "yes": return "fas fa-check";
       case strIcon == "no": return "fas fa-times";
+      case strIcon == "selection": return "fas fa-bullseye";
       //ptes
       case strIcon == "tools": return "fas fa-tools";
       case strIcon == "acciones": return "fas fa-tools";
@@ -268,6 +269,8 @@ export class MetadataService {
       case str == "select an invoice": return "Seleccione una factura";
       case str == "select a product": return "Seleccione un producto";
       case str == "select a user": return "Seleccione un usuario";
+      case str == "select a user type": return "Seleccione un tipo de usuario";
+      case str == "select a product type": return "Seleccione un tipo de producto";
 
       case str == "image": return "Imagen";
       case str == "discount": return "Descuento";

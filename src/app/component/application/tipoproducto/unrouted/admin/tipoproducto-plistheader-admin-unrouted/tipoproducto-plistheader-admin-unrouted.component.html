@@ -11,4 +11,6 @@
 <th *ngIf="mode">
   <i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('productos')}}
 </th>
-<th><i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getName('acciones')}}</th>
+<th>
+  <ng-content select="[action_column_title]"></ng-content>
+</th>
