@@ -1,13 +1,14 @@
-<app-menu-unrouted  [carritoMenuObservable]="carritoHomeEventsSubject.asObservable()"></app-menu-unrouted>
+<app-menu-unrouted [carritoMenuObservable]="carritoHomeEventsSubject.asObservable()"></app-menu-unrouted>
 
 <div class="container my-3">
 
-    <app-header [title]="oMetadataService.getName('user cart items')" [icon]="oMetadataService.getIcon(strOperation)"
-    [iconEntity]="oMetadataService.getIcon(strEntity)">
-</app-header>
+    <app-header [title]="oMetadataService.getName('cart items list')" [icon]="oMetadataService.getIcon(strOperation)"
+        [iconEntity]="oMetadataService.getIcon(strEntity)">
+    </app-header>
 
-<app-carrito-cplist-user-unrouted [id_usuario]="id_usuario"  [id_tipousuario_session]="tipousuarioSession_id"  [id_producto]="id_producto"  (addCarritoEE)="onAddCarrito($event)">
-</app-carrito-cplist-user-unrouted>
+    <app-carrito-cplist-user-unrouted [id_usuario]="id_usuario" [id_tipousuario_session]="tipousuarioSession_id"
+        [id_producto]="id_producto" (addCarritoEE)="onAddCarrito($event)">
+    </app-carrito-cplist-user-unrouted>
 
 </div>
 

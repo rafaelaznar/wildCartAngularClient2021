@@ -120,10 +120,19 @@ export class MetadataService {
     switch (true) {
       // refactoring
       case str == "cart item edition": return "Edición de línea de carrito";
-      case str == "new cart item": return "Nueva línea de carrito";
-      case str == "carts items list": return "Listado de líneas de carrito";
+      case str == "new cart item": return "Nueva línea de carrito";      
       case str == "cart item removal": return "Borrado de línea de carrito";
       case str == "cart item view": return "Vista de línea de carrito";
+      //--
+      case str == "cart items list": return "Listado de líneas de carrito";
+      case str == "users list": return "Listado de usuarios";
+      case str == "purchases list": return "Listado de compras";
+      case str == "invoices list": return "Listado de facturas";
+      case str == "products list": return "Listado de productos";
+      case str == "product types list": return "Listado de tipos de producto";
+      case str == "user types list": return "Listado de tipos de usuario";
+
+
       case str == "id": return "Id";
       case str == "ID": return "ID";
       case str == "amount": return "Cantidad";
