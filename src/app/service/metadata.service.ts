@@ -26,6 +26,7 @@ export class MetadataService {
       case strIcon == "compra": return "fas fa-cash-register";
       case strIcon == "factura": return "fas fa-file-invoice-dollar";
       case strIcon == "carrito": return "fas fa-shopping-cart";
+      case strIcon == "informe": return "fas fa-file-alt";
       //-- operations
       case strIcon == "view": return "fas fa-eye";
       case strIcon == "plist": return "fas fa-list";
@@ -265,13 +266,23 @@ export class MetadataService {
       case str == "you must set a valid login": return "Se debe introducir un login correcto";
       case str == "you must set a valid email": return "Se debe introducir un email correcto";
       case str == "you must set a valid DNI": return "Se debe introducir un DNI correcto";
-
+      //--
+      case str == "select a cart item": return "Seleccione una línea de carrito";
+      case str == "select a purchase": return "Seleccione una compra";
       case str == "select an invoice": return "Seleccione una factura";
       case str == "select a product": return "Seleccione un producto";
       case str == "select a user": return "Seleccione un usuario";
       case str == "select a user type": return "Seleccione un tipo de usuario";
       case str == "select a product type": return "Seleccione un tipo de producto";
-
+      //--
+      case str == "select a carrito": return "Seleccione una línea de carrito";
+      case str == "select a compra": return "Seleccione una compra";
+      case str == "select a factura": return "Seleccione una factura";
+      case str == "select a producto": return "Seleccione un producto";
+      case str == "select a usuario": return "Seleccione un usuario";
+      case str == "select a tipousuario": return "Seleccione un tipo de usuario";
+      case str == "select a tipoproducto": return "Seleccione un tipo de producto";
+      //--
       case str == "image": return "Imagen";
       case str == "discount": return "Descuento";
       case str == "product type": return "Tipo de producto";

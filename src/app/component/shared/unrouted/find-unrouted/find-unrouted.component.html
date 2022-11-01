@@ -7,7 +7,7 @@
     <input type="number" class="form-control" [(ngModel)]="id" (ngModelChange)="onChangeForeign($event)" [ngClass]="{'is-valid':dirty && (description!='ERROR'),
       'is-invalid':dirty && (description=='ERROR')}" />
     <button type="button" class="btn btn-success" (click)="openModal()">
-      Buscar {{entity}}
+      {{oMetadataService.getName('select a ' + entity)}}      
     </button>
   </div>
 </div>
