@@ -120,6 +120,16 @@ export class MetadataService {
     switch (true) {
       // refactoring
       case str == "cart item edition": return "Edición de línea de carrito";
+      case str == "user edition": return "Edición de usuario";
+      case str == "purchase edition": return "Edición de compra";
+      case str == "invoice edition": return "Edición de factura";
+      case str == "product edition": return "Edición de producto";
+      case str == "product type edition": return "Edición de tipo de producto";
+      case str == "user type edition": return "Edición de tipo de usuario";
+      //--
+
+
+
       case str == "new cart item": return "Nueva línea de carrito";      
       case str == "cart item removal": return "Borrado de línea de carrito";
       case str == "cart item view": return "Vista de línea de carrito";
