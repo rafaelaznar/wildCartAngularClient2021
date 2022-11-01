@@ -37,7 +37,7 @@ export class UsuarioSelectionAdminUnroutedComponent implements OnInit {
       .subscribe(
         (oPage: IUsuarioPage) => {
           this.oPage = oPage;
-          this.oPage.error = null;          
+          this.oPage.error = null;
           this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipousuario', this.id_tipousuario, null, null);
           if (this.oPage.number > this.oPage.totalPages - 1) {
             this.oPage.number = this.oPage.totalPages - 1;

@@ -4,6 +4,7 @@ import { IUsuarioPage } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/model/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-usuario-plist-admin-unrouted',
@@ -34,12 +35,17 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
     this.oUsuarioService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_tipousuario)
       .subscribe((oPage: IUsuarioPage) => {
         this.oPage = oPage;
+        this.oPage.error = null;
         this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipousuario', this.id_tipousuario, null, null);
         if (this.oPage.number > this.oPage.totalPages - 1) {
           this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
         }
-      })
+      }, (error: HttpErrorResponse) => {
+        this.oPage.error = error;
+        console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+      }
+      )
   }
 
   onSetPage = (nPage: number) => {

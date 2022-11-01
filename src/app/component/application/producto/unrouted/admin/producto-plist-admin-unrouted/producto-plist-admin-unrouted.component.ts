@@ -4,6 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/model/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-producto-plist-admin-unrouted',
@@ -34,12 +35,17 @@ export class ProductoPlistAdminUnroutedComponent implements OnInit {
     this.oProductoService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_tipoproducto)
       .subscribe((oPage: IProductoPage) => {
         this.oPage = oPage;
+        this.oPage.error = null;
         this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipoproducto', this.id_tipoproducto, null, null);
         if (this.oPage.number > this.oPage.totalPages - 1) {
           this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
         }
-      })
+      }, (error: HttpErrorResponse) => {
+        this.oPage.error = error;
+        console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+      }
+      )
   }
 
   onSetPage = (nPage: number) => {

@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs';
-import { IFactura, IFacturaPage } from 'src/app/model/factura-interfaces';
+import { IFacturaPage } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/model/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-factura-selection-admin-unrouted',
@@ -19,59 +19,55 @@ export class FacturaSelectionAdminUnroutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.plist
-  aFacturas: IFactura[];
-  nTotalElements: number;
-  nTotalPages: number;
-  nPage: number;  
-  nPageSize: number = 10;
-  strSortField: string = "";
-  strSortDirection: string = "";
-  strFilter: string = "";
-  strFilteredMessage: string = "";
+  oPage: IFacturaPage;
 
   constructor(
     private oFacturaService: FacturaService,
     public oMetadataService: MetadataService
-  ) { }
+  ) {
+    this.oPage = {} as IFacturaPage;
+  }
 
   ngOnInit(): void {
-    this.nPage = 1;
-    this.getPage(); //important! id_tipoproducto must be initialized before calling getPage()
+    this.getPage();
   }
 
   getPage = () => {
-    this.oFacturaService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter, this.id_usuario)
+    this.oFacturaService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_usuario)
       .subscribe((oPage: IFacturaPage) => {
-        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, 'usuario', this.id_usuario, null, null);
-        this.aFacturas = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        if (this.nPage > this.nTotalPages) {
-          this.nPage = this.nTotalPages;
+        this.oPage = oPage;
+        this.oPage.error = null;
+        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, null, null);
+        if (this.oPage.number > this.oPage.totalPages - 1) {
+          this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
         }
-      })
+      }, (error: HttpErrorResponse) => {
+        this.oPage.error = error;
+        console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+      }
+      )
   }
 
   onSetPage = (nPage: number) => {
-    this.nPage = nPage;
+    this.oPage.number = nPage - 1; //pagination component starts at 1, but spring data starts at 0
     this.getPage();
     return false;
   }
 
   onSetRpp(nRpp: number) {
-    this.nPageSize = nRpp;
+    this.oPage.size = nRpp;
     this.getPage();
   }
 
   onSetFilter(strFilter: string) {
-    this.strFilter = strFilter;
+    this.oPage.strFilter = strFilter;
     this.getPage();
   }
 
   onSetOrder(order: IOrder) {
-    this.strSortField = order.sortField;
-    this.strSortDirection = order.sortDirection;
+    this.oPage.strSortField = order.sortField;
+    this.oPage.strSortDirection = order.sortDirection;
     this.getPage();
   }
 

@@ -4,6 +4,7 @@ import { CompraService } from 'src/app/service/compra.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { ICompraPage } from 'src/app/model/compra-interfaces';
 import { Constants } from 'src/app/model/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-compra-plist-admin-unrouted',
@@ -35,12 +36,17 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
     this.oCompraService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_factura, this.id_producto)
       .subscribe((oPage: ICompraPage) => {
         this.oPage = oPage;
+        this.oPage.error = null;
         this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'factura', this.id_factura, 'producto', this.id_producto);
         if (this.oPage.number > this.oPage.totalPages - 1) {
           this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
         }
-      })
+      }, (error: HttpErrorResponse) => {
+        this.oPage.error = error;
+        console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+      }
+      )
   }
 
   onSetPage = (nPage: number) => {

@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Constants } from 'src/app/model/constants';
 import { IOrder } from 'src/app/model/model-interfaces';
-import { ITipousuario, ITipousuarioPage } from 'src/app/model/tipousuario-interfaces';
+import { ITipousuarioPage } from 'src/app/model/tipousuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
@@ -18,49 +18,56 @@ export class TipousuarioSelectionAdminUnroutedComponent implements OnInit {
 
   strEntity: string = Constants.ENTITIES.usertype;
   strOperation: string = Constants.OPERATIONS.plist;
-  aTipoUsuarios: ITipousuario[];
-  nTotalElements: number;
-  nTotalPages: number;
-  nPage: number;
-  nPageSize: number = 10;
-  strSortField: string = "";
-  strSortDirection: string = "";
-  strFilter: string = "";
-  strFilteredMessage: string = "";  
+  oPage: ITipousuarioPage;
 
   constructor(
     private oTipoUsuarioService: TipousuarioService,
     public oMetadataService: MetadataService
   ) {
-    this.nPage = 1;
+    this.oPage = {} as ITipousuarioPage;
+  }
+
+  ngOnInit(): void {
     this.getPage();
   }
 
-  ngOnInit(): void { }
-
   getPage = () => {
     this.oTipoUsuarioService
-      .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter)
+      .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter)
       .subscribe((oPage: ITipousuarioPage) => {
-        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, null, null, null, null);
-        this.aTipoUsuarios = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        if (this.nPage > this.nTotalPages) {
-          this.nPage = this.nTotalPages;
+        this.oPage = oPage;
+        this.oPage.error = null;
+        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, null, null, null, null);
+        if (this.oPage.number > this.oPage.totalPages - 1) {
+          this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
         }
-      })
+      }, (error: HttpErrorResponse) => {
+        this.oPage.error = error;
+        console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+      }
+      )
   }
 
-  jumpToPage = () => {
+  onSetPage = (nPage: number) => {
+    this.oPage.number = nPage - 1; //pagination component starts at 1, but spring data starts at 0
     this.getPage();
     return false;
   }
 
+  onSetRpp(nRpp: number) {
+    this.oPage.size = nRpp;
+    this.getPage();
+  }
+
+  onSetFilter(strFilter: string) {
+    this.oPage.strFilter = strFilter;
+    this.getPage();
+  }
+
   onSetOrder(order: IOrder) {
-    this.strSortField = order.sortField;
-    this.strSortDirection = order.sortDirection;
+    this.oPage.strSortField = order.sortField;
+    this.oPage.strSortDirection = order.sortDirection;
     this.getPage();
   }
 

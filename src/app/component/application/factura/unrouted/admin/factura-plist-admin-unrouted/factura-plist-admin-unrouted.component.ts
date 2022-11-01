@@ -6,6 +6,7 @@ import { CompraService } from 'src/app/service/compra.service';
 import { ICompra, ICompraPage } from 'src/app/model/compra-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/model/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 declare let jsPDF: any;
 
@@ -39,12 +40,17 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
     this.oFacturaService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_usuario)
       .subscribe((oPage: IFacturaPage) => {
         this.oPage = oPage;
+        this.oPage.error = null;
         this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, null, null);
         if (this.oPage.number > this.oPage.totalPages - 1) {
           this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
         }
-      })
+      }, (error: HttpErrorResponse) => {
+        this.oPage.error = error;
+        console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+      }
+      )
   }
 
   onSetPage = (nPage: number) => {

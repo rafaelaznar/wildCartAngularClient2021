@@ -33,7 +33,8 @@ export class TipousuarioPlistAdminUnroutedComponent implements OnInit {
     this.oTipoUsuarioService
       .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter)
       .subscribe((oPage: ITipousuarioPage) => {
-        this.oPage = oPage; 
+        this.oPage = oPage;
+this.oPage.error = null;  
         this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, null, null, null, null);
         if (this.oPage.number > this.oPage.totalPages - 1) {
           this.oPage.number = this.oPage.totalPages - 1;
