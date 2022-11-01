@@ -1,3 +1,5 @@
+import { HttpErrorResponse } from "@angular/common/http";
+
 export interface IEntity {
     id: number,
 }
@@ -23,6 +25,8 @@ export interface IPage<T> {
     strSortDirection: string;
     strFilter: string;
     strFilteredMessage: string;
+
+    error: HttpErrorResponse;
 }
 
 export interface Sort {
