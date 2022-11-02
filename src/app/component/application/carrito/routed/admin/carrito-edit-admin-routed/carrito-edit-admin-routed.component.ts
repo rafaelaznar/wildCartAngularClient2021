@@ -32,7 +32,6 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id;
     this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
@@ -45,9 +44,9 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
     if (oResult.error == null) {
       if (oResult.id > 0) {
         this.id = oResult.id;
-        this.openPopup(this.oMetadataService.getName('the' + oResult.strEntity) + ' se ha creado correctamente con el id = ' + oResult.id);
+        this.openPopup(this.oMetadataService.getName('the' + oResult.strEntity) + ' se ha modificado correctamente con el id = ' + oResult.id);
       } else {
-        this.openPopup('Error en la creación de ' + this.oMetadataService.getName('the' + oResult.strEntity).toLowerCase());
+        this.openPopup('Error en la modificación de ' + this.oMetadataService.getName('the' + oResult.strEntity).toLowerCase());
       }
     } else {
       this.openPopup('ERROR: ' + oResult.error.status + ': ' + oResult.error.message);

@@ -3,14 +3,12 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { MetadataService } from 'src/app/service/metadata.service';
 import { ICompra, ICompra2Send } from 'src/app/model/compra-interfaces';
 import { CompraService } from 'src/app/service/compra.service';
-import { Subject } from 'rxjs/internal/Subject';
-import { Router } from '@angular/router';
-import { ErrorHandlerService } from 'src/app/service/errorHandler.service';
 import { ProductoService } from 'src/app/service/producto.service';
 import { FacturaService } from 'src/app/service/factura.service';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { IFactura } from 'src/app/model/factura-interfaces';
 import { Constants } from 'src/app/model/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-compra-form-admin-unrouted',
@@ -28,7 +26,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
   oData2Send: ICompra2Send = null;
   strEntity: string = Constants.ENTITIES.purchase;
   oForm: UntypedFormGroup = null;
-  strStatus: string = null;
+  status: HttpErrorResponse = null;
 
   es: any = {
     firstDayOfWeek: 1,
@@ -50,8 +48,6 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
     private oFormBuilder: UntypedFormBuilder,
     private oCompraService: CompraService,
     public oMetadataService: MetadataService,
-    private oRouter: Router,
-    private oErrorHandlerService: ErrorHandlerService,
     private oFacturaService: FacturaService,
     private oProductoService: ProductoService,
   ) {
@@ -90,7 +86,10 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
           id_producto: [this.oData2Show.producto.id, Validators.required],
           id_factura: [this.oData2Show.factura.id, Validators.required]
         });
-      });
+      }, (error: HttpErrorResponse) => {
+        this.status = error;
+        this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+      })
   };
 
   onSubmit(): void {
@@ -116,41 +115,26 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
   }
 
   save(): void {
-    let strResult: string = '';
     if (this.strOperation == "new") {
-      this.oCompraService.newOne(this.oData2Send)
-        .subscribe(
-          (id: number) => {
-            if (id > 0) {
-              this.id = id;
-              strResult = this.oMetadataService.getName('the' + this.strEntity) + ' se ha creado correctamente con el id: ' + id;
-            } else {
-              strResult = 'Error en la creación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
-            }
-            this.msg.emit({ strMsg: strResult, id: this.id });
-          },
-          (error) => {
-            strResult = "Error al guardar " +
-              this.oMetadataService.getName('the' + this.strEntity).toLowerCase() + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
-            this.openPopup(strResult);
-          });
+      this.oCompraService
+        .newOne(this.oData2Send)
+        .subscribe((id: number) => {
+          this.status = null;
+          this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        }, (error: HttpErrorResponse) => {
+          this.status = error;
+          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        });
     } else {
       this.oCompraService
         .updateOne(this.oData2Send)
         .subscribe((id: number) => {
-          if (id > 0) {
-            this.id = id;
-            strResult = this.oMetadataService.getName('the' + this.strEntity) + ' con id=' + id + ' se ha modificado correctamente';
-          } else {
-            strResult = 'Error en la modificación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
-          }
-          this.msg.emit({ strMsg: strResult, id: this.id });
-        },
-          (error) => {
-            this.strStatus = error.status;
-            strResult = this.oErrorHandlerService.componentHandleError(error);
-            this.openPopup(strResult);
-          });
+          this.status = null;
+          this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        }, (error: HttpErrorResponse) => {
+          this.status = error;
+          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        });
     }
   };
 
@@ -201,20 +185,5 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
 
     return false;
   }
-  
-  //popup
-
-  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
-
-  openPopup(str: string): void {
-    this.eventsSubjectShowPopup.next(str);
-  }
-
-  onClosePopup(): void {
-    if (this.strStatus == "401") {
-      this.oRouter.navigate(['/login']);
-    }
-  }
-
 
 }
