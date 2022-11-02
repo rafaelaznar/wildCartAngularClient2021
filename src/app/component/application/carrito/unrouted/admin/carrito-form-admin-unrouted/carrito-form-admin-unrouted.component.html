@@ -1,20 +1,21 @@
-<form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
+<form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()" *ngIf="status==null">
 
   <div class="row mb-3">
-    <label for="id" class="col-sm-2 col-form-label"> <i [ngClass]="oMetadataService.getIcon('id')"></i> {{oMetadataService.getName('id')}}</label>
-    <div class="col-sm-10">
+    <label for="id" class="col-sm-2 col-form-label"> <i [ngClass]="oMetadataService.getIcon('id')"></i>
+      {{oMetadataService.getName('id')}}</label>
+    <div class="col-sm-3">
       <input class="form-control" type="text" placeholder="{{id}}" readonly>
     </div>
   </div>
 
   <div class="row mb-3">
     <label for="cantidad" class="col-sm-2 col-form-label">{{oMetadataService.getName('amount')}}</label>
-    <div class="col-sm-10">
+    <div class="col-sm-3">
       <input type="number" class="form-control" id="cantidad" formControlName="cantidad" [ngClass]="{
           'is-valid': f.cantidad.valid,
           'is-invalid': f.cantidad.invalid
         }" />
-      <div *ngIf="f.cantidad.invalid" class="text-danger">        
+      <div *ngIf="f.cantidad.invalid" class="text-danger">
         {{oMetadataService.getName('invalid amount')}}
       </div>
     </div>
@@ -22,19 +23,19 @@
 
   <div class="row mb-3">
     <label for="precio" class="col-sm-2 col-form-label"> {{oMetadataService.getName('price')}}</label>
-    <div class="col-sm-10">
+    <div class="col-sm-3">
       <input type="number" class="form-control" id="precio" formControlName="precio" [ngClass]="{
           'is-valid': f.precio.valid,
           'is-invalid': f.precio.invalid
         }" />
       <div *ngIf="f.precio.invalid" class="text-danger">
-        {{oMetadataService.getName('invalid price')}}        
+        {{oMetadataService.getName('invalid price')}}
       </div>
     </div>
   </div>
 
   <div class="row mb-3" app-find-unrouted [entity]="'producto'" [id]="oData2Show?.producto?.id"
-    [description]="oData2Show?.producto?.nombre ? oData2Show?.producto.nombre + '(' + oData2Show?.producto.codigo +')':''"
+    [description]="oData2Show?.producto?.nombre ? (oData2Show?.producto.nombre | trim) + ' (' + oData2Show?.producto.codigo +')':''"
     (selection)="onFindSelectionProducto($event)">
     <div plist-finder-title>
       <h4 class="text-center"> {{oMetadataService.getName('please select a product')}}</h4>
@@ -42,7 +43,7 @@
   </div>
 
   <div class="row mb-3" app-find-unrouted [entity]="'usuario'" [id]="oData2Show?.usuario?.id"
-    [description]="oData2Show?.usuario?.dni ? oData2Show?.usuario?.dni + '(' + oData2Show?.usuario.nombre + ' ' + oData2Show?.usuario.apellido1 +')':''"
+    [description]="oData2Show?.usuario?.dni ? oData2Show?.usuario?.dni + ' (' + oData2Show?.usuario.nombre + ' ' + oData2Show?.usuario.apellido1 +')':''"
     (selection)="onFindSelectionUsuario($event)">
     <div plist-finder-title>
       <h4 class="text-center"> {{oMetadataService.getName('please select a user')}}</h4>
@@ -57,3 +58,13 @@
   </div>
 
 </form>
+
+<div *ngIf="status!=null">
+  <div class="row justify-content-center">
+    <div class="col-md text-center">
+      <h6 class="text-danger">Component ERROR: please contact administrator.</h6>
+      <h6 class="text-danger">Message: {{ status.status + "(" + status.statusText + ") " +
+        status.message}}</h6>
+    </div>
+  </div>
+</div>

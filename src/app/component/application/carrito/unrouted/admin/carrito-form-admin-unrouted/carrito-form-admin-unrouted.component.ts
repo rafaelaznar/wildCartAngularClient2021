@@ -3,7 +3,6 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { MetadataService } from 'src/app/service/metadata.service';
 import { ICarrito, ICarrito2Send } from 'src/app/model/carrito-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
-import { ErrorHandlerService } from 'src/app/service/errorHandler.service';
 import { ProductoService } from 'src/app/service/producto.service';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';

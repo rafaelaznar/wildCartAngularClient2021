@@ -17,6 +17,7 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
   strOperation: string = Constants.OPERATIONS.edit;
   id: number = null;
   strUsuarioSession: string;
+  oResult: IResult = null;
 
   constructor(
     private oRouter: Router,
@@ -40,6 +41,7 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
   }
 
   reportResult = (oResult: IResult): void => {
+    this.oResult = oResult;
     if (oResult.error == null) {
       if (oResult.id > 0) {
         this.id = oResult.id;
@@ -65,6 +67,8 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
   }
 
   onClosePopup(): void {
-    this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
+    if (this.oResult && this.oResult.error == null) {
+      this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
+    }    
   }
 }
