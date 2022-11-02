@@ -3,14 +3,14 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { MetadataService } from 'src/app/service/metadata.service';
 import { ICarrito, ICarrito2Send } from 'src/app/model/carrito-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
-import { Subject } from 'rxjs/internal/Subject';
-import { Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/service/errorHandler.service';
 import { ProductoService } from 'src/app/service/producto.service';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Constants } from 'src/app/model/constants';
+import { HttpErrorResponse } from '@angular/common/http';
+import { IResult } from 'src/app/model/model-interfaces';
 
 @Component({
   selector: 'app-carrito-form-admin-unrouted',
@@ -22,13 +22,13 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
 
   @Input() strOperation: string = null;
   @Input() id: number = null;
-  @Output() msg = new EventEmitter<any>();
+  @Output() msg = new EventEmitter<IResult>();
 
   oData2Show: ICarrito = null;
   oData2Send: ICarrito2Send = null;
   strEntity: string = Constants.ENTITIES.cart;
   oForm: UntypedFormGroup = null;
-  strStatus: string = null;
+  status: HttpErrorResponse = null;
 
   es: any = {
     firstDayOfWeek: 1,
@@ -49,16 +49,13 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
   constructor(
     private oFormBuilder: UntypedFormBuilder,
     private oCarritoService: CarritoService,
-    public oMetadataService: MetadataService,
-    private oRouter: Router,
-    private oErrorHandlerService: ErrorHandlerService,
+    public oMetadataService: MetadataService,        
     private oUsuarioService: UsuarioService,
     private oProductoService: ProductoService,
   ) {
   }
 
   ngOnInit(): void {
-
     if (this.strOperation == "edit") {
       this.get();
     } else {
@@ -69,9 +66,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
         id_producto: ['', Validators.required],
         id_usuario: ['', Validators.required]
       });
-
     }
-
   }
 
   get = (): void => {
@@ -79,6 +74,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
       .getOne(this.id)
       .subscribe((oData: ICarrito) => {
         this.oData2Show = oData;
+        this.status = null;
         this.oForm = this.oFormBuilder.group({
           id: [this.oData2Show.id],
           cantidad: [this.oData2Show.cantidad, Validators.required],
@@ -86,7 +82,10 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
           id_producto: [this.oData2Show.producto.id, Validators.required],
           id_usuario: [this.oData2Show.usuario.id, Validators.required]
         });
-      });
+      }, (error: HttpErrorResponse) => {
+        this.status = error;
+        this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+      })
   };
 
   onSubmit(): void {
@@ -104,42 +103,27 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
     }
   }
 
-  save(): void {
-    let strResult: string = '';
+  save(): void {    
     if (this.strOperation == "new") {
-      this.oCarritoService.newOne(this.oData2Send)
-        .subscribe(
-          (id: number) => {
-            if (id > 0) {
-              this.id = id;
-              strResult = this.oMetadataService.getName('the' + this.strEntity) + ' se ha creado correctamente con el id: ' + id;
-            } else {
-              strResult = 'Error en la creación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();;
-            }
-            this.msg.emit({ strMsg: strResult, id: this.id });
-          },
-          (error) => {
-            strResult = "Error al guardar " +
-              this.oMetadataService.getName('the' + this.strEntity).toLowerCase(); + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
-            this.openPopup(strResult);
-          });
+      this.oCarritoService
+        .newOne(this.oData2Send)
+        .subscribe((id: number) => {
+          this.status = null;
+          this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        }, (error: HttpErrorResponse) => {
+          this.status = error;
+          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        });
     } else {
       this.oCarritoService
         .updateOne(this.oData2Send)
         .subscribe((id: number) => {
-          if (id > 0) {
-            this.id = id;
-            strResult = this.oMetadataService.getName('the' + this.strEntity) + ' con id=' + id + ' se ha modificado correctamente';
-          } else {
-            strResult = 'Error en la modificación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
-          }
-          this.msg.emit({ strMsg: strResult, id: this.id });
-        },
-          (error) => {
-            this.strStatus = error.status;
-            strResult = this.oErrorHandlerService.componentHandleError(error);
-            this.openPopup(strResult);
-          });
+          this.status = null;
+          this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        }, (error: HttpErrorResponse) => {
+          this.status = error;
+          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        });
     }
   };
 
@@ -160,7 +144,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
           this.oData2Show.producto = {} as IProducto;
           this.oData2Show.producto = oProducto;
         }
-      }, err => {
+      }, (err) => {
         this.oData2Show.producto.nombre = "ERROR";
         this.oForm.controls['id_producto'].setErrors({ 'incorrect': true });
       });
@@ -183,28 +167,12 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
           this.oData2Show.usuario = {} as IUsuario;
           this.oData2Show.usuario = oUsuario;
         }
-      }, err => {
+      }, (err) => {
         this.oData2Show.usuario.nombre = "ERROR";
         this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
       });
 
     return false;
   }
-
-
-  //popup
-
-  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
-
-  openPopup(str: string): void {
-    this.eventsSubjectShowPopup.next(str);
-  }
-
-  onClosePopup(): void {
-    if (this.strStatus == "401") {
-      this.oRouter.navigate(['/login']);
-    }
-  }
-
 
 }

@@ -88,3 +88,10 @@ export interface IOrder {
     sortField: string;
     sortDirection: string;
 }
+
+export interface IResult {
+    id: number;    
+    strOperation: string;
+    strEntity: string;
+    error: HttpErrorResponse;
+}

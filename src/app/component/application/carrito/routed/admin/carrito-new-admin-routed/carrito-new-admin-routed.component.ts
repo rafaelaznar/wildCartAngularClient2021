@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
+import { IResult } from 'src/app/model/model-interfaces';
 
 @Component({
   selector: 'app-carrito-new-admin-routed',
@@ -40,9 +41,17 @@ export class CarritoNewAdminRoutedComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  reportResult = (oResult: any): void => {    
-    this.id = oResult.id;
-    this.openPopup(oResult.strMsg);
+  reportResult = (oResult: IResult): void => {
+    if (oResult.error == null) {
+      if (oResult.id > 0) {
+        this.id = oResult.id;
+        this.openPopup( this.oMetadataService.getName('the' + oResult.strEntity) + ' se ha modificado correctamente con el id = ' + oResult.id);
+      } else {
+        this.openPopup('Error en la modificación de ' + this.oMetadataService.getName('the' + oResult.strEntity).toLowerCase());
+      }
+    } else {
+      this.openPopup('ERROR: ' + oResult.error.status + ': ' + oResult.error.message);
+    }
   };
 
   goBack(): void {

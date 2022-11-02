@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
+import { IResult } from 'src/app/model/model-interfaces';
 
 @Component({
   selector: 'app-carrito-edit-admin-routed',
@@ -16,7 +17,6 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
   strOperation: string = Constants.OPERATIONS.edit;
   id: number = null;
   strUsuarioSession: string;
-
 
   constructor(
     private oRouter: Router,
@@ -39,9 +39,17 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  reportResult = (oResult: any): void => {    
-    this.id = oResult.id;
-    this.openPopup(oResult.strMsg);
+  reportResult = (oResult: IResult): void => {
+    if (oResult.error == null) {
+      if (oResult.id > 0) {
+        this.id = oResult.id;
+        this.openPopup(this.oMetadataService.getName('the' + oResult.strEntity) + ' se ha creado correctamente con el id = ' + oResult.id);
+      } else {
+        this.openPopup('Error en la creación de ' + this.oMetadataService.getName('the' + oResult.strEntity).toLowerCase());
+      }
+    } else {
+      this.openPopup('ERROR: ' + oResult.error.status + ': ' + oResult.error.message);
+    }
   };
 
   goBack(): void {
@@ -52,7 +60,7 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 

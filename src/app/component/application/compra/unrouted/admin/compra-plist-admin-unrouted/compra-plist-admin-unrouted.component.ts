@@ -45,8 +45,7 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
       }, (error: HttpErrorResponse) => {
         this.oPage.error = error;
         console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
-      }
-      )
+      })
   }
 
   onSetPage = (nPage: number) => {
