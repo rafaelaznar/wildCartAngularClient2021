@@ -34,7 +34,7 @@ export class CompraEditAdminRoutedComponent implements OnInit {
       oRouter.navigate(['/home']);
     }
     this.id = this.oActivatedRoute.snapshot.params.id;
-    this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
+    //this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 
   ngOnInit(): void { }
