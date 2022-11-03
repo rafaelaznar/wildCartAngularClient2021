@@ -140,7 +140,7 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
 
   //ajenas
 
-  onFindSelection($event: any) {
+  onFindSelection($event: number) {
     this.oForm.controls['id_usuario'].setValue($event);
     this.oForm.controls['id_usuario'].markAsDirty();
     this.oUsuarioService

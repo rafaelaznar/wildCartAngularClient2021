@@ -7,6 +7,7 @@ import { FileService } from 'src/app/service/file.service';
 import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { Constants } from 'src/app/model/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-producto-form-admin-unrouted',
@@ -24,6 +25,12 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   oProducto2Send: IProducto2Send = null;
   oProducto2Show: IProducto = null;
   oForm: UntypedFormGroup = null;
+  status: HttpErrorResponse = null;
+
+  selectedFiles?: FileList;
+  selectedFile: string;
+  imageSrc: string = null;
+  file2Send: File = null;
 
   get f() {
     return this.oForm.controls;
@@ -39,7 +46,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.strOperation == "edit") {
-      this.getOne();
+      this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
         codigo: ['', [Validators.required]],
@@ -53,7 +60,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
     }
   }
 
-  getOne = (): void => {
+  get = (): void => {
     this.oProductoService.getOne(this.id).subscribe((oData: IProducto) => {
       this.oProducto2Show = oData;
       this.oForm = this.oFormBuilder.group({
@@ -66,13 +73,16 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
         descuento: this.oProducto2Show.descuento,
         id_tipoproducto: [this.oProducto2Show.tipoproducto.id, [Validators.required],],
       });
-    });
+    }, (error: HttpErrorResponse) => {
+      this.status = error;
+      this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+    })
   };
 
-  processFile($event: any) {
+  processFile($event: Event) {
     const reader = new FileReader();
-    if ($event.target.files && $event.target.files.length) {
-      this.selectedFiles = $event.target.files;
+    if ((<HTMLInputElement>$event.target).files && (<HTMLInputElement>$event.target).files.length) {
+      this.selectedFiles = (<HTMLInputElement>$event.target).files;
       if (this.selectedFiles) {
         this.file2Send = this.selectedFiles.item(0);
         this.selectedFile = this.file2Send.name;
@@ -81,10 +91,6 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
           reader.onload = () => {
             this.imageSrc = reader.result as string;
             this.oForm.controls['imagen'].markAsDirty();
-            //this.oForm.patchValue({
-            //  imagen: reader.result
-            //});
-
           };
         }
       }
@@ -92,32 +98,21 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   }
 
   onSubmit(): void {
-    //console.log("-->nombre: ", this.selectedFile);
-    //const file: File = imageInput.files[0];
-    //this.selectedFile = new ImageSnippet(  this.imageSrc , file);
-    let strResult: string = '';
     if (this.imageSrc) {
       this.oFileService.uploadImage(this.file2Send).subscribe(
-        (serverResponse) => {
+        (serverResponse: number) => {
           this.save(serverResponse);
         },
-        (err) => {
-          strResult = this.oMetadataService.getName(this.strEntity).toLowerCase() + ': Error al cambiar el registro: ' + err.error.message;
-          //console.log("Img Upload error:", err.error.message);
-          this.msg.emit({ strMsg: strResult, id: 0 });
+        (error: HttpErrorResponse) => {
+          this.status = error;
+          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
         })
     } else {
       this.save(this.oForm.value.imagen);
     }
   }
 
-  selectedFiles?: FileList;
-  imageSrc: string = null;
-  file2Send: File = null;
-  selectedFile: string;
-
   save(img: number): void {
-    let strResult: string = '';
     if (this.oForm) {
       if (this.oForm.valid) {
         this.oProducto2Send = {
@@ -134,25 +129,21 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
           this.oProductoService
             .newOne(this.oProducto2Send)
             .subscribe((id: number) => {
-              if (id > 0) {
-                this.id = id;
-                strResult = this.oMetadataService.getName('the' + this.strEntity) + ' se ha creado correctamente con el id: ' + id;
-              } else {
-                strResult = 'Error en la creación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
-              }
-              this.msg.emit({ strMsg: strResult, id: this.id });
+              this.status = null;
+              this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+            }, (error: HttpErrorResponse) => {
+              this.status = error;
+              this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
             });
         } else {
           this.oProductoService
             .updateOne(this.oProducto2Send)
             .subscribe((id: number) => {
-              if (id) {
-                this.id = id;
-                strResult = this.oMetadataService.getName('the' + this.strEntity) + ' con id=' + id + ' se ha modificado correctamente';
-              } else {
-                strResult = 'Error en la modificación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
-              }
-              this.msg.emit({ strMsg: strResult, id: this.id });
+              this.status = null;
+              this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+            }, (error: HttpErrorResponse) => {
+              this.status = error;
+              this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
             });
         }
       }
@@ -161,14 +152,14 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
 
   //ajenas
 
-  onFindSelection($event: any) {
+  onFindSelection($event: number) {
     this.oForm.controls['id_tipoproducto'].setValue($event);
     this.oForm.controls['id_tipoproducto'].markAsDirty();
     this.oTipoproductoService
       .getOne(this.oForm.controls['id_tipoproducto'].value)
       .subscribe((oTipoproducto: ITipoproducto) => {
         if (this.strOperation == "edit") {
-          this.oProducto2Show.tipoproducto = oTipoproducto; //pte!!
+          this.oProducto2Show.tipoproducto = oTipoproducto;
         } else {
           this.oProducto2Show = {} as IProducto;
           this.oProducto2Show.tipoproducto = {} as ITipoproducto;

@@ -44,7 +44,7 @@ export class CompraNewAdminRoutedComponent implements OnInit {
     if (oResult.error == null) {
       if (oResult.id > 0) {
         this.id = oResult.id;
-        this.openPopup( this.oMetadataService.getName('the' + oResult.strEntity) + ' se ha creado correctamente con el id = ' + oResult.id);
+        this.openPopup(this.oMetadataService.getName('the' + oResult.strEntity) + ' se ha creado correctamente con el id = ' + oResult.id);
       } else {
         this.openPopup('Error en la creación de ' + this.oMetadataService.getName('the' + oResult.strEntity).toLowerCase());
       }
@@ -68,7 +68,7 @@ export class CompraNewAdminRoutedComponent implements OnInit {
   onClosePopup(): void {
     if (this.oResult && this.oResult.error == null) {
       this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
-    }   
+    }
   }
-  
+
 }

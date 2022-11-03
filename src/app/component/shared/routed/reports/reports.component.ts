@@ -122,7 +122,7 @@ export class ReportsComponent implements OnInit {
 
   //ajenas
 
-  onProductFindSelection($event: any) {
+  onProductFindSelection($event: number) {
     this.oForm.controls['id_producto'].setValue($event);
     this.oForm.controls['id_producto'].markAsDirty();
     //this.oForm.controls['id_producto'].markAsTouched();
@@ -139,7 +139,7 @@ export class ReportsComponent implements OnInit {
     return false;
   }
 
-  onClientFindSelection($event: any) {
+  onClientFindSelection($event: number) {
     this.oForm.controls['id_usuario'].setValue($event);
     this.oForm.controls['id_usuario'].markAsDirty();
     //this.oForm.controls['id_usuario'].markAsTouched();

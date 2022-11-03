@@ -50,11 +50,9 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
     public oMetadataService: MetadataService,
     private oFacturaService: FacturaService,
     private oProductoService: ProductoService,
-  ) {
-  }
+  ) {  }
 
   ngOnInit(): void {
-
     if (this.strOperation == "edit") {
       this.get();
     } else {
@@ -140,7 +138,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
 
   //ajenas
 
-  onFindSelectionProducto($event: any) {
+  onFindSelectionProducto($event: number) {
     this.oForm.controls['id_producto'].setValue($event);
     this.oForm.controls['id_producto'].markAsDirty();
     this.oProductoService
@@ -163,7 +161,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
     return false;
   }
 
-  onFindSelectionFactura($event: any) {
+  onFindSelectionFactura($event: number) {
     this.oForm.controls['id_factura'].setValue($event);
     this.oForm.controls['id_factura'].markAsDirty();
     this.oFacturaService

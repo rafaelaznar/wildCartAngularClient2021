@@ -128,7 +128,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
 
   //ajenas
 
-  onFindSelectionProducto($event: any) {
+  onFindSelectionProducto($event: number) {
     this.oForm.controls['id_producto'].setValue($event);
     this.oForm.controls['id_producto'].markAsDirty();
     this.oProductoService
@@ -151,7 +151,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
     return false;
   }
 
-  onFindSelectionUsuario($event: any) {
+  onFindSelectionUsuario($event: number) {
     this.oForm.controls['id_usuario'].setValue($event);
     this.oForm.controls['id_usuario'].markAsDirty();
     this.oUsuarioService

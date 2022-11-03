@@ -52,7 +52,7 @@ export class findUnroutedComponent implements OnInit {
     this.showingModal = false;
   }
 
-  onSelection($event: any) {
+  onSelection($event: number) {
     console.log("find onSelection evento recibido: " + $event)
     this.id = $event;
     this.closeModal();
@@ -61,7 +61,7 @@ export class findUnroutedComponent implements OnInit {
 
   }
 
-  onChangeForeign($event: any) {
+  onChangeForeign($event: number) {
     //console.log("find onChangeForeign evento recibido: " + $event)
     this.dirty = true;
     if (this.showingModal) {

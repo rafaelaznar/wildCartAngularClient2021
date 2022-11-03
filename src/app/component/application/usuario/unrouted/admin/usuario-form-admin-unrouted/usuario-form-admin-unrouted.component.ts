@@ -147,7 +147,7 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
 
   //ajenas
 
-  onFindSelection($event: any) {
+  onFindSelection($event: number) {
     this.oForm.controls['id_tipousuario'].setValue($event);
     this.oForm.controls['id_tipousuario'].markAsDirty();
     this.oTipousuarioService
