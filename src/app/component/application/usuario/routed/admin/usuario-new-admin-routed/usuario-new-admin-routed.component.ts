@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
 import { IResult } from 'src/app/model/model-interfaces';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 @Component({
   selector: 'app-usuario-new-admin-routed',
@@ -12,28 +13,20 @@ import { IResult } from 'src/app/model/model-interfaces';
   styleUrls: ['./usuario-new-admin-routed.component.css'],
 })
 
-export class UsuarioNewAdminRoutedComponent implements OnInit {
+export class UsuarioNewAdminRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.new
   id: number = null;
-  strUsuarioSession: string;
   oResult: IResult = null;
 
   constructor(
-    private oRouter: Router,
+    protected oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
     public oMetadataService: MetadataService
   ) {
-    if (this.oActivatedRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem('user', JSON.stringify(this.strUsuarioSession));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
+    super(oRouter, oActivatedRoute);   
     this.id = this.oActivatedRoute.snapshot.params.id
-    //this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 
   ngOnInit(): void { }

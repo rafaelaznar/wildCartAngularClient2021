@@ -18,7 +18,6 @@ export class ProductoViewUserRoutedComponent implements OnInit {
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.view
   id: number = null;
-  strUsuarioSession: string;
   oUserSession: IUsuario;
   tipousuarioSession_id: number = null;
   carritoHomeEventsSubject: Subject<{ action: string, data: number }> = new Subject<{ action: string, data: number }>();

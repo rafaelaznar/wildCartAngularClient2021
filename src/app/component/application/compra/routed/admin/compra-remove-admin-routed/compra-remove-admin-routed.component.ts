@@ -2,37 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompraService } from 'src/app/service/compra.service';
 import { Subject } from 'rxjs';
-import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Constants } from 'src/app/model/constants';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 @Component({
   selector: 'app-compra-remove-admin-routed',
   templateUrl: './compra-remove-admin-routed.component.html',
   styleUrls: ['./compra-remove-admin-routed.component.css']
 })
-export class CompraRemoveAdminRoutedComponent implements OnInit {
+export class CompraRemoveAdminRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.purchase
   strOperation: string = Constants.OPERATIONS.remove
   id: number = 0;
-  oUserSession: IUsuario;
 
   constructor(
     private oCompraService: CompraService,
     private oActivatedRoute: ActivatedRoute,
-    private oRoute: ActivatedRoute,
-    private oRouter: Router,
+    protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    if (this.oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
+    super(oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 

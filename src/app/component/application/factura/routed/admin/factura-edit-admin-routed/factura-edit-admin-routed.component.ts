@@ -2,9 +2,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
-import { Location } from '@angular/common';
 import { Constants } from 'src/app/model/constants';
 import { IResult } from 'src/app/model/model-interfaces';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 @Component({
   selector: 'app-factura-edit-admin-routed',
@@ -12,26 +12,19 @@ import { IResult } from 'src/app/model/model-interfaces';
   styleUrls: ['./factura-edit-admin-routed.component.css']
 })
 
-export class FacturaEditAdminRoutedComponent implements OnInit {
+export class FacturaEditAdminRoutedComponent extends CheckSession implements OnInit {
 
   id: number = null;
-  strUsuarioSession: string;
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.edit
   oResult: IResult = null;
 
   constructor(
-    private oRouter: Router,
+    protected oRouter: Router,
     private oActivatedRoute: ActivatedRoute,    
     public oMetadataService: MetadataService
   ) {
-    if (this.oActivatedRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
+    super(oRouter, oActivatedRoute);   
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 

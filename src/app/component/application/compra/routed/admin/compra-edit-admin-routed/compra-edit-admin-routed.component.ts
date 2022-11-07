@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
@@ -18,7 +17,6 @@ export class CompraEditAdminRoutedComponent extends CheckSession implements OnIn
   strEntity: string = Constants.ENTITIES.purchase;
   strOperation: string = Constants.OPERATIONS.edit;
   id: number = null;
-  strUsuarioSession: string;
   oResult: IResult = null;
 
   constructor(
@@ -59,4 +57,5 @@ export class CompraEditAdminRoutedComponent extends CheckSession implements OnIn
       this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
     }
   }
+
 }

@@ -2,37 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from 'src/app/service/producto.service';
 import { Subject } from 'rxjs';
-import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Constants } from 'src/app/model/constants';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 @Component({
   selector: 'app-producto-remove-admin-routed',
   templateUrl: './producto-remove-admin-routed.component.html',
   styleUrls: ['./producto-remove-admin-routed.component.css']
 })
-export class ProductoRemoveAdminRoutedComponent implements OnInit {
+export class ProductoRemoveAdminRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.remove
   id: number = 0;
-  oUserSession: IUsuario;
 
   constructor(
     private oProductoService: ProductoService,
     private oActivatedRoute: ActivatedRoute,
-    private oRoute: ActivatedRoute,
-    private oRouter: Router,
+    protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    if (this.oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
+    super(oRouter, oActivatedRoute);   
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 

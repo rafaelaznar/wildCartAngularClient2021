@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { FacturaService } from 'src/app/service/factura.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 @Component({
   selector: 'app-factura-remove-admin-routed',
@@ -13,29 +14,20 @@ import { Constants } from 'src/app/model/constants';
   styleUrls: ['./factura-remove-admin-routed.component.css']
 })
 
-export class FacturaRemoveAdminRoutedComponent implements OnInit {
+export class FacturaRemoveAdminRoutedComponent extends CheckSession implements OnInit {
 
   id: number = 0;
   oFactura: IFactura;
-  strUsuarioSession: string;
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.remove
 
   constructor(
     private oFacturaService: FacturaService,
-    private oActivatedRoute: ActivatedRoute,
-    private oRoute: ActivatedRoute,
-    private oRouter: Router,
-    private _location: Location,
+    private oActivatedRoute: ActivatedRoute,    
+    protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    if (this.oRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
+    super(oRouter, oActivatedRoute);   
     this.id = this.oActivatedRoute.snapshot.params.id
     this.getOne();
   }

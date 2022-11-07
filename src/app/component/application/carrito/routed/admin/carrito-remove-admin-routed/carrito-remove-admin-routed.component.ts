@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { Subject } from 'rxjs';
-import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Constants } from 'src/app/model/constants';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 @Component({
   selector: 'app-carrito-remove-admin-routed',
@@ -13,7 +13,7 @@ import { Constants } from 'src/app/model/constants';
   styleUrls: ['./carrito-remove-admin-routed.component.css']
 })
 
-export class CarritoRemoveAdminRoutedComponent implements OnInit {
+export class CarritoRemoveAdminRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.remove;
@@ -22,18 +22,11 @@ export class CarritoRemoveAdminRoutedComponent implements OnInit {
 
   constructor(
     private oCarritoService: CarritoService,
-    private oActivatedRoute: ActivatedRoute,
-    private oRoute: ActivatedRoute,
-    private oRouter: Router,    
+    private oActivatedRoute: ActivatedRoute,    
+    protected oRouter: Router,    
     public oMetadataService: MetadataService
   ) {
-    if (this.oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
+    super(oRouter, oActivatedRoute);   
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 

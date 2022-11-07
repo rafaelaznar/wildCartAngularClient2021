@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
 import { IResult } from 'src/app/model/model-interfaces';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 @Component({
   selector: 'app-carrito-edit-admin-routed',
   templateUrl: './carrito-edit-admin-routed.component.html',
   styleUrls: ['./carrito-edit-admin-routed.component.css'],
 })
-export class CarritoEditAdminRoutedComponent implements OnInit {
+export class CarritoEditAdminRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.edit;
@@ -20,19 +20,13 @@ export class CarritoEditAdminRoutedComponent implements OnInit {
   oResult: IResult = null;
 
   constructor(
-    private oRouter: Router,
+    oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
     public oMetadataService: MetadataService
   ) {
-    if (this.oActivatedRoute.snapshot.data && this.oActivatedRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
+    super(oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id;
-    this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
+    //this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 
   ngOnInit(): void {

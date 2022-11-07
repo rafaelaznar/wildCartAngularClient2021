@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CheckSession } from 'src/app/class/check.session.class';
 import { Constants } from 'src/app/model/constants';
 import { MetadataService } from 'src/app/service/metadata.service';
 
@@ -9,26 +10,17 @@ import { MetadataService } from 'src/app/service/metadata.service';
   styleUrls: ['./tipoproducto-plist-admin-routed.component.css']
 })
 
-export class TipoproductoPlistAdminRoutedComponent implements OnInit {
+export class TipoproductoPlistAdminRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.producttype
   strOperation: string = Constants.OPERATIONS.plist
-  strUsuarioSession: string;
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
-    private oRouter: Router,
+    protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-
-    if (this.oActivatedRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      this.oRouter.navigate(['/home']);
-    }
-
+    super(oRouter, oActivatedRoute);   
   }
 
   ngOnInit(): void {

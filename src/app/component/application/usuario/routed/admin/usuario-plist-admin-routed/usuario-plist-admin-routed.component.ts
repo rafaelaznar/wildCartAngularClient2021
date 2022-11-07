@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CheckSession } from 'src/app/class/check.session.class';
 import { Constants } from 'src/app/model/constants';
 import { MetadataService } from 'src/app/service/metadata.service';
 
@@ -9,25 +10,18 @@ import { MetadataService } from 'src/app/service/metadata.service';
   styleUrls: ['./usuario-plist-admin-routed.component.css']
 })
 
-export class UsuarioPlistAdminRoutedComponent implements OnInit {
+export class UsuarioPlistAdminRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.plist
-  strUsuarioSession: string;
   id_tipousuario: number = null;
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
-    private oRouter: Router,    
+    protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    if (this.oActivatedRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oActivatedRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      this.oRouter.navigate(['/home']);
-    }
+    super(oRouter, oActivatedRoute);
     this.id_tipousuario = this.oActivatedRoute.snapshot.params.id_tipousuario;
   }
 

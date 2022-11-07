@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
-import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Constants } from 'src/app/model/constants';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 @Component({
   selector: 'app-tipoproducto-view-admin-routed',
@@ -13,7 +13,7 @@ import { Constants } from 'src/app/model/constants';
   styleUrls: ['./tipoproducto-view-admin-routed.component.css'],
 })
 
-export class TipoproductoViewAdminRoutedComponent implements OnInit {
+export class TipoproductoViewAdminRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.producttype
   strOperation: string = Constants.OPERATIONS.view
@@ -23,20 +23,12 @@ export class TipoproductoViewAdminRoutedComponent implements OnInit {
   oUserSession: IUsuario;
 
   constructor(
-    private oTipoproductoService: TipoproductoService,
+    private oTipoproductoService: TipoproductoService,    
     private oActivatedRoute: ActivatedRoute,
-    private oRoute: ActivatedRoute,
-    oRouter: Router,
+    protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    if (this.oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
-
+    super(oRouter, oActivatedRoute);   
     this.id = this.oActivatedRoute.snapshot.params.id;
     this.getOne();
   }
