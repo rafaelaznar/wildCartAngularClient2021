@@ -11,7 +11,7 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
   styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent implements OnInit {
-  
+
   strOperation: string = "logout"
   oUserSession: IUsuario;
 
@@ -19,10 +19,9 @@ export class LogoutComponent implements OnInit {
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oSessionService: SessionService,
-    private _location: Location,
+    protected oLocation: Location,
     public oMetadataService: MetadataService
   ) {
-
     if (this.oRoute.snapshot.data.message) {
       this.oUserSession = this.oRoute.snapshot.data.message;
       localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
@@ -30,7 +29,6 @@ export class LogoutComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
   }
 
   public closeSession() {
@@ -40,10 +38,6 @@ export class LogoutComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  goBack() {
-    this._location.back();
-  }
 }

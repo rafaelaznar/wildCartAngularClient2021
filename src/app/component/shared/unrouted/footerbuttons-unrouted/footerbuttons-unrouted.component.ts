@@ -13,13 +13,10 @@ export class FooterbuttonsUnroutedComponent implements OnInit {
 
 
   constructor(
-    private oLocation: Location,
+    protected oLocation: Location,
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
-  goBack() {
-    this.oLocation.back();
-  }
+  ngOnInit() { }
+
 }

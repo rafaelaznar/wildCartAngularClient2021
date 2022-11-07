@@ -50,10 +50,6 @@ export class UsuarioRemoveAdminRoutedComponent implements OnInit {
     })
   }
 
-  goBack() {
-    this._location.back();
-  }
-
   //popup
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();

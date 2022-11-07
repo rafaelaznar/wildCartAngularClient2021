@@ -24,7 +24,6 @@ export class ProductoRemoveAdminRoutedComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private oLocation: Location,
     public oMetadataService: MetadataService
   ) {
     if (this.oRoute.snapshot.data.message) {
@@ -49,10 +48,6 @@ export class ProductoRemoveAdminRoutedComponent implements OnInit {
       }
       this.openPopup(strResult);
     })
-  }
-
-  goBack() {
-    this.oLocation.back();
   }
 
   //popup

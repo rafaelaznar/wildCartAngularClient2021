@@ -13,16 +13,11 @@ export class RemoveconfirmationUnroutedComponent implements OnInit {
   @Output() doRemove = new EventEmitter<Event>();
 
   constructor(
-    private oLocation: Location,
+    protected oLocation: Location,
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
-
-  goBack() {
-    this.oLocation.back();
-  }
+  ngOnInit() { }
 
   removeOne() {
     this.doRemove.emit();

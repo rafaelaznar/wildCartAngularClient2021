@@ -70,7 +70,7 @@ export class ReportsComponent implements OnInit {
   ];
 
   constructor(
-    private oLocation: Location,
+    protected oLocation: Location,
     public oMetadataService: MetadataService,
     private oUsuarioService: UsuarioService,
     private oFormBuilder: UntypedFormBuilder,
@@ -109,10 +109,6 @@ export class ReportsComponent implements OnInit {
       fecha_fin: [this.currentDate, Validators.required],
     });
     this.onChanges();
-  }
-
-  goBack() {
-    this.oLocation.back();
   }
 
   print(codigo: string) {    

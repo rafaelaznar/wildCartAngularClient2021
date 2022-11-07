@@ -21,7 +21,7 @@ export class UsuarioViewUserRoutedComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     oRouter: Router,
     public oMetadataService: MetadataService,
-    private oLocation: Location
+    protected oLocation: Location
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
@@ -34,9 +34,5 @@ export class UsuarioViewUserRoutedComponent implements OnInit {
   }
 
   ngOnInit(): void { }
-
-  goBack() {
-    this.oLocation.back();
-  }
 
 }

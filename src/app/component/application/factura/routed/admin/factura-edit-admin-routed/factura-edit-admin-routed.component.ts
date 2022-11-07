@@ -22,8 +22,7 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
 
   constructor(
     private oRouter: Router,
-    private oActivatedRoute: ActivatedRoute,
-    private oLocation: Location,
+    private oActivatedRoute: ActivatedRoute,    
     public oMetadataService: MetadataService
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
@@ -51,10 +50,6 @@ export class FacturaEditAdminRoutedComponent implements OnInit {
       this.openPopup('ERROR: ' + oResult.error.status + ': ' + oResult.error.message);
     }
   };
-
-  goBack(): void {
-    this.oLocation.back();
-  }
 
   //popup
 

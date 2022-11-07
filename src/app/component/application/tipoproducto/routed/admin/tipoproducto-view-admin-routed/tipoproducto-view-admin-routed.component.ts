@@ -27,7 +27,6 @@ export class TipoproductoViewAdminRoutedComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     oRouter: Router,
-    private oLocation: Location,
     public oMetadataService: MetadataService
   ) {
     if (this.oRoute.snapshot.data.message) {
@@ -52,7 +51,4 @@ export class TipoproductoViewAdminRoutedComponent implements OnInit {
       });
   };
 
-  goBack() {
-    this.oLocation.back();
-  }
 }

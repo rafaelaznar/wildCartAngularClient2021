@@ -24,8 +24,7 @@ export class CompraEditAdminRoutedComponent extends CheckSession implements OnIn
   constructor(
     oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
-    public oMetadataService: MetadataService,
-    private oLocation: Location
+    public oMetadataService: MetadataService
   ) {
     super(oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id;    
@@ -46,10 +45,6 @@ export class CompraEditAdminRoutedComponent extends CheckSession implements OnIn
       this.openPopup('ERROR: ' + oResult.error.status + ': ' + oResult.error.message);
     }
   };
-
-  goBack(): void {
-    this.oLocation.back();
-  }
 
   //popup
 

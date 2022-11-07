@@ -13,13 +13,9 @@ export class ViewbuttonsUnroutedComponent implements OnInit {
   @Input() id: number = 0;
 
   constructor(
-    private oLocation: Location,
+    protected oLocation: Location,
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit() {
-  }
-  goBack() {
-    this.oLocation.back();
-  }
+  ngOnInit() { }
 }

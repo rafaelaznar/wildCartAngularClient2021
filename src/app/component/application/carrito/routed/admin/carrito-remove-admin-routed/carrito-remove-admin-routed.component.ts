@@ -24,8 +24,7 @@ export class CarritoRemoveAdminRoutedComponent implements OnInit {
     private oCarritoService: CarritoService,
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
-    private oRouter: Router,
-    private oLocation: Location,
+    private oRouter: Router,    
     public oMetadataService: MetadataService
   ) {
     if (this.oRoute.snapshot.data.message) {
@@ -50,10 +49,6 @@ export class CarritoRemoveAdminRoutedComponent implements OnInit {
       }
       this.openPopup(strResult);
     })
-  }
-
-  goBack() {
-    this.oLocation.back();
   }
 
   //popup

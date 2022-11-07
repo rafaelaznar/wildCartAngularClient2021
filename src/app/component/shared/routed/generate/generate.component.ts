@@ -31,7 +31,7 @@ export class GenerateComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    private oLocation: Location,
+    protected oLocation: Location,
     public oMetadataService: MetadataService
   ) {
     if (this.oRoute.snapshot.data.message) {
@@ -57,10 +57,6 @@ export class GenerateComponent implements OnInit {
     this.oCountService.getCountUsuarios().subscribe((n: number) => this.nUsuarios = n);
     this.oCountService.getCountTiposUsuario().subscribe((n: number) => this.nTiposDeUsuario = n);
     this.bLoading=false;
-  }
-
-  goBack() {
-    this.oLocation.back();
   }
 
   generateProductos(n: number): void {

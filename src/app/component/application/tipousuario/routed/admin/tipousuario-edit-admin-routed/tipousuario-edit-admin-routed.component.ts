@@ -24,8 +24,7 @@ export class TipousuarioEditAdminRoutedComponent implements OnInit {
   constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
-    public oMetadataService: MetadataService,
-    private oLocation: Location
+    public oMetadataService: MetadataService
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
@@ -53,10 +52,6 @@ export class TipousuarioEditAdminRoutedComponent implements OnInit {
       this.openPopup('ERROR: ' + oResult.error.status + ': ' + oResult.error.message);
     }
   };
-
-  goBack(): void {
-    this.oLocation.back();
-  }
 
   //popup
 
