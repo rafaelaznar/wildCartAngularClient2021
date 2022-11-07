@@ -27,8 +27,8 @@ export class ProductoViewUserRoutedComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
     private oRouter: Router,
-    public oMetadataService: MetadataService,
-    private oLocation: Location
+    protected oMetadataService: MetadataService,
+    protected oLocation: Location
   ) {
     if (this.oRoute.snapshot.data.message) {
       this.oUserSession = this.oRoute.snapshot.data.message;
@@ -36,7 +36,7 @@ export class ProductoViewUserRoutedComponent implements OnInit {
       localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
     } else {
       localStorage.clear();
-      oRouter.navigate(['/home']);
+      this.oRouter.navigate(['/home']);
     }
     this.id = this.oActivatedRoute.snapshot.params.id
   }
@@ -45,10 +45,6 @@ export class ProductoViewUserRoutedComponent implements OnInit {
 
   onAddCarrito(id_producto: number) {
     this.carritoHomeEventsSubject.next({ action: 'add', data: id_producto });
-  }
-
-  goBack(): void {
-    this.oLocation.back();
   }
 
 }
