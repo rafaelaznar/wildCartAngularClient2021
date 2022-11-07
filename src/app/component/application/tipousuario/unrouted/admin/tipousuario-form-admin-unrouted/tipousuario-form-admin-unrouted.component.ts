@@ -4,6 +4,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { ITipousuario, ITipousuario2Send } from 'src/app/model/tipousuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 import { Constants } from 'src/app/model/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-tipousuario-form-admin-unrouted',
@@ -21,6 +22,7 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
   oData2Send: ITipousuario2Send = null;
   strEntity: string = Constants.ENTITIES.usertype;
   oForm: UntypedFormGroup = null;
+  status: HttpErrorResponse = null;
 
   get f() {
     return this.oForm.controls;
@@ -30,12 +32,14 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
     private oFormBuilder: UntypedFormBuilder,
     private oTipousuarioService: TipousuarioService,
     public oMetadataService: MetadataService
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     if (this.strOperation == "edit") {
       this.get();
+    } else {
+      console.error("tipousuario-form-admin: can't create a new usertype");
+      this.msg.emit({ error: new HttpErrorResponse({ statusText: "can't create a new usertype" }), id: null, strEntity: this.strEntity, strOperation: this.strOperation });
     }
   }
 
@@ -48,7 +52,10 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
           id: [this.id],
           nombre: [this.oData2Show.nombre, [Validators.required, Validators.minLength(4)]]
         });
-      });
+      }, (error: HttpErrorResponse) => {
+        this.status = error;
+        this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+      })
   };
 
   onSubmit(): void {
@@ -64,19 +71,20 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
   }
 
   save(): void {
-    let strResult: string = '';
-    this.oTipousuarioService
-      .updateOne(this.oData2Send)
-      .subscribe((id: number) => {
-        if (id) {
-          this.id = id;
-          strResult = this.oMetadataService.getName('the' + this.strEntity).toLowerCase() + ' con id=' + id + ' se ha modificado correctamente';
-        } else {
-          strResult = 'Error en la modificación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
-        }
-        this.msg.emit({ strMsg: strResult, id: this.id });
-      });
-
+    if (this.strOperation == "new") {
+      console.error("tipousuario-form-admin: can't create a new usertype");
+      this.msg.emit({ error: new HttpErrorResponse({ statusText: "can't create a new usertype" }), id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+    } else {
+      this.oTipousuarioService
+        .updateOne(this.oData2Send)
+        .subscribe((id: number) => {
+          this.status = null;
+          this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        }, (error: HttpErrorResponse) => {
+          this.status = error;
+          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        });
+    }
   };
 
 

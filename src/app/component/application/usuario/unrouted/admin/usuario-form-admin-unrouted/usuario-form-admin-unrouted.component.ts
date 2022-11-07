@@ -5,10 +5,8 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { IUsuario, IUsuario2Send } from 'src/app/model/usuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
-import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
-import { ErrorHandlerService } from 'src/app/service/errorHandler.service';
 import { Constants } from 'src/app/model/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-usuario-form-admin-unrouted',
@@ -25,10 +23,8 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
   oData2Show: IUsuario = null;
   oData2Send: IUsuario2Send = null;
   strEntity: string = Constants.ENTITIES.user;
-  strTitleSingular: string = 'Usuario';
-  strATitleSingular: string = 'El usuario';
   oForm: UntypedFormGroup = null;
-  strStatus: string = null;
+  status: HttpErrorResponse = null;
 
   get f() {
     return this.oForm;
@@ -39,8 +35,6 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
     private oUsuarioService: UsuarioService,
     private oTipousuarioService: TipousuarioService,
     public oMetadataService: MetadataService,
-    private oRouter: Router,
-    private oErrorHandlerService: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -78,7 +72,10 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
           dni: [this.oData2Show.dni, [Validators.required, Validators.minLength(5)]],
           id_tipousuario: [this.oData2Show.tipousuario.id, [Validators.required, Validators.minLength(1)]]
         });
-      }, error => console.log('error', error.error));
+      }, (error: HttpErrorResponse) => {
+        this.status = error;
+        this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+      })
   };
 
   onSubmit(): void {
@@ -105,43 +102,27 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
   }
 
   save(): void {
-    let strResult: string = '';
     if (this.strOperation == "new") {
-      this.oUsuarioService.newOne(this.oData2Send)
-        .subscribe(
-          (id: number) => {
-            if (id > 0) {
-              this.id = id;
-              strResult = this.strATitleSingular + ' se ha creado correctamente con el id: ' + id;
-            } else {
-              strResult = 'Error en la creación de ' + this.strATitleSingular.toLowerCase();
-            }
-            this.msg.emit({ strMsg: strResult, id: this.id });
-          },
-          (error) => {
-            strResult = "Error al guardar " +
-              this.strATitleSingular.toLowerCase() + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
-            this.openPopup(strResult);
-          });
+      this.oUsuarioService
+        .newOne(this.oData2Send)
+        .subscribe((id: number) => {
+          this.status = null;
+          this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        }, (error: HttpErrorResponse) => {
+          this.status = error;
+          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        });
     } else {
-      let strResult: string = '';
       this.oUsuarioService
         .updateOne(this.oData2Send)
         .subscribe((id: number) => {
-         
-          if (id > 0) {
-            this.id = id;
-            strResult = this.strATitleSingular + ' con id=' + id + ' se ha modificado correctamente';
-          } else {
-            strResult = 'Error en la modificación de ' + this.strATitleSingular.toLowerCase();
-          }
-          this.msg.emit({ strMsg: strResult, id: this.id });
-        },
-          (error) => {
-            this.strStatus = error.status;
-            strResult = this.oErrorHandlerService.componentHandleError(error);
-            this.openPopup(strResult);
-          });
+
+          this.status = null;
+          this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        }, (error: HttpErrorResponse) => {
+          this.status = error;
+          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        });
     }
   };
 
@@ -166,20 +147,6 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
       });
 
     return false;
-  }
-
-  //popup
-
-  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
-
-  openPopup(str: string): void {
-    this.eventsSubjectShowPopup.next(str);
-  }
-
-  onClosePopup(): void {
-    if (this.strStatus == "401") {
-      this.oRouter.navigate(['/login']);
-    }
-  }
+  } 
 
 }

@@ -1,4 +1,4 @@
-<form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()" *ngIf="oForm">
+<form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()" *ngIf="status==null">
 
     <div class="row mb-3">
         <label for="id" class="col-sm-2 col-form-label"> <i [ngClass]="oMetadataService.getIcon('id')"></i>
@@ -116,3 +116,13 @@
     </div>
 
 </form>
+
+<div *ngIf="status!=null">
+    <div class="row justify-content-center">
+      <div class="col-md text-center">
+        <h6 class="text-danger">Component ERROR: please contact administrator.</h6>
+        <h6 class="text-danger">Message: {{ status.status + "(" + status.statusText + ") " +
+          status.message}}</h6>
+      </div>
+    </div>
+  </div>

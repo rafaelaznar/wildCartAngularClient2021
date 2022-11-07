@@ -3,10 +3,8 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { MetadataService } from 'src/app/service/metadata.service';
 import { ITipoproducto, ITipoproducto2Send } from 'src/app/model/tipoproducto-interfaces';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
-import { Subject } from 'rxjs/internal/Subject';
-import { Router } from '@angular/router';
-import { ErrorHandlerService } from 'src/app/service/errorHandler.service';
 import { Constants } from 'src/app/model/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-tipoproducto-form-admin-unrouted',
@@ -22,12 +20,9 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
 
   oData2Show: ITipoproducto = null;
   oData2Send: ITipoproducto2Send = null;
-
   strEntity: string = Constants.ENTITIES.producttype;
-
   oForm: UntypedFormGroup = null;
-  
-  strStatus: string = null;  
+  status: HttpErrorResponse = null;
 
   get f() {
     return this.oForm.controls;
@@ -37,13 +32,9 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
     private oFormBuilder: UntypedFormBuilder,
     private oTipoproductoService: TipoproductoService,
     public oMetadataService: MetadataService,
-    private oRouter: Router,
-    private oErrorHandlerService: ErrorHandlerService
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
-
     if (this.strOperation == "edit") {
       this.get();
     } else {
@@ -51,7 +42,6 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
         nombre: ['', Validators.required],
       });
     }
-
   }
 
   get = (): void => {
@@ -63,7 +53,10 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
           id: [this.id],
           nombre: [this.oData2Show.nombre, [Validators.required, Validators.minLength(4)]]
         });
-      });
+      }, (error: HttpErrorResponse) => {
+        this.status = error;
+        this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+      })
   };
 
   onSubmit(): void {
@@ -79,57 +72,26 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
   }
 
   save(): void {
-    let strResult: string = '';
     if (this.strOperation == "new") {
       this.oTipoproductoService.newOne(this.oData2Send)
-        .subscribe(
-          (id: number) => {
-            if (id>0) {
-              this.id = id;
-              strResult = this.oMetadataService.getName('the' + this.strEntity).toLowerCase() + ' se ha creado correctamente con el id: ' + id;
-            } else {
-              strResult = 'Error en la creación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
-            }
-            this.msg.emit({ strMsg: strResult, id: this.id });
-          },
-          (error) => {
-            strResult = "Error al guardar " +
-            this.oMetadataService.getName('the' + this.strEntity).toLowerCase() + ': status: ' + error.status + " (" + error.error.status + ') ' + error.error.message;
-            this.openPopup(strResult);
-          });
+        .subscribe((id: number) => {
+          this.status = null;
+          this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        }, (error: HttpErrorResponse) => {
+          this.status = error;
+          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        });
     } else {
       this.oTipoproductoService
         .updateOne(this.oData2Send)
         .subscribe((id: number) => {
-          if (id>0) {
-            this.id = id;
-            strResult = this.oMetadataService.getName('the' + this.strEntity).toLowerCase() + ' con id=' + id + ' se ha modificado correctamente';
-          } else {
-            strResult = 'Error en la modificación de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
-          }
-          this.msg.emit({ strMsg: strResult, id: this.id });
-        },
-          (error) => {
-            this.strStatus = error.status;
-            strResult = this.oErrorHandlerService.componentHandleError(error);
-            this.openPopup(strResult);
-          });
+          this.status = null;
+          this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        }, (error: HttpErrorResponse) => {
+          this.status = error;
+          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        });
     }
   };
-  
-  //popup
-
-  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
-
-  openPopup(str:string): void {
-    this.eventsSubjectShowPopup.next(str);
-  }
-
-  onClosePopup(): void {
-    if (this.strStatus == "401") {
-      this.oRouter.navigate(['/login']);
-    }
-  }
-
 
 }

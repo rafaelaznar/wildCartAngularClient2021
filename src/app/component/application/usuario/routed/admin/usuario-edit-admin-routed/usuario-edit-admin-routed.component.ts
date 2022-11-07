@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
+import { IResult } from 'src/app/model/model-interfaces';
 
 @Component({
   selector: 'app-usuario-edit-admin-routed',
@@ -17,6 +18,7 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
   strOperation: string = Constants.OPERATIONS.edit;
   id: number = null;
   strUsuarioSession: string;
+  oResult: IResult = null;
 
   constructor(
     private oRouter: Router,
@@ -31,16 +33,24 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
       localStorage.clear();
       oRouter.navigate(['/home']);
     }
-
     this.id = this.oActivatedRoute.snapshot.params.id;
-    this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
+    //this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 
   ngOnInit(): void { }
 
   reportResult = (oResult: any): void => {
-    this.id = oResult.id;
-    this.openPopup(oResult.strMsg);
+    this.oResult = oResult;
+    if (oResult.error == null) {
+      if (oResult.id > 0) {
+        this.id = oResult.id;
+        this.openPopup(this.oMetadataService.getName('the' + oResult.strEntity) + ' se ha modificado correctamente con el id = ' + oResult.id);
+      } else {
+        this.openPopup('Error en la modificación de ' + this.oMetadataService.getName('the' + oResult.strEntity).toLowerCase());
+      }
+    } else {
+      this.openPopup('ERROR: ' + oResult.error.status + ': ' + oResult.error.message);
+    }
   };
 
   goBack(): void {
@@ -56,7 +66,9 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
   }
 
   onClosePopup(): void {
-    this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
+    if (this.oResult && this.oResult.error == null) {
+      this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
+    }
   }
 
 }
