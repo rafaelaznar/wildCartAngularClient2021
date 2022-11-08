@@ -8,6 +8,6 @@ export abstract class Constants {
     };
     
     static readonly PROFILES = {
-        admin: "administrador", user: "usuario"
+        admin: "administrador", user: "usuario", guest: "guest"
     };
 }

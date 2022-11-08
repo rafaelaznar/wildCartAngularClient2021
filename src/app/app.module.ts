@@ -102,6 +102,7 @@ import { ProductoEdiAdminRoutedComponent } from './component/application/product
 import { ProductoRemoveAdminRoutedComponent } from './component/application/producto/routed/admin/producto-remove-admin-routed/producto-remove-admin-routed.component';
 import { ProductoViewAdminRoutedComponent } from './component/application/producto/routed/admin/producto-view-admin-routed/producto-view-admin-routed.component';
 import { ProductoSelectionAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-selection-admin-unrouted/producto-selection-admin-unrouted.component';
+import { ProductoViewGuestRoutedComponent } from './component/application/producto/routed/guest/producto-view-guest-routed/producto-view-guest-routed.component';
 //  factura components
 import { FacturaPlistAdminRoutedComponent } from './component/application/factura/routed/admin/factura-plist-admin-routed/factura-plist-admin-routed.component';
 import { FacturaNewAdminRoutedComponent } from './component/application/factura/routed/admin/factura-new-admin-routed/factura-new-admin-routed.component';
@@ -142,6 +143,7 @@ import { CarritoPlistrowUserUnroutedComponent } from './component/application/ca
 import { FacturaSelectionAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-selection-admin-unrouted/factura-selection-admin-unrouted.component';
 import { FooterbuttonsUnroutedComponent } from './component/shared/unrouted/footerbuttons-unrouted/footerbuttons-unrouted.component';
 import { RemoveconfirmationUnroutedComponent } from './component/shared/unrouted/removeconfirmation-unrouted/removeconfirmation-unrouted.component';
+
 //
 
 //
@@ -196,6 +198,7 @@ import { RemoveconfirmationUnroutedComponent } from './component/shared/unrouted
     ProductoEdiAdminRoutedComponent,
     ProductoRemoveAdminRoutedComponent,
     ProductoViewUserRoutedComponent,
+    ProductoViewGuestRoutedComponent,
     // Tipoproducto routed components
     TipoproductoPlistAdminRoutedComponent,
     TipoproductoNewAdminRoutedComponent,

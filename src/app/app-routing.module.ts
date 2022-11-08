@@ -25,6 +25,7 @@ import { ProductoPlistAdminRoutedComponent } from './component/application/produ
 import { ProductoRemoveAdminRoutedComponent } from './component/application/producto/routed/admin/producto-remove-admin-routed/producto-remove-admin-routed.component';
 import { ProductoViewAdminRoutedComponent } from './component/application/producto/routed/admin/producto-view-admin-routed/producto-view-admin-routed.component';
 import { ProductoViewUserRoutedComponent } from './component/application/producto/routed/user/producto-view-user-routed/producto-view-user-routed.component';
+import { ProductoViewGuestRoutedComponent } from './component/application/producto/routed/guest/producto-view-guest-routed/producto-view-guest-routed.component';
 //
 import { TipoproductoEditAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-edit-admin-routed/tipoproducto-edit-admin-routed.component';
 import { TipoproductoNewAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-new-admin-routed/tipoproducto-new-admin-routed.component';
@@ -87,6 +88,7 @@ const routes: Routes = [
   { path: 'administrador/producto/edit/:id', component: ProductoEdiAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/producto/remove/:id', component: ProductoRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/producto/cview/:id', component: ProductoViewUserRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'producto/view/:id', component: ProductoViewGuestRoutedComponent, resolve: { message: SessionResolver } },
   //
   { path: 'administrador/compra/plist', component: CompraPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/compra/plist/factura/:id_factura', component: CompraPlistAdminRoutedComponent, resolve: { message: SessionResolver } },

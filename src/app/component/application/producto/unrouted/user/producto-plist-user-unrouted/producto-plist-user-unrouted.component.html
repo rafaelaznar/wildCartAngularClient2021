@@ -34,9 +34,23 @@
 
       <div>
         <div class="card-title d-flex justify-content-between">
-          <h4 class="flex-grow-1"> <a class="nombreproducto" [routerLink]="['/','usuario','producto','cview',oProducto.id]">
+
+          <h4 class="flex-grow-1"> <a class="nombreproducto" [routerLink]="['/','producto','view',oProducto.id]"
+              *ngIf="id_tipousuario_session!=1&&id_tipousuario_session!=2">
               {{oProducto.nombre}}
             </a> </h4>
+
+          <h4 class="flex-grow-1"> <a class="nombreproducto"
+              [routerLink]="['/','administrador','producto','view',oProducto.id]" *ngIf="id_tipousuario_session==1">
+              {{oProducto.nombre}}
+            </a> </h4>
+
+          <h4 class="flex-grow-1"> <a class="nombreproducto"
+              [routerLink]="['/','usuario','producto','cview',oProducto.id]" *ngIf="id_tipousuario_session==2">
+              {{oProducto.nombre}}
+            </a> </h4>
+
+
           <div> <i *ngIf="oProducto.cantidad" class="fas fa-shopping-cart" pBadge style="font-size: 2rem"
               value="{{oProducto.cantidad}}"></i></div>
         </div>
