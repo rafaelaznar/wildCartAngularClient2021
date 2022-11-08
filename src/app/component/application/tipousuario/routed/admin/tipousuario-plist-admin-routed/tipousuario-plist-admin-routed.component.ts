@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { CheckSession } from 'src/app/class/check.session.class';
 import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
@@ -11,7 +12,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
   styleUrls: ['./tipousuario-plist-admin-routed.component.css'],
 })
 
-export class TipousuarioPlistAdminRoutedComponent implements OnInit {
+export class TipousuarioPlistAdminRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.usertype;
   strOperation: string = Constants.OPERATIONS.plist;
@@ -19,18 +20,11 @@ export class TipousuarioPlistAdminRoutedComponent implements OnInit {
   subjectFiltro$ = new Subject();
 
   constructor(
-    private oActivatedRoute: ActivatedRoute,
-    oRouter: Router,
+    oActivatedRoute: ActivatedRoute,
+    protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    if (this.oActivatedRoute.snapshot.data.message) {
-      this.oUserSession = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem('user', JSON.stringify(this.oActivatedRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
-    
+    super(oRouter, oActivatedRoute);
   }
 
   ngOnInit(): void { }

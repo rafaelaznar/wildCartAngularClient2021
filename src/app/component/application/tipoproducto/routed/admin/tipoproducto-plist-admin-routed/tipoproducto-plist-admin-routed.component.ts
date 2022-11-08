@@ -16,14 +16,13 @@ export class TipoproductoPlistAdminRoutedComponent extends CheckSession implemen
   strOperation: string = Constants.OPERATIONS.plist
 
   constructor(
-    private oActivatedRoute: ActivatedRoute,
+    oActivatedRoute: ActivatedRoute,
     protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    super(oRouter, oActivatedRoute);   
+    super(oRouter, oActivatedRoute);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

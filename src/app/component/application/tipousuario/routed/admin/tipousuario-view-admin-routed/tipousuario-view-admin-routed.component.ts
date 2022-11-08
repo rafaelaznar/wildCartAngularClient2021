@@ -2,6 +2,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Constants } from 'src/app/model/constants';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 @Component({
   selector: 'app-tipousuario-view-admin-routed',
@@ -9,28 +10,21 @@ import { Constants } from 'src/app/model/constants';
   styleUrls: ['./tipousuario-view-admin-routed.component.css'],
 })
 
-export class TipousuarioViewAdminRoutedComponent implements OnInit {
+export class TipousuarioViewAdminRoutedComponent extends CheckSession implements OnInit {
 
-  strEntity: string = Constants.ENTITIES.usertype;  
+  strEntity: string = Constants.ENTITIES.usertype;
   strOperation: string = Constants.OPERATIONS.view;
   id: number;
-  strUsuarioSession: string;
 
-  constructor(    
+  constructor(
     private oActivatedRoute: ActivatedRoute,
     oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    if (this.oActivatedRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem('user', JSON.stringify(this.oActivatedRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
-    this.id = this.oActivatedRoute.snapshot.params.id;    
+    super(oRouter, oActivatedRoute);
+    this.id = this.oActivatedRoute.snapshot.params.id;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 }

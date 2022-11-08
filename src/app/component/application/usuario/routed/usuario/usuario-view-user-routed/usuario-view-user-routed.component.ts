@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Location } from '@angular/common';
 import { Constants } from 'src/app/model/constants';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 @Component({
   selector: 'app-usuario-view-user-routed',
@@ -10,26 +11,19 @@ import { Constants } from 'src/app/model/constants';
   styleUrls: ['./usuario-view-user-routed.component.css'],
 })
 
-export class UsuarioViewUserRoutedComponent implements OnInit {
+export class UsuarioViewUserRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.view
   id: number;
-  strUsuarioSession: string;
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
-    oRouter: Router,
+    protected oRouter: Router,
     public oMetadataService: MetadataService,
     protected oLocation: Location
   ) {
-    if (this.oActivatedRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem('user', JSON.stringify(this.oActivatedRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
+    super(oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id;
   }
 
