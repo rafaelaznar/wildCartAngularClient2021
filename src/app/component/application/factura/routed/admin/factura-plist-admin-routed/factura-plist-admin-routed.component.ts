@@ -21,7 +21,7 @@ export class FacturaPlistAdminRoutedComponent extends CheckSession implements On
     public oMetadataService: MetadataService,
     private oActivatedRoute: ActivatedRoute
   ) {
-    super(oRouter, oActivatedRoute);   
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);   
     this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
   }
 

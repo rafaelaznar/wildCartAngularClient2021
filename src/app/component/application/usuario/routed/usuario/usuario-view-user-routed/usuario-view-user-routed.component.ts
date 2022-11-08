@@ -23,7 +23,7 @@ export class UsuarioViewUserRoutedComponent extends CheckSession implements OnIn
     public oMetadataService: MetadataService,
     protected oLocation: Location
   ) {
-    super(oRouter, oActivatedRoute);
+    super(Constants.PROFILES.user, oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id;
   }
 

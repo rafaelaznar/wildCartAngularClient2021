@@ -24,7 +24,7 @@ export class TipousuarioPlistAdminRoutedComponent extends CheckSession implement
     protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    super(oRouter, oActivatedRoute);
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
   }
 
   ngOnInit(): void { }

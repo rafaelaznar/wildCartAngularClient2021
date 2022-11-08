@@ -21,7 +21,7 @@ export class UsuarioPlistAdminRoutedComponent extends CheckSession implements On
     protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    super(oRouter, oActivatedRoute);
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
     this.id_tipousuario = this.oActivatedRoute.snapshot.params.id_tipousuario;
   }
 

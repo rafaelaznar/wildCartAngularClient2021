@@ -17,7 +17,6 @@ export class CarritoNewAdminRoutedComponent extends CheckSession implements OnIn
   strEntity: string = Constants.ENTITIES.cart
   strOperation: string = Constants.OPERATIONS.new
   id: number = null;
-  strUsuarioSession: string;
   oResult: IResult = null;
 
   constructor(
@@ -25,7 +24,7 @@ export class CarritoNewAdminRoutedComponent extends CheckSession implements OnIn
     private oActivatedRoute: ActivatedRoute,
     public oMetadataService: MetadataService
   ) {
-    super(oRouter, oActivatedRoute);
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id
     //this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }

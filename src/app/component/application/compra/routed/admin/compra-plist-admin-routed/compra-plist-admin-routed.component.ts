@@ -22,7 +22,7 @@ export class CompraPlistAdminRoutedComponent extends CheckSession implements OnI
     public oMetadataService: MetadataService,
     private oActivatedRoute: ActivatedRoute
   ) {
-    super(oRouter, oActivatedRoute);   
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);   
     this.id_producto = this.oActivatedRoute.snapshot.params.id_producto;
     this.id_factura = this.oActivatedRoute.snapshot.params.id_factura;
   }

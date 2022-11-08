@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { CheckSession } from 'src/app/class/check.session.class';
 import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
@@ -12,7 +13,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
   encapsulation: ViewEncapsulation.None
 })
 
-export class CarritoPlistUserRoutedComponent implements OnInit {
+export class CarritoPlistUserRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
@@ -23,20 +24,11 @@ export class CarritoPlistUserRoutedComponent implements OnInit {
   carritoHomeEventsSubject: Subject<{ action: string, data: number }> = new Subject<{ action: string, data: number }>();
 
   constructor(
-    private oRoute: ActivatedRoute,
-    private oRouter: Router,
+    protected oRouter: Router,
     public oMetadataService: MetadataService,
     private oActivatedRoute: ActivatedRoute
   ) {
-    if (this.oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      this.tipousuarioSession_id = this.oUserSession.tipousuario.id;
-      localStorage.setItem('user', JSON.stringify(this.oRoute.snapshot.data.message)
-      );
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
+    super(Constants.PROFILES.user, oRouter, oActivatedRoute);
     this.id_producto = this.oActivatedRoute.snapshot.params.id_producto;
     this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
   }

@@ -5,6 +5,7 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
 import { Constants } from 'src/app/model/constants';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 
 @Component({
@@ -13,30 +14,20 @@ import { Constants } from 'src/app/model/constants';
   styleUrls: ['./producto-view-user-routed.component.css']
 })
 
-export class ProductoViewUserRoutedComponent implements OnInit {
+export class ProductoViewUserRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.view
   id: number = null;
-  oUserSession: IUsuario;
-  tipousuarioSession_id: number = null;
   carritoHomeEventsSubject: Subject<{ action: string, data: number }> = new Subject<{ action: string, data: number }>();
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
-    private oRoute: ActivatedRoute,
-    private oRouter: Router,
+    protected oRouter: Router,
     protected oMetadataService: MetadataService,
     protected oLocation: Location
   ) {
-    if (this.oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      this.tipousuarioSession_id = this.oUserSession.tipousuario.id;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      this.oRouter.navigate(['/home']);
-    }
+    super(Constants.PROFILES.user, oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 

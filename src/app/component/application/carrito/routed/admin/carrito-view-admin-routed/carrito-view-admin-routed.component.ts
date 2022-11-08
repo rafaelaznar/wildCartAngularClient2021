@@ -22,7 +22,7 @@ export class CarritoViewAdminRoutedComponent extends CheckSession implements OnI
     protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    super(oRouter, oActivatedRoute);
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 

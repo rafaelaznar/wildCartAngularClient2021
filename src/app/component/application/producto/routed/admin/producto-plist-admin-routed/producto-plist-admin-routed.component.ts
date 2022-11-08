@@ -21,7 +21,7 @@ export class ProductoPlistAdminRoutedComponent extends CheckSession implements O
     private oActivatedRoute: ActivatedRoute,
     public oMetadataService: MetadataService
   ) {
-    super(oRouter, oActivatedRoute);
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
     this.id_tipoproducto = this.oActivatedRoute.snapshot.params.id_tipoproducto;
     this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }

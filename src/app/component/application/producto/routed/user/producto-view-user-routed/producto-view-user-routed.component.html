@@ -6,7 +6,7 @@
     </app-header>
 
     <div class="row justify-content-center">
-        <app-producto-detail-user-unrouted [id]="id" [id_tipousuario_session]="tipousuarioSession_id"
+        <app-producto-detail-user-unrouted [id]="id" [id_tipousuario_session]="oUserSession.tipousuario.id"
             (addCarritoEE)="onAddCarrito($event)"></app-producto-detail-user-unrouted>
     </div>
 

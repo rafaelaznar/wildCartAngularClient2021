@@ -24,7 +24,7 @@ export class CarritoPlistAdminRoutedComponent extends CheckSession implements On
     public oMetadataService: MetadataService,
     private oActivatedRoute: ActivatedRoute
   ) {    
-    super(oRouter, oActivatedRoute);   
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);   
     this.id_producto = this.oActivatedRoute.snapshot.params.id_producto;
     this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
   }

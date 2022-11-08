@@ -15,7 +15,7 @@ import { CheckSession } from 'src/app/class/check.session.class';
 export class TipoproductoViewAdminRoutedComponent extends CheckSession implements OnInit {
 
   strEntity: string = Constants.ENTITIES.producttype
-  strOperation: string = Constants.OPERATIONS.view
+  strOperation: string = Constants.OPERATIONS.view  
   id: number = 0;
   oTipoProducto: ITipoproducto;  
 
@@ -25,7 +25,7 @@ export class TipoproductoViewAdminRoutedComponent extends CheckSession implement
     protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    super(oRouter, oActivatedRoute);   
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);   
     this.id = this.oActivatedRoute.snapshot.params.id;
     this.getOne();
   }

@@ -24,7 +24,7 @@ export class TipousuarioEditAdminRoutedComponent extends CheckSession implements
     private oActivatedRoute: ActivatedRoute,
     public oMetadataService: MetadataService
   ) {
-    super(oRouter, oActivatedRoute);
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id;
   }
 
