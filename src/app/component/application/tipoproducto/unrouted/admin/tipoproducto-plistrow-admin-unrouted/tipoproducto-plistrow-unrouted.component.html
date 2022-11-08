@@ -1,7 +1,7 @@
 <td class="text-end">{{ oTipoproducto.id }}</td>
 <td>{{ oTipoproducto.nombre }}</td>
 <td *ngIf="mode" style="text-align: center">
-  <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/producto/plist/tipoproducto/', oTipoproducto.id]"
+  <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/administrador','producto','plist','tipoproducto',oTipoproducto.id]"
     [disabled]="oTipoproducto?.productos<=0">
     {{ oTipoproducto?.productos }}
     <i [ngClass]="oMetadataService.getIcon('producto')"></i>

@@ -34,7 +34,7 @@ export class LogoutComponent implements OnInit {
   public closeSession() {
     this.oSessionService.logout().subscribe(data => {
       localStorage.clear();
-      this.oRouter.navigate(['/home']);
+      this.oRouter.navigate(['/','home']);
     });
   }
 

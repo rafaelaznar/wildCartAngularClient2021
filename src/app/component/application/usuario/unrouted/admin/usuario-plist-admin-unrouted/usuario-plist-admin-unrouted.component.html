@@ -42,7 +42,7 @@
 
           <div action_column>
             <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oUsuarioRow.id"
-              [strEntity]="strEntity">
+              [strEntity]="strEntity" [strProfile]="strProfile">
               <button type="button" class="btn btn-secondary" (click)="flipValidateUser(oUsuarioRow.id)"><i
                   [ngClass]="oMetadataService.getIcon('validado')"></i></button>
               <button type="button" class="btn btn-secondary" (click)="flipActivateUser(oUsuarioRow.id)"><i

@@ -9,20 +9,24 @@
 <td style="text-align: center;" *ngIf="mode">{{oProducto.imagen}}</td>
 <td style="text-align: center;">{{oProducto.descuento}}%</td>
 <td style="text-align: center;" *ngIf="mode">
-  <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/compra/plist/producto',oProducto.id]"
+  <button class="btn btn-outline-secondary btn-sm"
+    [routerLink]="['/administrador','compra','plist','producto',oProducto.id]"
     [disabled]="oProducto?.compras<=0">{{oProducto?.compras}}
     <i [ngClass]="oMetadataService.getIcon('compra')"></i></button>
 </td>
 <td style="text-align: center;" *ngIf="mode">
-  <button class="btn btn-outline-secondary btn-sm" [routerLink]="['/carrito/plist/producto',oProducto.id]"
+  <button class="btn btn-outline-secondary btn-sm"
+    [routerLink]="['/administrador','carrito','plist','producto',oProducto.id]"
     [disabled]="oProducto?.carritos<=0">{{oProducto?.carritos}}
     <i [ngClass]="oMetadataService.getIcon('carrito')"></i></button>
 </td>
 <td>
   <button class="btn btn-light btn-sm" *ngIf="mode"
-    [routerLink]="['/' + strEntity + '/' + strOperation + '/tipoproducto/' + oProducto.tipoproducto.id]">
+    [routerLink]="['/administrador',strEntity,strOperation,'tipoproducto',oProducto.tipoproducto.id]">
     <i [ngClass]="oMetadataService.getIcon('tipoproducto')"></i> ({{oProducto.tipoproducto.id}})
     {{oProducto.tipoproducto.nombre | trim:40}}</button>
   <span *ngIf="!mode">{{oProducto.tipoproducto.nombre | trim:40}}</span>
 </td>
-<td class="text-center"><ng-content select="[action_column]"></ng-content></td>
+<td class="text-center">
+  <ng-content select="[action_column]"></ng-content>
+</td>

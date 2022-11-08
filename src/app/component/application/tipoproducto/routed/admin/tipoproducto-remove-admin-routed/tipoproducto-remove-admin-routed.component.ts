@@ -28,7 +28,7 @@ export class TipoproductoRemoveAdminRoutedComponent extends CheckSession impleme
     protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);   
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id;
     this.getOne();
   }
@@ -59,11 +59,11 @@ export class TipoproductoRemoveAdminRoutedComponent extends CheckSession impleme
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 
   onClosePopup(): void {
-    this.oRouter.navigate([this.strEntity + '/plist']);
+    this.oRouter.navigate(['/', this.strProfile, this.strEntity, 'plist']);
   }
 }

@@ -2,7 +2,8 @@
 
 <div class="container my-3">
 
-    <app-header [title]="oMetadataService.getName('systemLogout')" [icon]="oMetadataService.getIcon(this.strOperation)"></app-header>
+    <app-header [title]="oMetadataService.getName('systemLogout')" [icon]="oMetadataService.getIcon(this.strOperation)">
+    </app-header>
 
     <div class="row justify-content-center">
         <div class="control-group text-center my-5">
@@ -16,12 +17,18 @@
         <div class="col-md-5 control-group text-center my-3">
             <div class="alert alert-danger" role="alert">
 
-                <h3 class="">{{oMetadataService.getName('are you sure you want to end session')}}</h3>             
+                <h3 class="">{{oMetadataService.getName('are you sure you want to end session')}}</h3>
 
                 <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center">
-                    <button class="btn btn-warning mx-1" (click)="closeSession()"><i [ngClass]="oMetadataService.getIcon('logout')"></i> {{oMetadataService.getName('end session')}}</button>
-                    <a class="btn btn-primary mx-1" [routerLink]="['/home']"><i [ngClass]="oMetadataService.getIcon('home')"></i> {{oMetadataService.getName('go to home page')}}</a>
-                    <button class="btn btn-primary mx-1" (click)="oLocation.back()"><i [ngClass]="oMetadataService.getIcon('return')"></i> {{oMetadataService.getName('return')}}</button>
+                    <button class="btn btn-warning mx-1" (click)="closeSession()"><i
+                            [ngClass]="oMetadataService.getIcon('logout')"></i> {{oMetadataService.getName('end
+                        session')}}</button>
+                    <a class="btn btn-primary mx-1" [routerLink]="['/home']"><i
+                            [ngClass]="oMetadataService.getIcon('home')"></i> {{oMetadataService.getName('go to home
+                        page')}}</a>
+                    <button class="btn btn-primary mx-1" (click)="oLocation.back()"><i
+                            [ngClass]="oMetadataService.getIcon('return')"></i>
+                        {{oMetadataService.getName('return')}}</button>
                 </div>
             </div>
         </div>

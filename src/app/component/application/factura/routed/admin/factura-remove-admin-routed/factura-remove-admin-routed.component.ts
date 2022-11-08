@@ -24,11 +24,11 @@ export class FacturaRemoveAdminRoutedComponent extends CheckSession implements O
 
   constructor(
     private oFacturaService: FacturaService,
-    private oActivatedRoute: ActivatedRoute,    
+    private oActivatedRoute: ActivatedRoute,
     protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);   
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id
     this.getOne();
   }
@@ -62,7 +62,7 @@ export class FacturaRemoveAdminRoutedComponent extends CheckSession implements O
   }
 
   onClosePopup(): void {
-    this.oRouter.navigate([this.strEntity + '/plist']);
+    this.oRouter.navigate(['/',this.strProfile, this.strEntity, 'plist']);
   }
 
 }

@@ -26,7 +26,7 @@ export class UsuarioEditAdminRoutedComponent extends CheckSession implements OnI
     public oMetadataService: MetadataService
   ) {
     super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
-    this.id = this.oActivatedRoute.snapshot.params.id;    
+    this.id = this.oActivatedRoute.snapshot.params.id;
   }
 
   ngOnInit(): void { }
@@ -55,7 +55,7 @@ export class UsuarioEditAdminRoutedComponent extends CheckSession implements OnI
 
   onClosePopup(): void {
     if (this.oResult && this.oResult.error == null) {
-      this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
+      this.oRouter.navigate(['/', this.strProfile, this.strEntity, 'view', this.id]);
     }
   }
 

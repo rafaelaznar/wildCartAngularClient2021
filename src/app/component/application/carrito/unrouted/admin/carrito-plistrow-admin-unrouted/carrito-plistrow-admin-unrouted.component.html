@@ -2,15 +2,20 @@
 <td class="text-center">{{ oCarrito.cantidad }}</td>
 <td class="text-end">{{ oCarrito.precio }}€</td>
 <td>
-  <button class="btn btn-light btn-sm" [routerLink]="['/carrito/plist/producto/' + oCarrito.producto.id]">
-    <i [ngClass]="oMetadataService.getIcon('producto')"></i> ({{ oCarrito.producto.id }}) {{ oCarrito.producto.nombre | trim
+  <button class="btn btn-light btn-sm"
+    [routerLink]="['/administrador','carrito','plist','producto',oCarrito.producto.id]">
+    <i [ngClass]="oMetadataService.getIcon('producto')"></i> ({{ oCarrito.producto.id }}) {{ oCarrito.producto.nombre |
+    trim
     :60}}</button>
 </td>
 <td>
-  <button class="btn btn-light btn-sm" [routerLink]="['/carrito/plist/usuario/' + oCarrito.usuario.id]">
+  <button class="btn btn-light btn-sm"
+    [routerLink]="['/administrador','carrito','plist','usuario',oCarrito.usuario.id]">
     <i [ngClass]="oMetadataService.getIcon('usuario')"></i> ({{ oCarrito.usuario.id }}) {{ oCarrito.usuario.nombre + "
     " + oCarrito.usuario.apellido1 + " " + oCarrito.usuario.apellido2 | trim:50 }}
   </button>
 </td>
 
-<td class="text-center"><ng-content select="[action_column]"></ng-content></td>
+<td class="text-center">
+  <ng-content select="[action_column]"></ng-content>
+</td>

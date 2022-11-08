@@ -16,11 +16,11 @@ export class CheckSession {
                 localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
             } else {
                 localStorage.clear();
-                this.oRouter.navigate(['/home']);
+                this.oRouter.navigate(['/','home']);
             }
         } else {
             localStorage.clear();
-            this.oRouter.navigate(['/home']);
+            this.oRouter.navigate(['/','home']);
         }
     }
 

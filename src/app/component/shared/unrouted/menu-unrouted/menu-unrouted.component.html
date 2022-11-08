@@ -16,43 +16,44 @@
                 </li>
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
-                        <a class="nav-link" [class.active]="strUrl=='/usuario/plist'"
-                            [routerLink]="['/usuario/plist']"><i
+                        <a class="nav-link" [class.active]="strUrl=='/administrador/usuario/plist'"
+                            [routerLink]="['/administrador','usuario','plist']"><i
                                 [ngClass]="oMetadataService.getIcon('usuario') + ' fa-2x'"></i>
                         </a>
                     </small>
                 </li>
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
-                        <a class="nav-link" [class.active]="strUrl=='/tipousuario/plist'"
-                            [routerLink]="['/tipousuario/plist']"><i
+                        <a class="nav-link" [class.active]="strUrl=='/administrador/tipousuario/plist'"
+                            [routerLink]="['/administrador','tipousuario','plist']"><i
                                 [ngClass]="oMetadataService.getIcon('tipousuario') + ' fa-2x'"></i> </a>
                     </small>
                 </li>
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
-                        <a class="nav-link" [class.active]="strUrl=='/producto/plist'"
-                            [routerLink]="['/producto/plist']"><i
+                        <a class="nav-link" [class.active]="strUrl=='/administrador/producto/plist'"
+                            [routerLink]="['/administrador','producto','plist']"><i
                                 [ngClass]="oMetadataService.getIcon('producto') + ' fa-2x'"></i></a>
                     </small>
                 </li>
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
-                        <a class="nav-link" [class.active]="strUrl=='/tipoproducto/plist'"
-                            [routerLink]="['/tipoproducto/plist']"><i
+                        <a class="nav-link" [class.active]="strUrl=='/administrador/tipoproducto/plist'"
+                            [routerLink]="['/administrador','tipoproducto','plist']"><i
                                 [ngClass]="oMetadataService.getIcon('tipoproducto') + ' fa-2x'"></i> </a>
                     </small>
                 </li>
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
-                        <a class="nav-link" [class.active]="strUrl=='/compra/plist'" [routerLink]="['/compra/plist']"><i
+                        <a class="nav-link" [class.active]="strUrl=='/administrador/compra/plist'"
+                            [routerLink]="['/administrador','compra','plist']"><i
                                 [ngClass]="oMetadataService.getIcon('compra') + ' fa-2x'"></i> </a>
                     </small>
                 </li>
                 <li class="nav-item" *ngIf="oUsuarioSession">
                     <small>
-                        <a class="nav-link" [class.active]="strUrl=='/factura/plist'"
-                            [routerLink]="['/factura/plist']"><i
+                        <a class="nav-link" [class.active]="strUrl=='/administrador/factura/plist'"
+                            [routerLink]="['/administrador','factura','plist']"><i
                                 [ngClass]="oMetadataService.getIcon('factura') + ' fa-2x'"></i>
                         </a>
                     </small>
@@ -60,20 +61,22 @@
 
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
-                        <a class="nav-link" [class.active]="strUrl=='/random/load'" [routerLink]="['/random/load']"><i
+                        <a class="nav-link" [class.active]="strUrl=='/administrador/random/load'"
+                            [routerLink]="['/administrador','random','load']"><i
                                 [ngClass]="oMetadataService.getIcon('random') + ' fa-2x'"></i> </a>
                     </small>
                 </li>
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
-                        <a class="nav-link" [class.active]="strUrl=='/reports'" [routerLink]="['/reports']"><i
+                        <a class="nav-link" [class.active]="strUrl=='/administrador/reports'"
+                            [routerLink]="['/administrador','reports']"><i
                                 [ngClass]="oMetadataService.getIcon('report') + ' fa-2x'"></i> </a>
                     </small>
                 </li>
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
-                        <a class="nav-link" [class.active]="strUrl=='/carrito/plist'"
-                            [routerLink]="['/carrito/plist']"><i
+                        <a class="nav-link" [class.active]="strUrl=='/administrador/carrito/plist'"
+                            [routerLink]="['/administrador','carrito','plist']"><i
                                 [ngClass]="oMetadataService.getIcon('carrito') + ' fa-2x'"></i>
                         </a>
                     </small>
@@ -87,10 +90,19 @@
                 </small>
             </span>
 
-            <span class="navbar-text mx-1" *ngIf="oUsuarioSession">
+            <span class="navbar-text mx-1" *ngIf="oUsuarioSession?.tipousuario.id==1">
                 <small>
-                    <a class="nav-link" [class.active]="strUrl=='/usuario/cview/' + oUsuarioSession.id"
-                        [routerLink]="['/usuario/cview/' + oUsuarioSession.id]">
+                    <a class="nav-link" [class.active]="strUrl=='/administrador/usuario/view/' + oUsuarioSession.id"
+                        [routerLink]="['/administrador','usuario','view',oUsuarioSession.id]">
+                        <i [ngClass]="oMetadataService.getIcon('usuario') + ' fa-2x'"> </i>
+                    </a>
+                </small>
+            </span>
+
+            <span class="navbar-text mx-1" *ngIf="oUsuarioSession?.tipousuario.id==2">
+                <small>
+                    <a class="nav-link" [class.active]="strUrl=='/usuario/usuario/cview/' + oUsuarioSession.id"
+                        [routerLink]="['/usuario','usuario','cview',oUsuarioSession.id]">
                         <i [ngClass]="oMetadataService.getIcon('usuario') + ' fa-2x'"> </i>
                     </a>
                 </small>
@@ -98,7 +110,8 @@
 
             <span class="navbar-item mx-1" *ngIf="oUsuarioSession?.tipousuario.id==2">
                 <small>
-                    <a class="nav-link" [class.active]="strUrl=='/carrito/cplist'" [routerLink]="['/carrito/cplist']">
+                    <a class="nav-link" [class.active]="strUrl=='/usuario/carrito/cplist'"
+                        [routerLink]="['/usuario','carrito','cplist']">
                         <i [ngClass]="oMetadataService.getIcon('carrito') + ' fa-2x'" pBadge value="{{tcarrito}}"></i>
                     </a>
                 </small>

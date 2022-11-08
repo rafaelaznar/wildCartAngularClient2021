@@ -52,7 +52,7 @@ export class CompraRemoveAdminRoutedComponent extends CheckSession implements On
   }
 
   onClosePopup(): void {
-    this.oRouter.navigate([this.strEntity + '/plist']);
+    this.oRouter.navigate(['/',this.strProfile, this.strEntity, 'plist']);
   }
 
 }

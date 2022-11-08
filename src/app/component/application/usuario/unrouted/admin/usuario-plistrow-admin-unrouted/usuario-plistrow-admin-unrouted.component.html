@@ -11,7 +11,7 @@
     <i [ngClass]="oMetadataService.getIcon('carrito')"></i>
   </button>
   <button *ngIf="mode && oUsuario.carritos>0" class="btn btn-outline-secondary btn-sm"
-    [routerLink]="['/carrito/plist/usuario/' + oUsuario.id]">
+    [routerLink]="['/administrador','carrito','plist','usuario',oUsuario.id]">
     {{ oUsuario.carritos }} <i [ngClass]="oMetadataService.getIcon('carrito')"></i>
   </button>
 </td>
@@ -21,7 +21,7 @@
     <i [ngClass]="oMetadataService.getIcon('factura')"></i>
   </button>
   <button *ngIf="mode && oUsuario.facturas>0" class="btn btn-outline-secondary btn-sm"
-    [routerLink]="['/factura/plist/usuario/' + oUsuario.id]" [disabled]="oUsuario?.facturas<=0">
+    [routerLink]="['/administrador','factura','plist','usuario',oUsuario.id]" [disabled]="oUsuario?.facturas<=0">
     {{ oUsuario.facturas }}
     <i [ngClass]="oMetadataService.getIcon('factura')"></i>
   </button>
@@ -29,7 +29,7 @@
 
 <td>
   <button *ngIf="mode" class="btn btn-light btn-sm"
-    [routerLink]="['/usuario/plist/tipousuario/' + oUsuario.tipousuario.id]">
+    [routerLink]="['/administrador','usuario','plist','tipousuario',oUsuario.tipousuario.id]">
     <i [ngClass]="oMetadataService.getIcon('usuario')"></i> ({{oUsuario.tipousuario.id}})
     {{oUsuario.tipousuario.nombre}}</button>
   <div *ngIf="!mode"><i [ngClass]="oMetadataService.getIcon('usuario')"></i> {{oUsuario.tipousuario.nombre}}</div>
@@ -38,4 +38,6 @@
 <td *ngIf="mode" class="text-center" [innerHTML]="oUsuario.validado | showBoolean"></td>
 <td *ngIf="mode" class="text-center" [innerHTML]="oUsuario.activo | showBoolean"></td>
 
-<td class="text-center"><ng-content select="[action_column]"></ng-content></td>
+<td class="text-center">
+  <ng-content select="[action_column]"></ng-content>
+</td>

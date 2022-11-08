@@ -23,11 +23,11 @@ export class CarritoRemoveAdminRoutedComponent extends CheckSession implements O
 
   constructor(
     private oCarritoService: CarritoService,
-    private oActivatedRoute: ActivatedRoute,    
-    protected oRouter: Router,    
+    private oActivatedRoute: ActivatedRoute,
+    protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);   
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 
@@ -54,7 +54,7 @@ export class CarritoRemoveAdminRoutedComponent extends CheckSession implements O
   }
 
   onClosePopup(): void {
-    this.oRouter.navigate([this.strEntity + '/plist']);
+    this.oRouter.navigate(['/',this.strProfile, this.strEntity, 'plist']);
   }
 
 }

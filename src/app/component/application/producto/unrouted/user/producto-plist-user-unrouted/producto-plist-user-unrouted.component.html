@@ -34,7 +34,7 @@
 
       <div>
         <div class="card-title d-flex justify-content-between">
-          <h4 class="flex-grow-1"> <a class="nombreproducto" [href]="'producto/cview/' + oProducto.id">
+          <h4 class="flex-grow-1"> <a class="nombreproducto" [routerLink]="['/','usuario','producto','cview',oProducto.id]">
               {{oProducto.nombre}}
             </a> </h4>
           <div> <i *ngIf="oProducto.cantidad" class="fas fa-shopping-cart" pBadge style="font-size: 2rem"

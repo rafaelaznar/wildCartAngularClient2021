@@ -4,7 +4,8 @@
 <td class="text-center"><img [src]="strAPI_URL + '/file/' + oCarrito.producto.imagen" style="height:60px; width:80px" />
 </td>
 <td>
-  <button class="btn btn-light" style="text-align: start;" [routerLink]="['/producto/cview/' + oCarrito.producto.id]">
+  <button class="btn btn-light" style="text-align: start;"
+    [routerLink]="['/usuario','producto','cview',oCarrito.producto.id]">
     <i [ngClass]="oMetadataService.getIcon('producto')"></i> {{ oCarrito.producto.nombre | trim :60}}<br>
     {{oMetadataService.getName('code')}}: {{ oCarrito.producto.codigo }}<br>
     {{oMetadataService.getName('product discouunt')}}: {{ oCarrito.producto.descuento }}%<br>
@@ -30,7 +31,7 @@
 
 <td class="text-center">
   <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-    <button type="button" class="btn btn-success" [routerLink]="['/producto/cview/' + oCarrito.producto.id]">
+    <button type="button" class="btn btn-success" [routerLink]="['/usuario','producto','cview',oCarrito.producto.id]">
       <i [ngClass]="oMetadataService.getIcon('view')"></i>
     </button>
     <button type="button" class="btn btn-primary"

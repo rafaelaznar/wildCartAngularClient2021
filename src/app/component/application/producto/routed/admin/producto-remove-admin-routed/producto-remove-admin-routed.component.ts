@@ -25,7 +25,7 @@ export class ProductoRemoveAdminRoutedComponent extends CheckSession implements 
     protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);   
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 
@@ -52,7 +52,7 @@ export class ProductoRemoveAdminRoutedComponent extends CheckSession implements 
   }
 
   onClosePopup(): void {
-    this.oRouter.navigate([this.strEntity + '/plist']);
+    this.oRouter.navigate(['/', this.strProfile, this.strEntity, 'plist']);
   }
 
 }

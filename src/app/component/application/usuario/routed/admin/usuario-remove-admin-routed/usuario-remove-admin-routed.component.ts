@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 @Component({
   selector: 'app-usuario-remove-admin-routed',
@@ -12,10 +12,9 @@ import { Constants } from 'src/app/model/constants';
   styleUrls: ['./usuario-remove-admin-routed.component.css'],
 })
 
-export class UsuarioRemoveAdminRoutedComponent implements OnInit {
+export class UsuarioRemoveAdminRoutedComponent extends CheckSession implements OnInit {
 
   id: number = 0;
-  strUsuarioSession: string;
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.remove
@@ -23,17 +22,10 @@ export class UsuarioRemoveAdminRoutedComponent implements OnInit {
   constructor(
     private oUsuarioService: UsuarioService,
     private oActivatedRoute: ActivatedRoute,
-    private oRouter: Router,
-    private _location: Location,
+    protected oRouter: Router,
     public oMetadataService: MetadataService
   ) {
-    if (this.oActivatedRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem('user', JSON.stringify(this.strUsuarioSession));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id;
   }
 
@@ -60,7 +52,7 @@ export class UsuarioRemoveAdminRoutedComponent implements OnInit {
   }
 
   onClosePopup(): void {
-    this.oRouter.navigate([this.strEntity + '/plist']);
+    this.oRouter.navigate(['/', this.strProfile, this.strEntity, 'plist']);
   }
-  
+
 }

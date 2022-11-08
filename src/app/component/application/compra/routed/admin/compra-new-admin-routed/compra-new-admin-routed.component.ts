@@ -56,7 +56,7 @@ export class CompraNewAdminRoutedComponent extends CheckSession implements OnIni
 
   onClosePopup(): void {
     if (this.oResult && this.oResult.error == null) {
-      this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
+      this.oRouter.navigate(['/', this.strProfile, this.strEntity, 'view', this.id]);
     }
   }
 

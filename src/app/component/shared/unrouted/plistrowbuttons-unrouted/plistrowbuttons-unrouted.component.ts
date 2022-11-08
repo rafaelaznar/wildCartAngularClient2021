@@ -8,6 +8,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 export class PlistrowbuttonsUnroutedComponent implements OnInit {
 
+  @Input() strProfile: string = "administrador";
   @Input() id: number = null;
   @Input() strEntity: string = null;
 

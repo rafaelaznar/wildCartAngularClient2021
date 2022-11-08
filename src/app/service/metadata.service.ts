@@ -101,7 +101,6 @@ export class MetadataService {
       case strIcon == "orderDown": return "fas fa-arrow-down";
       case strIcon == "github": return "fab fa-github";
       case strIcon == "github2": return "fab fa-github-alt";
-      case strIcon == "return": return "fas fa-arrow-circle-left";
       case strIcon == "amount": return "fas fa-mountain";
       case strIcon == "true": return "fas fa-check";
       case strIcon == "false": return "fas fa-times";
@@ -211,11 +210,11 @@ export class MetadataService {
       case str == "go to tipoproducto creation": return "Ir a la creación de producto";
       case str == "go to tipoproducto removal": return "Ir al borrado de producto";
 
-      case str == "go to tipousuario list": return "Ir al listado de usuarios";
-      case str == "go to tipousuario view": return "Ir a la vista de usuario";
-      case str == "go to tipousuario edition": return "Ir a la edición de usuario";
-      case str == "go to tipousuario creation": return "Ir a la creación de usuario";
-      case str == "go to tipousuario removal": return "Ir al borrado de usuario";
+      case str == "go to tipousuario list": return "Ir al listado de tipos de usuario";
+      case str == "go to tipousuario view": return "Ir a la vista de tipo de usuario";
+      case str == "go to tipousuario edition": return "Ir a la edición de tipo de usuario";
+      case str == "go to tipousuario creation": return "Ir a la creación de tipo de usuario";
+      case str == "go to tipousuario removal": return "Ir al borrado de tipo de usuario";
 
       case str == 'are you sure you want to remove the carrito': return "¿Está vd. seguro de que quiere borrar el producto en carrito?";
       case str == 'are you sure you want to remove the compra': return "¿Está vd. seguro de que quiere borrar la compra?";

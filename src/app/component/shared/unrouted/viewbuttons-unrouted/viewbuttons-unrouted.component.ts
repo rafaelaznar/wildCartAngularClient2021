@@ -9,6 +9,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 export class ViewbuttonsUnroutedComponent implements OnInit {
 
+  @Input() strProfile: string = "administrador";
   @Input() strEntity: string = "";
   @Input() id: number = 0;
 

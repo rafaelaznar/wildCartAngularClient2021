@@ -44,7 +44,7 @@ export class findUnroutedComponent implements OnInit {
   }
 
   onCloseModal(): void {
-    //this.oRouter.navigate(['factura/view/' + this.id]);
+    //this.oRouter.navigate(['/','factura/view/' + this.id]);
   }
 
   closeModal(): void {
