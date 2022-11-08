@@ -12,6 +12,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class CompraPlistAdminRoutedComponent extends CheckSession implements OnInit {
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.purchase;
   strOperation: string = Constants.OPERATIONS.plist;
   id_producto: number = null;

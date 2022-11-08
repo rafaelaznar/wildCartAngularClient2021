@@ -14,6 +14,7 @@ export class TipoproductoPlistRowAdminUnroutedComponent implements OnInit {
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() selection = new EventEmitter<number>();
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product;
   strOperation: string = Constants.OPERATIONS.plist;
 

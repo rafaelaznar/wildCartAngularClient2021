@@ -12,6 +12,7 @@ import { CheckSession } from 'src/app/class/check.session.class';
 
 export class CarritoViewAdminRoutedComponent extends CheckSession implements OnInit {
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.view;
   id: number = null;

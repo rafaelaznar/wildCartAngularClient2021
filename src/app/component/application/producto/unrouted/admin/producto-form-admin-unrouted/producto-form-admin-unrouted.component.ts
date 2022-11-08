@@ -21,6 +21,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   @Input() id: number = null;
   @Output() msg = new EventEmitter<any>();
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product
   oProducto2Send: IProducto2Send = null;
   oProducto2Show: IProducto = null;

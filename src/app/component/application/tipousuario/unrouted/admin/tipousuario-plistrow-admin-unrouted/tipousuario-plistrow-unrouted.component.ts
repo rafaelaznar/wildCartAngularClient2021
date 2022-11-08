@@ -14,6 +14,7 @@ export class TipousuarioPlistrowAdminUnroutedComponent implements OnInit {
   @Input() oTipousuario: ITipousuario = null;
   @Input() mode: boolean = true; //true=edición; false=selección
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.usertype;
   strOperation: string = Constants.OPERATIONS.plist;
 

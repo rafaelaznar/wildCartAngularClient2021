@@ -21,6 +21,7 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
   @Output() selection = new EventEmitter<number>();
   @Output() addCarritoEE = new EventEmitter<number>();
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
   oUsuarioSession: IUsuario;

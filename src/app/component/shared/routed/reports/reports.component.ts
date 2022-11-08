@@ -19,6 +19,7 @@ import { Constants } from 'src/app/model/constants';
 })
 export class ReportsComponent implements OnInit {
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.report;
   strOperation: string = Constants.OPERATIONS.print;
   oClient: IUsuario;

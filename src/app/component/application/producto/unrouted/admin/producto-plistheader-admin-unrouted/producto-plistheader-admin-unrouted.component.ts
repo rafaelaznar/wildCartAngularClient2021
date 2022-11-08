@@ -16,6 +16,7 @@ export class ProductoPlistheaderAdminUnroutedComponent implements OnInit {
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() sort = new EventEmitter<IOrder>();
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product;
   strOperation: string = Constants.OPERATIONS.plist;
 

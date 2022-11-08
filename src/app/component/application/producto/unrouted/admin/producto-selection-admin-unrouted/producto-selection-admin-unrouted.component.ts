@@ -17,6 +17,7 @@ export class ProductoSelectionAdminUnroutedComponent implements OnInit {
   @Input() id_tipoproducto: number = null;
   @Output() selection = new EventEmitter<number>();
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.plist
   oPage: IProductoPage;

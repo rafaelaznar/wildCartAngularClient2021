@@ -14,6 +14,7 @@ import { TipousuarioService } from 'src/app/service/tipousuario.service';
 
 export class TipousuarioPlistAdminUnroutedComponent implements OnInit {
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.usertype;
   strOperation: string = Constants.OPERATIONS.plist;
   oPage: ITipousuarioPage;

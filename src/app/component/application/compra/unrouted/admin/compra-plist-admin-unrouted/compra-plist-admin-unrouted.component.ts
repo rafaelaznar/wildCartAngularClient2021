@@ -17,6 +17,7 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
   @Input() id_factura: number = null;
   @Input() id_producto: number = null;
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.purchase
   strOperation: string = Constants.OPERATIONS.plist
   oPage: ICompraPage;

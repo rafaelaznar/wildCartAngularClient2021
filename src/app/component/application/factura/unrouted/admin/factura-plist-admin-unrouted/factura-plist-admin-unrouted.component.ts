@@ -20,6 +20,7 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
 
   @Input() id_usuario: number = null;
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.plist
   oPage: IFacturaPage;

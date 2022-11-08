@@ -13,6 +13,7 @@ import { Constants } from 'src/app/model/constants';
 
 export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.producttype;
   strOperation: string = Constants.OPERATIONS.plist;
   oPage: ITipoproductoPage;

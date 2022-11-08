@@ -17,6 +17,7 @@ export class TipoproductoSelectionAdminUnroutedComponent implements OnInit {
 
   @Output() selection = new EventEmitter<number>();
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.producttype;
   strOperation: string = Constants.OPERATIONS.plist;
   aTipoproductos: ITipoproducto[];

@@ -12,6 +12,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class CarritoPlistAdminRoutedComponent extends CheckSession implements OnInit {
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
   strUsuarioSession: string;

@@ -12,6 +12,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class UsuarioViewAdminRoutedComponent extends CheckSession implements OnInit {
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.view
   id: number;

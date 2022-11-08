@@ -16,6 +16,7 @@ export class UsuarioRemoveAdminRoutedComponent implements OnInit {
 
   id: number = 0;
   strUsuarioSession: string;
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.remove
 

@@ -24,6 +24,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
 
   oData2Show: ICompra = null;
   oData2Send: ICompra2Send = null;
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.purchase;
   oForm: UntypedFormGroup = null;
   status: HttpErrorResponse = null;

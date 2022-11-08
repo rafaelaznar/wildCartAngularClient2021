@@ -16,6 +16,7 @@ export class ProductoPlistAdminUnroutedComponent implements OnInit {
 
   @Input() id_tipoproducto: number = null;
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.plist
   oPage: IProductoPage;

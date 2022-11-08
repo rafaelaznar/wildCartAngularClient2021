@@ -16,6 +16,7 @@ export class TipoproductoPlistheaderAdminUnroutedComponent implements OnInit {
   @Input() strSortDirection: string = "";
   @Output() sort = new EventEmitter<IOrder>();
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.producttype;
   strOperation: string = Constants.OPERATIONS.plist;
   constructor(

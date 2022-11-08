@@ -12,6 +12,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class FacturaViewAdminRoutedComponent extends CheckSession implements OnInit {
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.view
   id: number = null;

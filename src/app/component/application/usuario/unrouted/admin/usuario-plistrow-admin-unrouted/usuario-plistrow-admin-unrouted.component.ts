@@ -14,6 +14,7 @@ export class UsuarioPlistRowAdminUnroutedComponent implements OnInit {
   @Input() oUsuario: IUsuario = null;
   @Input() mode: boolean = true; //true=edición; false=selección
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user;
   strOperation: string = Constants.OPERATIONS.plist;
 

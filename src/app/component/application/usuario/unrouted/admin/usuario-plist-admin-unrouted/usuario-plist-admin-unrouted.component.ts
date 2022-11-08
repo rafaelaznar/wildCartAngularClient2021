@@ -16,6 +16,7 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
 
   @Input() id_tipousuario: number = null;
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.plist
   oPage: IUsuarioPage;

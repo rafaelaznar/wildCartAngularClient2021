@@ -12,6 +12,7 @@ import { CheckSession } from 'src/app/class/check.session.class';
 
 export class ProductoPlistAdminRoutedComponent extends CheckSession implements OnInit {
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.plist
   id_tipoproducto: number = null;

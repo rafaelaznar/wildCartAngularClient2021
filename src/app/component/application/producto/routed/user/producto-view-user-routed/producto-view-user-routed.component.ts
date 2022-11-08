@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
 import { Constants } from 'src/app/model/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
-
 
 @Component({
   selector: 'app-producto-view-user-routed',
@@ -16,6 +14,7 @@ import { CheckSession } from 'src/app/class/check.session.class';
 
 export class ProductoViewUserRoutedComponent extends CheckSession implements OnInit {
 
+  strProfile: string = Constants.PROFILES.user;
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.view
   id: number = null;

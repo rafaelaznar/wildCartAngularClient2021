@@ -16,6 +16,7 @@ export class TipoproductoDetailAdminUnroutedComponent implements OnInit {
   
   oTipoproducto: ITipoproducto;
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.producttype
   strOperation: string = Constants.OPERATIONS.view
 

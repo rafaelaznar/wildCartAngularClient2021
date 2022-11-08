@@ -14,6 +14,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class TipousuarioPlistAdminRoutedComponent extends CheckSession implements OnInit {
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.usertype;
   strOperation: string = Constants.OPERATIONS.plist;
   oUserSession: IUsuario;

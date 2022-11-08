@@ -15,6 +15,7 @@ export class TipousuarioDetailAdminUnroutedComponent implements OnInit {
   @Input() id: number = null;
 
   oTipousuario: ITipousuario;
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.usertype
   strOperation: string = Constants.OPERATIONS.view
 

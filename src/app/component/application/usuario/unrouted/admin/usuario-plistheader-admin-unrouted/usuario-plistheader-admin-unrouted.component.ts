@@ -16,6 +16,7 @@ export class UsuarioPlistheaderAdminUnroutedComponent implements OnInit {
   @Input() mode: boolean = true; //mode ... true=normal; false=selection;
   @Output() sort = new EventEmitter<IOrder>();
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user;
   strOperation: string = Constants.OPERATIONS.plist;
 

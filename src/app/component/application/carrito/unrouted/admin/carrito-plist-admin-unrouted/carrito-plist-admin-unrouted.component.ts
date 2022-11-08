@@ -16,6 +16,7 @@ export class CarritoPlistAdminUnroutedComponent implements OnInit {
   @Input() id_producto: number = null;
   @Input() id_usuario: number = null;
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
   oPage: ICarritoPage;

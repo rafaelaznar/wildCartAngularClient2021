@@ -13,6 +13,7 @@ import { CheckSession } from 'src/app/class/check.session.class';
 
 export class UsuarioViewUserRoutedComponent extends CheckSession implements OnInit {
 
+  strProfile: string = Constants.PROFILES.user;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.view
   id: number;

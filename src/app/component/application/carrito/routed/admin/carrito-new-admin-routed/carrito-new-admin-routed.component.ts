@@ -14,6 +14,7 @@ import { CheckSession } from 'src/app/class/check.session.class';
 
 export class CarritoNewAdminRoutedComponent extends CheckSession implements OnInit {
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart
   strOperation: string = Constants.OPERATIONS.new
   id: number = null;
@@ -26,7 +27,8 @@ export class CarritoNewAdminRoutedComponent extends CheckSession implements OnIn
   ) {
     super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id
-    //this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
+    this.strEntity = this.oActivatedRoute.snapshot.url[0].path;
+    this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class CarritoNewAdminRoutedComponent extends CheckSession implements OnIn
     if (oResult.error == null) {
       if (oResult.id > 0) {
         this.id = oResult.id;
-        this.openPopup( this.oMetadataService.getName('the' + oResult.strEntity) + ' se ha creado correctamente con el id = ' + oResult.id);
+        this.openPopup(this.oMetadataService.getName('the' + oResult.strEntity) + ' se ha creado correctamente con el id = ' + oResult.id);
       } else {
         this.openPopup('Error en la creación de ' + this.oMetadataService.getName('the' + oResult.strEntity).toLowerCase());
       }
@@ -50,13 +52,13 @@ export class CarritoNewAdminRoutedComponent extends CheckSession implements OnIn
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 
   onClosePopup(): void {
     if (this.oResult && this.oResult.error == null) {
       this.oRouter.navigate([this.strEntity + '/view/' + this.id]);
-    }   
+    }
   }
 }

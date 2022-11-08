@@ -16,6 +16,7 @@ export class TipousuarioSelectionAdminUnroutedComponent implements OnInit {
 
   @Output() selection = new EventEmitter<number>();
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.usertype;
   strOperation: string = Constants.OPERATIONS.plist;
   oPage: ITipousuarioPage;

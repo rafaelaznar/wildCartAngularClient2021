@@ -18,6 +18,7 @@ export class FacturaRemoveAdminRoutedComponent extends CheckSession implements O
 
   id: number = 0;
   oFactura: IFactura;
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.remove
 

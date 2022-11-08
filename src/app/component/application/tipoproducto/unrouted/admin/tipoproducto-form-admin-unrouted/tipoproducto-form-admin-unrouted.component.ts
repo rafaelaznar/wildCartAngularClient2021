@@ -20,6 +20,7 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
 
   oData2Show: ITipoproducto = null;
   oData2Send: ITipoproducto2Send = null;
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.producttype;
   oForm: UntypedFormGroup = null;
   status: HttpErrorResponse = null;

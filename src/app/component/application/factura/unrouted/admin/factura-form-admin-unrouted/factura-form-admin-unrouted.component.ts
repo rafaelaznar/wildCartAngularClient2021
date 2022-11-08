@@ -20,6 +20,7 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
   @Input() id: number = null;
   @Output() msg = new EventEmitter<any>();
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice;
   oFactura2Send: IFactura2Send = null;
   oFactura2Show: IFactura = null;

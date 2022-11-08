@@ -22,6 +22,7 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
 
   oData2Show: IUsuario = null;
   oData2Send: IUsuario2Send = null;
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user;
   oForm: UntypedFormGroup = null;
   status: HttpErrorResponse = null;

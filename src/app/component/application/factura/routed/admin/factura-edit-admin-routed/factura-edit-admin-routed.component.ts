@@ -15,6 +15,7 @@ import { CheckSession } from 'src/app/class/check.session.class';
 export class FacturaEditAdminRoutedComponent extends CheckSession implements OnInit {
 
   id: number = null;
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.edit
   oResult: IResult = null;

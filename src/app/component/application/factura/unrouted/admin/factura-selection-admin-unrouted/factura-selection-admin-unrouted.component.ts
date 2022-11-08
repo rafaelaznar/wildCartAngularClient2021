@@ -17,6 +17,7 @@ export class FacturaSelectionAdminUnroutedComponent implements OnInit {
   @Input() id_usuario: number = null;
   @Output() selection = new EventEmitter<number>();
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.plist
   oPage: IFacturaPage;

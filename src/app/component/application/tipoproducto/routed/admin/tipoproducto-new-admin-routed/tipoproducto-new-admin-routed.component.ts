@@ -14,6 +14,7 @@ import { CheckSession } from 'src/app/class/check.session.class';
 
 export class TipoproductoNewAdminRoutedComponent extends CheckSession implements OnInit {
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.producttype
   strOperation: string = Constants.OPERATIONS.new
   id: number = null;

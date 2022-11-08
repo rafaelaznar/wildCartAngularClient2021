@@ -15,6 +15,7 @@ export class ProductoPlistRowAdminUnroutedComponent implements OnInit {
   @Input() mode: boolean = true; //true=edición; false=selección
 
   strAPI_URL: string = API_URL;
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product;
   strOperation: string = Constants.OPERATIONS.plist;
 

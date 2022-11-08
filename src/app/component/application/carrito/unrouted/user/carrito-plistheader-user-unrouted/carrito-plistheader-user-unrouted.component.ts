@@ -17,6 +17,7 @@ export class CarritoPlistheaderUserUnroutedComponent implements OnInit {
   @Input() strSortDirection: string = "";
   @Output() sort = new EventEmitter<IOrder>();
 
+  strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
 
