@@ -1,4 +1,4 @@
-<app-menu-unrouted></app-menu-unrouted>
+
 <div class="container my-3">
   <app-header [title]="oMetadataService.getName('cart item edition')"
     [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(strEntity)">
@@ -9,5 +9,5 @@
     <app-footerbuttons-unrouted [strEntity]="strEntity"></app-footerbuttons-unrouted>
   </div>
 </div>
-<app-footer></app-footer>
+
 <app-popup [show]="eventsSubjectShowPopup.asObservable()" (close)="onClosePopup()"></app-popup>

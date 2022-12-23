@@ -1,13 +1,8 @@
-<app-menu-unrouted></app-menu-unrouted>
-
 <div class="container my-3">
-
   <app-header [title]="oMetadataService.getName('reports')" [icon]="oMetadataService.getIcon(this.strOperation)"
     [iconEntity]="oMetadataService.getIcon(this.strEntity)">
   </app-header>
-
   <form novalidate [formGroup]="oForm" *ngIf="oForm">
-
     <div class="row mb-3">
       <label for="dni" class="col-sm-2 col-form-label">
         <i [ngClass]="oMetadataService.getIcon('amount')"></i> {{oMetadataService.getName('amount')}}</label>
@@ -19,8 +14,6 @@
         </select>
       </div>
     </div>
-
-
     <div class="row mb-3">
       <label for="fecha" class="col-sm-2 col-form-label">
         <i [ngClass]="oMetadataService.getIcon('fecha')"></i> Entre dos fechas</label>
@@ -38,9 +31,7 @@
         </div>
         <div *ngIf="errorDateRange" class="badge bg-danger text-wrap">La fecha de inicio debe ser anterior a la fecha final</div>
       </div>
-      
     </div>
-
     <div class="row mb-3" app-find-unrouted [entity]="'producto'" [id]="oProduct?.id"
       [description]="!f.id_producto.dirty ? '' : oProduct ?  oProduct?.nombre : 'ERROR'"
       (selection)="onProductFindSelection($event)">
@@ -49,7 +40,6 @@
           oMetadataService.getName('aproducto')}}</h4>
       </div>
     </div>
-
     <div class="row mb-3" app-find-unrouted [entity]="'usuario'" [id]="oClient?.id"
       [description]="!f.id_usuario.dirty ? '' : oClient ? ( oClient?.nombre + ' ' + oClient?.apellido1 + ' ' + oClient?.apellido2).trim() : 'ERROR'"
       (selection)="onClientFindSelection($event)">
@@ -58,28 +48,20 @@
           oMetadataService.getName('ausuario')}}</h4>
       </div>
     </div>
-
   </form>
-
-
   <div class="row justify-content-center">
     <table class="table table-striped">
       <thead>
         <tr>
           <th class="text-left"> {{oMetadataService.getName('code')}}</th>
           <th class="text-center"> {{oMetadataService.getName('reportname')}}</th>
-
           <th style="width: 5%" class="text-center"> Fechas</th>
           <th style="width: 5%" class="text-center"> Usuario</th>
           <th style="width: 5%" class="text-center"> Producto</th>
-
           <th style="width: 5%" class="text-center"> {{oMetadataService.getName('tools')}}</th>
         </tr>
       </thead>
       <tbody>
-
-
-
         <tr *ngFor="let oReport of aReports" class="align-middle">
           <td>{{oReport.codigo}}</td>
           <td>{{oReport.nombre}}</td>
@@ -111,17 +93,11 @@
       </tbody>
     </table>
   </div>
-
   <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
     <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i [ngClass]="oMetadataService.getIcon('home')"></i>
       {{oMetadataService.getName('home')}}</a>
     <a class="btn btn-primary mx-2" (click)="oLocation.back()"><i [ngClass]="oMetadataService.getIcon('return')"></i>
       {{oMetadataService.getName('return')}}</a>
   </div>
-
 </div>
-
-<app-footer></app-footer>
-
-<app-popup [show]="eventsSubjectShowPopup.asObservable()" (close)="onClosePopup()" [size]="'sm'">
-</app-popup>
+<app-popup [show]="eventsSubjectShowPopup.asObservable()" (close)="onClosePopup()" [size]="'sm'"></app-popup>

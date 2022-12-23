@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
 import { ICarritoPage, ICarrito, ICarrito2Send, } from '../model/carrito-interfaces';
 import { ICrud } from '../model/crud-interface';
@@ -11,7 +11,8 @@ import { ICrud } from '../model/crud-interface';
 
 export class CarritoService implements ICrud {
 
-  sURL = API_URL + '/carrito';
+  private sURL = API_URL + '/carrito';
+  public onCarritoChangeSubject: Subject<{ action: string }> = new Subject<{ action: string }>();
 
   constructor(private http: HttpClient) { }
 
@@ -79,6 +80,10 @@ export class CarritoService implements ICrud {
 
   getTotalCarrito4User(): Observable<number> {
     return this.http.get<number>(this.sURL + '/total', httpOptions);
+  }
+
+  notifyCarritoChange(action: string) {
+    this.onCarritoChangeSubject.next({ action: action });
   }
 
 }

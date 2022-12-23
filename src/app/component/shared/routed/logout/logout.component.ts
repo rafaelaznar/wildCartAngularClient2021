@@ -4,6 +4,7 @@ import { SessionService } from 'src/app/service/session.service';
 import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { CarritoService } from 'src/app/service/carrito.service';
 
 @Component({
   selector: 'app-logout',
@@ -19,6 +20,7 @@ export class LogoutComponent implements OnInit {
     private oRoute: ActivatedRoute,
     private oRouter: Router,
     private oSessionService: SessionService,
+    private oCarritoService: CarritoService,
     protected oLocation: Location,
     public oMetadataService: MetadataService
   ) {
@@ -34,6 +36,8 @@ export class LogoutComponent implements OnInit {
   public closeSession() {
     this.oSessionService.logout().subscribe(data => {
       localStorage.clear();
+      this.oSessionService.notifySessionChange('logout'); 
+      this.oCarritoService.notifyCarritoChange('logout');
       this.oRouter.navigate(['/','home']);
     });
   }

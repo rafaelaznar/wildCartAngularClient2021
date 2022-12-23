@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-
+import { CarritoService } from 'src/app/service/carrito.service';
 
 @Component({
   selector: 'app-home',
@@ -12,17 +11,13 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 export class HomeComponent implements OnInit {
 
-
-
   usuarioSession: IUsuario = null;
   tipousuarioSession_id: number = null;
 
-  carritoHomeEventsSubject: Subject<{ action: string, data: number }> = new Subject<{ action: string, data: number }>();
-
-
   constructor(
     private oRoute: ActivatedRoute,
-    private oActivatedRoute: ActivatedRoute
+    private oActivatedRoute: ActivatedRoute,
+    private oCarritoService: CarritoService
   ) {
 
     if (this.oActivatedRoute.snapshot.data && this.oRoute.snapshot.data.message) {
@@ -35,11 +30,10 @@ export class HomeComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   onAddCarrito(id_producto: number) {
-    this.carritoHomeEventsSubject.next({ action: 'add', data: id_producto });
+    this.oCarritoService.notifyCarritoChange('add');
   }
 
 }

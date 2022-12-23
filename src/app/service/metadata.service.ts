@@ -159,7 +159,7 @@ export class MetadataService {
       case str == "item cart filter": return "Filtro de línea de carrito";
       case str == "cart items": return "líneas de carrito";
       case str == "actions": return "Acciones";
-      case str == "products in cart": return "Productos en el carrito";
+      case str == "products in cart": return "Productos DISTINTOS en el carrito";
       case str == "total in cart": return "Total en el carrito";
       case str == "vat included": return "IVA incluido";
       case str == "search for a product in cart": return "Busca un producto en tu carrito";

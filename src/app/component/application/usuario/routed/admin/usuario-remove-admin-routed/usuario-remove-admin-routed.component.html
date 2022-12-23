@@ -1,4 +1,3 @@
-<app-menu-unrouted></app-menu-unrouted>
 <div class="container my-3">
   <app-header [title]="oMetadataService.getName(strOperation + 'of')  + ' ' +  oMetadataService.getName(strEntity + 's').toLowerCase()"
     [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(this.strEntity)">
@@ -9,6 +8,5 @@
     </app-removeconfirmation-unrouted>
     <app-footerbuttons-unrouted [strEntity]="strEntity"></app-footerbuttons-unrouted>
   </div>
-  <app-footer></app-footer>
 </div>
 <app-popup [show]="eventsSubjectShowPopup.asObservable()" (close)="onClosePopup()"></app-popup>

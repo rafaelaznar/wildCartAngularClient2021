@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
 import { CheckSession } from 'src/app/class/check.session.class';
 import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { CarritoService } from 'src/app/service/carrito.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
@@ -21,13 +21,13 @@ export class CarritoPlistUserRoutedComponent extends CheckSession implements OnI
   oUserSession: IUsuario;
   id_producto: number = null;
   id_usuario: number = null;  
-  tipousuarioSession_id: number = null;
-  carritoHomeEventsSubject: Subject<{ action: string, data: number }> = new Subject<{ action: string, data: number }>();
+  tipousuarioSession_id: number = null;  
 
   constructor(
     protected oRouter: Router,
     public oMetadataService: MetadataService,
-    private oActivatedRoute: ActivatedRoute
+    private oActivatedRoute: ActivatedRoute,
+    private oCarritoService: CarritoService
   ) {
     super(Constants.PROFILES.user, oRouter, oActivatedRoute);
     this.id_producto = this.oActivatedRoute.snapshot.params.id_producto;
@@ -37,7 +37,7 @@ export class CarritoPlistUserRoutedComponent extends CheckSession implements OnI
   ngOnInit(): void { }
 
   onAddCarrito(id_producto: number) {
-    this.carritoHomeEventsSubject.next({ action: 'add', data: id_producto });
+    this.oCarritoService.notifyCarritoChange('add');
   }
 
 }

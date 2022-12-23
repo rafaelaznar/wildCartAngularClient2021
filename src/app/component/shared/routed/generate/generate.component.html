@@ -1,14 +1,8 @@
-<app-menu-unrouted></app-menu-unrouted>
-
 <div class="container my-3">
-
   <app-header [title]="oMetadataService.getName('randomRegistersLoad')" [icon]="oMetadataService.getIcon('random')"
     [iconEntity]="oMetadataService.getIcon('random')">
   </app-header>
-
   <div class="row justify-content-center">
-
-
     <div class="card text-center" *ngIf="bLoading">
       <div class="card-body">
         <h3 class="text-danger">Procesando... espere por favor.</h3>
@@ -17,7 +11,6 @@
         </div>
       </div>
     </div>
-
     <table class="table table-striped"  *ngIf="!bLoading">
       <tbody>
         <tr class="align-middle">
@@ -151,7 +144,4 @@
     </div>
   </div>
 </div>
-
-<app-footer></app-footer>
-
 <app-popup [show]="eventsModalSubject.asObservable()" [body]="strResult" (close)="onCloseModal()"> </app-popup>

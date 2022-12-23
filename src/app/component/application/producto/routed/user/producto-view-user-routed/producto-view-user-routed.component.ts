@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
 import { Constants } from 'src/app/model/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
+import { CarritoService } from 'src/app/service/carrito.service';
 
 @Component({
   selector: 'app-producto-view-user-routed',
@@ -18,13 +19,13 @@ export class ProductoViewUserRoutedComponent extends CheckSession implements OnI
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.view
   id: number = null;
-  carritoHomeEventsSubject: Subject<{ action: string, data: number }> = new Subject<{ action: string, data: number }>();
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
     protected oRouter: Router,
     protected oMetadataService: MetadataService,
-    protected oLocation: Location
+    protected oLocation: Location,
+    private oCarritoService: CarritoService
   ) {
     super(Constants.PROFILES.user, oRouter, oActivatedRoute);
     this.id = this.oActivatedRoute.snapshot.params.id
@@ -33,7 +34,7 @@ export class ProductoViewUserRoutedComponent extends CheckSession implements OnI
   ngOnInit() { }
 
   onAddCarrito(id_producto: number) {
-    this.carritoHomeEventsSubject.next({ action: 'add', data: id_producto });
+    this.oCarritoService.notifyCarritoChange('add');
   }
 
 }

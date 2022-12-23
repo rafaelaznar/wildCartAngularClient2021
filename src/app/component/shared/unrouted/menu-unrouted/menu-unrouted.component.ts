@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { Observable, Subscription } from 'rxjs';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-menu-unrouted',
@@ -12,8 +12,8 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class MenuUnroutedComponent implements OnInit {
 
-  private carritoEventsSubscription: Subscription;
-  @Input() carritoMenuObservable: Observable<{ action: string, data: number }>;
+  //private carritoEventsSubscription: Subscription;
+  //@Input() carritoMenuObservable: Observable<{ action: string, data: number }>;
 
   oUsuarioSession: IUsuario;
   strUrl: String = "";
@@ -23,6 +23,7 @@ export class MenuUnroutedComponent implements OnInit {
     private router: Router,
     public oMetadataService: MetadataService,
     private oCarritoService: CarritoService,
+    private oSessionService: SessionService
   ) {
 
     this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
@@ -33,22 +34,48 @@ export class MenuUnroutedComponent implements OnInit {
       }
     })
 
+    this.oSessionService.onUserSessionChangeSubject.subscribe({
+      next: (data) => {
+        console.log("menu", "session", "action:" + data.action)
+        this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
+      },
+      error: (error) => {
+        console.log("error:", error)
+      }
+    });
+
+    this.oCarritoService.onCarritoChangeSubject.subscribe({
+      next: (data) => {
+        console.log("menu", "carrito", "action:" + data.action)
+        this.count()
+      },
+      error: (error) => {
+        console.log("error:", error)
+      }
+    });
+
   }
 
   ngOnInit(): void {
     this.count();
+    /*
     if (this.carritoMenuObservable) {
       this.carritoEventsSubscription = this.carritoMenuObservable.subscribe((data) => {
         console.log("action:" + data.action, "data:" + data.data)
         this.count()
       });
     }
+    */
   }
 
   ngOnDestroy() {
+    this.oCarritoService.onCarritoChangeSubject.unsubscribe();
+    this.oSessionService.onUserSessionChangeSubject.unsubscribe();
+    /*
     if (this.carritoMenuObservable) {
       this.carritoEventsSubscription.unsubscribe();
     }
+    */
   }
 
   count = () => {

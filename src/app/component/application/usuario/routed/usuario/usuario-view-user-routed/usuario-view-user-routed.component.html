@@ -1,23 +1,14 @@
-<app-menu-unrouted></app-menu-unrouted>
-
 <div class="container my-3">
-
     <app-header [title]="oMetadataService.getName('userprofile')" [icon]="oMetadataService.getIcon(this.strOperation)"
         [iconEntity]="oMetadataService.getIcon(this.strEntity)">
     </app-header>
-
     <div class="row justify-content-center">
         <app-usuario-detail-user-unrouted [id]=id></app-usuario-detail-user-unrouted>
-
         <div class="row justify-content-center">
             <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
                 <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i [ngClass]="oMetadataService.getIcon('home')"></i> {{oMetadataService.getName('home')}}</a>             
                 <a class="btn btn-primary mx-2" (click)="oLocation.back()"><i [ngClass]="oMetadataService.getIcon('return')"></i> {{oMetadataService.getName('return')}} </a>
             </div>
         </div>
-
     </div>
-
 </div>
-
-<app-footer></app-footer>

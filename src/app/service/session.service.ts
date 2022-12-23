@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, Subject, throwError } from 'rxjs';
 import { API_URL, environment, httpOptions } from 'src/environments/environment';
 
 
@@ -13,9 +13,8 @@ export class SessionService {
 
   constructor(private http: HttpClient) { }
 
-  sURL = API_URL + '/session';
-
-  onCheck = new EventEmitter<any>();
+  private sURL = API_URL + '/session';
+  public onUserSessionChangeSubject: Subject<{ action: string }> = new Subject<{ action: string }>();
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
@@ -27,7 +26,7 @@ export class SessionService {
       // Server-side errors
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
       if (environment) console.log("SessionService: error: " + errorMessage);
-    }    
+    }
     return throwError(errorMessage);
   }
 
@@ -50,6 +49,8 @@ export class SessionService {
     return this.http.get<String>(this.sURL, httpOptions)
   }
 
-  //aqui va el getSecret ...
+  notifySessionChange(action: string) {
+    this.onUserSessionChangeSubject.next({ action: action });
+  }
 
 }
