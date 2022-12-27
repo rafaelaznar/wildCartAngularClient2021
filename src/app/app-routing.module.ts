@@ -51,6 +51,7 @@ import { CarritoPlistAdminRoutedComponent } from './component/application/carrit
 import { CarritoEditAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-edit-admin-routed/carrito-edit-admin-routed.component';
 import { CarritoNewAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-new-admin-routed/carrito-new-admin-routed.component';
 import { CarritoPlistUserRoutedComponent } from './component/application/carrito/routed/user/carrito-plist-user-routed/carrito-plist-user-routed.component';
+import { FacturaPlistUserRoutedComponent } from './component/application/factura/routed/user/factura-plist-user-routed/factura-plist-user-routed.component';
 //
 //
 const routes: Routes = [
@@ -104,6 +105,7 @@ const routes: Routes = [
   { path: 'administrador/factura/view/:id', component: FacturaViewAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/factura/edit/:id', component: FacturaEditAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/factura/remove/:id', component: FacturaRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'usuario/factura/plist', component: FacturaPlistUserRoutedComponent, resolve: { message: SessionResolver } },
   //
   { path: 'administrador/carrito/plist', component: CarritoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'usuario/carrito/cplist', component: CarritoPlistUserRoutedComponent, resolve: { message: SessionResolver } },

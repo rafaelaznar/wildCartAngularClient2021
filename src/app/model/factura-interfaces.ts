@@ -7,6 +7,7 @@ export interface IFactura extends IEntity {
     pagado: boolean,
     compras: number,
     usuario: IUsuario,
+    total: number
 }
 export interface IFactura2Send extends IEntity2Send {
     fecha: Date,

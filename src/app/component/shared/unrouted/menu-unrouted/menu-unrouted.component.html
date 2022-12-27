@@ -50,10 +50,18 @@
                                 [ngClass]="oMetadataService.getIcon('compra') + ' fa-2x'"></i> </a>
                     </small>
                 </li>
-                <li class="nav-item" *ngIf="oUsuarioSession">
+                <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
                         <a class="nav-link" [class.active]="strUrl=='/administrador/factura/plist'"
                             [routerLink]="['/administrador','factura','plist']"><i
+                                [ngClass]="oMetadataService.getIcon('factura') + ' fa-2x'"></i>
+                        </a>
+                    </small>
+                </li>
+                <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==2">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/usuario/factura/plist'"
+                            [routerLink]="['/usuario','factura','plist']"><i
                                 [ngClass]="oMetadataService.getIcon('factura') + ' fa-2x'"></i>
                         </a>
                     </small>

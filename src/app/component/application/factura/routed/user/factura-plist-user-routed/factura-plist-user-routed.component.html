@@ -1,0 +1,8 @@
+<div class="container my-3">
+    <app-header [title]="'Facturas'" [icon]="oMetadataService.getIcon(strOperation)"
+        [iconEntity]="oMetadataService.getIcon(strEntity)">
+    </app-header>
+    <app-factura-plist-user-unrouted [id_usuario]="id_usuario" [id_tipousuario_session]="tipousuarioSession_id"
+        (printFacturaEE)="onPrintFactura($event)">
+        </app-factura-plist-user-unrouted>
+</div>

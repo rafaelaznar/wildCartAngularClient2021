@@ -51,6 +51,14 @@ export class FacturaService implements ICrud {
     return this.http.delete<number>(this.sURL + "/" + id, httpOptions);
   }
 
+  getTotalFactura4User(id_usuario: number): Observable<number> {
+    return this.http.get<number>(this.sURL + "/total/usuario/" + id_usuario, httpOptions);
+  }
+
+  getTotalFactura(id_factura: number): Observable<number> {
+    return this.http.get<number>(this.sURL + "/total/" + id_factura, httpOptions);
+  }
+
   //getAll(): Observable<IFactura> {
   //  return this.http.get<IFactura>(this.sURL + "/all", httpOptions);
   //}

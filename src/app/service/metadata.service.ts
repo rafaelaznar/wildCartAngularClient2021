@@ -112,6 +112,7 @@ export class MetadataService {
       case strIcon == "acciones": return "fas fa-tools";
       case strIcon == "porcentaje": return "fas fa-percent"; //percent
       case strIcon == "activado": return "fas fa-flag-checkered";
+      case strIcon == "total": return "fas fa-euro-sign";
       //
       default: return 'fas fa-question';
     }
@@ -131,7 +132,7 @@ export class MetadataService {
 
 
 
-      case str == "new cart item": return "Nueva línea de carrito";      
+      case str == "new cart item": return "Nueva línea de carrito";
       case str == "cart item removal": return "Borrado de línea de carrito";
       case str == "cart item view": return "Vista de línea de carrito";
       //--
@@ -172,7 +173,7 @@ export class MetadataService {
       case str == "client discount": return "Descuento del cliente";
 
       case str == "cart products": return "productos en carrito";
-      
+
 
       case str == "go to carrito list": return "Ir al listado de productos en carritos";
       case str == "go to carrito view": return "Ir a la vista de producto en carrito";
@@ -512,6 +513,7 @@ export class MetadataService {
       case str == "productsInCart": return "Productos en el carrito";
       case str == "totalInCart": return "Total pedido en carrito";
       case str == "vatIncluded": return "IVA incluido";
+      case str == "totalVATIncluded": return "Total IVA incluido";
       default: return 'Desconocido';
     }
   }
@@ -548,7 +550,23 @@ export class MetadataService {
     }
   }
 
-
+  getFilteredMessage1(strFilter: string, strEntity: string, entityFilter: number): string {
+    {
+      if (entityFilter !== null && entityFilter !== undefined) {
+        if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
+          return 'Filtrando por ' + this.getName('the' + strEntity) + ' con id=' + entityFilter + ' y por el filtro ' + strFilter;
+        } else {
+          return 'Filtrando por ' + this.getName('the' + strEntity) + ' con id=' + entityFilter + ' y sin filtro';
+        }
+      } else {
+        if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
+          return 'Filtrando por el filtro ' + strFilter;
+        } else {
+          return 'Sin filtro';
+        }
+      }
+    }
+  }
 
   /////////////////////////////////////////
   // OLD (TODO: REMOVE)
