@@ -32,8 +32,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  onAddCarrito(id_producto: number) {
-    this.oCarritoService.notifyCarritoChange('add');
+  onChangeCarrito(id_producto: number) {
+    this.oCarritoService.notifyCarritoChange('');
   }
 
 }

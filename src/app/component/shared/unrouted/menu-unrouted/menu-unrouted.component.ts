@@ -38,9 +38,13 @@ export class MenuUnroutedComponent implements OnInit {
       next: (data) => {
         console.log("menu", "session", "action:" + data.action)
         this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
+        if (this.oUsuarioSession) {
+          this.tcarrito = this.oUsuarioSession.carritos;
+        }
       },
       error: (error) => {
         console.log("error:", error)
+        this.tcarrito = 0;
       }
     });
 
@@ -82,6 +86,9 @@ export class MenuUnroutedComponent implements OnInit {
     if (this.oUsuarioSession) {
       this.oCarritoService.getCount().subscribe((oData: number) => {
         this.tcarrito = oData;
+        if (this.oUsuarioSession) {
+          this.oUsuarioSession.carritos = this.tcarrito;
+        }
       })
     }
   }

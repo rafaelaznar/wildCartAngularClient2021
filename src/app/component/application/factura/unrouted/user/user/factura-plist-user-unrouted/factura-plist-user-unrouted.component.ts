@@ -78,13 +78,15 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
     this.selection.emit(id);
   }
 
-  onPrintFactura(id_producto: number) {
+  onPrintFactura(id_factura: number) {
     this.getPage();
-    this.printFacturaEE.emit(id_producto);
+    this.printFacturaEE.emit(id_factura);
   }
 
 
-
+  onViewFactura(id_factura: number) {
+    console.log('onViewFactura');
+  }
 
 
 

@@ -9,7 +9,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <small>
-                        <a class="nav-link" [class.active]="strUrl=='/home'" aria-current="page"
+                        <a class="nav-link" [class.active]="strUrl=='/home'||strUrl=='/'" aria-current="page"
                             [routerLink]="['/home']"><i [ngClass]="oMetadataService.getIcon('home') + ' fa-2x'"></i>
                         </a>
                     </small>
