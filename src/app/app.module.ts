@@ -147,6 +147,7 @@ import { FacturaSelectionAdminUnroutedComponent } from './component/application/
 import { FooterbuttonsUnroutedComponent } from './component/shared/unrouted/footerbuttons-unrouted/footerbuttons-unrouted.component';
 import { RemoveconfirmationUnroutedComponent } from './component/shared/unrouted/removeconfirmation-unrouted/removeconfirmation-unrouted.component';
 import { FacturaPlistheaderUserUnroutedComponent } from './component/application/factura/unrouted/user/user/factura-plistheader-user-unrouted/factura-plistheader-user-unrouted.component';
+import { FacturaPrintService } from './service/factura.print.service';
 //
 @NgModule({
   declarations: [
@@ -322,6 +323,7 @@ import { FacturaPlistheaderUserUnroutedComponent } from './component/application
     CountService,
     FileService,
     ErrorHandlerService,
+    FacturaPrintService,
     { provide: LOCALE_ID, useValue: 'es-ES' } //USO DE LOCALE!!
   ],
   bootstrap: [AppComponent],

@@ -2,12 +2,7 @@
 <td class="text-center">{{oFactura?.iva}}%</td>
 <td class="text-center">{{oFactura?.fecha | date: 'dd/MM/yyyy'}}</td>
 <td style="text-align: center;">
-  <button class="btn btn-outline-secondary btn-sm" *ngIf="mode"
-    [routerLink]="['/administrador','compra','plist','factura',oFactura.id]">{{oFactura?.compras}}
-    <i [ngClass]="oMetadataService.getIcon('compra')"></i>
-  </button>
-  <div *ngIf="!mode">{{oFactura?.compras}}
-  </div>
+  {{oFactura?.compras}}
 </td>
 <td class="text-end">{{oFactura.total|number: '1.2-2':'es-ES'}} €</td>
 <td class="text-end">{{(oFactura.total * (oFactura?.iva/100))|number: '1.2-2':'es-ES'}} €</td>

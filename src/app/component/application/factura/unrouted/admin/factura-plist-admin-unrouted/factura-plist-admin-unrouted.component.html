@@ -44,7 +44,7 @@
           <div action_column>
             <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oFacturaRow.id"
               [strEntity]="strEntity" [strProfile]="strProfile">
-              <button type="button" class="btn btn-secondary" (click)="printFactura(oFacturaRow.id)"><i
+              <button type="button" class="btn btn-secondary" (click)="onPrintFactura(oFacturaRow.id)"><i
                   [ngClass]="oMetadataService.getIcon('print')"></i></button>
             </div>
           </div>

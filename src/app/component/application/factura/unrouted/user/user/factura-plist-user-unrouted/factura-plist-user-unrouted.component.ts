@@ -4,6 +4,7 @@ import { FacturaService } from 'src/app/service/factura.service';
 import { IFactura, IFacturaPage } from 'src/app/model/factura-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/model/constants';
+import { FacturaPrintService } from 'src/app/service/factura.print.service';
 
 @Component({
   selector: 'app-factura-plist-user-unrouted',
@@ -16,7 +17,6 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
   @Input() mode: boolean = true; //true=edición; false=selección
   @Input() id_tipousuario_session: number = null;
   @Output() selection = new EventEmitter<number>();
-  @Output() printFacturaEE = new EventEmitter<number>();
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
@@ -26,6 +26,7 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
   constructor(
     private oFacturaService: FacturaService,
     public oMetadataService: MetadataService,
+    private oFacturaPrintService: FacturaPrintService
   ) {
     this.oPage = {} as IFacturaPage;
   }
@@ -79,8 +80,7 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
   }
 
   onPrintFactura(id_factura: number) {
-    this.getPage();
-    this.printFacturaEE.emit(id_factura);
+    this.oFacturaPrintService.printFactura(id_factura);
   }
 
 
