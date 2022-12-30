@@ -37,6 +37,11 @@
                                 Acceder</button>
                         </div>
                     </div>
+
+                    <div class="alert alert-danger" role="alert" *ngIf="oError">
+                        Error de conexión con el servidor <br> {{oError|json}}
+                      </div>
+
                     <div class="col-12">
                         <div class="control-group text-center mt-3">
                             <button class="btn btn-danger m-2" (click)="loginAdmin()"><i [ngClass]="oMetadataService.getIcon(this.strOperation)"></i> admin/wildcart</button>

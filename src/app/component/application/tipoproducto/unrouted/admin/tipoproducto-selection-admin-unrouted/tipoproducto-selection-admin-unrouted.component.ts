@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { debounceTime } from 'rxjs/operators';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { ITipoproducto, ITipoproductoPage } from 'src/app/model/tipoproducto-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';

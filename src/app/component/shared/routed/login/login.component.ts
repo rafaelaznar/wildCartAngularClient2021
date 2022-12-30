@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   strOperation: string = "login"
   formularioLogin: UntypedFormGroup;
   oUserSession: IUsuario;
+  oError:HttpErrorResponse=null;
 
   constructor(
     private FormBuilder: UntypedFormBuilder,
@@ -26,7 +28,7 @@ export class LoginComponent implements OnInit {
     private oSessionService: SessionService,
     private oCarritoService: CarritoService,
     private oCryptoService: CryptoService,
-    public oMetadataService: MetadataService    
+    public oMetadataService: MetadataService
   ) {
 
     if (oRoute.snapshot.data.message) {
@@ -49,16 +51,22 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     const loginData = { login: this.formularioLogin.get('login')!.value, password: this.oCryptoService.getSHA256(this.formularioLogin.get('password')!.value) };
     console.log("login:onSubmit: ", loginData);
-    this.oSessionService.login(JSON.stringify(loginData)).subscribe(data => {
-      localStorage.setItem("user", JSON.stringify(data));
-      this.oSessionService.notifySessionChange('login');  
-      this.oCarritoService.notifyCarritoChange('login');
-      if (data != null) {
-        this.oRouter.navigate(['/','home']);
-      } else {
-        localStorage.clear();
+    this.oSessionService.login(JSON.stringify(loginData)).subscribe(
+      data => {
+        this.oError = null;
+        localStorage.setItem("user", JSON.stringify(data));
+        this.oSessionService.notifySessionChange('login');
+        this.oCarritoService.notifyCarritoChange('login');
+        if (data != null) {
+          this.oRouter.navigate(['/', 'home']);
+        } else {
+          localStorage.clear();
+        }
+      }, (error: HttpErrorResponse) => {
+        this.oError = error;
+        console.error("ERROR: LOGIN: " + error);
       }
-    });
+      );
     return false;
   }
 
