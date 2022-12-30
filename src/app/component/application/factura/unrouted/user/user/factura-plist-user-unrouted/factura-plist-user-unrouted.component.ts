@@ -19,7 +19,7 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
   @Output() selection = new EventEmitter<number>();
 
   strProfile: string = Constants.PROFILES.admin;
-  strEntity: string = Constants.ENTITIES.cart;
+  strEntity: string = Constants.ENTITIES.invoice;
   strOperation: string = Constants.OPERATIONS.plist;
   oPage: IFacturaPage;
 

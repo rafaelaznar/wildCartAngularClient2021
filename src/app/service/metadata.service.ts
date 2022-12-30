@@ -514,6 +514,7 @@ export class MetadataService {
       case str == "totalInCart": return "Total pedido en carrito";
       case str == "vatIncluded": return "IVA incluido";
       case str == "totalVATIncluded": return "Total IVA incluido";
+      case str == "totalDiscountsIncluded": return "Total (descuentos incluidos)";
       default: return 'Desconocido';
     }
   }
