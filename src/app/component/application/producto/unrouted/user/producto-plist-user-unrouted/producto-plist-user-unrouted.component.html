@@ -5,22 +5,32 @@
   <div class="col-md text-center">
     <app-search-unrouted [strFilter]="oPage.strFilter"
       [strTitlePlural]="'Filtro de ' + oMetadataService.getName(strEntity+'s').toLowerCase()"
-      (eeFilter)="onSetFilter($event)">
+      (eeFilter)="onSetFilter($event)" *ngIf="!oPage.error">
     </app-search-unrouted>
   </div>
   <div class="col-md text-end">
-    <h4 class="text-muted">{{oPage.totalElements}} {{oMetadataService.getName(strEntity+'s')}}</h4>
+    <h4 class="text-muted" *ngIf="!oPage.error">{{oPage.totalElements}} {{oMetadataService.getName(strEntity+'s')}}</h4>
   </div>
 </div>
+
+
 
 <div class="row justify-content-between">
   <div class="col-md text-start">
     <app-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
     </app-pagination-unrouted>
   </div>
-  <div class="col-md text-center">
+  <div class="col-md text-center" *ngIf="!oPage.error">
     <ng-content select="header"></ng-content>
-  </div>  
+  </div>
+
+  <div class="col-md text-center" *ngIf="oPage.error">
+    <div class="alert alert-danger" role="alert">
+      Hay problemas con el servidor. Inténtelo más tarde.
+    </div>
+  </div>
+
+
   <div class="col-md text-end">
     <app-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-rpp-unrouted>
   </div>
