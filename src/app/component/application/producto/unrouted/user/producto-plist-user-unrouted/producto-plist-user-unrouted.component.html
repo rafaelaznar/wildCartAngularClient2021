@@ -13,8 +13,6 @@
   </div>
 </div>
 
-
-
 <div class="row justify-content-between">
   <div class="col-md text-start">
     <app-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
@@ -29,7 +27,6 @@
       Hay problemas con el servidor. Inténtelo más tarde.
     </div>
   </div>
-
 
   <div class="col-md text-end">
     <app-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-rpp-unrouted>
