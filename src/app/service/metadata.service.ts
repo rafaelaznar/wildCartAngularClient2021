@@ -515,6 +515,7 @@ export class MetadataService {
       case str == "vatIncluded": return "IVA incluido";
       case str == "totalVATIncluded": return "Total IVA incluido";
       case str == "totalDiscountsIncluded": return "Total (descuentos incluidos)";
+      case str == "invoiceLines": return "Líneas de factura";
       default: return 'Desconocido';
     }
   }

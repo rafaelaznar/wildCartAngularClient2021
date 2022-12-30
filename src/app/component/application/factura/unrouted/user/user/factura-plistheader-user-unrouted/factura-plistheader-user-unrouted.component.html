@@ -16,7 +16,7 @@
 
 </th>
 <th (click)="doSetOrder('compra')"><i [ngClass]="oMetadataService.getIcon('compra')"></i>
-  {{oMetadataService.getName('purchases')}}
+  {{oMetadataService.getName('invoiceLines')}}
   <i class="fas fa-arrow-up" *ngIf="strSortField=='pagado'&&strSortDirection=='asc'"></i>
   <i class="fas fa-arrow-down" *ngIf="strSortField=='pagado'&&strSortDirection=='desc'"></i>
 
