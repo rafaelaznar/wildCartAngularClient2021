@@ -15,7 +15,7 @@
     <ng-content select="header"></ng-content>
   </div>
   <div class="col-md text-end">
-    <app-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)"></app-rpp-unrouted>
+    <app-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-rpp-unrouted>
   </div>
 </div>
 <div class="d-flex align-items-end flex-column">

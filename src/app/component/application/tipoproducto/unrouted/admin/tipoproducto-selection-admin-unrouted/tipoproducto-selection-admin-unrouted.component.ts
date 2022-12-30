@@ -23,6 +23,7 @@ export class TipoproductoSelectionAdminUnroutedComponent implements OnInit {
   aTipoproductos: ITipoproducto[];
   nTotalElements: number;
   nTotalPages: number;
+  oPage: ITipoproductoPage;
   nPage: number;
   nPageSize: number = 10;
   strSortField: string = "";
@@ -44,6 +45,7 @@ export class TipoproductoSelectionAdminUnroutedComponent implements OnInit {
     this.oPostService
       .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter)
       .subscribe((oPage: ITipoproductoPage) => {
+        this.oPage = oPage;
         this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, null, null, null, null);
         this.aTipoproductos = oPage.content;
         this.nTotalElements = oPage.totalElements;
