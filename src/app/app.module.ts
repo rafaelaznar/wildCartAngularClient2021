@@ -115,8 +115,8 @@ import { FacturaDetailAdminUnroutedComponent } from './component/application/fac
 import { FacturaViewAdminRoutedComponent } from './component/application/factura/routed/admin/factura-view-admin-routed/factura-view-admin-routed.component';
 import { FacturaFormAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-form-admin-unrouted/factura-form-admin-unrouted.component';
 import { FacturaPlistUserRoutedComponent } from './component/application/factura/routed/user/factura-plist-user-routed/factura-plist-user-routed.component';
-import { FacturaPlistrowUserUnroutedComponent } from './component/application/factura/unrouted/user/user/factura-plistrow-user-unrouted/factura-plistrow-user-unrouted.component';
-import { FacturaPlistUserUnroutedComponent } from './component/application/factura/unrouted/user/user/factura-plist-user-unrouted/factura-plist-user-unrouted.component';
+import { FacturaPlistrowUserUnroutedComponent } from './component/application/factura/unrouted/user/factura-plistrow-user-unrouted/factura-plistrow-user-unrouted.component';
+import { FacturaPlistUserUnroutedComponent } from './component/application/factura/unrouted/user/factura-plist-user-unrouted/factura-plist-user-unrouted.component';
 // compra components
 import { CompraPlistAdminRoutedComponent } from './component/application/compra/routed/admin/compra-plist-admin-routed/compra-plist-admin-routed.component';
 import { CompraNewAdminRoutedComponent } from './component/application/compra/routed/admin/compra-new-admin-routed/compra-new-admin-routed.component';
@@ -146,8 +146,9 @@ import { CarritoPlistrowUserUnroutedComponent } from './component/application/ca
 import { FacturaSelectionAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-selection-admin-unrouted/factura-selection-admin-unrouted.component';
 import { FooterbuttonsUnroutedComponent } from './component/shared/unrouted/footerbuttons-unrouted/footerbuttons-unrouted.component';
 import { RemoveconfirmationUnroutedComponent } from './component/shared/unrouted/removeconfirmation-unrouted/removeconfirmation-unrouted.component';
-import { FacturaPlistheaderUserUnroutedComponent } from './component/application/factura/unrouted/user/user/factura-plistheader-user-unrouted/factura-plistheader-user-unrouted.component';
+import { FacturaPlistheaderUserUnroutedComponent } from './component/application/factura/unrouted/user/factura-plistheader-user-unrouted/factura-plistheader-user-unrouted.component';
 import { FacturaPrintService } from './service/factura.print.service';
+import { FacturaDetailUserUnroutedComponent } from './component/application/factura/unrouted/user/factura-detail-user-unrouted/factura-detail-user-unrouted.component';
 //
 @NgModule({
   declarations: [
@@ -276,7 +277,8 @@ import { FacturaPrintService } from './service/factura.print.service';
     FacturaSelectionAdminUnroutedComponent,
     FacturaPlistUserUnroutedComponent,
     FacturaPlistrowUserUnroutedComponent,
-    FacturaPlistheaderUserUnroutedComponent,    
+    FacturaPlistheaderUserUnroutedComponent,  
+    FacturaDetailUserUnroutedComponent,  
     //
     // Compra unrouted components
     CompraPlistrowAdminUnroutedComponent,

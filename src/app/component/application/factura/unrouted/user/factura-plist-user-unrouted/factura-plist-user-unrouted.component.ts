@@ -5,6 +5,7 @@ import { IFactura, IFacturaPage } from 'src/app/model/factura-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/model/constants';
 import { FacturaPrintService } from 'src/app/service/factura.print.service';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'app-factura-plist-user-unrouted',
@@ -13,10 +14,9 @@ import { FacturaPrintService } from 'src/app/service/factura.print.service';
 })
 
 export class FacturaPlistUserUnroutedComponent implements OnInit {
+
   @Input() id_usuario: number = null;
-  @Input() mode: boolean = true; //true=edición; false=selección
   @Input() id_tipousuario_session: number = null;
-  @Output() selection = new EventEmitter<number>();
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice;
@@ -41,7 +41,7 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
       .subscribe((oPage: IFacturaPage) => {
         this.oPage = oPage;
         this.oPage.error = null;
-        this.oPage.strFilteredMessage = this.oMetadataService.getFilteredMessage1(this.oPage.strFilter, 'usuario', this.id_usuario);        
+        this.oPage.strFilteredMessage = this.oMetadataService.getFilteredMessage1(this.oPage.strFilter, 'usuario', this.id_usuario);
         if (this.oPage.number > this.oPage.totalPages - 1 && this.oPage.totalPages > 0) {
           this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
@@ -75,19 +75,22 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  onSelection(id: number) {
-    this.selection.emit(id);
-  }
-
   onPrintFactura(id_factura: number) {
     this.oFacturaPrintService.printFactura(id_factura);
   }
 
-
   onViewFactura(id_factura: number) {
-    console.log('onViewFactura');
+    this.id_factura = id_factura;
+    console.log('onViewFactura', id_factura);
+    this.eventsSubjectShowModal.next();
   }
 
+  id_factura: number;
 
+  eventsSubjectShowModal: Subject<void> = new Subject<void>();
+  eventsSubjectHideModal: Subject<void> = new Subject<void>();
 
+  onCloseModal(): void {
+    //no hacer nada    
+  }
 }
