@@ -1,0 +1,9 @@
+<td class="text-end">{{ oCompra.id }}</td>
+<td class="text-center">{{ oCompra.cantidad }}</td>
+<td class="text-end">{{ oCompra.precio }}€</td>
+<td class="text-center">{{ oCompra?.fecha | date: 'dd/MM/yyyy' }} </td>
+<td class="text-center">{{ oCompra.descuento_usuario }}%</td>
+<td class="text-center">{{ oCompra.descuento_producto }}%</td>
+<td>
+  ({{ oCompra.producto.id }}) {{ oCompra.producto.nombre | trim: 120 }}
+</td>

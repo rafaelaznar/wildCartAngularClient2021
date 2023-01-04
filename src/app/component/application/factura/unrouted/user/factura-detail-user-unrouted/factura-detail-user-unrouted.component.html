@@ -1,5 +1,5 @@
-<div class="row justify-content-center">
-  <div class="card p-5 m-5" style="background-color: lightgray">
+<div class="row justify-content-center  m-5">
+  <div class="card p-5" style="background-color: lightgray">
     <div class="row">
       <div class="col-2 text-start">
         <i [ngClass]="oMetadataService.getIcon('factura')" class="img-fluid mx-5 p-2" style="font-size: 5rem"></i>
@@ -7,10 +7,10 @@
       <div class="col-10">
         <h1 class="price"><span class="badge bg-danger">Factura Número: {{oFactura?.id}}</span></h1>
         <h1>Cliente: {{oFactura?.usuario.nombre}} {{oFactura?.usuario.apellido1}} {{oFactura?.usuario.apellido2}}</h1>
-        <h3 class="text-muted"><span>Fecha: {{oFactura?.fecha}}</span></h3>
-        <p class="flex-grow-1 alert-success" style="font-size: 0.95rem; font-style: italic;" *ngIf="oFactura?.pagado">Factura pagada</p>
-        <p class="flex-grow-1 alert-warning" style="font-size: 0.95rem; font-style: italic;" *ngIf="!oFactura?.pagado">Factura no pagada</p>        
-        <h5  class="mt-5 text-muted">Pendiente: líneas de factura</h5>
+        <h3 class="text-muted"><span>Fecha: {{oFactura?.fecha | date: 'dd/MM/yyyy'}}</span></h3>
+        <p class="flex-grow-1 alert alert-success" style="font-size: 1.15rem; font-style: italic;" *ngIf="oFactura?.pagado">Factura pagada</p>
+        <p class="flex-grow-1 alert alert-danger" style="font-size: 1.15rem; font-style: italic;" *ngIf="!oFactura?.pagado">Factura no pagada</p>        
+        
       </div>
       
     </div>

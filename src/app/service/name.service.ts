@@ -46,8 +46,8 @@ export class NameService {
         case strToken == "rechazar": return "fas fa-times-circle";
         case strToken == "volver": return "fas fa-arrow-circle-left";
         // arrows
-        case strToken == "flechaUp": return "fas fa-arrow-up";
-        case strToken == "flechaDown": return "fas fa-arrow-down";
+        case strToken == "orderUp": return "fas fa-arrow-up";
+        case strToken == "orderDown": return "fas fa-arrow-down";
         // selections
         case strToken == "seleccionar": return "fas fa-check";
         // status

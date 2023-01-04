@@ -3,6 +3,7 @@
     <h4 class="text-muted">{{oPage.totalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}</h4>
   </div>
 </div>
+
 <div class="row justify-content-between">
   <div class="col-md text-start">
     <app-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
@@ -15,11 +16,12 @@
     <app-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-rpp-unrouted>
   </div>
 </div>
+
 <div class="row justify-content-center">
   <div class="col-md table-responsive-md">
     <table class="table table-bordered table-striped table-hover">
       <thead>
-        <tr class="text-center align-middle" app-factura-plistheader-user-unrouted (sort)="onSetOrder($event)"
+        <tr class="text-center align-middle" app-compra-plistheader-user-unrouted (sort)="onSetOrder($event)"
           [mode]="true">
           <div action_column_title>
             <i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getName('actions')}}
@@ -27,25 +29,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let oFacturaRow of oPage.content" class="align-middle" app-factura-plistrow-user-unrouted
-          [oFactura]="oFacturaRow" [mode]="true">
+        <tr *ngFor="let oCompraRow of oPage.content" class="align-middle" app-compra-plistrow-user-unrouted
+          [oCompra]="oCompraRow">
+
           <div action_column>
-            <div class="btn-group btn-group-sm" role="group">
-              <button type="button" class="btn btn-success" (click)="onViewFactura(oFacturaRow.id)"><i
-                  [ngClass]="oMetadataService.getIcon('view')"></i></button>
-              <button type="button" class="btn btn-secondary" (click)="onPrintFactura(oFacturaRow.id)"><i
-                  [ngClass]="oMetadataService.getIcon('print')"></i></button>
+            <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oCompraRow.id"
+              [strEntity]="strEntity" [strProfile]="strProfile">
             </div>
           </div>
+
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-
-
-<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
-  (close)="onCloseModal()" [mimodal]="'facturaUsuarioModal'">
-  <app-factura-detail-user-unrouted [id]="id_factura"></app-factura-detail-user-unrouted>
-  <app-compra-plist-user-unrouted [id]="id_factura"></app-compra-plist-user-unrouted>
-</app-modal>

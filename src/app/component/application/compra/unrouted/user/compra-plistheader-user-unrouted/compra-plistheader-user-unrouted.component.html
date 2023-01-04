@@ -43,13 +43,3 @@
   <i [ngClass]="oMetadataService.getIcon('orderDown')"
     *ngIf="strSortField == 'producto' && strSortDirection == 'desc'"></i>
 </th>
-<th (click)="doSetOrder('factura')">
-  <i [ngClass]="oMetadataService.getIcon('factura')"></i> {{oMetadataService.getName('invoice')}}
-  <i [ngClass]="oMetadataService.getIcon('orderUp')"
-    *ngIf="strSortField == 'factura' && strSortDirection == 'asc'"></i>
-  <i [ngClass]="oMetadataService.getIcon('orderDown')"
-    *ngIf="strSortField == 'factura' && strSortDirection == 'desc'"></i>
-</th>
-<th>
-  <ng-content select="[action_column_title]"></ng-content>
-</th>
