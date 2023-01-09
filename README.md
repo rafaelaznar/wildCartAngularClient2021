@@ -1,6 +1,4 @@
-# wildCartAngularClient2021
-wildCart Angular Client 2021
-
+# WildCart Angular Front-end 2021
 
 * WildCart is a project that was developed by my students & I @ 2021.
 * It's a online shop.
@@ -10,5 +8,6 @@ wildCart Angular Client 2021
 * It's still a working in progress:
   * grade of madurity of web client: 85%  
 
-
+## How to run Wildcart back-end in development mode?
+I'm sorry. This instruccions are a work in progress.
 
