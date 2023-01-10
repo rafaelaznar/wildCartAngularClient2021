@@ -1,0 +1,56 @@
+<th (click)="doSetOrder('id')"><i [ngClass]="oMetadataService.getIcon('id')"></i> {{oMetadataService.getName('id')}}
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
+</th>
+<th (click)="doSetOrder('codigo')">
+  <i [ngClass]="oMetadataService.getIcon('codigo')"></i> {{oMetadataService.getName('codigo')}}
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='codigo'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='codigo'&&strSortDirection=='desc'"></i>
+</th>
+<th (click)="doSetOrder('nombre')">
+  <i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('nombre')}}
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='nombre'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='nombre'&&strSortDirection=='desc'"></i>
+</th>
+<th (click)="doSetOrder('existencias')">
+  <i [ngClass]="oMetadataService.getIcon('cantidad')"></i> {{oMetadataService.getName('existencias')}}
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='existencias'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='existencias'&&strSortDirection=='desc'"></i>
+</th>
+<th (click)="doSetOrder('precio')">
+  <i [ngClass]="oMetadataService.getIcon('euro')"></i> {{oMetadataService.getName('precio')}}
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='precio'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='precio'&&strSortDirection=='desc'"></i>
+</th>
+<th (click)="doSetOrder('imagen')"  *ngIf="mode">
+  <i [ngClass]="oMetadataService.getIcon('imagen')"></i> {{oMetadataService.getName('image')}}
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='imagen'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='imagen'&&strSortDirection=='desc'"></i>
+</th>
+<th (click)="doSetOrder('imagen')"  *ngIf="mode">
+  <i [ngClass]="oMetadataService.getIcon('imagen')"></i> {{oMetadataService.getName('id')}} {{oMetadataService.getName('image')}}
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='imagen'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='imagen'&&strSortDirection=='desc'"></i>
+</th>
+<th (click)="doSetOrder('descuento')">
+  <i [ngClass]="oMetadataService.getIcon('porcentaje')"></i> {{oMetadataService.getName('descuento')}}
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='descuento'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='descuento'&&strSortDirection=='desc'"></i>
+</th>
+
+<th (click)="doSetOrder('compra')"  *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('compra')"></i> {{oMetadataService.getName('compras')}}
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='compra'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='compra'&&strSortDirection=='desc'"></i>
+</th>
+
+<th (click)="doSetOrder('carrito')"  *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('carrito')"></i> {{oMetadataService.getName('carrito')}}
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='carrito'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='carrito'&&strSortDirection=='desc'"></i>
+</th>
+
+<th (click)="doSetOrder('tipoproducto')"> <i [ngClass]="oMetadataService.getIcon('tipoproducto')"></i> {{oMetadataService.getName('tipoproducto')}}
+  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='tipoproducto'&&strSortDirection=='asc'"></i>
+  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='tipoproducto'&&strSortDirection=='desc'"></i>
+
+</th>
+<th><ng-content select="[action_column_title]"></ng-content></th>

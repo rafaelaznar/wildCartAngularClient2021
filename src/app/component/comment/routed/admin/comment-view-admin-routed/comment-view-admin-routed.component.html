@@ -1,0 +1,7 @@
+<div class="container my-3">
+    <app-header [title]="oMetadataService.getName(strOperation + 'of')  + ' ' +  oMetadataService.getName(strEntity + 's').toLowerCase()"
+        [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(this.strEntity)">
+    </app-header>
+    <app-producto-detail-admin-unrouted [id]="id"></app-producto-detail-admin-unrouted>
+    <app-viewbuttons-unrouted [strEntity]="strEntity" [id]="id" [strProfile]="strProfile"> </app-viewbuttons-unrouted>
+</div>

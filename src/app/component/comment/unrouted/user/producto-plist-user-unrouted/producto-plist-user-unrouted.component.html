@@ -1,0 +1,95 @@
+<div class="row justify-content-between my-3">
+  <div class="col-md text-start">
+    <h6>{{oPage.strFilteredMessage}}</h6>
+  </div>
+  <div class="col-md text-center">
+    <app-search-unrouted [strFilter]="oPage.strFilter"
+      [strTitlePlural]="'Filtro de ' + oMetadataService.getName(strEntity+'s').toLowerCase()"
+      (eeFilter)="onSetFilter($event)" *ngIf="!oPage.error">
+    </app-search-unrouted>
+  </div>
+  <div class="col-md text-end">
+    <h4 class="text-muted" *ngIf="!oPage.error">{{oPage.totalElements}} {{oMetadataService.getName(strEntity+'s')}}</h4>
+  </div>
+</div>
+
+<div class="row justify-content-between">
+  <div class="col-md text-start">
+    <app-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
+    </app-pagination-unrouted>
+  </div>
+  <div class="col-md text-center" *ngIf="!oPage.error">
+    <ng-content select="header"></ng-content>
+  </div>
+
+  <div class="col-md text-center" *ngIf="oPage.error">
+    <div class="alert alert-danger" role="alert">
+      Hay problemas con el servidor. Inténtelo más tarde.
+    </div>
+  </div>
+
+  <div class="col-md text-end">
+    <app-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-rpp-unrouted>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+
+  <div class="card m-1" *ngFor="let oProducto of oPage.content">
+    <img class="card-img-top" [src]="'http://localhost:8082/file/' + oProducto.imagen" height="180px" width="180px" />
+    <div class="card-body d-flex flex-column">
+
+      <div>
+        <div class="card-title d-flex justify-content-between">
+
+          <h4 class="flex-grow-1"> <a class="nombreproducto" [routerLink]="['/','producto','view',oProducto.id]"
+              *ngIf="id_tipousuario_session!=1&&id_tipousuario_session!=2">
+              {{oProducto.nombre}}
+            </a> </h4>
+
+          <h4 class="flex-grow-1"> <a class="nombreproducto"
+              [routerLink]="['/','administrador','producto','view',oProducto.id]" *ngIf="id_tipousuario_session==1">
+              {{oProducto.nombre}}
+            </a> </h4>
+
+          <h4 class="flex-grow-1"> <a class="nombreproducto"
+              [routerLink]="['/','usuario','producto','cview',oProducto.id]" *ngIf="id_tipousuario_session==2">
+              {{oProducto.nombre}}
+            </a> </h4>
+
+
+          <div> <i *ngIf="oProducto.cantidad" class="fas fa-shopping-cart" pBadge style="font-size: 2rem"
+              value="{{oProducto.cantidad}}"></i></div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <p class="card-text flex-grow-1" style="font-size: 0.75rem">{{oProducto.tipoproducto.nombre}}</p>
+        </div>
+      </div>
+
+      <div class="mt-auto">
+        <div class="d-flex justify-content-center m-3">
+          <span class="badge rounded-pill bg-warning"
+            *ngIf="oProducto.existencias>20">{{oProducto.existencias|number:'1.0-0':'es-ES'}}
+            {{oMetadataService.getName('availables')}}</span>
+          <span class="badge rounded-pill bg-danger"
+            *ngIf="oProducto.existencias<=20">{{oMetadataService.getName('only')}} {{oProducto.existencias}}
+            {{oMetadataService.getName('availables')}}</span>
+        </div>
+        <div class="d-flex justify-content-center">
+          <h1><span class="badge bg-secondary">{{oProducto.precio.toFixed(2)|number: '1.2-2':'es-ES'}}€</span></h1>
+        </div>
+        <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-primary flex-grow-1 m-1"
+            *ngIf="id_tipousuario_session==2&&oProducto.existencias>0&&oProducto.cantidad<oProducto.existencias"
+            (click)="addCarrito(oProducto.id)"><i class="fas fa-cart-plus" style="font-size: 2rem"></i></button>
+          <button type="button" class="btn btn-danger m-1" *ngIf="id_tipousuario_session==2&&oProducto.cantidad>0"
+            (click)="removeCarrito(oProducto.id)"><i class="fas fa-cart-arrow-down"
+              style="font-size: 2rem"></i></button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
