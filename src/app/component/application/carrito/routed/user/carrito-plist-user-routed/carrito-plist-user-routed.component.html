@@ -5,4 +5,9 @@
     <app-carrito-cplist-user-unrouted [id_usuario]="id_usuario" [id_tipousuario_session]="tipousuarioSession_id"
         [id_producto]="id_producto" (addCarritoEE)="onAddCarrito($event)">
     </app-carrito-cplist-user-unrouted>
+    <div class="row justify-content-between my-3">
+        <div class="col-md text-center">
+            <button class="btn btn-warning btn-lg" (click)="onPurchase()">Comprar los productos en el carrito</button>
+        </div>
+    </div>
 </div>

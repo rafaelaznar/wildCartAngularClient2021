@@ -20,8 +20,8 @@ export class CarritoPlistUserRoutedComponent extends CheckSession implements OnI
   strOperation: string = Constants.OPERATIONS.plist;
   oUserSession: IUsuario;
   id_producto: number = null;
-  id_usuario: number = null;  
-  tipousuarioSession_id: number = null;  
+  id_usuario: number = null;
+  tipousuarioSession_id: number = null;
 
   constructor(
     protected oRouter: Router,
@@ -38,6 +38,17 @@ export class CarritoPlistUserRoutedComponent extends CheckSession implements OnI
 
   onAddCarrito(id_producto: number) {
     this.oCarritoService.notifyCarritoChange('add');
+  }
+
+  onPurchase(): void {
+    this.oCarritoService.purchase().subscribe(
+      (data) => {
+        console.log(data);
+        this.oCarritoService.notifyCarritoChange('purchase');
+        alert('Compra realizada con éxito. Se ha generado la factura número ' + data + ".");
+        this.oRouter.navigate(['/', 'usuario', 'factura', 'plist']);
+      }
+    )
   }
 
 }
