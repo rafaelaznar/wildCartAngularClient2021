@@ -47,5 +47,5 @@
 <app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
   (close)="onCloseModal()" [mimodal]="'facturaUsuarioModal'">
   <app-factura-detail-user-unrouted [id]="id_factura"></app-factura-detail-user-unrouted>
-  <app-compra-plist-user-unrouted [id]="id_factura"></app-compra-plist-user-unrouted>
+  <app-compra-plist-user-unrouted [id_factura]="id_factura"></app-compra-plist-user-unrouted>
 </app-modal>

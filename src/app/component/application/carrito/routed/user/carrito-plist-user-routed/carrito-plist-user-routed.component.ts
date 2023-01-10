@@ -41,14 +41,16 @@ export class CarritoPlistUserRoutedComponent extends CheckSession implements OnI
   }
 
   onPurchase(): void {
-    this.oCarritoService.purchase().subscribe(
-      (data) => {
-        console.log(data);
-        this.oCarritoService.notifyCarritoChange('purchase');
-        alert('Compra realizada con éxito. Se ha generado la factura número ' + data + ".");
-        this.oRouter.navigate(['/', 'usuario', 'factura', 'plist']);
-      }
-    )
+    if (confirm('¿Está seguro de que desea realizar la compra de los productos en el carrito?')) {
+      this.oCarritoService.purchase().subscribe(
+        (data) => {
+          console.log(data);
+          this.oCarritoService.notifyCarritoChange('purchase');
+          alert('Compra realizada con éxito. Se ha generado la factura número ' + data + ".");
+          this.oRouter.navigate(['/', 'usuario', 'factura', 'plist']);
+        }
+      )
+    }
   }
 
 }

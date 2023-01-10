@@ -14,8 +14,21 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export class CompraPlistUserUnroutedComponent implements OnInit {
 
-  @Input() id_factura: number = null;
-  @Input() id_producto: number = null;
+  private _id_factura: number;
+
+  @Input()
+  
+  set id_factura(value: number) {
+    this._id_factura = value;
+    this.getPage();
+  }
+
+  get categoryId(): number {
+    return this._id_factura;
+  }
+
+  //@Input() id_factura: number = null;
+  //@Input() id_producto: number = null;
 
   strProfile: string = Constants.PROFILES.user;
   strEntity: string = Constants.ENTITIES.purchase
@@ -34,10 +47,10 @@ export class CompraPlistUserUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oCompraService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_factura, this.id_producto)
+    this.oCompraService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this._id_factura, null)
       .subscribe((oPage: ICompraPage) => {
         this.oPage = oPage;
-        this.oPage.error = null;        
+        this.oPage.error = null;
         if (this.oPage.number > this.oPage.totalPages - 1) {
           this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
