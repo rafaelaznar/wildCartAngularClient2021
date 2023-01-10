@@ -100,7 +100,7 @@ const routes: Routes = [
   { path: 'administrador/compra/remove/:id', component: CompraRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
   //
   { path: 'administrador/factura/plist', component: FacturaPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/factura/plist/usuario/:id', component: FacturaPlistAdminRoutedComponent, resolve: { message: SessionResolver } },  
+  { path: 'administrador/factura/plist/usuario/:id_usuario', component: FacturaPlistAdminRoutedComponent, resolve: { message: SessionResolver } },  
   { path: 'administrador/factura/new', component: FacturaNewAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/factura/view/:id', component: FacturaViewAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/factura/edit/:id', component: FacturaEditAdminRoutedComponent, resolve: { message: SessionResolver } },
