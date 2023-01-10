@@ -4,7 +4,7 @@ export abstract class Constants {
     };
 
     static readonly ENTITIES = {
-        user: "usuario", product: "producto", purchase: "compra", usertype: "tipousuario", producttype: "tipoproducto", invoice: "factura", cart: "carrito", report: "informe"
+        user: "usuario", product: "producto", purchase: "compra", usertype: "tipousuario", producttype: "tipoproducto", invoice: "factura", cart: "carrito", report: "informe", comment: "comment"
     };
     
     static readonly PROFILES = {
