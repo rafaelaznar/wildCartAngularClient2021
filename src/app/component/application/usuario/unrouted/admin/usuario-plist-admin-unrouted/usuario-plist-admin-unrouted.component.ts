@@ -38,9 +38,11 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
         this.oPage = oPage;
         this.oPage.error = null;
         this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipousuario', this.id_tipousuario, null, null);
-        if (this.oPage.number > this.oPage.totalPages - 1) {
-          this.oPage.number = this.oPage.totalPages - 1;
-          this.getPage();
+        if (this.oPage.totalPages > 0) {
+          if (this.oPage.number > this.oPage.totalPages - 1) {
+            this.oPage.number = this.oPage.totalPages - 1;
+            this.getPage();
+          }
         }
       }, (error: HttpErrorResponse) => {
         this.oPage.error = error;

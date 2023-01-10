@@ -43,9 +43,11 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
         this.oPage = oPage;
         this.oPage.error = null;
         this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
-        if (this.oPage.number > this.oPage.totalPages - 1) {
-          this.oPage.number = this.oPage.totalPages - 1;
-          this.getPage();
+        if (this.oPage.totalPages > 0) {
+          if (this.oPage.number > this.oPage.totalPages - 1) {
+            this.oPage.number = this.oPage.totalPages - 1;
+            this.getPage();
+          }
         }
         this.getTotalCarrito4User();
       });

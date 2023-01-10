@@ -45,9 +45,11 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
         this.oPage = oPage;
         this.oPage.error = null;
         this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, null, null);
-        if (this.oPage.number > this.oPage.totalPages - 1) {
-          this.oPage.number = this.oPage.totalPages - 1;
-          this.getPage();
+        if (this.oPage.totalPages > 0) {
+          if (this.oPage.number > this.oPage.totalPages - 1) {
+            this.oPage.number = this.oPage.totalPages - 1;
+            this.getPage();
+          }
         }
       }, (error: HttpErrorResponse) => {
         this.oPage.error = error;
@@ -82,6 +84,6 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
     this.oFacturaPrintService.printFactura(id_factura);
   }
 
-  
+
 
 }

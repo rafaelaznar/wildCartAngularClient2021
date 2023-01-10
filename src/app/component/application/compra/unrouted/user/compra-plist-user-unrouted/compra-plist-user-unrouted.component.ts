@@ -17,7 +17,7 @@ export class CompraPlistUserUnroutedComponent implements OnInit {
   private _id_factura: number;
 
   @Input()
-  
+
   set id_factura(value: number) {
     this._id_factura = value;
     this.getPage();
@@ -51,9 +51,11 @@ export class CompraPlistUserUnroutedComponent implements OnInit {
       .subscribe((oPage: ICompraPage) => {
         this.oPage = oPage;
         this.oPage.error = null;
-        if (this.oPage.number > this.oPage.totalPages - 1) {
-          this.oPage.number = this.oPage.totalPages - 1;
-          this.getPage();
+        if (this.oPage.totalPages > 0) {
+          if (this.oPage.number > this.oPage.totalPages - 1) {
+            this.oPage.number = this.oPage.totalPages - 1;
+            this.getPage();
+          }
         }
       }, (error: HttpErrorResponse) => {
         this.oPage.error = error;
