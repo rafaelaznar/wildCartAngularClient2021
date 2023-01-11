@@ -179,7 +179,7 @@ export class MetadataService {
 
       case str == "cart products": return "productos en carrito";
 
-
+      // GOTOS
       case str == "go to carrito list": return "Ir al listado de productos en carritos";
       case str == "go to carrito view": return "Ir a la vista de producto en carrito";
       case str == "go to carrito edition": return "Ir a la edición de producto en carrito";
@@ -222,6 +222,12 @@ export class MetadataService {
       case str == "go to tipousuario creation": return "Ir a la creación de tipo de usuario";
       case str == "go to tipousuario removal": return "Ir al borrado de tipo de usuario";
 
+      case str == "go to comment list": return "Ir al listado de comentarios";
+      case str == "go to comment view": return "Ir a la vista de comentario";
+      case str == "go to comment edition": return "Ir a la edición de comentario";
+      case str == "go to comment creation": return "Ir a la creación de comentario";
+      case str == "go to comment removal": return "Ir al borrado de comentarios";
+      // Validation de borrados
       case str == 'are you sure you want to remove the carrito': return "¿Está vd. seguro de que quiere borrar el producto en carrito?";
       case str == 'are you sure you want to remove the compra': return "¿Está vd. seguro de que quiere borrar la compra?";
       case str == 'are you sure you want to remove the factura': return "¿Está vd. seguro de que quiere borrar la factura?";
@@ -229,6 +235,7 @@ export class MetadataService {
       case str == 'are you sure you want to remove the usuario': return "¿Está vd. seguro de que quiere borrar el usuario?";
       case str == 'are you sure you want to remove the tipoproducto': return "¿Está vd. seguro de que quiere borrar el tipo de producto?";
       case str == 'are you sure you want to remove the tipousuario': return "¿Está vd. seguro de que quiere borrar el tipo de usuario?";
+      case str == 'are you sure you want to remove the comment': return "¿Está vd. seguro de que quiere borrar el comentario?";
 
       case str == 'are you sure you want to end session': return "¿Está vd. seguro de que quiere salir de la sesión?";
       case str == 'end session': return "Salir de la sesión";

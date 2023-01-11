@@ -156,6 +156,8 @@ import { RemoveconfirmationUnroutedComponent } from './component/shared/unrouted
 import { CommentPlistAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-plist-admin-unrouted/comment-plist-admin-unrouted.component';
 import { CommentPlistheaderAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-plistheader-admin-unrouted/comment-plistheader-admin-unrouted.component';
 import { CommentPlistRowAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-plistrow-admin-unrouted/comment-plistrow-admin-unrouted.component';
+import { CommentViewAdminRoutedComponent } from './component/comment/routed/admin/comment-view-admin-routed/comment-view-admin-routed.component';
+import { CommentDetailAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-detail-admin-unrouted/comment-detail-admin-unrouted.component';
 
 //
 @NgModule({
@@ -238,6 +240,7 @@ import { CommentPlistRowAdminUnroutedComponent } from './component/comment/unrou
     CarritoPlistUserRoutedComponent,
     //
     CommentPlistAdminRoutedComponent,
+    CommentViewAdminRoutedComponent,
     //
     //
     // ----------------->   unrouted components
@@ -312,7 +315,8 @@ import { CommentPlistRowAdminUnroutedComponent } from './component/comment/unrou
     //
     CommentPlistAdminUnroutedComponent,
     CommentPlistheaderAdminUnroutedComponent,
-    CommentPlistRowAdminUnroutedComponent
+    CommentPlistRowAdminUnroutedComponent,
+    CommentDetailAdminUnroutedComponent
   ],
   imports: [
     HttpClientModule,

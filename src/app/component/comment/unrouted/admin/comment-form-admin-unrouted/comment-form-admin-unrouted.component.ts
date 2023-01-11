@@ -1,21 +1,25 @@
-import { IProducto, IProducto2Send } from '../../../../../../model/producto-interfaces';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { ProductoService } from 'src/app/service/producto.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { FileService } from 'src/app/service/file.service';
-import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
-import { TipoproductoService } from 'src/app/service/tipoproducto.service';
+
+
 import { Constants } from 'src/app/model/constants';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IComment, IComment2Send } from 'src/app/model/comment-interfaces';
+import { UsuarioService } from 'src/app/service/usuario.service';
+import { CommentService } from 'src/app/service/comment.service';
+import { ProductoService } from 'src/app/service/producto.service';
+import { IProducto } from 'src/app/model/producto-interfaces';
 
 @Component({
-  selector: 'app-producto-form-admin-unrouted',
-  templateUrl: './producto-form-admin-unrouted.component.html',
-  styleUrls: ['./producto-form-admin-unrouted.component.css']
+  selector: 'app-comment-form-admin-unrouted',
+  templateUrl: './comment-form-admin-unrouted.component.html',
+  styleUrls: ['./comment-form-admin-unrouted.component.css']
 })
 
-export class ProductoFormAdminUnroutedComponent implements OnInit {
+export class CommentFormAdminUnroutedComponent implements OnInit {
 
   @Input() strOperation: string = null;
   @Input() id: number = null;
@@ -23,8 +27,8 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product
-  oProducto2Send: IProducto2Send = null;
-  oProducto2Show: IProducto = null;
+  oComment2Send: IComment2Send = null;
+  oComment2Show: IComment = null;
   oForm: UntypedFormGroup = null;
   status: HttpErrorResponse = null;
 
@@ -39,10 +43,11 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oFormBuilder: UntypedFormBuilder,
-    private oProductoService: ProductoService,
+    private oCommentService: CommentService,
     private oFileService: FileService,
     public oMetadataService: MetadataService,
-    public oTipoproductoService: TipoproductoService
+    public oUsuarioService: UsuarioService,
+    public oProductoService: ProductoService,
   ) { }
 
   ngOnInit(): void {
@@ -56,23 +61,19 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
         precio: [''],
         imagen: [''],
         descuento: [''],
-        id_tipoproducto: ['', Validators.required],
+        id_tipocomment: ['', Validators.required],
       });
     }
   }
 
   get = (): void => {
-    this.oProductoService.getOne(this.id).subscribe((oData: IProducto) => {
-      this.oProducto2Show = oData;
+    this.oCommentService.getOne(this.id).subscribe((oData: IComment) => {
+      this.oComment2Show = oData;
       this.oForm = this.oFormBuilder.group({
-        id: [this.oProducto2Show.id],
-        codigo: [this.oProducto2Show.codigo, [Validators.required],],
-        nombre: [this.oProducto2Show.nombre, [Validators.required, Validators.minLength(5)],],
-        existencias: this.oProducto2Show.existencias,
-        precio: this.oProducto2Show.precio,
-        imagen: this.oProducto2Show.imagen,
-        descuento: this.oProducto2Show.descuento,
-        id_tipoproducto: [this.oProducto2Show.tipoproducto.id, [Validators.required],],
+        id: [this.oComment2Show.id],
+        codigo: [this.oComment2Show.comment, [Validators.required],],
+        id_usuario: [this.oComment2Show.usuario.id, [Validators.required],],
+        id_producto: [this.oComment2Show.producto.id, [Validators.required],],
       });
     }, (error: HttpErrorResponse) => {
       this.status = error;
@@ -116,20 +117,16 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   save(img: number): void {
     if (this.oForm) {
       if (this.oForm.valid) {
-        this.oProducto2Send = {
-          id: this.id,
-          codigo: this.oForm.value.codigo,
-          nombre: this.oForm.value.nombre,
-          existencias: this.oForm.value.existencias,
-          precio: this.oForm.value.precio,
-          imagen: img,
-          descuento: this.oForm.value.descuento,
-          tipoproducto: { id: this.oForm.value.id_tipoproducto },
+        this.oComment2Send = {
+          id: this.oForm.value.id,
+          comment: this.oForm.value.comment,
+          usuario: { id: this.oForm.value.id_usuario },
+          producto: { id: this.oForm.value.id_producto },
         }
         if (this.strOperation == "new") {
-          this.oProductoService
-            .newOne(this.oProducto2Send)
-            .subscribe((id: number) => {
+          this.oCommentService
+            .newOne(this.oComment2Send)
+            .subscribe((id) => {
               this.status = null;
               this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
             }, (error: HttpErrorResponse) => {
@@ -137,8 +134,8 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
               this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
             });
         } else {
-          this.oProductoService
-            .updateOne(this.oProducto2Send)
+          this.oCommentService
+            .updateOne(this.oComment2Send)
             .subscribe((id: number) => {
               this.status = null;
               this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
@@ -154,20 +151,20 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   //ajenas
 
   onFindSelection($event: number) {
-    this.oForm.controls['id_tipoproducto'].setValue($event);
-    this.oForm.controls['id_tipoproducto'].markAsDirty();
-    this.oTipoproductoService
-      .getOne(this.oForm.controls['id_tipoproducto'].value)
-      .subscribe((oTipoproducto: ITipoproducto) => {
+    this.oForm.controls['id_tipocomment'].setValue($event);
+    this.oForm.controls['id_tipocomment'].markAsDirty();
+    this.oProductoService
+      .getOne(this.oForm.controls['id_tipocomment'].value)
+      .subscribe((oProducto: IProducto) => {
         if (this.strOperation == "edit") {
-          this.oProducto2Show.tipoproducto = oTipoproducto;
+          this.oComment2Show.producto = oProducto;
         } else {
-          this.oProducto2Show = {} as IProducto;
-          this.oProducto2Show.tipoproducto = {} as ITipoproducto;
-          this.oProducto2Show.tipoproducto = oTipoproducto;
+          this.oComment2Show = {} as IComment;
+          this.oComment2Show.producto = {} as IProducto;
+          this.oComment2Show.producto = oProducto;
         }
       }, err => {
-        this.oProducto2Show.tipoproducto.nombre = "ERROR";
+        this.oComment2Show.producto.nombre = "ERROR";
         this.oForm.controls['id_tipousuario'].setErrors({ 'incorrect': true });
       });
 
