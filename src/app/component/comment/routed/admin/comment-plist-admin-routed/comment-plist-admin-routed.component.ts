@@ -15,7 +15,8 @@ export class CommentPlistAdminRoutedComponent extends CheckSession implements On
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.comment;
   strOperation: string = Constants.OPERATIONS.plist
-  id_tipoproducto: number = null;
+  id_usuario: number = null;
+  id_producto: number = null;
 
   constructor(
     protected oRouter: Router,
@@ -23,7 +24,8 @@ export class CommentPlistAdminRoutedComponent extends CheckSession implements On
     public oMetadataService: MetadataService
   ) {
     super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
-    this.id_tipoproducto = this.oActivatedRoute.snapshot.params.id_tipoproducto;
+    this.id_producto = this.oActivatedRoute.snapshot.params.id_producto;
+    this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
     this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 

@@ -10,10 +10,10 @@ export interface IComment extends IEntity {
     producto: IProducto;
 }
 
-export interface ICommentPage extends IPage<IUsuario> {    
+export interface ICommentPage extends IPage<IComment> {    
 }
 
-export interface IUsuario2Send extends IEntity2Send {    
+export interface IComment2Send extends IEntity2Send {    
     comment: string;
     usuario: IEntity2Send;
     producto: IEntity2Send

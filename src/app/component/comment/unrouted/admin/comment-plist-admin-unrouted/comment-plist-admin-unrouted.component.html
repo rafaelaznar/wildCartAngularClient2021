@@ -29,7 +29,7 @@
   <div class="col-md table-responsive-md">
     <table class="table table-bordered table-striped table-hover">
       <thead>
-        <tr class="text-center align-middle" app-producto-plistheader-admin-unrouted (sort)="onSetOrder($event)"
+        <tr class="text-center align-middle" app-comment-plistheader-admin-unrouted (sort)="onSetOrder($event)"
           [mode]="true">
           <div action_column_title>
             <i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getName('actions')}}
@@ -37,10 +37,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let oProductoRow of oPage.content" class="align-middle" app-producto-plistrow-admin-unrouted
-          [oProducto]="oProductoRow" [mode]="true">
+        <tr *ngFor="let oRow of oPage.content" class="align-middle" app-comment-plistrow-admin-unrouted
+          [oComment]="oRow" [mode]="true">
           <div action_column>
-            <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oProductoRow.id"
+            <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oRow.id"
               [strEntity]="strEntity" [strProfile]="strProfile">
             </div>
           </div>

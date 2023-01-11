@@ -2,36 +2,27 @@
   <tbody>
     <tr>
       <th><i [ngClass]="oMetadataService.getIcon('id')"></i>{{oMetadataService.getName('id')}}</th>
-      <td>{{oProducto?.id}}</td>
+      <td>{{oComment?.id}}</td>
     </tr>
     <tr>
-      <th>Codigo</th>
-      <td>{{oProducto?.codigo}}</td>
+      <th>Comentario</th>
+      <td>{{oComment?.comment}}</td>
     </tr>
     <tr>
       <th>{{oMetadataService.getName('nombre')}}</th>
-      <td>{{oProducto?.nombre}}</td>
+      <td>{{oComment?.usuario.login}}</td>
     </tr>
     <tr>
-      <th>Existencias</th>
-      <td>{{oProducto?.existencias}}</td>
+      <th>{{oMetadataService.getName('product')}}</th>
+      <td>{{oComment?.producto.codigo + ' ' + oComment?.producto.nombre}}</td>
     </tr>
     <tr>
-      <th>{{oMetadataService.getName('precio')}}</th>
-      <td>{{oProducto?.precio}}</td>
-    </tr>
+      <th>{{oMetadataService.getName('creation')}}</th>
+      <td>{{oComment?.creation}}</td>
+    </tr>    
     <tr>
-      <th>{{oMetadataService.getName('image')}}</th>
-      <td>({{oProducto?.imagen}}) <img [src]="'http://localhost:8082/file/' + oProducto?.imagen" style="height:100px"
-          class="my-3" /></td>
-    </tr>
-    <tr>
-      <th>{{oMetadataService.getName('discount')}}</th>
-      <td>{{oProducto?.descuento}}</td>
-    </tr>
-    <tr>
-      <th>{{oMetadataService.getName('product type')}}</th>
-      <td>{{oProducto?.tipoproducto.nombre}}</td>
-    </tr>
+      <th>{{oMetadataService.getName('lastedition')}}</th>
+      <td>{{oComment?.lastedition}}</td>
+    </tr>    
   </tbody>
 </table>

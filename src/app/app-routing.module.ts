@@ -38,6 +38,7 @@ import { FacturaNewAdminRoutedComponent } from './component/application/factura/
 import { FacturaPlistAdminRoutedComponent } from './component/application/factura/routed/admin/factura-plist-admin-routed/factura-plist-admin-routed.component';
 import { FacturaRemoveAdminRoutedComponent } from './component/application/factura/routed/admin/factura-remove-admin-routed/factura-remove-admin-routed.component';
 import { FacturaViewAdminRoutedComponent } from './component/application/factura/routed/admin/factura-view-admin-routed/factura-view-admin-routed.component';
+import { FacturaPlistUserRoutedComponent } from './component/application/factura/routed/user/factura-plist-user-routed/factura-plist-user-routed.component';
 //
 import { CompraPlistAdminRoutedComponent } from './component/application/compra/routed/admin/compra-plist-admin-routed/compra-plist-admin-routed.component';
 import { CompraRemoveAdminRoutedComponent } from './component/application/compra/routed/admin/compra-remove-admin-routed/compra-remove-admin-routed.component';
@@ -51,7 +52,8 @@ import { CarritoPlistAdminRoutedComponent } from './component/application/carrit
 import { CarritoEditAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-edit-admin-routed/carrito-edit-admin-routed.component';
 import { CarritoNewAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-new-admin-routed/carrito-new-admin-routed.component';
 import { CarritoPlistUserRoutedComponent } from './component/application/carrito/routed/user/carrito-plist-user-routed/carrito-plist-user-routed.component';
-import { FacturaPlistUserRoutedComponent } from './component/application/factura/routed/user/factura-plist-user-routed/factura-plist-user-routed.component';
+//
+import { CommentPlistAdminRoutedComponent } from './component/comment/routed/admin/comment-plist-admin-routed/comment-plist-admin-routed.component';
 //
 //
 const routes: Routes = [
@@ -114,7 +116,11 @@ const routes: Routes = [
   { path: 'administrador/carrito/new', component: CarritoNewAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/carrito/view/:id', component: CarritoViewAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/carrito/edit/:id', component: CarritoEditAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/carrito/remove/:id', component: CarritoRemoveAdminRoutedComponent, resolve: { message: SessionResolver } }
+  { path: 'administrador/carrito/remove/:id', component: CarritoRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
+  //
+  { path: 'administrador/comment/plist', component: CommentPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/comment/plist/producto/:id_producto', component: CommentPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/comment/plist/usuario/:id_usuario', component: CommentPlistAdminRoutedComponent, resolve: { message: SessionResolver } }
 ];
 
 @NgModule({

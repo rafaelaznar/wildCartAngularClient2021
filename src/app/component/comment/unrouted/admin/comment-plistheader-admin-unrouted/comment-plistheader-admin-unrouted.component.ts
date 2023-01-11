@@ -4,12 +4,12 @@ import { IOrder } from 'src/app/model/model-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
-  selector: '[app-producto-plistheader-admin-unrouted]',
-  templateUrl: './producto-plistheader-admin-unrouted.component.html',
-  styleUrls: ['./producto-plistheader-admin-unrouted.component.css']
+  selector: '[app-comment-plistheader-admin-unrouted]',
+  templateUrl: './comment-plistheader-admin-unrouted.component.html',
+  styleUrls: ['./comment-plistheader-admin-unrouted.component.css']
 })
 
-export class ProductoPlistheaderAdminUnroutedComponent implements OnInit {
+export class CommentPlistheaderAdminUnroutedComponent implements OnInit {
 
   @Input() strSortField: string = "";
   @Input() strSortDirection: string = "";
@@ -17,7 +17,7 @@ export class ProductoPlistheaderAdminUnroutedComponent implements OnInit {
   @Output() sort = new EventEmitter<IOrder>();
 
   strProfile: string = Constants.PROFILES.admin;
-  strEntity: string = Constants.ENTITIES.product;
+  strEntity: string = Constants.ENTITIES.comment;
   strOperation: string = Constants.OPERATIONS.plist;
 
   constructor(

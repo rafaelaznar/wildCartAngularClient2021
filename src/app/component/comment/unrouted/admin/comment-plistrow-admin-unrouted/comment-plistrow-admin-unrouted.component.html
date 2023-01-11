@@ -1,0 +1,21 @@
+<td class="text-end">{{oComment.id}}</td>
+<td>{{oComment.comment | trim:100}}</td>
+<td style="text-align: center;">{{oComment.creation}}</td>
+<td style="text-align: center;">{{oComment.lastedition}}</td>
+<td>
+  <button class="btn btn-light btn-sm" *ngIf="mode"
+    [routerLink]="['/administrador',strEntity,strOperation,'usuario',oComment.usuario.id]">
+    <i [ngClass]="oMetadataService.getIcon('usuario')"></i> ({{oComment.usuario.id}})
+    {{oComment.usuario.nombre | trim:40}}</button>
+  <span *ngIf="!mode">{{oComment.usuario.nombre | trim:40}}</span>
+</td>
+<td>
+  <button class="btn btn-light btn-sm" *ngIf="mode"
+    [routerLink]="['/administrador',strEntity,strOperation,'producto',oComment.producto.id]">
+    <i [ngClass]="oMetadataService.getIcon('usuario')"></i> ({{oComment.producto.id}})
+    {{oComment.producto.nombre | trim:40}}</button>
+  <span *ngIf="!mode">{{oComment.producto.nombre | trim:40}}</span>
+</td>
+<td class="text-center">
+  <ng-content select="[action_column]"></ng-content>
+</td>

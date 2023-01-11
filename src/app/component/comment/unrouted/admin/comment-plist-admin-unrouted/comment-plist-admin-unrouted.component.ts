@@ -1,31 +1,32 @@
-import { ProductoService } from '../../../../../../service/producto.service';
-import { IProductoPage } from 'src/app/model/producto-interfaces';
 import { Component, Input, OnInit } from '@angular/core';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/model/constants';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CommentService } from 'src/app/service/comment.service';
+import { ICommentPage } from 'src/app/model/comment-interfaces';
 
 @Component({
-  selector: 'app-producto-plist-admin-unrouted',
-  templateUrl: './producto-plist-admin-unrouted.component.html',
-  styleUrls: ['./producto-plist-admin-unrouted.component.css']
+  selector: 'app-comment-plist-admin-unrouted',
+  templateUrl: './comment-plist-admin-unrouted.component.html',
+  styleUrls: ['./comment-plist-admin-unrouted.component.css']
 })
 
-export class ProductoPlistAdminUnroutedComponent implements OnInit {
+export class CommentPlistAdminUnroutedComponent implements OnInit {
 
-  @Input() id_tipoproducto: number = null;
+  @Input() id_usuario: number = null;
+  @Input() id_producto: number = null;
 
   strProfile: string = Constants.PROFILES.admin;
-  strEntity: string = Constants.ENTITIES.product
+  strEntity: string = Constants.ENTITIES.comment
   strOperation: string = Constants.OPERATIONS.plist
-  oPage: IProductoPage;
+  oPage: ICommentPage;
 
   constructor(
-    private oProductoService: ProductoService,
+    private oCommentService: CommentService,
     public oMetadataService: MetadataService
   ) {
-    this.oPage = {} as IProductoPage;
+    this.oPage = {} as ICommentPage;
   }
 
   ngOnInit(): void {
@@ -33,11 +34,11 @@ export class ProductoPlistAdminUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oProductoService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_tipoproducto)
-      .subscribe((oPage: IProductoPage) => {
+    this.oCommentService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_usuario, this.id_producto)
+      .subscribe((oPage: ICommentPage) => {
         this.oPage = oPage;
         this.oPage.error = null;
-        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipoproducto', this.id_tipoproducto, null, null);
+        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
         if (this.oPage.number > this.oPage.totalPages - 1) {
           this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();

@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IComment } from 'src/app/model/comment-interfaces';
-import { IProducto } from 'src/app/model/producto-interfaces';
+import { CommentService } from 'src/app/service/comment.service';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { ProductoService } from 'src/app/service/producto.service';
 
 @Component({
   selector: 'app-comment-detail-admin-unrouted',
@@ -17,7 +16,7 @@ export class CommentDetailAdminUnroutedComponent implements OnInit {
   oComment: IComment;
   
   constructor(
-    private oProductoService: ProductoService,
+    private oCommentService: CommentService,
     public oMetadataService: MetadataService
   ) { }
 
@@ -28,7 +27,7 @@ export class CommentDetailAdminUnroutedComponent implements OnInit {
   getOne = () => {
     this.oCommentService
       .getOne(this.id)
-      .subscribe((oData: IProducto) => {
+      .subscribe((oData: IComment) => {
         this.oComment = oData;
       });
   };

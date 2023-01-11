@@ -89,7 +89,14 @@
                         </a>
                     </small>
                 </li>
-
+                <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/administrador/comment/plist'"
+                            [routerLink]="['/administrador','comment','plist']"><i
+                                [ngClass]="oMetadataService.getIcon('comment') + ' fa-2x'"></i>
+                        </a>
+                    </small>
+                </li>
             </ul>
 
             <span class="navbar-text mx-1" *ngIf="oUsuarioSession">

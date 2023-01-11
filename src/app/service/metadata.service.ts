@@ -113,6 +113,9 @@ export class MetadataService {
       case strIcon == "porcentaje": return "fas fa-percent"; //percent
       case strIcon == "activado": return "fas fa-flag-checkered";
       case strIcon == "total": return "fas fa-euro-sign";
+      case strIcon == "comment": return "fas fa-comment";
+      case strIcon == "creation": return "fas fa-clock";
+      case strIcon == "lastedition": return "fas fa-clock";
       //
       default: return 'fas fa-question';
     }
@@ -143,6 +146,8 @@ export class MetadataService {
       case str == "products list": return "Listado de productos";
       case str == "product types list": return "Listado de tipos de producto";
       case str == "user types list": return "Listado de tipos de usuario";
+      case str == "comments list": return "Listado de comentarios de los productos";
+
 
 
       case str == "id": return "Id";
@@ -344,6 +349,13 @@ export class MetadataService {
       case str == "carritos": return "Carritos";
       case str == "thecarrito": return "El carrito";
       case str == "thecarritos": return "Los carritos";
+      //
+      case str == "comment": return "Comentario";
+      case str == "acomment": return "Un Comentario";
+      case str == "comments": return "Comentarios";
+      case str == "thecomment": return "El comentario";
+      case str == "thecomments": return "Los comentarios";
+
       //operaciones
       case str == "view": return "Ver";
       case str == "viewof": return "Vista";
@@ -460,6 +472,10 @@ export class MetadataService {
       case str == "iva": return "IVA";
       case str == "vatIncluded": return "con IVA";
       case str == "pagado": return "Pagado";
+      // campos comentario
+      case str == "comment": return "Commentario";
+      case str == "creation": return "Creación";
+      case str == "lastedition": return "Última modificación";
       //      
       // sistema      
       case str == "id": return "ID";

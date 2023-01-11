@@ -149,9 +149,14 @@ import { CarritoPlistUserRoutedComponent } from './component/application/carrito
 import { CarritoPlistUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-user-unrouted/carrito-plist-user-unrouted.component';
 import { CarritoPlistheaderUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistheader-user-unrouted/carrito-plistheader-user-unrouted.component';
 import { CarritoPlistrowUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistrow-user-unrouted/carrito-plistrow-user-unrouted.component';
+import { CommentPlistAdminRoutedComponent } from './component/comment/routed/admin/comment-plist-admin-routed/comment-plist-admin-routed.component';
 import { FacturaSelectionAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-selection-admin-unrouted/factura-selection-admin-unrouted.component';
 import { FooterbuttonsUnroutedComponent } from './component/shared/unrouted/footerbuttons-unrouted/footerbuttons-unrouted.component';
 import { RemoveconfirmationUnroutedComponent } from './component/shared/unrouted/removeconfirmation-unrouted/removeconfirmation-unrouted.component';
+import { CommentPlistAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-plist-admin-unrouted/comment-plist-admin-unrouted.component';
+import { CommentPlistheaderAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-plistheader-admin-unrouted/comment-plistheader-admin-unrouted.component';
+import { CommentPlistRowAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-plistrow-admin-unrouted/comment-plistrow-admin-unrouted.component';
+
 //
 @NgModule({
   declarations: [
@@ -232,6 +237,8 @@ import { RemoveconfirmationUnroutedComponent } from './component/shared/unrouted
     CarritoEditAdminRoutedComponent,
     CarritoPlistUserRoutedComponent,
     //
+    CommentPlistAdminRoutedComponent,
+    //
     //
     // ----------------->   unrouted components
     //
@@ -301,7 +308,11 @@ import { RemoveconfirmationUnroutedComponent } from './component/shared/unrouted
     CarritoFormAdminUnroutedComponent,
     CarritoPlistUserUnroutedComponent,
     CarritoPlistheaderUserUnroutedComponent,
-    CarritoPlistrowUserUnroutedComponent
+    CarritoPlistrowUserUnroutedComponent,
+    //
+    CommentPlistAdminUnroutedComponent,
+    CommentPlistheaderAdminUnroutedComponent,
+    CommentPlistRowAdminUnroutedComponent
   ],
   imports: [
     HttpClientModule,
