@@ -26,7 +26,9 @@ export class CommentPlistAdminRoutedComponent extends CheckSession implements On
     super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
     this.id_producto = this.oActivatedRoute.snapshot.params.id_producto;
     this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
-    this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
+    this.strProfile = this.oActivatedRoute.snapshot.url[0].path;
+    this.strEntity = this.oActivatedRoute.snapshot.url[1].path;
+    this.strOperation = this.oActivatedRoute.snapshot.url[2].path;
   }
 
   ngOnInit(): void { }
