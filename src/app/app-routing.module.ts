@@ -55,6 +55,7 @@ import { CarritoPlistUserRoutedComponent } from './component/application/carrito
 //
 import { CommentPlistAdminRoutedComponent } from './component/comment/routed/admin/comment-plist-admin-routed/comment-plist-admin-routed.component';
 import { CommentViewAdminRoutedComponent } from './component/comment/routed/admin/comment-view-admin-routed/comment-view-admin-routed.component';
+import { CommentRemoveAdminRoutedComponent } from './component/comment/routed/admin/comment-remove-admin-routed/comment-remove-admin-routed.component';
 //
 //
 const routes: Routes = [
@@ -122,7 +123,8 @@ const routes: Routes = [
   { path: 'administrador/comment/plist', component: CommentPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/comment/plist/producto/:id_producto', component: CommentPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/comment/plist/usuario/:id_usuario', component: CommentPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/comment/view/:id', component: CommentViewAdminRoutedComponent, resolve: { message: SessionResolver } }
+  { path: 'administrador/comment/view/:id', component: CommentViewAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/comment/remove/:id', component: CommentRemoveAdminRoutedComponent, resolve: { message: SessionResolver } }
 ];
 
 @NgModule({

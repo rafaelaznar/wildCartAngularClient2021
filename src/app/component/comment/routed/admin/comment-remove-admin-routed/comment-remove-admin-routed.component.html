@@ -3,7 +3,7 @@
     [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(this.strEntity)">
   </app-header>
   <div class="row justify-content-center">
-    <app-producto-detail-admin-unrouted [id]="id"></app-producto-detail-admin-unrouted>
+    <app-comment-detail-admin-unrouted [id]="id"></app-comment-detail-admin-unrouted>
     <app-removeconfirmation-unrouted [strEntity]="strEntity" (doRemove)="removeOne()">
     </app-removeconfirmation-unrouted>
     <app-footerbuttons-unrouted [strEntity]="strEntity"></app-footerbuttons-unrouted>
