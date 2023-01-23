@@ -131,6 +131,7 @@ export class MetadataService {
       case str == "product edition": return "Edición de producto";
       case str == "product type edition": return "Edición de tipo de producto";
       case str == "user type edition": return "Edición de tipo de usuario";
+      case str == "comment edition": return "Edición de comentario";
       //--
 
 
