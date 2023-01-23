@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-comment-view-admin-routed',
@@ -20,9 +21,10 @@ export class CommentViewAdminRoutedComponent extends CheckSession implements OnI
   constructor(
     private oActivatedRoute: ActivatedRoute,
     protected oRouter: Router,
-    public oMetadataService: MetadataService
+    public oMetadataService: MetadataService,
+    protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 

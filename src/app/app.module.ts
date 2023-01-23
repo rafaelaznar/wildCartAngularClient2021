@@ -51,6 +51,8 @@ import { SearchUnroutedComponent } from './component/shared/unrouted/search-unro
 import { PaginationUnroutedComponent } from './component/shared/unrouted/pagination-unrouted/pagination-unrouted.component';
 import { PlistrowbuttonsUnroutedComponent } from './component/shared/unrouted/plistrowbuttons-unrouted/plistrowbuttons-unrouted.component';
 import { ViewbuttonsUnroutedComponent } from './component/shared/unrouted/viewbuttons-unrouted/viewbuttons-unrouted.component';
+import { FooterbuttonsUnroutedComponent } from './component/shared/unrouted/footerbuttons-unrouted/footerbuttons-unrouted.component';
+import { RemoveconfirmationUnroutedComponent } from './component/shared/unrouted/removeconfirmation-unrouted/removeconfirmation-unrouted.component';
 // usuario components
 import { UsuarioViewUserRoutedComponent } from './component/application/usuario/routed/usuario/usuario-view-user-routed/usuario-view-user-routed.component';
 import { UsuarioPlistAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-plist-admin-routed/usuario-plist-admin-routed.component';
@@ -120,6 +122,7 @@ import { FacturaPlistUserUnroutedComponent } from './component/application/factu
 import { FacturaPlistheaderUserUnroutedComponent } from './component/application/factura/unrouted/user/factura-plistheader-user-unrouted/factura-plistheader-user-unrouted.component';
 import { FacturaPrintService } from './service/factura.print.service';
 import { FacturaDetailUserUnroutedComponent } from './component/application/factura/unrouted/user/factura-detail-user-unrouted/factura-detail-user-unrouted.component';
+import { FacturaSelectionAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-selection-admin-unrouted/factura-selection-admin-unrouted.component';
 // compra components
 import { CompraPlistAdminRoutedComponent } from './component/application/compra/routed/admin/compra-plist-admin-routed/compra-plist-admin-routed.component';
 import { CompraNewAdminRoutedComponent } from './component/application/compra/routed/admin/compra-new-admin-routed/compra-new-admin-routed.component';
@@ -149,15 +152,18 @@ import { CarritoPlistUserRoutedComponent } from './component/application/carrito
 import { CarritoPlistUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-user-unrouted/carrito-plist-user-unrouted.component';
 import { CarritoPlistheaderUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistheader-user-unrouted/carrito-plistheader-user-unrouted.component';
 import { CarritoPlistrowUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistrow-user-unrouted/carrito-plistrow-user-unrouted.component';
+//comment componentes
 import { CommentPlistAdminRoutedComponent } from './component/comment/routed/admin/comment-plist-admin-routed/comment-plist-admin-routed.component';
-import { FacturaSelectionAdminUnroutedComponent } from './component/application/factura/unrouted/admin/factura-selection-admin-unrouted/factura-selection-admin-unrouted.component';
-import { FooterbuttonsUnroutedComponent } from './component/shared/unrouted/footerbuttons-unrouted/footerbuttons-unrouted.component';
-import { RemoveconfirmationUnroutedComponent } from './component/shared/unrouted/removeconfirmation-unrouted/removeconfirmation-unrouted.component';
 import { CommentPlistAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-plist-admin-unrouted/comment-plist-admin-unrouted.component';
 import { CommentPlistheaderAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-plistheader-admin-unrouted/comment-plistheader-admin-unrouted.component';
 import { CommentPlistRowAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-plistrow-admin-unrouted/comment-plistrow-admin-unrouted.component';
 import { CommentViewAdminRoutedComponent } from './component/comment/routed/admin/comment-view-admin-routed/comment-view-admin-routed.component';
 import { CommentDetailAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-detail-admin-unrouted/comment-detail-admin-unrouted.component';
+import { CommentRemoveAdminRoutedComponent } from './component/comment/routed/admin/comment-remove-admin-routed/comment-remove-admin-routed.component';
+import { CommentEditAdminRoutedComponent } from './component/comment/routed/admin/comment-edit-admin-routed/comment-edit-admin-routed.component';
+import { CommentNewAdminRoutedComponent } from './component/comment/routed/admin/comment-new-admin-routed/comment-new-admin-routed.component';
+import { CommentFormAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-form-admin-unrouted/comment-form-admin-unrouted.component';
+//
 
 //
 @NgModule({
@@ -238,9 +244,14 @@ import { CommentDetailAdminUnroutedComponent } from './component/comment/unroute
     CarritoNewAdminRoutedComponent,
     CarritoEditAdminRoutedComponent,
     CarritoPlistUserRoutedComponent,
-    //
+    // Comment routed components
+
     CommentPlistAdminRoutedComponent,
     CommentViewAdminRoutedComponent,
+    CommentNewAdminRoutedComponent,
+    CommentEditAdminRoutedComponent,
+    CommentRemoveAdminRoutedComponent,
+
     //
     //
     // ----------------->   unrouted components
@@ -290,8 +301,8 @@ import { CommentDetailAdminUnroutedComponent } from './component/comment/unroute
     FacturaSelectionAdminUnroutedComponent,
     FacturaPlistUserUnroutedComponent,
     FacturaPlistrowUserUnroutedComponent,
-    FacturaPlistheaderUserUnroutedComponent,  
-    FacturaDetailUserUnroutedComponent,  
+    FacturaPlistheaderUserUnroutedComponent,
+    FacturaDetailUserUnroutedComponent,
     //
     // Compra unrouted components
     CompraPlistrowAdminUnroutedComponent,
@@ -316,7 +327,8 @@ import { CommentDetailAdminUnroutedComponent } from './component/comment/unroute
     CommentPlistAdminUnroutedComponent,
     CommentPlistheaderAdminUnroutedComponent,
     CommentPlistRowAdminUnroutedComponent,
-    CommentDetailAdminUnroutedComponent
+    CommentDetailAdminUnroutedComponent,
+    CommentFormAdminUnroutedComponent
   ],
   imports: [
     HttpClientModule,

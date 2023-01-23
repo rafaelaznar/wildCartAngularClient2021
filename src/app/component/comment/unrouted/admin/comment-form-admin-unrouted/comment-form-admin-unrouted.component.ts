@@ -1,10 +1,7 @@
-
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { FileService } from 'src/app/service/file.service';
-
-
 import { Constants } from 'src/app/model/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IComment, IComment2Send } from 'src/app/model/comment-interfaces';
@@ -12,6 +9,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { CommentService } from 'src/app/service/comment.service';
 import { ProductoService } from 'src/app/service/producto.service';
 import { IProducto } from 'src/app/model/producto-interfaces';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 @Component({
   selector: 'app-comment-form-admin-unrouted',
@@ -26,16 +24,12 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
   @Output() msg = new EventEmitter<any>();
 
   strProfile: string = Constants.PROFILES.admin;
-  strEntity: string = Constants.ENTITIES.product
+  strEntity: string = Constants.ENTITIES.comment
   oComment2Send: IComment2Send = null;
   oComment2Show: IComment = null;
   oForm: UntypedFormGroup = null;
   status: HttpErrorResponse = null;
 
-  selectedFiles?: FileList;
-  selectedFile: string;
-  imageSrc: string = null;
-  file2Send: File = null;
 
   get f() {
     return this.oForm.controls;
@@ -55,13 +49,11 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
-        codigo: ['', [Validators.required]],
-        nombre: ['', Validators.required],
-        existencias: [''],
-        precio: [''],
-        imagen: [''],
-        descuento: [''],
-        id_tipocomment: ['', Validators.required],
+        comment: ['', [Validators.required]],
+        creation: ['', [Validators.required]],
+        lastedition: ['', []],
+        id_usuario: ['', Validators.required],
+        id_producto: ['', Validators.required]
       });
     }
   }
@@ -71,7 +63,9 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
       this.oComment2Show = oData;
       this.oForm = this.oFormBuilder.group({
         id: [this.oComment2Show.id],
-        codigo: [this.oComment2Show.comment, [Validators.required],],
+        comment: [this.oComment2Show.comment, [Validators.required],],
+        creation: [this.oComment2Show.creation, [Validators.required]],
+        lastedition: [this.oComment2Show.lastedition, []],
         id_usuario: [this.oComment2Show.usuario.id, [Validators.required],],
         id_producto: [this.oComment2Show.producto.id, [Validators.required],],
       });
@@ -81,40 +75,29 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
     })
   };
 
-  processFile($event: Event) {
-    const reader = new FileReader();
-    if ((<HTMLInputElement>$event.target).files && (<HTMLInputElement>$event.target).files.length) {
-      this.selectedFiles = (<HTMLInputElement>$event.target).files;
-      if (this.selectedFiles) {
-        this.file2Send = this.selectedFiles.item(0);
-        this.selectedFile = this.file2Send.name;
-        if (this.file2Send) {
-          reader.readAsDataURL(this.file2Send);
-          reader.onload = () => {
-            this.imageSrc = reader.result as string;
-            this.oForm.controls['imagen'].markAsDirty();
-          };
-        }
-      }
-    }
-  }
+
 
   onSubmit(): void {
-    if (this.imageSrc) {
-      this.oFileService.uploadImage(this.file2Send).subscribe(
-        (serverResponse: number) => {
-          this.save(serverResponse);
-        },
-        (error: HttpErrorResponse) => {
-          this.status = error;
-          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        })
-    } else {
-      this.save(this.oForm.value.imagen);
+    if (this.oForm) {
+      if (this.oForm.valid) {
+        this.oComment2Send = {
+          id: this.oForm.value.id,
+          comment: this.oForm.value.comment,
+          usuario: {
+            id: this.oForm.value.id_usuario
+          },
+          producto: {
+            id: this.oForm.value.id_producto
+          }
+
+        };
+        this.save();
+      }
     }
+    this.save();
   }
 
-  save(img: number): void {
+  save(): void {
     if (this.oForm) {
       if (this.oForm.valid) {
         this.oComment2Send = {
@@ -150,22 +133,43 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
 
   //ajenas
 
-  onFindSelection($event: number) {
-    this.oForm.controls['id_tipocomment'].setValue($event);
-    this.oForm.controls['id_tipocomment'].markAsDirty();
-    this.oProductoService
-      .getOne(this.oForm.controls['id_tipocomment'].value)
-      .subscribe((oProducto: IProducto) => {
+  onFindSelectionUsuario($event: number) {
+    this.oForm.controls['id_usuario'].setValue($event);
+    this.oForm.controls['id_usuario'].markAsDirty();
+    this.oUsuarioService
+      .getOne(this.oForm.controls['id_usuario'].value)
+      .subscribe((oUsuario: IUsuario) => {
         if (this.strOperation == "edit") {
-          this.oComment2Show.producto = oProducto;
+          this.oComment2Show.usuario = oUsuario;
         } else {
           this.oComment2Show = {} as IComment;
-          this.oComment2Show.producto = {} as IProducto;
-          this.oComment2Show.producto = oProducto;
+          this.oComment2Show.usuario = {} as IUsuario;
+          this.oComment2Show.usuario = oUsuario;
         }
       }, err => {
         this.oComment2Show.producto.nombre = "ERROR";
-        this.oForm.controls['id_tipousuario'].setErrors({ 'incorrect': true });
+        this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
+      });
+
+    return false;
+  }
+
+  onFindSelectionProducto($event: number) {
+    this.oForm.controls['id_producto'].setValue($event);
+    this.oForm.controls['id_producto'].markAsDirty();
+    this.oProductoService
+      .getOne(this.oForm.controls['id_producto'].value)
+      .subscribe((oproducto: IProducto) => {
+        if (this.strOperation == "edit") {
+          this.oComment2Show.producto = oproducto;
+        } else {
+          this.oComment2Show = {} as IComment;
+          this.oComment2Show.producto = {} as IProducto;
+          this.oComment2Show.producto = oproducto;
+        }
+      }, err => {
+        this.oComment2Show.producto.nombre = "ERROR";
+        this.oForm.controls['id_producto'].setErrors({ 'incorrect': true });
       });
 
     return false;

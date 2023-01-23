@@ -5,6 +5,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
 import { IResult } from 'src/app/model/model-interfaces';
 import { CheckSession } from 'src/app/class/check.session.class';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-usuario-edit-admin-routed',
@@ -23,9 +24,10 @@ export class UsuarioEditAdminRoutedComponent extends CheckSession implements OnI
   constructor(
     protected oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
-    public oMetadataService: MetadataService
+    public oMetadataService: MetadataService,
+    protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id;
   }
 

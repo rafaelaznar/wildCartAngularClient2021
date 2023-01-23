@@ -9,79 +9,49 @@
     </div>
 
     <div class="row mb-3">
-        <label for="codigo" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('codigo')"></i>
-            Código</label>
-        <div class="col-sm-2">
-            <input type="text" class="form-control" id="codigo" formControlName="codigo"
-                [ngClass]="{'is-valid' : f.codigo.dirty && !(f.codigo.errors?.required || f.codigo.errors?.minlength) }">
-            <div *ngIf="f.codigo.dirty && f.codigo.errors?.required" class="text-danger">
-                {{oMetadataService.getName('mandatory')}}
-            </div>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <label for="nombre" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('nombre')"></i>
-            {{oMetadataService.getName('nombre')}}</label>
+        <label for="comment" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('comment')"></i>
+            {{oMetadataService.getName('comment')}}</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="nombre" formControlName="nombre"
-                [ngClass]="{'is-valid' : f.nombre.dirty && !(f.nombre.errors?.required || f.nombre.errors?.minlength) }">
-            <div *ngIf="f.nombre.dirty && f.nombre.errors?.required" class="text-danger">
+            <input type="text" class="form-control" id="comment" formControlName="comment"
+                [ngClass]="{'is-valid' : f.comment.dirty && !(f.comment.errors?.required || f.comment.errors?.minlength) }">
+            <div *ngIf="f.comment.dirty && f.comment.errors?.required" class="text-danger">
                 {{oMetadataService.getName('mandatory')}}
             </div>
-            <div *ngIf="f.nombre.dirty && f.nombre.errors?.minlength" class="text-danger">
+            <div *ngIf="f.comment.dirty && f.comment.errors?.minlength" class="text-danger">
                 {{oMetadataService.getName('tooShort')}}
             </div>
         </div>
     </div>
 
     <div class="row mb-3">
-        <label for="existencias" class="col-sm-2 col-form-label"><i
-                [ngClass]="oMetadataService.getIcon('existencias')"></i>
-            {{oMetadataService.getName('stock')}}</label>
-        <div class="col-sm-1">
-            <input type="text" class="form-control" name="existencias" id="existencias" formControlName="existencias">
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <label for="precio" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('precio')"></i>
-            {{oMetadataService.getName('precio')}}</label>
+        <label for="creation" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('creation')"></i>
+            {{oMetadataService.getName('creation')}}</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="precio" formControlName="precio">
+            <input type="text" class="form-control" id="creation" formControlName="creation">
         </div>
     </div>
 
     <div class="row mb-3">
-        <label for="imagen" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('imagen')"></i>
-            {{oMetadataService.getName('image')}}</label>
-        <div class="col-sm-1">
-            <input type="text" class="form-control" id="imagen" formControlName="imagen">
-            <input #imageInput type="file" accept="image/*" class="form-control-file mt-4" lang="es" name="imagen"
-                (change)="processFile($event)" />
-            <div *ngIf="imageSrc != null">
-                <img [src]="imageSrc" alt="" style="height:100px" class="my-3" />
-            </div>
-            <div *ngIf="strOperation=='edit'">
-                <img [src]="'http://localhost:8082/file/' + oProducto2Show.imagen" style="height:100px" class="my-3" />
-            </div>
+        <label for="lastedition" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('lastedition')"></i>
+            {{oMetadataService.getName('lastedition')}}</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="lastedition" formControlName="lastedition">
         </div>
     </div>
 
-    <div class="row mb-3">
-        <label for="descuento" class="col-sm-2 col-form-label"><i [ngClass]="oMetadataService.getIcon('descuento')"></i>
-            {{oMetadataService.getName('descuento')}}</label>
-        <div class="col-sm-1">
-            <input type="text" class="form-control" id="descuento" formControlName="descuento">
-
-        </div>
-    </div>
-
-    <div class="row mb-3" app-find-unrouted [entity]="'tipoproducto'" [id]="oProducto2Show?.tipoproducto.id"
-        [description]="oProducto2Show?.tipoproducto.nombre" (selection)="onFindSelection($event)">
+    <div class="row mb-3" app-find-unrouted [entity]="'usuario'" [id]="oComment2Show?.usuario.id"
+        [description]="oComment2Show?.usuario.nombre + ' ' + oComment2Show?.usuario.apellido1" (selection)="onFindSelectionUsuario($event)">
         <div plist-finder-title>
             <h4 class="text-center">{{oMetadataService.getName('selectionHelp') + ' ' +
-                oMetadataService.getName('atipoproducto').toLowerCase()}}</h4>
+                oMetadataService.getName('ausuario').toLowerCase()}}</h4>
+        </div>
+    </div>
+
+    <div class="row mb-3" app-find-unrouted [entity]="'producto'" [id]="oComment2Show?.producto.id"
+        [description]="oComment2Show?.producto.nombre" (selection)="onFindSelectionProducto($event)">
+        <div plist-finder-title>
+            <h4 class="text-center">{{oMetadataService.getName('selectionHelp') + ' ' +
+                oMetadataService.getName('aproducto').toLowerCase()}}</h4>
         </div>
     </div>
 

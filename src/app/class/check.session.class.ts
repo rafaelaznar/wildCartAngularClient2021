@@ -1,5 +1,6 @@
 import { ActivatedRoute, Router } from "@angular/router";
 import { IUsuario } from "../model/usuario-interfaces";
+import { SessionService } from "../service/session.service";
 
 export class CheckSession {
 
@@ -9,6 +10,7 @@ export class CheckSession {
         profile: string,
         protected oRouter: Router,
         protected oRoute: ActivatedRoute,
+        protected oSessionService: SessionService
     ) {
         if (this.oRoute.snapshot.data.message) {
             this.oUserSession = this.oRoute.snapshot.data.message;
@@ -20,6 +22,7 @@ export class CheckSession {
             }
         } else {
             localStorage.clear();
+            this.oSessionService.onUserSessionChangeSubject.next({ action: "logout" });
             this.oRouter.navigate(['/','home']);
         }
     }

@@ -5,6 +5,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
 import { IResult } from 'src/app/model/model-interfaces';
 import { CheckSession } from 'src/app/class/check.session.class';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-comment-edit-admin-routed',
@@ -12,7 +13,7 @@ import { CheckSession } from 'src/app/class/check.session.class';
   styleUrls: ['./comment-edit-admin-routed.component.css']
 })
 
-export class CommentEdiAdminRoutedComponent extends CheckSession implements OnInit {
+export class CommentEditAdminRoutedComponent extends CheckSession implements OnInit {
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.comment
@@ -24,9 +25,10 @@ export class CommentEdiAdminRoutedComponent extends CheckSession implements OnIn
   constructor(
     protected oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
-    public oMetadataService: MetadataService
+    public oMetadataService: MetadataService,
+    protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 

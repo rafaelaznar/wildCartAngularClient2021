@@ -5,6 +5,7 @@ import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-carrito-plist-user-routed',
@@ -27,9 +28,10 @@ export class CarritoPlistUserRoutedComponent extends CheckSession implements OnI
     protected oRouter: Router,
     public oMetadataService: MetadataService,
     private oActivatedRoute: ActivatedRoute,
-    private oCarritoService: CarritoService
+    private oCarritoService: CarritoService,
+    protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.user, oRouter, oActivatedRoute);
+    super(Constants.PROFILES.user, oRouter, oActivatedRoute,oSessionService);
     this.id_producto = this.oActivatedRoute.snapshot.params.id_producto;
     this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
   }

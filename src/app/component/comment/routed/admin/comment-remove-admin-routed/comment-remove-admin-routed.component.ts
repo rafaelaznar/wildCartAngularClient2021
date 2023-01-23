@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductoService } from 'src/app/service/producto.service';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
+import { CommentService } from 'src/app/service/comment.service';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-comment-remove-admin-routed',
@@ -19,12 +20,13 @@ export class CommentRemoveAdminRoutedComponent extends CheckSession implements O
   id: number = 0;
 
   constructor(
-    private oProductoService: ProductoService,
+    private oCommentService: CommentService,
     private oActivatedRoute: ActivatedRoute,
     protected oRouter: Router,
-    public oMetadataService: MetadataService
+    public oMetadataService: MetadataService,
+    protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 
@@ -32,7 +34,7 @@ export class CommentRemoveAdminRoutedComponent extends CheckSession implements O
 
   removeOne() {
     let strResult: string = '';
-    this.oProductoService.removeOne(this.id).subscribe((id: number) => {
+    this.oCommentService.removeOne(this.id).subscribe((id: number) => {
       if (id) {
         strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
       } else {

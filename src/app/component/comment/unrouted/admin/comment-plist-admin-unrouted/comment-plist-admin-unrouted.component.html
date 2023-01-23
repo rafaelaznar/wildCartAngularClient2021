@@ -39,13 +39,13 @@
       <tbody>
         <tr *ngFor="let oRow of oPage.content" class="align-middle" app-comment-plistrow-admin-unrouted
           [oComment]="oRow" [mode]="true">
-          <div action_column>
+          <div action_column>            
             <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oRow.id"
               [strEntity]="strEntity" [strProfile]="strProfile">
             </div>
           </div>
         </tr>
       </tbody>
-    </table>
+    </table>    
   </div>
 </div>

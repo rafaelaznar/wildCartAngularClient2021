@@ -4,6 +4,7 @@ import { CheckSession } from 'src/app/class/check.session.class';
 import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-factura-plist-user-routed',
@@ -25,9 +26,10 @@ export class FacturaPlistUserRoutedComponent extends CheckSession implements OnI
   constructor(
     protected oRouter: Router,
     public oMetadataService: MetadataService,
-    private oActivatedRoute: ActivatedRoute
+    private oActivatedRoute: ActivatedRoute,
+    protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.user, oRouter, oActivatedRoute);
+    super(Constants.PROFILES.user, oRouter, oActivatedRoute, oSessionService);
     this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
   }
 

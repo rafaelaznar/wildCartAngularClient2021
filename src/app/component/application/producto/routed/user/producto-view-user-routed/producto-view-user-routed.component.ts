@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { Constants } from 'src/app/model/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
 import { CarritoService } from 'src/app/service/carrito.service';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-producto-view-user-routed',
@@ -25,9 +26,10 @@ export class ProductoViewUserRoutedComponent extends CheckSession implements OnI
     protected oRouter: Router,
     protected oMetadataService: MetadataService,
     protected oLocation: Location,
-    private oCarritoService: CarritoService
+    private oCarritoService: CarritoService,
+    protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.user, oRouter, oActivatedRoute);
+    super(Constants.PROFILES.user, oRouter, oActivatedRoute, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 

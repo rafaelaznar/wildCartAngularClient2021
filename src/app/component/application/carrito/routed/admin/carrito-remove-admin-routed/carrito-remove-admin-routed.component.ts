@@ -6,6 +6,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Constants } from 'src/app/model/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-carrito-remove-admin-routed',
@@ -25,9 +26,10 @@ export class CarritoRemoveAdminRoutedComponent extends CheckSession implements O
     private oCarritoService: CarritoService,
     private oActivatedRoute: ActivatedRoute,
     protected oRouter: Router,
-    public oMetadataService: MetadataService
+    public oMetadataService: MetadataService,
+    protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 

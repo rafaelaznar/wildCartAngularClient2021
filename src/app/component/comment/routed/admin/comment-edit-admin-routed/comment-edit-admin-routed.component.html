@@ -3,8 +3,8 @@
     [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(this.strEntity)">
   </app-header>
   <div class="row justify-content-center">
-    <app-producto-form-admin-unrouted [strOperation]="strOperation" [id]="id" (msg)="reportResult($event)">
-    </app-producto-form-admin-unrouted>
+    <app-comment-form-admin-unrouted [strOperation]="strOperation" [id]="id" (msg)="reportResult($event)">
+    </app-comment-form-admin-unrouted>
     <app-footerbuttons-unrouted [strEntity]="strEntity"></app-footerbuttons-unrouted>
   </div>
 </div>

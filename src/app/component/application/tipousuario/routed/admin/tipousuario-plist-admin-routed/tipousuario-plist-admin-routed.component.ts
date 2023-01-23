@@ -5,6 +5,7 @@ import { CheckSession } from 'src/app/class/check.session.class';
 import { Constants } from 'src/app/model/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-tipousuario-plist-admin-routed',
@@ -23,9 +24,10 @@ export class TipousuarioPlistAdminRoutedComponent extends CheckSession implement
   constructor(
     oActivatedRoute: ActivatedRoute,
     protected oRouter: Router,
-    public oMetadataService: MetadataService
+    public oMetadataService: MetadataService,
+    protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);
   }
 
   ngOnInit(): void { }

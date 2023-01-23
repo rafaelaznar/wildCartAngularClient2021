@@ -16,7 +16,7 @@ export class CommentPlistRowAdminUnroutedComponent implements OnInit {
 
   strAPI_URL: string = API_URL;
   strProfile: string = Constants.PROFILES.admin;
-  strEntity: string = Constants.ENTITIES.product;
+  strEntity: string = Constants.ENTITIES.comment;
   strOperation: string = Constants.OPERATIONS.plist;
 
   constructor(

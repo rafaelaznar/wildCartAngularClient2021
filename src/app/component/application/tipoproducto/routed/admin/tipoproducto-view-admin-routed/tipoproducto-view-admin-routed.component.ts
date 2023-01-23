@@ -5,6 +5,7 @@ import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/model/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-tipoproducto-view-admin-routed',
@@ -24,9 +25,10 @@ export class TipoproductoViewAdminRoutedComponent extends CheckSession implement
     private oTipoproductoService: TipoproductoService,    
     private oActivatedRoute: ActivatedRoute,
     protected oRouter: Router,
-    public oMetadataService: MetadataService
+    public oMetadataService: MetadataService,
+    protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute);   
+    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);   
     this.id = this.oActivatedRoute.snapshot.params.id;
     this.getOne();
   }
