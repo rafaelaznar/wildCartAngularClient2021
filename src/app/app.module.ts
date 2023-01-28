@@ -105,6 +105,7 @@ import { ProductoRemoveAdminRoutedComponent } from './component/application/prod
 import { ProductoViewAdminRoutedComponent } from './component/application/producto/routed/admin/producto-view-admin-routed/producto-view-admin-routed.component';
 import { ProductoSelectionAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-selection-admin-unrouted/producto-selection-admin-unrouted.component';
 import { ProductoViewGuestRoutedComponent } from './component/application/producto/routed/guest/producto-view-guest-routed/producto-view-guest-routed.component';
+import { ProductoDetailGuestUnroutedComponent } from './component/application/producto/unrouted/guest/producto-detail-user-unrouted/producto-detail-guest-unrouted.component';
 //  factura components
 import { FacturaPlistAdminRoutedComponent } from './component/application/factura/routed/admin/factura-plist-admin-routed/factura-plist-admin-routed.component';
 import { FacturaNewAdminRoutedComponent } from './component/application/factura/routed/admin/factura-new-admin-routed/factura-new-admin-routed.component';
@@ -163,6 +164,9 @@ import { CommentRemoveAdminRoutedComponent } from './component/comment/routed/ad
 import { CommentEditAdminRoutedComponent } from './component/comment/routed/admin/comment-edit-admin-routed/comment-edit-admin-routed.component';
 import { CommentNewAdminRoutedComponent } from './component/comment/routed/admin/comment-new-admin-routed/comment-new-admin-routed.component';
 import { CommentFormAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-form-admin-unrouted/comment-form-admin-unrouted.component';
+import { CommentPlistGuestUnroutedComponent } from './component/comment/unrouted/guest/comment-plist-guest-unrouted/comment-plist-guest-unrouted.component';
+import { CommentPlistheaderGuestUnroutedComponent } from './component/comment/unrouted/guest/comment-plistheader-guest-unrouted/comment-plistheader-guest-unrouted.component';
+import { CommentPlistRowGuestUnroutedComponent } from './component/comment/unrouted/guest/comment-plistrow-guest-unrouted/comment-plistrow-guest-unrouted.component';
 //
 
 //
@@ -283,6 +287,7 @@ import { CommentFormAdminUnroutedComponent } from './component/comment/unrouted/
     ProductoPlistUserUnroutedComponent,
     ProductoDetailUserUnroutedComponent,
     ProductoSelectionAdminUnroutedComponent,
+    ProductoDetailGuestUnroutedComponent,
     //
     // TipoProducto unrouted components
     TipoproductoPlistAdminUnroutedComponent,
@@ -328,7 +333,10 @@ import { CommentFormAdminUnroutedComponent } from './component/comment/unrouted/
     CommentPlistheaderAdminUnroutedComponent,
     CommentPlistRowAdminUnroutedComponent,
     CommentDetailAdminUnroutedComponent,
-    CommentFormAdminUnroutedComponent
+    CommentFormAdminUnroutedComponent,
+    CommentPlistGuestUnroutedComponent,    
+    CommentPlistheaderGuestUnroutedComponent,
+    CommentPlistRowGuestUnroutedComponent
   ],
   imports: [
     HttpClientModule,
