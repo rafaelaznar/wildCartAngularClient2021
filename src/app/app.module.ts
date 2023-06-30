@@ -153,20 +153,24 @@ import { CarritoPlistUserRoutedComponent } from './component/application/carrito
 import { CarritoPlistUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plist-user-unrouted/carrito-plist-user-unrouted.component';
 import { CarritoPlistheaderUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistheader-user-unrouted/carrito-plistheader-user-unrouted.component';
 import { CarritoPlistrowUserUnroutedComponent } from './component/application/carrito/unrouted/user/carrito-plistrow-user-unrouted/carrito-plistrow-user-unrouted.component';
+//
+import { CommentPlistAdminRoutedComponent } from './component/application/comment/routed/admin/comment-plist-admin-routed/comment-plist-admin-routed.component';
+import { CommentEditAdminRoutedComponent } from './component/application/comment/routed/admin/comment-edit-admin-routed/comment-edit-admin-routed.component';
+import { CommentNewAdminRoutedComponent } from './component/application/comment/routed/admin/comment-new-admin-routed/comment-new-admin-routed.component';
+import { CommentRemoveAdminRoutedComponent } from './component/application/comment/routed/admin/comment-remove-admin-routed/comment-remove-admin-routed.component';
+import { CommentViewAdminRoutedComponent } from './component/application/comment/routed/admin/comment-view-admin-routed/comment-view-admin-routed.component';
+import { CommentDetailAdminUnroutedComponent } from './component/application/comment/unrouted/admin/comment-detail-admin-unrouted/comment-detail-admin-unrouted.component';
+import { CommentFormAdminUnroutedComponent } from './component/application/comment/unrouted/admin/comment-form-admin-unrouted/comment-form-admin-unrouted.component';
+import { CommentPlistAdminUnroutedComponent } from './component/application/comment/unrouted/admin/comment-plist-admin-unrouted/comment-plist-admin-unrouted.component';
+import { CommentPlistheaderAdminUnroutedComponent } from './component/application/comment/unrouted/admin/comment-plistheader-admin-unrouted/comment-plistheader-admin-unrouted.component';
+import { CommentPlistRowAdminUnroutedComponent } from './component/application/comment/unrouted/admin/comment-plistrow-admin-unrouted/comment-plistrow-admin-unrouted.component';
+import { CommentPlistGuestUnroutedComponent } from './component/application/comment/unrouted/guest/comment-plist-guest-unrouted/comment-plist-guest-unrouted.component';
+import { CommentPlistheaderGuestUnroutedComponent } from './component/application/comment/unrouted/guest/comment-plistheader-guest-unrouted/comment-plistheader-guest-unrouted.component';
+import { CommentPlistRowGuestUnroutedComponent } from './component/application/comment/unrouted/guest/comment-plistrow-guest-unrouted/comment-plistrow-guest-unrouted.component';
+import { CommentPlistUserUnroutedComponent } from './component/application/comment/unrouted/user/comment-plist-user-unrouted/comment-plist-user-unrouted.component';
+import { CommentPlistheaderUserUnroutedComponent } from './component/application/comment/unrouted/user/comment-plistheader-user-unrouted/comment-plistheader-user-unrouted.component';
+import { CommentPlistRowUserUnroutedComponent } from './component/application/comment/unrouted/user/comment-plistrow-user-unrouted/comment-plistrow-user-unrouted.component';
 //comment componentes
-import { CommentPlistAdminRoutedComponent } from './component/comment/routed/admin/comment-plist-admin-routed/comment-plist-admin-routed.component';
-import { CommentPlistAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-plist-admin-unrouted/comment-plist-admin-unrouted.component';
-import { CommentPlistheaderAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-plistheader-admin-unrouted/comment-plistheader-admin-unrouted.component';
-import { CommentPlistRowAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-plistrow-admin-unrouted/comment-plistrow-admin-unrouted.component';
-import { CommentViewAdminRoutedComponent } from './component/comment/routed/admin/comment-view-admin-routed/comment-view-admin-routed.component';
-import { CommentDetailAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-detail-admin-unrouted/comment-detail-admin-unrouted.component';
-import { CommentRemoveAdminRoutedComponent } from './component/comment/routed/admin/comment-remove-admin-routed/comment-remove-admin-routed.component';
-import { CommentEditAdminRoutedComponent } from './component/comment/routed/admin/comment-edit-admin-routed/comment-edit-admin-routed.component';
-import { CommentNewAdminRoutedComponent } from './component/comment/routed/admin/comment-new-admin-routed/comment-new-admin-routed.component';
-import { CommentFormAdminUnroutedComponent } from './component/comment/unrouted/admin/comment-form-admin-unrouted/comment-form-admin-unrouted.component';
-import { CommentPlistGuestUnroutedComponent } from './component/comment/unrouted/guest/comment-plist-guest-unrouted/comment-plist-guest-unrouted.component';
-import { CommentPlistheaderGuestUnroutedComponent } from './component/comment/unrouted/guest/comment-plistheader-guest-unrouted/comment-plistheader-guest-unrouted.component';
-import { CommentPlistRowGuestUnroutedComponent } from './component/comment/unrouted/guest/comment-plistrow-guest-unrouted/comment-plistrow-guest-unrouted.component';
 //
 
 //
@@ -336,7 +340,11 @@ import { CommentPlistRowGuestUnroutedComponent } from './component/comment/unrou
     CommentFormAdminUnroutedComponent,
     CommentPlistGuestUnroutedComponent,    
     CommentPlistheaderGuestUnroutedComponent,
-    CommentPlistRowGuestUnroutedComponent
+    CommentPlistRowGuestUnroutedComponent,
+    CommentPlistRowUserUnroutedComponent,
+    CommentPlistUserUnroutedComponent,    
+    CommentPlistheaderUserUnroutedComponent
+
   ],
   imports: [
     HttpClientModule,

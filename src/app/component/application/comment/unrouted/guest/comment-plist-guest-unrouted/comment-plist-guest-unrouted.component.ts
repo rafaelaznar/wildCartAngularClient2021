@@ -17,7 +17,7 @@ export class CommentPlistGuestUnroutedComponent implements OnInit {
   @Input() id_usuario: number = null;
   @Input() id_producto: number = null;
 
-  strProfile: string = Constants.PROFILES.admin;
+  strProfile: string = Constants.PROFILES.guest;
   strEntity: string = Constants.ENTITIES.comment
   strOperation: string = Constants.OPERATIONS.plist
   oPage: ICommentPage;

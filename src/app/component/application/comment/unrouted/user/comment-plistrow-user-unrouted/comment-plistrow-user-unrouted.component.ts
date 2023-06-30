@@ -5,17 +5,17 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { API_URL } from 'src/environments/environment';
 
 @Component({
-  selector: '[app-comment-plistrow-guest-unrouted]',
-  templateUrl: './comment-plistrow-guest-unrouted.component.html',
-  styleUrls: ['./comment-plistrow-guest-unrouted.component.css']
+  selector: '[app-comment-plistrow-user-unrouted]',
+  templateUrl: './comment-plistrow-user-unrouted.component.html',
+  styleUrls: ['./comment-plistrow-user-unrouted.component.css']
 })
-export class CommentPlistRowGuestUnroutedComponent implements OnInit {
+export class CommentPlistRowUserUnroutedComponent implements OnInit {
 
   @Input() oComment: IComment = null;
   @Input() mode: boolean = true; //true=edición; false=selección
 
   strAPI_URL: string = API_URL;
-  strProfile: string = Constants.PROFILES.admin;
+  strProfile: string = Constants.PROFILES.user;
   strEntity: string = Constants.ENTITIES.comment;
   strOperation: string = Constants.OPERATIONS.plist;
 

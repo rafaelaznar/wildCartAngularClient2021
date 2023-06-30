@@ -53,11 +53,12 @@ import { CarritoEditAdminRoutedComponent } from './component/application/carrito
 import { CarritoNewAdminRoutedComponent } from './component/application/carrito/routed/admin/carrito-new-admin-routed/carrito-new-admin-routed.component';
 import { CarritoPlistUserRoutedComponent } from './component/application/carrito/routed/user/carrito-plist-user-routed/carrito-plist-user-routed.component';
 //
-import { CommentPlistAdminRoutedComponent } from './component/comment/routed/admin/comment-plist-admin-routed/comment-plist-admin-routed.component';
-import { CommentViewAdminRoutedComponent } from './component/comment/routed/admin/comment-view-admin-routed/comment-view-admin-routed.component';
-import { CommentRemoveAdminRoutedComponent } from './component/comment/routed/admin/comment-remove-admin-routed/comment-remove-admin-routed.component';
-import { CommentNewAdminRoutedComponent } from './component/comment/routed/admin/comment-new-admin-routed/comment-new-admin-routed.component';
-import { CommentEditAdminRoutedComponent } from './component/comment/routed/admin/comment-edit-admin-routed/comment-edit-admin-routed.component';
+import { CommentEditAdminRoutedComponent } from './component/application/comment/routed/admin/comment-edit-admin-routed/comment-edit-admin-routed.component';
+import { CommentNewAdminRoutedComponent } from './component/application/comment/routed/admin/comment-new-admin-routed/comment-new-admin-routed.component';
+import { CommentPlistAdminRoutedComponent } from './component/application/comment/routed/admin/comment-plist-admin-routed/comment-plist-admin-routed.component';
+import { CommentRemoveAdminRoutedComponent } from './component/application/comment/routed/admin/comment-remove-admin-routed/comment-remove-admin-routed.component';
+import { CommentViewAdminRoutedComponent } from './component/application/comment/routed/admin/comment-view-admin-routed/comment-view-admin-routed.component';
+//
 //
 //
 const routes: Routes = [
