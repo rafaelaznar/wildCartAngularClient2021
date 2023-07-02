@@ -170,6 +170,7 @@ import { CommentPlistRowGuestUnroutedComponent } from './component/application/c
 import { CommentPlistUserUnroutedComponent } from './component/application/comment/unrouted/user/comment-plist-user-unrouted/comment-plist-user-unrouted.component';
 import { CommentPlistheaderUserUnroutedComponent } from './component/application/comment/unrouted/user/comment-plistheader-user-unrouted/comment-plistheader-user-unrouted.component';
 import { CommentPlistRowUserUnroutedComponent } from './component/application/comment/unrouted/user/comment-plistrow-user-unrouted/comment-plistrow-user-unrouted.component';
+import { CommentNewUserUnroutedComponent } from './component/application/comment/unrouted/user/comment-new-user-unrouted/comment-new-user-unrouted.component';
 //comment componentes
 //
 
@@ -343,8 +344,8 @@ import { CommentPlistRowUserUnroutedComponent } from './component/application/co
     CommentPlistRowGuestUnroutedComponent,
     CommentPlistRowUserUnroutedComponent,
     CommentPlistUserUnroutedComponent,    
-    CommentPlistheaderUserUnroutedComponent
-
+    CommentPlistheaderUserUnroutedComponent,
+    CommentNewUserUnroutedComponent
   ],
   imports: [
     HttpClientModule,

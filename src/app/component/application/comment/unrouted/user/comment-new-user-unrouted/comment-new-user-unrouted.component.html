@@ -1,0 +1,29 @@
+<div class="container my-3">
+
+  <div class="row justify-content-center">
+    <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmitComment()">
+      <div class="row mb-3">
+        <label for="comment" class="col-form-label"><i [ngClass]="oMetadataService.getIcon('comment')"></i>
+          {{oMetadataService.getName('comment')}} (de 10 a 200 caracteres)</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="comment" formControlName="comment"
+            [ngClass]="{'is-valid' : f.comment.dirty && !(f.comment.errors?.required || f.comment.errors?.minlength || f.comment.errors?.maxlength) }">
+          <button class="btn btn-outline-secondary" type="submit">Send comment</button>
+        </div>
+        <div *ngIf="f.comment.dirty && f.comment.errors?.required" class="text-danger">
+          {{oMetadataService.getName('mandatory')}}
+        </div>
+        <div *ngIf="f.comment.dirty && f.comment.errors?.minlength" class="text-danger">
+          {{oMetadataService.getName('tooShort')}}
+        </div>
+        <div *ngIf="f.comment.dirty && f.comment.errors?.maxlength" class="text-danger">
+          {{oMetadataService.getName('tooLong')}}
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<app-popup [show]="eventsSubjectShowPopup.asObservable()" (close)="onClosePopup()"></app-popup>

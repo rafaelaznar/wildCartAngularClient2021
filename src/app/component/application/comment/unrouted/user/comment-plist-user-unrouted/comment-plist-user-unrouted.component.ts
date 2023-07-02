@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/model/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommentService } from 'src/app/service/comment.service';
 import { ICommentPage } from 'src/app/model/comment-interfaces';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-comment-plist-user-unrouted',
@@ -12,10 +13,12 @@ import { ICommentPage } from 'src/app/model/comment-interfaces';
   styleUrls: ['./comment-plist-user-unrouted.component.css']
 })
 
-export class CommentPlistUserUnroutedComponent implements OnInit {
+export class CommentPlistUserUnroutedComponent implements OnInit, OnChanges {
 
   @Input() id_usuario: number = null;
   @Input() id_producto: number = null;
+
+  @Input() reloadCommentsPlistSubject: Subject<boolean> = new Subject<boolean>();
 
   strProfile: string = Constants.PROFILES.user;
   strEntity: string = Constants.ENTITIES.comment
@@ -31,6 +34,11 @@ export class CommentPlistUserUnroutedComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("id_p: " + this.id_producto);
+    this.reloadCommentsPlistSubject.subscribe(((response) => {
+      if (response) {
+        this.getPage();
+      }
+    }))
     this.getPage();
   }
 
@@ -50,6 +58,12 @@ export class CommentPlistUserUnroutedComponent implements OnInit {
         console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
       }
       )
+  }
+
+  ngOnChanges() {
+    /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES 'someInput'**************/
+    console.log("PARENT COMPONENT UPDATES");
+    this.getPage();
   }
 
   onSetPage = (nPage: number) => {

@@ -15,21 +15,12 @@
 </div>
 
 <div class="row justify-content-center">
-  <div class="col-md table-responsive-md">
-    <table class="table table-bordered table-striped table-hover">
-      <thead>
-        <tr class="text-center align-middle" app-comment-plistheader-guest-unrouted (sort)="onSetOrder($event)"
-          [mode]="true">
-          <div action_column_title>
-            <i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getName('actions')}}
-          </div>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let oRow of oPage.content" class="align-middle" app-comment-plistrow-guest-unrouted
-          [oComment]="oRow" [mode]="true">
-        </tr>
-      </tbody>
-    </table>    
+  <div class="col-md">
+
+
+    <div class="card bg-light m-3 " *ngFor="let oRow of oPage.content"
+      app-comment-plistrow-user-unrouted [oComment]="oRow" [mode]="true">
+    </div>
+
   </div>
 </div>

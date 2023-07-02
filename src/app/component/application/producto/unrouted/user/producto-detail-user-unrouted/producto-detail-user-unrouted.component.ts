@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs';
+import { IResult } from 'src/app/model/model-interfaces';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { MetadataService } from 'src/app/service/metadata.service';
@@ -17,6 +19,9 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
   @Output() addCarritoEE = new EventEmitter<number>();
 
   oProducto: IProducto;
+  oNewCommentResult: IResult = null;
+
+  reloadCommentsSubject: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private oProductoService: ProductoService,
@@ -48,6 +53,33 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
       this.addCarritoEE.emit(id_producto);
       this.getOne();
     })
+  }
+
+  reportResult = (oResult: IResult): void => {
+    this.oNewCommentResult = oResult;
+    if (this.oNewCommentResult.error == null) {
+      if (this.oNewCommentResult.id > 0) {
+        // recargar el listado de comentarios
+        this.reloadCommentsSubject.next(true);
+        
+      } else {
+        this.openPopup('Error en la creación de ' + this.oMetadataService.getName('the' + this.oNewCommentResult.strEntity).toLowerCase());
+      }
+    } else {
+      this.openPopup('ERROR: ' + this.oNewCommentResult.error.status + ': ' + this.oNewCommentResult.error.message);
+    }
+  };
+
+  //popup
+
+  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
+
+  openPopup(str: string): void {
+    this.eventsSubjectShowPopup.next(str);
+  }
+
+  onClosePopup(): void {
+    
   }
 
 }
