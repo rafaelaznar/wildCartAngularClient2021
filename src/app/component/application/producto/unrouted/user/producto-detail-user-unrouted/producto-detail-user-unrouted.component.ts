@@ -73,14 +73,23 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
     }
   };
 
+  loadImage(url:string) {
+    return new Promise((resolve) => {
+      let img = new Image();
+      img.onload = () => resolve(img);
+      img.src = url;
+    })
+  }
+
   print(id: number) {
 
     var doc = new jsPDF()
 
-    var imgData = API_URL + '/file/' + this.oProducto?.imagen;
-    console.log(id, this.oProducto?.imagen, imgData);
+    this.loadImage(API_URL + '/file/' + this.oProducto?.imagen).then((logo) => {
+    
+    var imgData = API_URL + '/file/' + this.oProducto?.imagen;        
 
-    //doc.addImage(imgData, 'JPG', 150, 20, 50, 50) //pendiente
+    doc.addImage(logo, 'JPG', 130, 10, 50, 50)
 
     doc.setFontSize(50)
     doc.text('WildCart', 10, 25)
@@ -115,6 +124,9 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
 
 
     doc.save(this.oProducto.codigo + "- Ficha Tecnica.pdf");
+
+
+  });
 
   }
 
