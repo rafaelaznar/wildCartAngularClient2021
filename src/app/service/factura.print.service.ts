@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FacturaService } from './factura.service';
 import { CompraService } from './compra.service';
 import { ICompra, ICompraPage } from '../model/compra-interfaces';
-import { showDateTimePipe } from '../pipe/showDateTime.pipe';
+
 import { formatDate } from '@angular/common';
 
 declare let jsPDF: any;
@@ -15,8 +15,7 @@ export class FacturaPrintService {
 
   constructor(
     private oFacturaService: FacturaService,
-    private oCompraService: CompraService,
-    private dateTimePipe: showDateTimePipe
+    private oCompraService: CompraService
   ) { }
 
   private loadImage(url: string) {
@@ -30,23 +29,23 @@ export class FacturaPrintService {
   private cabecera(doc: any, oFactura2Print: IFactura, logo: any): any {
     doc.setFontType("bold");
     doc.setFontSize(20);
-    doc.text('F a c t u r a', 20, 30);
+    doc.text('F a c t u r a', 80, 30);
     doc.setFontType("normal");
     //    
     doc.setFillColor(240, 240, 240);
     //separacion de cajas: h=15 v=5
-    doc.rect(10, 10 + 25, 105, 35, "F");
+    doc.rect(10, 35, 105, 35, "F");
     doc.addImage(logo, 'PNG', 20, 15 + 25, 80, 25);
     //
     doc.setFillColor(240, 240, 240);
     doc.rect(120, 10 + 25, 80, 15, "F");
     doc.setFontSize(12);
-    doc.text(142, 19 + 25, `Nº de Factura: ${oFactura2Print.id}`);
+    doc.text(142, 44, `Nº de Factura: ${oFactura2Print.id}`);
     //
     doc.setFillColor(240, 240, 240);
-    doc.rect(120, 30 + 25, 80, 15, "F");
+    doc.rect(120, 55, 80, 15, "F");
     doc.setFontSize(12);
-    doc.text(140, 39 + 25, "Fecha: " + formatDate(oFactura2Print.fecha, 'dd/MM/yyyy', 'es-ES'));
+    doc.text(140, 64, "Fecha: " + formatDate(oFactura2Print.fecha, 'dd/MM/yyyy', 'es-ES'));
     //
     doc.setFillColor(240, 240, 240);
     doc.rect(10, 50 + 25, 190, 50, "F");
@@ -67,32 +66,27 @@ export class FacturaPrintService {
     doc.text(oFactura2Print?.usuario?.email, clienteX, clienteY + 30)
     //--
     const emisorX = 140;
+    const emisorY = 85;
     doc.setFontSize(14)
     doc.setFontType("italic");
-    doc.text('Emitida por:', emisorX - 10, 60 + 25)
+    doc.text('Emitida por:', emisorX - 10, emisorY)
     doc.setFontType("normal");
     doc.setFontType("bold");
     doc.setFontSize(18);
-    doc.text('WilCart Inc.', emisorX, 70 + 25)
+    doc.text('WilCart Inc.', emisorX, emisorY + 10)
     doc.setFontType("normal");
-    doc.setFontSize(14)
-    doc.text('wildcart@gmail.com', emisorX, 80 + 25)
-    doc.setFontSize(11)
-    doc.text('c/ Carrito trolleyes s/n', emisorX, 90 + 25)
-    doc.line(15, 110 + 20, 195, 110 + 20)
+    doc.setFontSize(12)
+    doc.text('wildcart@gmail.com', emisorX, emisorY + 20)
+    doc.setFontSize(10)
+    doc.text('c/ Carrito trolleyes s/n', emisorX, emisorY + 30)
+    //
+    doc.line(15, 130, 195, 130)
     //
     doc.text('Producto', 20, 140)
     doc.text('Cantidad', 110, 140)
     doc.text('Precio (€)', 140, 140)
     doc.text('Importe (€)', 170, 140)
     doc.line(15, 145, 195, 145)
-
-
-
-
-
-
-
 
     return doc;
 
@@ -110,7 +104,6 @@ export class FacturaPrintService {
     //let total_round:string = (Math.round(total * 100) / 100).toFixed(2);
     //let total_miles = total.toLocaleString('es', { minimumFractionDigits: 2 });
     doc.text(this.sp(oCompra.cantidad * oCompra.producto.precio), 194, linea, "right");
-
   }
 
   printFactura = (id_factura: number): void => {
@@ -137,7 +130,10 @@ export class FacturaPrintService {
           for (let i = 0; i < oFactura2Print.compras; i++) {
             this.lineaFactura(doc, aCompras[i], linea);
             linea = linea + 7;
-            if (linea > 230) { //Si la linea es mayor que 230, añadimos una nueva página
+            if (linea > 230 && i + 1 < oFactura2Print.compras) { 
+              // Si la linea es mayor que 230, 
+              // y quedan más líneas por imprimir,
+              // añadimos una nueva página 
               doc.addPage();
               doc = this.cabecera(doc, oFactura2Print, logo);
               linea = 155;
