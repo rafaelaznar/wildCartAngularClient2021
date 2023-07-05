@@ -31,10 +31,10 @@ export class CarritoService implements ICrud {
       strOrderUrl += '&filter=' + filter;
     }
     if (id_producto) {
-      strOrderUrl += '&idproducto=' + id_producto;
+      strOrderUrl += '&id_producto=' + id_producto;
     } else if (id_usuario) {
-      strOrderUrl += '&idusuario=' + id_usuario;
-    }
+      strOrderUrl += '&id_usuario=' + id_usuario;
+    }    
     return this.http.get<ICarritoPage>(this.sURL + '?page=' + page + '&size=' + rpp + strOrderUrl, httpOptions);
   }
 

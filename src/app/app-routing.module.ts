@@ -115,13 +115,13 @@ const routes: Routes = [
   { path: 'usuario/factura/plist', component: FacturaPlistUserRoutedComponent, resolve: { message: SessionResolver } },
   //
   { path: 'administrador/carrito/plist', component: CarritoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'usuario/carrito/cplist', component: CarritoPlistUserRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/carrito/plist/producto/:idproducto', component: CarritoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/carrito/plist/usuario/:idusuario', component: CarritoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/carrito/plist/producto/:id_producto', component: CarritoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/carrito/plist/usuario/:id_usuario', component: CarritoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/carrito/view/:id', component: CarritoViewAdminRoutedComponent, resolve: { message: SessionResolver } },  
   { path: 'administrador/carrito/new', component: CarritoNewAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/carrito/view/:id', component: CarritoViewAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/carrito/edit/:id', component: CarritoEditAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/carrito/remove/:id', component: CarritoRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'usuario/carrito/cplist', component: CarritoPlistUserRoutedComponent, resolve: { message: SessionResolver } },  
   //
   { path: 'administrador/comment/plist', component: CommentPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
   { path: 'administrador/comment/plist/producto/:id_producto', component: CommentPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
