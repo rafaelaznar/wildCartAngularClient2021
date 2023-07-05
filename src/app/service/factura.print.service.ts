@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { FacturaService } from './factura.service';
 import { CompraService } from './compra.service';
 import { ICompra, ICompraPage } from '../model/compra-interfaces';
+import { showDateTimePipe } from '../pipe/showDateTime.pipe';
+import { formatDate } from '@angular/common';
 
 declare let jsPDF: any;
 
@@ -13,7 +15,8 @@ export class FacturaPrintService {
 
   constructor(
     private oFacturaService: FacturaService,
-    private oCompraService: CompraService
+    private oCompraService: CompraService,
+    private dateTimePipe: showDateTimePipe
   ) { }
 
   private loadImage(url: string) {
@@ -24,9 +27,74 @@ export class FacturaPrintService {
     })
   }
 
-  private cabecera(doc: any, oFactura: IFactura): any {
+  private cabecera(doc: any, oFactura2Print: IFactura, logo: any): any {
+    doc.setFontType("bold");
+    doc.setFontSize(20);
+    doc.text('F a c t u r a', 20, 30);
+    doc.setFontType("normal");
+    //    
+    doc.setFillColor(240, 240, 240);
+    //separacion de cajas: h=15 v=5
+    doc.rect(10, 10 + 25, 105, 35, "F");
+    doc.addImage(logo, 'PNG', 20, 15 + 25, 80, 25);
+    //
+    doc.setFillColor(240, 240, 240);
+    doc.rect(120, 10 + 25, 80, 15, "F");
+    doc.setFontSize(12);
+    doc.text(142, 19 + 25, `Nº de Factura: ${oFactura2Print.id}`);
+    //
+    doc.setFillColor(240, 240, 240);
+    doc.rect(120, 30 + 25, 80, 15, "F");
+    doc.setFontSize(12);
+    doc.text(140, 39 + 25, "Fecha: " + formatDate(oFactura2Print.fecha, 'dd/MM/yyyy', 'es-ES'));
+    //
+    doc.setFillColor(240, 240, 240);
+    doc.rect(10, 50 + 25, 190, 50, "F");
+    //--
+    const clienteX = 25;
+    const clienteY = 85;
+    doc.setFontSize(14)
+    doc.setFontType("italic");
+    doc.text('Cliente:', clienteX - 10, clienteY)
+    doc.setFontType("normal");
+    doc.setFontType("bold");
+    doc.setFontSize(15)
+    const cliente = oFactura2Print?.usuario?.nombre + " " + oFactura2Print?.usuario?.apellido1 + " " + oFactura2Print?.usuario?.apellido2;
+    doc.text(cliente, clienteX, clienteY + 10)
+    doc.setFontType("normal");
+    doc.setFontSize(14)
+    doc.text(oFactura2Print?.usuario?.dni, clienteX, clienteY + 20)
+    doc.text(oFactura2Print?.usuario?.email, clienteX, clienteY + 30)
+    //--
+    const emisorX = 140;
+    doc.setFontSize(14)
+    doc.setFontType("italic");
+    doc.text('Emitida por:', emisorX - 10, 60 + 25)
+    doc.setFontType("normal");
+    doc.setFontType("bold");
+    doc.setFontSize(18);
+    doc.text('WilCart Inc.', emisorX, 70 + 25)
+    doc.setFontType("normal");
+    doc.setFontSize(14)
+    doc.text('wildcart@gmail.com', emisorX, 80 + 25)
+    doc.setFontSize(11)
+    doc.text('c/ Carrito trolleyes s/n', emisorX, 90 + 25)
+    doc.line(15, 110 + 20, 195, 110 + 20)
+    //
+    doc.text('Producto', 20, 140)
+    doc.text('Cantidad', 110, 140)
+    doc.text('Precio (€)', 140, 140)
+    doc.text('Importe (€)', 170, 140)
+    doc.line(15, 145, 195, 145)
 
 
+
+
+
+
+
+
+    return doc;
 
   }
 
@@ -50,47 +118,15 @@ export class FacturaPrintService {
       this.oCompraService.getPage(0, oFactura2Print.compras, "fecha", "desc", null, id_factura, null).subscribe((oPage: ICompraPage) => {
         let aCompras: ICompra[] = oPage.content;
         var doc = new jsPDF()
+        doc.setFont('Courier');
         //doc.addFont('Arial', 'Arial', 'normal');
         //doc.setFont('Arial');
         //Cabecera
-        doc.setFontSize(40);
-        doc.text('Factura', 20, 30);
 
-        this.cabecera(doc, oFactura2Print);
 
         var imgData: string = '/assets/img/wildCart600.png'
         this.loadImage(imgData).then((logo) => {
-          doc.addImage(logo, 'PNG', 100, 15, 80, 25);
-          //--
-          doc.setFontSize(20)
-          doc.text('Cliente:', 20, 60)
-          doc.setFontSize(16)
-          doc.text(oFactura2Print?.usuario?.nombre + " " + oFactura2Print?.usuario?.apellido1 + " " + oFactura2Print?.usuario?.apellido2, 20, 70)
-          doc.setFontSize(14)          
-          doc.text(oFactura2Print?.usuario?.dni, 20, 90)
-          doc.text(oFactura2Print?.usuario?.email, 20, 80)
-          //--
-          doc.setFontSize(20)
-          doc.text('Empresa:', 140, 60)
-          doc.setFontSize(16)
-          doc.text('Wildcart', 140, 70)
-          doc.setFontSize(14)
-          doc.text('wildcart@gmail.com', 140, 80)
-          doc.text('c/ Carrito trolleyes s/n', 140, 90)
-          doc.line(15, 110, 195, 110)
-
-          doc.text('Numero', 20, 120)
-          doc.text('Fecha', 20, 129)
-          doc.text(oFactura2Print.id + "", 42, 120)
-          doc.text(oFactura2Print.fecha + "", 42, 129)
-
-          doc.text('Producto', 20, 140)
-          doc.text('Cantidad', 110, 140)
-          doc.text('Precio (€)', 140, 140)
-          doc.text('Importe (€)', 170, 140)
-          doc.line(15, 145, 195, 145)
-
-
+          doc = this.cabecera(doc, oFactura2Print, logo);
 
 
           //Fin de cabecera
@@ -103,7 +139,7 @@ export class FacturaPrintService {
             linea = linea + 7;
             if (linea > 230) { //Si la linea es mayor que 230, añadimos una nueva página
               doc.addPage();
-              doc = this.cabecera(doc, oFactura2Print);
+              doc = this.cabecera(doc, oFactura2Print, logo);
               linea = 155;
               doc.setFontSize(12)
             }
