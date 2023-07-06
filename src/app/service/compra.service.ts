@@ -38,6 +38,10 @@ export class CompraService implements ICrud {
     return this.http.get<ICompraPage>(this.sURL + "?page=" + page + "&size=" + rpp + strOrderUrl, httpOptions);
   }
 
+  allByFactura(id_factura: number): Observable< ICompra[]> {
+    return this.http.get<ICompra[]>(this.sURL + "/all/" + id_factura, httpOptions);
+  }
+
   getOne(id: number): Observable<ICompra> {
     return this.http.get<ICompra>(this.sURL + "/" + id, httpOptions);
   }
