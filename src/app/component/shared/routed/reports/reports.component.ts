@@ -10,6 +10,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { ProductoService } from 'src/app/service/producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Constants } from 'src/app/model/constants';
+import { ReportPrintService } from 'src/app/service/reports.print.service';
 
 
 @Component({
@@ -78,6 +79,7 @@ export class ReportsComponent implements OnInit {
     private oProductoService: ProductoService,
     private oActivatedRoute: ActivatedRoute,
     private oRouter: Router,
+    private oReportPrintService: ReportPrintService
   ) {
     if (this.oActivatedRoute.snapshot.data.message) {
       this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
@@ -112,8 +114,9 @@ export class ReportsComponent implements OnInit {
     this.onChanges();
   }
 
-  print(codigo: string) {    
+  print(codigo: string) {
     this.openPopup('Imprimiendo el informe ' + codigo);
+    this.oReportPrintService.printReport_i01(10);
   }
 
 
@@ -186,11 +189,11 @@ export class ReportsComponent implements OnInit {
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
   strResult = "";
 
-  openPopup(str:string): void {
+  openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);
   }
 
-  onClosePopup(): void {    
+  onClosePopup(): void {
   }
 
 

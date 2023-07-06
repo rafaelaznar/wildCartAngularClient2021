@@ -51,4 +51,11 @@ export class ProductoService implements ICrud {
     return this.http.delete<number>(this.sURL + "/" + id, httpOptions);
   }
 
+  nByDescuentoDesc(quantity: number): Observable<IProducto[]> {
+    if (quantity <= 10) {
+      return this.http.get<IProducto[]>(this.sURL + "/nByDescuentoDesc/10", httpOptions);
+    } else {
+      return this.http.get<IProducto[]>(this.sURL + "/nByDescuentoDesc/100", httpOptions);
+    }
+  }
 }
