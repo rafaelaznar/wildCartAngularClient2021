@@ -25,10 +25,11 @@ export interface IProducto extends IEntity {
     imagen: number,
     descuento: number,
     tipoproducto: ITipoproducto,
+    cantidad: number,
 
     compras: number,
     carritos: number,
-    cantidad: number
+    comments: number    
 }
 
 export interface IProducto2Send extends IEntity2Send {

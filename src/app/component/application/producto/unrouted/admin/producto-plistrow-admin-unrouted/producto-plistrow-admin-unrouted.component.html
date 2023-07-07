@@ -20,6 +20,12 @@
     [disabled]="oProducto?.carritos<=0">{{oProducto?.carritos}}
     <i [ngClass]="oMetadataService.getIcon('carrito')"></i></button>
 </td>
+<td style="text-align: center;" *ngIf="mode">
+  <button class="btn btn-outline-secondary btn-sm"
+    [routerLink]="['/administrador','comment','plist','producto',oProducto.id]"
+    [disabled]="oProducto?.comments<=0">{{oProducto?.comments}}
+    <i [ngClass]="oMetadataService.getIcon('comment')"></i></button>
+</td>
 <td>
   <button class="btn btn-light btn-sm" *ngIf="mode"
     [routerLink]="['/administrador',strEntity,strOperation,'tipoproducto',oProducto.tipoproducto.id]">

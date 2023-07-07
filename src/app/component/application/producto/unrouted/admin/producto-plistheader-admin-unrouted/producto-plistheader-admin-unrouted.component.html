@@ -37,20 +37,11 @@
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='descuento'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='descuento'&&strSortDirection=='desc'"></i>
 </th>
-
-<th (click)="doSetOrder('compra')"  *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('compra')"></i> {{oMetadataService.getName('compras')}}
-  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='compra'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='compra'&&strSortDirection=='desc'"></i>
-</th>
-
-<th (click)="doSetOrder('carrito')"  *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('carrito')"></i> {{oMetadataService.getName('carrito')}}
-  <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='carrito'&&strSortDirection=='asc'"></i>
-  <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='carrito'&&strSortDirection=='desc'"></i>
-</th>
-
+<th *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('compra')"></i> {{oMetadataService.getName('compras')}}</th>
+<th *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('carrito')"></i> {{oMetadataService.getName('carritos')}}</th>
+<th *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('comment')"></i> {{oMetadataService.getName('comments')}}</th>
 <th (click)="doSetOrder('tipoproducto')"> <i [ngClass]="oMetadataService.getIcon('tipoproducto')"></i> {{oMetadataService.getName('tipoproducto')}}
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='tipoproducto'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='tipoproducto'&&strSortDirection=='desc'"></i>
-
 </th>
 <th><ng-content select="[action_column_title]"></ng-content></th>
