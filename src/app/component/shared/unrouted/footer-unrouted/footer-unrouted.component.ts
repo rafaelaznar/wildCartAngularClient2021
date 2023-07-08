@@ -3,10 +3,10 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
   selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  templateUrl: './footer-unrouted.component.html',
+  styleUrls: ['./footer-unrouted.component.css']
 })
-export class FooterComponent implements OnInit {
+export class FooterUnroutedComponent implements OnInit {
 
   constructor(public oMetadataService: MetadataService) { }
 

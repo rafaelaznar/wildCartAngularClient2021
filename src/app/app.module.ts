@@ -39,7 +39,7 @@ import { MenuUnroutedComponent } from './component/shared/unrouted/menu-unrouted
 import { SessionService } from './service/session.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
-import { FooterComponent } from './component/shared/unrouted/footer/footer.component';
+import { FooterUnroutedComponent } from './component/shared/unrouted/footer-unrouted/footer-unrouted.component';
 import { ModalComponent } from './component/shared/unrouted/modal/modal.component';
 import { DateTimeService } from './service/datetime.service';
 import { HeaderComponent } from './component/shared/unrouted/header/header.component';
@@ -186,7 +186,7 @@ import { ProductoGPlistGuestUnroutedComponent } from './component/application/pr
     ModalComponent,
     PopupComponent,
     HeaderComponent,
-    FooterComponent,
+    FooterUnroutedComponent,
     MenuUnroutedComponent,
     findUnroutedComponent,
     RppUnroutedComponent,
