@@ -29,7 +29,7 @@ export class CarritoRemoveAdminRoutedComponent extends CheckSession implements O
     public oMetadataService: MetadataService,
     protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);
+    super(Constants.PROFILES.admin, oRouter, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 

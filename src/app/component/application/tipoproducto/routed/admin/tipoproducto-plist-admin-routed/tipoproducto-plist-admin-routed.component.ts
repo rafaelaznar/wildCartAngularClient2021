@@ -23,7 +23,7 @@ export class TipoproductoPlistAdminRoutedComponent extends CheckSession implemen
     public oMetadataService: MetadataService,
     protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);
+    super(Constants.PROFILES.admin, oRouter, oSessionService);
   }
 
   ngOnInit(): void { }

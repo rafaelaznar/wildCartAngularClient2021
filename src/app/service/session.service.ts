@@ -1,56 +1,110 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, throwError } from 'rxjs';
-import { API_URL, environment, httpOptions } from 'src/environments/environment';
+import { Observable, Subject } from 'rxjs';
+import { CryptoService } from './crypto.service';
+import { API_URL, httpOptions } from 'src/environments/environment';
+import { DecodeService } from './decode.service';
+import { IToken } from '../model/token-interface';
+import { filter, map, multicast } from 'rxjs/operators';
+import { IUsuario } from '../model/usuario-interfaces';
+import { UsuarioService } from './usuario.service';
 
+export enum SessionEvents {
+    login,
+    logout
+}
 
-import { catchError, retry, shareReplay, tap } from 'rxjs/operators';
+export class SessionEvent {
+    constructor(public event: SessionEvents, public token?: string) { }
+}
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
+
 export class SessionService {
 
-  constructor(private http: HttpClient) { }
+    private entityURL = '/session';
+    sURL: string = `${API_URL}${this.entityURL}`;
+    subject = new Subject<SessionEvent>();
+    subjectUserSession = new Subject();
 
-  private sURL = API_URL + '/session';
-  public onUserSessionChangeSubject: Subject<{ action: string }> = new Subject<{ action: string }>();
+    constructor(
+        private oCryptoService: CryptoService,
+        private oUsuarioService: UsuarioService,
+        private oHttpClient: HttpClient,
+        private oDecodeService: DecodeService
+    ) { 
+        
 
-  handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Unknown error!';
-    if (error.error instanceof ErrorEvent) {
-      // Client-side errors
-      errorMessage = `Error: ${error.error.message}`;
-      if (environment) console.log("SessionService: error: " + errorMessage);
-    } else {
-      // Server-side errors
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-      if (environment) console.log("SessionService: error: " + errorMessage);
+        
     }
-    return throwError(errorMessage);
-  }
 
-  login(loginData: String): Observable<String> {
-    if (environment) console.log("SessionService: login");
-    return this.http.post<String>(this.sURL, loginData, httpOptions).pipe(
-      tap((u: String) => console.log("session.service login HTTP request executed", u)),
-      retry(1),
-      catchError(this.handleError));
-  }
+    login(strLogin: string, strPassword: string): Observable<string> {
+        const loginData = JSON.stringify({ username: strLogin, password: this.oCryptoService.getSHA256(strPassword) });
+        return this.oHttpClient.post<string>(this.sURL, loginData, httpOptions);
+    }
 
-  logout(): Observable<String> {
-    if (environment) console.log("SessionService: logout");
-    return this.http.delete<String>(this.sURL, httpOptions).pipe(
-      retry(1),
-      catchError(this.handleError));
-  }
+    getUserName(): string {
+        if (!this.isSessionActive()) {
+            return "";
+        } else {
+            let token: string = localStorage.getItem("token");
+            return this.oDecodeService.parseJwt(token).name;
+        }
+    }
 
-  check(): Observable<String> {
-    return this.http.get<String>(this.sURL, httpOptions)
-  }
+    getUsuario(): Observable<any> {
+        if (!this.isSessionActive()) {
+            return null;
+        } else {
+            let token: string = localStorage.getItem("token");
+            let username: string = this.oDecodeService.parseJwt(token).name;
+            //return this.oUsuarioService.getByUsername(username).pipe(multicast(this.subjectUserSession));
+            return this.oUsuarioService.getByUsername(username);
+        }
+    }
 
-  notifySessionChange(action: string) {
-    this.onUserSessionChangeSubject.next({ action: action });
-  }
+    getToken(): string {
+        return localStorage.getItem("token");
+    }
+
+    setToken(data: string): void {
+        localStorage.setItem("token", data);
+    }
+
+    isSessionActive(): Boolean {
+        let strToken: string = localStorage.getItem("token");
+        if (strToken) {
+            let oDecodedToken: IToken = this.oDecodeService.parseJwt(strToken);
+            if (Date.now() >= oDecodedToken.exp * 1000) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    logout() {
+        localStorage.removeItem("token");
+    }
+
+    on(event: SessionEvents): Observable<String> { // pte cambiar a onChange
+        return this.subject.pipe(
+            filter((e: SessionEvent) => {
+                return e.event === event;
+            }),
+            map((e: SessionEvent) => {
+                return e.token;
+            })
+        )
+    }
+
+    emit(event: SessionEvent) {
+        this.subject.next(event);
+    }
 
 }
+

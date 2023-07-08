@@ -8,21 +8,21 @@ import { IOrder } from 'src/app/model/model-interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-producto-plist-user-unrouted',
-  templateUrl: './producto-plist-user-unrouted.component.html',
-  styleUrls: ['./producto-plist-user-unrouted.component.css']
+  selector: 'app-producto-gplist-admin-unrouted',
+  templateUrl: './producto-gplist-admin-unrouted.component.html',
+  styleUrls: ['./producto-gplist-admin-unrouted.component.css']
 })
 
-export class ProductoPlistUserUnroutedComponent implements OnInit {
+export class ProductoGPlistAdminUnroutedComponent implements OnInit {
 
-  @Input() id_tipousuario_session: number = null;
   @Input() id_tipoproducto: number = null;
   @Output() addCarritoEE = new EventEmitter<number>();
   @ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
 
-  strProfile: string = Constants.PROFILES.admin;
+  strProfile: string = Constants.PROFILES.user;
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.plist
+
   oPage: IProductoPage;
 
   constructor(
@@ -79,7 +79,6 @@ export class ProductoPlistUserUnroutedComponent implements OnInit {
     this.oPage.strSortDirection = order.sortDirection;
     this.getPage();
   }
-
 
   addCarrito(id_producto: number) {
     this.oCarritoService.add(id_producto, 1).subscribe((result: number) => {

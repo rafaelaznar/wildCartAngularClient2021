@@ -29,7 +29,7 @@ export class FacturaPlistUserRoutedComponent extends CheckSession implements OnI
     private oActivatedRoute: ActivatedRoute,
     protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.user, oRouter, oActivatedRoute, oSessionService);
+    super(Constants.PROFILES.user, oRouter, oSessionService);
     this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
   }
 

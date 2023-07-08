@@ -26,7 +26,7 @@ export class UsuarioViewUserRoutedComponent extends CheckSession implements OnIn
     protected oLocation: Location,
     protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.user, oRouter, oActivatedRoute, oSessionService);
+    super(Constants.PROFILES.user, oRouter, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id;
   }
 

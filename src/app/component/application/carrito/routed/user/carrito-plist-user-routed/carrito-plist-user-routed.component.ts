@@ -31,7 +31,7 @@ export class CarritoPlistUserRoutedComponent extends CheckSession implements OnI
     private oCarritoService: CarritoService,
     protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.user, oRouter, oActivatedRoute,oSessionService);
+    super(Constants.PROFILES.user, oRouter, oSessionService);
     this.id_producto = this.oActivatedRoute.snapshot.params.id_producto;
     this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
   }

@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { SessionService } from 'src/app/service/session.service';
+import { SessionEvents, SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-menu-unrouted',
@@ -16,6 +16,8 @@ export class MenuUnroutedComponent implements OnInit {
   //@Input() carritoMenuObservable: Observable<{ action: string, data: number }>;
 
   oUsuarioSession: IUsuario;
+
+  nCarritos: number = 0;
   strUrl: String = "";
   tcarrito: number
 
@@ -26,27 +28,62 @@ export class MenuUnroutedComponent implements OnInit {
     private oSessionService: SessionService
   ) {
 
-    this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
-
+    //this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
+    /*
     this.router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) {
         this.strUrl = ev.url;
       }
     })
+    */
+    if (this.oSessionService.isSessionActive()) {
+      this.oSessionService.getUsuario().subscribe((oData: IUsuario) => {
+        this.oUsuarioSession = oData;
+        this.count();
+      });
+    } else {
+      this.oUsuarioSession = null;
+    }
 
-    this.oSessionService.onUserSessionChangeSubject.subscribe({
-      next: (data) => {
-        console.log("menu", "session", "action:" + data.action)
-        this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
-        if (this.oUsuarioSession) {
-          this.tcarrito = this.oUsuarioSession.carritos;
-        }
-      },
-      error: (error) => {
-        console.log("error:", error)
-        this.tcarrito = 0;
+
+  }
+
+  ngOnInit(): void {
+
+
+
+    this.oSessionService.on(SessionEvents.login).subscribe({
+      next: () => {
+        this.oSessionService.getUsuario().subscribe((oData: IUsuario) => {
+          this.oUsuarioSession = oData;
+
+        });
+        this.count();
       }
     });
+    this.oSessionService.on(SessionEvents.logout).subscribe({
+      next: () => {
+        this.oUsuarioSession = null;
+        this.count();
+      }
+    });
+
+
+    /*
+ this.oSessionService.onUserSessionChangeSubject.subscribe({
+   next: (data) => {
+     console.log("menu", "session", "action:" + data.action)
+     this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
+     if (this.oUsuarioSession) {
+       this.tcarrito = this.oUsuarioSession.carritos;
+     }
+   },
+   error: (error) => {
+     console.log("error:", error)
+     this.tcarrito = 0;
+   }
+ });
+ */
 
     this.oCarritoService.onCarritoChangeSubject.subscribe({
       next: (data) => {
@@ -57,24 +94,11 @@ export class MenuUnroutedComponent implements OnInit {
         console.log("error:", error)
       }
     });
-
-  }
-
-  ngOnInit(): void {
-    this.count();
-    /*
-    if (this.carritoMenuObservable) {
-      this.carritoEventsSubscription = this.carritoMenuObservable.subscribe((data) => {
-        console.log("action:" + data.action, "data:" + data.data)
-        this.count()
-      });
-    }
-    */
   }
 
   ngOnDestroy() {
-    this.oCarritoService.onCarritoChangeSubject.unsubscribe();
-    this.oSessionService.onUserSessionChangeSubject.unsubscribe();
+    //this.oCarritoService.onCarritoChangeSubject.unsubscribe();
+    //this.oSessionService.on(SessionEvents.login).unsubscribe();
     /*
     if (this.carritoMenuObservable) {
       this.carritoEventsSubscription.unsubscribe();
@@ -83,12 +107,10 @@ export class MenuUnroutedComponent implements OnInit {
   }
 
   count = () => {
-    if (this.oUsuarioSession) {
+    if (this.oSessionService.isSessionActive()) {
       this.oCarritoService.getCount().subscribe((oData: number) => {
         this.tcarrito = oData;
-        if (this.oUsuarioSession) {
-          this.oUsuarioSession.carritos = this.tcarrito;
-        }
+        this.nCarritos = this.tcarrito;
       })
     }
   }

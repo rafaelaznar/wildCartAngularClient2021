@@ -23,7 +23,7 @@ export class ProductoViewAdminRoutedComponent extends CheckSession implements On
     public oMetadataService: MetadataService,
     protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);
+    super(Constants.PROFILES.admin, oRouter, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 

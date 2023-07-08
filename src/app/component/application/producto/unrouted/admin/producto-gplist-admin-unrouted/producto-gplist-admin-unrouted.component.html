@@ -42,21 +42,10 @@
       <div>
         <div class="card-title d-flex justify-content-between">
 
-          <h4 class="flex-grow-1"> <a class="nombreproducto" [routerLink]="['/','producto','view',oProducto.id]"
-              *ngIf="id_tipousuario_session!=1&&id_tipousuario_session!=2">
-              {{oProducto.nombre}}
-            </a> </h4>
-
           <h4 class="flex-grow-1"> <a class="nombreproducto"
-              [routerLink]="['/','administrador','producto','view',oProducto.id]" *ngIf="id_tipousuario_session==1">
+              [routerLink]="['/','administrador','producto','view',oProducto.id]">
               {{oProducto.nombre}}
             </a> </h4>
-
-          <h4 class="flex-grow-1"> <a class="nombreproducto"
-              [routerLink]="['/','usuario','producto','cview',oProducto.id]" *ngIf="id_tipousuario_session==2">
-              {{oProducto.nombre}}
-            </a> </h4>
-
 
           <div> <i *ngIf="oProducto.cantidad" class="fas fa-shopping-cart" pBadge style="font-size: 2rem"
               value="{{oProducto.cantidad}}"></i></div>
@@ -77,14 +66,6 @@
         </div>
         <div class="d-flex justify-content-center">
           <h1><span class="badge bg-secondary">{{oProducto.precio.toFixed(2)|number: '1.2-2':'es-ES'}}€</span></h1>
-        </div>
-        <div class="d-flex justify-content-between">
-          <button type="button" class="btn btn-primary flex-grow-1 m-1"
-            *ngIf="id_tipousuario_session==2&&oProducto.existencias>0&&oProducto.cantidad<oProducto.existencias"
-            (click)="addCarrito(oProducto.id)"><i class="fas fa-cart-plus" style="font-size: 2rem"></i></button>
-          <button type="button" class="btn btn-danger m-1" *ngIf="id_tipousuario_session==2&&oProducto.cantidad>0"
-            (click)="removeCarrito(oProducto.id)"><i class="fas fa-cart-arrow-down"
-              style="font-size: 2rem"></i></button>
         </div>
       </div>
 

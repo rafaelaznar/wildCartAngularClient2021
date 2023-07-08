@@ -28,7 +28,7 @@ export class TipoproductoViewAdminRoutedComponent extends CheckSession implement
     public oMetadataService: MetadataService,
     protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);   
+    super(Constants.PROFILES.admin, oRouter, oSessionService);   
     this.id = this.oActivatedRoute.snapshot.params.id;
     this.getOne();
   }

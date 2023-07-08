@@ -25,7 +25,7 @@ export class CommentPlistAdminRoutedComponent extends CheckSession implements On
     public oMetadataService: MetadataService,
     protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);
+    super(Constants.PROFILES.admin, oRouter, oSessionService);
     this.id_producto = this.oActivatedRoute.snapshot.params.id_producto;
     this.id_usuario = this.oActivatedRoute.snapshot.params.id_usuario;
     this.strProfile = this.oActivatedRoute.snapshot.url[0].path;

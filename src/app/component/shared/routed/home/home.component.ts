@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-home',
@@ -11,23 +12,22 @@ import { CarritoService } from 'src/app/service/carrito.service';
 
 export class HomeComponent implements OnInit {
 
-  usuarioSession: IUsuario = null;
-  tipousuarioSession_id: number = null;
+  oUsuarioSession: IUsuario = null;
 
   constructor(
     private oRoute: ActivatedRoute,
     private oActivatedRoute: ActivatedRoute,
-    private oCarritoService: CarritoService
+    private oCarritoService: CarritoService,
+    private oSessionService: SessionService
   ) {
 
-    if (this.oActivatedRoute.snapshot.data && this.oRoute.snapshot.data.message) {
-      this.usuarioSession = this.oRoute.snapshot.data.message;
-      this.tipousuarioSession_id = this.usuarioSession.tipousuario.id;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
+    if (this.oSessionService.isSessionActive()) {
+      this.oSessionService.getUsuario().subscribe((oData: IUsuario) => {
+        this.oUsuarioSession = oData;
+      });
     } else {
-      localStorage.clear();
+      this.oUsuarioSession = null;
     }
-
   }
 
   ngOnInit(): void { }

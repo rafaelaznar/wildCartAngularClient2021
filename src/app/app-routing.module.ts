@@ -6,7 +6,7 @@ import { LoginComponent } from './component/shared/routed/login/login.component'
 import { LogoutComponent } from './component/shared/routed/logout/logout.component';
 import { GenerateComponent } from './component/shared/routed/generate/generate.component';
 import { ReportsComponent } from './component/shared/routed/reports/reports.component';
-import { SessionResolver } from './resolve/session.resolve';
+
 //
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-edit-admin-routed/usuario-edit-admin-routed.component';
 import { UsuarioNewAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-new-admin-routed/usuario-new-admin-routed.component';
@@ -62,74 +62,74 @@ import { CommentViewAdminRoutedComponent } from './component/application/comment
 //
 //
 const routes: Routes = [
-  { path: '', component: HomeComponent, resolve: { message: SessionResolver } },
+  { path: '', component: HomeComponent },
   //
-  { path: 'home', component: HomeComponent, resolve: { message: SessionResolver } },
-  { path: 'login', component: LoginComponent, resolve: { message: SessionResolver } },
-  { path: 'logout', component: LogoutComponent, resolve: { message: SessionResolver } },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   //
-  { path: 'administrador/random/load', component: GenerateComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/reports', component: ReportsComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/random/load', component: GenerateComponent },
+  { path: 'administrador/reports', component: ReportsComponent },
   //
-  { path: 'administrador/tipousuario/plist', component: TipousuarioPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/tipousuario/view/:id', component: TipousuarioViewAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/tipousuario/edit/:id', component: TipousuarioEditAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/tipousuario/plist', component: TipousuarioPlistAdminRoutedComponent },
+  { path: 'administrador/tipousuario/view/:id', component: TipousuarioViewAdminRoutedComponent },
+  { path: 'administrador/tipousuario/edit/:id', component: TipousuarioEditAdminRoutedComponent },
   //
-  { path: 'administrador/usuario/plist', component: UsuarioPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/usuario/plist/tipousuario/:id_tipousuario', component: UsuarioPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/usuario/view/:id', component: UsuarioViewAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'usuario/usuario/cview/:id', component: UsuarioViewUserRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/usuario/new', component: UsuarioNewAdminRoutedComponent, resolve: { message: SessionResolver } },  
-  { path: 'administrador/usuario/edit/:id', component: UsuarioEditAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/usuario/remove/:id', component: UsuarioRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/usuario/plist', component: UsuarioPlistAdminRoutedComponent },
+  { path: 'administrador/usuario/plist/tipousuario/:id_tipousuario', component: UsuarioPlistAdminRoutedComponent },
+  { path: 'administrador/usuario/view/:id', component: UsuarioViewAdminRoutedComponent },
+  { path: 'usuario/usuario/cview/:id', component: UsuarioViewUserRoutedComponent },
+  { path: 'administrador/usuario/new', component: UsuarioNewAdminRoutedComponent },
+  { path: 'administrador/usuario/edit/:id', component: UsuarioEditAdminRoutedComponent },
+  { path: 'administrador/usuario/remove/:id', component: UsuarioRemoveAdminRoutedComponent },
   //
-  { path: 'administrador/tipoproducto/plist', component: TipoproductoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/tipoproducto/view/:id', component: TipoproductoViewAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/tipoproducto/new', component: TipoproductoNewAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/tipoproducto/edit/:id', component: TipoproductoEditAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/tipoproducto/remove/:id', component: TipoproductoRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/tipoproducto/plist', component: TipoproductoPlistAdminRoutedComponent },
+  { path: 'administrador/tipoproducto/view/:id', component: TipoproductoViewAdminRoutedComponent },
+  { path: 'administrador/tipoproducto/new', component: TipoproductoNewAdminRoutedComponent },
+  { path: 'administrador/tipoproducto/edit/:id', component: TipoproductoEditAdminRoutedComponent },
+  { path: 'administrador/tipoproducto/remove/:id', component: TipoproductoRemoveAdminRoutedComponent },
   //
-  { path: 'administrador/producto/plist', component: ProductoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/producto/plist/tipoproducto/:id_tipoproducto', component: ProductoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/producto/view/:id', component: ProductoViewAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/producto/new', component: ProductoNewAdminRoutedComponent, resolve: { message: SessionResolver } },  
-  { path: 'administrador/producto/edit/:id', component: ProductoEdiAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/producto/remove/:id', component: ProductoRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'usuario/producto/cview/:id', component: ProductoViewUserRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'producto/view/:id', component: ProductoViewGuestRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/producto/plist', component: ProductoPlistAdminRoutedComponent },
+  { path: 'administrador/producto/plist/tipoproducto/:id_tipoproducto', component: ProductoPlistAdminRoutedComponent },
+  { path: 'administrador/producto/view/:id', component: ProductoViewAdminRoutedComponent },
+  { path: 'administrador/producto/new', component: ProductoNewAdminRoutedComponent },
+  { path: 'administrador/producto/edit/:id', component: ProductoEdiAdminRoutedComponent },
+  { path: 'administrador/producto/remove/:id', component: ProductoRemoveAdminRoutedComponent },
+  { path: 'usuario/producto/cview/:id', component: ProductoViewUserRoutedComponent },
+  { path: 'producto/view/:id', component: ProductoViewGuestRoutedComponent },
   //
-  { path: 'administrador/compra/plist', component: CompraPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/compra/plist/factura/:id_factura', component: CompraPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/compra/plist/producto/:id_producto', component: CompraPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/compra/view/:id', component: CompraViewAdminRoutedComponent, resolve: { message: SessionResolver } },  
-  { path: 'administrador/compra/new', component: CompraNewAdminRoutedComponent, resolve: { message: SessionResolver } },  
-  { path: 'administrador/compra/edit/:id', component: CompraEditAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/compra/remove/:id', component: CompraRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/compra/plist', component: CompraPlistAdminRoutedComponent },
+  { path: 'administrador/compra/plist/factura/:id_factura', component: CompraPlistAdminRoutedComponent },
+  { path: 'administrador/compra/plist/producto/:id_producto', component: CompraPlistAdminRoutedComponent },
+  { path: 'administrador/compra/view/:id', component: CompraViewAdminRoutedComponent },
+  { path: 'administrador/compra/new', component: CompraNewAdminRoutedComponent },
+  { path: 'administrador/compra/edit/:id', component: CompraEditAdminRoutedComponent },
+  { path: 'administrador/compra/remove/:id', component: CompraRemoveAdminRoutedComponent },
   //
-  { path: 'administrador/factura/plist', component: FacturaPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/factura/plist/usuario/:id_usuario', component: FacturaPlistAdminRoutedComponent, resolve: { message: SessionResolver } },  
-  { path: 'administrador/factura/new', component: FacturaNewAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/factura/view/:id', component: FacturaViewAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/factura/edit/:id', component: FacturaEditAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/factura/remove/:id', component: FacturaRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'usuario/factura/plist', component: FacturaPlistUserRoutedComponent, resolve: { message: SessionResolver } },
+  { path: 'administrador/factura/plist', component: FacturaPlistAdminRoutedComponent },
+  { path: 'administrador/factura/plist/usuario/:id_usuario', component: FacturaPlistAdminRoutedComponent },
+  { path: 'administrador/factura/new', component: FacturaNewAdminRoutedComponent },
+  { path: 'administrador/factura/view/:id', component: FacturaViewAdminRoutedComponent },
+  { path: 'administrador/factura/edit/:id', component: FacturaEditAdminRoutedComponent },
+  { path: 'administrador/factura/remove/:id', component: FacturaRemoveAdminRoutedComponent },
+  { path: 'usuario/factura/plist', component: FacturaPlistUserRoutedComponent },
   //
-  { path: 'administrador/carrito/plist', component: CarritoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/carrito/plist/producto/:id_producto', component: CarritoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/carrito/plist/usuario/:id_usuario', component: CarritoPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/carrito/view/:id', component: CarritoViewAdminRoutedComponent, resolve: { message: SessionResolver } },  
-  { path: 'administrador/carrito/new', component: CarritoNewAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/carrito/edit/:id', component: CarritoEditAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/carrito/remove/:id', component: CarritoRemoveAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'usuario/carrito/cplist', component: CarritoPlistUserRoutedComponent, resolve: { message: SessionResolver } },  
+  { path: 'administrador/carrito/plist', component: CarritoPlistAdminRoutedComponent },
+  { path: 'administrador/carrito/plist/producto/:id_producto', component: CarritoPlistAdminRoutedComponent },
+  { path: 'administrador/carrito/plist/usuario/:id_usuario', component: CarritoPlistAdminRoutedComponent },
+  { path: 'administrador/carrito/view/:id', component: CarritoViewAdminRoutedComponent },
+  { path: 'administrador/carrito/new', component: CarritoNewAdminRoutedComponent },
+  { path: 'administrador/carrito/edit/:id', component: CarritoEditAdminRoutedComponent },
+  { path: 'administrador/carrito/remove/:id', component: CarritoRemoveAdminRoutedComponent },
+  { path: 'usuario/carrito/cplist', component: CarritoPlistUserRoutedComponent },
   //
-  { path: 'administrador/comment/plist', component: CommentPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/comment/plist/producto/:id_producto', component: CommentPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/comment/plist/usuario/:id_usuario', component: CommentPlistAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/comment/view/:id', component: CommentViewAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/comment/new', component: CommentNewAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/comment/edit/:id', component: CommentEditAdminRoutedComponent, resolve: { message: SessionResolver } },
-  { path: 'administrador/comment/remove/:id', component: CommentRemoveAdminRoutedComponent, resolve: { message: SessionResolver } }
+  { path: 'administrador/comment/plist', component: CommentPlistAdminRoutedComponent },
+  { path: 'administrador/comment/plist/producto/:id_producto', component: CommentPlistAdminRoutedComponent },
+  { path: 'administrador/comment/plist/usuario/:id_usuario', component: CommentPlistAdminRoutedComponent },
+  { path: 'administrador/comment/view/:id', component: CommentViewAdminRoutedComponent },
+  { path: 'administrador/comment/new', component: CommentNewAdminRoutedComponent },
+  { path: 'administrador/comment/edit/:id', component: CommentEditAdminRoutedComponent },
+  { path: 'administrador/comment/remove/:id', component: CommentRemoveAdminRoutedComponent }
   //
 ];
 

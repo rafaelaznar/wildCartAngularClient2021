@@ -37,8 +37,8 @@ import { HomeComponent } from './component/shared/routed/home/home.component';
 import { LogoutComponent } from './component/shared/routed/logout/logout.component';
 import { MenuUnroutedComponent } from './component/shared/unrouted/menu-unrouted/menu-unrouted.component';
 import { SessionService } from './service/session.service';
-import { HttpClientModule } from '@angular/common/http';
-import { SessionResolver } from './resolve/session.resolve';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
 import { FooterComponent } from './component/shared/unrouted/footer/footer.component';
 import { ModalComponent } from './component/shared/unrouted/modal/modal.component';
 import { DateTimeService } from './service/datetime.service';
@@ -91,7 +91,7 @@ import { TipoproductoFormAdminUnroutedComponent } from './component/application/
 import { TipoproductoSelectionAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-selection-admin-unrouted/tipoproducto-selection-admin-unrouted.component';
 // producto components
 import { ProductoPlistAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-plist-admin-unrouted/producto-plist-admin-unrouted.component';
-import { ProductoPlistUserUnroutedComponent } from './component/application/producto/unrouted/user/producto-plist-user-unrouted/producto-plist-user-unrouted.component';
+import { ProductoGPlistUserUnroutedComponent } from './component/application/producto/unrouted/user/producto-gplist-user-unrouted/producto-gplist-user-unrouted.component';
 import { ProductoPlistRowAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-plistrow-admin-unrouted/producto-plistrow-admin-unrouted.component';
 import { ProductoPlistheaderAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-plistheader-admin-unrouted/producto-plistheader-admin-unrouted.component';
 import { ProductoFormAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-form-admin-unrouted/producto-form-admin-unrouted.component';
@@ -105,7 +105,7 @@ import { ProductoRemoveAdminRoutedComponent } from './component/application/prod
 import { ProductoViewAdminRoutedComponent } from './component/application/producto/routed/admin/producto-view-admin-routed/producto-view-admin-routed.component';
 import { ProductoSelectionAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-selection-admin-unrouted/producto-selection-admin-unrouted.component';
 import { ProductoViewGuestRoutedComponent } from './component/application/producto/routed/guest/producto-view-guest-routed/producto-view-guest-routed.component';
-import { ProductoDetailGuestUnroutedComponent } from './component/application/producto/unrouted/guest/producto-detail-user-unrouted/producto-detail-guest-unrouted.component';
+import { ProductoDetailGuestUnroutedComponent } from './component/application/producto/unrouted/guest/producto-detail-guest-unrouted/producto-detail-guest-unrouted.component';
 //  factura components
 import { FacturaPlistAdminRoutedComponent } from './component/application/factura/routed/admin/factura-plist-admin-routed/factura-plist-admin-routed.component';
 import { FacturaNewAdminRoutedComponent } from './component/application/factura/routed/admin/factura-new-admin-routed/factura-new-admin-routed.component';
@@ -171,6 +171,9 @@ import { CommentPlistUserUnroutedComponent } from './component/application/comme
 import { CommentPlistheaderUserUnroutedComponent } from './component/application/comment/unrouted/user/comment-plistheader-user-unrouted/comment-plistheader-user-unrouted.component';
 import { CommentPlistRowUserUnroutedComponent } from './component/application/comment/unrouted/user/comment-plistrow-user-unrouted/comment-plistrow-user-unrouted.component';
 import { CommentNewUserUnroutedComponent } from './component/application/comment/unrouted/user/comment-new-user-unrouted/comment-new-user-unrouted.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { ProductoGPlistAdminUnroutedComponent } from './component/application/producto/unrouted/admin/producto-gplist-admin-unrouted/producto-gplist-admin-unrouted.component';
+import { ProductoGPlistGuestUnroutedComponent } from './component/application/producto/unrouted/guest/producto-gplist-guest-unrouted/producto-gplist-guest-unrouted.component';
 //comment componentes
 //
 
@@ -288,11 +291,13 @@ import { CommentNewUserUnroutedComponent } from './component/application/comment
     ProductoFormAdminUnroutedComponent,
     ProductoPlistAdminUnroutedComponent,
     ProductoPlistheaderAdminUnroutedComponent,
-    ProductoPlistRowAdminUnroutedComponent,
-    ProductoPlistUserUnroutedComponent,
+    ProductoPlistRowAdminUnroutedComponent,    
     ProductoDetailUserUnroutedComponent,
     ProductoSelectionAdminUnroutedComponent,
     ProductoDetailGuestUnroutedComponent,
+    ProductoGPlistAdminUnroutedComponent,
+    ProductoGPlistUserUnroutedComponent,
+    ProductoGPlistGuestUnroutedComponent,
     //
     // TipoProducto unrouted components
     TipoproductoPlistAdminUnroutedComponent,
@@ -359,7 +364,6 @@ import { CommentNewUserUnroutedComponent } from './component/application/comment
   ],
   providers: [
     SessionService,
-    SessionResolver,
     PaginationService,
     DateTimeService,
     CompraService,
@@ -375,7 +379,8 @@ import { CommentNewUserUnroutedComponent } from './component/application/comment
     FileService,
     ErrorHandlerService,
     FacturaPrintService,
-    { provide: LOCALE_ID, useValue: 'es-ES' } //USO DE LOCALE!!
+    { provide: LOCALE_ID, useValue: 'es-ES' }, //USO DE LOCALE!!
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
 })

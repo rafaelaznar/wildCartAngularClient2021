@@ -27,7 +27,7 @@ export class CarritoNewAdminRoutedComponent extends CheckSession implements OnIn
     public oMetadataService: MetadataService,
     protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oActivatedRoute, oSessionService);
+    super(Constants.PROFILES.admin, oRouter, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id
     this.strEntity = this.oActivatedRoute.snapshot.url[0].path;
     this.strOperation = this.oActivatedRoute.snapshot.url[1].path;

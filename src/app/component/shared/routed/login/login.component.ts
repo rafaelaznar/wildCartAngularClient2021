@@ -1,12 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IUser } from 'src/app/model/user-interface';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { CarritoService } from 'src/app/service/carrito.service';
-import { CryptoService } from 'src/app/service/crypto.service';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { SessionService } from 'src/app/service/session.service';
+import { SessionEvent, SessionEvents, SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-login',
@@ -17,30 +16,22 @@ import { SessionService } from 'src/app/service/session.service';
 export class LoginComponent implements OnInit {
 
   strOperation: string = "login"
-  formularioLogin: UntypedFormGroup;
+  formularioLogin: FormGroup<IUser>;
   oUserSession: IUsuario;
-  oError:HttpErrorResponse=null;
+  oError: HttpErrorResponse = null;
 
   constructor(
-    private FormBuilder: UntypedFormBuilder,
-    private oRoute: ActivatedRoute,
+    private FormBuilder: FormBuilder,
     private oRouter: Router,
     private oSessionService: SessionService,
-    private oCarritoService: CarritoService,
-    private oCryptoService: CryptoService,
     public oMetadataService: MetadataService
   ) {
-
-    if (oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(oRoute.snapshot.data.message));
-      oRouter.navigate(['/home']);
-    } else {
-      localStorage.clear();
+    if (this.oSessionService.isSessionActive()) {
+      this.oRouter.navigate(['/home']);
     }
 
-    this.formularioLogin = <UntypedFormGroup>this.FormBuilder.group({
-      login: ['', [Validators.required, Validators.minLength(5)]],
+    this.formularioLogin = <FormGroup>this.FormBuilder.group({
+      username: ['', [Validators.required, Validators.minLength(5)]],
       password: ['', [Validators.required, Validators.minLength(5)]]
     });
 
@@ -49,37 +40,37 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { }
 
   onSubmit() {
-    const loginData = { login: this.formularioLogin.get('login')!.value, password: this.oCryptoService.getSHA256(this.formularioLogin.get('password')!.value) };
-    console.log("login:onSubmit: ", loginData);
-    this.oSessionService.login(JSON.stringify(loginData)).subscribe(
-      data => {
-        this.oError = null;
-        localStorage.setItem("user", JSON.stringify(data));
-        this.oSessionService.notifySessionChange('login');
-        this.oCarritoService.notifyCarritoChange('login');
-        if (data != null) {
-          this.oRouter.navigate(['/', 'home']);
-        } else {
-          localStorage.clear();
+    this.oError = null;
+    this.oSessionService.login(this.formularioLogin.get('username')!.value, this.formularioLogin.get('password')!.value)
+      .subscribe({
+        next: (data: string) => {
+          this.oSessionService.setToken(data);
+          if (this.oSessionService.isSessionActive()) {
+            this.oSessionService.emit(new SessionEvent(SessionEvents.login, data));
+            this.oRouter.navigate(['/home']);
+          } else {
+            this.oError = new HttpErrorResponse({ error: "JWT LOGIN: token already expired" });
+            console.error("ERROR: JWT LOGIN: token already expired");
+          }
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oError = error;
+          console.error("ERROR: LOGIN: " + error);
         }
-      }, (error: HttpErrorResponse) => {
-        this.oError = error;
-        console.error("ERROR: LOGIN: " + error);
-      }
-      );
+      });
     return false;
   }
 
   loginAdmin() {
     this.formularioLogin.setValue({
-      login: "admin",
+      username: "admin",
       password: "wildcart"
     })
   }
 
   loginUser() {
     this.formularioLogin.setValue({
-      login: "user",
+      username: "user",
       password: "wildcart"
     })
   }

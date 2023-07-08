@@ -29,7 +29,7 @@ export class ProductoViewUserRoutedComponent extends CheckSession implements OnI
     private oCarritoService: CarritoService,
     protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.user, oRouter, oActivatedRoute, oSessionService);
+    super(Constants.PROFILES.user, oRouter, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id
   }
 
