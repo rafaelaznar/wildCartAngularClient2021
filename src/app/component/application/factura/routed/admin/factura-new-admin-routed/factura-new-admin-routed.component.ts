@@ -2,7 +2,7 @@ import { MetadataService } from '../../../../../../service/metadata.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { IResult } from 'src/app/model/model-interfaces';
 import { CheckSession } from 'src/app/class/check.session.class';
 import { SessionService } from 'src/app/service/session.service';

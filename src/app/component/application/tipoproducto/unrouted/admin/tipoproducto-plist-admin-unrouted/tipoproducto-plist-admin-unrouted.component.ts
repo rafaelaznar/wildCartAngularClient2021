@@ -3,7 +3,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { ITipoproducto, ITipoproductoPage } from 'src/app/model/tipoproducto-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 
 @Component({
   selector: 'app-tipoproducto-plist-admin-unrouted',

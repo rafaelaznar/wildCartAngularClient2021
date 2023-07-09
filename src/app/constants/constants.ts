@@ -1,6 +1,6 @@
 export abstract class Constants {
     static readonly OPERATIONS = {
-        plist: "plist", list: "list", view: "view", new: "new", edit: "edit", remove: "remove", print: "print"
+        plist: "plist", gplist:'gplist', list: "list", view: "view", new: "new", edit: "edit", remove: "remove", print: "print"
     };
 
     static readonly ENTITIES = {

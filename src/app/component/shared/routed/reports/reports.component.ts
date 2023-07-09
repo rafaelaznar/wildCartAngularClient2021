@@ -9,8 +9,9 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ProductoService } from 'src/app/service/producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Constants } from 'src/app/model/constants';
+
 import { ReportPrintService } from 'src/app/service/reports.print.service';
+import { Constants } from 'src/app/constants/constants';
 
 
 @Component({

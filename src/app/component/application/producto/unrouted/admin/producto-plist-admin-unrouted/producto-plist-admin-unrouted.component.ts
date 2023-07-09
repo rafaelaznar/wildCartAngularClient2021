@@ -3,7 +3,7 @@ import { IProductoPage } from 'src/app/model/producto-interfaces';
 import { Component, Input, OnInit } from '@angular/core';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

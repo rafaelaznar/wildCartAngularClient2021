@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 

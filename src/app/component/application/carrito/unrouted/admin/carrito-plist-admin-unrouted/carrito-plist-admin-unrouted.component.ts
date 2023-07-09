@@ -3,7 +3,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { ICarritoPage } from 'src/app/model/carrito-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 
 @Component({
   selector: 'app-carrito-plist-admin-unrouted',

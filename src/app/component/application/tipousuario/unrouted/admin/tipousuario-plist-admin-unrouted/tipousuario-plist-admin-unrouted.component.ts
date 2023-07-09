@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { ITipousuario, ITipousuarioPage } from 'src/app/model/tipousuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';

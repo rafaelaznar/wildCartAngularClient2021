@@ -3,7 +3,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { CompraService } from 'src/app/service/compra.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { ICompraPage } from 'src/app/model/compra-interfaces';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

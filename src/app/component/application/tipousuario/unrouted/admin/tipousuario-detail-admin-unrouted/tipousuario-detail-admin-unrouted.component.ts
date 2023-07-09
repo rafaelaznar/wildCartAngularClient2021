@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';

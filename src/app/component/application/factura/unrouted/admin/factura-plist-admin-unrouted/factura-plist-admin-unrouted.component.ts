@@ -5,7 +5,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { CompraService } from 'src/app/service/compra.service';
 import { ICompra, ICompraPage } from 'src/app/model/compra-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FacturaPrintService } from 'src/app/service/factura.print.service';
 

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 

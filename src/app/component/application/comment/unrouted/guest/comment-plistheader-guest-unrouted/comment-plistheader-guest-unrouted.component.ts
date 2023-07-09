@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 

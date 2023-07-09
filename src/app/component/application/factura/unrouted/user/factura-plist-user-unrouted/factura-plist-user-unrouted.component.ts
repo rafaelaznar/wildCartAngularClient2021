@@ -3,7 +3,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { FacturaService } from 'src/app/service/factura.service';
 import { IFactura, IFacturaPage } from 'src/app/model/factura-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { FacturaPrintService } from 'src/app/service/factura.print.service';
 import { Subject } from 'rxjs/internal/Subject';
 

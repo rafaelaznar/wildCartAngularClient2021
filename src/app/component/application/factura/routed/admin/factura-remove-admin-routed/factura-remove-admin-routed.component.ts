@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { FacturaService } from 'src/app/service/factura.service';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
 import { SessionService } from 'src/app/service/session.service';
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { IFactura } from 'src/app/model/factura-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { API_URL } from 'src/environments/environment';

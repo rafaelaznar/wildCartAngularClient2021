@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
-import { Constants } from 'src/app/model/constants';
+import { Constants } from 'src/app/constants/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { SessionService } from 'src/app/service/session.service';
