@@ -4,7 +4,7 @@ import { ProductoService } from 'src/app/service/producto.service';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { Constants } from 'src/app/constants/constants';
+import { Constants } from 'src/app/constant/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
 import { SessionService } from 'src/app/service/session.service';
 

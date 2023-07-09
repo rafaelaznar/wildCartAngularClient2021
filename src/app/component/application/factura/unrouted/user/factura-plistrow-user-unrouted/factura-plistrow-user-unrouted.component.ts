@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { IFactura } from 'src/app/model/factura-interfaces';
-import { Constants } from 'src/app/constants/constants';
+import { Constants } from 'src/app/constant/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
 import { MetadataService } from 'src/app/service/metadata.service';

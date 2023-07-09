@@ -5,7 +5,7 @@ import { IFactura, IFactura2Send } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { Constants } from 'src/app/constants/constants';
+import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

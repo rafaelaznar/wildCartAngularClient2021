@@ -3,7 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { MetadataService } from 'src/app/service/metadata.service';
 import { ITipousuario, ITipousuario2Send } from 'src/app/model/tipousuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
-import { Constants } from 'src/app/constants/constants';
+import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

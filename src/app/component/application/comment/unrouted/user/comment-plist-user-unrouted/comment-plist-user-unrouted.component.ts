@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
-import { Constants } from 'src/app/constants/constants';
+import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommentService } from 'src/app/service/comment.service';
 import { ICommentPage } from 'src/app/model/comment-interfaces';

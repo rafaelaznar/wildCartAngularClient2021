@@ -5,7 +5,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { IUsuario, IUsuario2Send } from 'src/app/model/usuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
-import { Constants } from 'src/app/constants/constants';
+import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

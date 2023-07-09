@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CheckSession } from 'src/app/class/check.session.class';
-import { Constants } from 'src/app/constants/constants';
+import { Constants } from 'src/app/constant/constants';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { SessionService } from 'src/app/service/session.service';
 

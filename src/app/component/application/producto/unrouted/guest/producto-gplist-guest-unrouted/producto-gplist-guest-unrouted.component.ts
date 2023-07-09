@@ -3,7 +3,7 @@ import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateR
 import { MetadataService } from 'src/app/service/metadata.service';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { ProductoCarritoViewService } from 'src/app/service/productocarritoview.service';
-import { Constants } from 'src/app/constants/constants';
+import { Constants } from 'src/app/constant/constants';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 

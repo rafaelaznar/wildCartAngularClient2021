@@ -7,7 +7,7 @@ import { ProductoService } from 'src/app/service/producto.service';
 import { FacturaService } from 'src/app/service/factura.service';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { IFactura } from 'src/app/model/factura-interfaces';
-import { Constants } from 'src/app/constants/constants';
+import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

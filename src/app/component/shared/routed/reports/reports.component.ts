@@ -11,7 +11,7 @@ import { ProductoService } from 'src/app/service/producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ReportPrintService } from 'src/app/service/reports.print.service';
-import { Constants } from 'src/app/constants/constants';
+import { Constants } from 'src/app/constant/constants';
 
 
 @Component({
