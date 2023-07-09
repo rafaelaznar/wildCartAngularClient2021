@@ -3,9 +3,9 @@
     <h6>{{oPage.strFilteredMessage}}</h6>
   </div>
   <div class="col-md text-center">
-    <app-search-unrouted [strFilter]="oPage.strFilter"
+    <app-shared-search-unrouted [strFilter]="oPage.strFilter"
       [strTitlePlural]="'Filtro de ' + oMetadataService.getName(strEntity+'s').toLowerCase()"
-      (eeFilter)="onSetFilter($event)"></app-search-unrouted>
+      (eeFilter)="onSetFilter($event)"></app-shared-search-unrouted>
   </div>
   <div class="col-md text-end">
     <h4 class="text-muted">{{oPage.totalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}</h4>
@@ -14,14 +14,14 @@
 
 <div class="row justify-content-between">
   <div class="col-md text-start">
-    <app-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
-    </app-pagination-unrouted>
+    <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
+    </app-shared-pagination-unrouted>
   </div>
   <div class="col-md text-center">
     <ng-content select="header"></ng-content>
   </div>
   <div class="col-md text-end">
-    <app-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-rpp-unrouted>
+    <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-shared-rpp-unrouted>
   </div>
 </div>
 
@@ -41,7 +41,7 @@
           [oUsuario]="oUsuarioRow" [mode]="true">
 
           <div action_column>
-            <div class="btn-group btn-group-sm" role="group" app-plistrowbuttons-unrouted [id]="oUsuarioRow.id"
+            <div class="btn-group btn-group-sm" role="group" app-shared-plistrowbuttons-unrouted [id]="oUsuarioRow.id"
               [strEntity]="strEntity" [strProfile]="strProfile">
               <button type="button" class="btn btn-secondary" (click)="flipValidateUser(oUsuarioRow.id)"><i
                   [ngClass]="oMetadataService.getIcon('validado')"></i></button>

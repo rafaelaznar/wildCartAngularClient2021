@@ -99,7 +99,7 @@
         </div>
     </div>
 
-    <div class="row mb-3" app-find-unrouted [entity]="'tipousuario'" [id]="oData2Show?.tipousuario.id"
+    <div class="row mb-3" app-shared-find-unrouted [entity]="'tipousuario'" [id]="oData2Show?.tipousuario.id"
         [description]="oData2Show?.tipousuario.nombre" (selection)="onFindSelection($event)">
         <div plist-finder-title>
             <h4 class="text-center">{{oMetadataService.getName('selectionHelp') + ' ' +

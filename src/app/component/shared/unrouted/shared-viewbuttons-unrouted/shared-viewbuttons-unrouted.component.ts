@@ -3,14 +3,15 @@ import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
-  selector: 'app-footerbuttons-unrouted',
-  templateUrl: './footerbuttons-unrouted.component.html',
-  styleUrls: ['./footerbuttons-unrouted.component.css']
+  selector: 'app-shared-viewbuttons-unrouted',
+  templateUrl: './shared-viewbuttons-unrouted.component.html',
+  styleUrls: ['./shared-viewbuttons-unrouted.component.css']
 })
-export class FooterbuttonsUnroutedComponent implements OnInit {
+export class SharedViewbuttonsUnroutedComponent implements OnInit {
 
+  @Input() strProfile: string = "administrador";
   @Input() strEntity: string = "";
-
+  @Input() id: number = 0;
 
   constructor(
     protected oLocation: Location,
@@ -18,5 +19,4 @@ export class FooterbuttonsUnroutedComponent implements OnInit {
   ) { }
 
   ngOnInit() { }
-
 }

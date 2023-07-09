@@ -3,11 +3,11 @@ import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
-  selector: 'app-removeconfirmation-unrouted',
-  templateUrl: './removeconfirmation-unrouted.component.html',
-  styleUrls: ['./removeconfirmation-unrouted.component.css']
+  selector: 'app-shared-removeconfirmation-unrouted',
+  templateUrl: './shared-removeconfirmation-unrouted.component.html',
+  styleUrls: ['./shared-removeconfirmation-unrouted.component.css']
 })
-export class RemoveconfirmationUnroutedComponent implements OnInit {
+export class SharedRemoveconfirmationUnroutedComponent implements OnInit {
 
   @Input() strEntity: string = "";
   @Output() doRemove = new EventEmitter<Event>();

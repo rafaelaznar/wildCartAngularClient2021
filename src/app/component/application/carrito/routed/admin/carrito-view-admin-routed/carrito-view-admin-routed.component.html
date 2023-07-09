@@ -1,7 +1,7 @@
 <div class="container my-3">
-    <app-header [title]="oMetadataService.getName('cart item view')"
+    <app-shared-header-unrouted [title]="oMetadataService.getName('cart item view')"
         [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(strEntity)">
-    </app-header>
+    </app-shared-header-unrouted>
     <app-carrito-detail-admin-unrouted [id]="id"></app-carrito-detail-admin-unrouted>
-    <app-viewbuttons-unrouted [strEntity]="strEntity" [id]="id" [strProfile]="strProfile"> </app-viewbuttons-unrouted>
+    <app-shared-viewbuttons-unrouted [strEntity]="strEntity" [id]="id" [strProfile]="strProfile"> </app-shared-viewbuttons-unrouted>
 </div>

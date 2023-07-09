@@ -5,11 +5,11 @@ import { Subject } from 'rxjs/internal/Subject';
 import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
-  selector: '[app-find-unrouted]',
-  templateUrl: './find-unrouted.component.html',
-  styleUrls: ['./find-unrouted.component.css']
+  selector: '[app-shared-find-unrouted]',
+  templateUrl: './shared-find-unrouted.component.html',
+  styleUrls: ['./shared-find-unrouted.component.css']
 })
-export class findUnroutedComponent implements OnInit {
+export class SharedFindUnroutedComponent implements OnInit {
   @Input() entity: string = "";
   @Input() description: string = "";
   @Input() id: number = null;

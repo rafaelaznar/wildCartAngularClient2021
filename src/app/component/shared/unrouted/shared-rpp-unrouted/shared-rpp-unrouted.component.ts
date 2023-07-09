@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-rpp-unrouted',
-  templateUrl: './rpp-unrouted.component.html',
-  styleUrls: ['./rpp-unrouted.component.css']
+  selector: 'app-shared-rpp-unrouted',
+  templateUrl: './shared-rpp-unrouted.component.html',
+  styleUrls: ['./shared-rpp-unrouted.component.css']
 })
-export class RppUnroutedComponent implements OnInit {
+export class SharedRppUnroutedComponent implements OnInit {
 
   @Input() nPageSize: number = 10;
   @Output() eeRpp = new EventEmitter<number>();

@@ -1,15 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-popup',
-  templateUrl: './popup.component.html',
-  styleUrls: ['./popup.component.css']
+  selector: 'app-shared-popup-unrouted',
+  templateUrl: './shared-popup-unrouted.component.html',
+  styleUrls: ['./shared-popup-unrouted.component.css']
 })
 
-export class PopupComponent implements OnInit {
+export class SharedPopupUnroutedComponent implements OnInit {
 
   // https://stackoverflow.com/questions/44053227/how-to-emit-an-event-from-parent-to-child
 

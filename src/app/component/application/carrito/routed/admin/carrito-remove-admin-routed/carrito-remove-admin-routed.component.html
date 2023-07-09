@@ -1,11 +1,11 @@
 <div class="container my-3">
-  <app-header [title]="oMetadataService.getName('cart item removal')"
+  <app-shared-header-unrouted [title]="oMetadataService.getName('cart item removal')"
     [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(strEntity)">
-  </app-header>
+  </app-shared-header-unrouted>
   <div class="row justify-content-center">
     <app-carrito-detail-admin-unrouted [id]="id"></app-carrito-detail-admin-unrouted>
-    <app-removeconfirmation-unrouted [strEntity]="strEntity" (doRemove)="removeOne()"></app-removeconfirmation-unrouted>
-    <app-footerbuttons-unrouted [strEntity]="strEntity"></app-footerbuttons-unrouted>
+    <app-shared-removeconfirmation-unrouted [strEntity]="strEntity" (doRemove)="removeOne()"></app-shared-removeconfirmation-unrouted>
+    <app-shared-footerbuttons-unrouted [strEntity]="strEntity"></app-shared-footerbuttons-unrouted>
   </div>
 </div>
-<app-popup [show]="eventsSubjectShowPopup.asObservable()" (close)="onClosePopup()"></app-popup>
+<app-shared-popup-unrouted [show]="eventsSubjectShowPopup.asObservable()" (close)="onClosePopup()"></app-shared-popup-unrouted>

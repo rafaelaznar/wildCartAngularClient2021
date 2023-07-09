@@ -1,7 +1,7 @@
 <div class="container my-3">
-    <app-header [title]="oMetadataService.getName('comments list')"
+    <app-shared-header-unrouted [title]="oMetadataService.getName('comments list')"
         [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(this.strEntity)">
-    </app-header>
+    </app-shared-header-unrouted>
     <app-comment-plist-admin-unrouted [id_usuario]="id_usuario" [id_producto]="id_producto">
         <header>
             <a [routerLink]="['/administrador',strEntity,'new']" type="button" class="btn btn-success mb-2">

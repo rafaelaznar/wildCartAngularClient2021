@@ -6,11 +6,11 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { SessionEvents, SessionService } from 'src/app/service/session.service';
 
 @Component({
-  selector: 'app-menu-unrouted',
-  templateUrl: './menu-unrouted.component.html',
-  styleUrls: ['./menu-unrouted.component.css']
+  selector: 'app-shared-menu-unrouted',
+  templateUrl: './shared-menu-unrouted.component.html',
+  styleUrls: ['./shared-menu-unrouted.component.css']
 })
-export class MenuUnroutedComponent implements OnInit {
+export class SharedMenuUnroutedComponent implements OnInit {
 
   //private carritoEventsSubscription: Subscription;
   //@Input() carritoMenuObservable: Observable<{ action: string, data: number }>;

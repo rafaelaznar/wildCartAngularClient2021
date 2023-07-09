@@ -4,12 +4,12 @@ import { debounceTime } from 'rxjs/operators';
 import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
-  selector: 'app-search-unrouted',
-  templateUrl: './search-unrouted.component.html',
-  styleUrls: ['./search-unrouted.component.css']
+  selector: 'app-shared-search-unrouted',
+  templateUrl: './shared-search-unrouted.component.html',
+  styleUrls: ['./shared-search-unrouted.component.css']
 })
 
-export class SearchUnroutedComponent implements OnInit {
+export class SharedSearchUnroutedComponent implements OnInit {
 
   @Input() strFilter: string = "";
   @Input() strTitlePlural: string = "";

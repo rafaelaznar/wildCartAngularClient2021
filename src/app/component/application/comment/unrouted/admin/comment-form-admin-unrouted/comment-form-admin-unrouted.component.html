@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div class="row mb-3" app-find-unrouted [entity]="'usuario'" [id]="oComment2Show?.usuario.id"
+    <div class="row mb-3" app-shared-find-unrouted [entity]="'usuario'" [id]="oComment2Show?.usuario.id"
         [description]="oComment2Show?.usuario.nombre + ' ' + oComment2Show?.usuario.apellido1" (selection)="onFindSelectionUsuario($event)">
         <div plist-finder-title>
             <h4 class="text-center">{{oMetadataService.getName('selectionHelp') + ' ' +
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="row mb-3" app-find-unrouted [entity]="'producto'" [id]="oComment2Show?.producto.id"
+    <div class="row mb-3" app-shared-find-unrouted [entity]="'producto'" [id]="oComment2Show?.producto.id"
         [description]="oComment2Show?.producto.nombre" (selection)="onFindSelectionProducto($event)">
         <div plist-finder-title>
             <h4 class="text-center">{{oMetadataService.getName('selectionHelp') + ' ' +

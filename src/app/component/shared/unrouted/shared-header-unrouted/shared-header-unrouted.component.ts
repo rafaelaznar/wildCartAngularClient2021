@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-shared-header-unrouted',
+  templateUrl: './shared-header-unrouted.component.html',
+  styleUrls: ['./shared-header-unrouted.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class SharedHeaderUnroutedComponent implements OnInit {
   
   @Input() title: string = "wildCart";  
   @Input() subtitle: string = "wildCart";  

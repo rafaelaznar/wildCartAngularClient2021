@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<app-modal [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
+<app-shared-modal-unrouted [show]="eventsSubjectShowModal.asObservable()" [size]="'xl'" [hide]="eventsSubjectHideModal.asObservable()"
   (close)="onCloseModal()" [mimodal]="entity"> 
 
   <ng-content select="[plist-finder-title]"></ng-content>
@@ -37,4 +37,4 @@
     <header></header>
   </app-factura-selection-admin-unrouted>
 
-</app-modal>
+</app-shared-modal-unrouted>

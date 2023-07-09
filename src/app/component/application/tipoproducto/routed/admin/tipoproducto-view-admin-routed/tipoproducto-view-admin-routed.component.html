@@ -1,7 +1,7 @@
 <div class="container my-3">
-    <app-header [title]="oMetadataService.getName(strOperation + 'of')  + ' ' +  oMetadataService.getName(strEntity + 's').toLowerCase()"
+    <app-shared-header-unrouted [title]="oMetadataService.getName(strOperation + 'of')  + ' ' +  oMetadataService.getName(strEntity + 's').toLowerCase()"
         [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(this.strEntity)">
-    </app-header>
+    </app-shared-header-unrouted>
     <app-tipoproducto-detail-admin-unrouted [id]="id"></app-tipoproducto-detail-admin-unrouted>
-    <app-viewbuttons-unrouted [strEntity]="strEntity" [id]="id" [strProfile]="strProfile"> </app-viewbuttons-unrouted>
+    <app-shared-viewbuttons-unrouted [strEntity]="strEntity" [id]="id" [strProfile]="strProfile"> </app-shared-viewbuttons-unrouted>
 </div>

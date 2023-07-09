@@ -1,7 +1,7 @@
 <div class="container my-3">
-    <app-header [title]="'Facturas'" [icon]="oMetadataService.getIcon(strOperation)"
+    <app-shared-header-unrouted [title]="'Facturas'" [icon]="oMetadataService.getIcon(strOperation)"
         [iconEntity]="oMetadataService.getIcon(strEntity)">
-    </app-header>
+    </app-shared-header-unrouted>
     <app-factura-plist-user-unrouted [id_usuario]="id_usuario" [id_tipousuario_session]="tipousuarioSession_id">
         </app-factura-plist-user-unrouted>
 </div>

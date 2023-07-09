@@ -4,9 +4,9 @@
       <h6>{{strFilteredMessage}}</h6>
     </div>
     <div class="col-md text-center">
-      <app-search-unrouted [strFilter]="strFilter"
+      <app-shared-search-unrouted [strFilter]="strFilter"
         [strTitlePlural]="'Filtro de ' + oMetadataService.getName(strEntity+'s').toLowerCase()"
-        (eeFilter)="onSetFilter($event)"></app-search-unrouted>
+        (eeFilter)="onSetFilter($event)"></app-shared-search-unrouted>
     </div>
     <div class="col-md text-end">
       <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}
@@ -16,14 +16,14 @@
 
   <div class="row justify-content-between">
     <div class="col-md text-start">
-      <app-pagination-unrouted [nPage]="nPage" [nTotalPages]="nTotalPages" (eePage)="onSetPage($event)">
-      </app-pagination-unrouted>
+      <app-shared-pagination-unrouted [nPage]="nPage" [nTotalPages]="nTotalPages" (eePage)="onSetPage($event)">
+      </app-shared-pagination-unrouted>
     </div>
     <div class="col-md text-center">
       <ng-content select="header"></ng-content>
     </div>
     <div class="col-md text-end">
-      <app-rpp-unrouted [nPageSize]="nPageSize" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-rpp-unrouted>
+      <app-shared-rpp-unrouted [nPageSize]="nPageSize" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-shared-rpp-unrouted>
     </div>
   </div>
 

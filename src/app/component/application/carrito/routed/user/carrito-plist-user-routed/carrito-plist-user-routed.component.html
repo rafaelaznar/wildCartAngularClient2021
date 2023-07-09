@@ -1,7 +1,7 @@
 <div class="container my-3">
-    <app-header [title]="oMetadataService.getName('cart items list')" [icon]="oMetadataService.getIcon(strOperation)"
+    <app-shared-header-unrouted [title]="oMetadataService.getName('cart items list')" [icon]="oMetadataService.getIcon(strOperation)"
         [iconEntity]="oMetadataService.getIcon(strEntity)">
-    </app-header>
+    </app-shared-header-unrouted>
     <app-carrito-cplist-user-unrouted [id_usuario]="id_usuario" [id_tipousuario_session]="tipousuarioSession_id"
         [id_producto]="id_producto" (addCarritoEE)="onAddCarrito($event)">
     </app-carrito-cplist-user-unrouted>

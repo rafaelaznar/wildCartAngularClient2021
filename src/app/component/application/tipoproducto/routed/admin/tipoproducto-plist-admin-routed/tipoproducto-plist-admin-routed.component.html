@@ -1,7 +1,7 @@
 <div class="container my-3">
-  <app-header [title]="oMetadataService.getName('product types list')" [icon]="oMetadataService.getIcon(strOperation)"
+  <app-shared-header-unrouted [title]="oMetadataService.getName('product types list')" [icon]="oMetadataService.getIcon(strOperation)"
     [iconEntity]="oMetadataService.getIcon(this.strEntity)">
-  </app-header>
+  </app-shared-header-unrouted>
   <app-tipoproducto-plist-admin-unrouted>
     <header>
       <a [routerLink]="['/administrador',strEntity,'new']" type="button" class="btn btn-success mb-2">

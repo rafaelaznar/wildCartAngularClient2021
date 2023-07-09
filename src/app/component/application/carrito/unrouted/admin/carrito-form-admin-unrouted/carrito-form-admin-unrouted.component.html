@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div class="row mb-3" app-find-unrouted [entity]="'producto'" [id]="oData2Show?.producto?.id"
+  <div class="row mb-3" app-shared-find-unrouted [entity]="'producto'" [id]="oData2Show?.producto?.id"
     [description]="oData2Show?.producto?.nombre ? (oData2Show?.producto.nombre | trim) + ' (' + oData2Show?.producto.codigo +')':''"
     (selection)="onFindSelectionProducto($event)">
     <div plist-finder-title>
@@ -42,7 +42,7 @@
     </div>
   </div>
 
-  <div class="row mb-3" app-find-unrouted [entity]="'usuario'" [id]="oData2Show?.usuario?.id"
+  <div class="row mb-3" app-shared-find-unrouted [entity]="'usuario'" [id]="oData2Show?.usuario?.id"
     [description]="oData2Show?.usuario?.dni ? oData2Show?.usuario?.dni + ' (' + oData2Show?.usuario.nombre + ' ' + oData2Show?.usuario.apellido1 +')':''"
     (selection)="onFindSelectionUsuario($event)">
     <div plist-finder-title>

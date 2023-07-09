@@ -1,15 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  selector: 'app-shared-modal-unrouted',
+  templateUrl: './shared-modal-unrouted.component.html',
+  styleUrls: ['./shared-modal-unrouted.component.css']
 })
 
-export class ModalComponent implements OnInit {
+export class SharedModalUnroutedComponent implements OnInit {
 
   // https://stackoverflow.com/questions/44053227/how-to-emit-an-event-from-parent-to-child
 

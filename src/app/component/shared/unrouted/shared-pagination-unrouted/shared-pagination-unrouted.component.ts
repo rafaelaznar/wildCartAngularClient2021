@@ -2,12 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PaginationService } from 'src/app/service/pagination.service';
 
 @Component({
-  selector: 'app-pagination-unrouted',
-  templateUrl: './pagination-unrouted.component.html',
-  styleUrls: ['./pagination-unrouted.component.css']
+  selector: 'app-shared-pagination-unrouted',
+  templateUrl: './shared-pagination-unrouted.component.html',
+  styleUrls: ['./shared-pagination-unrouted.component.css']
 })
 
-export class PaginationUnroutedComponent implements OnInit {
+export class SharedPaginationUnroutedComponent implements OnInit {
 
   @Input()
   set nPage(value: number) {

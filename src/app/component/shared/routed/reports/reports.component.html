@@ -1,7 +1,7 @@
 <div class="container my-3">
-  <app-header [title]="oMetadataService.getName('reports')" [icon]="oMetadataService.getIcon(this.strOperation)"
+  <app-shared-header-unrouted [title]="oMetadataService.getName('reports')" [icon]="oMetadataService.getIcon(this.strOperation)"
     [iconEntity]="oMetadataService.getIcon(this.strEntity)">
-  </app-header>
+  </app-shared-header-unrouted>
   <form novalidate [formGroup]="oForm" *ngIf="oForm">
     <div class="row mb-3">
       <label for="dni" class="col-sm-2 col-form-label">
@@ -32,7 +32,7 @@
         <div *ngIf="errorDateRange" class="badge bg-danger text-wrap">La fecha de inicio debe ser anterior a la fecha final</div>
       </div>
     </div>
-    <div class="row mb-3" app-find-unrouted [entity]="'producto'" [id]="oProduct?.id"
+    <div class="row mb-3" app-shared-find-unrouted [entity]="'producto'" [id]="oProduct?.id"
       [description]="!f.id_producto.dirty ? '' : oProduct ?  oProduct?.nombre : 'ERROR'"
       (selection)="onProductFindSelection($event)">
       <div plist-finder-title>
@@ -40,7 +40,7 @@
           oMetadataService.getName('aproducto')}}</h4>
       </div>
     </div>
-    <div class="row mb-3" app-find-unrouted [entity]="'usuario'" [id]="oClient?.id"
+    <div class="row mb-3" app-shared-find-unrouted [entity]="'usuario'" [id]="oClient?.id"
       [description]="!f.id_usuario.dirty ? '' : oClient ? ( oClient?.nombre + ' ' + oClient?.apellido1 + ' ' + oClient?.apellido2).trim() : 'ERROR'"
       (selection)="onClientFindSelection($event)">
       <div plist-finder-title>
@@ -100,4 +100,4 @@
       {{oMetadataService.getName('return')}}</a>
   </div>
 </div>
-<app-popup [show]="eventsSubjectShowPopup.asObservable()" (close)="onClosePopup()" [size]="'sm'"></app-popup>
+<app-shared-popup-unrouted [show]="eventsSubjectShowPopup.asObservable()" (close)="onClosePopup()" [size]="'sm'"></app-shared-popup-unrouted>

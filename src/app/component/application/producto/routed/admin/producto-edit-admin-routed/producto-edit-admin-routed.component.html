@@ -1,11 +1,11 @@
 <div class="container my-3">
-  <app-header  [title]="oMetadataService.getName('product edition')"
+  <app-shared-header-unrouted  [title]="oMetadataService.getName('product edition')"
     [icon]="oMetadataService.getIcon(strOperation)" [iconEntity]="oMetadataService.getIcon(this.strEntity)">
-  </app-header>
+  </app-shared-header-unrouted>
   <div class="row justify-content-center">
     <app-producto-form-admin-unrouted [strOperation]="strOperation" [id]="id" (msg)="reportResult($event)">
     </app-producto-form-admin-unrouted>
-    <app-footerbuttons-unrouted [strEntity]="strEntity"></app-footerbuttons-unrouted>
+    <app-shared-footerbuttons-unrouted [strEntity]="strEntity"></app-shared-footerbuttons-unrouted>
   </div>
 </div>
-<app-popup [show]="eventsSubjectShowPopup.asObservable()" (close)="onClosePopup()"></app-popup>
+<app-shared-popup-unrouted [show]="eventsSubjectShowPopup.asObservable()" (close)="onClosePopup()"></app-shared-popup-unrouted>

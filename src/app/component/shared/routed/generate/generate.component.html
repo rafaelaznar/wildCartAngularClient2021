@@ -1,7 +1,7 @@
 <div class="container my-3">
-  <app-header [title]="oMetadataService.getName('randomRegistersLoad')" [icon]="oMetadataService.getIcon('random')"
+  <app-shared-header-unrouted [title]="oMetadataService.getName('randomRegistersLoad')" [icon]="oMetadataService.getIcon('random')"
     [iconEntity]="oMetadataService.getIcon('random')">
-  </app-header>
+  </app-shared-header-unrouted>
   <div class="row justify-content-center">
     <div class="card text-center" *ngIf="bLoading">
       <div class="card-body">
@@ -144,4 +144,4 @@
     </div>
   </div>
 </div>
-<app-popup [show]="eventsModalSubject.asObservable()" [body]="strResult" (close)="onCloseModal()"> </app-popup>
+<app-shared-popup-unrouted [show]="eventsModalSubject.asObservable()" [body]="strResult" (close)="onCloseModal()"> </app-shared-popup-unrouted>

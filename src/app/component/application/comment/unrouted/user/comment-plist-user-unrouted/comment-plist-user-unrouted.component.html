@@ -6,8 +6,8 @@
 
 <div class="row justify-content-between">
   <div class="col-md text-start">
-    <app-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
-    </app-pagination-unrouted>
+    <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
+    </app-shared-pagination-unrouted>
   </div>
   <div class="col-md text-center">
     <ng-content select="header"></ng-content>

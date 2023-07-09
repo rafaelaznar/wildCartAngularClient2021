@@ -1,7 +1,7 @@
 <div class="container my-3">
-    <app-header [title]="oMetadataService.getName('productDetail')" [icon]="oMetadataService.getIcon(this.strOperation)"
+    <app-shared-header-unrouted [title]="oMetadataService.getName('productDetail')" [icon]="oMetadataService.getIcon(this.strOperation)"
         [iconEntity]="oMetadataService.getIcon(this.strEntity)">
-    </app-header>
+    </app-shared-header-unrouted>
     <div class="row justify-content-center">
         <app-producto-detail-guest-unrouted [id]="id"></app-producto-detail-guest-unrouted>
     </div>
