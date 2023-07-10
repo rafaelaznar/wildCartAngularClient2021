@@ -87,7 +87,7 @@ import { TipousuarioSelectionAdminUnroutedComponent } from './component/applicat
 // tipoproducto routed components
 import { TipoproductoPlistRowAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-plistrow-admin-unrouted/tipoproducto-plistrow-unrouted.component';
 import { TipoproductoPlistheaderAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-plistheader-admin-unrouted/tipoproducto-plistheader-admin-unrouted.component';
-import { TipoproductoDetailAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-view-admin-unrouted/tipoproducto-detail-admin-unrouted.component';
+import { TipoproductoDetailAdminUnroutedComponent } from './component/application/tipoproducto/unrouted/admin/tipoproducto-detail-admin-unrouted/tipoproducto-detail-admin-unrouted.component';
 import { TipoproductoPlistAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-plist-admin-routed/tipoproducto-plist-admin-routed.component';
 import { TipoproductoNewAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-new-admin-routed/tipoproducto-new-admin-routed.component';
 import { TipoproductoEditAdminRoutedComponent } from './component/application/tipoproducto/routed/admin/tipoproducto-edit-admin-routed/tipoproducto-edit-admin-routed.component';

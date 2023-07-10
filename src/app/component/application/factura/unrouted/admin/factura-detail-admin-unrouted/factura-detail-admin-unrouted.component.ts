@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Constants } from 'src/app/constant/constants';
 import { IFactura } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
 import { MetadataService } from 'src/app/service/metadata.service';
@@ -12,8 +13,13 @@ import { MetadataService } from 'src/app/service/metadata.service';
 export class FacturaDetailAdminUnroutedComponent implements OnInit {
 
   @Input() id: number = null;
-
+  //
+  strProfile: string = Constants.PROFILES.admin;
+  strEntity: string = Constants.ENTITIES.invoice;
+  strOperation: string = Constants.OPERATIONS.view
+  //
   oFactura: IFactura;
+
   constructor(
     private oFacturaService: FacturaService,
     public oMetadataService: MetadataService

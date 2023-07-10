@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Constants } from 'src/app/constant/constants';
 import { IComment } from 'src/app/model/comment-interfaces';
 import { CommentService } from 'src/app/service/comment.service';
 import { MetadataService } from 'src/app/service/metadata.service';
@@ -12,7 +13,11 @@ import { MetadataService } from 'src/app/service/metadata.service';
 export class CommentDetailAdminUnroutedComponent implements OnInit {
 
   @Input() id: number = null;
-
+  //
+  strProfile: string = Constants.PROFILES.admin;
+  strEntity: string = Constants.ENTITIES.comment;
+  strOperation: string = Constants.OPERATIONS.view;
+  //
   oComment: IComment;
 
   constructor(
@@ -25,13 +30,11 @@ export class CommentDetailAdminUnroutedComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oCommentService
-      .getOne(this.id)
-      .subscribe({
-        next: (oData: IComment) => {
-          this.oComment = oData;
-        }
-      });
+    this.oCommentService.getOne(this.id).subscribe({
+      next: (oData: IComment) => {
+        this.oComment = oData;
+      }
+    });
   };
 
 }

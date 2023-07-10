@@ -13,11 +13,12 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 export class UsuarioDetailAdminUnroutedComponent implements OnInit {
 
   @Input() id: number = null;
-
-  oUsuario: IUsuario;
+  //  
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.view
+  //
+  oUsuario: IUsuario;
 
   constructor(
     private oUsuarioService: UsuarioService,

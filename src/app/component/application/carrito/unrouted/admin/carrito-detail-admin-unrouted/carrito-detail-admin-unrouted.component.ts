@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Constants } from 'src/app/constant/constants';
 import { ICarrito } from 'src/app/model/carrito-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { MetadataService } from 'src/app/service/metadata.service';
@@ -11,7 +12,11 @@ import { MetadataService } from 'src/app/service/metadata.service';
 export class CarritoDetailAdminUnroutedComponent implements OnInit {
 
   @Input() id: number = null;
-
+  //
+  strProfile: string = Constants.PROFILES.admin;
+  strEntity: string = Constants.ENTITIES.cart;
+  strOperation: string = Constants.OPERATIONS.view;
+  //
   oCarrito: ICarrito;
 
   constructor(
@@ -24,12 +29,10 @@ export class CarritoDetailAdminUnroutedComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oCarritoService
-      .getOne(this.id)
-      .subscribe({
-        next: (oData: ICarrito) => {
-          this.oCarrito = oData;
-        }
-      });
+    this.oCarritoService.getOne(this.id).subscribe({
+      next: (oData: ICarrito) => {
+        this.oCarrito = oData;
+      }
+    });
   };
 }
