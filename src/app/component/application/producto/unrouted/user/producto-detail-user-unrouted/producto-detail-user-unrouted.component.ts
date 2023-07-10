@@ -22,9 +22,7 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
 
   API_URL: string = API_URL;
   oProducto: IProducto;
-  oNewCommentResult: IResult = null;
 
-  reloadCommentsSubject: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private oProductoService: ProductoService,
@@ -58,20 +56,7 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
     })
   }
 
-  reportResult = (oResult: IResult): void => {
-    this.oNewCommentResult = oResult;
-    if (this.oNewCommentResult.error == null) {
-      if (this.oNewCommentResult.id > 0) {
-        // recargar el listado de comentarios
-        this.reloadCommentsSubject.next(true);
 
-      } else {
-        this.openPopup('Error en la creación de ' + this.oMetadataService.getName('the' + this.oNewCommentResult.strEntity).toLowerCase());
-      }
-    } else {
-      this.openPopup('ERROR: ' + this.oNewCommentResult.error.status + ': ' + this.oNewCommentResult.error.message);
-    }
-  };
 
   loadImage(url:string) {
     return new Promise((resolve) => {
@@ -130,16 +115,6 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
 
   }
 
-  //popup
 
-  eventsSubjectShowPopup: Subject<string> = new Subject<string>();
-
-  openPopup(str: string): void {
-    this.eventsSubjectShowPopup.next(str);
-  }
-
-  onClosePopup(): void {
-
-  }
 
 }

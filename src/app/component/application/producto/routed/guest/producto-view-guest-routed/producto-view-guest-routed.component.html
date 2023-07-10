@@ -1,6 +1,6 @@
 <div class="container my-3">
-    <app-shared-header-unrouted [title]="oMetadataService.getName('productDetail')" [icon]="oMetadataService.getIcon(this.strOperation)"
-        [iconEntity]="oMetadataService.getIcon(this.strEntity)">
+    <app-shared-header-unrouted [title]="oMetadataService.getName('productDetail')"
+        [icon]="oMetadataService.getIcon(this.strOperation)" [iconEntity]="oMetadataService.getIcon(this.strEntity)">
     </app-shared-header-unrouted>
     <div class="row justify-content-center">
         <app-producto-detail-guest-unrouted [id]="id"></app-producto-detail-guest-unrouted>
@@ -10,5 +10,14 @@
             {{oMetadataService.getName('go to ' + strEntity + ' list' )}}</a>
         <a class="btn btn-primary m-2" (click)="oLocation.back()"><i [ngClass]="oMetadataService.getIcon('return')"></i>
             {{oMetadataService.getName('return')}}</a>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="row g-0 p-5" style="max-width: 50em;">
+        <div class="col">
+            <h2>Comentarios del producto</h2>
+            <app-comment-plist-guest-unrouted [id_producto]="id">
+            </app-comment-plist-guest-unrouted>
+        </div>
     </div>
 </div>

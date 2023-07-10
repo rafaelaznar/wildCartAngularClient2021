@@ -48,14 +48,4 @@
       </div>
     </div>
   </div>
-
-  <div class="row g-0 p-5" style="max-width: 50em;">
-    <div class="col">
-      <h2>Comentarios del producto</h2>
-      <app-comment-new-user-unrouted [id_producto]="id" (msg)="reportResult($event)"></app-comment-new-user-unrouted>
-      <app-comment-plist-user-unrouted [id_producto]="id" [reloadCommentsPlistSubject]="reloadCommentsSubject">
-      </app-comment-plist-user-unrouted>
-    </div>
-  </div>
-
 </div>

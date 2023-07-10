@@ -1,18 +1,22 @@
-<td class="text-end">{{oComment.id}}</td>
-<td>{{oComment.comment | trim:100}}</td>
-<td style="text-align: center;">{{oComment.creation}}</td>
-<td style="text-align: center;">{{oComment.lastedition}}</td>
-<td>
-  <button class="btn btn-light btn-sm" *ngIf="mode"
-    [routerLink]="['/administrador',strEntity,strOperation,'usuario',oComment.usuario.id]">
-    <i [ngClass]="oMetadataService.getIcon('usuario')"></i> ({{oComment.usuario.id}})
-    {{oComment.usuario.nombre | trim:40}}</button>
-  <span *ngIf="!mode">{{oComment.usuario.nombre | trim:40}}</span>
-</td>
-<td>
-  <button class="btn btn-light btn-sm" *ngIf="mode"
-    [routerLink]="['/administrador',strEntity,strOperation,'producto',oComment.producto.id]">
-    <i [ngClass]="oMetadataService.getIcon('usuario')"></i> ({{oComment.producto.id}})
-    {{oComment.producto.nombre | trim:40}}</button>
-  <span *ngIf="!mode">{{oComment.producto.nombre | trim:40}}</span>
-</td>
+<div class="card-header">
+  <div class="d-flex justify-content-between">
+    <div style="text-align: left;font-size: large;">
+
+      <i [ngClass]="oMetadataService.getIcon('usuario')"></i>
+      <!-- ({{oComment.usuario.id}}) -->
+      {{oComment.usuario.nombre | trim:40}}
+      <span *ngIf="!mode">{{oComment.usuario.nombre | trim:40}}</span>
+    </div>
+    <div style="text-align: right;">
+      <i [ngClass]="oMetadataService.getIcon('creation')"></i>
+      {{oComment.creation | date: 'dd/MM/yyyy HH:mm'}}
+    </div>
+  </div>
+</div>
+
+<div class="card-body">
+  <div class="p-3">
+    <i [ngClass]="oMetadataService.getIcon('comment')"></i>
+    {{oComment.comment}}
+  </div>
+</div>

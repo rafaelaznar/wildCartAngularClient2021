@@ -1,5 +1,4 @@
 <div class="row justify-content-center">
-
   <div class="row g-0 p-5">
     <div class="col-md-5">
       <img [src]="'http://localhost:8082/file/' + oProducto?.imagen" class="img-fluid border rounded-3 border-5" />
@@ -33,15 +32,6 @@
       <button type="button" class="btn btn-primary m-1"
         *ngIf="id_tipousuario_session==2&&oProducto?.existencias>0&&oProducto?.cantidad<oProducto?.existencias"
         (click)="addCarrito(oProducto.id)"><i class="fas fa-cart-plus" style="font-size: 2rem"></i></button>
-
     </div>
-    <div class="row g-0 p-5">
-      <div class="col">
-
-        <h2>Comentarios</h2>
-        <app-comment-plist-guest-unrouted [id_producto]="id"></app-comment-plist-guest-unrouted>
-
-      </div>
-    </div>
-
   </div>
+</div>
