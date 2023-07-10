@@ -45,18 +45,19 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
   }
 
   get = (): void => {
-    this.oTipousuarioService
-      .getOne(this.id)
-      .subscribe((oData: ITipousuario) => {
+    this.oTipousuarioService.getOne(this.id).subscribe({
+      next: (oData: ITipousuario) => {
         this.oData2Show = oData;
         this.oForm = this.oFormBuilder.group({
           id: [this.id],
           nombre: [this.oData2Show.nombre, [Validators.required, Validators.minLength(4)]]
         });
-      }, (error: HttpErrorResponse) => {
+      },
+      error: (error: HttpErrorResponse) => {
         this.status = error;
         this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-      })
+      }
+    })
   };
 
   onSubmit(): void {
@@ -76,15 +77,16 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
       console.error("tipousuario-form-admin: can't create a new usertype");
       this.msg.emit({ error: new HttpErrorResponse({ statusText: "can't create a new usertype" }), id: null, strEntity: this.strEntity, strOperation: this.strOperation });
     } else {
-      this.oTipousuarioService
-        .updateOne(this.oData2Send)
-        .subscribe((id: number) => {
+      this.oTipousuarioService.updateOne(this.oData2Send).subscribe({
+        next: (id: number) => {
           this.status = null;
           this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        }, (error: HttpErrorResponse) => {
+        },
+        error: (error: HttpErrorResponse) => {
           this.status = error;
           this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        });
+        }
+      });
     }
   };
 

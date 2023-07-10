@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { SessionService } from 'src/app/service/session.service';
@@ -15,15 +14,14 @@ export class SharedHomeRoutedComponent implements OnInit {
   oUsuarioSession: IUsuario = null;
 
   constructor(
-    private oRoute: ActivatedRoute,
-    private oActivatedRoute: ActivatedRoute,
     private oCarritoService: CarritoService,
     private oSessionService: SessionService
   ) {
-
     if (this.oSessionService.isSessionActive()) {
-      this.oSessionService.getUsuario().subscribe((oData: IUsuario) => {
-        this.oUsuarioSession = oData;
+      this.oSessionService.getUsuario().subscribe({
+        next: (oData: IUsuario) => {
+          this.oUsuarioSession = oData;
+        }
       });
     } else {
       this.oUsuarioSession = null;

@@ -27,42 +27,44 @@ export class ReportPrintService {
   printReport_i01 = (quantity: number): void => {
     const reportName = "I01";
     let pageNumber = 1;
-    this.oProductoService.nByDescuentoDesc(quantity).subscribe((oProductos: IProducto[]) => {
-      const reportName = 'Productos con mayor descuento';
-      var doc = new jsPDF()
-      doc.setFont('Courier');
-      // logo load
-      var imgData: string = '/assets/img/wildCart600.png'
-      this.loadImage(imgData).then((logo) => {
-        // header
-        doc = this.cabecera(doc, reportName, logo, pageNumber);
-        // end of header
-        doc.setFontSize(12)
-        var linea = 80;
-        let descuentoAVG = 0;
-        let precioAVG = 0;
-        let count = 0;
+    this.oProductoService.nByDescuentoDesc(quantity).subscribe({
+      next: (oProductos: IProducto[]) => {
+        const reportName = 'Productos con mayor descuento';
+        var doc = new jsPDF()
         doc.setFont('Courier');
-        for (let i = 0; i < oProductos.length; i++) {
-          this.linea(doc, oProductos[i], linea);
-          linea = linea + 7;
-          if (linea > 230 && i + 1 < oProductos.length) {
-            // Si la linea es mayor que 230, 
-            // y quedan más líneas por imprimir,
-            // añadimos una nueva página 
-            doc.addPage();
-            pageNumber++;
-            doc = this.cabecera(doc, reportName, logo, pageNumber);
-            linea = 155;
-            doc.setFontSize(12)
+        // logo load
+        var imgData: string = '/assets/img/wildCart600.png'
+        this.loadImage(imgData).then((logo) => {
+          // header
+          doc = this.cabecera(doc, reportName, logo, pageNumber);
+          // end of header
+          doc.setFontSize(12)
+          var linea = 80;
+          let descuentoAVG = 0;
+          let precioAVG = 0;
+          let count = 0;
+          doc.setFont('Courier');
+          for (let i = 0; i < oProductos.length; i++) {
+            this.linea(doc, oProductos[i], linea);
+            linea = linea + 7;
+            if (linea > 230 && i + 1 < oProductos.length) {
+              // Si la linea es mayor que 230, 
+              // y quedan más líneas por imprimir,
+              // añadimos una nueva página 
+              doc.addPage();
+              pageNumber++;
+              doc = this.cabecera(doc, reportName, logo, pageNumber);
+              linea = 155;
+              doc.setFontSize(12)
+            }
+            count++;
+            descuentoAVG = descuentoAVG + oProductos[i].descuento;
+            precioAVG = precioAVG + oProductos[i].precio;
           }
-          count++;
-          descuentoAVG = descuentoAVG + oProductos[i].descuento;
-          precioAVG = precioAVG + oProductos[i].precio;
-        }
-        this.endReport(doc, linea, count, descuentoAVG / count, precioAVG / count);
-        doc.save("Informe_" + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + ".pdf");
-      });
+          this.endReport(doc, linea, count, descuentoAVG / count, precioAVG / count);
+          doc.save("Informe_" + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + ".pdf");
+        });
+      }
     })
   }
 

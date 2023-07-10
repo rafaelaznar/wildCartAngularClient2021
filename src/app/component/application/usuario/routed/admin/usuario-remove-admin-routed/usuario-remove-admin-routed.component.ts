@@ -34,14 +34,16 @@ export class UsuarioRemoveAdminRoutedComponent extends CheckSession implements O
   ngOnInit(): void { }
 
   removeOne() {
-    this.oUsuarioService.removeOne(this.id).subscribe((id: number) => {
-      let strResult: string = '';
-      if (id) {
-        strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
-      } else {
-        strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
+    this.oUsuarioService.removeOne(this.id).subscribe({
+      error: (id: number) => {
+        let strResult: string = '';
+        if (id) {
+          strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
+        } else {
+          strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
+        }
+        this.openPopup(strResult);
       }
-      this.openPopup(strResult);
     })
   }
 

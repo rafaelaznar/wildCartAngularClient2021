@@ -2,7 +2,7 @@ import { IFactura } from 'src/app/model/factura-interfaces';
 import { Injectable } from '@angular/core';
 import { FacturaService } from './factura.service';
 import { CompraService } from './compra.service';
-import { ICompra} from '../model/compra-interfaces';
+import { ICompra } from '../model/compra-interfaces';
 
 import { formatDate } from '@angular/common';
 
@@ -11,6 +11,7 @@ declare let jsPDF: any;
 @Injectable({
   providedIn: 'root'
 })
+
 export class FacturaPrintService {
 
   constructor(
@@ -29,40 +30,44 @@ export class FacturaPrintService {
   sp = (n: number): string => n.toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   printFactura = (id_factura: number): void => {
-    this.oFacturaService.getOne(id_factura).subscribe((oFactura2Print: IFactura) => {
-      this.oCompraService.allByFactura( id_factura).subscribe((aCompras: ICompra[]) => {
-        //let aCompras: ICompra[] = oPage.content;
-        //
-        var doc = new jsPDF()
-        doc.setFont('Courier');
-        // logo load
-        var imgData: string = '/assets/img/wildCart600.png'
-        this.loadImage(imgData).then((logo) => {
-          // header
-          doc = this.cabecera(doc, oFactura2Print, logo);
-          // end of header
-          doc.setFontSize(12)
-          var linea = 155;
-          let totalFactura = 0;
-          doc.setFont('Courier');
-          for (let i = 0; i < oFactura2Print.compras; i++) {
-            this.lineaFactura(doc, aCompras[i], linea);
-            linea = linea + 7;
-            if (linea > 230 && i + 1 < oFactura2Print.compras) {
-              // Si la linea es mayor que 230, 
-              // y quedan más líneas por imprimir,
-              // añadimos una nueva página 
-              doc.addPage();
+    this.oFacturaService.getOne(id_factura).subscribe({
+      next: (oFactura2Print: IFactura) => {
+        this.oCompraService.allByFactura(id_factura).subscribe({
+          next: (aCompras: ICompra[]) => {
+            //let aCompras: ICompra[] = oPage.content;
+            //
+            var doc = new jsPDF()
+            doc.setFont('Courier');
+            // logo load
+            var imgData: string = '/assets/img/wildCart600.png'
+            this.loadImage(imgData).then((logo) => {
+              // header
               doc = this.cabecera(doc, oFactura2Print, logo);
-              linea = 155;
+              // end of header
               doc.setFontSize(12)
-            }
-            totalFactura = totalFactura + (aCompras[i].cantidad * aCompras[i].producto.precio);
+              var linea = 155;
+              let totalFactura = 0;
+              doc.setFont('Courier');
+              for (let i = 0; i < oFactura2Print.compras; i++) {
+                this.lineaFactura(doc, aCompras[i], linea);
+                linea = linea + 7;
+                if (linea > 230 && i + 1 < oFactura2Print.compras) {
+                  // Si la linea es mayor que 230, 
+                  // y quedan más líneas por imprimir,
+                  // añadimos una nueva página 
+                  doc.addPage();
+                  doc = this.cabecera(doc, oFactura2Print, logo);
+                  linea = 155;
+                  doc.setFontSize(12)
+                }
+                totalFactura = totalFactura + (aCompras[i].cantidad * aCompras[i].producto.precio);
+              }
+              this.endFactura(doc, linea, totalFactura, oFactura2Print);
+              doc.save("Factura.pdf");
+            });
           }
-          this.endFactura(doc, linea, totalFactura, oFactura2Print);
-          doc.save("Factura.pdf");
-        });
-      })
+        })
+      }
     })
   }
 

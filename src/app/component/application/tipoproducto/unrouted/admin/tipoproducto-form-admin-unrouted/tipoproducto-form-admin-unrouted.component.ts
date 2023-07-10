@@ -46,18 +46,19 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
   }
 
   get = (): void => {
-    this.oTipoproductoService
-      .getOne(this.id)
-      .subscribe((oData: ITipoproducto) => {
+    this.oTipoproductoService.getOne(this.id).subscribe({
+      next: (oData: ITipoproducto) => {
         this.oData2Show = oData;
         this.oForm = this.oFormBuilder.group({
           id: [this.id],
           nombre: [this.oData2Show.nombre, [Validators.required, Validators.minLength(4)]]
         });
-      }, (error: HttpErrorResponse) => {
+      },
+      error: (error: HttpErrorResponse) => {
         this.status = error;
         this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-      })
+      }
+    })
   };
 
   onSubmit(): void {
@@ -74,24 +75,26 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
 
   save(): void {
     if (this.strOperation == "new") {
-      this.oTipoproductoService.newOne(this.oData2Send)
-        .subscribe((id: number) => {
+      this.oTipoproductoService.newOne(this.oData2Send).subscribe({
+        next: (id: number) => {
           this.status = null;
           this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        }, (error: HttpErrorResponse) => {
+        },
+        error: (error: HttpErrorResponse) => {
           this.status = error;
           this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        });
+        }
+      });
     } else {
-      this.oTipoproductoService
-        .updateOne(this.oData2Send)
-        .subscribe((id: number) => {
+      this.oTipoproductoService.updateOne(this.oData2Send).subscribe({
+        next: (id: number) => {
           this.status = null;
           this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        }, (error: HttpErrorResponse) => {
+        }, error: (error: HttpErrorResponse) => {
           this.status = error;
           this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        });
+        }
+      });
     }
   };
 

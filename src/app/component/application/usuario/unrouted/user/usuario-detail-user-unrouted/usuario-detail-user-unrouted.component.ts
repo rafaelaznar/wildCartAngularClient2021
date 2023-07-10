@@ -28,11 +28,11 @@ export class UsuarioDetailUserUnroutedComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oUsuarioService
-      .getOne(this.id)
-      .subscribe((oData: IUsuario) => {
+    this.oUsuarioService.getOne(this.id).subscribe({
+      next: (oData: IUsuario) => {
         this.oUsuario = oData;
-      });
+      }
+    });
   };
 
 }

@@ -40,9 +40,8 @@ export class TipoproductoSelectionAdminUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oPostService
-      .getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter)
-      .subscribe((oPage: ITipoproductoPage) => {
+    this.oPostService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter).subscribe({
+      next: (oPage: ITipoproductoPage) => {
         this.oPage = oPage;
         this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, null, null, null, null);
         this.aTipoproductos = oPage.content;
@@ -52,7 +51,8 @@ export class TipoproductoSelectionAdminUnroutedComponent implements OnInit {
           this.nPage = this.nTotalPages;
           this.getPage();
         }
-      });
+      }
+    });
   };
 
   onSetPage = (nPage: number) => {

@@ -11,24 +11,17 @@ import { SessionEvents, SessionService } from 'src/app/service/session.service';
   styleUrls: ['./shared-menu-unrouted.component.css']
 })
 export class SharedMenuUnroutedComponent implements OnInit {
-
-  //private carritoEventsSubscription: Subscription;
-  //@Input() carritoMenuObservable: Observable<{ action: string, data: number }>;
-
+  
   oUsuarioSession: IUsuario;
-
   nCarritos: number = 0;
   strUrl: String = "";
-  tcarrito: number
-
+  
   constructor(
     private router: Router,
     public oMetadataService: MetadataService,
     private oCarritoService: CarritoService,
     private oSessionService: SessionService
-  ) {
-
-    //this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
+  ) {    
     /*
     this.router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) {
@@ -37,26 +30,25 @@ export class SharedMenuUnroutedComponent implements OnInit {
     })
     */
     if (this.oSessionService.isSessionActive()) {
-      this.oSessionService.getUsuario().subscribe((oData: IUsuario) => {
-        this.oUsuarioSession = oData;
-        this.count();
+      this.oSessionService.getUsuario().subscribe({
+        next: (oData: IUsuario) => {
+          this.oUsuarioSession = oData;
+          this.count();
+        }
       });
     } else {
       this.oUsuarioSession = null;
     }
-
-
   }
 
   ngOnInit(): void {
-
-
-
     this.oSessionService.on(SessionEvents.login).subscribe({
       next: () => {
-        this.oSessionService.getUsuario().subscribe((oData: IUsuario) => {
-          this.oUsuarioSession = oData;
+        this.oSessionService.getUsuario().subscribe({
+          next: (oData: IUsuario) => {
+            this.oUsuarioSession = oData;
 
+          }
         });
         this.count();
       }
@@ -67,23 +59,6 @@ export class SharedMenuUnroutedComponent implements OnInit {
         this.count();
       }
     });
-
-
-    /*
- this.oSessionService.onUserSessionChangeSubject.subscribe({
-   next: (data) => {
-     console.log("menu", "session", "action:" + data.action)
-     this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
-     if (this.oUsuarioSession) {
-       this.tcarrito = this.oUsuarioSession.carritos;
-     }
-   },
-   error: (error) => {
-     console.log("error:", error)
-     this.tcarrito = 0;
-   }
- });
- */
 
     this.oCarritoService.onCarritoChangeSubject.subscribe({
       next: (data) => {
@@ -108,9 +83,10 @@ export class SharedMenuUnroutedComponent implements OnInit {
 
   count = () => {
     if (this.oSessionService.isSessionActive()) {
-      this.oCarritoService.getCount().subscribe((oData: number) => {
-        this.tcarrito = oData;
-        this.nCarritos = this.tcarrito;
+      this.oCarritoService.getCount().subscribe({
+        next: (oData: number) => {
+          this.nCarritos = oData;
+        }
       })
     }
   }

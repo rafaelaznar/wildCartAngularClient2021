@@ -14,7 +14,7 @@ export class SharedSearchUnroutedComponent implements OnInit {
   @Input() strFilter: string = "";
   @Input() strTitlePlural: string = "";
   @Output() eeFilter = new EventEmitter<string>();
-
+  //
   subjectFilter = new Subject();
 
   constructor(
@@ -22,10 +22,10 @@ export class SharedSearchUnroutedComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.subjectFilter.pipe(
-      debounceTime(1000)
-    ).subscribe(() => {
-      this.eeFilter.emit(this.strFilter);
+    this.subjectFilter.pipe(debounceTime(1000)).subscribe({
+      next: () => {
+        this.eeFilter.emit(this.strFilter);
+      }
     });
   }
 

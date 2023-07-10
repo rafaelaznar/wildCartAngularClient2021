@@ -33,9 +33,8 @@ export class TipousuarioSelectionAdminUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oTipoUsuarioService
-      .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter)
-      .subscribe((oPage: ITipousuarioPage) => {
+    this.oTipoUsuarioService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter).subscribe({
+      next: (oPage: ITipousuarioPage) => {
         this.oPage = oPage;
         this.oPage.error = null;
         this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, null, null, null, null);
@@ -45,11 +44,12 @@ export class TipousuarioSelectionAdminUnroutedComponent implements OnInit {
             this.getPage();
           }
         }
-      }, (error: HttpErrorResponse) => {
+      },
+      error: (error: HttpErrorResponse) => {
         this.oPage.error = error;
         console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
       }
-      )
+    })
   }
 
   onSetPage = (nPage: number) => {

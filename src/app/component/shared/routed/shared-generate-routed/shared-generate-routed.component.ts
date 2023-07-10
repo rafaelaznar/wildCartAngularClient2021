@@ -23,7 +23,7 @@ export class SharedGenerateUnroutedComponent implements OnInit {
   nFacturas: number = 0;
   nCarritos: number = 0;
   strResult: string = "";
-  bLoading:boolean=false;
+  bLoading: boolean = false;
 
   constructor(
     public oGenerateService: GenerateService,
@@ -48,141 +48,148 @@ export class SharedGenerateUnroutedComponent implements OnInit {
   ngOnInit(): void { }
 
   getCount(): void {
-    this.bLoading=true;
-    this.oCountService.getCountProductos().subscribe((n: number) => this.nProductos = n);
-    this.oCountService.getCountCarritos().subscribe((n: number) => this.nCarritos = n);
-    this.oCountService.getCountCompras().subscribe((n: number) => this.nCompras = n);
-    this.oCountService.getCountFacturas().subscribe((n: number) => this.nFacturas = n);
-    this.oCountService.getCountTiposProducto().subscribe((n: number) => this.nTiposProducto = n);
-    this.oCountService.getCountUsuarios().subscribe((n: number) => this.nUsuarios = n);
-    this.oCountService.getCountTiposUsuario().subscribe((n: number) => this.nTiposDeUsuario = n);
-    this.bLoading=false;
+    this.bLoading = true;
+    this.oCountService.getCountProductos().subscribe({ next: (n: number) => this.nProductos = n });
+    this.oCountService.getCountCarritos().subscribe({ next: (n: number) => this.nCarritos = n });
+    this.oCountService.getCountCompras().subscribe({ next: (n: number) => this.nCompras = n });
+    this.oCountService.getCountFacturas().subscribe({ next: (n: number) => this.nFacturas = n });
+    this.oCountService.getCountTiposProducto().subscribe({ next: (n: number) => this.nTiposProducto = n });
+    this.oCountService.getCountUsuarios().subscribe({ next: (n: number) => this.nUsuarios = n });
+    this.oCountService.getCountTiposUsuario().subscribe({ next: (n: number) => this.nTiposDeUsuario = n });
+    this.bLoading = false;
   }
 
   generateProductos(n: number): void {
-    this.bLoading=true;
-    this.oGenerateService.generateProductos(n).subscribe(
-      (num: number) => {
+    this.bLoading = true;
+    this.oGenerateService.generateProductos(n).subscribe({
+      next: (num: number) => {
         this.strResult = "Ahora hay " + num + " productos";
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
       },
-      err => {
+      error: (err) => {
         this.strResult = "ERROR: " + err.message;
         console.error('ERROR: ', err);
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
-      })
+      }
+    })
   }
 
   generateUsuarios(n: number): void {
-    this.bLoading=true;
-    this.oGenerateService.generateUsuarios(n).subscribe(
-      (num: number) => {
+    this.bLoading = true;
+    this.oGenerateService.generateUsuarios(n).subscribe({
+      next: (num: number) => {
         this.strResult = "Ahora hay " + num + " usuarios";
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
       },
-      err => {
+      error: (err) => {
         this.strResult = "ERROR: " + err.message;
         console.error('ERROR: ', err);
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
-      })
+      }
+    })
   }
 
   generateTiposDeUsuario() {
-    this.bLoading=true;
-    this.oGenerateService.generateTiposDeUsuario().subscribe(
-      (num: number) => {
+    this.bLoading = true;
+    this.oGenerateService.generateTiposDeUsuario().subscribe({
+      next: (num: number) => {
         this.strResult = "Ahora hay " + num + " tipos de producto";
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
       },
-      err => {
+      error: (err) => {
         this.strResult = "ERROR: " + err.message;
         console.error('ERROR: ', err);
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
-      })
+      }
+    })
   }
 
   generateTiposDeProductos(n: number) {
-    this.bLoading=true;
-    this.oGenerateService.generateTiposDeProductos(n).subscribe(
-      (num: number) => {
+    this.bLoading = true;
+    this.oGenerateService.generateTiposDeProductos(n).subscribe({
+      next: (num: number) => {
         this.strResult = "Ahora hay " + num + " tipos de producto";
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
       },
-      err => {
+      error: (err) => {
         this.strResult = "ERROR: " + err.message;
         console.error('ERROR: ', err);
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
-      })
+      }
+    })
   }
 
   generateCompras(n: number): void {
-    this.bLoading=true;
-    this.oGenerateService.generateCompras(n).subscribe(
-      (num: number) => {
+    this.bLoading = true;
+    this.oGenerateService.generateCompras(n).subscribe({
+      next: (num: number) => {
         this.strResult = "Ahora hay " + num + " compras";
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
       },
-      err => {
+      error: err => {
         this.strResult = "ERROR: " + err.message;
         console.error('ERROR: ', err);
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
-      })
+      }
+    })
   }
 
   generateFacturas(n: number): void {
-    this.bLoading=true;
-    this.oGenerateService.generateFacturas(n).subscribe(
-      (num: number) => {
+    this.bLoading = true;
+    this.oGenerateService.generateFacturas(n).subscribe({
+      next: (num: number) => {
         this.strResult = "Ahora hay " + num + " facturas";
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
       },
-      err => {
+      error: (err) => {
         this.strResult = "ERROR: " + err.message;
         console.error('ERROR: ', err);
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
-      })
+      }
+    })
   }
 
   generateCarritos(n: number): void {
-    this.bLoading=true;
-    this.oGenerateService.generateCarritos(n).subscribe(
-      (num: number) => {
+    this.bLoading = true;
+    this.oGenerateService.generateCarritos(n).subscribe({
+      next: (num: number) => {
         this.strResult = "Ahora hay " + num + " carritos";
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
       },
-      err => {
+      error: (err) => {
         this.strResult = "ERROR: " + err.message;
         console.error('ERROR: ', err);
-        this.bLoading=false;
+        this.bLoading = false;
         this.openModal();
-      })
+      }
+    })
   }
 
 
-//modal 
+  //modal 
 
-eventsModalSubject: Subject<string> = new Subject<string>();
+  eventsModalSubject: Subject<string> = new Subject<string>();
 
-openModal() {
-  this.eventsModalSubject.next();
-}
+  openModal() {
+    this.eventsModalSubject.next();
+  }
 
-onCloseModal() {
-  this.getCount();
-  this.strResult = "";
-}
+  onCloseModal() {
+    this.getCount();
+    this.strResult = "";
+  }
 
 }

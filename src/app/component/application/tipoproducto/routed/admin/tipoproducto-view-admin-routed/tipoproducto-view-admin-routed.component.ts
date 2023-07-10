@@ -17,18 +17,18 @@ export class TipoproductoViewAdminRoutedComponent extends CheckSession implement
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.producttype
-  strOperation: string = Constants.OPERATIONS.view  
+  strOperation: string = Constants.OPERATIONS.view
   id: number = 0;
-  oTipoProducto: ITipoproducto;  
+  oTipoProducto: ITipoproducto;
 
   constructor(
-    private oTipoproductoService: TipoproductoService,    
+    private oTipoproductoService: TipoproductoService,
     private oActivatedRoute: ActivatedRoute,
     protected oRouter: Router,
     public oMetadataService: MetadataService,
     protected oSessionService: SessionService
   ) {
-    super(Constants.PROFILES.admin, oRouter, oSessionService);   
+    super(Constants.PROFILES.admin, oRouter, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id;
     this.getOne();
   }
@@ -36,11 +36,11 @@ export class TipoproductoViewAdminRoutedComponent extends CheckSession implement
   ngOnInit(): void { }
 
   getOne = () => {
-    this.oTipoproductoService
-      .getOne(this.id)
-      .subscribe((oData: ITipoproducto) => {
+    this.oTipoproductoService.getOne(this.id).subscribe({
+      next: (oData: ITipoproducto) => {
         this.oTipoProducto = oData;
-      });
+      }
+    });
   };
 
 }

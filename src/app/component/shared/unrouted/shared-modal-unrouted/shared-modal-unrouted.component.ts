@@ -20,17 +20,17 @@ export class SharedModalUnroutedComponent implements OnInit {
   @Input() size: string = "";
   @Input() mode: boolean = false; // false->cerrar; true->si/no (no implementado)
   @Input() mimodal: string = "miModal"; // obligatorio si hay más de un modal en la página
-
+  //
   private eventsSubscriptionShow: Subscription;
   private eventsSubscriptionHide: Subscription;
-
+  //
   myModal: any;
 
   constructor() { }
 
   ngOnInit() {
-    this.eventsSubscriptionShow = this.show.subscribe(() => this.showModal());
-    this.eventsSubscriptionHide = this.hide.subscribe(() => this.hideModal());
+    this.eventsSubscriptionShow = this.show.subscribe({ next: () => this.showModal() });
+    this.eventsSubscriptionHide = this.hide.subscribe({ next: () => this.hideModal() });
   }
 
   ngOnDestroy() {

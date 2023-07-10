@@ -12,13 +12,13 @@ import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 
 export class TipoproductoDetailAdminUnroutedComponent implements OnInit {
 
-  @Input() id: number = null;  
-  
-  oTipoproducto: ITipoproducto;
-
+  @Input() id: number = null;
+  //
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.producttype
   strOperation: string = Constants.OPERATIONS.view
+  //
+  oTipoproducto: ITipoproducto;
 
   constructor(
     private oTipoproductoService: TipoproductoService,
@@ -30,11 +30,11 @@ export class TipoproductoDetailAdminUnroutedComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oTipoproductoService
-      .getOne(this.id)
-      .subscribe((oData: ITipoproducto) => {
+    this.oTipoproductoService.getOne(this.id).subscribe({
+      next: (oData: ITipoproducto) => {
         this.oTipoproducto = oData;
-      });
+      }
+    });
   };
 
 }

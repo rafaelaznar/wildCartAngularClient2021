@@ -127,15 +127,15 @@ export class SharedReportsRoutedComponent implements OnInit {
     this.oForm.controls['id_producto'].setValue($event);
     this.oForm.controls['id_producto'].markAsDirty();
     //this.oForm.controls['id_producto'].markAsTouched();
-    this.oProductoService
-      .getOne(this.oForm.controls['id_producto'].value)
-      .subscribe((oData: IProducto) => {
+    this.oProductoService.getOne(this.oForm.controls['id_producto'].value).subscribe({
+      next: (oData: IProducto) => {
         this.oProduct = oData;
         this.oForm.controls['id_usuario'].setErrors({ 'incorrect': false });
-      }, err => {
+      }, error: (err) => {
         this.oProduct = null;
         this.oForm.controls['id_producto'].setErrors({ 'incorrect': true });
-      });
+      }
+    });
 
     return false;
   }
@@ -144,44 +144,43 @@ export class SharedReportsRoutedComponent implements OnInit {
     this.oForm.controls['id_usuario'].setValue($event);
     this.oForm.controls['id_usuario'].markAsDirty();
     //this.oForm.controls['id_usuario'].markAsTouched();
-    this.oUsuarioService
-      .getOne(this.oForm.controls['id_usuario'].value)
-      .subscribe((oData: IUsuario) => {
+    this.oUsuarioService.getOne(this.oForm.controls['id_usuario'].value).subscribe({
+      next: (oData: IUsuario) => {
         this.oClient = oData;
         this.oForm.controls['id_usuario'].setErrors({ 'incorrect': false });
-      }, err => {
+      },
+      error: (err) => {
         console.log("reports", err);
         this.oClient = null;
         this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
-      });
+      }
+    });
     return false;
   }
 
-
-
   onChanges(): void {
     //console.log("onChanges", this.oForm);
-    this.oForm.valueChanges.subscribe(val => {
-
-      if (Object.prototype.toString.call(this.oForm.value.fecha_inicio) === "[object Date]" && !isNaN(this.oForm.value.fecha_inicio)) {
-        if (Object.prototype.toString.call(this.oForm.value.fecha_fin) === "[object Date]" && !isNaN(this.oForm.value.fecha_inicio)) {
-          const ini = new Date(this.oForm.value.fecha_inicio);
-          const fin = new Date(this.oForm.value.fecha_fin);
-          if (ini <= fin) {
-            this.dateRangeOK = true;
-            this.errorDateRange = false;
+    this.oForm.valueChanges.subscribe({
+      next: (val) => {
+        if (Object.prototype.toString.call(this.oForm.value.fecha_inicio) === "[object Date]" && !isNaN(this.oForm.value.fecha_inicio)) {
+          if (Object.prototype.toString.call(this.oForm.value.fecha_fin) === "[object Date]" && !isNaN(this.oForm.value.fecha_inicio)) {
+            const ini = new Date(this.oForm.value.fecha_inicio);
+            const fin = new Date(this.oForm.value.fecha_fin);
+            if (ini <= fin) {
+              this.dateRangeOK = true;
+              this.errorDateRange = false;
+            } else {
+              this.dateRangeOK = false;
+              this.errorDateRange = true;
+            }
           } else {
             this.dateRangeOK = false;
-            this.errorDateRange = true;
           }
         } else {
           this.dateRangeOK = false;
         }
-      } else {
-        this.dateRangeOK = false;
+        //console.log("onChanges fechas " + this.dateRangeOK);
       }
-      //console.log("onChanges fechas " + this.dateRangeOK);
-
     });
   }
 

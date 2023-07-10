@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { Constants } from 'src/app/constant/constants';
 
 declare let bootstrap: any;
 
@@ -14,28 +15,28 @@ export class SharedPopupUnroutedComponent implements OnInit {
   // https://stackoverflow.com/questions/44053227/how-to-emit-an-event-from-parent-to-child
 
   @Input() show: Observable<string>;
-  @Input() title: string = "wildCART";
+  @Input() title: string = Constants.APP_NAME;
   @Input() body: string = "";
   @Input() size: string = "";
   @Input() icon: string = "";
   @Output() close = new EventEmitter<Event>();
-
+  //
   private eventsSubscriptionShow: Subscription;
-
+  //
   myPopup: any;
-  strMsg:string = "";
+  strMsg: string = "";
 
   constructor() { }
 
   ngOnInit() {
-    this.eventsSubscriptionShow = this.show.subscribe((str:string) => this.showModal(str));
+    this.eventsSubscriptionShow = this.show.subscribe({ next: (str: string) => this.showModal(str) });
   }
 
   ngOnDestroy() {
     this.eventsSubscriptionShow.unsubscribe();
   }
 
-  showModal = (str:string) => {
+  showModal = (str: string) => {
     this.strMsg = str;
     this.myPopup = new bootstrap.Modal(document.getElementById('myPopup'), {
       keyboard: false

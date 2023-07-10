@@ -40,8 +40,8 @@ export class ProductoGPlistUserUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oProductoService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_tipoproducto)
-      .subscribe((oPage: IProductoPage) => {
+    this.oProductoService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_tipoproducto).subscribe({
+      next: (oPage: IProductoPage) => {
         this.oPage = oPage;
         this.oPage.error = null;
         this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipoproducto', this.id_tipoproducto, null, null);
@@ -51,11 +51,12 @@ export class ProductoGPlistUserUnroutedComponent implements OnInit {
             this.getPage();
           }
         }
-      }, (error: HttpErrorResponse) => {
+      },
+      error: (error: HttpErrorResponse) => {
         this.oPage.error = error;
         console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
       }
-      )
+    })
   }
 
   onSetPage = (nPage: number) => {
@@ -81,16 +82,20 @@ export class ProductoGPlistUserUnroutedComponent implements OnInit {
   }
 
   addCarrito(id_producto: number) {
-    this.oCarritoService.add(id_producto, 1).subscribe((result: number) => {
-      this.addCarritoEE.emit(id_producto);
-      this.getPage();
+    this.oCarritoService.add(id_producto, 1).subscribe({
+      next: (result: number) => {
+        this.addCarritoEE.emit(id_producto);
+        this.getPage();
+      }
     })
   }
 
   removeCarrito(id_producto: number) {
-    this.oCarritoService.reduce(id_producto, 1).subscribe((result: number) => {
-      this.addCarritoEE.emit(id_producto);
-      this.getPage();
+    this.oCarritoService.reduce(id_producto, 1).subscribe({
+      next: (result: number) => {
+        this.addCarritoEE.emit(id_producto);
+        this.getPage();
+      }
     })
   }
 

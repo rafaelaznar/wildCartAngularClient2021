@@ -56,9 +56,8 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
   }
 
   get = (): void => {
-    this.oUsuarioService
-      .getOne(this.id)
-      .subscribe((oData: IUsuario) => {
+    this.oUsuarioService.getOne(this.id).subscribe({
+      next: (oData: IUsuario) => {
         this.oData2Show = oData;
         this.oForm = this.oFormBuilder.group({
           id: [this.oData2Show.id],
@@ -73,10 +72,12 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
           dni: [this.oData2Show.dni, [Validators.required, Validators.minLength(5)]],
           id_tipousuario: [this.oData2Show.tipousuario.id, [Validators.required, Validators.minLength(1)]]
         });
-      }, (error: HttpErrorResponse) => {
+      },
+      error: (error: HttpErrorResponse) => {
         this.status = error;
         this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-      })
+      }
+    })
   };
 
   onSubmit(): void {
@@ -104,26 +105,27 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
 
   save(): void {
     if (this.strOperation == "new") {
-      this.oUsuarioService
-        .newOne(this.oData2Send)
-        .subscribe((id: number) => {
+      this.oUsuarioService.newOne(this.oData2Send).subscribe({
+        next: (id: number) => {
           this.status = null;
           this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        }, (error: HttpErrorResponse) => {
+        },
+        error: (error: HttpErrorResponse) => {
           this.status = error;
           this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        });
+        }
+      });
     } else {
-      this.oUsuarioService
-        .updateOne(this.oData2Send)
-        .subscribe((id: number) => {
-
+      this.oUsuarioService.updateOne(this.oData2Send).subscribe({
+        next: (id: number) => {
           this.status = null;
           this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        }, (error: HttpErrorResponse) => {
+        },
+        error: (error: HttpErrorResponse) => {
           this.status = error;
           this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        });
+        }
+      });
     }
   };
 
@@ -132,9 +134,8 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
   onFindSelection($event: number) {
     this.oForm.controls['id_tipousuario'].setValue($event);
     this.oForm.controls['id_tipousuario'].markAsDirty();
-    this.oTipousuarioService
-      .getOne(this.oForm.controls['id_tipousuario'].value)
-      .subscribe((oData: ITipousuario) => {
+    this.oTipousuarioService.getOne(this.oForm.controls['id_tipousuario'].value).subscribe({
+      next: (oData: ITipousuario) => {
         if (this.strOperation == "edit") {
           this.oData2Show.tipousuario = oData; //pte!!
         } else {
@@ -142,12 +143,12 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
           this.oData2Show.tipousuario = {} as ITipousuario;;
           this.oData2Show.tipousuario = oData;
         }
-      }, err => {
+      }, error: (err) => {
         this.oData2Show.tipousuario.nombre = "ERROR";
         this.oForm.controls['id_tipousuario'].setErrors({ 'incorrect': true });
-      });
-
+      }
+    });
     return false;
-  } 
+  }
 
 }

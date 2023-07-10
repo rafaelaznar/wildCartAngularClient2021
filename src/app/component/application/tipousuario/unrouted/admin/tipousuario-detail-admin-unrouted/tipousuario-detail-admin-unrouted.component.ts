@@ -13,12 +13,13 @@ import { TipousuarioService } from 'src/app/service/tipousuario.service';
 export class TipousuarioDetailAdminUnroutedComponent implements OnInit {
 
   @Input() id: number = null;
-
-  oTipousuario: ITipousuario;
+  //
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.usertype
   strOperation: string = Constants.OPERATIONS.view
-
+  //
+  oTipousuario: ITipousuario;
+  
   constructor(
     private oTipousuarioService: TipousuarioService,
     public oMetadataService: MetadataService
@@ -29,11 +30,11 @@ export class TipousuarioDetailAdminUnroutedComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oTipousuarioService
-      .getOne(this.id)
-      .subscribe((oData: ITipousuario) => {
+    this.oTipousuarioService.getOne(this.id).subscribe({
+      next: (oData: ITipousuario) => {
         this.oTipousuario = oData;
-      });
+      }
+    });
   };
 
 }
