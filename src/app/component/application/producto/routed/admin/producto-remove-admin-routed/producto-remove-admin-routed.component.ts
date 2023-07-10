@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from 'src/app/service/producto.service';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Constants } from 'src/app/constant/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
 import { SessionService } from 'src/app/service/session.service';
@@ -18,6 +17,7 @@ export class ProductoRemoveAdminRoutedComponent extends CheckSession implements 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.remove
+  //
   id: number = 0;
 
   constructor(

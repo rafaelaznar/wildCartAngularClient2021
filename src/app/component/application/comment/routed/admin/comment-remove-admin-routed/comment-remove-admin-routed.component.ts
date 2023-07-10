@@ -17,6 +17,7 @@ export class CommentRemoveAdminRoutedComponent extends CheckSession implements O
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.comment;
   strOperation: string = Constants.OPERATIONS.remove
+  //
   id: number = 0;
 
   constructor(

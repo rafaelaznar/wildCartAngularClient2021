@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Constants } from 'src/app/constant/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
 import { SessionService } from 'src/app/service/session.service';
@@ -19,8 +18,8 @@ export class CarritoRemoveAdminRoutedComponent extends CheckSession implements O
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.remove;
-  id: number = 0;
-  oUserSession: IUsuario;
+  //
+  id: number = 0;  
 
   constructor(
     private oCarritoService: CarritoService,

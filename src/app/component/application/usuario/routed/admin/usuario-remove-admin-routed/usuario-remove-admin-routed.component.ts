@@ -15,10 +15,11 @@ import { SessionService } from 'src/app/service/session.service';
 
 export class UsuarioRemoveAdminRoutedComponent extends CheckSession implements OnInit {
 
-  id: number = 0;
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.remove
+  //
+  id: number = 0;
 
   constructor(
     private oUsuarioService: UsuarioService,
@@ -35,7 +36,7 @@ export class UsuarioRemoveAdminRoutedComponent extends CheckSession implements O
 
   removeOne() {
     this.oUsuarioService.removeOne(this.id).subscribe({
-      error: (id: number) => {
+      next: (id: number) => {
         let strResult: string = '';
         if (id) {
           strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";

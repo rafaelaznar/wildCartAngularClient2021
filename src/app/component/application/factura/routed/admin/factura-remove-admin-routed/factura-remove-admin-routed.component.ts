@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IFactura } from 'src/app/model/factura-interfaces';
-import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { FacturaService } from 'src/app/service/factura.service';
 import { MetadataService } from 'src/app/service/metadata.service';
@@ -17,11 +15,11 @@ import { SessionService } from 'src/app/service/session.service';
 
 export class FacturaRemoveAdminRoutedComponent extends CheckSession implements OnInit {
 
-  id: number = 0;
-  oFactura: IFactura;
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.remove
+  //
+  id: number = 0;
 
   constructor(
     private oFacturaService: FacturaService,
@@ -32,18 +30,9 @@ export class FacturaRemoveAdminRoutedComponent extends CheckSession implements O
   ) {
     super(Constants.PROFILES.admin, oRouter, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id
-    this.getOne();
   }
 
   ngOnInit() { }
-
-  getOne = () => {
-    this.oFacturaService.getOne(this.id).subscribe({
-      next: (oData: IFactura) => {
-        this.oFactura = oData;
-      }
-    })
-  }
 
   removeOne() {
     let strResult: string = '';
