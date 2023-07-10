@@ -4,6 +4,7 @@ import { CarritoService } from 'src/app/service/carrito.service';
 import { ICarritoPage } from 'src/app/model/carrito-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/constant/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-carrito-plist-admin-unrouted',
@@ -15,10 +16,11 @@ export class CarritoPlistAdminUnroutedComponent implements OnInit {
 
   @Input() id_producto: number = null;
   @Input() id_usuario: number = null;
-
+  //
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
+  //
   oPage: ICarritoPage;
 
   constructor(
@@ -35,13 +37,19 @@ export class CarritoPlistAdminUnroutedComponent implements OnInit {
   getPage = () => {
     this.oCarritoService
       .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_producto, this.id_usuario)
-      .subscribe((oPage: ICarritoPage) => {
-        this.oPage = oPage;
-this.oPage.error = null; 
-        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
-        if (this.oPage.number > this.oPage.totalPages - 1) {
-          this.oPage.number = this.oPage.totalPages - 1;
-          this.getPage();
+      .subscribe({
+        next: (oPage: ICarritoPage) => {
+          this.oPage = oPage;
+          this.oPage.error = null;
+          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
+          if (this.oPage.number > this.oPage.totalPages - 1) {
+            this.oPage.number = this.oPage.totalPages - 1;
+            this.getPage();
+          }
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
         }
       });
   };

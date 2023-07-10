@@ -14,11 +14,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export class UsuarioPlistAdminUnroutedComponent implements OnInit {
 
-  @Input() id_tipousuario: number = null;
-
+  @Input() id_tipousuario: number = null;  // foreign key
+  //
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.plist
+  //
   oPage: IUsuarioPage;
 
   constructor(
@@ -34,21 +35,23 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
 
   getPage = () => {
     this.oUsuarioService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_tipousuario)
-      .subscribe((oPage: IUsuarioPage) => {
-        this.oPage = oPage;
-        this.oPage.error = null;
-        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipousuario', this.id_tipousuario, null, null);
-        if (this.oPage.totalPages > 0) {
-          if (this.oPage.number > this.oPage.totalPages - 1) {
-            this.oPage.number = this.oPage.totalPages - 1;
-            this.getPage();
+      .subscribe({
+        next: (oPage: IUsuarioPage) => {
+          this.oPage = oPage;
+          this.oPage.error = null;
+          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipousuario', this.id_tipousuario, null, null);
+          if (this.oPage.totalPages > 0) {
+            if (this.oPage.number > this.oPage.totalPages - 1) {
+              this.oPage.number = this.oPage.totalPages - 1;
+              this.getPage();
+            }
           }
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
         }
-      }, (error: HttpErrorResponse) => {
-        this.oPage.error = error;
-        console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
-      }
-      )
+      })
   }
 
   onSetPage = (nPage: number) => {

@@ -16,10 +16,11 @@ export class CommentPlistAdminUnroutedComponent implements OnInit {
 
   @Input() id_usuario: number = null;
   @Input() id_producto: number = null;
-
+  //
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.comment
   strOperation: string = Constants.OPERATIONS.plist
+  //
   oPage: ICommentPage;
 
   constructor(
@@ -35,19 +36,21 @@ export class CommentPlistAdminUnroutedComponent implements OnInit {
 
   getPage = () => {
     this.oCommentService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_usuario, this.id_producto)
-      .subscribe((oPage: ICommentPage) => {
-        this.oPage = oPage;
-        this.oPage.error = null;
-        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
-        if (this.oPage.number > this.oPage.totalPages - 1) {
-          this.oPage.number = this.oPage.totalPages - 1;
-          this.getPage();
+      .subscribe({
+        next: (oPage: ICommentPage) => {
+          this.oPage = oPage;
+          this.oPage.error = null;
+          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
+          if (this.oPage.number > this.oPage.totalPages - 1) {
+            this.oPage.number = this.oPage.totalPages - 1;
+            this.getPage();
+          }
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
         }
-      }, (error: HttpErrorResponse) => {
-        this.oPage.error = error;
-        console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
-      }
-      )
+      })
   }
 
   onSetPage = (nPage: number) => {

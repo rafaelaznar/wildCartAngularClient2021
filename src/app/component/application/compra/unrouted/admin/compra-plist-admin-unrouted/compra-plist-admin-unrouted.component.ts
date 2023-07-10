@@ -16,10 +16,11 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
 
   @Input() id_factura: number = null;
   @Input() id_producto: number = null;
-
+  //
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.purchase
   strOperation: string = Constants.OPERATIONS.plist
+  //
   oPage: ICompraPage;
 
   constructor(
@@ -35,19 +36,22 @@ export class CompraPlistAdminUnroutedComponent implements OnInit {
 
   getPage = () => {
     this.oCompraService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_factura, this.id_producto)
-      .subscribe((oPage: ICompraPage) => {
-        this.oPage = oPage;
-        this.oPage.error = null;
-        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'factura', this.id_factura, 'producto', this.id_producto);
-        if (this.oPage.totalPages > 0) {
-          if (this.oPage.number > this.oPage.totalPages - 1) {
-            this.oPage.number = this.oPage.totalPages - 1;
-            this.getPage();
+      .subscribe({
+        next: (oPage: ICompraPage) => {
+          this.oPage = oPage;
+          this.oPage.error = null;
+          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'factura', this.id_factura, 'producto', this.id_producto);
+          if (this.oPage.totalPages > 0) {
+            if (this.oPage.number > this.oPage.totalPages - 1) {
+              this.oPage.number = this.oPage.totalPages - 1;
+              this.getPage();
+            }
           }
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
         }
-      }, (error: HttpErrorResponse) => {
-        this.oPage.error = error;
-        console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
       })
   }
 

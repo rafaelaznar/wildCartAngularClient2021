@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
-import { ITipoproducto, ITipoproductoPage } from 'src/app/model/tipoproducto-interfaces';
+import { ITipoproductoPage } from 'src/app/model/tipoproducto-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/constant/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-tipoproducto-plist-admin-unrouted',
@@ -16,6 +17,7 @@ export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.producttype;
   strOperation: string = Constants.OPERATIONS.plist;
+  //
   oPage: ITipoproductoPage;
 
   constructor(
@@ -32,15 +34,21 @@ export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
   getPage = () => {
     this.oPostService
       .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter)
-      .subscribe((oPage: ITipoproductoPage) => {
-        this.oPage = oPage;
-        this.oPage.error = null;
-        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, null, null, null, null);
-        if (this.oPage.totalPages > 0) {
-          if (this.oPage.number > this.oPage.totalPages - 1) {
-            this.oPage.number = this.oPage.totalPages - 1;
-            this.getPage();
+      .subscribe({
+        next: (oPage: ITipoproductoPage) => {
+          this.oPage = oPage;
+          this.oPage.error = null;
+          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, null, null, null, null);
+          if (this.oPage.totalPages > 0) {
+            if (this.oPage.number > this.oPage.totalPages - 1) {
+              this.oPage.number = this.oPage.totalPages - 1;
+              this.getPage();
+            }
           }
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
         }
       });
   };
