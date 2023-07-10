@@ -34,14 +34,16 @@ export class CompraRemoveAdminRoutedComponent extends CheckSession implements On
   ngOnInit(): void { }
 
   removeOne() {
-    this.oCompraService.removeOne(this.id).subscribe((id: number) => {
-      let strResult: string = '';
-      if (id) {
-        strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
-      } else {
-        strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
+    this.oCompraService.removeOne(this.id).subscribe({
+      next: (id: number) => {
+        let strResult: string = '';
+        if (id) {
+          strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
+        } else {
+          strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
+        }
+        this.openPopup(strResult);
       }
-      this.openPopup(strResult);
     })
   }
 
@@ -54,7 +56,7 @@ export class CompraRemoveAdminRoutedComponent extends CheckSession implements On
   }
 
   onClosePopup(): void {
-    this.oRouter.navigate(['/',this.strProfile, this.strEntity, 'plist']);
+    this.oRouter.navigate(['/', this.strProfile, this.strEntity, 'plist']);
   }
 
 }

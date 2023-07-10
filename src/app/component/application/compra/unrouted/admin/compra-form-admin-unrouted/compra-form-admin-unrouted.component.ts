@@ -51,7 +51,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
     public oMetadataService: MetadataService,
     private oFacturaService: FacturaService,
     private oProductoService: ProductoService,
-  ) {  }
+  ) { }
 
   ngOnInit(): void {
     if (this.strOperation == "edit") {
@@ -71,9 +71,8 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
   }
 
   get = (): void => {
-    this.oCompraService
-      .getOne(this.id)
-      .subscribe((oData: ICompra) => {
+    this.oCompraService.getOne(this.id).subscribe({
+      next: (oData: ICompra) => {
         this.oData2Show = oData;
         this.oForm = this.oFormBuilder.group({
           id: [this.oData2Show.id],
@@ -85,10 +84,12 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
           id_producto: [this.oData2Show.producto.id, Validators.required],
           id_factura: [this.oData2Show.factura.id, Validators.required]
         });
-      }, (error: HttpErrorResponse) => {
+      },
+      error: (error: HttpErrorResponse) => {
         this.status = error;
         this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-      })
+      }
+    })
   };
 
   onSubmit(): void {
@@ -115,25 +116,27 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
 
   save(): void {
     if (this.strOperation == "new") {
-      this.oCompraService
-        .newOne(this.oData2Send)
-        .subscribe((id: number) => {
+      this.oCompraService.newOne(this.oData2Send).subscribe({
+        next: (id: number) => {
           this.status = null;
           this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        }, (error: HttpErrorResponse) => {
+        },
+        error: (error: HttpErrorResponse) => {
           this.status = error;
           this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        });
+        }
+      });
     } else {
-      this.oCompraService
-        .updateOne(this.oData2Send)
-        .subscribe((id: number) => {
+      this.oCompraService.updateOne(this.oData2Send).subscribe({
+        next: (id: number) => {
           this.status = null;
           this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        }, (error: HttpErrorResponse) => {
+        },
+        error: (error: HttpErrorResponse) => {
           this.status = error;
           this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        });
+        }
+      });
     }
   };
 
@@ -142,9 +145,8 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
   onFindSelectionProducto($event: number) {
     this.oForm.controls['id_producto'].setValue($event);
     this.oForm.controls['id_producto'].markAsDirty();
-    this.oProductoService
-      .getOne(this.oForm.controls['id_producto'].value)
-      .subscribe((oProducto: IProducto) => {
+    this.oProductoService.getOne(this.oForm.controls['id_producto'].value).subscribe({
+      next: (oProducto: IProducto) => {
         if (this.strOperation == "edit") {
           this.oData2Show.producto = oProducto;
         } else {
@@ -154,20 +156,20 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
           this.oData2Show.producto = {} as IProducto;
           this.oData2Show.producto = oProducto;
         }
-      }, err => {
+      },
+      error: (err) => {
         this.oData2Show.producto.nombre = "ERROR";
         this.oForm.controls['id_producto'].setErrors({ 'incorrect': true });
-      });
-
+      }
+    });
     return false;
   }
 
   onFindSelectionFactura($event: number) {
     this.oForm.controls['id_factura'].setValue($event);
     this.oForm.controls['id_factura'].markAsDirty();
-    this.oFacturaService
-      .getOne(this.oForm.controls['id_factura'].value)
-      .subscribe((oFactura: IFactura) => {
+    this.oFacturaService.getOne(this.oForm.controls['id_factura'].value).subscribe({
+      next: (oFactura: IFactura) => {
         if (this.strOperation == "edit") {
           this.oData2Show.factura = oFactura;
         } else {
@@ -177,11 +179,12 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
           this.oData2Show.factura = {} as IFactura;
           this.oData2Show.factura = oFactura;
         }
-      }, err => {
+      },
+      error: (err) => {
         this.oData2Show.factura.usuario.nombre = "ERROR";
         this.oForm.controls['id_factura'].setErrors({ 'incorrect': true });
-      });
-
+      }
+    });
     return false;
   }
 

@@ -10,7 +10,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 export class CompraDetailAdminUnroutedComponent implements OnInit {
 
-  @Input() id: number = null;  
+  @Input() id: number = null;
 
   oCompra: ICompra;
 
@@ -26,8 +26,10 @@ export class CompraDetailAdminUnroutedComponent implements OnInit {
   getOne = () => {
     this.oCompraService
       .getOne(this.id)
-      .subscribe((oData: ICompra) => {
-        this.oCompra = oData;
+      .subscribe({
+        next: (oData: ICompra) => {
+          this.oCompra = oData;
+        }
       })
   }
 

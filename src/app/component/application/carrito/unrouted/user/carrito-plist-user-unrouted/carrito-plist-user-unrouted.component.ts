@@ -12,16 +12,18 @@ import { Constants } from 'src/app/constant/constants';
 })
 
 export class CarritoPlistUserUnroutedComponent implements OnInit {
+
   @Input() id_producto: number = null;
   @Input() id_usuario: number = null;
   @Input() mode: boolean = true; //true=edición; false=selección
   @Input() id_tipousuario_session: number = null;
   @Output() selection = new EventEmitter<number>();
   @Output() addCarritoEE = new EventEmitter<number>();
-
+  //
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
+  //
   oPage: ICarritoPage;
   nTotal: number = 0;
 
@@ -39,17 +41,19 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
   getPage = () => {
     this.oCarritoService
       .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_producto, this.id_usuario)
-      .subscribe((oPage: ICarritoPage) => {
-        this.oPage = oPage;
-        this.oPage.error = null;
-        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
-        if (this.oPage.totalPages > 0) {
-          if (this.oPage.number > this.oPage.totalPages - 1) {
-            this.oPage.number = this.oPage.totalPages - 1;
-            this.getPage();
+      .subscribe({
+        next: (oPage: ICarritoPage) => {
+          this.oPage = oPage;
+          this.oPage.error = null;
+          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
+          if (this.oPage.totalPages > 0) {
+            if (this.oPage.number > this.oPage.totalPages - 1) {
+              this.oPage.number = this.oPage.totalPages - 1;
+              this.getPage();
+            }
           }
+          this.getTotalCarrito4User();
         }
-        this.getTotalCarrito4User();
       });
   };
 
@@ -85,8 +89,10 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
   }
 
   getTotalCarrito4User() {
-    this.oCarritoService.getTotalCarrito4User().subscribe((nTotal: number) => {
-      this.nTotal = nTotal;
+    this.oCarritoService.getTotalCarrito4User().subscribe({
+      next: (nTotal: number) => {
+        this.nTotal = nTotal;
+      }
     });
   }
 

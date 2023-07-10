@@ -10,13 +10,15 @@ export class CheckSession {
         profile: string,
         protected oRouter: Router,
         protected oSessionService: SessionService
-    ) {        
+    ) {
         if (this.oSessionService.isSessionActive()) {
-            this.oSessionService.getUsuario().subscribe((oData: IUsuario) => {
-                this.oUserSession = oData;
-                if (this.oUserSession.tipousuario.nombre != profile) {
-                    this.oRouter.navigate(['/', 'home']);
-                }    
+            this.oSessionService.getUsuario().subscribe({
+                next: (oData: IUsuario) => {
+                    this.oUserSession = oData;
+                    if (this.oUserSession.tipousuario.nombre != profile) {
+                        this.oRouter.navigate(['/', 'home']);
+                    }
+                }
             });
         } else {
             this.oRouter.navigate(['/', 'home']);

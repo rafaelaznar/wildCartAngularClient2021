@@ -47,8 +47,8 @@ export class CompraPlistUserUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oCompraService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this._id_factura, null)
-      .subscribe((oPage: ICompraPage) => {
+    this.oCompraService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this._id_factura, null).subscribe({
+      next: (oPage: ICompraPage) => {
         this.oPage = oPage;
         this.oPage.error = null;
         if (this.oPage.totalPages > 0) {
@@ -57,10 +57,12 @@ export class CompraPlistUserUnroutedComponent implements OnInit {
             this.getPage();
           }
         }
-      }, (error: HttpErrorResponse) => {
+      },
+      error: (error: HttpErrorResponse) => {
         this.oPage.error = error;
         console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
-      })
+      }
+    })
   }
 
   onSetPage = (nPage: number) => {

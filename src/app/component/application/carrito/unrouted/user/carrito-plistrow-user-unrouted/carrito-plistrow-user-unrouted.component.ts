@@ -41,14 +41,18 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
   }
 
   addCarrito(id_producto: number) {
-    this.oCarritoService.add(id_producto, 1).subscribe((result: number) => {
-      this.addCarritoEE.emit(id_producto);
+    this.oCarritoService.add(id_producto, 1).subscribe({
+      next: (result: number) => {
+        this.addCarritoEE.emit(id_producto);
+      }
     })
   }
 
   removeCarrito(id_producto: number) {
-    this.oCarritoService.reduce(id_producto, 1).subscribe((result: number) => {
-      this.addCarritoEE.emit(id_producto);
+    this.oCarritoService.reduce(id_producto, 1).subscribe({
+      next: (result: number) => {
+        this.addCarritoEE.emit(id_producto);
+      }
     })
   }
 

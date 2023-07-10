@@ -10,7 +10,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 export class CarritoDetailAdminUnroutedComponent implements OnInit {
 
-  @Input() id: number = null;  
+  @Input() id: number = null;
 
   oCarrito: ICarrito;
 
@@ -26,8 +26,10 @@ export class CarritoDetailAdminUnroutedComponent implements OnInit {
   getOne = () => {
     this.oCarritoService
       .getOne(this.id)
-      .subscribe((oData: ICarrito) => {
-        this.oCarrito = oData;
+      .subscribe({
+        next: (oData: ICarrito) => {
+          this.oCarrito = oData;
+        }
       });
   };
 }

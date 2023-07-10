@@ -34,13 +34,15 @@ export class CommentRemoveAdminRoutedComponent extends CheckSession implements O
 
   removeOne() {
     let strResult: string = '';
-    this.oCommentService.removeOne(this.id).subscribe((id: number) => {
-      if (id) {
-        strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
-      } else {
-        strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
+    this.oCommentService.removeOne(this.id).subscribe({
+      next: (id: number) => {
+        if (id) {
+          strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
+        } else {
+          strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
+        }
+        this.openPopup(strResult);
       }
-      this.openPopup(strResult);
     })
   }
 

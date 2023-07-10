@@ -49,7 +49,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
   constructor(
     private oFormBuilder: UntypedFormBuilder,
     private oCarritoService: CarritoService,
-    public oMetadataService: MetadataService,        
+    public oMetadataService: MetadataService,
     private oUsuarioService: UsuarioService,
     private oProductoService: ProductoService,
   ) {
@@ -72,19 +72,22 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
   get = (): void => {
     this.oCarritoService
       .getOne(this.id)
-      .subscribe((oData: ICarrito) => {
-        this.oData2Show = oData;
-        this.status = null;
-        this.oForm = this.oFormBuilder.group({
-          id: [this.oData2Show.id],
-          cantidad: [this.oData2Show.cantidad, Validators.required],
-          precio: [this.oData2Show.precio, Validators.required],
-          id_producto: [this.oData2Show.producto.id, Validators.required],
-          id_usuario: [this.oData2Show.usuario.id, Validators.required]
-        });
-      }, (error: HttpErrorResponse) => {
-        this.status = error;
-        this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+      .subscribe({
+        next: (oData: ICarrito) => {
+          this.oData2Show = oData;
+          this.status = null;
+          this.oForm = this.oFormBuilder.group({
+            id: [this.oData2Show.id],
+            cantidad: [this.oData2Show.cantidad, Validators.required],
+            precio: [this.oData2Show.precio, Validators.required],
+            id_producto: [this.oData2Show.producto.id, Validators.required],
+            id_usuario: [this.oData2Show.usuario.id, Validators.required]
+          });
+        },
+        error: (error: HttpErrorResponse) => {
+          this.status = error;
+          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        }
       })
   };
 
@@ -103,26 +106,32 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
     }
   }
 
-  save(): void {    
+  save(): void {
     if (this.strOperation == "new") {
       this.oCarritoService
         .newOne(this.oData2Send)
-        .subscribe((id: number) => {
-          this.status = null;
-          this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        }, (error: HttpErrorResponse) => {
-          this.status = error;
-          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        .subscribe({
+          next: (id: number) => {
+            this.status = null;
+            this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+          },
+          error: (error: HttpErrorResponse) => {
+            this.status = error;
+            this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+          }
         });
     } else {
       this.oCarritoService
         .updateOne(this.oData2Send)
-        .subscribe((id: number) => {
-          this.status = null;
-          this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        }, (error: HttpErrorResponse) => {
-          this.status = error;
-          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+        .subscribe({
+          next: (id: number) => {
+            this.status = null;
+            this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+          },
+          error: (error: HttpErrorResponse) => {
+            this.status = error;
+            this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+          }
         });
     }
   };
@@ -134,19 +143,22 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
     this.oForm.controls['id_producto'].markAsDirty();
     this.oProductoService
       .getOne(this.oForm.controls['id_producto'].value)
-      .subscribe((oProducto: IProducto) => {
-        if (this.strOperation == "edit") {
-          this.oData2Show.producto = oProducto;
-        } else {
-          if (!this.oData2Show) {
-            this.oData2Show = {} as ICarrito;
+      .subscribe({
+        next: (oProducto: IProducto) => {
+          if (this.strOperation == "edit") {
+            this.oData2Show.producto = oProducto;
+          } else {
+            if (!this.oData2Show) {
+              this.oData2Show = {} as ICarrito;
+            }
+            this.oData2Show.producto = {} as IProducto;
+            this.oData2Show.producto = oProducto;
           }
-          this.oData2Show.producto = {} as IProducto;
-          this.oData2Show.producto = oProducto;
+        },
+        error: (err) => {
+          this.oData2Show.producto.nombre = "ERROR";
+          this.oForm.controls['id_producto'].setErrors({ 'incorrect': true });
         }
-      }, (err) => {
-        this.oData2Show.producto.nombre = "ERROR";
-        this.oForm.controls['id_producto'].setErrors({ 'incorrect': true });
       });
 
     return false;
@@ -157,19 +169,22 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
     this.oForm.controls['id_usuario'].markAsDirty();
     this.oUsuarioService
       .getOne(this.oForm.controls['id_usuario'].value)
-      .subscribe((oUsuario: IUsuario) => {
-        if (this.strOperation == "edit") {
-          this.oData2Show.usuario = oUsuario;
-        } else {
-          if (!this.oData2Show) {
-            this.oData2Show = {} as ICarrito;
+      .subscribe({
+        next: (oUsuario: IUsuario) => {
+          if (this.strOperation == "edit") {
+            this.oData2Show.usuario = oUsuario;
+          } else {
+            if (!this.oData2Show) {
+              this.oData2Show = {} as ICarrito;
+            }
+            this.oData2Show.usuario = {} as IUsuario;
+            this.oData2Show.usuario = oUsuario;
           }
-          this.oData2Show.usuario = {} as IUsuario;
-          this.oData2Show.usuario = oUsuario;
+        },
+        error: (err) => {
+          this.oData2Show.usuario.nombre = "ERROR";
+          this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
         }
-      }, (err) => {
-        this.oData2Show.usuario.nombre = "ERROR";
-        this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
       });
 
     return false;

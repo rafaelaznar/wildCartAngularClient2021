@@ -34,30 +34,34 @@ export class CommentPlistUserUnroutedComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     console.log("id_p: " + this.id_producto);
-    this.reloadCommentsPlistSubject.subscribe(((response) => {
-      if (response) {
-        this.getPage();
+    this.reloadCommentsPlistSubject.subscribe({
+      next: (response) => {
+        if (response) {
+          this.getPage();
+        }
       }
-    }))
+    })
     this.getPage();
   }
 
   getPage = () => {
     console.log("id_p: " + this.id_producto);
     this.oCommentService.getPage(this.oPage.number, 5, "creation", "desc", null, this.id_usuario, this.id_producto)
-      .subscribe((oPage: ICommentPage) => {
-        this.oPage = oPage;
-        this.oPage.error = null;
-        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
-        if (this.oPage.number > this.oPage.totalPages - 1) {
-          this.oPage.number = this.oPage.totalPages - 1;
-          this.getPage();
+      .subscribe({
+        next: (oPage: ICommentPage) => {
+          this.oPage = oPage;
+          this.oPage.error = null;
+          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
+          if (this.oPage.number > this.oPage.totalPages - 1) {
+            this.oPage.number = this.oPage.totalPages - 1;
+            this.getPage();
+          }
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
         }
-      }, (error: HttpErrorResponse) => {
-        this.oPage.error = error;
-        console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
-      }
-      )
+      })
   }
 
   ngOnChanges() {

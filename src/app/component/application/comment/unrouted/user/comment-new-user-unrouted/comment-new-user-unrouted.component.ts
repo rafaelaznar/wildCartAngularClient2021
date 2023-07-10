@@ -69,17 +69,17 @@ export class CommentNewUserUnroutedComponent implements OnInit {
   save(): void {
     if (this.commentForm) {
       if (this.commentForm.valid) {
-
         this.oCommentService
           .newOne(this.oComment2Send)
-          .subscribe((id) => {
-            this.commentForm.reset();
-            this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-          }, (error: HttpErrorResponse) => {
+          .subscribe({
+            next: (id) => {
+              this.commentForm.reset();
+              this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
+            }, error: (error: HttpErrorResponse) => {
 
-            this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+              this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+            }
           });
-
       }
     }
   }

@@ -11,10 +11,10 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class CommentDetailAdminUnroutedComponent implements OnInit {
 
-  @Input() id: number = null;  
+  @Input() id: number = null;
 
   oComment: IComment;
-  
+
   constructor(
     private oCommentService: CommentService,
     public oMetadataService: MetadataService
@@ -27,8 +27,10 @@ export class CommentDetailAdminUnroutedComponent implements OnInit {
   getOne = () => {
     this.oCommentService
       .getOne(this.id)
-      .subscribe((oData: IComment) => {
-        this.oComment = oData;
+      .subscribe({
+        next: (oData: IComment) => {
+          this.oComment = oData;
+        }
       });
   };
 

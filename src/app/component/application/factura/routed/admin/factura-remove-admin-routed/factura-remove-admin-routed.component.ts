@@ -38,20 +38,24 @@ export class FacturaRemoveAdminRoutedComponent extends CheckSession implements O
   ngOnInit() { }
 
   getOne = () => {
-    this.oFacturaService.getOne(this.id).subscribe((oData: IFactura) => {
-      this.oFactura = oData;
+    this.oFacturaService.getOne(this.id).subscribe({
+      next: (oData: IFactura) => {
+        this.oFactura = oData;
+      }
     })
   }
 
   removeOne() {
     let strResult: string = '';
-    this.oFacturaService.removeOne(this.id).subscribe((id: number) => {
-      if (id) {
-        strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
-      } else {
-        strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
+    this.oFacturaService.removeOne(this.id).subscribe({
+      next: (id: number) => {
+        if (id) {
+          strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
+        } else {
+          strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
+        }
+        this.openPopup(strResult);
       }
-      this.openPopup(strResult);
     })
   }
 
@@ -64,7 +68,7 @@ export class FacturaRemoveAdminRoutedComponent extends CheckSession implements O
   }
 
   onClosePopup(): void {
-    this.oRouter.navigate(['/',this.strProfile, this.strEntity, 'plist']);
+    this.oRouter.navigate(['/', this.strProfile, this.strEntity, 'plist']);
   }
 
 }

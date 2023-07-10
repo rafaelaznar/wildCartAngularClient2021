@@ -80,9 +80,8 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
   }
 
   get = (): void => {
-    this.oFacturaService
-      .getOne(this.id)
-      .subscribe((oData: IFactura) => {
+    this.oFacturaService.getOne(this.id).subscribe({
+      next: (oData: IFactura) => {
         this.oFactura2Show = oData;
         //this.oFactura2Show.fecha = new Date(oData.fecha);
         this.oForm = this.oFormBuilder.group({
@@ -92,33 +91,37 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
           pagado: [this.oFactura2Show.pagado],
           id_usuario: [this.oFactura2Show.usuario.id, Validators.required]
         });
-      }, (error: HttpErrorResponse) => {
+      },
+      error: (error: HttpErrorResponse) => {
         this.status = error;
         this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-      })
+      }
+    })
   };
 
   save(): void {
     if (this.strOperation == "new") {
-      this.oFacturaService
-        .newOne(this.oFactura2Send)
-        .subscribe((id: number) => {
+      this.oFacturaService.newOne(this.oFactura2Send).subscribe({
+        next: (id: number) => {
           this.status = null;
           this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        }, (error: HttpErrorResponse) => {
-          this.status = error;
-          this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        });
+        }, error:
+          (error: HttpErrorResponse) => {
+            this.status = error;
+            this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+          }
+      });
     } else {
-      this.oFacturaService
-        .updateOne(this.oFactura2Send)
-        .subscribe((id: number) => {
+      this.oFacturaService.updateOne(this.oFactura2Send).subscribe({
+        next: (id: number) => {
           this.status = null;
           this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        }, (error: HttpErrorResponse) => {
+        },
+        error: (error: HttpErrorResponse) => {
           this.status = error;
           this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-        });
+        }
+      });
     }
   };
 
@@ -144,9 +147,8 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
   onFindSelection($event: number) {
     this.oForm.controls['id_usuario'].setValue($event);
     this.oForm.controls['id_usuario'].markAsDirty();
-    this.oUsuarioService
-      .getOne(this.oForm.controls['id_usuario'].value)
-      .subscribe((oUsuario: IUsuario) => {
+    this.oUsuarioService.getOne(this.oForm.controls['id_usuario'].value).subscribe({
+      next: (oUsuario: IUsuario) => {
         if (this.strOperation == "edit") {
           this.oFactura2Show.usuario = oUsuario; //pte!!
         } else {
@@ -154,10 +156,12 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
           this.oFactura2Show.usuario = {} as IUsuario;
           this.oFactura2Show.usuario = oUsuario;
         }
-      }, err => {
+      },
+      error: (err) => {
         this.oFactura2Show.usuario.nombre = "ERROR";
         this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
-      });
+      }
+    });
 
     return false;
   }

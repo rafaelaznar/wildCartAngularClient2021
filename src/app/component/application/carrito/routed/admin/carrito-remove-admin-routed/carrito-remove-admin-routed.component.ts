@@ -37,13 +37,15 @@ export class CarritoRemoveAdminRoutedComponent extends CheckSession implements O
 
   removeOne() {
     let strResult: string = '';
-    this.oCarritoService.removeOne(this.id).subscribe((id: number) => {
-      if (id) {
-        strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
-      } else {
-        strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
+    this.oCarritoService.removeOne(this.id).subscribe({
+      next: (id: number) => {
+        if (id) {
+          strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
+        } else {
+          strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
+        }
+        this.openPopup(strResult);
       }
-      this.openPopup(strResult);
     })
   }
 
@@ -56,7 +58,7 @@ export class CarritoRemoveAdminRoutedComponent extends CheckSession implements O
   }
 
   onClosePopup(): void {
-    this.oRouter.navigate(['/',this.strProfile, this.strEntity, 'plist']);
+    this.oRouter.navigate(['/', this.strProfile, this.strEntity, 'plist']);
   }
 
 }

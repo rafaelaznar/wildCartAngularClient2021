@@ -11,7 +11,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class FacturaDetailAdminUnroutedComponent implements OnInit {
 
-  @Input() id: number = null;  
+  @Input() id: number = null;
 
   oFactura: IFactura;
   constructor(
@@ -24,11 +24,11 @@ export class FacturaDetailAdminUnroutedComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oFacturaService
-      .getOne(this.id)
-      .subscribe((oData: IFactura) => {
+    this.oFacturaService.getOne(this.id).subscribe({
+      next: (oData: IFactura) => {
         this.oFactura = oData;
-      });
+      }
+    });
   };
-  
+
 }
