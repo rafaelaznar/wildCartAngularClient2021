@@ -18,6 +18,7 @@ export class CompraNewAdminRoutedComponent extends CheckSession implements OnIni
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.purchase
   strOperation: string = Constants.OPERATIONS.new
+  //
   id: number = null;
   oResult: IResult = null;
 

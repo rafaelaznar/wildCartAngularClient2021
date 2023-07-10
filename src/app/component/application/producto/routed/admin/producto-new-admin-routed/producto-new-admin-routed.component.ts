@@ -18,6 +18,7 @@ export class ProductoNewAdminRoutedComponent extends CheckSession implements OnI
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product;
   strOperation: string = Constants.OPERATIONS.new;
+  //
   id: number = null;
   oResult: IResult = null;
 
@@ -29,7 +30,6 @@ export class ProductoNewAdminRoutedComponent extends CheckSession implements OnI
   ) {
     super(Constants.PROFILES.admin, oRouter, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id
-    //this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 
   ngOnInit(): void { }

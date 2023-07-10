@@ -18,6 +18,7 @@ export class UsuarioNewAdminRoutedComponent extends CheckSession implements OnIn
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.new
+  //
   id: number = null;
   oResult: IResult = null;
 
@@ -33,7 +34,7 @@ export class UsuarioNewAdminRoutedComponent extends CheckSession implements OnIn
 
   ngOnInit(): void { }
 
-  reportResult = (oResult: any): void => {
+  reportResult = (oResult: IResult): void => {
     this.oResult = oResult;
     if (oResult.error == null) {
       if (oResult.id > 0) {

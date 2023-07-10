@@ -9,6 +9,7 @@ import { IProducto } from 'src/app/model/producto-interfaces';
 import { IFactura } from 'src/app/model/factura-interfaces';
 import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IResult } from 'src/app/model/model-interfaces';
 
 @Component({
   selector: 'app-compra-form-admin-unrouted',
@@ -20,7 +21,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
 
   @Input() strOperation: string = null;
   @Input() id: number = null;
-  @Output() msg = new EventEmitter<any>();
+  @Output() msg = new EventEmitter<IResult>();
 
   oData2Show: ICompra = null;
   oData2Send: ICompra2Send = null;

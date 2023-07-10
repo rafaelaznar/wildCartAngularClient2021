@@ -18,7 +18,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class CommentNewUserUnroutedComponent implements OnInit {
 
   @Input() id_producto: number = null;
-  @Output() msg = new EventEmitter<any>();
+  @Output() msg = new EventEmitter<IResult>();
 
   strProfile: string = Constants.PROFILES.user;
   strEntity: string = Constants.ENTITIES.comment;

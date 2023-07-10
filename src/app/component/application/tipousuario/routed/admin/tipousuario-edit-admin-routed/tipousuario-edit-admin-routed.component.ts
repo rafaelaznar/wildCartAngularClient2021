@@ -33,7 +33,7 @@ export class TipousuarioEditAdminRoutedComponent extends CheckSession implements
 
   ngOnInit(): void { }
 
-  reportResult = (oResult: any): void => {
+  reportResult = (oResult: IResult): void => {
     this.oResult = oResult;
     if (oResult.error == null) {
       if (oResult.id > 0) {

@@ -7,6 +7,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IResult } from 'src/app/model/model-interfaces';
 
 @Component({
   selector: 'app-factura-form-admin-unrouted',
@@ -18,7 +19,7 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
 
   @Input() strOperation: string = null;
   @Input() id: number = null;
-  @Output() msg = new EventEmitter<any>();
+  @Output() msg = new EventEmitter<IResult>();
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice;

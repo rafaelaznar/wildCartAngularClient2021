@@ -17,8 +17,8 @@ export class CarritoEditAdminRoutedComponent extends CheckSession implements OnI
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.edit;
+  //
   id: number = null;
-  strUsuarioSession: string;
   oResult: IResult = null;
 
   constructor(

@@ -5,6 +5,7 @@ import { ITipoproducto, ITipoproducto2Send } from 'src/app/model/tipoproducto-in
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IResult } from 'src/app/model/model-interfaces';
 
 @Component({
   selector: 'app-tipoproducto-form-admin-unrouted',
@@ -16,7 +17,7 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
 
   @Input() strOperation: string = null;
   @Input() id: number = null;
-  @Output() msg = new EventEmitter<any>();
+  @Output() msg = new EventEmitter<IResult>();
 
   oData2Show: ITipoproducto = null;
   oData2Send: ITipoproducto2Send = null;

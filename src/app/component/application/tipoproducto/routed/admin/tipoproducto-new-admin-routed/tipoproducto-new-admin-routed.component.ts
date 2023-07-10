@@ -17,7 +17,8 @@ export class TipoproductoNewAdminRoutedComponent extends CheckSession implements
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.producttype
-  strOperation: string = Constants.OPERATIONS.new
+  strOperation: string = Constants.OPERATIONS.new;
+  //
   id: number = null;
   oResult: IResult = null;
 
@@ -33,7 +34,7 @@ export class TipoproductoNewAdminRoutedComponent extends CheckSession implements
 
   ngOnInit(): void { }
 
-  reportResult = (oResult: any): void => {
+  reportResult = (oResult: IResult): void => {
     this.oResult = oResult;
     if (oResult.error == null) {
       if (oResult.id > 0) {

@@ -5,6 +5,7 @@ import { ITipousuario, ITipousuario2Send } from 'src/app/model/tipousuario-inter
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IResult } from 'src/app/model/model-interfaces';
 
 @Component({
   selector: 'app-tipousuario-form-admin-unrouted',
@@ -16,7 +17,7 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
 
   @Input() strOperation: string = null;
   @Input() id: number = null;
-  @Output() msg = new EventEmitter<any>();
+  @Output() msg = new EventEmitter<IResult>();
 
   oData2Show: ITipousuario = null;
   oData2Send: ITipousuario2Send = null;

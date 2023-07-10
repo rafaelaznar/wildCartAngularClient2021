@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/constant/constants';
@@ -18,9 +17,9 @@ export class ProductoEdiAdminRoutedComponent extends CheckSession implements OnI
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product
-  strOperation: string = Constants.OPERATIONS.edit
+  strOperation: string = Constants.OPERATIONS.edit;
+  //
   id: number = null;
-  strUsuarioSession: string;
   oResult: IResult = null;
 
   constructor(

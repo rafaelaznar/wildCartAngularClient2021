@@ -7,6 +7,7 @@ import { TipousuarioService } from 'src/app/service/tipousuario.service';
 import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
 import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IResult } from 'src/app/model/model-interfaces';
 
 @Component({
   selector: 'app-usuario-form-admin-unrouted',
@@ -18,7 +19,7 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
 
   @Input() strOperation: string = null;
   @Input() id: number = null;
-  @Output() msg = new EventEmitter<any>();
+  @Output() msg = new EventEmitter<IResult>();
 
   oData2Show: IUsuario = null;
   oData2Send: IUsuario2Send = null;

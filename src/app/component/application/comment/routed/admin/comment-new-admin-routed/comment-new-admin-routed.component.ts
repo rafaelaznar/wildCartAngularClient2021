@@ -18,6 +18,7 @@ export class CommentNewAdminRoutedComponent extends CheckSession implements OnIn
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.comment;
   strOperation: string = Constants.OPERATIONS.new;
+  //
   id: number = null;
   oResult: IResult = null;
 

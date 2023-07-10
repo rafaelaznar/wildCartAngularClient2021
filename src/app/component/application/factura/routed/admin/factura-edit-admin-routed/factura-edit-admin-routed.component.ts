@@ -15,10 +15,11 @@ import { SessionService } from 'src/app/service/session.service';
 
 export class FacturaEditAdminRoutedComponent extends CheckSession implements OnInit {
 
-  id: number = null;
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.edit
+  //
+  id: number = null;
   oResult: IResult = null;
 
   constructor(

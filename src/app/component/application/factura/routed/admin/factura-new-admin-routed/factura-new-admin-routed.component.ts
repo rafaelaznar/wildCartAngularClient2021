@@ -16,8 +16,9 @@ import { SessionService } from 'src/app/service/session.service';
 export class FacturaNewAdminRoutedComponent extends CheckSession implements OnInit {
 
   strProfile: string = Constants.PROFILES.admin;
-  strEntity: string = Constants.ENTITIES.invoice
-  strOperation: string = Constants.OPERATIONS.new
+  strEntity: string = Constants.ENTITIES.invoice;
+  strOperation: string = Constants.OPERATIONS.new;
+  //
   id: number = null;
   oResult: IResult = null;
 
