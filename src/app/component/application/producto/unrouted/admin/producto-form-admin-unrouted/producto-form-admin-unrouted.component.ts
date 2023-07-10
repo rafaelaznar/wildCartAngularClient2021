@@ -62,21 +62,24 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   }
 
   get = (): void => {
-    this.oProductoService.getOne(this.id).subscribe((oData: IProducto) => {
-      this.oProducto2Show = oData;
-      this.oForm = this.oFormBuilder.group({
-        id: [this.oProducto2Show.id],
-        codigo: [this.oProducto2Show.codigo, [Validators.required],],
-        nombre: [this.oProducto2Show.nombre, [Validators.required, Validators.minLength(5)],],
-        existencias: this.oProducto2Show.existencias,
-        precio: this.oProducto2Show.precio,
-        imagen: this.oProducto2Show.imagen,
-        descuento: this.oProducto2Show.descuento,
-        id_tipoproducto: [this.oProducto2Show.tipoproducto.id, [Validators.required],],
-      });
-    }, (error: HttpErrorResponse) => {
-      this.status = error;
-      this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+    this.oProductoService.getOne(this.id).subscribe({
+      next: (oData: IProducto) => {
+        this.oProducto2Show = oData;
+        this.oForm = this.oFormBuilder.group({
+          id: [this.oProducto2Show.id],
+          codigo: [this.oProducto2Show.codigo, [Validators.required],],
+          nombre: [this.oProducto2Show.nombre, [Validators.required, Validators.minLength(5)],],
+          existencias: this.oProducto2Show.existencias,
+          precio: this.oProducto2Show.precio,
+          imagen: this.oProducto2Show.imagen,
+          descuento: this.oProducto2Show.descuento,
+          id_tipoproducto: [this.oProducto2Show.tipoproducto.id, [Validators.required],],
+        });
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
+        this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+      }
     })
   };
 
@@ -127,25 +130,27 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
           tipoproducto: { id: this.oForm.value.id_tipoproducto },
         }
         if (this.strOperation == "new") {
-          this.oProductoService
-            .newOne(this.oProducto2Send)
-            .subscribe((id: number) => {
+          this.oProductoService.newOne(this.oProducto2Send).subscribe({
+            next: (id: number) => {
               this.status = null;
               this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-            }, (error: HttpErrorResponse) => {
+            },
+            error: (error: HttpErrorResponse) => {
               this.status = error;
               this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-            });
+            }
+          });
         } else {
-          this.oProductoService
-            .updateOne(this.oProducto2Send)
-            .subscribe((id: number) => {
+          this.oProductoService.updateOne(this.oProducto2Send).subscribe({
+            next: (id: number) => {
               this.status = null;
               this.msg.emit({ id: id, error: null, strEntity: this.strEntity, strOperation: this.strOperation });
-            }, (error: HttpErrorResponse) => {
+            },
+            error: (error: HttpErrorResponse) => {
               this.status = error;
               this.msg.emit({ error: error, id: null, strEntity: this.strEntity, strOperation: this.strOperation });
-            });
+            }
+          });
         }
       }
     }
@@ -156,9 +161,8 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   onFindSelection($event: number) {
     this.oForm.controls['id_tipoproducto'].setValue($event);
     this.oForm.controls['id_tipoproducto'].markAsDirty();
-    this.oTipoproductoService
-      .getOne(this.oForm.controls['id_tipoproducto'].value)
-      .subscribe((oTipoproducto: ITipoproducto) => {
+    this.oTipoproductoService.getOne(this.oForm.controls['id_tipoproducto'].value).subscribe({
+      next: (oTipoproducto: ITipoproducto) => {
         if (this.strOperation == "edit") {
           this.oProducto2Show.tipoproducto = oTipoproducto;
         } else {
@@ -166,10 +170,12 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
           this.oProducto2Show.tipoproducto = {} as ITipoproducto;
           this.oProducto2Show.tipoproducto = oTipoproducto;
         }
-      }, err => {
+      },
+      error: (err) => {
         this.oProducto2Show.tipoproducto.nombre = "ERROR";
         this.oForm.controls['id_tipousuario'].setErrors({ 'incorrect': true });
-      });
+      }
+    });
 
     return false;
   }

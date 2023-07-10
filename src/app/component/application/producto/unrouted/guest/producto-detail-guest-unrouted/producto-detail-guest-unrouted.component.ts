@@ -29,25 +29,28 @@ export class ProductoDetailGuestUnroutedComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oProductoService
-      .getOne(this.id)
-      .subscribe((oData: IProducto) => {
+    this.oProductoService.getOne(this.id).subscribe({
+      next: (oData: IProducto) => {
         this.oProducto = oData;
-        
-      });
+      }
+    })
   };
 
   addCarrito(id_producto: number) {
-    this.oCarritoService.add(id_producto, 1).subscribe((result: number) => {
-      this.addCarritoEE.emit(id_producto);
-      this.getOne();
+    this.oCarritoService.add(id_producto, 1).subscribe({
+      next: (result: number) => {
+        this.addCarritoEE.emit(id_producto);
+        this.getOne();
+      }
     })
   }
 
   removeCarrito(id_producto: number) {
-    this.oCarritoService.reduce(id_producto, 1).subscribe((result: number) => {
-      this.addCarritoEE.emit(id_producto);
-      this.getOne();
+    this.oCarritoService.reduce(id_producto, 1).subscribe({
+      next: (result: number) => {
+        this.addCarritoEE.emit(id_producto);
+        this.getOne();
+      }
     })
   }
 

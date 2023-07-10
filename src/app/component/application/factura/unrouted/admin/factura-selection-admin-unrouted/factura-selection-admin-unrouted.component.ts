@@ -34,8 +34,8 @@ export class FacturaSelectionAdminUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oFacturaService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_usuario)
-      .subscribe((oPage: IFacturaPage) => {
+    this.oFacturaService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_usuario).subscribe({
+      next: (oPage: IFacturaPage) => {
         this.oPage = oPage;
         this.oPage.error = null;
         this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, null, null);
@@ -45,11 +45,12 @@ export class FacturaSelectionAdminUnroutedComponent implements OnInit {
             this.getPage();
           }
         }
-      }, (error: HttpErrorResponse) => {
+      },
+      error: (error: HttpErrorResponse) => {
         this.oPage.error = error;
         console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
       }
-      )
+    })
   }
 
   onSetPage = (nPage: number) => {

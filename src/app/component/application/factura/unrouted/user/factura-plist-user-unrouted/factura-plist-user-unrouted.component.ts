@@ -36,9 +36,8 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oFacturaService
-      .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_usuario)
-      .subscribe((oPage: IFacturaPage) => {
+    this.oFacturaService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_usuario).subscribe({
+      next: (oPage: IFacturaPage) => {
         this.oPage = oPage;
         this.oPage.error = null;
         this.oPage.strFilteredMessage = this.oMetadataService.getFilteredMessage1(this.oPage.strFilter, 'usuario', this.id_usuario);
@@ -49,8 +48,8 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
           this.oPage.number = 0;
           this.getPage();
         }
-
-      });
+      }
+    });
   };
 
   onSetPage = (nPage: number) => {

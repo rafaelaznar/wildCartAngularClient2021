@@ -30,7 +30,7 @@ export class FacturaDetailUserUnroutedComponent implements OnInit {
     public oMetadataService: MetadataService
   ) { }
 
-  ngOnInit(): void {  
+  ngOnInit(): void {
   }
 
   ngOnChanges(changes: any) { //sensible a cambios en el id
@@ -38,11 +38,11 @@ export class FacturaDetailUserUnroutedComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oFacturaService
-      .getOne(this.id)
-      .subscribe((oData: IFactura) => {
+    this.oFacturaService.getOne(this.id).subscribe({
+      next: (oData: IFactura) => {
         this.oFactura = oData;
-      });
+      }
+    });
   };
 
 }

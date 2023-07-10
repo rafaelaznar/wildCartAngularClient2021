@@ -11,10 +11,10 @@ import { ProductoService } from 'src/app/service/producto.service';
 
 export class ProductoDetailAdminUnroutedComponent implements OnInit {
 
-  @Input() id: number = null;  
+  @Input() id: number = null;
 
   oProducto: IProducto;
-  
+
   constructor(
     private oProductoService: ProductoService,
     public oMetadataService: MetadataService
@@ -25,11 +25,11 @@ export class ProductoDetailAdminUnroutedComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oProductoService
-      .getOne(this.id)
-      .subscribe((oData: IProducto) => {
+    this.oProductoService.getOne(this.id).subscribe({
+      next: (oData: IProducto) => {
         this.oProducto = oData;
-      });
+      }
+    });
   };
 
 }

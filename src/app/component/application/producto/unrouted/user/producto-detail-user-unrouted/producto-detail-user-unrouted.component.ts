@@ -35,30 +35,32 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
   }
 
   getOne = () => {
-    this.oProductoService
-      .getOne(this.id)
-      .subscribe((oData: IProducto) => {
+    this.oProductoService.getOne(this.id).subscribe({
+      next: (oData: IProducto) => {
         this.oProducto = oData;
-      });
+      }
+    });
   };
 
   addCarrito(id_producto: number) {
-    this.oCarritoService.add(id_producto, 1).subscribe((result: number) => {
-      this.addCarritoEE.emit(id_producto);
-      this.getOne();
+    this.oCarritoService.add(id_producto, 1).subscribe({
+      next: (result: number) => {
+        this.addCarritoEE.emit(id_producto);
+        this.getOne();
+      }
     })
   }
 
   removeCarrito(id_producto: number) {
-    this.oCarritoService.reduce(id_producto, 1).subscribe((result: number) => {
-      this.addCarritoEE.emit(id_producto);
-      this.getOne();
+    this.oCarritoService.reduce(id_producto, 1).subscribe({
+      next: (result: number) => {
+        this.addCarritoEE.emit(id_producto);
+        this.getOne();
+      }
     })
   }
 
-
-
-  loadImage(url:string) {
+  loadImage(url: string) {
     return new Promise((resolve) => {
       let img = new Image();
       img.onload = () => resolve(img);
@@ -71,47 +73,47 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
     var doc = new jsPDF()
 
     this.loadImage(API_URL + '/file/' + this.oProducto?.imagen).then((logo) => {
-    
-    var imgData = API_URL + '/file/' + this.oProducto?.imagen;        
 
-    doc.addImage(logo, 'JPG', 130, 10, 50, 50)
+      var imgData = API_URL + '/file/' + this.oProducto?.imagen;
 
-    doc.setFontSize(50)
-    doc.text('WildCart', 10, 25)
+      doc.addImage(logo, 'JPG', 130, 10, 50, 50)
 
-    doc.setFontSize(20)
-    doc.text('Ficha Técnica de producto', 10, 35)
+      doc.setFontSize(50)
+      doc.text('WildCart', 10, 25)
 
-    let font1: number = 14;
-    let font2: number = 12;
-    let alignx1: number = 10;
-    let alignx2: number = 60;
+      doc.setFontSize(20)
+      doc.text('Ficha Técnica de producto', 10, 35)
 
-    doc.setFontSize(font1)
-    doc.text('Descripción:', alignx1, 80)
-    doc.setFontSize(font2)
-    doc.text(this.oProducto.nombre, alignx2, 80)
+      let font1: number = 14;
+      let font2: number = 12;
+      let alignx1: number = 10;
+      let alignx2: number = 60;
 
-    doc.setFontSize(font1)
-    doc.text('Código:', alignx1, 90)
-    doc.setFontSize(font2)
-    doc.text(this.oProducto.codigo, alignx2, 90)
+      doc.setFontSize(font1)
+      doc.text('Descripción:', alignx1, 80)
+      doc.setFontSize(font2)
+      doc.text(this.oProducto.nombre, alignx2, 80)
 
-    doc.setFontSize(font1)
-    doc.text('Precio:', alignx1, 100)
-    doc.setFontSize(font2)
-    doc.text(this.oProducto.precio.toString(), alignx2, 100)
+      doc.setFontSize(font1)
+      doc.text('Código:', alignx1, 90)
+      doc.setFontSize(font2)
+      doc.text(this.oProducto.codigo, alignx2, 90)
 
-    doc.setFontSize(font1)
-    doc.text('Tipo de producto:', alignx1, 110)
-    doc.setFontSize(font2)
-    doc.text(this.oProducto.tipoproducto.nombre, alignx2, 110)
+      doc.setFontSize(font1)
+      doc.text('Precio:', alignx1, 100)
+      doc.setFontSize(font2)
+      doc.text(this.oProducto.precio.toString(), alignx2, 100)
 
-
-    doc.save(this.oProducto.codigo + "- Ficha Tecnica.pdf");
+      doc.setFontSize(font1)
+      doc.text('Tipo de producto:', alignx1, 110)
+      doc.setFontSize(font2)
+      doc.text(this.oProducto.tipoproducto.nombre, alignx2, 110)
 
 
-  });
+      doc.save(this.oProducto.codigo + "- Ficha Tecnica.pdf");
+
+
+    });
 
   }
 
