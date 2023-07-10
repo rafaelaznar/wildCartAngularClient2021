@@ -8,11 +8,11 @@ import { Subject } from 'rxjs';
 import { CountService } from 'src/app/service/count.service';
 
 @Component({
-  selector: 'app-randomload',
-  templateUrl: './generate.component.html',
-  styleUrls: ['./generate.component.css']
+  selector: 'app-shared-generate-unrouted',
+  templateUrl: './shared-generate-routed.component.html',
+  styleUrls: ['./shared-generate-routed.component.css']
 })
-export class GenerateComponent implements OnInit {
+export class SharedGenerateUnroutedComponent implements OnInit {
 
   oUserSession: IUsuario;
   nProductos: number = 0;

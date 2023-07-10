@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //
-import { HomeComponent } from './component/shared/routed/home/home.component';
-import { LoginComponent } from './component/shared/routed/login/login.component';
-import { LogoutComponent } from './component/shared/routed/logout/logout.component';
-import { GenerateComponent } from './component/shared/routed/generate/generate.component';
-import { ReportsComponent } from './component/shared/routed/reports/reports.component';
+import { SharedHomeRoutedComponent } from './component/shared/routed/shared-home-routed/shared-home-routed.component';
+import { SharedLoginRoutedComponent } from './component/shared/routed/shared-login-routed/shared-login-routed.component';
+import { SharedLogoutRoutedComponent } from './component/shared/routed/shared-logout-routed/shared-logout-routed.component';
+import { SharedGenerateUnroutedComponent } from './component/shared/routed/shared-generate-routed/shared-generate-routed.component';
+import { SharedReportsRoutedComponent } from './component/shared/routed/shared-reports-routed/shared-reports-routed.component';
 
 //
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-edit-admin-routed/usuario-edit-admin-routed.component';
@@ -62,14 +62,14 @@ import { CommentViewAdminRoutedComponent } from './component/application/comment
 //
 //
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: SharedHomeRoutedComponent },
   //
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent },
+  { path: 'home', component: SharedHomeRoutedComponent },
+  { path: 'login', component: SharedLoginRoutedComponent },
+  { path: 'logout', component: SharedLogoutRoutedComponent },
   //
-  { path: 'administrador/random/load', component: GenerateComponent },
-  { path: 'administrador/reports', component: ReportsComponent },
+  { path: 'administrador/random/load', component: SharedGenerateUnroutedComponent },
+  { path: 'administrador/reports', component: SharedReportsRoutedComponent },
   //
   { path: 'administrador/tipousuario/plist', component: TipousuarioPlistAdminRoutedComponent },
   { path: 'administrador/tipousuario/view/:id', component: TipousuarioViewAdminRoutedComponent },

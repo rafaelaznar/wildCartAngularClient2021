@@ -5,12 +5,12 @@ import { CarritoService } from 'src/app/service/carrito.service';
 import { SessionService } from 'src/app/service/session.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-shared-home-routed',
+  templateUrl: './shared-home-routed.component.html',
+  styleUrls: ['./shared-home-routed.component.css']
 })
 
-export class HomeComponent implements OnInit {
+export class SharedHomeRoutedComponent implements OnInit {
 
   oUsuarioSession: IUsuario = null;
 

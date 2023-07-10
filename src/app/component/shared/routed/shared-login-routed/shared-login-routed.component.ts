@@ -8,12 +8,12 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { SessionEvent, SessionEvents, SessionService } from 'src/app/service/session.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-shared-login-routed',
+  templateUrl: './shared-login-routed.component.html',
+  styleUrls: ['./shared-login-routed.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class SharedLoginRoutedComponent implements OnInit {
 
   strOperation: string = "login"
   formularioLogin: FormGroup<IUser>;

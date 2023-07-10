@@ -15,11 +15,11 @@ import { Constants } from 'src/app/constant/constants';
 
 
 @Component({
-  selector: 'app-reports',
-  templateUrl: './reports.component.html',
-  styleUrls: ['./reports.component.css']
+  selector: 'app-shared-reports-routed',
+  templateUrl: './shared-reports-routed.component.html',
+  styleUrls: ['./shared-reports-routed.component.css']
 })
-export class ReportsComponent implements OnInit {
+export class SharedReportsRoutedComponent implements OnInit {
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.report;

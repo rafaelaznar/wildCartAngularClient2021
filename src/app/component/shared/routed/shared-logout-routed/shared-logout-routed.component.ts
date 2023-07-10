@@ -7,11 +7,11 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 
 @Component({
-  selector: 'app-logout',
-  templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.css']
+  selector: 'app-shared-logout-routed',
+  templateUrl: './shared-logout-routed.component.html',
+  styleUrls: ['./shared-logout-routed.component.css']
 })
-export class LogoutComponent implements OnInit {
+export class SharedLogoutRoutedComponent implements OnInit {
 
   strOperation: string = "logout"
   //oUserSession: IUsuario;
@@ -31,21 +31,11 @@ export class LogoutComponent implements OnInit {
     }
   }
 
-  public closeSession() {
-    /*
-    this.oSessionService.logout().subscribe(data => {
-      localStorage.clear();
-      this.oSessionService.notifySessionChange('logout');
-      this.oCarritoService.notifyCarritoChange('logout');
-      this.oRouter.navigate(['/', 'home']);
-    });
-    */
-    
+  public closeSession() {    
     this.oSessionService.logout();
     this.oCarritoService.notifyCarritoChange('logout');
     this.oSessionService.emit(new SessionEvent(SessionEvents.logout));
     this.oRouter.navigate(['/', 'home']);
-
   }
 
   ngOnInit(): void { }

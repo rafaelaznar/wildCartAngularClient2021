@@ -37,11 +37,11 @@ import { DateTimeService } from './service/datetime.service';
 import { SessionService } from './service/session.service';
 import { FacturaPrintService } from './service/factura.print.service';
 // shared routed components
-import { ReportsComponent } from './component/shared/routed/reports/reports.component';
-import { LoginComponent } from './component/shared/routed/login/login.component';
-import { HomeComponent } from './component/shared/routed/home/home.component';
-import { LogoutComponent } from './component/shared/routed/logout/logout.component';
-import { GenerateComponent } from './component/shared/routed/generate/generate.component';
+import { SharedReportsRoutedComponent } from './component/shared/routed/shared-reports-routed/shared-reports-routed.component';
+import { SharedLoginRoutedComponent } from './component/shared/routed/shared-login-routed/shared-login-routed.component';
+import { SharedHomeRoutedComponent } from './component/shared/routed/shared-home-routed/shared-home-routed.component';
+import { SharedLogoutRoutedComponent } from './component/shared/routed/shared-logout-routed/shared-logout-routed.component';
+import { SharedGenerateUnroutedComponent } from './component/shared/routed/shared-generate-routed/shared-generate-routed.component';
 // shared unrouted components
 import { SharedMenuUnroutedComponent } from './component/shared/unrouted/shared-menu-unrouted/shared-menu-unrouted.component';
 import { SharedFooterUnroutedComponent } from './component/shared/unrouted/shared-footer-unrouted/shared-footer-unrouted.component';
@@ -215,11 +215,11 @@ import { CommentPlistRowGuestUnroutedComponent } from './component/application/c
     SharedFooterbuttonsUnroutedComponent,
     SharedRemoveconfirmationUnroutedComponent,
     // shared routed
-    LoginComponent,
-    HomeComponent,
-    LogoutComponent,
-    GenerateComponent,
-    ReportsComponent,
+    SharedLoginRoutedComponent,
+    SharedHomeRoutedComponent,
+    SharedLogoutRoutedComponent,
+    SharedGenerateUnroutedComponent,
+    SharedReportsRoutedComponent,
     // pipes
     TrimPipe,
     showDateTimePipe,
