@@ -1,6 +1,5 @@
-import { IProducto, IProducto2Send } from '../../../../../../model/producto-interfaces';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductoService } from 'src/app/service/producto.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { FileService } from 'src/app/service/file.service';
@@ -9,6 +8,7 @@ import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IResult } from 'src/app/model/model-interfaces';
+import { IProducto2Send, IProducto } from 'src/app/model/producto-interfaces';
 
 @Component({
   selector: 'app-producto-form-admin-unrouted',
@@ -24,11 +24,12 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product
+  //
   oProducto2Send: IProducto2Send = null;
   oProducto2Show: IProducto = null;
-  oForm: UntypedFormGroup = null;
+  oForm: FormGroup = null;
   status: HttpErrorResponse = null;
-
+  //
   selectedFiles?: FileList;
   selectedFile: string;
   imageSrc: string = null;
@@ -39,7 +40,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   }
 
   constructor(
-    private oFormBuilder: UntypedFormBuilder,
+    private oFormBuilder: FormBuilder,
     private oProductoService: ProductoService,
     private oFileService: FileService,
     public oMetadataService: MetadataService,

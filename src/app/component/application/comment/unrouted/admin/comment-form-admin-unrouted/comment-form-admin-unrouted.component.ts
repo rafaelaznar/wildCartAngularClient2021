@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { FileService } from 'src/app/service/file.service';
 import { Constants } from 'src/app/constant/constants';
@@ -25,20 +25,19 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.comment
+  //
   oComment2Send: IComment2Send = null;
   oComment2Show: IComment = null;
-  oForm: UntypedFormGroup = null;
+  oForm: FormGroup = null;
   status: HttpErrorResponse = null;
-
 
   get f() {
     return this.oForm.controls;
   }
 
   constructor(
-    private oFormBuilder: UntypedFormBuilder,
+    private oFormBuilder: FormBuilder,
     private oCommentService: CommentService,
-    private oFileService: FileService,
     public oMetadataService: MetadataService,
     public oUsuarioService: UsuarioService,
     public oProductoService: ProductoService,
@@ -77,8 +76,6 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
       }
     })
   };
-
-
 
   onSubmit(): void {
     if (this.oForm) {

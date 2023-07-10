@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { ITipousuario, ITipousuario2Send } from 'src/app/model/tipousuario-interfaces';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
@@ -19,11 +19,12 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
   @Input() id: number = null;
   @Output() msg = new EventEmitter<IResult>();
 
-  oData2Show: ITipousuario = null;
-  oData2Send: ITipousuario2Send = null;
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.usertype;
-  oForm: UntypedFormGroup = null;
+  //
+  oData2Show: ITipousuario = null;
+  oData2Send: ITipousuario2Send = null;
+  oForm: FormGroup = null;
   status: HttpErrorResponse = null;
 
   get f() {
@@ -31,7 +32,7 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
   }
 
   constructor(
-    private oFormBuilder: UntypedFormBuilder,
+    private oFormBuilder: FormBuilder,
     private oTipousuarioService: TipousuarioService,
     public oMetadataService: MetadataService
   ) { }

@@ -12,10 +12,10 @@
     <label for="cantidad" class="col-sm-2 col-form-label">{{oMetadataService.getName('amount')}}</label>
     <div class="col-sm-3">
       <input type="number" class="form-control" id="cantidad" formControlName="cantidad" [ngClass]="{
-          'is-valid': f.cantidad.valid,
-          'is-invalid': f.cantidad.invalid
+          'is-valid': f.cantidad.dirty && f.cantidad.valid,
+          'is-invalid': f.cantidad.dirty && f.cantidad.invalid
         }" />
-      <div *ngIf="f.cantidad.invalid" class="text-danger">
+      <div *ngIf="f.cantidad.dirty && f.cantidad.invalid" class="text-danger">
         {{oMetadataService.getName('invalid amount')}}
       </div>
     </div>
@@ -25,10 +25,10 @@
     <label for="precio" class="col-sm-2 col-form-label"> {{oMetadataService.getName('price')}}</label>
     <div class="col-sm-3">
       <input type="number" class="form-control" id="precio" formControlName="precio" [ngClass]="{
-          'is-valid': f.precio.valid,
-          'is-invalid': f.precio.invalid
+          'is-valid': f.precio.dirty && f.precio.valid,
+          'is-invalid': f.precio.dirty && f.precio.invalid
         }" />
-      <div *ngIf="f.precio.invalid" class="text-danger">
+      <div *ngIf="f.precio.dirty && f.precio.invalid" class="text-danger">
         {{oMetadataService.getName('invalid price')}}
       </div>
     </div>

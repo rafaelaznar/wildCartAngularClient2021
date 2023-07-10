@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IFactura, IFactura2Send } from 'src/app/model/factura-interfaces';
 import { FacturaService } from 'src/app/service/factura.service';
@@ -23,29 +23,20 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice;
+  //
   oFactura2Send: IFactura2Send = null;
   oFactura2Show: IFactura = null;
-  oForm: UntypedFormGroup = null;
+  oForm: FormGroup = null;
   status: HttpErrorResponse = null;
-
-  es: any = {
-    firstDayOfWeek: 1,
-    dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
-    dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
-    dayNamesMin: ["D", "L", "M", "X", "J", "V", "S"],
-    monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
-    monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
-    today: 'Hoy',
-    clear: 'Borrar',
-    dateFormat: 'mm/dd/yyyy',
-  };
+  //
+  es: any = null;
 
   get f() {
     return this.oForm.controls;
   }
 
   constructor(
-    private oFormBuilder: UntypedFormBuilder,
+    private oFormBuilder: FormBuilder,
     private oFacturaService: FacturaService,
     public oMetadataService: MetadataService,
     private oUsuarioService: UsuarioService,
@@ -53,18 +44,7 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.es = {
-      firstDayOfWeek: 1,
-      dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
-      dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
-      dayNamesMin: ["D", "L", "M", "X", "J", "V", "S"],
-      monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
-      monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
-      today: 'Hoy',
-      clear: 'Borrar',
-      dateFormat: 'mm/dd/yyyy',
-    }
-
+    this.es = Constants.CALENDAR_ES;
 
     if (this.strOperation == "edit") {
       this.get();

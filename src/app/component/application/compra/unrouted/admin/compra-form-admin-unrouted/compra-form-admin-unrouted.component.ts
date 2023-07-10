@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { ICompra, ICompra2Send } from 'src/app/model/compra-interfaces';
 import { CompraService } from 'src/app/service/compra.service';
@@ -23,31 +23,22 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
   @Input() id: number = null;
   @Output() msg = new EventEmitter<IResult>();
 
-  oData2Show: ICompra = null;
-  oData2Send: ICompra2Send = null;
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.purchase;
-  oForm: UntypedFormGroup = null;
+  //
+  oData2Show: ICompra = null;
+  oData2Send: ICompra2Send = null;
+  oForm: FormGroup = null;
   status: HttpErrorResponse = null;
-
-  es: any = {
-    firstDayOfWeek: 1,
-    dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
-    dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
-    dayNamesMin: ["D", "L", "M", "X", "J", "V", "S"],
-    monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
-    monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
-    today: 'Hoy',
-    clear: 'Borrar',
-    dateFormat: 'mm/dd/yyyy',
-  };
+  //
+  es: any = null;
 
   get f() {
     return this.oForm.controls;
   }
 
   constructor(
-    private oFormBuilder: UntypedFormBuilder,
+    private oFormBuilder: FormBuilder,
     private oCompraService: CompraService,
     public oMetadataService: MetadataService,
     private oFacturaService: FacturaService,
@@ -55,6 +46,9 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.es = Constants.CALENDAR_ES;
+
     if (this.strOperation == "edit") {
       this.get();
     } else {
