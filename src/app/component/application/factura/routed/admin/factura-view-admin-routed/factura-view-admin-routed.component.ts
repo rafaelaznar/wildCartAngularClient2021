@@ -16,6 +16,7 @@ export class FacturaViewAdminRoutedComponent extends CheckSession implements OnI
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.view
+  //
   id: number = null;
 
   constructor(

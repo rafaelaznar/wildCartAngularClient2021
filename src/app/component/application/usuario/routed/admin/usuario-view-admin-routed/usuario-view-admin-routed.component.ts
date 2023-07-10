@@ -16,6 +16,7 @@ export class UsuarioViewAdminRoutedComponent extends CheckSession implements OnI
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.view
+  //
   id: number;
 
   constructor(

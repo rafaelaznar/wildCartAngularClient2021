@@ -15,6 +15,7 @@ export class ProductoViewAdminRoutedComponent extends CheckSession implements On
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.view
+  //
   id: number = null;
 
   constructor(

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
-import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { Constants } from 'src/app/constant/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
@@ -18,11 +16,10 @@ export class TipoproductoViewAdminRoutedComponent extends CheckSession implement
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.producttype
   strOperation: string = Constants.OPERATIONS.view
-  id: number = 0;
-  oTipoProducto: ITipoproducto;
+  //
+  id: number = 0;  
 
-  constructor(
-    private oTipoproductoService: TipoproductoService,
+  constructor(    
     private oActivatedRoute: ActivatedRoute,
     protected oRouter: Router,
     public oMetadataService: MetadataService,
@@ -30,17 +27,8 @@ export class TipoproductoViewAdminRoutedComponent extends CheckSession implement
   ) {
     super(Constants.PROFILES.admin, oRouter, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id;
-    this.getOne();
   }
 
   ngOnInit(): void { }
-
-  getOne = () => {
-    this.oTipoproductoService.getOne(this.id).subscribe({
-      next: (oData: ITipoproducto) => {
-        this.oTipoProducto = oData;
-      }
-    });
-  };
-
+  
 }

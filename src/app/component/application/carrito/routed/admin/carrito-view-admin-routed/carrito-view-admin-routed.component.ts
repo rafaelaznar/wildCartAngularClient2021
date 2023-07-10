@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { Constants } from 'src/app/constant/constants';
 import { CheckSession } from 'src/app/class/check.session.class';
 import { SessionService } from 'src/app/service/session.service';
@@ -16,8 +15,8 @@ export class CarritoViewAdminRoutedComponent extends CheckSession implements OnI
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.view;
-  id: number = null;
-  oUserSession: IUsuario;
+  //
+  id: number = null;  
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
