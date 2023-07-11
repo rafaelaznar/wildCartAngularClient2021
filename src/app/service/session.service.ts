@@ -8,6 +8,7 @@ import { IToken } from '../model/token-interface';
 import { filter, map, multicast } from 'rxjs/operators';
 import { IUsuario } from '../model/usuario-interfaces';
 import { UsuarioService } from './usuario.service';
+import { IPrelogin } from '../model/session-interfaces';
 
 export enum SessionEvents {
     login,
@@ -34,15 +35,15 @@ export class SessionService {
         private oUsuarioService: UsuarioService,
         private oHttpClient: HttpClient,
         private oDecodeService: DecodeService
-    ) { 
-        
-
-        
-    }
+    ) { }
 
     login(strLogin: string, strPassword: string): Observable<string> {
         const loginData = JSON.stringify({ username: strLogin, password: this.oCryptoService.getSHA256(strPassword) });
         return this.oHttpClient.post<string>(this.sURL, loginData, httpOptions);
+    }
+
+    prelogin(): Observable<IPrelogin> {        
+        return this.oHttpClient.get<IPrelogin>(this.sURL + "/prelogin", httpOptions);
     }
 
     getUserName(): string {
@@ -54,7 +55,7 @@ export class SessionService {
         }
     }
 
-    getUsuario(): Observable<any> {
+    getUsuario(): Observable<IUsuario> {
         if (!this.isSessionActive()) {
             return null;
         } else {

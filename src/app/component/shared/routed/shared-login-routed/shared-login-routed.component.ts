@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IPrelogin } from 'src/app/model/session-interfaces';
 import { IUser } from 'src/app/model/user-interface';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
@@ -19,6 +20,7 @@ export class SharedLoginRoutedComponent implements OnInit {
   formularioLogin: FormGroup<IUser>;
   oUserSession: IUsuario;
   oError: HttpErrorResponse = null;
+  oPrelogin: IPrelogin;
 
   constructor(
     private FormBuilder: FormBuilder,
@@ -37,7 +39,16 @@ export class SharedLoginRoutedComponent implements OnInit {
 
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    // ask server for captcha
+    this.oSessionService.prelogin().subscribe({
+      next: (data: IPrelogin) => {
+        this.oPrelogin = data;
+      }
+    });
+
+
+  }
 
   onSubmit() {
     this.oError = null;
