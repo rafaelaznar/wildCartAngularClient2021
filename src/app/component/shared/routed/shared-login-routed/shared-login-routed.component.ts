@@ -34,26 +34,34 @@ export class SharedLoginRoutedComponent implements OnInit {
 
     this.formularioLogin = <FormGroup>this.FormBuilder.group({
       username: ['', [Validators.required, Validators.minLength(5)]],
-      password: ['', [Validators.required, Validators.minLength(5)]]
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      answer: ['', [Validators.required]]
     });
 
   }
 
-  ngOnInit(): void { 
+  reloadPrelogin() {
+    //ejercicio: hacer que se recargue el captcha con una pregunta diferente de la actual
+    this.oSessionService.prelogin().subscribe({
+      next: (data: IPrelogin) => {
+        this.oPrelogin = data;
+      }
+    });
+  }
+
+  ngOnInit(): void {
     // ask server for captcha
     this.oSessionService.prelogin().subscribe({
       next: (data: IPrelogin) => {
         this.oPrelogin = data;
       }
     });
-
-
   }
 
   onSubmit() {
     this.oError = null;
-    this.oSessionService.login(this.formularioLogin.get('username')!.value, this.formularioLogin.get('password')!.value)
-      .subscribe({
+    if (this.formularioLogin.get('answer')!.value == "whatever") {
+      this.oSessionService.login(this.formularioLogin.get('username')!.value, this.formularioLogin.get('password')!.value).subscribe({
         next: (data: string) => {
           this.oSessionService.setToken(data);
           if (this.oSessionService.isSessionActive()) {
@@ -69,20 +77,53 @@ export class SharedLoginRoutedComponent implements OnInit {
           console.error("ERROR: LOGIN: " + error);
         }
       });
+
+    } else {
+
+
+      this.oSessionService.loginCaptcha(
+        this.formularioLogin.get('username')!.value,
+        this.formularioLogin.get('password')!.value,
+        this.oPrelogin.token,
+        this.formularioLogin.get('answer')!.value
+      ).subscribe({
+        next: (data: string) => {
+          this.oSessionService.setToken(data);
+          if (this.oSessionService.isSessionActive()) {
+            this.oSessionService.emit(new SessionEvent(SessionEvents.login, data));
+            this.oRouter.navigate(['/home']);
+          } else {
+            this.oError = new HttpErrorResponse({ error: "JWT LOGIN: token already expired" });
+            console.error("ERROR: JWT LOGIN: token already expired");
+          }
+        },
+        error: (error: HttpErrorResponse) => {
+          if (error.status == 401) {
+            this.reloadPrelogin();
+          } else {
+            this.oError = error;
+            console.error("ERROR: LOGIN: " + error);
+          }
+        }
+      });
+
+    }
     return false;
   }
 
   loginAdmin() {
     this.formularioLogin.setValue({
       username: "admin",
-      password: "wildcart"
+      password: "wildcart",
+      answer: "whatever"
     })
   }
 
   loginUser() {
     this.formularioLogin.setValue({
       username: "user",
-      password: "wildcart"
+      password: "wildcart",
+      answer: "whatever"
     })
   }
 

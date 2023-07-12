@@ -9,6 +9,7 @@ import { filter, map, multicast } from 'rxjs/operators';
 import { IUsuario } from '../model/usuario-interfaces';
 import { UsuarioService } from './usuario.service';
 import { IPrelogin } from '../model/session-interfaces';
+import { Token } from '@angular/compiler';
 
 export enum SessionEvents {
     login,
@@ -42,8 +43,18 @@ export class SessionService {
         return this.oHttpClient.post<string>(this.sURL, loginData, httpOptions);
     }
 
-    prelogin(): Observable<IPrelogin> {        
+    prelogin(): Observable<IPrelogin> {
         return this.oHttpClient.get<IPrelogin>(this.sURL + "/prelogin", httpOptions);
+    }
+
+    loginCaptcha(strLogin: string, strPassword: string, strToken: string, strAnswer: string): Observable<string> {
+        const loginData = JSON.stringify({
+            username: strLogin,
+            password: this.oCryptoService.getSHA256(strPassword),
+            token: strToken,
+            answer: strAnswer
+        });
+        return this.oHttpClient.post<string>(this.sURL + "/loginc", loginData, httpOptions);
     }
 
     getUserName(): string {

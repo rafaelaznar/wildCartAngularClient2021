@@ -38,11 +38,12 @@
                             <label class="form-label">{{oPrelogin.question}}</label>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="text" id="captcha_form" class="form-control"
+                            <input type="text" id="captcha_form" class="form-control" formControlName="answer"
                                 placeholder="Responde a la pregunta">
-                            <button class="btn btn-outline-secondary" type="button">Cambiar pregunta
+                            <button class="btn btn-outline-secondary" type="button" (click)="reloadPrelogin()">Cambiar
+                                pregunta
                             </button>
-      
+
                         </div>
                     </div>
 
