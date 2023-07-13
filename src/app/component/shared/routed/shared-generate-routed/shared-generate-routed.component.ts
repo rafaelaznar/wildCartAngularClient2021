@@ -6,13 +6,16 @@ import { GenerateService } from 'src/app/service/generate.service';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { CountService } from 'src/app/service/count.service';
+import { CheckSession } from 'src/app/class/check.session.class';
+import { Constants } from 'src/app/constant/constants';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-shared-generate-unrouted',
   templateUrl: './shared-generate-routed.component.html',
   styleUrls: ['./shared-generate-routed.component.css']
 })
-export class SharedGenerateUnroutedComponent implements OnInit {
+export class SharedGenerateUnroutedComponent  extends CheckSession implements OnInit {
 
   oUserSession: IUsuario;
   nProductos: number = 0;
@@ -30,18 +33,13 @@ export class SharedGenerateUnroutedComponent implements OnInit {
     public oCountService: CountService,
     private oActivatedRoute: ActivatedRoute,
     private oRoute: ActivatedRoute,
-    private oRouter: Router,
+    public oRouter: Router,
     protected oLocation: Location,
-    public oMetadataService: MetadataService
+    public oMetadataService: MetadataService,
+    public oSessionService: SessionService
   ) {
-    if (this.oRoute.snapshot.data.message) {
-      this.oUserSession = this.oRoute.snapshot.data.message;
-      localStorage.setItem("user", JSON.stringify(this.oRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
 
+    super(Constants.PROFILES.admin, oRouter, oSessionService);
     this.getCount();
   }
 

@@ -12,6 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { ReportPrintService } from 'src/app/service/reports.print.service';
 import { Constants } from 'src/app/constant/constants';
+import { SessionService } from 'src/app/service/session.service';
+import { CheckSession } from 'src/app/class/check.session.class';
 
 
 @Component({
@@ -19,7 +21,8 @@ import { Constants } from 'src/app/constant/constants';
   templateUrl: './shared-reports-routed.component.html',
   styleUrls: ['./shared-reports-routed.component.css']
 })
-export class SharedReportsRoutedComponent implements OnInit {
+
+export class SharedReportsRoutedComponent   extends CheckSession implements OnInit {
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.report;
@@ -31,6 +34,23 @@ export class SharedReportsRoutedComponent implements OnInit {
   strUsuarioSession: string;
   dateRangeOK: boolean = false;
   errorDateRange: boolean = false;
+
+  constructor(
+    protected oLocation: Location,
+    public oMetadataService: MetadataService,
+    private oUsuarioService: UsuarioService,
+    private oFormBuilder: UntypedFormBuilder,
+    private oProductoService: ProductoService,
+    private oActivatedRoute: ActivatedRoute,
+    public oRouter: Router,
+    private oReportPrintService: ReportPrintService,
+    public oSessionService: SessionService
+  ) {
+
+    super(Constants.PROFILES.admin, oRouter, oSessionService);
+    
+  }
+
 
   get f() {
     return this.oForm.controls;
@@ -72,24 +92,6 @@ export class SharedReportsRoutedComponent implements OnInit {
 
   ];
 
-  constructor(
-    protected oLocation: Location,
-    public oMetadataService: MetadataService,
-    private oUsuarioService: UsuarioService,
-    private oFormBuilder: UntypedFormBuilder,
-    private oProductoService: ProductoService,
-    private oActivatedRoute: ActivatedRoute,
-    private oRouter: Router,
-    private oReportPrintService: ReportPrintService
-  ) {
-    if (this.oActivatedRoute.snapshot.data.message) {
-      this.strUsuarioSession = this.oActivatedRoute.snapshot.data.message;
-      localStorage.setItem('user', JSON.stringify(this.oActivatedRoute.snapshot.data.message));
-    } else {
-      localStorage.clear();
-      oRouter.navigate(['/home']);
-    }
-  }
 
   es: any = {
     firstDayOfWeek: 1,

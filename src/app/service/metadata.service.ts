@@ -45,6 +45,7 @@ export class MetadataService {
       case strIcon == "apellido2": return "fas fa-signature";
       case strIcon == "email": return "fas fa-at";
       case strIcon == "login": return "fas fa-user";
+      case strIcon == "username": return "fas fa-user";
       case strIcon == "password": return "fas fa-key";
       case strIcon == "descuento": return "fas fa-percentage";
       case strIcon == "token": return "fas fa-barcode";
@@ -228,7 +229,9 @@ export class MetadataService {
       case str == "go to comment edition": return "Ir a la edición de comentario";
       case str == "go to comment creation": return "Ir a la creación de comentario";
       case str == "go to comment removal": return "Ir al borrado de comentarios";
+
       // Validation de borrados
+
       case str == 'are you sure you want to remove the carrito': return "¿Está vd. seguro de que quiere borrar el producto en carrito?";
       case str == 'are you sure you want to remove the compra': return "¿Está vd. seguro de que quiere borrar la compra?";
       case str == 'are you sure you want to remove the factura': return "¿Está vd. seguro de que quiere borrar la factura?";
@@ -265,8 +268,8 @@ export class MetadataService {
       case str == "you have": return "Tienes";
       case str == "in the cart": return "En el carrito";
 
-
       // errores genericos de campos
+
       case str == "mandatory": return "El campo es obligatorio.";
       case str == "invalid": return "Los valores del campo no son válidos, debe introducir los datos correctamente";
       case str == "tooShort": return "El valor introducido es demasiado corto";
@@ -562,7 +565,7 @@ export class MetadataService {
     } else {
       if (entity2Filter !== null && entity2Filter !== undefined) {
         if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
-          return 'Filtrando por ' + this.getName('the' + strEntity2) + ' con id=' + entity2Filter + ' y por el filtro ' + strFilter;
+          return 'Filtro: ' + this.getName('the' + strEntity2) + ' con id=' + entity2Filter + ' <br>Filtro ' + strFilter;
         } else {
           return 'Filtrando por ' + this.getName('the' + strEntity2) + ' con id=' + entity2Filter + ' y sin filtro';
         }

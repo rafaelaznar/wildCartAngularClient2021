@@ -1,6 +1,6 @@
 import { Router } from "@angular/router";
 import { IUsuario } from "../model/usuario-interfaces";
-import { SessionService } from "../service/session.service";
+import { SessionEvent, SessionEvents, SessionService } from "../service/session.service";
 
 export class CheckSession {
 
@@ -9,7 +9,7 @@ export class CheckSession {
     constructor(
         profile: string,
         protected oRouter: Router,
-        protected oSessionService: SessionService
+        protected oSessionService: SessionService        
     ) {
         if (this.oSessionService.isSessionActive()) {
             this.oSessionService.getUsuario().subscribe({
@@ -22,6 +22,9 @@ export class CheckSession {
             });
         } else {
             this.oRouter.navigate(['/', 'home']);
+            // notify
+            this.oSessionService.logout();
+            this.oSessionService.emit(new SessionEvent(SessionEvents.logout));
         }
     }
 

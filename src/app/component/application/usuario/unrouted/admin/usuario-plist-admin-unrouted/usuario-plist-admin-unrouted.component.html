@@ -21,7 +21,7 @@
   <div class="col-md text-center">
     <ng-content select="header"></ng-content>
   </div>
-  <div class="col-md text-end">
+  <div class="col-md text-end">    
     <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error">
     </app-shared-rpp-unrouted>
   </div>

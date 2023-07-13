@@ -10,6 +10,7 @@ import { IUsuario } from '../model/usuario-interfaces';
 import { UsuarioService } from './usuario.service';
 import { IPrelogin } from '../model/session-interfaces';
 import { Token } from '@angular/compiler';
+import { CarritoService } from './carrito.service';
 
 export enum SessionEvents {
     login,
@@ -35,7 +36,8 @@ export class SessionService {
         private oCryptoService: CryptoService,
         private oUsuarioService: UsuarioService,
         private oHttpClient: HttpClient,
-        private oDecodeService: DecodeService
+        private oDecodeService: DecodeService,
+        private oCarritoService: CarritoService
     ) { }
 
     login(strLogin: string, strPassword: string): Observable<string> {
@@ -116,6 +118,12 @@ export class SessionService {
 
     emit(event: SessionEvent) {
         this.subject.next(event);
+        if (event.event === SessionEvents.logout) {
+            this.oCarritoService.notifyCarritoChange('logout');
+        } else {
+            this.oCarritoService.notifyCarritoChange('login');
+        }
+
     }
 
 }
