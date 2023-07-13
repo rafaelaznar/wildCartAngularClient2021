@@ -61,5 +61,12 @@ export class UsuarioService implements ICrud {
     return this.http.delete<number>(this.sURL + "/" + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
+  flipValid(id: number): Observable<IUsuario> {
+    return this.http.get<IUsuario>(this.sURL + "/flipvalid/" + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+  }
+
+  flipActive(id: number): Observable<IUsuario> {
+    return this.http.get<IUsuario>(this.sURL + "/flipactive/" + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+  }
 
 }

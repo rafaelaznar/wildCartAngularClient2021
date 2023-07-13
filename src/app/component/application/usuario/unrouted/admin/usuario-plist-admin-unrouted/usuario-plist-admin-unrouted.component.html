@@ -14,14 +14,16 @@
 
 <div class="row justify-content-between">
   <div class="col-md text-start">
-    <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
+    <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages"
+      (eePage)="onSetPage($event)">
     </app-shared-pagination-unrouted>
   </div>
   <div class="col-md text-center">
     <ng-content select="header"></ng-content>
   </div>
   <div class="col-md text-end">
-    <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-shared-rpp-unrouted>
+    <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error">
+    </app-shared-rpp-unrouted>
   </div>
 </div>
 
@@ -43,9 +45,9 @@
           <div action_column>
             <div class="btn-group btn-group-sm" role="group" app-shared-plistrowbuttons-unrouted [id]="oUsuarioRow.id"
               [strEntity]="strEntity" [strProfile]="strProfile">
-              <button type="button" class="btn btn-secondary" (click)="flipValidateUser(oUsuarioRow.id)"><i
+              <button type="button" class="btn btn-secondary" (click)="flipValidUser(oUsuarioRow.id)"><i
                   [ngClass]="oMetadataService.getIcon('validado')"></i></button>
-              <button type="button" class="btn btn-secondary" (click)="flipActivateUser(oUsuarioRow.id)"><i
+              <button type="button" class="btn btn-secondary" (click)="flipActiveUser(oUsuarioRow.id)"><i
                   [ngClass]="oMetadataService.getIcon('activado')"></i></button>
             </div>
           </div>

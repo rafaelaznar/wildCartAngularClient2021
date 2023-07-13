@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/service/usuario.service';
-import { IUsuarioPage } from 'src/app/model/usuario-interfaces';
+import { IUsuario, IUsuarioPage } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/constant/constants';
@@ -76,12 +76,31 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  flipValidateUser(id: number) {
-    console.log("todo: flip validate user " + id);
+  flipValidUser(id: number) {
+    this.oUsuarioService.flipValid(id)
+      .subscribe({
+        next: (oPage: IUsuario) => {
+          this.getPage();
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+        }
+      })
   }
 
-  flipActivateUser(id: number) {
-    console.log("todo: flip activate user " + id);
+  flipActiveUser(id: number) {
+    this.oUsuarioService.flipActive(id)
+      .subscribe({
+        next: (oPage: IUsuario) => {
+          this.getPage();
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+        }
+      })
+
   }
 
 }
