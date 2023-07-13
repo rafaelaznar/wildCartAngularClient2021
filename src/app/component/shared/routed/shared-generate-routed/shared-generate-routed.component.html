@@ -1,6 +1,6 @@
 <div class="container my-3">
-  <app-shared-header-unrouted [title]="oMetadataService.getName('randomRegistersLoad')" [icon]="oMetadataService.getIcon('random')"
-    [iconEntity]="oMetadataService.getIcon('random')">
+  <app-shared-header-unrouted [title]="oMetadataService.getName('randomRegistersLoad')"
+    [icon]="oMetadataService.getIcon('random')" [iconEntity]="oMetadataService.getIcon('random')">
   </app-shared-header-unrouted>
   <div class="row justify-content-center">
     <div class="card text-center" *ngIf="bLoading">
@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <table class="table table-striped"  *ngIf="!bLoading">
+    <table class="table table-striped" *ngIf="!bLoading">
       <tbody>
         <tr class="align-middle">
           <th class="text-start py-3">Entidad </th>
@@ -86,18 +86,22 @@
           <td class="text-center">{{nFacturas}}</td>
           <td class="text-center">
             <div class="btn-group btn-group-sm" role="group" aria-label="Tools">
-              <button type="button" class="btn btn-success mx-2" (click)="generateFacturas(10)"><i
-                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nUsuarios<=0"></i>
+              <button type="button" class="btn btn-success mx-2" (click)="generateFacturas(10)"
+                ng-disabled="nUsuarios<=0"><i [ngClass]="oMetadataService.getIcon('random')"></i>
                 10</button>
-              <button type="button" class="btn btn-success mx-2" (click)="generateFacturas(100)"><i
-                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nUsuarios<=0"></i>
+              <button type="button" class="btn btn-success mx-2" (click)="generateFacturas(100)"
+                ng-disabled="nUsuarios<=0"><i [ngClass]="oMetadataService.getIcon('random')"></i>
                 100</button>
-              <button type="button" class="btn btn-success mx-2" (click)="generateFacturas(1000)"><i
-                  [ngClass]="oMetadataService.getIcon('random')" ng-disabled="nUsuarios<=0"></i>
+              <button type="button" class="btn btn-success mx-2" (click)="generateFacturas(1000)"
+                ng-disabled="nUsuarios<=0"><i [ngClass]="oMetadataService.getIcon('random')"></i>
                 1000</button>
+              <button type="button" class="btn btn-danger mx-2" (click)="purgeFacturas()"
+                ng-disabled="nUsuarios<=0"> Purge
+                <i [ngClass]="oMetadataService.getIcon('random')"></i>
+              </button>
             </div>
           </td>
-        </tr>        
+        </tr>
         <tr>
           <th><i [ngClass]="oMetadataService.getIcon('compra')"></i> Compras</th>
           <td class="text-center">{{nCompras}}</td>
@@ -136,12 +140,15 @@
     </table>
     <div class="row justify-content-center">
       <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center mt-5">
-        <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i [ngClass]="oMetadataService.getIcon('home')"></i> Página
+        <a class="btn btn-primary mx-2" [routerLink]="['/home']"><i [ngClass]="oMetadataService.getIcon('home')"></i>
+          Página
           principal</a>
-        <a class="btn btn-primary mx-2" (click)="oLocation.back()"><i [ngClass]="oMetadataService.getIcon('return')"></i> Volver
+        <a class="btn btn-primary mx-2" (click)="oLocation.back()"><i
+            [ngClass]="oMetadataService.getIcon('return')"></i> Volver
         </a>
       </div>
     </div>
   </div>
 </div>
-<app-shared-popup-unrouted [show]="eventsModalSubject.asObservable()" [body]="strResult" (close)="onCloseModal()"> </app-shared-popup-unrouted>
+<app-shared-popup-unrouted [show]="eventsModalSubject.asObservable()" [body]="strResult" (close)="onCloseModal()">
+</app-shared-popup-unrouted>

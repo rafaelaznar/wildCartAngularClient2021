@@ -159,6 +159,23 @@ export class SharedGenerateUnroutedComponent  extends CheckSession implements On
     })
   }
 
+  purgeFacturas(): void {
+    this.bLoading = true;
+    this.oGenerateService.purgeFacturas().subscribe({
+      next: (num: number) => {
+        this.strResult = "Ahora hay " + num + " facturas menos";
+        this.bLoading = false;
+        this.openModal();
+      },
+      error: (err) => {
+        this.strResult = "ERROR: " + err.message;
+        console.error('ERROR: ', err);
+        this.bLoading = false;
+        this.openModal();
+      }
+    })
+  }
+
   generateCarritos(n: number): void {
     this.bLoading = true;
     this.oGenerateService.generateCarritos(n).subscribe({

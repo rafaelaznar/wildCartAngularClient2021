@@ -41,4 +41,8 @@ export class GenerateService {
     return this.http.post<number>(API_URL + '/carrito/generate/' + n, { amount: n }, httpOptions);
   }
 
+  purgeFacturas(): Observable<number> {
+    return this.http.delete<number>(API_URL + '/factura/purge', httpOptions);
+  }
+
 }
