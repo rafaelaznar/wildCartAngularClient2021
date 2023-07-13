@@ -2,8 +2,8 @@
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='id'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='id'&&strSortDirection=='desc'"></i>
 </th>
-<th (click)="doSetOrder('dni')">
-  <i [ngClass]="oMetadataService.getIcon('username')"></i> {{oMetadataService.getName('login')}}
+<th (click)="doSetOrder('login')">
+  <i [ngClass]="oMetadataService.getIcon('login')"></i> {{oMetadataService.getName('login')}}
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='dni'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='dni'&&strSortDirection=='desc'"></i>
 </th>
