@@ -1,7 +1,7 @@
-<button type="button" class="btn btn-success" [routerLink]="['/',strProfile,strEntity,'view',id]"><i
+<button type="button" class="btn btn-success" [routerLink]="['/',strProfile,strEntity,'view',id]" *ngIf="showView"><i
     class="fas fa-eye"></i></button>
-<button type="button" class="btn btn-warning" [routerLink]="['/',strProfile,strEntity,'edit',id]"><i
+<button type="button" class="btn btn-warning" [routerLink]="['/',strProfile,strEntity,'edit',id]"  *ngIf="showEdit"><i
     class="fas fa-pen"></i></button>
-<button type="button" class="btn btn-danger" [routerLink]="['/',strProfile,strEntity,'remove',id]"><i
+<button type="button" class="btn btn-danger" [routerLink]="['/',strProfile,strEntity,'remove',id]" *ngIf="showRemove"><i
     class="fas fa-trash"></i></button>
 <ng-content></ng-content>

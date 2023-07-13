@@ -11,6 +11,9 @@ export class SharedPlistrowbuttonsUnroutedComponent implements OnInit {
   @Input() strProfile: string = "administrador";
   @Input() id: number = null;
   @Input() strEntity: string = null;
+  @Input() showView: boolean = true;
+  @Input() showEdit: boolean = true;
+  @Input() showRemove: boolean = true;
 
   constructor(
     public oMetadataService: MetadataService
