@@ -543,6 +543,13 @@ export class MetadataService {
       case str == "totalVATIncluded": return "Total IVA incluido";
       case str == "totalDiscountsIncluded": return "Total (descuentos incluidos)";
       case str == "invoiceLines": return "Líneas de factura";
+      //
+      case str == "OK": return "La operación se ha ejecutado con éxito.";
+      case str == "KO": return "Ha ocurrido un error inesperado. La operación no se ha podido completar.";
+      //
+      // case str == "The request has been succesfully completed.": return "La operación se ha ejecutado con éxito";      
+      // case str == "An unexpected error has occurred. The request has not been completed.": return "Ha ocurrido un error inesperado. La operación no se ha podido completar.";
+      //
       default: return 'Desconocido';
     }
   }

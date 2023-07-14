@@ -39,9 +39,9 @@ export class CompraEditAdminRoutedComponent extends CheckSession implements OnIn
     if (oResult.error == null) {
       if (oResult.id > 0) {
         this.id = oResult.id;
-        this.openPopup(this.oMetadataService.getName('the' + oResult.strEntity) + ' se ha modificado correctamente con el id = ' + oResult.id);
+        this.openPopup(this.oMetadataService.getName('OK'));
       } else {
-        this.openPopup('Error en la modificación de ' + this.oMetadataService.getName('the' + oResult.strEntity).toLowerCase());
+        this.openPopup(this.oMetadataService.getName('KO'));
       }
     } else {
       this.openPopup('ERROR: ' + oResult.error.status + ': ' + oResult.error.message);

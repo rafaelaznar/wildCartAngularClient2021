@@ -40,9 +40,9 @@ export class CompraNewAdminRoutedComponent extends CheckSession implements OnIni
     if (oResult.error == null) {
       if (oResult.id > 0) {
         this.id = oResult.id;
-        this.openPopup(this.oMetadataService.getName('the' + oResult.strEntity) + ' se ha creado correctamente con el id = ' + oResult.id);
+        this.openPopup(this.oMetadataService.getName('OK'));
       } else {
-        this.openPopup('Error en la creación de ' + this.oMetadataService.getName('the' + oResult.strEntity).toLowerCase());
+        this.openPopup(this.oMetadataService.getName('KO'));
       }
     } else {
       this.openPopup('ERROR: ' + oResult.error.status + ': ' + oResult.error.message);

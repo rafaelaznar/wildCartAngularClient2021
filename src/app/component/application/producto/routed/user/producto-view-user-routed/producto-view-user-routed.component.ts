@@ -51,7 +51,7 @@ export class ProductoViewUserRoutedComponent extends CheckSession implements OnI
         // recargar el listado de comentarios
         this.reloadCommentsSubject.next(true);
       } else {
-        this.openPopup('Error en la creación de ' + this.oMetadataService.getName('the' + oNewCommentResult.strEntity).toLowerCase());
+        this.openPopup(this.oMetadataService.getName('KO'));
       }
     } else {
       this.openPopup('ERROR: ' + oNewCommentResult.error.status + ': ' + oNewCommentResult.error.message);
