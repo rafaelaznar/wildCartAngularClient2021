@@ -60,7 +60,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
         descuento_usuario: ['', Validators.required],
         descuento_producto: ['', Validators.required],
         id_producto: ['', Validators.required],
-        id_factura: ['', Validators.required]
+        id_factura: ['']
       });
     }
   }
@@ -77,7 +77,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
           descuento_usuario: [this.oData2Show.descuento_usuario, Validators.required],
           descuento_producto: [this.oData2Show.descuento_producto, Validators.required],
           id_producto: [this.oData2Show.producto.id, Validators.required],
-          id_factura: [this.oData2Show.factura.id, Validators.required]
+          id_factura: [this.oData2Show?.factura?.id]
         });
       },
       error: (error: HttpErrorResponse) => {
