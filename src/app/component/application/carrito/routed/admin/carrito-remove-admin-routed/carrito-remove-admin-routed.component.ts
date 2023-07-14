@@ -34,16 +34,14 @@ export class CarritoRemoveAdminRoutedComponent extends CheckSession implements O
 
   ngOnInit(): void { }
 
-  removeOne() {
-    let strResult: string = '';
+  removeOne() {    
     this.oCarritoService.removeOne(this.id).subscribe({
       next: (id: number) => {
         if (id) {
-          strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
+          this.openPopup(this.oMetadataService.getName('OK'));
         } else {
-          strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
-        }
-        this.openPopup(strResult);
+          this.openPopup(this.oMetadataService.getName('KO'));
+        }        
       }
     })
   }

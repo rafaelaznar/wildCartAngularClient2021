@@ -19,7 +19,7 @@ export class TipoproductoRemoveAdminRoutedComponent extends CheckSession impleme
   strEntity: string = Constants.ENTITIES.producttype
   strOperation: string = Constants.OPERATIONS.view
   //
-  id: number = 0;  
+  id: number = 0;
 
   constructor(
     private oTipoproductoService: TipoproductoService,
@@ -35,15 +35,13 @@ export class TipoproductoRemoveAdminRoutedComponent extends CheckSession impleme
   ngOnInit(): void { }
 
   removeOne() {
-    let strResult: string = '';
     this.oTipoproductoService.removeOne(this.id).subscribe({
       next: (id: number) => {
         if (id) {
-          strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
+          this.openPopup(this.oMetadataService.getName('OK'));
         } else {
-          strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
+          this.openPopup(this.oMetadataService.getName('KO'));
         }
-        this.openPopup(strResult);
       }
     });
   }

@@ -34,15 +34,13 @@ export class ProductoRemoveAdminRoutedComponent extends CheckSession implements 
   ngOnInit(): void { }
 
   removeOne() {
-    let strResult: string = '';
     this.oProductoService.removeOne(this.id).subscribe({
       next: (id: number) => {
         if (id) {
-          strResult = this.oMetadataService.getName('the' + this.strEntity) + " con id = " + this.id + " se ha eliminado.";
+          this.openPopup(this.oMetadataService.getName('OK'));
         } else {
-          strResult = 'Error en el borrado de ' + this.oMetadataService.getName('the' + this.strEntity).toLowerCase();
+          this.openPopup(this.oMetadataService.getName('KO'));          
         }
-        this.openPopup(strResult);
       }
     })
   }
