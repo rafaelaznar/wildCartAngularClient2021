@@ -41,7 +41,7 @@
           [oProducto]="oProductoRow" [mode]="true">
           <div action_column>
             <div class="btn-group btn-group-sm" role="group" app-shared-plistrowbuttons-unrouted [id]="oProductoRow.id"
-              [strEntity]="strEntity" [strProfile]="strProfile">
+              [strEntity]="strEntity" [strProfile]="strProfile" [showRemove]="!(oProductoRow.compras>0)">
             </div>
           </div>
         </tr>

@@ -8,6 +8,6 @@
 <td class="text-end">{{(oFactura.total * (oFactura?.iva/100))|number: '1.2-2':'es-ES'}} €</td>
 <td class="text-end">{{oFactura.total + (oFactura.total * (oFactura?.iva/100))|number: '1.2-2':'es-ES'}} €</td>
 <td class="text-center" [innerHTML]="oFactura.pagado | showBoolean"></td>
-<td class="text-center">
+<td class="text-left">
   <ng-content select="[action_column]"></ng-content>
 </td>
