@@ -21,7 +21,7 @@ export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
   oPage: ITipoproductoPage;
 
   constructor(
-    private oPostService: TipoproductoService,
+    private oTipoproductoService: TipoproductoService,
     public oMetadataService: MetadataService,
   ) {
     this.oPage = {} as ITipoproductoPage;
@@ -32,13 +32,23 @@ export class TipoproductoPlistAdminUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oPostService
+    this.oTipoproductoService
       .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter)
       .subscribe({
         next: (oPage: ITipoproductoPage) => {
-          this.oPage = oPage;
+          Object.assign(this.oPage, oPage);
           this.oPage.error = null;
-          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, null, null, null, null);
+          this.oPage.strFilteredMessage = this.oPage.strFilter
+          this.oTipoproductoService.getCount().subscribe({
+            next: (nRecords: number) => {
+              this.oPage.nRecords = nRecords;              
+            },
+            error: (error: HttpErrorResponse) => {
+              this.oPage.error = error;
+              console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+              this.oPage.nRecords = null;
+            }
+          })  
           if (this.oPage.totalPages > 0) {
             if (this.oPage.number > this.oPage.totalPages - 1) {
               this.oPage.number = this.oPage.totalPages - 1;

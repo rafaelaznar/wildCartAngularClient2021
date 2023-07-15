@@ -49,7 +49,7 @@ export class CompraPlistUserUnroutedComponent implements OnInit {
   getPage = () => {
     this.oCompraService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this._id_factura, null).subscribe({
       next: (oPage: ICompraPage) => {
-        this.oPage = oPage;
+        Object.assign(this.oPage, oPage);
         this.oPage.error = null;
         if (this.oPage.totalPages > 0) {
           if (this.oPage.number > this.oPage.totalPages - 1) {

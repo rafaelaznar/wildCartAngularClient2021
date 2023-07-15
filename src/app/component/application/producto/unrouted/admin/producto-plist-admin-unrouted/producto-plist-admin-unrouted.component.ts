@@ -5,6 +5,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ITipoproducto } from 'src/app/model/tipoproducto-interfaces';
+import { TipoproductoService } from 'src/app/service/tipoproducto.service';
 
 @Component({
   selector: 'app-producto-plist-admin-unrouted',
@@ -24,12 +26,24 @@ export class ProductoPlistAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oProductoService: ProductoService,
+    private oTipoproductoService: TipoproductoService,
     public oMetadataService: MetadataService
   ) {
     this.oPage = {} as IProductoPage;
   }
 
   ngOnInit(): void {
+    if (this.id_tipoproducto != null) {
+      this.oTipoproductoService.getOne(this.id_tipoproducto).subscribe({
+        next: (oTipoproducto: ITipoproducto) => {
+          this.oPage.strFilteredTitle = oTipoproducto.nombre;
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+        }
+      })
+    }
     this.getPage(); //important! don't call in constructor; id_tipoproducto must be initialized before calling getPage()
   }
 
@@ -37,9 +51,19 @@ export class ProductoPlistAdminUnroutedComponent implements OnInit {
     this.oProductoService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_tipoproducto)
       .subscribe({
         next: (oPage: IProductoPage) => {
-          this.oPage = oPage;
+          Object.assign(this.oPage, oPage);
           this.oPage.error = null;
-          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipoproducto', this.id_tipoproducto, null, null);
+          this.oPage.strFilteredMessage = this.oPage.strFilter
+          this.oProductoService.getCount().subscribe({
+            next: (nRecords: number) => {
+              this.oPage.nRecords = nRecords;
+            },
+            error: (error: HttpErrorResponse) => {
+              this.oPage.error = error;
+              console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+              this.oPage.nRecords = null;
+            }
+          })
           if (this.oPage.totalPages > 0) {
             if (this.oPage.number > this.oPage.totalPages - 1) {
               this.oPage.number = this.oPage.totalPages - 1;

@@ -5,6 +5,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TipousuarioService } from 'src/app/service/tipousuario.service';
+import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
 
 @Component({
   selector: 'app-usuario-plist-admin-unrouted',
@@ -24,12 +26,24 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oUsuarioService: UsuarioService,
+    private oTipousuarioService: TipousuarioService,
     public oMetadataService: MetadataService,
   ) {
     this.oPage = {} as IUsuarioPage;
   }
 
   ngOnInit() {
+    if (this.id_tipousuario != null) {
+      this.oTipousuarioService.getOne(this.id_tipousuario).subscribe({
+        next: (oTipousuario: ITipousuario) => {
+          this.oPage.strFilteredTitle = oTipousuario.nombre;
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+        }
+      })
+    }
     this.getPage(); //important! don't call in constructor; id_tipousuario must be initialized before calling getPage()
   }
 
@@ -37,9 +51,19 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
     this.oUsuarioService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_tipousuario)
       .subscribe({
         next: (oPage: IUsuarioPage) => {
-          this.oPage = oPage;
+          Object.assign(this.oPage, oPage);
           this.oPage.error = null;
-          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipousuario', this.id_tipousuario, null, null);
+          this.oPage.strFilteredMessage = this.oPage.strFilter
+          this.oUsuarioService.getCount().subscribe({
+            next: (nRecords: number) => {
+              this.oPage.nRecords = nRecords;              
+            },
+            error: (error: HttpErrorResponse) => {
+              this.oPage.error = error;
+              console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+              this.oPage.nRecords = null;
+            }
+          })          
           if (this.oPage.totalPages > 0) {
             if (this.oPage.number > this.oPage.totalPages - 1) {
               this.oPage.number = this.oPage.totalPages - 1;

@@ -5,6 +5,10 @@ import { ICarritoPage } from 'src/app/model/carrito-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UsuarioService } from 'src/app/service/usuario.service';
+import { ProductoService } from 'src/app/service/producto.service';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { IProducto } from 'src/app/model/producto-interfaces';
 
 @Component({
   selector: 'app-carrito-plist-admin-unrouted',
@@ -25,23 +29,57 @@ export class CarritoPlistAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oCarritoService: CarritoService,
+    private oProductoService: ProductoService,
+    private oUsuarioService: UsuarioService,
     public oMetadataService: MetadataService,
   ) {
     this.oPage = {} as ICarritoPage;
   }
 
   ngOnInit() {
+    if (this.id_producto != null) {
+      this.oProductoService.getOne(this.id_producto).subscribe({
+        next: (oProducto: IProducto) => {
+          this.oPage.strFilteredTitle = oProducto.nombre;
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+        }
+      })
+    }
+    if (this.id_usuario != null) {
+      this.oUsuarioService.getOne(this.id_usuario).subscribe({
+        next: (oUsuario: IUsuario) => {
+          this.oPage.strFilteredTitle = oUsuario.nombre + ' ' + oUsuario.apellido1 + ' ' + oUsuario.apellido2;
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+        }
+      })
+    }
     this.getPage(); //important! don't call in constructor; id_usuario & id_producto must be initialized before calling getPage()
   }
 
   getPage = () => {
-    this.oCarritoService
-      .getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_producto, this.id_usuario)
-      .subscribe({
+    this.oCarritoService.getPage(
+      this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection,
+      this.oPage.strFilter, this.id_producto, this.id_usuario).subscribe({
         next: (oPage: ICarritoPage) => {
-          this.oPage = oPage;
+          Object.assign(this.oPage, oPage);
           this.oPage.error = null;
-          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
+          this.oPage.strFilteredMessage = this.oPage.strFilter
+          this.oCarritoService.getCount().subscribe({
+            next: (nRecords: number) => {
+              this.oPage.nRecords = nRecords;
+            },
+            error: (error: HttpErrorResponse) => {
+              this.oPage.error = error;
+              console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+              this.oPage.nRecords = null;
+            }
+          })
           if (this.oPage.number > this.oPage.totalPages - 1) {
             this.oPage.number = this.oPage.totalPages - 1;
             this.getPage();

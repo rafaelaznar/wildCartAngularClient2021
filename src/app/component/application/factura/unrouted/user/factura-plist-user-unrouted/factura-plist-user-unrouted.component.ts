@@ -38,7 +38,7 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
   getPage = () => {
     this.oFacturaService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_usuario).subscribe({
       next: (oPage: IFacturaPage) => {
-        this.oPage = oPage;
+        Object.assign(this.oPage, oPage);
         this.oPage.error = null;
         this.oPage.strFilteredMessage = this.oMetadataService.getFilteredMessage1(this.oPage.strFilter, 'usuario', this.id_usuario);
         if (this.oPage.number > this.oPage.totalPages - 1 && this.oPage.totalPages > 0) {

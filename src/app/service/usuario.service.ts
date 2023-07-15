@@ -45,6 +45,10 @@ export class UsuarioService implements ICrud {
     return this.http.get<IUsuario>(this.sURL + "/" + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
+  getCount(): Observable<number> {
+    return this.http.get<number>(this.sURL + "/count", httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+  }
+
   getByUsername(username: string): Observable<IUsuario> {
     return this.http.get<IUsuario>(this.sURL + "/username/" + username, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }

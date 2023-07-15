@@ -5,13 +5,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
 import { ICrud } from '../model/crud-interface';
+import { ErrorHandlerService } from './errorHandler.service';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FacturaService implements ICrud {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private oErrorHandlerService: ErrorHandlerService) { }
 
   sURL = API_URL + '/factura';
 
@@ -37,6 +39,10 @@ export class FacturaService implements ICrud {
 
   getOne(id: number): Observable<IFactura> {
     return this.http.get<IFactura>(this.sURL + "/" + id, httpOptions);
+  }
+
+  getCount(): Observable<number> {
+    return this.http.get<number>(this.sURL + "/count", httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   newOne(oFactura: IFactura2Send): Observable<number> {

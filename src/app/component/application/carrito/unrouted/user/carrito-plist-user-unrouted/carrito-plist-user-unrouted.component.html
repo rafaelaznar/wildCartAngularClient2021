@@ -1,6 +1,7 @@
 <div class="row justify-content-between my-3">
   <div class="col-md text-start">
-    <h6>{{oPage.strFilteredMessage}}</h6>
+    <h5 *ngIf="!oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> SIN FILTRO</span></h5>
+    <h5 *ngIf="oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> FILTRO: {{oPage.strFilteredMessage}}</span></h5>
   </div>
   <div class="col-md text-center">
     <app-shared-search-unrouted [strFilter]="oPage.strFilter"

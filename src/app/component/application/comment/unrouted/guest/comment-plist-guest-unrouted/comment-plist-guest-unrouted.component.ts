@@ -38,9 +38,9 @@ export class CommentPlistGuestUnroutedComponent implements OnInit {
     this.oCommentService.getPage(this.oPage.number, 5, "creation", "desc", null, this.id_usuario, this.id_producto)
       .subscribe({
         next: (oPage: ICommentPage) => {
-          this.oPage = oPage;
+          Object.assign(this.oPage, oPage);
           this.oPage.error = null;
-          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, 'producto', this.id_producto);
+          this.oPage.strFilteredMessage = this.oPage.strFilter
           if (this.oPage.number > this.oPage.totalPages - 1) {
             this.oPage.number = this.oPage.totalPages - 1;
             this.getPage();

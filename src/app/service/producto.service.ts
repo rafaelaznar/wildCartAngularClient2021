@@ -1,10 +1,11 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
 import { ICrud } from '../model/crud-interface';
-import { IEntity2Send, IEntity } from '../model/model-interfaces';
 import { IProductoPage, IProducto, IProducto2Send } from '../model/producto-interfaces';
+import { catchError } from 'rxjs/operators';
+import { ErrorHandlerService } from './errorHandler.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ProductoService implements ICrud {
 
   sURL = API_URL + '/producto';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private oErrorHandlerService: ErrorHandlerService) { }
 
   getPage(page: number, rpp: number, order: string, direction: string, filter: string, tipoproducto: number): Observable<IProductoPage> {
     if (!page) {
@@ -37,6 +38,10 @@ export class ProductoService implements ICrud {
 
   getOne(id: number): Observable<IProducto> {
     return this.http.get<IProducto>(this.sURL + "/" + id, httpOptions);
+  }
+
+  getCount(): Observable<number> {
+    return this.http.get<number>(this.sURL + "/count", httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   newOne(oProduct: IProducto2Send): Observable<number> {

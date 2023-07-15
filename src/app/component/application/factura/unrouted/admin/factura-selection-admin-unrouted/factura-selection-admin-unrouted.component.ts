@@ -20,6 +20,7 @@ export class FacturaSelectionAdminUnroutedComponent implements OnInit {
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.invoice
   strOperation: string = Constants.OPERATIONS.plist
+  //
   oPage: IFacturaPage;
 
   constructor(
@@ -36,9 +37,20 @@ export class FacturaSelectionAdminUnroutedComponent implements OnInit {
   getPage = () => {
     this.oFacturaService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_usuario).subscribe({
       next: (oPage: IFacturaPage) => {
-        this.oPage = oPage;
+        Object.assign(this.oPage, oPage);
         this.oPage.error = null;
-        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, null, null);
+        this.oPage.strFilteredMessage = this.oPage.strFilter
+        this.oFacturaService.getCount().subscribe({
+          next: (nRecords: number) => {
+            this.oPage.nRecords = nRecords;
+          },
+          error: (error: HttpErrorResponse) => {
+            this.oPage.error = error;
+            console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+            this.oPage.nRecords = null;
+          }
+        })
+
         if (this.oPage.totalPages > 0) {
           if (this.oPage.number > this.oPage.totalPages - 1) {
             this.oPage.number = this.oPage.totalPages - 1;

@@ -5,13 +5,15 @@ import { Observable } from 'rxjs';
 import { API_URL, httpOptions } from 'src/environments/environment';
 import { ICompra, ICompra2Send } from '../model/compra-interfaces';
 import { ICrud } from '../model/crud-interface';
+import { catchError } from 'rxjs/operators';
+import { ErrorHandlerService } from './errorHandler.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompraService implements ICrud {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private oErrorHandlerService: ErrorHandlerService) { }
 
   sURL = API_URL + '/compra';
 
@@ -38,12 +40,16 @@ export class CompraService implements ICrud {
     return this.http.get<ICompraPage>(this.sURL + "?page=" + page + "&size=" + rpp + strOrderUrl, httpOptions);
   }
 
-  allByFactura(id_factura: number): Observable< ICompra[]> {
+  allByFactura(id_factura: number): Observable<ICompra[]> {
     return this.http.get<ICompra[]>(this.sURL + "/all/" + id_factura, httpOptions);
   }
 
   getOne(id: number): Observable<ICompra> {
     return this.http.get<ICompra>(this.sURL + "/" + id, httpOptions);
+  }
+
+  getCount(): Observable<number> {
+    return this.http.get<number>(this.sURL + "/count", httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   newOne(oCompra2Send: ICompra2Send): Observable<number> {

@@ -20,7 +20,8 @@ export class UsuarioSelectionAdminUnroutedComponent implements OnInit {
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.plist
-  oPage: IUsuarioPage;
+  //
+  oPage : IUsuarioPage;
 
   constructor(
     private oUsuarioService: UsuarioService,
@@ -35,22 +36,33 @@ export class UsuarioSelectionAdminUnroutedComponent implements OnInit {
 
   getPage = () => {
     this.oUsuarioService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_tipousuario)
-      .subscribe(
-        (oPage: IUsuarioPage) => {
-          this.oPage = oPage;
+      .subscribe({
+        next: (oPage: IUsuarioPage) => {
+          Object.assign(this.oPage, oPage);
           this.oPage.error = null;
-          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipousuario', this.id_tipousuario, null, null);
+          this.oPage.strFilteredMessage = this.oPage.strFilter
+          this.oUsuarioService.getCount().subscribe({
+            next: (nRecords: number) => {
+              this.oPage.nRecords = nRecords;
+            },
+            error: (error: HttpErrorResponse) => {
+              this.oPage.error = error;
+              console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+              this.oPage.nRecords = null;
+            }
+          })
           if (this.oPage.totalPages > 0) {
             if (this.oPage.number > this.oPage.totalPages - 1) {
               this.oPage.number = this.oPage.totalPages - 1;
               this.getPage();
             }
           }
-        }, (error: HttpErrorResponse) => {
+        },
+        error: (error: HttpErrorResponse) => {
           this.oPage.error = error;
           console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
         }
-      )
+      })
   }
 
   onSetPage = (nPage: number) => {

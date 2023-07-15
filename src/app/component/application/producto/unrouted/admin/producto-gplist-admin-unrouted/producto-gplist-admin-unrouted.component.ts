@@ -42,9 +42,9 @@ export class ProductoGPlistAdminUnroutedComponent implements OnInit {
   getPage = () => {
     this.oProductoService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_tipoproducto).subscribe({
       next: (oPage: IProductoPage) => {
-        this.oPage = oPage;
+        Object.assign(this.oPage, oPage);
         this.oPage.error = null;
-        this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'tipoproducto', this.id_tipoproducto, null, null);
+        this.oPage.strFilteredMessage = this.oPage.strFilter
         if (this.oPage.totalPages > 0) {
           if (this.oPage.number > this.oPage.totalPages - 1) {
             this.oPage.number = this.oPage.totalPages - 1;

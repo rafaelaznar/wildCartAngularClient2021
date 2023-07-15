@@ -1,7 +1,9 @@
 <div class="row justify-content-between my-3">
   <div class="row justify-content-between my-3">
     <div class="col-md text-start">
-      <h6>{{oPage.strFilteredMessage}}</h6>
+      <h5 *ngIf="!oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> SIN FILTRO</span></h5>
+      <h5 *ngIf="oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> FILTRO:
+          {{oPage.strFilteredMessage}}</span></h5>
     </div>
     <div class="col-md text-center">
       <app-shared-search-unrouted [strFilter]="oPage.strFilter"
@@ -9,21 +11,26 @@
         (eeFilter)="onSetFilter($event)"></app-shared-search-unrouted>
     </div>
     <div class="col-md text-end">
-      <h4 class="text-muted">{{oPage.totalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}
-      </h4>
+      <h5 class="text-muted" *ngIf="oPage.totalElements<oPage.nRecords">Mostrando {{oPage.totalElements|
+        number:'1.0-0'}}
+        {{oMetadataService.getName(strEntity+'s')}} de {{oPage.nRecords| number:'1.0-0'}}</h5>
+      <h4 class="text-muted" *ngIf="oPage.totalElements==oPage.nRecords">{{oPage.totalElements| number:'1.0-0'}}
+        {{oMetadataService.getName(strEntity+'s')}}</h4>
     </div>
   </div>
 
   <div class="row justify-content-between">
     <div class="col-md text-start">
-      <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
+      <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages"
+        (eePage)="onSetPage($event)">
       </app-shared-pagination-unrouted>
     </div>
     <div class="col-md text-center">
       <ng-content select="header"></ng-content>
     </div>
     <div class="col-md text-end">
-      <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-shared-rpp-unrouted>
+      <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error">
+      </app-shared-rpp-unrouted>
     </div>
   </div>
 
@@ -46,8 +53,9 @@
             app-tipoproducto-plistrow-admin-unrouted [oTipoproducto]="oTipoproductoRow" [mode]="true">
 
             <div action_column>
-              <div class="btn-group btn-group-sm" role="group" app-shared-plistrowbuttons-unrouted [id]="oTipoproductoRow.id"
-                [strEntity]="strEntity" [strProfile]="strProfile" [showRemove]="!(oTipoproductoRow.productos>0)">               
+              <div class="btn-group btn-group-sm" role="group" app-shared-plistrowbuttons-unrouted
+                [id]="oTipoproductoRow.id" [strEntity]="strEntity" [strProfile]="strProfile"
+                [showRemove]="!(oTipoproductoRow.productos>0)">
               </div>
             </div>
 

@@ -1,57 +1,77 @@
-<div class="row justify-content-between my-3">
+<div *ngIf="oPage.error==null">
   <div class="row justify-content-between my-3">
-    <div class="col-md text-start">
-      <h6>{{strFilteredMessage}}</h6>
+    <div class="row justify-content-between my-3">
+      <div class="col-md text-start">
+        <h5 *ngIf="!oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> SIN FILTRO</span></h5>
+        <h5 *ngIf="oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> FILTRO:
+            {{oPage.strFilteredMessage}}</span></h5>
+      </div>
+      <div class="col-md text-center">
+        <app-shared-search-unrouted [strFilter]="oPage.strFilter"
+          [strTitlePlural]="'Filtro de ' + oMetadataService.getName(strEntity+'s').toLowerCase()"
+          (eeFilter)="onSetFilter($event)"></app-shared-search-unrouted>
+      </div>
+      <div class="col-md text-end">
+        <h5 class="text-muted" *ngIf="oPage.totalElements<oPage.nRecords">Mostrando {{oPage.totalElements|
+          number:'1.0-0'}}
+          {{oMetadataService.getName(strEntity+'s')}} de {{oPage.nRecords| number:'1.0-0'}}</h5>
+        <h4 class="text-muted" *ngIf="oPage.totalElements==oPage.nRecords">{{oPage.totalElements| number:'1.0-0'}}
+          {{oMetadataService.getName(strEntity+'s')}}</h4>
+      </div>
     </div>
-    <div class="col-md text-center">
-      <app-shared-search-unrouted [strFilter]="strFilter"
-        [strTitlePlural]="'Filtro de ' + oMetadataService.getName(strEntity+'s').toLowerCase()"
-        (eeFilter)="onSetFilter($event)"></app-shared-search-unrouted>
-    </div>
-    <div class="col-md text-end">
-      <h4 class="text-muted">{{nTotalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}
-      </h4>
-    </div>
-  </div>
 
-  <div class="row justify-content-between">
-    <div class="col-md text-start">
-      <app-shared-pagination-unrouted [nPage]="nPage" [nTotalPages]="nTotalPages" (eePage)="onSetPage($event)">
-      </app-shared-pagination-unrouted>
+    <div class="row justify-content-between">
+      <div class="col-md text-start">
+        <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages"
+          (eePage)="onSetPage($event)">
+        </app-shared-pagination-unrouted>
+      </div>
+      <div class="col-md text-center">
+        <ng-content select="header"></ng-content>
+      </div>
+      <div class="col-md text-end">
+        <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error">
+        </app-shared-rpp-unrouted>
+      </div>
     </div>
-    <div class="col-md text-center">
-      <ng-content select="header"></ng-content>
-    </div>
-    <div class="col-md text-end">
-      <app-shared-rpp-unrouted [nPageSize]="nPageSize" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-shared-rpp-unrouted>
-    </div>
-  </div>
 
-  <div class="row justify-content-center">
-    <div class="col-md table-responsive-md">
-      <table class="table table-bordered table-striped table-hover">
-        <thead>
-          <tr class="text-center align-middle" app-tipoproducto-plistheader-admin-unrouted (sort)="onSetOrder($event)"
-            [mode]="false">
-            <div action_column_title>
-              <i [ngClass]="oMetadataService.getIcon('selection')"></i> {{oMetadataService.getName('select a product type')}}
-            </div>
-          </tr>
-        </thead>
-        <tbody>
-
-          <tr *ngFor="let oTipoproductoRow of aTipoproductos" class="align-middle"
-            app-tipoproducto-plistrow-admin-unrouted [oTipoproducto]="oTipoproductoRow" [mode]="false"
-            (selection)="onSelection($event)">
-            <div action_column>
-              <div class="btn-group btn-group-sm" role="group">
-                <button type="button" class="btn btn-success" (click)="onSelection(oTipoproductoRow.id)"><i
-                    class="fas fa-check"></i></button>
+    <div class="row justify-content-center">
+      <div class="col-md table-responsive-md">
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr class="text-center align-middle" app-tipoproducto-plistheader-admin-unrouted (sort)="onSetOrder($event)"
+              [mode]="false">
+              <div action_column_title>
+                <i [ngClass]="oMetadataService.getIcon('selection')"></i> {{oMetadataService.getName('select a product
+                type')}}
               </div>
-            </div>
+            </tr>
+          </thead>
+          <tbody>
 
-          </tr>
-        </tbody>
-      </table>
+            <tr *ngFor="let oTipoproductoRow of oPage.content" class="align-middle"
+              app-tipoproducto-plistrow-admin-unrouted [oTipoproducto]="oTipoproductoRow" [mode]="false"
+              (selection)="onSelection($event)">
+              <div action_column>
+                <div class="btn-group btn-group-sm" role="group">
+                  <button type="button" class="btn btn-success" (click)="onSelection(oTipoproductoRow.id)"><i
+                      class="fas fa-check"></i></button>
+                </div>
+              </div>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+</div>
+<div *ngIf="oPage.error!=null">
+  <div class="row justify-content-center">
+    <div class="col-md text-center">
+      <h6 class="text-danger">Component ERROR: please contact administrator.</h6>
+      <h6 class="text-danger">Message: {{ oPage.error.status + "(" + oPage.error.statusText + ") " +
+        oPage.error.message}}</h6>
+    </div>
+  </div>
+</div>

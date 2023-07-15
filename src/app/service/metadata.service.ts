@@ -554,36 +554,14 @@ export class MetadataService {
     }
   }
 
-  public getFilterMsg(strFilter: string, strEntity1: string, entity1Filter: number, strEntity2: string, entity2Filter: number): string {
-    if (entity1Filter !== null && entity1Filter !== undefined) {
-      if (entity2Filter !== null && entity2Filter !== undefined) {
+  public getFilterMsg(strFilter: string): string {
         if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
-          return 'Filtrando por ' + this.getName('the' + strEntity1) + ' con id=' + entity1Filter + ', por ' + this.getName('the' + strEntity2) + ' con id=' + entity2Filter + ' y por el filtro ' + strFilter;
+          return 'Filtro: ' + strFilter;
         } else {
-          return 'Filtrando por ' + this.getName('the' + strEntity1) + ' con id=' + entity1Filter + ', por ' + this.getName('the' + strEntity2) + ' con id=' + entity2Filter + ' y sin filtro';
+          return '';
         }
-      } else {
-        if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
-          return 'Filtrando por ' + this.getName('the' + strEntity1) + ' con id=' + entity1Filter + ' y por el filtro ' + strFilter;
-        } else {
-          return 'Filtrando por ' + this.getName('the' + strEntity1) + ' con id=' + entity1Filter + ' y sin filtro';
-        }
-      }
-    } else {
-      if (entity2Filter !== null && entity2Filter !== undefined) {
-        if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
-          return 'Filtro: ' + this.getName('the' + strEntity2) + ' con id=' + entity2Filter + ' <br>Filtro ' + strFilter;
-        } else {
-          return 'Filtrando por ' + this.getName('the' + strEntity2) + ' con id=' + entity2Filter + ' y sin filtro';
-        }
-      } else {
-        if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
-          return 'Filtrando por el filtro ' + strFilter;
-        } else {
-          return 'Sin filtro';
-        }
-      }
-    }
+
+
   }
 
   getFilteredMessage1(strFilter: string, strEntity: string, entityFilter: number): string {

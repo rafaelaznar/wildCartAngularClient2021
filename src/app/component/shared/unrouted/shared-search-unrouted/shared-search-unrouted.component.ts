@@ -33,4 +33,9 @@ export class SharedSearchUnroutedComponent implements OnInit {
     this.subjectFilter.next();
   }
 
+  resetFilter(): void {
+    this.strFilter = "";
+    this.eeFilter.emit(this.strFilter);
+  }
+
 }

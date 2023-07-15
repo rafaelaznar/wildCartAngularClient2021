@@ -24,7 +24,9 @@ export interface IPage<T> {
     strSortField: string;
     strSortDirection: string;
     strFilter: string;
+    strFilteredTitle: string;
     strFilteredMessage: string;
+    nRecords: number;
 
     error: HttpErrorResponse;
 }

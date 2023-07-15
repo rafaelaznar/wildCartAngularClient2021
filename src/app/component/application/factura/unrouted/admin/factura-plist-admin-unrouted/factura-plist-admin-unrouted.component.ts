@@ -6,6 +6,8 @@ import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FacturaPrintService } from 'src/app/service/factura.print.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
+import { IUsuario } from 'src/app/model/usuario-interfaces';
 
 @Component({
   selector: 'app-factura-plist-admin-unrouted',
@@ -26,12 +28,24 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
   constructor(
     private oFacturaService: FacturaService,
     public oMetadataService: MetadataService,
-    private oFacturaPrintService: FacturaPrintService
+    private oFacturaPrintService: FacturaPrintService,
+    private oUsuarioService: UsuarioService
   ) {
     this.oPage = {} as IFacturaPage;
   }
 
   ngOnInit(): void {
+    if (this.id_usuario != null) {
+      this.oUsuarioService.getOne(this.id_usuario).subscribe({
+        next: (oUsuario: IUsuario) => {
+          this.oPage.strFilteredTitle = oUsuario.nombre + " " + oUsuario.apellido1 + " " + oUsuario.apellido2 + " (" + oUsuario.dni + ")";
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+        }
+      })
+    }
     this.getPage(); //important! don't call in constructor; id_usuario must be initialized before calling getPage()
   }
 
@@ -39,9 +53,19 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
     this.oFacturaService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter, this.id_usuario)
       .subscribe({
         next: (oPage: IFacturaPage) => {
-          this.oPage = oPage;
+          Object.assign(this.oPage, oPage);
           this.oPage.error = null;
-          this.oPage.strFilteredMessage = this.oMetadataService.getFilterMsg(this.oPage.strFilter, 'usuario', this.id_usuario, null, null);
+          this.oPage.strFilteredMessage = this.oPage.strFilter
+          this.oFacturaService.getCount().subscribe({
+            next: (nRecords: number) => {
+              this.oPage.nRecords = nRecords;              
+            },
+            error: (error: HttpErrorResponse) => {
+              this.oPage.error = error;
+              console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+              this.oPage.nRecords = null;
+            }
+          })            
           if (this.oPage.totalPages > 0) {
             if (this.oPage.number > this.oPage.totalPages - 1) {
               this.oPage.number = this.oPage.totalPages - 1;

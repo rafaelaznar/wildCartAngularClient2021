@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { TipoproductoService } from 'src/app/service/tipoproducto.service';
-import { ITipoproducto, ITipoproductoPage } from 'src/app/model/tipoproducto-interfaces';
+import { ITipoproductoPage } from 'src/app/model/tipoproducto-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/constant/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-tipoproducto-selection-admin-unrouted',
@@ -18,62 +19,69 @@ export class TipoproductoSelectionAdminUnroutedComponent implements OnInit {
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.producttype;
   strOperation: string = Constants.OPERATIONS.plist;
-  aTipoproductos: ITipoproducto[];
-  nTotalElements: number;
-  nTotalPages: number;
+  //
   oPage: ITipoproductoPage;
-  nPage: number;
-  nPageSize: number = 10;
-  strSortField: string = "";
-  strSortDirection: string = "";
-  strFilter: string = "";
-  strFilteredMessage: string = "";
 
   constructor(
-    private oPostService: TipoproductoService,
+    private oTipoproductoService: TipoproductoService,
     public oMetadataService: MetadataService,
-  ) { }
+  ) {
+    this.oPage = {} as ITipoproductoPage;
+  }
 
   ngOnInit(): void {
-    this.nPage = 1;
     this.getPage();
   }
 
   getPage = () => {
-    this.oPostService.getPage(this.nPage, this.nPageSize, this.strSortField, this.strSortDirection, this.strFilter).subscribe({
+    this.oTipoproductoService.getPage(this.oPage.number, this.oPage.size, this.oPage.strSortField, this.oPage.strSortDirection, this.oPage.strFilter).subscribe({
       next: (oPage: ITipoproductoPage) => {
-        this.oPage = oPage;
-        this.strFilteredMessage = this.oMetadataService.getFilterMsg(this.strFilter, null, null, null, null);
-        this.aTipoproductos = oPage.content;
-        this.nTotalElements = oPage.totalElements;
-        this.nTotalPages = oPage.totalPages;
-        if (this.nPage > this.nTotalPages) {
-          this.nPage = this.nTotalPages;
-          this.getPage();
+        Object.assign(this.oPage, oPage);
+        this.oPage.error = null;
+        this.oPage.strFilteredMessage = this.oPage.strFilter
+        this.oTipoproductoService.getCount().subscribe({
+          next: (nRecords: number) => {
+            this.oPage.nRecords = nRecords;
+          },
+          error: (error: HttpErrorResponse) => {
+            this.oPage.error = error;
+            console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+            this.oPage.nRecords = null;
+          }
+        })
+        if (this.oPage.totalPages > 0) {
+          if (this.oPage.number > this.oPage.totalPages - 1) {
+            this.oPage.number = this.oPage.totalPages - 1;
+            this.getPage();
+          }
         }
+      },
+      error: (error: HttpErrorResponse) => {
+        this.oPage.error = error;
+        console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
       }
-    });
+    })
   };
 
   onSetPage = (nPage: number) => {
-    this.nPage = nPage;
+    this.oPage.number = nPage - 1; //pagination component starts at 1, but spring data starts at 0
     this.getPage();
     return false;
   }
 
   onSetRpp(nRpp: number) {
-    this.nPageSize = nRpp;
+    this.oPage.size = nRpp;
     this.getPage();
   }
 
   onSetFilter(strFilter: string) {
-    this.strFilter = strFilter;
+    this.oPage.strFilter = strFilter;
     this.getPage();
   }
 
   onSetOrder(order: IOrder) {
-    this.strSortField = order.sortField;
-    this.strSortDirection = order.sortDirection;
+    this.oPage.strSortField = order.sortField;
+    this.oPage.strSortDirection = order.sortDirection;
     this.getPage();
   }
 
