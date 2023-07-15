@@ -34,6 +34,7 @@
 </th>
 <th *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('carrito')"></i> {{oMetadataService.getName('cart products')}}</th>
 <th *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('factura')"></i> {{oMetadataService.getName('facturas')}}</th>
+<th *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('comment')"></i> {{oMetadataService.getName('comments')}}</th>
 <th (click)="doSetOrder('tipousuario')"><i [ngClass]="oMetadataService.getIcon('tipousuario')"></i>
   {{oMetadataService.getName('tipousuario')}}
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='tipousuario'&&strSortDirection=='asc'"></i>

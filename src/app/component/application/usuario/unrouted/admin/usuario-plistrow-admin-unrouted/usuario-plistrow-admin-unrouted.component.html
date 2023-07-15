@@ -27,7 +27,12 @@
     <i [ngClass]="oMetadataService.getIcon('factura')"></i>
   </button>
 </td>
-
+<td style="text-align: center;" *ngIf="mode">
+  <button class="btn btn-outline-secondary btn-sm"
+    [routerLink]="['/administrador','comment','plist','usuario',oUsuario.id]"
+    [disabled]="oUsuario?.comments<=0">{{oUsuario?.comments}}
+    <i [ngClass]="oMetadataService.getIcon('comment')"></i></button>
+</td>
 <td>
   <button *ngIf="mode" class="btn btn-light btn-sm"
     [routerLink]="['/administrador','usuario','plist','tipousuario',oUsuario.tipousuario.id]">

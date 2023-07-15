@@ -1,7 +1,7 @@
 import { IEntity2Send, IEntity, IPage } from "./model-interfaces";
 import { ITipousuario } from "./tipousuario-interfaces";
 
-export interface IUsuario extends IEntity{
+export interface IUsuario extends IEntity {
     dni: string,
     nombre: string,
     apellido1: string,
@@ -13,13 +13,14 @@ export interface IUsuario extends IEntity{
     activo: boolean,
     tipousuario: ITipousuario,
     carritos: number,
-    facturas: number
+    facturas: number,
+    comments: number
 }
 
-export interface IUsuarioPage extends IPage<IUsuario> {    
+export interface IUsuarioPage extends IPage<IUsuario> {
 }
 
-export interface IUsuario2Send extends IEntity2Send {    
+export interface IUsuario2Send extends IEntity2Send {
     dni: string,
     nombre: string,
     apellido1: string,
