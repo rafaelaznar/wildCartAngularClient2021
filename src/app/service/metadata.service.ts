@@ -626,10 +626,18 @@ export class MetadataService {
       case str == "Now there are": return "Ahora hay";
       case str == "less": return "menos";
       case str == "Close": return "Cerrar";
+      //
       case str == "wildCART": return "wildCART";
       case str == "by Rafael Aznar & students": return "by Rafael Aznar & students";
       case str == "MIT Licensed": return "MIT Licensed";
-      
+      //
+      case str == "Between two dates": return "Entre dos fechas";
+      case str == "You must enter a correct start date": return "Se debe introducir una fecha de inicio correcta";
+      case str == "You must enter a correct end date": return "Se debe introducir una fecha de fin correcta";
+      case str == "Start date must be before end date": return "La fecha de inicio debe ser anterior a la fecha final";
+      case str == "Dates": return "Fechas";
+      case str == "User": return "Usuario";
+      case str == "Product": return "Producto";
 
 
       

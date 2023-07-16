@@ -9,7 +9,6 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ProductoService } from 'src/app/service/producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { ReportPrintService } from 'src/app/service/reports.print.service';
 import { Constants } from 'src/app/constant/constants';
 import { SessionService } from 'src/app/service/session.service';
@@ -41,7 +40,6 @@ export class SharedReportsRoutedComponent   extends CheckSession implements OnIn
     private oUsuarioService: UsuarioService,
     private oFormBuilder: UntypedFormBuilder,
     private oProductoService: ProductoService,
-    private oActivatedRoute: ActivatedRoute,
     public oRouter: Router,
     private oReportPrintService: ReportPrintService,
     public oSessionService: SessionService
