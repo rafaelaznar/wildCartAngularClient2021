@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
+import { Constants } from 'src/app/constant/constants';
 
 @Component({
   selector: 'app-shared-viewbuttons-unrouted',
@@ -9,7 +10,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 export class SharedViewbuttonsUnroutedComponent implements OnInit {
 
-  @Input() strProfile: string = "administrador";
+  @Input() strProfile: string = Constants.PROFILES.admin;
   @Input() strEntity: string = "";
   @Input() id: number = 0;
 

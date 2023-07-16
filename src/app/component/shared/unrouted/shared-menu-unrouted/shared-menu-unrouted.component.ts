@@ -62,7 +62,7 @@ export class SharedMenuUnroutedComponent implements OnInit {
 
     this.oCarritoService.onCarritoChangeSubject.subscribe({
       next: (data) => {
-        console.log("menu", "carrito", "action:" + data.action)
+        //console.log("menu", "carrito", "action:" + data.action)
         this.count()
       },
       error: (error) => {

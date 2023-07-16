@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
-
-
 import { MetadataService } from 'src/app/service/metadata.service';
 
 @Component({
@@ -9,6 +7,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
   templateUrl: './shared-find-unrouted.component.html',
   styleUrls: ['./shared-find-unrouted.component.css']
 })
+
 export class SharedFindUnroutedComponent implements OnInit {
   @Input() entity: string = "";
   @Input() description: string = "";
@@ -21,30 +20,22 @@ export class SharedFindUnroutedComponent implements OnInit {
 
   ngOnInit() {
     this.dirty = false;
-    //console.log("----->>>>>" + this.entity);
   }
 
   //modal
-
-  //fila: ITipousuario;
+  
   dirty: boolean = false;
   showingModal: boolean = false;
 
   eventsSubjectShowModal: Subject<void> = new Subject<void>();
   eventsSubjectHideModal: Subject<void> = new Subject<void>();
 
-  //eventsSubjectShowModal: EventEmitter<void> = new EventEmitter();
-  //eventsSubjectHideModal: EventEmitter<void> = new EventEmitter();
-
   openModal(): void {
-    //console.log("----->>>>>" + this.entity);
     this.eventsSubjectShowModal.next();
-    //console.log(this.eventsSubjectShowModal)
     this.showingModal = true;
   }
 
   onCloseModal(): void {
-    //this.oRouter.navigate(['/','factura/view/' + this.id]);
   }
 
   closeModal(): void {
@@ -53,16 +44,12 @@ export class SharedFindUnroutedComponent implements OnInit {
   }
 
   onSelection($event: number) {
-    console.log("find onSelection evento recibido: " + $event)
     this.id = $event;
     this.closeModal();
     this.selection.emit($event);
-    //this.oForm.controls['id_usuario'].setValue($event);
-
   }
 
-  onChangeForeign($event: number) {
-    //console.log("find onChangeForeign evento recibido: " + $event)
+  onChangeForeign($event: number) {    
     this.dirty = true;
     if (this.showingModal) {
       this.closeModal();

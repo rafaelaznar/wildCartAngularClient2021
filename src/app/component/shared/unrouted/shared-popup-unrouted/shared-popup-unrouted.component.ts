@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Constants } from 'src/app/constant/constants';
+import { MetadataService } from 'src/app/service/metadata.service';
 
 declare let bootstrap: any;
 
@@ -26,7 +27,9 @@ export class SharedPopupUnroutedComponent implements OnInit {
   myPopup: any;
   strMsg: string = "";
 
-  constructor() { }
+  constructor(
+    public oMetadataService: MetadataService
+  ) { }
 
   ngOnInit() {
     this.eventsSubscriptionShow = this.show.subscribe({ next: (str: string) => this.showModal(str) });

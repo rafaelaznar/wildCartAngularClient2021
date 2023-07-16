@@ -569,6 +569,7 @@ export class MetadataService {
       case str == "search": return "Buscar";
       case str == "find": return "Encontrar";
       case str == "rpp": return "Registros por página";
+      case str == "registers per page": return "Registros por página";
       case str == "page": return "Página";
       case str == "yes": return "Sí";
       case str == "no": return "No";
@@ -624,10 +625,15 @@ export class MetadataService {
       //
       case str == "Now there are": return "Ahora hay";
       case str == "less": return "menos";
+      case str == "Close": return "Cerrar";
+      case str == "wildCART": return "wildCART";
+      case str == "by Rafael Aznar & students": return "by Rafael Aznar & students";
+      case str == "MIT Licensed": return "MIT Licensed";
+      
 
 
-
-
+      
+      
       //
       case str == "No active filter": return "Sin filtro";
       case str == "Filter: ": return "Filtro: ";

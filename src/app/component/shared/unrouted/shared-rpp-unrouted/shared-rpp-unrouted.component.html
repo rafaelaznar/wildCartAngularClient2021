@@ -1,7 +1,7 @@
 <div class="dropdown mb-3">
   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
     aria-expanded="false">
-    Registros por página: {{nPageSize}}
+    {{oMetadataService.getName('registers per page')}}: {{nPageSize}}
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" (click)="onChangeRpp(10)">10</a></li>
