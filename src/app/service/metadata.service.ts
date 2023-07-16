@@ -552,6 +552,11 @@ export class MetadataService {
       //
       case str == "Component ERROR: please contact administrator": return "ERROR del componente: por favor, contacte con el administrador";
       case str == "Message: ": return "Mensaje: ";
+      case str == "Showing": return "Mostrando";
+
+      //
+      case str == "No active filter": return "Sin filtro";
+      case str == "Filter: ": return "Filtro: ";
       default: return 'Desconocido';
     }
   }

@@ -7,8 +7,8 @@
 </div>
 <div class="row justify-content-between my-3">
   <div class="col-md text-start">
-    <h5 *ngIf="!oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> SIN FILTRO</span></h5>
-    <h5 *ngIf="oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> FILTRO:
+    <h5 *ngIf="!oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> {{oMetadataService.getName('No active filter')}}</span></h5>
+    <h5 *ngIf="oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> {{oMetadataService.getName('Filter: ')}}
         {{oPage.strFilteredMessage}}</span></h5>
   </div>
   <div class="col-md text-center">
@@ -18,7 +18,7 @@
     </app-shared-search-unrouted>
   </div>
   <div class="col-md text-end">
-    <h5 class="text-muted" *ngIf="oPage.totalElements<oPage.nRecords">Mostrando {{oPage.totalElements| number:'1.0-0'}}
+    <h5 class="text-muted" *ngIf="oPage.totalElements<oPage.nRecords">{{oMetadataService.getName('Showing')}} {{oPage.totalElements| number:'1.0-0'}}
       {{oMetadataService.getName(strEntity+'s')}} de {{oPage.nRecords| number:'1.0-0'}}</h5>
     <h4 class="text-muted" *ngIf="oPage.totalElements==oPage.nRecords">{{oPage.totalElements| number:'1.0-0'}}
       {{oMetadataService.getName(strEntity+'s')}}</h4>
