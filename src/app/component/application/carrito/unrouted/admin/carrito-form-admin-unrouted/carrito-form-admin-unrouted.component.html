@@ -62,8 +62,8 @@
 <div *ngIf="status!=null">
   <div class="row justify-content-center">
     <div class="col-md text-center">
-      <h6 class="text-danger">Component ERROR: please contact administrator.</h6>
-      <h6 class="text-danger">Message: {{ status.status + "(" + status.statusText + ") " +
+      <h6 class="text-danger">{{oMetadataService.getName('Component ERROR: please contact administrator')}}</h6>
+      <h6 class="text-danger">{{oMetadataService.getName('Message: ')}} {{ status.status + "(" + status.statusText + ") " +
         status.message}}</h6>
     </div>
   </div>

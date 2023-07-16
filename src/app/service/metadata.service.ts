@@ -550,6 +550,8 @@ export class MetadataService {
       // case str == "The request has been succesfully completed.": return "La operación se ha ejecutado con éxito";      
       // case str == "An unexpected error has occurred. The request has not been completed.": return "Ha ocurrido un error inesperado. La operación no se ha podido completar.";
       //
+      case str == "Component ERROR: please contact administrator": return "ERROR del componente: por favor, contacte con el administrador";
+      case str == "Message: ": return "Mensaje: ";
       default: return 'Desconocido';
     }
   }
