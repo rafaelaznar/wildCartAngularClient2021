@@ -14,7 +14,7 @@
     <div class="col-md text-end">
       <h5 class="text-muted" *ngIf="oPage.totalElements<oPage.nRecords">{{oMetadataService.getName('Showing')}} {{oPage.totalElements|
         number:'1.0-0'}}
-        {{oMetadataService.getName(strEntity+'s')}} de {{oPage.nRecords| number:'1.0-0'}}</h5>
+        {{oMetadataService.getName(strEntity+'s')}} {{oMetadataService.getName('of')}} {{oPage.nRecords| number:'1.0-0'}}</h5>
       <h4 class="text-muted" *ngIf="oPage.totalElements==oPage.nRecords">{{oPage.totalElements| number:'1.0-0'}}
         {{oMetadataService.getName(strEntity+'s')}}</h4>
     </div>

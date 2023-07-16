@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { GenerateService } from 'src/app/service/generate.service';
@@ -15,7 +15,7 @@ import { SessionService } from 'src/app/service/session.service';
   templateUrl: './shared-generate-routed.component.html',
   styleUrls: ['./shared-generate-routed.component.css']
 })
-export class SharedGenerateUnroutedComponent  extends CheckSession implements OnInit {
+export class SharedGenerateUnroutedComponent extends CheckSession implements OnInit {
 
   oUserSession: IUsuario;
   nProductos: number = 0;
@@ -31,8 +31,6 @@ export class SharedGenerateUnroutedComponent  extends CheckSession implements On
   constructor(
     public oGenerateService: GenerateService,
     public oCountService: CountService,
-    private oActivatedRoute: ActivatedRoute,
-    private oRoute: ActivatedRoute,
     public oRouter: Router,
     protected oLocation: Location,
     public oMetadataService: MetadataService,
@@ -61,7 +59,7 @@ export class SharedGenerateUnroutedComponent  extends CheckSession implements On
     this.bLoading = true;
     this.oGenerateService.generateProductos(n).subscribe({
       next: (num: number) => {
-        this.strResult = "Ahora hay " + num + " productos";
+        this.strResult = this.oMetadataService.getName('Now there are') + ' ' + num + ' ' + this.oMetadataService.getName('products');
         this.bLoading = false;
         this.openModal();
       },
@@ -78,7 +76,7 @@ export class SharedGenerateUnroutedComponent  extends CheckSession implements On
     this.bLoading = true;
     this.oGenerateService.generateUsuarios(n).subscribe({
       next: (num: number) => {
-        this.strResult = "Ahora hay " + num + " usuarios";
+        this.strResult = this.oMetadataService.getName('Now there are') + ' ' + num + ' ' + this.oMetadataService.getName('users');
         this.bLoading = false;
         this.openModal();
       },
@@ -95,7 +93,7 @@ export class SharedGenerateUnroutedComponent  extends CheckSession implements On
     this.bLoading = true;
     this.oGenerateService.generateTiposDeUsuario().subscribe({
       next: (num: number) => {
-        this.strResult = "Ahora hay " + num + " tipos de producto";
+        this.strResult = this.oMetadataService.getName('Now there are') + ' ' + num + ' ' + this.oMetadataService.getName('user types');
         this.bLoading = false;
         this.openModal();
       },
@@ -112,7 +110,7 @@ export class SharedGenerateUnroutedComponent  extends CheckSession implements On
     this.bLoading = true;
     this.oGenerateService.generateTiposDeProductos(n).subscribe({
       next: (num: number) => {
-        this.strResult = "Ahora hay " + num + " tipos de producto";
+        this.strResult = this.oMetadataService.getName('Now there are') + ' ' + num + ' ' + this.oMetadataService.getName('product types');
         this.bLoading = false;
         this.openModal();
       },
@@ -129,7 +127,7 @@ export class SharedGenerateUnroutedComponent  extends CheckSession implements On
     this.bLoading = true;
     this.oGenerateService.generateCompras(n).subscribe({
       next: (num: number) => {
-        this.strResult = "Ahora hay " + num + " compras";
+        this.strResult = this.oMetadataService.getName('Now there are') + ' ' + num + ' ' + this.oMetadataService.getName('purchases');
         this.bLoading = false;
         this.openModal();
       },
@@ -146,7 +144,7 @@ export class SharedGenerateUnroutedComponent  extends CheckSession implements On
     this.bLoading = true;
     this.oGenerateService.generateFacturas(n).subscribe({
       next: (num: number) => {
-        this.strResult = "Ahora hay " + num + " facturas";
+        this.strResult = this.oMetadataService.getName('Now there are') + ' ' + num + ' ' + this.oMetadataService.getName('invoices');
         this.bLoading = false;
         this.openModal();
       },
@@ -163,7 +161,7 @@ export class SharedGenerateUnroutedComponent  extends CheckSession implements On
     this.bLoading = true;
     this.oGenerateService.purgeFacturas().subscribe({
       next: (num: number) => {
-        this.strResult = "Ahora hay " + num + " facturas menos";
+        this.strResult = this.oMetadataService.getName('Now there are') + ' ' + num + ' ' + this.oMetadataService.getName('invoices') + ' ' + this.oMetadataService.getName('less');
         this.bLoading = false;
         this.openModal();
       },
@@ -180,7 +178,7 @@ export class SharedGenerateUnroutedComponent  extends CheckSession implements On
     this.bLoading = true;
     this.oGenerateService.generateCarritos(n).subscribe({
       next: (num: number) => {
-        this.strResult = "Ahora hay " + num + " carritos";
+        this.strResult = this.oMetadataService.getName('Now there are') + ' ' + num + ' ' + this.oMetadataService.getName('cart items');
         this.bLoading = false;
         this.openModal();
       },
@@ -192,7 +190,6 @@ export class SharedGenerateUnroutedComponent  extends CheckSession implements On
       }
     })
   }
-
 
   //modal 
 

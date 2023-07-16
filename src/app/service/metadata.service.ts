@@ -367,6 +367,61 @@ export class MetadataService {
       case str == "thecomment": return "El comentario";
       case str == "thecomments": return "Los comentarios";
 
+
+      // entidades
+      //
+      case str == "user": return "Usuario";
+      case str == "a user": return "Un usuario";
+      case str == "users": return "Usuarios";
+      case str == "the user": return "El usuario";
+      case str == "the users": return "Los usuarios";
+      //
+      case str == "product type": return "Tipo de producto";
+      case str == "a product type": return "Un tipo de producto";
+      case str == "product types": return "Tipos de producto";
+      case str == "the product type": return "El tipo de producto";
+      case str == "the product types": return "Los tipos de producto";
+      //
+      case str == "product": return "Producto";
+      case str == "a product": return "Un producto";
+      case str == "products": return "Productos";
+      case str == "the product": return "El producto";
+      case str == "the products": return "Los productos";
+      //
+      case str == "user type": return "Tipo de usuario";
+      case str == "a user type": return "Un tipo de usuario";
+      case str == "user types": return "Tipos de usuario";
+      case str == "the user type": return "El tipo de usuario";
+      case str == "the user types": return "Los tipos de usuario";
+      //
+      case str == "purchase": return "Compra";
+      case str == "a purchase": return "Una compra";
+      case str == "purchases": return "Compras";
+      case str == "the purchase": return "La compra";
+      case str == "the purchases": return "Las compras";
+      //
+      case str == "invoice": return "Factura";
+      case str == "an invoice": return "Una factura";
+      case str == "invoices": return "Facturas";
+      case str == "the invoice": return "La factura";
+      case str == "the invoices": return "Las facturas";
+      //
+      case str == "cart": return "Carrito";
+      case str == "a cart": return "Un Carrito";
+      case str == "carts": return "Carritos";
+      case str == "the cart": return "El carrito";
+      case str == "the carts": return "Los carritos";
+      //
+      case str == "cart item": return "Línea de carrito";
+      case str == "a cart item": return "Una línea de carrito";
+      case str == "cart items": return "Líneas de carrito";
+      case str == "the cart item": return "La línea de carrito";
+      case str == "the cart items": return "Las líneas de carrito";
+
+
+
+
+
       //operaciones
       case str == "view": return "Ver";
       case str == "viewof": return "Vista";
@@ -553,6 +608,25 @@ export class MetadataService {
       case str == "Component ERROR: please contact administrator": return "ERROR del componente: por favor, contacte con el administrador";
       case str == "Message: ": return "Mensaje: ";
       case str == "Showing": return "Mostrando";
+      case str == "Showing only": return "Mostrando sólo";
+      //
+      case str == "Showing only comments of the user": return "Mostrando sólo los comentarios del usuario";
+      case str == "Showing only comments of the product": return "Mostrando sólo los comentarios del producto";
+      case str == "Showing only items in cart of the user": return "Mostrando sólo las líneas de carrito del usuario";
+      case str == "Showing only items in cart of the product": return "Mostrando sólo las líneas de carrito del producto";
+      case str == "Showing only purchases in the invoice of": return "Mostrando sólo las compras en la factura de";
+      case str == "Showing only purchases of the product": return "Mostrando sólo las compras del producto";
+      case str == "Showing only invoices of the user": return "Mostrando sólo las facturas del usuario";
+      case str == "Showing only products of the type": return "Mostrando sólo productos del tipo";
+      case str == "Showing only users of the type": return "Mostrando sólo usuarios del tipo";
+      //
+      case str == "of": return "de";
+      //
+      case str == "Now there are": return "Ahora hay";
+      case str == "less": return "menos";
+
+
+
 
       //
       case str == "No active filter": return "Sin filtro";
@@ -562,11 +636,11 @@ export class MetadataService {
   }
 
   public getFilterMsg(strFilter: string): string {
-        if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
-          return 'Filtro: ' + strFilter;
-        } else {
-          return '';
-        }
+    if (strFilter !== null && strFilter !== undefined && strFilter !== "") {
+      return 'Filtro: ' + strFilter;
+    } else {
+      return '';
+    }
 
 
   }

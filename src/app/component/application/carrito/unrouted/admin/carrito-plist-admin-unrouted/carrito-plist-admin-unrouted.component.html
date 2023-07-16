@@ -1,10 +1,10 @@
 <div class="row justify-content-between">
   <div class="col-md text-center">
     <div class="alert alert-info" role="alert" *ngIf="id_usuario">
-      <h6>Mostrando sólo líneas de carrito del usuario "{{oPage.strFilteredTitle}}"</h6>
+      <h6>{{oMetadataService.getName('Showing only items in cart of the user')}} "{{oPage.strFilteredTitle}}"</h6>
     </div>
     <div class="alert alert-info" role="alert" *ngIf="id_producto">
-      <h6>Mostrando sólo líneas de carrito del producto "{{oPage.strFilteredTitle}}"</h6>
+      <h6>{{oMetadataService.getName('Showing only items in cart of the product')}} "{{oPage.strFilteredTitle}}"</h6>
     </div>
   </div>
 </div>
@@ -20,7 +20,7 @@
     </div>
     <div class="col-md text-end">
       <h5 class="text-muted" *ngIf="oPage.totalElements<oPage.nRecords">{{oMetadataService.getName('Showing')}} {{oPage.totalElements| number:'1.0-0'}}
-        {{oMetadataService.getName(strEntity+'s')}} de {{oPage.nRecords| number:'1.0-0'}}</h5>
+        {{oMetadataService.getName(strEntity+'s')}} {{oMetadataService.getName('of')}} {{oPage.nRecords| number:'1.0-0'}}</h5>
       <h4 class="text-muted" *ngIf="oPage.totalElements==oPage.nRecords">{{oPage.totalElements| number:'1.0-0'}}
         {{oMetadataService.getName(strEntity+'s')}}</h4>
     </div>
