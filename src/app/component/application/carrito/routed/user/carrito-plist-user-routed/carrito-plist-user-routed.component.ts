@@ -43,7 +43,7 @@ export class CarritoPlistUserRoutedComponent extends CheckSession implements OnI
   }
 
   onPurchase(): void {
-    if (confirm('¿Está seguro de que desea realizar la compra de los productos en el carrito?')) {
+    if (confirm(this.oMetadataService.getName('Are you sure you want to purchase products in cart?'))) {
       this.oCarritoService.purchase().subscribe(
         (data) => {
           console.log(data);

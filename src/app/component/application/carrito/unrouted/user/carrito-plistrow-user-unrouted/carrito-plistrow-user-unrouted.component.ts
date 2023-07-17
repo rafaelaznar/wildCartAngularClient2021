@@ -5,6 +5,7 @@ import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { API_URL } from 'src/environments/environment';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: '[app-carrito-plistrow-user-unrouted]',
@@ -20,12 +21,14 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
   @Input() id_tipousuario_session: number = null;
   @Output() selection = new EventEmitter<number>();
   @Output() addCarritoEE = new EventEmitter<number>();
-
+  //
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
+  //
   oUsuarioSession: IUsuario;
   strAPI_URL: string = API_URL;
+  status: HttpErrorResponse = null;
 
   constructor(
     public oMetadataService: MetadataService,
@@ -43,7 +46,12 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
   addCarrito(id_producto: number) {
     this.oCarritoService.add(id_producto, 1).subscribe({
       next: (result: number) => {
+        this.status = null;
         this.addCarritoEE.emit(id_producto);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
+        this.addCarritoEE.emit(0);
       }
     })
   }
@@ -52,6 +60,10 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
     this.oCarritoService.reduce(id_producto, 1).subscribe({
       next: (result: number) => {
         this.addCarritoEE.emit(id_producto);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
+        this.addCarritoEE.emit(0);
       }
     })
   }

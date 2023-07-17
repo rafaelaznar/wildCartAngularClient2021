@@ -682,6 +682,11 @@ export class MetadataService {
       case str == 'Log in': return 'Acceder';
       case str == 'There are problems with the server. Try it later': return 'Hay problemas con el servidor. Inténtelo más tarde.';
       case str == 'The cart you always wanted to have, but you never dared to develop': return 'Hay problemas con el servidor. Inténtelo más tarde.';
+      //
+      case str == 'Puchase products in cart': return 'Comprar los productos en el carrito';
+      case str == 'Are you sure you want to purchase products in cart?': return '¿Está seguro de que desea realizar la compra de los productos en el carrito?';
+
+
 
       //
       case str == 'No active filter': return 'Sin filtro';

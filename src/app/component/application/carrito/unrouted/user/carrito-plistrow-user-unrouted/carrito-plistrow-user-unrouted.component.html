@@ -1,6 +1,3 @@
-<!-- 
-<td class="text-end">{{ oCarrito.id }}</td>
--->
 <td class="text-center"><img [src]="strAPI_URL + '/file/' + oCarrito.producto.imagen" style="height:60px; width:80px" />
 </td>
 <td>
@@ -19,16 +16,6 @@
 </td>
 <td class="text-end" style="font-size: 20px;">{{ oCarrito.cantidad * getPrecioConDescuentoConIVA(oCarrito) |number:
   '1.2-2':'es-ES' }} €</td>
-
-<!--
-<td>
-  <button class="btn btn-light btn-sm" [routerLink]="['/carrito/plist/usuario/' + oCarrito.usuario.id]">
-    <i [ngClass]="oMetadataService.getIcon('usuario')"></i> ({{ oCarrito.usuario.id }}) {{ oCarrito.usuario.nombre + "
-    " + oCarrito.usuario.apellido1 + " " + oCarrito.usuario.apellido2 | trim:50 }}
-  </button>
-</td>
--->
-
 <td class="text-center">
   <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
     <button type="button" class="btn btn-success" [routerLink]="['/usuario','producto','cview',oCarrito.producto.id]">

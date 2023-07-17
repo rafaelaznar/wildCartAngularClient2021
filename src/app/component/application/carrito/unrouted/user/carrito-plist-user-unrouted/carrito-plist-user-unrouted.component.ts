@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { CarritoService } from 'src/app/service/carrito.service';
-import { ICarrito, ICarritoPage } from 'src/app/model/carrito-interfaces';
+import { ICarritoPage } from 'src/app/model/carrito-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/constant/constants';
 
