@@ -4,31 +4,32 @@
             <div class="bg-light mt-5 p-5">
                 <img class="my-3" src="assets/img/wildCartLogo100.png" width="100">
                 <form [formGroup]="formularioLogin" (ngSubmit)="onSubmit()" novalidate class="row g-3">
-                    <h4><i [ngClass]="oMetadataService.getIcon(this.strOperation)"></i> entrada al sistema</h4>
+                    <h4><i [ngClass]="oMetadataService.getIcon(this.strOperation)"></i>
+                        {{oMetadataService.getName('login form')}}</h4>
                     <div class="col-12 text-start">
-                        <label for="username" class="form-label">Nombre de usuario</label>
+                        <label for="username" class="form-label">{{oMetadataService.getName('user name')}}</label>
                         <div class="input-group has-validation">
                             <input type="text" formControlName="username" id="username" class="form-control"
                                 placeholder="Nombre de usuario"
                                 [class.is-invalid]="formularioLogin.get('username')!.dirty && formularioLogin.get('username')!.invalid">
                             <div class="invalid-feedback"
                                 *ngIf="!formularioLogin.get('username').errors?.minlength || formularioLogin.get('username').dirty">
-                                La longitud mínima es 5
+                                {{oMetadataService.getName('Minimum lenght for this field is')}} 5
                             </div>
                         </div>
                     </div>
                     <div class="col-12 text-start">
-                        <label for="password" class="form-label">Contraseña</label>
+                        <label for="password" class="form-label">{{oMetadataService.getName('Password')}}</label>
                         <input type="password" formControlName="password" id="password" name="password"
                             class="form-control" placeholder="Contraseña"
                             [class.is-invalid]="formularioLogin.get('password')!.dirty && formularioLogin.get('password')!.invalid"
                             required>
                         <div class="invalid-feedback"
                             *ngIf="!formularioLogin.get('password').errors?.required || formularioLogin.get('password').dirty">
-                            Por favor introduce la contraseña</div>
+                            {{oMetadataService.getName('You can't leave empty this field')}}</div>
                         <div class="invalid-feedback"
                             *ngIf="!formularioLogin.get('password').errors?.minlength || formularioLogin.get('password').dirty">
-                            La longitud mínima es 5
+                            {{oMetadataService.getName('Minimum lenght for this field is')}} 5
                         </div>
                     </div>
 
@@ -40,8 +41,8 @@
                         <div class="input-group mb-3">
                             <input type="text" id="captcha_form" class="form-control" formControlName="answer"
                                 placeholder="Responde a la pregunta">
-                            <button class="btn btn-outline-secondary" type="button" (click)="reloadPrelogin()">Cambiar
-                                pregunta
+                            <button class="btn btn-outline-secondary" type="button" (click)="reloadPrelogin()">
+                                {{oMetadataService.getName('Change the question')}}
                             </button>
 
                         </div>
@@ -51,12 +52,12 @@
                         <div class="control-group text-center mt-3">
                             <button type="submit" class="btn btn-primary"><i
                                     [ngClass]="oMetadataService.getIcon(this.strOperation)"></i>
-                                Acceder</button>
+                                {{oMetadataService.getName('Log in')}}</button>
                         </div>
                     </div>
 
                     <div class="alert alert-danger" role="alert" *ngIf="oError">
-                        Hay problemas con el servidor. Inténtelo más tarde.
+                        {{oMetadataService.getName('There are problems with the server. Try it later')}}
                     </div>
 
                     <div class="col-12">

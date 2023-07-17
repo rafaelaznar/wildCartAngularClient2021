@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { SessionEvent, SessionEvents, SessionService } from 'src/app/service/session.service';
 import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
-import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 
 @Component({
@@ -11,10 +10,10 @@ import { CarritoService } from 'src/app/service/carrito.service';
   templateUrl: './shared-logout-routed.component.html',
   styleUrls: ['./shared-logout-routed.component.css']
 })
+
 export class SharedLogoutRoutedComponent implements OnInit {
 
   strOperation: string = "logout"
-  //oUserSession: IUsuario;
   strUserName: string = null;
 
   constructor(

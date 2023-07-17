@@ -639,8 +639,6 @@ export class MetadataService {
       case str == "User": return "Usuario";
       case str == "Product": return "Producto";
       //
-
-
       case str == "N most discounted products": return "N Productos con más descuento";
       case str == "N least discounted products": return "N Productos con menos descuento";
 
@@ -673,6 +671,18 @@ export class MetadataService {
       case str == "N most buyed products for a client between two dates": return "N Productos que más compra un cliente entre dos fechas";
 
       case str == "N most buyer clients for a product between two dates": return "N Clientes que más compran un producto entre dos fechas";
+      //
+      case str == "You're now logged in as": return "Actualmente está logueado en el sistema como";
+      case str == "login form": return "entrada al sistema";
+      case str == "User name": return "Nombre de usuario";
+      case str == "Minimum lenght for this field is": return "La longitud mínima para este campo es";
+      case str == "Password": return "Contraseña";
+      case str == "You can't leave empty this field": return "Este campo no se puede dejar vacío";
+      case str == "Change the question": return "Cambiar pregunta";
+      case str == "Log in": return "Acceder";
+      case str == "There are problems with the server. Try it later": return "Hay problemas con el servidor. Inténtelo más tarde.";
+      case str == "The cart you always wanted to have, but you never dared to develop": return "Hay problemas con el servidor. Inténtelo más tarde.";
+
 
 
 

@@ -41,7 +41,7 @@ export class SharedLoginRoutedComponent implements OnInit {
   }
 
   reloadPrelogin() {
-    //ejercicio: hacer que se recargue el captcha con una pregunta diferente de la actual
+    // todo: make captcha reload with a different question than the current one     
     this.oSessionService.prelogin().subscribe({
       next: (data: IPrelogin) => {
         this.oPrelogin = data;
