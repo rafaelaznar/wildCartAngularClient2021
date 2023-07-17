@@ -58,6 +58,7 @@
                         </a>
                     </small>
                 </li>
+
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==2">
                     <small>
                         <a class="nav-link" [class.active]="strUrl=='/usuario/factura/plist'"
@@ -66,6 +67,16 @@
                         </a>
                     </small>
                 </li>
+
+                <span class="navbar-item mx-1" *ngIf="oUsuarioSession?.tipousuario.id==2">
+                    <small>
+                        <a class="nav-link" [class.active]="strUrl=='/usuario/carrito/cplist'"
+                            [routerLink]="['/usuario','carrito','cplist']">
+                            <i [ngClass]="oMetadataService.getIcon('carrito') + ' fa-2x'" pBadge value="{{nCarritos}}"></i>
+                        </a>
+                    </small>
+                </span>
+    
 
                 <li class="nav-item" *ngIf="oUsuarioSession?.tipousuario.id==1">
                     <small>
@@ -119,15 +130,6 @@
                     <a class="nav-link" [class.active]="strUrl=='/usuario/usuario/cview/' + oUsuarioSession.id"
                         [routerLink]="['/usuario','usuario','cview',oUsuarioSession.id]">
                         <i [ngClass]="oMetadataService.getIcon('usuario') + ' fa-2x'"> </i>
-                    </a>
-                </small>
-            </span>
-
-            <span class="navbar-item mx-1" *ngIf="oUsuarioSession?.tipousuario.id==2">
-                <small>
-                    <a class="nav-link" [class.active]="strUrl=='/usuario/carrito/cplist'"
-                        [routerLink]="['/usuario','carrito','cplist']">
-                        <i [ngClass]="oMetadataService.getIcon('carrito') + ' fa-2x'" pBadge value="{{nCarritos}}"></i>
                     </a>
                 </small>
             </span>
