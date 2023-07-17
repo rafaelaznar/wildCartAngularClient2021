@@ -1,7 +1,7 @@
 import { CarritoService } from '../../../../service/carrito.service';
-import { Component, Input, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
+import { FacturaService } from 'src/app/service/factura.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { SessionEvents, SessionService } from 'src/app/service/session.service';
 
@@ -14,12 +14,13 @@ export class SharedMenuUnroutedComponent implements OnInit {
   
   oUsuarioSession: IUsuario;
   nCarritos: number = 0;
+  nFacturas: number = 0;
   strUrl: String = '';
   
   constructor(
-    private router: Router,
     public oMetadataService: MetadataService,
     private oCarritoService: CarritoService,
+    private oFacturaService: FacturaService,
     private oSessionService: SessionService
   ) {    
     /*
@@ -88,6 +89,12 @@ export class SharedMenuUnroutedComponent implements OnInit {
           this.nCarritos = oData;
         }
       })
+      this.oFacturaService.getCount().subscribe({
+        next: (oData: number) => {
+          this.nFacturas = oData;
+        }
+      })
+
     }
   }
 

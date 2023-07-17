@@ -63,7 +63,7 @@
                     <small>
                         <a class="nav-link" [class.active]="strUrl=='/usuario/factura/plist'"
                             [routerLink]="['/usuario','factura','plist']"><i
-                                [ngClass]="oMetadataService.getIcon('factura') + ' fa-2x'"></i>
+                                [ngClass]="oMetadataService.getIcon('factura') + ' fa-2x'" pBadge value="{{nFacturas}}"></i>
                         </a>
                     </small>
                 </li>
