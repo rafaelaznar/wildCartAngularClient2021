@@ -51,49 +51,49 @@ export class SharedReportsRoutedComponent extends CheckSession implements OnInit
   }
 
   aReports: IReport[] = [
-    { nombre: this.oMetadataService.getName("N most discounted products"), codigo: "i01", fechas: false, usuario: false, producto: false },
-    { nombre: this.oMetadataService.getName("N least discounted products"), codigo: "i02", fechas: false, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N most discounted products'), codigo: 'i01', fechas: false, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N least discounted products'), codigo: 'i02', fechas: false, usuario: false, producto: false },
 
-    { nombre: this.oMetadataService.getName("N most discounted clients"), codigo: "i03", fechas: false, usuario: false, producto: false },
-    { nombre: this.oMetadataService.getName("N least discounted clients"), codigo: "i04", fechas: false, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N most discounted clients'), codigo: 'i03', fechas: false, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N least discounted clients'), codigo: 'i04', fechas: false, usuario: false, producto: false },
 
-    { nombre: this.oMetadataService.getName("N products with most existences left"), codigo: "i05", fechas: false, usuario: false, producto: false },
-    { nombre: this.oMetadataService.getName("N products with least existences left"), codigo: "i06", fechas: false, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N products with most existences left'), codigo: 'i05', fechas: false, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N products with least existences left'), codigo: 'i06', fechas: false, usuario: false, producto: false },
 
-    { nombre: this.oMetadataService.getName("N most selled products between two dates"), codigo: "i07", fechas: true, usuario: false, producto: false },
-    { nombre: this.oMetadataService.getName("N least selled products between two dates"), codigo: "i08", fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N most selled products between two dates'), codigo: 'i07', fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N least selled products between two dates'), codigo: 'i08', fechas: true, usuario: false, producto: false },
 
-    { nombre: this.oMetadataService.getName("N most selled types of products between two dates"), codigo: "i09", fechas: true, usuario: false, producto: false },
-    { nombre: this.oMetadataService.getName("N least selled types of products between two dates"), codigo: "i10", fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N most selled types of products between two dates'), codigo: 'i09', fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N least selled types of products between two dates'), codigo: 'i10', fechas: true, usuario: false, producto: false },
 
-    { nombre: this.oMetadataService.getName("N clients most buyers between two dates"), codigo: "i11", fechas: true, usuario: false, producto: false },
-    { nombre: this.oMetadataService.getName("N clients least buyers between two dates"), codigo: "i12", fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N clients most buyers between two dates'), codigo: 'i11', fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N clients least buyers between two dates'), codigo: 'i12', fechas: true, usuario: false, producto: false },
 
-    { nombre: this.oMetadataService.getName("N invoices with highest amounts between two dates"), codigo: "i13", fechas: true, usuario: false, producto: false },
-    { nombre: this.oMetadataService.getName("N invoices with lowest amounts between two dates"), codigo: "i14", fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N invoices with highest amounts between two dates'), codigo: 'i13', fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName('N invoices with lowest amounts between two dates'), codigo: 'i14', fechas: true, usuario: false, producto: false },
 
-    { nombre: this.oMetadataService.getName("N client invoices between two dates"), codigo: "i15", fechas: true, usuario: true, producto: false },
+    { nombre: this.oMetadataService.getName('N client invoices between two dates'), codigo: 'i15', fechas: true, usuario: true, producto: false },
 
-    { nombre: this.oMetadataService.getName("N product invoices between two dates"), codigo: "i16", fechas: true, usuario: false, producto: true },
+    { nombre: this.oMetadataService.getName('N product invoices between two dates'), codigo: 'i16', fechas: true, usuario: false, producto: true },
 
-    { nombre: this.oMetadataService.getName("N most purchased products by a client between two dates"), codigo: "i17", fechas: true, usuario: true, producto: false },
+    { nombre: this.oMetadataService.getName('N most purchased products by a client between two dates'), codigo: 'i17', fechas: true, usuario: true, producto: false },
 
-    { nombre: this.oMetadataService.getName("N clients most buyers of a product between two dates"), codigo: "i18", fechas: true, usuario: false, producto: true },
+    { nombre: this.oMetadataService.getName('N clients most buyers of a product between two dates'), codigo: 'i18', fechas: true, usuario: false, producto: true },
 
-    { nombre: this.oMetadataService.getName("N most buyed products for a client between two dates"), codigo: "i19", fechas: true, usuario: true, producto: false },
+    { nombre: this.oMetadataService.getName('N most buyed products for a client between two dates'), codigo: 'i19', fechas: true, usuario: true, producto: false },
 
-    { nombre: this.oMetadataService.getName("N most buyer clients for a product between two dates"), codigo: "i20", fechas: true, usuario: false, producto: true },
+    { nombre: this.oMetadataService.getName('N most buyer clients for a product between two dates'), codigo: 'i20', fechas: true, usuario: false, producto: true },
 
   ];
 
 
   es: any = {
     firstDayOfWeek: 1,
-    dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
-    dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
-    dayNamesMin: ["D", "L", "M", "X", "J", "V", "S"],
-    monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
-    monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+    dayNames: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+    dayNamesShort: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+    dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+    monthNames: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+    monthNamesShort: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
     today: 'Hoy',
     clear: 'Borrar',
     dateFormat: 'mm/dd/yyyy',
@@ -145,7 +145,7 @@ export class SharedReportsRoutedComponent extends CheckSession implements OnInit
         this.oForm.controls['id_usuario'].setErrors({ 'incorrect': false });
       },
       error: (err) => {
-        console.log("reports", err);
+        console.log('reports', err);
         this.oClient = null;
         this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
       }
@@ -154,11 +154,11 @@ export class SharedReportsRoutedComponent extends CheckSession implements OnInit
   }
 
   onChanges(): void {
-    //console.log("onChanges", this.oForm);
+    //console.log('onChanges', this.oForm);
     this.oForm.valueChanges.subscribe({
       next: (val) => {
-        if (Object.prototype.toString.call(this.oForm.value.fecha_inicio) === "[object Date]" && !isNaN(this.oForm.value.fecha_inicio)) {
-          if (Object.prototype.toString.call(this.oForm.value.fecha_fin) === "[object Date]" && !isNaN(this.oForm.value.fecha_inicio)) {
+        if (Object.prototype.toString.call(this.oForm.value.fecha_inicio) === '[object Date]' && !isNaN(this.oForm.value.fecha_inicio)) {
+          if (Object.prototype.toString.call(this.oForm.value.fecha_fin) === '[object Date]' && !isNaN(this.oForm.value.fecha_inicio)) {
             const ini = new Date(this.oForm.value.fecha_inicio);
             const fin = new Date(this.oForm.value.fecha_fin);
             if (ini <= fin) {
@@ -174,7 +174,7 @@ export class SharedReportsRoutedComponent extends CheckSession implements OnInit
         } else {
           this.dateRangeOK = false;
         }
-        //console.log("onChanges fechas " + this.dateRangeOK);
+        //console.log('onChanges fechas ' + this.dateRangeOK);
       }
     });
   }
@@ -182,7 +182,7 @@ export class SharedReportsRoutedComponent extends CheckSession implements OnInit
   //popup
 
   eventsSubjectShowPopup: Subject<string> = new Subject<string>();
-  strResult = "";
+  strResult = '';
 
   openPopup(str: string): void {
     this.eventsSubjectShowPopup.next(str);

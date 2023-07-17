@@ -9,7 +9,7 @@
     </div>
 
     <div class="row mb-3">
-        <label for="nombre" class="col-sm-2 col-form-label">{{oMetadataService.getName('nombre')}}</label>
+        <label for="nombre" class="col-sm-2 col-form-label">{{oMetadataService.getName('name')}}</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="nombre" formControlName="nombre"
                 [ngClass]="{'is-valid': f.nombre.valid,'is-invalid': f.nombre.invalid}" />

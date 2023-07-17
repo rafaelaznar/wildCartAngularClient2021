@@ -9,7 +9,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 export class SharedRemoveconfirmationUnroutedComponent implements OnInit {
 
-  @Input() strEntity: string = "";
+  @Input() strEntity: string = '';
   @Output() doRemove = new EventEmitter<Event>();
 
   constructor(

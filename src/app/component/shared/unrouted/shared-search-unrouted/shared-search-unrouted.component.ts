@@ -11,8 +11,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class SharedSearchUnroutedComponent implements OnInit {
 
-  @Input() strFilter: string = "";
-  @Input() strTitlePlural: string = "";
+  @Input() strFilter: string = '';
+  @Input() strTitlePlural: string = '';
   @Output() eeFilter = new EventEmitter<string>();
   //
   subjectFilter = new Subject();
@@ -34,7 +34,7 @@ export class SharedSearchUnroutedComponent implements OnInit {
   }
 
   resetFilter(): void {
-    this.strFilter = "";
+    this.strFilter = '';
     this.eeFilter.emit(this.strFilter);
   }
 

@@ -11,8 +11,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 export class CarritoPlistheaderAdminUnroutedComponent implements OnInit {
 
   @Input() mode: boolean = true; //true=edición; false=selección
-  @Input() strSortField: string = "";
-  @Input() strSortDirection: string = "";
+  @Input() strSortField: string = '';
+  @Input() strSortDirection: string = '';
   @Output() sort = new EventEmitter<IOrder>();
 
   constructor(

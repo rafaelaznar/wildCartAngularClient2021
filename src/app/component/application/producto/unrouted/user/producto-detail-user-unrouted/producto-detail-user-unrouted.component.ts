@@ -110,7 +110,7 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
       doc.text(this.oProducto.tipoproducto.nombre, alignx2, 110)
 
 
-      doc.save(this.oProducto.codigo + "- Ficha Tecnica.pdf");
+      doc.save(this.oProducto.codigo + '- Ficha Tecnica.pdf');
 
 
     });

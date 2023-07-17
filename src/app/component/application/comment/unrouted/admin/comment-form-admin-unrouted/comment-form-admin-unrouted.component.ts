@@ -44,7 +44,7 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.strOperation == "edit") {
+    if (this.strOperation == 'edit') {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
@@ -106,7 +106,7 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
           usuario: { id: this.oForm.value.id_usuario },
           producto: { id: this.oForm.value.id_producto },
         }
-        if (this.strOperation == "new") {
+        if (this.strOperation == 'new') {
           this.oCommentService
             .newOne(this.oComment2Send)
             .subscribe({
@@ -144,7 +144,7 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
       .getOne(this.oForm.controls['id_usuario'].value)
       .subscribe({
         next: (oUsuario: IUsuario) => {
-          if (this.strOperation == "edit") {
+          if (this.strOperation == 'edit') {
             this.oComment2Show.usuario = oUsuario;
           } else {
             this.oComment2Show = {} as IComment;
@@ -153,7 +153,7 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
           }
         },
         error: (err) => {
-          this.oComment2Show.producto.nombre = "ERROR";
+          this.oComment2Show.producto.nombre = 'ERROR';
           this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
         }
       });
@@ -168,7 +168,7 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
       .getOne(this.oForm.controls['id_producto'].value)
       .subscribe({
         next: (oproducto: IProducto) => {
-          if (this.strOperation == "edit") {
+          if (this.strOperation == 'edit') {
             this.oComment2Show.producto = oproducto;
           } else {
             this.oComment2Show = {} as IComment;
@@ -177,7 +177,7 @@ export class CommentFormAdminUnroutedComponent implements OnInit {
           }
         },
         error: (err) => {
-          this.oComment2Show.producto.nombre = "ERROR";
+          this.oComment2Show.producto.nombre = 'ERROR';
           this.oForm.controls['id_producto'].setErrors({ 'incorrect': true });
         }
       });

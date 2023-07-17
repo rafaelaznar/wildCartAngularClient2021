@@ -1,5 +1,5 @@
-import { IEntity2Send, IEntity, IPage } from "./model-interfaces";
-import { ITipousuario } from "./tipousuario-interfaces";
+import { IEntity2Send, IEntity, IPage } from './model-interfaces';
+import { ITipousuario } from './tipousuario-interfaces';
 
 export interface IUsuario extends IEntity {
     dni: string,

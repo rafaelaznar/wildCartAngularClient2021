@@ -4,7 +4,7 @@
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField == 'id' && strSortDirection == 'desc'"></i>
 </th>
 <th (click)="doSetOrder('nombre')">
-  <i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('nombre')}}
+  <i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('name')}}
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField == 'nombre' && strSortDirection == 'asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField == 'nombre' && strSortDirection == 'desc'"></i>
 </th>

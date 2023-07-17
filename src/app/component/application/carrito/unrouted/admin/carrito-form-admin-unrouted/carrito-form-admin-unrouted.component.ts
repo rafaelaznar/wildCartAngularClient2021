@@ -46,7 +46,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.strOperation == "edit") {
+    if (this.strOperation == 'edit') {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
@@ -95,7 +95,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
   }
 
   save(): void {
-    if (this.strOperation == "new") {
+    if (this.strOperation == 'new') {
       this.oCarritoService.newOne(this.oData2Send).subscribe({
         next: (id: number) => {
           this.status = null;
@@ -127,7 +127,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
     this.oForm.controls['id_producto'].markAsDirty();
     this.oProductoService.getOne(this.oForm.controls['id_producto'].value).subscribe({
       next: (oProducto: IProducto) => {
-        if (this.strOperation == "edit") {
+        if (this.strOperation == 'edit') {
           this.oData2Show.producto = oProducto;
         } else {
           if (!this.oData2Show) {
@@ -138,7 +138,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.oData2Show.producto.nombre = "ERROR";
+        this.oData2Show.producto.nombre = 'ERROR';
         this.oForm.controls['id_producto'].setErrors({ 'incorrect': true });
       }
     });
@@ -151,7 +151,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
     this.oForm.controls['id_usuario'].markAsDirty();
     this.oUsuarioService.getOne(this.oForm.controls['id_usuario'].value).subscribe({
       next: (oUsuario: IUsuario) => {
-        if (this.strOperation == "edit") {
+        if (this.strOperation == 'edit') {
           this.oData2Show.usuario = oUsuario;
         } else {
           if (!this.oData2Show) {
@@ -162,7 +162,7 @@ export class CarritoFormAdminUnroutedComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.oData2Show.usuario.nombre = "ERROR";
+        this.oData2Show.usuario.nombre = 'ERROR';
         this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
       }
     });

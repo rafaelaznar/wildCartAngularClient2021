@@ -16,7 +16,7 @@ import { SessionEvent, SessionEvents, SessionService } from 'src/app/service/ses
 
 export class SharedLoginRoutedComponent implements OnInit {
 
-  strOperation: string = "login"
+  strOperation: string = 'login'
   formularioLogin: FormGroup<IUser>;
   oUserSession: IUsuario;
   oError: HttpErrorResponse = null;
@@ -60,7 +60,7 @@ export class SharedLoginRoutedComponent implements OnInit {
 
   onSubmit() {
     this.oError = null;
-    if (this.formularioLogin.get('answer')!.value == "whatever") {
+    if (this.formularioLogin.get('answer')!.value == 'whatever') {
       this.oSessionService.login(this.formularioLogin.get('username')!.value, this.formularioLogin.get('password')!.value).subscribe({
         next: (data: string) => {
           this.oSessionService.setToken(data);
@@ -68,13 +68,13 @@ export class SharedLoginRoutedComponent implements OnInit {
             this.oSessionService.emit(new SessionEvent(SessionEvents.login, data));
             this.oRouter.navigate(['/home']);
           } else {
-            this.oError = new HttpErrorResponse({ error: "JWT LOGIN: token already expired" });
-            console.error("ERROR: JWT LOGIN: token already expired");
+            this.oError = new HttpErrorResponse({ error: 'JWT LOGIN: token already expired' });
+            console.error('ERROR: JWT LOGIN: token already expired');
           }
         },
         error: (error: HttpErrorResponse) => {
           this.oError = error;
-          console.error("ERROR: LOGIN: " + error);
+          console.error('ERROR: LOGIN: ' + error);
         }
       });
 
@@ -93,8 +93,8 @@ export class SharedLoginRoutedComponent implements OnInit {
             this.oSessionService.emit(new SessionEvent(SessionEvents.login, data));
             this.oRouter.navigate(['/home']);
           } else {
-            this.oError = new HttpErrorResponse({ error: "JWT LOGIN: token already expired" });
-            console.error("ERROR: JWT LOGIN: token already expired");
+            this.oError = new HttpErrorResponse({ error: 'JWT LOGIN: token already expired' });
+            console.error('ERROR: JWT LOGIN: token already expired');
           }
         },
         error: (error: HttpErrorResponse) => {
@@ -102,7 +102,7 @@ export class SharedLoginRoutedComponent implements OnInit {
             this.reloadPrelogin();
           } else {
             this.oError = error;
-            console.error("ERROR: LOGIN: " + error);
+            console.error('ERROR: LOGIN: ' + error);
           }
         }
       });
@@ -113,17 +113,17 @@ export class SharedLoginRoutedComponent implements OnInit {
 
   loginAdmin() {
     this.formularioLogin.setValue({
-      username: "admin",
-      password: "wildcart",
-      answer: "whatever"
+      username: 'admin',
+      password: 'wildcart',
+      answer: 'whatever'
     })
   }
 
   loginUser() {
     this.formularioLogin.setValue({
-      username: "user",
-      password: "wildcart",
-      answer: "whatever"
+      username: 'user',
+      password: 'wildcart',
+      answer: 'whatever'
     })
   }
 

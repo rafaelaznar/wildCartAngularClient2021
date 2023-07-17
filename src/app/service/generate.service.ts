@@ -21,7 +21,7 @@ export class GenerateService {
   }
 
   generateTiposDeUsuario(): Observable<number> {
-    return this.http.post<number>(API_URL + '/tipousuario/generate', "", httpOptions);
+    return this.http.post<number>(API_URL + '/tipousuario/generate', '', httpOptions);
   }
 
 

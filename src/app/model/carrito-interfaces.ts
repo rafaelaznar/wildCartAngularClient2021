@@ -1,4 +1,4 @@
-import { IEntity, IEntity2Send, IPage } from "./model-interfaces";
+import { IEntity, IEntity2Send, IPage } from './model-interfaces';
 import { IProducto } from './producto-interfaces';
 import { IUsuario } from './usuario-interfaces';
 

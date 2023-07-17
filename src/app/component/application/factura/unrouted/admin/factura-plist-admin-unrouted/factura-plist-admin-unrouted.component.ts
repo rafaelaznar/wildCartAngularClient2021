@@ -38,11 +38,11 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
     if (this.id_usuario != null) {
       this.oUsuarioService.getOne(this.id_usuario).subscribe({
         next: (oUsuario: IUsuario) => {
-          this.oPage.strFilteredTitle = oUsuario.nombre + " " + oUsuario.apellido1 + " " + oUsuario.apellido2 + " (" + oUsuario.dni + ")";
+          this.oPage.strFilteredTitle = oUsuario.nombre + ' ' + oUsuario.apellido1 + ' ' + oUsuario.apellido2 + ' (' + oUsuario.dni + ')';
         },
         error: (error: HttpErrorResponse) => {
           this.oPage.error = error;
-          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+          console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
         }
       })
     }
@@ -62,7 +62,7 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
             },
             error: (error: HttpErrorResponse) => {
               this.oPage.error = error;
-              console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+              console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
               this.oPage.nRecords = null;
             }
           })            
@@ -75,7 +75,7 @@ export class FacturaPlistAdminUnroutedComponent implements OnInit {
         },
         error: (error: HttpErrorResponse) => {
           this.oPage.error = error;
-          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+          console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
         }
       })
   }

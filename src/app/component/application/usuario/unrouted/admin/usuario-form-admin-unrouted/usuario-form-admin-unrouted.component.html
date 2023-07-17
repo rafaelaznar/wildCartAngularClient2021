@@ -25,7 +25,7 @@
 
     <div class="row mb-3">
         <label for="nombre" class="col-sm-2 col-form-label">
-            <i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('nombre')}}</label>
+            <i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('name')}}</label>
         <div class="col-sm-8">
             <input type="text" class="form-control" id="nombre" formControlName="nombre"
                 [ngClass]="{'is-valid' : f.controls.nombre.dirty && !(f.controls.nombre.errors?.required || f.controls.nombre.errors?.minlength) }">

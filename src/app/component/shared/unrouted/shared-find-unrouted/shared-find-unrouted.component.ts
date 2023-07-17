@@ -9,8 +9,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 
 export class SharedFindUnroutedComponent implements OnInit {
-  @Input() entity: string = "";
-  @Input() description: string = "";
+  @Input() entity: string = '';
+  @Input() description: string = '';
   @Input() id: number = null;
   @Output() selection = new EventEmitter<number>();
 

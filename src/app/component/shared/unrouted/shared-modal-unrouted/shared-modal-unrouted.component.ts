@@ -16,10 +16,10 @@ export class SharedModalUnroutedComponent implements OnInit {
   @Output() close = new EventEmitter<Event>();
   @Input() show: Observable<void>;
   @Input() hide: Observable<void>;
-  @Input() title: string = "wildCART";
-  @Input() size: string = "";
+  @Input() title: string = 'wildCART';
+  @Input() size: string = '';
   @Input() mode: boolean = false; // false->cerrar; true->si/no (no implementado)
-  @Input() mimodal: string = "miModal"; // obligatorio si hay más de un modal en la página
+  @Input() mimodal: string = 'miModal'; // obligatorio si hay más de un modal en la página
   //
   private eventsSubscriptionShow: Subscription;
   private eventsSubscriptionHide: Subscription;

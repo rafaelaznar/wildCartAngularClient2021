@@ -1,5 +1,5 @@
-import { IEntity, IEntity2Send, IPage } from "./model-interfaces";
-import { ITipoproducto } from "./tipoproducto-interfaces";
+import { IEntity, IEntity2Send, IPage } from './model-interfaces';
+import { ITipoproducto } from './tipoproducto-interfaces';
 
 export interface IFile {
     file: File

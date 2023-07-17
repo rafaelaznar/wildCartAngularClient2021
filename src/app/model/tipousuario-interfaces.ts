@@ -1,4 +1,4 @@
-import { IEntity, IEntity2Send, IPage } from "./model-interfaces";
+import { IEntity, IEntity2Send, IPage } from './model-interfaces';
 
 export interface ITipousuario extends IEntity {
 	nombre: string;

@@ -35,7 +35,7 @@ export class CommentPlistGuestUnroutedComponent implements OnInit {
   }
 
   getPage = () => {
-    this.oCommentService.getPage(this.oPage.number, 5, "creation", "desc", null, this.id_usuario, this.id_producto)
+    this.oCommentService.getPage(this.oPage.number, 5, 'creation', 'desc', null, this.id_usuario, this.id_producto)
       .subscribe({
         next: (oPage: ICommentPage) => {
           Object.assign(this.oPage, oPage);
@@ -48,7 +48,7 @@ export class CommentPlistGuestUnroutedComponent implements OnInit {
         },
         error: (error: HttpErrorResponse) => {
           this.oPage.error = error;
-          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+          console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
         }
       })
   }

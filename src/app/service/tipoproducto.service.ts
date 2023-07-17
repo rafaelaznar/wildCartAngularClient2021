@@ -39,7 +39,7 @@ export class TipoproductoService implements ICrud {
   }
 
   getCount(): Observable<number> {
-    return this.http.get<number>(this.sURL + "/count", httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.get<number>(this.sURL + '/count', httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   newOne(oTipoProducto: ITipoproducto2Send): Observable<number> {

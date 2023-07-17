@@ -25,7 +25,7 @@ export class SharedGenerateUnroutedComponent extends CheckSession implements OnI
   nCompras: number = 0;
   nFacturas: number = 0;
   nCarritos: number = 0;
-  strResult: string = "";
+  strResult: string = '';
   bLoading: boolean = false;
 
   constructor(
@@ -64,7 +64,7 @@ export class SharedGenerateUnroutedComponent extends CheckSession implements OnI
         this.openModal();
       },
       error: (err) => {
-        this.strResult = "ERROR: " + err.message;
+        this.strResult = 'ERROR: ' + err.message;
         console.error('ERROR: ', err);
         this.bLoading = false;
         this.openModal();
@@ -81,7 +81,7 @@ export class SharedGenerateUnroutedComponent extends CheckSession implements OnI
         this.openModal();
       },
       error: (err) => {
-        this.strResult = "ERROR: " + err.message;
+        this.strResult = 'ERROR: ' + err.message;
         console.error('ERROR: ', err);
         this.bLoading = false;
         this.openModal();
@@ -98,7 +98,7 @@ export class SharedGenerateUnroutedComponent extends CheckSession implements OnI
         this.openModal();
       },
       error: (err) => {
-        this.strResult = "ERROR: " + err.message;
+        this.strResult = 'ERROR: ' + err.message;
         console.error('ERROR: ', err);
         this.bLoading = false;
         this.openModal();
@@ -115,7 +115,7 @@ export class SharedGenerateUnroutedComponent extends CheckSession implements OnI
         this.openModal();
       },
       error: (err) => {
-        this.strResult = "ERROR: " + err.message;
+        this.strResult = 'ERROR: ' + err.message;
         console.error('ERROR: ', err);
         this.bLoading = false;
         this.openModal();
@@ -132,7 +132,7 @@ export class SharedGenerateUnroutedComponent extends CheckSession implements OnI
         this.openModal();
       },
       error: err => {
-        this.strResult = "ERROR: " + err.message;
+        this.strResult = 'ERROR: ' + err.message;
         console.error('ERROR: ', err);
         this.bLoading = false;
         this.openModal();
@@ -149,7 +149,7 @@ export class SharedGenerateUnroutedComponent extends CheckSession implements OnI
         this.openModal();
       },
       error: (err) => {
-        this.strResult = "ERROR: " + err.message;
+        this.strResult = 'ERROR: ' + err.message;
         console.error('ERROR: ', err);
         this.bLoading = false;
         this.openModal();
@@ -166,7 +166,7 @@ export class SharedGenerateUnroutedComponent extends CheckSession implements OnI
         this.openModal();
       },
       error: (err) => {
-        this.strResult = "ERROR: " + err.message;
+        this.strResult = 'ERROR: ' + err.message;
         console.error('ERROR: ', err);
         this.bLoading = false;
         this.openModal();
@@ -183,7 +183,7 @@ export class SharedGenerateUnroutedComponent extends CheckSession implements OnI
         this.openModal();
       },
       error: (err) => {
-        this.strResult = "ERROR: " + err.message;
+        this.strResult = 'ERROR: ' + err.message;
         console.error('ERROR: ', err);
         this.bLoading = false;
         this.openModal();
@@ -201,7 +201,7 @@ export class SharedGenerateUnroutedComponent extends CheckSession implements OnI
 
   onCloseModal() {
     this.getCount();
-    this.strResult = "";
+    this.strResult = '';
   }
 
 }

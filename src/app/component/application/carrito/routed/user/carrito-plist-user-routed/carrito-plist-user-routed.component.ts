@@ -48,7 +48,7 @@ export class CarritoPlistUserRoutedComponent extends CheckSession implements OnI
         (data) => {
           console.log(data);
           this.oCarritoService.notifyCarritoChange('purchase');
-          alert('Compra realizada con éxito. Se ha generado la factura número ' + data + ".");
+          alert('Compra realizada con éxito. Se ha generado la factura número ' + data + '.');
           this.oRouter.navigate(['/', 'usuario', 'factura', 'plist']);
         }
       )

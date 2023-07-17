@@ -1,5 +1,5 @@
-import { Observable } from "rxjs";
-import { IEntity, IPage } from "./model-interfaces";
+import { Observable } from 'rxjs';
+import { IEntity, IPage } from './model-interfaces';
 
 export interface IView {
     

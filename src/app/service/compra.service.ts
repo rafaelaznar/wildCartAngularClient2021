@@ -24,32 +24,32 @@ export class CompraService implements ICrud {
     if (!rpp) {
       rpp = 10;
     }
-    let strOrderUrl: string = "";
+    let strOrderUrl: string = '';
     if (filter) {
-      strOrderUrl += "&filter=" + filter;
+      strOrderUrl += '&filter=' + filter;
     }
     if (order) {
-      strOrderUrl += "&sort=" + order + "," + direction;
+      strOrderUrl += '&sort=' + order + ',' + direction;
     }
     if (id_factura) {
-      strOrderUrl += "&factura=" + id_factura;
+      strOrderUrl += '&factura=' + id_factura;
     }
     if (id_producto) {
-      strOrderUrl += "&producto=" + id_producto;
+      strOrderUrl += '&producto=' + id_producto;
     }
-    return this.http.get<ICompraPage>(this.sURL + "?page=" + page + "&size=" + rpp + strOrderUrl, httpOptions);
+    return this.http.get<ICompraPage>(this.sURL + '?page=' + page + '&size=' + rpp + strOrderUrl, httpOptions);
   }
 
   allByFactura(id_factura: number): Observable<ICompra[]> {
-    return this.http.get<ICompra[]>(this.sURL + "/all/" + id_factura, httpOptions);
+    return this.http.get<ICompra[]>(this.sURL + '/all/' + id_factura, httpOptions);
   }
 
   getOne(id: number): Observable<ICompra> {
-    return this.http.get<ICompra>(this.sURL + "/" + id, httpOptions);
+    return this.http.get<ICompra>(this.sURL + '/' + id, httpOptions);
   }
 
   getCount(): Observable<number> {
-    return this.http.get<number>(this.sURL + "/count", httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.get<number>(this.sURL + '/count', httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   newOne(oCompra2Send: ICompra2Send): Observable<number> {
@@ -61,7 +61,7 @@ export class CompraService implements ICrud {
   }
 
   removeOne(id: number): Observable<number> {
-    return this.http.delete<number>(this.sURL + "/" + id, httpOptions);
+    return this.http.delete<number>(this.sURL + '/' + id, httpOptions);
   }
 
 }

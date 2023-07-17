@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } fro
 import { IFactura } from 'src/app/model/factura-interfaces';
 import { Constants } from 'src/app/constant/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
-import { FacturaService } from 'src/app/service/factura.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { API_URL } from 'src/environments/environment';
 
@@ -27,10 +26,8 @@ export class FacturaPlistrowUserUnroutedComponent implements OnInit {
   strAPI_URL: string = API_URL;
 
   constructor(
-    public oMetadataService: MetadataService,
-    private oFacturaService: FacturaService
-  ) {
-    this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
+    public oMetadataService: MetadataService  ) {
+    this.oUsuarioSession = JSON.parse(localStorage.getItem('user'));
   }
 
   ngOnInit() { }

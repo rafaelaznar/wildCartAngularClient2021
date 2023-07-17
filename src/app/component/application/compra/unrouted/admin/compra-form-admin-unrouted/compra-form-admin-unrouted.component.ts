@@ -49,7 +49,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
 
     this.es = Constants.CALENDAR_ES;
 
-    if (this.strOperation == "edit") {
+    if (this.strOperation == 'edit') {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
@@ -110,7 +110,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
   }
 
   save(): void {
-    if (this.strOperation == "new") {
+    if (this.strOperation == 'new') {
       this.oCompraService.newOne(this.oData2Send).subscribe({
         next: (id: number) => {
           this.status = null;
@@ -142,7 +142,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
     this.oForm.controls['id_producto'].markAsDirty();
     this.oProductoService.getOne(this.oForm.controls['id_producto'].value).subscribe({
       next: (oProducto: IProducto) => {
-        if (this.strOperation == "edit") {
+        if (this.strOperation == 'edit') {
           this.oData2Show.producto = oProducto;
         } else {
           if (!this.oData2Show) {
@@ -153,7 +153,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.oData2Show.producto.nombre = "ERROR";
+        this.oData2Show.producto.nombre = 'ERROR';
         this.oForm.controls['id_producto'].setErrors({ 'incorrect': true });
       }
     });
@@ -165,7 +165,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
     this.oForm.controls['id_factura'].markAsDirty();
     this.oFacturaService.getOne(this.oForm.controls['id_factura'].value).subscribe({
       next: (oFactura: IFactura) => {
-        if (this.strOperation == "edit") {
+        if (this.strOperation == 'edit') {
           this.oData2Show.factura = oFactura;
         } else {
           if (!this.oData2Show) {
@@ -176,7 +176,7 @@ export class CompraFormAdminUnroutedComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.oData2Show.factura.usuario.nombre = "ERROR";
+        this.oData2Show.factura.usuario.nombre = 'ERROR';
         this.oForm.controls['id_factura'].setErrors({ 'incorrect': true });
       }
     });

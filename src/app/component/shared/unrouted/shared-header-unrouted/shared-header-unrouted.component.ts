@@ -7,11 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SharedHeaderUnroutedComponent implements OnInit {
   
-  @Input() title: string = "wildCart";  
-  @Input() subtitle: string = "wildCart";  
-  @Input() filter: string = "";
-  @Input() icon: string = "";
-  @Input() iconEntity: string = "";
+  @Input() title: string = 'wildCart';  
+  @Input() subtitle: string = 'wildCart';  
+  @Input() filter: string = '';
+  @Input() icon: string = '';
+  @Input() iconEntity: string = '';
   
   constructor() { }
 

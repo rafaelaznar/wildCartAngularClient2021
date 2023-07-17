@@ -14,7 +14,7 @@ export class SharedMenuUnroutedComponent implements OnInit {
   
   oUsuarioSession: IUsuario;
   nCarritos: number = 0;
-  strUrl: String = "";
+  strUrl: String = '';
   
   constructor(
     private router: Router,
@@ -62,11 +62,11 @@ export class SharedMenuUnroutedComponent implements OnInit {
 
     this.oCarritoService.onCarritoChangeSubject.subscribe({
       next: (data) => {
-        //console.log("menu", "carrito", "action:" + data.action)
+        //console.log('menu', 'carrito', 'action:' + data.action)
         this.count()
       },
       error: (error) => {
-        console.log("error:", error)
+        console.log('error:', error)
       }
     });
   }

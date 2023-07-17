@@ -1,6 +1,6 @@
-import { IEntity, IEntity2Send, IPage } from "./model-interfaces";
-import { IFactura } from "./factura-interfaces";
-import { IProducto } from "./producto-interfaces";
+import { IEntity, IEntity2Send, IPage } from './model-interfaces';
+import { IFactura } from './factura-interfaces';
+import { IProducto } from './producto-interfaces';
 
 export interface ICompra extends IEntity {
     cantidad: number,

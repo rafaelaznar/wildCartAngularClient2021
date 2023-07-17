@@ -38,11 +38,11 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.strOperation == "edit") {
+    if (this.strOperation == 'edit') {
       this.get();
     } else {
-      console.error("tipousuario-form-admin: can't create a new usertype");
-      this.msg.emit({ error: new HttpErrorResponse({ statusText: "can't create a new usertype" }), id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+      console.error('tipousuario-form-admin: can\'t create a new usertype');
+      this.msg.emit({ error: new HttpErrorResponse({ statusText: 'can\'t create a new usertype' }), id: null, strEntity: this.strEntity, strOperation: this.strOperation });
     }
   }
 
@@ -75,9 +75,9 @@ export class TipousuarioFormAdminUnroutedComponent implements OnInit {
   }
 
   save(): void {
-    if (this.strOperation == "new") {
-      console.error("tipousuario-form-admin: can't create a new usertype");
-      this.msg.emit({ error: new HttpErrorResponse({ statusText: "can't create a new usertype" }), id: null, strEntity: this.strEntity, strOperation: this.strOperation });
+    if (this.strOperation == 'new') {
+      console.error('tipousuario-form-admin: can\'t create a new usertype');
+      this.msg.emit({ error: new HttpErrorResponse({ statusText: 'can\'t create a new usertype' }), id: null, strEntity: this.strEntity, strOperation: this.strOperation });
     } else {
       this.oTipousuarioService.updateOne(this.oData2Send).subscribe({
         next: (id: number) => {

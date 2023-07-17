@@ -26,7 +26,7 @@
                             required>
                         <div class="invalid-feedback"
                             *ngIf="!formularioLogin.get('password').errors?.required || formularioLogin.get('password').dirty">
-                            {{oMetadataService.getName('You can't leave empty this field')}}</div>
+                            {{oMetadataService.getName('You can\'t leave empty this field')}}</div>
                         <div class="invalid-feedback"
                             *ngIf="!formularioLogin.get('password').errors?.minlength || formularioLogin.get('password').dirty">
                             {{oMetadataService.getName('Minimum lenght for this field is')}} 5

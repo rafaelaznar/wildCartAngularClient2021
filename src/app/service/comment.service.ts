@@ -23,40 +23,40 @@ export class CommentService implements ICrud {
     if (!rpp) {
       rpp = 10;
     }
-    let strUrl: string = "";
+    let strUrl: string = '';
     if (order) {
-      strUrl += "&sort=" + order + "," + direction;
+      strUrl += '&sort=' + order + ',' + direction;
     }
     if (filter) {
-      strUrl += "&filter=" + filter;
+      strUrl += '&filter=' + filter;
     }
     if (usuario) {
-      strUrl += "&usuario=" + usuario;
+      strUrl += '&usuario=' + usuario;
     }
     if (producto) {
-      strUrl += "&producto=" + producto;
+      strUrl += '&producto=' + producto;
     }
-    return this.http.get<ICommentPage>(this.sURL + "?page=" + page + "&size=" + rpp + strUrl, httpOptions);
+    return this.http.get<ICommentPage>(this.sURL + '?page=' + page + '&size=' + rpp + strUrl, httpOptions);
   }
 
   getOne(id: number): Observable<IComment> {
-    return this.http.get<IComment>(this.sURL + "/" + id, httpOptions);
+    return this.http.get<IComment>(this.sURL + '/' + id, httpOptions);
   }
 
   getCount(): Observable<number> {
-    return this.http.get<number>(this.sURL + "/count", httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.get<number>(this.sURL + '/count', httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   newOne(oProduct: IComment2Send): Observable<number> {
-    return this.http.post<number>(this.sURL + "/", oProduct, httpOptions);
+    return this.http.post<number>(this.sURL + '/', oProduct, httpOptions);
   }
 
   updateOne(oProduct: IComment2Send): Observable<number> {
-    return this.http.put<number>(this.sURL + "/", oProduct, httpOptions);
+    return this.http.put<number>(this.sURL + '/', oProduct, httpOptions);
   }
 
   removeOne(id: number): Observable<number> {
-    return this.http.delete<number>(this.sURL + "/" + id, httpOptions);
+    return this.http.delete<number>(this.sURL + '/' + id, httpOptions);
   }
 
 }

@@ -31,7 +31,7 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
     public oMetadataService: MetadataService,
     private oCarritoService: CarritoService
   ) {
-    this.oUsuarioSession = JSON.parse(localStorage.getItem("user"));
+    this.oUsuarioSession = JSON.parse(localStorage.getItem('user'));
   }
 
   ngOnInit() {

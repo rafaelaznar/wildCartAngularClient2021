@@ -48,7 +48,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.strOperation == "edit") {
+    if (this.strOperation == 'edit') {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
@@ -131,7 +131,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
           descuento: this.oForm.value.descuento,
           tipoproducto: { id: this.oForm.value.id_tipoproducto },
         }
-        if (this.strOperation == "new") {
+        if (this.strOperation == 'new') {
           this.oProductoService.newOne(this.oProducto2Send).subscribe({
             next: (id: number) => {
               this.status = null;
@@ -165,7 +165,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
     this.oForm.controls['id_tipoproducto'].markAsDirty();
     this.oTipoproductoService.getOne(this.oForm.controls['id_tipoproducto'].value).subscribe({
       next: (oTipoproducto: ITipoproducto) => {
-        if (this.strOperation == "edit") {
+        if (this.strOperation == 'edit') {
           this.oProducto2Show.tipoproducto = oTipoproducto;
         } else {
           this.oProducto2Show = {} as IProducto;
@@ -174,7 +174,7 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.oProducto2Show.tipoproducto.nombre = "ERROR";
+        this.oProducto2Show.tipoproducto.nombre = 'ERROR';
         this.oForm.controls['id_tipousuario'].setErrors({ 'incorrect': true });
       }
     });

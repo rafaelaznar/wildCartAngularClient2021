@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { FacturaService } from 'src/app/service/factura.service';
-import { IFactura, IFacturaPage } from 'src/app/model/factura-interfaces';
+import { IFacturaPage } from 'src/app/model/factura-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/constant/constants';
 import { FacturaPrintService } from 'src/app/service/factura.print.service';
 import { Subject } from 'rxjs/internal/Subject';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-factura-plist-user-unrouted',
@@ -16,11 +17,11 @@ import { Subject } from 'rxjs/internal/Subject';
 export class FacturaPlistUserUnroutedComponent implements OnInit {
 
   @Input() id_usuario: number = null;
-  @Input() id_tipousuario_session: number = null;
-
-  strProfile: string = Constants.PROFILES.admin;
+  //
+  strProfile: string = Constants.PROFILES.user;
   strEntity: string = Constants.ENTITIES.invoice;
   strOperation: string = Constants.OPERATIONS.plist;
+  //
   oPage: IFacturaPage;
 
   constructor(
@@ -40,7 +41,7 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
       next: (oPage: IFacturaPage) => {
         Object.assign(this.oPage, oPage);
         this.oPage.error = null;
-        this.oPage.strFilteredMessage = this.oMetadataService.getFilteredMessage1(this.oPage.strFilter, 'usuario', this.id_usuario);
+        this.oPage.strFilteredMessage = this.oPage.strFilter
         if (this.oPage.number > this.oPage.totalPages - 1 && this.oPage.totalPages > 0) {
           this.oPage.number = this.oPage.totalPages - 1;
           this.getPage();
@@ -48,6 +49,10 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
           this.oPage.number = 0;
           this.getPage();
         }
+      },
+      error: (error: HttpErrorResponse) => {
+        this.oPage.error = error;
+        console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
       }
     });
   };
@@ -80,7 +85,6 @@ export class FacturaPlistUserUnroutedComponent implements OnInit {
 
   onViewFactura(id_factura: number) {
     this.id_factura = id_factura;
-    console.log('onViewFactura', id_factura);
     this.eventsSubjectShowModal.next();
   }
 

@@ -10,8 +10,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 export class CompraPlistheaderAdminUnroutedComponent implements OnInit {
 
-  @Input() strSortField: string = "";
-  @Input() strSortDirection: string = "";
+  @Input() strSortField: string = '';
+  @Input() strSortDirection: string = '';
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() sort = new EventEmitter<IOrder>();
 

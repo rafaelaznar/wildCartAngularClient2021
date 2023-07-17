@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 
 
@@ -19,7 +19,7 @@ export class PaginationService {
             else if (i == pages)
                 botonera.push(i.toString());
             else if (i == (page - vecindad - 1) || i == (page + vecindad + 1))
-                botonera.push("...");
+                botonera.push('...');
         }
         return botonera;
     }

@@ -46,7 +46,7 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
 
     this.es = Constants.CALENDAR_ES;
 
-    if (this.strOperation == "edit") {
+    if (this.strOperation == 'edit') {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
@@ -81,7 +81,7 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
   };
 
   save(): void {
-    if (this.strOperation == "new") {
+    if (this.strOperation == 'new') {
       this.oFacturaService.newOne(this.oFactura2Send).subscribe({
         next: (id: number) => {
           this.status = null;
@@ -130,7 +130,7 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
     this.oForm.controls['id_usuario'].markAsDirty();
     this.oUsuarioService.getOne(this.oForm.controls['id_usuario'].value).subscribe({
       next: (oUsuario: IUsuario) => {
-        if (this.strOperation == "edit") {
+        if (this.strOperation == 'edit') {
           this.oFactura2Show.usuario = oUsuario; //pte!!
         } else {
           this.oFactura2Show = {} as IFactura;
@@ -139,7 +139,7 @@ export class FacturaFormAdminUnroutedComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.oFactura2Show.usuario.nombre = "ERROR";
+        this.oFactura2Show.usuario.nombre = 'ERROR';
         this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
       }
     });

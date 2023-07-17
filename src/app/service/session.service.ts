@@ -5,11 +5,10 @@ import { CryptoService } from './crypto.service';
 import { API_URL, httpOptions } from 'src/environments/environment';
 import { DecodeService } from './decode.service';
 import { IToken } from '../model/token-interface';
-import { filter, map, multicast } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { IUsuario } from '../model/usuario-interfaces';
 import { UsuarioService } from './usuario.service';
 import { IPrelogin } from '../model/session-interfaces';
-import { Token } from '@angular/compiler';
 import { CarritoService } from './carrito.service';
 
 export enum SessionEvents {
@@ -46,7 +45,7 @@ export class SessionService {
     }
 
     prelogin(): Observable<IPrelogin> {
-        return this.oHttpClient.get<IPrelogin>(this.sURL + "/prelogin", httpOptions);
+        return this.oHttpClient.get<IPrelogin>(this.sURL + '/prelogin', httpOptions);
     }
 
     loginCaptcha(strLogin: string, strPassword: string, strToken: string, strAnswer: string): Observable<string> {
@@ -56,14 +55,14 @@ export class SessionService {
             token: strToken,
             answer: strAnswer
         });
-        return this.oHttpClient.post<string>(this.sURL + "/loginc", loginData, httpOptions);
+        return this.oHttpClient.post<string>(this.sURL + '/loginc', loginData, httpOptions);
     }
 
     getUserName(): string {
         if (!this.isSessionActive()) {
-            return "";
+            return '';
         } else {
-            let token: string = localStorage.getItem("token");
+            let token: string = localStorage.getItem('token');
             return this.oDecodeService.parseJwt(token).name;
         }
     }
@@ -72,7 +71,7 @@ export class SessionService {
         if (!this.isSessionActive()) {
             return null;
         } else {
-            let token: string = localStorage.getItem("token");
+            let token: string = localStorage.getItem('token');
             let username: string = this.oDecodeService.parseJwt(token).name;
             //return this.oUsuarioService.getByUsername(username).pipe(multicast(this.subjectUserSession));
             return this.oUsuarioService.getByUsername(username);
@@ -80,15 +79,15 @@ export class SessionService {
     }
 
     getToken(): string {
-        return localStorage.getItem("token");
+        return localStorage.getItem('token');
     }
 
     setToken(data: string): void {
-        localStorage.setItem("token", data);
+        localStorage.setItem('token', data);
     }
 
     isSessionActive(): Boolean {
-        let strToken: string = localStorage.getItem("token");
+        let strToken: string = localStorage.getItem('token');
         if (strToken) {
             let oDecodedToken: IToken = this.oDecodeService.parseJwt(strToken);
             if (Date.now() >= oDecodedToken.exp * 1000) {
@@ -102,7 +101,7 @@ export class SessionService {
     }
 
     logout() {
-        localStorage.removeItem("token");
+        localStorage.removeItem('token');
     }
 
     on(event: SessionEvents): Observable<String> { // pte cambiar a onChange

@@ -36,7 +36,7 @@ export class CommentNewUserUnroutedComponent implements OnInit {
   ) { }
 
   commentForm = new FormGroup({
-    comment: new FormControl("")
+    comment: new FormControl('')
 
   });
 

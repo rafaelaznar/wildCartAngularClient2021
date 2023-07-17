@@ -41,7 +41,7 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.strOperation == "edit") {
+    if (this.strOperation == 'edit') {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
@@ -106,7 +106,7 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
   }
 
   save(): void {
-    if (this.strOperation == "new") {
+    if (this.strOperation == 'new') {
       this.oUsuarioService.newOne(this.oData2Send).subscribe({
         next: (id: number) => {
           this.status = null;
@@ -138,7 +138,7 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
     this.oForm.controls['id_tipousuario'].markAsDirty();
     this.oTipousuarioService.getOne(this.oForm.controls['id_tipousuario'].value).subscribe({
       next: (oData: ITipousuario) => {
-        if (this.strOperation == "edit") {
+        if (this.strOperation == 'edit') {
           this.oData2Show.tipousuario = oData; //pte!!
         } else {
           this.oData2Show = {} as IUsuario;
@@ -146,7 +146,7 @@ export class UsuarioFormAdminUnroutedComponent implements OnInit {
           this.oData2Show.tipousuario = oData;
         }
       }, error: (err) => {
-        this.oData2Show.tipousuario.nombre = "ERROR";
+        this.oData2Show.tipousuario.nombre = 'ERROR';
         this.oForm.controls['id_tipousuario'].setErrors({ 'incorrect': true });
       }
     });

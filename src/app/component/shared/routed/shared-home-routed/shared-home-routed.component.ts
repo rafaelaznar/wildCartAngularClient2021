@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
+import { MetadataService } from 'src/app/service/metadata.service';
 import { SessionService } from 'src/app/service/session.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class SharedHomeRoutedComponent implements OnInit {
 
   constructor(
     private oCarritoService: CarritoService,
-    private oSessionService: SessionService
+    private oSessionService: SessionService,
+    public oMetadataService: MetadataService
   ) {
     if (this.oSessionService.isSessionActive()) {
       this.oSessionService.getUsuario().subscribe({

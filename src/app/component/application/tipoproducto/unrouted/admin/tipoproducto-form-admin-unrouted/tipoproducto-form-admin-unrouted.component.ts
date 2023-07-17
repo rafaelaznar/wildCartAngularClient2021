@@ -38,7 +38,7 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.strOperation == "edit") {
+    if (this.strOperation == 'edit') {
       this.get();
     } else {
       this.oForm = this.oFormBuilder.group({
@@ -76,7 +76,7 @@ export class TipoproductoFormAdminUnroutedComponent implements OnInit {
   }
 
   save(): void {
-    if (this.strOperation == "new") {
+    if (this.strOperation == 'new') {
       this.oTipoproductoService.newOne(this.oData2Send).subscribe({
         next: (id: number) => {
           this.status = null;

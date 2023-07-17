@@ -21,21 +21,21 @@ export class ProductoCarritoViewService implements IView {
     if (!rpp) {
       rpp = 10;
     }
-    let strUrl: string = "";
+    let strUrl: string = '';
     if (order) {
-      strUrl += "&sort=" + order + "," + direction;
+      strUrl += '&sort=' + order + ',' + direction;
     }
     if (filter) {
-      strUrl += "&filter=" + filter;
+      strUrl += '&filter=' + filter;
     }
     if (tipoproducto) {
-      strUrl += "&tipoproducto=" + tipoproducto;
+      strUrl += '&tipoproducto=' + tipoproducto;
     }
-    return this.http.get<IProductoPage>(this.sURL + "?page=" + page + "&size=" + rpp + strUrl, httpOptions);
+    return this.http.get<IProductoPage>(this.sURL + '?page=' + page + '&size=' + rpp + strUrl, httpOptions);
   }
 
   getOne(id: number): Observable<IProducto> {
-    return this.http.get<IProducto>(this.sURL + "/" + id, httpOptions);
+    return this.http.get<IProducto>(this.sURL + '/' + id, httpOptions);
   }
 
 }

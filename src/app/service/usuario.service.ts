@@ -27,50 +27,50 @@ export class UsuarioService implements ICrud {
     if (!rpp) {
       rpp = 10;
     }
-    let strUrl: string = "";
+    let strUrl: string = '';
     if (order) {
-      strUrl += "&sort=" + order + "," + direction;
+      strUrl += '&sort=' + order + ',' + direction;
     }
     if (filter) {
-      strUrl += "&filter=" + filter;
+      strUrl += '&filter=' + filter;
     }
     if (tipousuario) {
-      strUrl += "&tipousuario=" + tipousuario;
+      strUrl += '&tipousuario=' + tipousuario;
     }
     //page--;
-    return this.http.get<IUsuarioPage>(this.sURL + "?page=" + page + "&size=" + rpp + strUrl, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.get<IUsuarioPage>(this.sURL + '?page=' + page + '&size=' + rpp + strUrl, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   getOne(id: number): Observable<IUsuario> {
-    return this.http.get<IUsuario>(this.sURL + "/" + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.get<IUsuario>(this.sURL + '/' + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   getCount(): Observable<number> {
-    return this.http.get<number>(this.sURL + "/count", httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.get<number>(this.sURL + '/count', httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   getByUsername(username: string): Observable<IUsuario> {
-    return this.http.get<IUsuario>(this.sURL + "/username/" + username, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.get<IUsuario>(this.sURL + '/username/' + username, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   newOne(oUsuario: IUsuario2Send): Observable<number> {
-    return this.http.post<number>(this.sURL + "/", oUsuario, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.post<number>(this.sURL + '/', oUsuario, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   updateOne(oUsuario: IUsuario2Send): Observable<number> {
-    return this.http.put<number>(this.sURL + "/" + oUsuario.id, oUsuario, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.put<number>(this.sURL + '/' + oUsuario.id, oUsuario, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   removeOne(id: number): Observable<number> {
-    return this.http.delete<number>(this.sURL + "/" + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.delete<number>(this.sURL + '/' + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   flipValid(id: number): Observable<IUsuario> {
-    return this.http.get<IUsuario>(this.sURL + "/flipvalid/" + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.get<IUsuario>(this.sURL + '/flipvalid/' + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   flipActive(id: number): Observable<IUsuario> {
-    return this.http.get<IUsuario>(this.sURL + "/flipactive/" + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.get<IUsuario>(this.sURL + '/flipactive/' + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
 }

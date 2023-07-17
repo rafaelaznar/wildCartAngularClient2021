@@ -25,7 +25,7 @@ export class ReportPrintService {
   sp = (n: number): string => n.toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   printReport_i01 = (quantity: number): void => {
-    const reportName = "I01";
+    const reportName = 'I01';
     let pageNumber = 1;
     this.oProductoService.nByDescuentoDesc(quantity).subscribe({
       next: (oProductos: IProducto[]) => {
@@ -62,7 +62,7 @@ export class ReportPrintService {
             precioAVG = precioAVG + oProductos[i].precio;
           }
           this.endReport(doc, linea, count, descuentoAVG / count, precioAVG / count);
-          doc.save("Informe_" + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + ".pdf");
+          doc.save('Informe_' + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
         });
       }
     })
@@ -74,41 +74,41 @@ export class ReportPrintService {
     //
     const baseX2 = 120;
     //
-    doc.setFontType("bold");
+    doc.setFontType('bold');
     doc.setFontSize(20);
-    doc.setFontType("normal");
+    doc.setFontType('normal');
     //
     doc.setFillColor(240, 240, 240);
-    doc.rect(baseX, baseY, 190, 20, "F");
+    doc.rect(baseX, baseY, 190, 20, 'F');
     doc.setFontSize(16);
-    doc.setFontType("bold");
+    doc.setFontType('bold');
     doc.text(baseX + 10, baseY + 12, `${reportName}`);
     //    
     doc.setFillColor(240, 240, 240);
     //separacion de cajas: h=15 v=5
-    doc.rect(baseX, baseY + 25, 105, 35, "F");
+    doc.rect(baseX, baseY + 25, 105, 35, 'F');
     doc.addImage(logo, 'PNG', 20, 40, 80, 25);
     //
     doc.setFillColor(240, 240, 240);
-    doc.rect(baseX2, 35, 80, 15, "F");
+    doc.rect(baseX2, 35, 80, 15, 'F');
     doc.setFontSize(12);
     doc.text(142, 44, `Página: ${pageNumber.toString()}`);
     //
     doc.setFillColor(240, 240, 240);
-    doc.rect(baseX2, 55, 80, 15, "F");
+    doc.rect(baseX2, 55, 80, 15, 'F');
     doc.setFontSize(12);
-    doc.text(130, 64, "Fecha: " + formatDate(new Date(), 'dd/MM/yyyy HH:mm', 'en'));
+    doc.text(130, 64, 'Fecha: ' + formatDate(new Date(), 'dd/MM/yyyy HH:mm', 'en'));
     //
     return doc;
   }
 
   private linea(doc: any, oProducto: IProducto, linea: number): void {
     doc.setFontSize(8)
-    doc.text(oProducto.codigo + " - " + oProducto.nombre, 10, linea)
+    doc.text(oProducto.codigo + ' - ' + oProducto.nombre, 10, linea)
     doc.setFontSize(12);
-    doc.text(oProducto.descuento + "", 130, linea, "right");
-    doc.text(this.sp(oProducto.precio), 160, linea, "right");
-    doc.text(this.sp(oProducto.existencias), 194, linea, "right");
+    doc.text(oProducto.descuento + '', 130, linea, 'right');
+    doc.text(this.sp(oProducto.precio), 160, linea, 'right');
+    doc.text(this.sp(oProducto.existencias), 194, linea, 'right');
   }
 
   endReport(doc: any, linea: number, count: number, descuentoAVG: number, precioAVG: number): void {
@@ -116,12 +116,12 @@ export class ReportPrintService {
     doc.line(15, linea, 195, linea);
     let xtit = 150;
     let xnum = 190;
-    doc.text('Número de productos:', xtit, linea + 7, "right");
-    doc.text(count.toString(), xnum, linea + 7, "right")
-    doc.text('Media de descuento:', xtit, linea + 14, "right")
-    doc.text(descuentoAVG.toString() + "%", xnum, linea + 14, "right")
-    doc.text('Media de precios:', xtit, linea + 21, "right")
-    doc.text(precioAVG.toString() + " €", xnum, linea + 21, "right");
+    doc.text('Número de productos:', xtit, linea + 7, 'right');
+    doc.text(count.toString(), xnum, linea + 7, 'right')
+    doc.text('Media de descuento:', xtit, linea + 14, 'right')
+    doc.text(descuentoAVG.toString() + '%', xnum, linea + 14, 'right')
+    doc.text('Media de precios:', xtit, linea + 21, 'right')
+    doc.text(precioAVG.toString() + ' €', xnum, linea + 21, 'right');
   }
 
 }

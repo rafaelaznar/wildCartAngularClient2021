@@ -24,25 +24,25 @@ export class FacturaService implements ICrud {
     if (!rpp) {
       rpp = 10;
     }
-    let strUrl: string = "";
+    let strUrl: string = '';
     if (order) {
-      strUrl += "&sort=" + order + "," + direction;
+      strUrl += '&sort=' + order + ',' + direction;
     }
     if (filter) {
-      strUrl += "&filter=" + filter;
+      strUrl += '&filter=' + filter;
     }
     if (id_usuario) {
-      strUrl += "&usuario=" + id_usuario;
+      strUrl += '&usuario=' + id_usuario;
     }
-    return this.http.get<IFacturaPage>(this.sURL + "?size=" + rpp + "&page=" + page + strUrl, httpOptions);
+    return this.http.get<IFacturaPage>(this.sURL + '?size=' + rpp + '&page=' + page + strUrl, httpOptions);
   }
 
   getOne(id: number): Observable<IFactura> {
-    return this.http.get<IFactura>(this.sURL + "/" + id, httpOptions);
+    return this.http.get<IFactura>(this.sURL + '/' + id, httpOptions);
   }
 
   getCount(): Observable<number> {
-    return this.http.get<number>(this.sURL + "/count", httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
+    return this.http.get<number>(this.sURL + '/count', httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
   newOne(oFactura: IFactura2Send): Observable<number> {
@@ -54,27 +54,27 @@ export class FacturaService implements ICrud {
   }
 
   removeOne(id: number): Observable<number> {
-    return this.http.delete<number>(this.sURL + "/" + id, httpOptions);
+    return this.http.delete<number>(this.sURL + '/' + id, httpOptions);
   }
 
   getTotalFactura4User(id_usuario: number): Observable<number> {
-    return this.http.get<number>(this.sURL + "/total/usuario/" + id_usuario, httpOptions);
+    return this.http.get<number>(this.sURL + '/total/usuario/' + id_usuario, httpOptions);
   }
 
   getTotalFactura(id_factura: number): Observable<number> {
-    return this.http.get<number>(this.sURL + "/total/" + id_factura, httpOptions);
+    return this.http.get<number>(this.sURL + '/total/' + id_factura, httpOptions);
   }
 
   //getAll(): Observable<IFactura> {
-  //  return this.http.get<IFactura>(this.sURL + "/all", httpOptions);
+  //  return this.http.get<IFactura>(this.sURL + '/all', httpOptions);
   //}
 
   //getCount(): Observable<IFactura> {
-  //  return this.http.get<IFactura>(this.sURL + "/count", httpOptions);
+  //  return this.http.get<IFactura>(this.sURL + '/count', httpOptions);
   //}
 
   //random(): Observable<IFactura> {
-  //  return this.http.post<IFactura>(this.sURL + "/random", httpOptions);
+  //  return this.http.post<IFactura>(this.sURL + '/random', httpOptions);
   //}
 
 }

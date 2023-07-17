@@ -33,7 +33,7 @@ export class CommentPlistUserUnroutedComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log("id_p: " + this.id_producto);
+    console.log('id_p: ' + this.id_producto);
     this.reloadCommentsPlistSubject.subscribe({
       next: (response) => {
         if (response) {
@@ -45,8 +45,8 @@ export class CommentPlistUserUnroutedComponent implements OnInit, OnChanges {
   }
 
   getPage = () => {
-    console.log("id_p: " + this.id_producto);
-    this.oCommentService.getPage(this.oPage.number, 5, "creation", "desc", null, this.id_usuario, this.id_producto)
+    console.log('id_p: ' + this.id_producto);
+    this.oCommentService.getPage(this.oPage.number, 5, 'creation', 'desc', null, this.id_usuario, this.id_producto)
       .subscribe({
         next: (oPage: ICommentPage) => {
           Object.assign(this.oPage, oPage);
@@ -59,14 +59,14 @@ export class CommentPlistUserUnroutedComponent implements OnInit, OnChanges {
         },
         error: (error: HttpErrorResponse) => {
           this.oPage.error = error;
-          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+          console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
         }
       })
   }
 
   ngOnChanges() {
     /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES 'someInput'**************/
-    console.log("PARENT COMPONENT UPDATES");
+    console.log('PARENT COMPONENT UPDATES');
     this.getPage();
   }
 

@@ -1,6 +1,6 @@
-import { Router } from "@angular/router";
-import { IUsuario } from "../model/usuario-interfaces";
-import { SessionEvent, SessionEvents, SessionService } from "../service/session.service";
+import { Router } from '@angular/router';
+import { IUsuario } from '../model/usuario-interfaces';
+import { SessionEvent, SessionEvents, SessionService } from '../service/session.service';
 
 export class CheckSession {
 

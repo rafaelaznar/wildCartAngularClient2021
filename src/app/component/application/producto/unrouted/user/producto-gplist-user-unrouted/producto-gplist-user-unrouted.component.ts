@@ -54,7 +54,7 @@ export class ProductoGPlistUserUnroutedComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         this.oPage.error = error;
-        console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+        console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
       }
     })
   }

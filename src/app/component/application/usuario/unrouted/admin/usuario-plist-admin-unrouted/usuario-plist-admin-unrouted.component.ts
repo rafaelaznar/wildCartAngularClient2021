@@ -40,7 +40,7 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
         },
         error: (error: HttpErrorResponse) => {
           this.oPage.error = error;
-          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+          console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
         }
       })
     }
@@ -60,7 +60,7 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
             },
             error: (error: HttpErrorResponse) => {
               this.oPage.error = error;
-              console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+              console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
               this.oPage.nRecords = null;
             }
           })          
@@ -73,7 +73,7 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
         },
         error: (error: HttpErrorResponse) => {
           this.oPage.error = error;
-          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+          console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
         }
       })
   }
@@ -108,7 +108,7 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
         },
         error: (error: HttpErrorResponse) => {
           this.oPage.error = error;
-          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+          console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
         }
       })
   }
@@ -121,7 +121,7 @@ export class UsuarioPlistAdminUnroutedComponent implements OnInit {
         },
         error: (error: HttpErrorResponse) => {
           this.oPage.error = error;
-          console.error("ERROR: " + this.strEntity + '-' + this.strOperation + ': ' + error.status + "(" + error.statusText + ") " + error.message);
+          console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
         }
       })
 

@@ -17,15 +17,15 @@ export class SharedPopupUnroutedComponent implements OnInit {
 
   @Input() show: Observable<string>;
   @Input() title: string = Constants.APP_NAME;
-  @Input() body: string = "";
-  @Input() size: string = "";
-  @Input() icon: string = "";
+  @Input() body: string = '';
+  @Input() size: string = '';
+  @Input() icon: string = '';
   @Output() close = new EventEmitter<Event>();
   //
   private eventsSubscriptionShow: Subscription;
   //
   myPopup: any;
-  strMsg: string = "";
+  strMsg: string = '';
 
   constructor(
     public oMetadataService: MetadataService

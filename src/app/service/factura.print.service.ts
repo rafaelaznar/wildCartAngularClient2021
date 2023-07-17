@@ -63,7 +63,7 @@ export class FacturaPrintService {
                 totalFactura = totalFactura + (aCompras[i].cantidad * aCompras[i].producto.precio);
               }
               this.endFactura(doc, linea, totalFactura, oFactura2Print);
-              doc.save("Factura.pdf");
+              doc.save('Factura.pdf');
             });
           }
         })
@@ -73,40 +73,40 @@ export class FacturaPrintService {
 
   private cabecera(doc: any, oFactura2Print: IFactura, logo: any): any {
     const baseX = 10;
-    doc.setFontType("bold");
+    doc.setFontType('bold');
     doc.setFontSize(20);
     doc.text('F a c t u r a', 80, 30);
-    doc.setFontType("normal");
+    doc.setFontType('normal');
     //    
     doc.setFillColor(240, 240, 240);
     //separacion de cajas: h=15 v=5
-    doc.rect(baseX, 35, 105, 35, "F");
+    doc.rect(baseX, 35, 105, 35, 'F');
     doc.addImage(logo, 'PNG', 20, 40, 80, 25);
     //
     doc.setFillColor(240, 240, 240);
-    doc.rect(120, 35, 80, 15, "F");
+    doc.rect(120, 35, 80, 15, 'F');
     doc.setFontSize(12);
     doc.text(142, 44, `Nº de Factura: ${oFactura2Print.id}`);
     //
     doc.setFillColor(240, 240, 240);
-    doc.rect(120, 55, 80, 15, "F");
+    doc.rect(120, 55, 80, 15, 'F');
     doc.setFontSize(12);
-    doc.text(140, 64, "Fecha: " + formatDate(oFactura2Print.fecha, 'dd/MM/yyyy', 'es-ES'));
+    doc.text(140, 64, 'Fecha: ' + formatDate(oFactura2Print.fecha, 'dd/MM/yyyy', 'es-ES'));
     //
     doc.setFillColor(240, 240, 240);
-    doc.rect(baseX, 75, 190, 50, "F");
+    doc.rect(baseX, 75, 190, 50, 'F');
     //--
     const clienteX = 25;
     const clienteY = 85;
     doc.setFontSize(14)
-    doc.setFontType("italic");
+    doc.setFontType('italic');
     doc.text('Cliente:', clienteX - 10, clienteY)
-    doc.setFontType("normal");
-    doc.setFontType("bold");
+    doc.setFontType('normal');
+    doc.setFontType('bold');
     doc.setFontSize(15)
-    const cliente = oFactura2Print?.usuario?.nombre + " " + oFactura2Print?.usuario?.apellido1 + " " + oFactura2Print?.usuario?.apellido2;
+    const cliente = oFactura2Print?.usuario?.nombre + ' ' + oFactura2Print?.usuario?.apellido1 + ' ' + oFactura2Print?.usuario?.apellido2;
     doc.text(cliente, clienteX, clienteY + 10)
-    doc.setFontType("normal");
+    doc.setFontType('normal');
     doc.setFontSize(14)
     doc.text(oFactura2Print?.usuario?.dni, clienteX, clienteY + 20)
     doc.text(oFactura2Print?.usuario?.email, clienteX, clienteY + 30)
@@ -114,13 +114,13 @@ export class FacturaPrintService {
     const emisorX = 140;
     const emisorY = 85;
     doc.setFontSize(14)
-    doc.setFontType("italic");
+    doc.setFontType('italic');
     doc.text('Emitida por:', emisorX - 10, emisorY)
-    doc.setFontType("normal");
-    doc.setFontType("bold");
+    doc.setFontType('normal');
+    doc.setFontType('bold');
     doc.setFontSize(18);
     doc.text('WilCart Inc.', emisorX, emisorY + 10)
-    doc.setFontType("normal");
+    doc.setFontType('normal');
     doc.setFontSize(12)
     doc.text('wildcart@gmail.com', emisorX, emisorY + 20)
     doc.setFontSize(10)
@@ -141,9 +141,9 @@ export class FacturaPrintService {
     doc.setFontSize(8)
     doc.text(oCompra.producto.nombre, 20, linea)
     doc.setFontSize(12);
-    doc.text(oCompra.cantidad + "", 130, linea, "right");
-    doc.text(this.sp(oCompra.producto.precio), 160, linea, "right");
-    doc.text(this.sp(oCompra.cantidad * oCompra.producto.precio), 194, linea, "right");
+    doc.text(oCompra.cantidad + '', 130, linea, 'right');
+    doc.text(this.sp(oCompra.producto.precio), 160, linea, 'right');
+    doc.text(this.sp(oCompra.cantidad * oCompra.producto.precio), 194, linea, 'right');
   }
 
   endFactura(doc: any, linea: number, totalFactura: number, oFactura2Print: IFactura): void {
@@ -151,12 +151,12 @@ export class FacturaPrintService {
     doc.line(15, linea, 195, linea);
     let xtit = 150;
     let xnum = 190;
-    doc.text('Total:', xtit, linea + 7, "right");
-    doc.text(this.sp(totalFactura) + " €", xnum, linea + 7, "right")
-    doc.text('IVA:', xtit, linea + 14, "right")
-    doc.text(oFactura2Print.iva + "%", xnum, linea + 14, "right")
-    doc.text('Total + IVA:', xtit, linea + 21, "right")
-    doc.text(this.sp(totalFactura + (totalFactura * oFactura2Print.iva) / 100) + " €", xnum, linea + 21, "right");
+    doc.text('Total:', xtit, linea + 7, 'right');
+    doc.text(this.sp(totalFactura) + ' €', xnum, linea + 7, 'right')
+    doc.text('IVA:', xtit, linea + 14, 'right')
+    doc.text(oFactura2Print.iva + '%', xnum, linea + 14, 'right')
+    doc.text('Total + IVA:', xtit, linea + 21, 'right')
+    doc.text(this.sp(totalFactura + (totalFactura * oFactura2Print.iva) / 100) + ' €', xnum, linea + 21, 'right');
   }
 
 }

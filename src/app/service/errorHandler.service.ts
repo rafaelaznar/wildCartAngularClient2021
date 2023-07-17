@@ -26,9 +26,9 @@ export class ErrorHandlerService {
 
   componentHandleError(error: HttpErrorResponse):string {              
     if (error.status == 401) {
-      return "Error: la sesión ha finalizado y debes volver a entrar en el sistema o no tienes permiso para realizar la operación";
+      return 'Error: la sesión ha finalizado y debes volver a entrar en el sistema o no tienes permiso para realizar la operación';
     } 
-    return "ERROR: status: " + error.status + " (" + error.error.status + ') ' + error.error.message;      
+    return 'ERROR: status: ' + error.status + ' (' + error.error.status + ') ' + error.error.message;      
   }
 
 }

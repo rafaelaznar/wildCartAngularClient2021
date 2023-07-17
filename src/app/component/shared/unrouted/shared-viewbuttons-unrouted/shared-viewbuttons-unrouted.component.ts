@@ -11,7 +11,7 @@ import { Constants } from 'src/app/constant/constants';
 export class SharedViewbuttonsUnroutedComponent implements OnInit {
 
   @Input() strProfile: string = Constants.PROFILES.admin;
-  @Input() strEntity: string = "";
+  @Input() strEntity: string = '';
   @Input() id: number = 0;
 
   constructor(

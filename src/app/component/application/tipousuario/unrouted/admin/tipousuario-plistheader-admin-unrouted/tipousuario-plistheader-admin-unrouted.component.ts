@@ -11,8 +11,8 @@ import { MetadataService } from 'src/app/service/metadata.service';
 
 export class TipousuarioPlistheaderAdminUnroutedComponent implements OnInit {
 
-  @Input() strSortField: string = "";
-  @Input() strSortDirection: string = "";
+  @Input() strSortField: string = '';
+  @Input() strSortDirection: string = '';
   @Input() mode: boolean = true; //mode ... true=normal; false=selection;
   @Output() sort = new EventEmitter<IOrder>();
 

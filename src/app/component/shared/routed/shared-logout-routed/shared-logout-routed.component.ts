@@ -13,7 +13,7 @@ import { CarritoService } from 'src/app/service/carrito.service';
 
 export class SharedLogoutRoutedComponent implements OnInit {
 
-  strOperation: string = "logout"
+  strOperation: string = 'logout'
   strUserName: string = null;
 
   constructor(

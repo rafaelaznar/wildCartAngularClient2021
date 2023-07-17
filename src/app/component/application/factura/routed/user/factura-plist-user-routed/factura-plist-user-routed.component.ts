@@ -36,7 +36,7 @@ export class FacturaPlistUserRoutedComponent extends CheckSession implements OnI
   ngOnInit(): void { }
 
   onPrintFactura(id: number) {
-    console.log("printFactura");
+    console.log('printFactura');
   }
 
 }

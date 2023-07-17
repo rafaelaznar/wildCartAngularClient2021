@@ -9,7 +9,7 @@ import { MetadataService } from 'src/app/service/metadata.service';
 })
 export class SharedFooterbuttonsUnroutedComponent implements OnInit {
 
-  @Input() strEntity: string = "";
+  @Input() strEntity: string = '';
 
 
   constructor(
