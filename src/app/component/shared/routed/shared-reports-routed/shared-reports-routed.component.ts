@@ -8,12 +8,11 @@ import { IProducto } from 'src/app/model/producto-interfaces';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ProductoService } from 'src/app/service/producto.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ReportPrintService } from 'src/app/service/reports.print.service';
 import { Constants } from 'src/app/constant/constants';
 import { SessionService } from 'src/app/service/session.service';
 import { CheckSession } from 'src/app/class/check.session.class';
-
 
 @Component({
   selector: 'app-shared-reports-routed',
@@ -21,7 +20,7 @@ import { CheckSession } from 'src/app/class/check.session.class';
   styleUrls: ['./shared-reports-routed.component.css']
 })
 
-export class SharedReportsRoutedComponent   extends CheckSession implements OnInit {
+export class SharedReportsRoutedComponent extends CheckSession implements OnInit {
 
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.report;
@@ -44,49 +43,46 @@ export class SharedReportsRoutedComponent   extends CheckSession implements OnIn
     private oReportPrintService: ReportPrintService,
     public oSessionService: SessionService
   ) {
-
     super(Constants.PROFILES.admin, oRouter, oSessionService);
-    
   }
-
 
   get f() {
     return this.oForm.controls;
   }
 
   aReports: IReport[] = [
-    { nombre: "N Productos con más descuento", codigo: "i01", fechas: false, usuario: false, producto: false },
-    { nombre: "N Productos con menos descuento", codigo: "i02", fechas: false, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N most discounted products"), codigo: "i01", fechas: false, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N least discounted products"), codigo: "i02", fechas: false, usuario: false, producto: false },
 
-    { nombre: "N Clientes con más descuento", codigo: "i03", fechas: false, usuario: false, producto: false },
-    { nombre: "N Clientes con menos descuento", codigo: "i04", fechas: false, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N most discounted clients"), codigo: "i03", fechas: false, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N least discounted clients"), codigo: "i04", fechas: false, usuario: false, producto: false },
 
-    { nombre: "N Productos con más existencias", codigo: "i05", fechas: false, usuario: false, producto: false },
-    { nombre: "N Productos con menos existencias", codigo: "i06", fechas: false, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N products with most existences left"), codigo: "i05", fechas: false, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N products with least existences left"), codigo: "i06", fechas: false, usuario: false, producto: false },
 
-    { nombre: "N Productos más vendidos entre dos fechas", codigo: "i07", fechas: true, usuario: false, producto: false },
-    { nombre: "N Productos menos vendidos entre dos fechas", codigo: "i08", fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N most selled products between two dates"), codigo: "i07", fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N least selled products between two dates"), codigo: "i08", fechas: true, usuario: false, producto: false },
 
-    { nombre: "N Tipos de producto más vendidos entre dos fechas", codigo: "i09", fechas: true, usuario: false, producto: false },
-    { nombre: "N Tipos de producto menos vendidos entre dos fechas", codigo: "i10", fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N most selled types of products between two dates"), codigo: "i09", fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N least selled types of products between two dates"), codigo: "i10", fechas: true, usuario: false, producto: false },
 
-    { nombre: "N Clientes que más compran entre dos fechas", codigo: "i11", fechas: true, usuario: false, producto: false },
-    { nombre: "N Clientes que menos compran entre dos fechas", codigo: "i12", fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N clients most buyers between two dates"), codigo: "i11", fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N clients least buyers between two dates"), codigo: "i12", fechas: true, usuario: false, producto: false },
 
-    { nombre: "N Facturas de más importe entre dos fechas", codigo: "i13", fechas: true, usuario: false, producto: false },
-    { nombre: "N Facturas de menos importe entre dos fechas", codigo: "i14", fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N invoices with highest amounts between two dates"), codigo: "i13", fechas: true, usuario: false, producto: false },
+    { nombre: this.oMetadataService.getName("N invoices with lowest amounts between two dates"), codigo: "i14", fechas: true, usuario: false, producto: false },
 
-    { nombre: "N Facturas de un cliente entre dos fechas", codigo: "i15", fechas: true, usuario: true, producto: false },
+    { nombre: this.oMetadataService.getName("N client invoices between two dates"), codigo: "i15", fechas: true, usuario: true, producto: false },
 
-    { nombre: "N Facturas de un producto entre dos fechas", codigo: "i16", fechas: true, usuario: false, producto: true },
+    { nombre: this.oMetadataService.getName("N product invoices between two dates"), codigo: "i16", fechas: true, usuario: false, producto: true },
 
-    { nombre: "N Productos que más compra un cliente entre dos fechas", codigo: "i17", fechas: true, usuario: true, producto: false },
+    { nombre: this.oMetadataService.getName("N most purchased products by a client between two dates"), codigo: "i17", fechas: true, usuario: true, producto: false },
 
-    { nombre: "N Clientes que más compran un producto entre dos fechas", codigo: "i18", fechas: true, usuario: false, producto: true },
+    { nombre: this.oMetadataService.getName("N clients most buyers of a product between two dates"), codigo: "i18", fechas: true, usuario: false, producto: true },
 
-    { nombre: "N Productos que más compra un cliente entre dos fechas", codigo: "i19", fechas: true, usuario: true, producto: false },
+    { nombre: this.oMetadataService.getName("N most buyed products for a client between two dates"), codigo: "i19", fechas: true, usuario: true, producto: false },
 
-    { nombre: "N Clientes que más compran un producto entre dos fechas", codigo: "i20", fechas: true, usuario: false, producto: true },
+    { nombre: this.oMetadataService.getName("N most buyer clients for a product between two dates"), codigo: "i20", fechas: true, usuario: false, producto: true },
 
   ];
 
@@ -119,7 +115,6 @@ export class SharedReportsRoutedComponent   extends CheckSession implements OnIn
     this.openPopup('Imprimiendo el informe ' + codigo);
     this.oReportPrintService.printReport_i01(10);
   }
-
 
   //ajenas
 
@@ -195,6 +190,5 @@ export class SharedReportsRoutedComponent   extends CheckSession implements OnIn
 
   onClosePopup(): void {
   }
-
 
 }

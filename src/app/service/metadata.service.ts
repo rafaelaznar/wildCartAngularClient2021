@@ -638,10 +638,46 @@ export class MetadataService {
       case str == "Dates": return "Fechas";
       case str == "User": return "Usuario";
       case str == "Product": return "Producto";
+      //
 
 
-      
-      
+      case str == "N most discounted products": return "N Productos con más descuento";
+      case str == "N least discounted products": return "N Productos con menos descuento";
+
+      case str == "N most discounted clients": return "N Clientes con más descuento";
+      case str == "N least discounted clients": return "N Clientes con menos descuento";
+
+      case str == "N products with most existences left": return "N Productos con más existencias";
+      case str == "N products with least existences left": return "N Productos con menos existencias";
+
+      case str == "N most selled products between two dates": return "N Productos más vendidos entre dos fechas";
+      case str == "N least selled products between two dates": return "N Productos menos vendidos entre dos fechas";
+
+      case str == "N most selled types of products between two dates": return "N Tipos de producto más vendidos entre dos fechas";
+      case str == "N least selled types of products between two dates": return "N Tipos de producto menos vendidos entre dos fechas";
+
+      case str == "N clients most buyers between two dates": return "N Clientes que más compran entre dos fechas";
+      case str == "N clients least buyers between two dates": return "N Clientes que menos compran entre dos fechas";
+
+      case str == "N invoices with highest amounts between two dates": return "N Facturas de más importe entre dos fechas";
+      case str == "N invoices with lowest amounts between two dates": return "N Facturas de menos importe entre dos fechas";
+
+      case str == "N client invoices between two dates": return "N Facturas de un cliente entre dos fechas";
+
+      case str == "N product invoices between two dates": return "N Facturas de un producto entre dos fechas";
+
+      case str == "N most purchased products by a client between two dates": return "N Productos que más compra un cliente entre dos fechas";
+
+      case str == "N clients most buyers of a product between two dates": return "N Clientes que más compran un producto entre dos fechas";
+
+      case str == "N most buyed products for a client between two dates": return "N Productos que más compra un cliente entre dos fechas";
+
+      case str == "N most buyer clients for a product between two dates": return "N Clientes que más compran un producto entre dos fechas";
+
+
+
+
+
       //
       case str == "No active filter": return "Sin filtro";
       case str == "Filter: ": return "Filtro: ";
