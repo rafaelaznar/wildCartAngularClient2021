@@ -1,4 +1,4 @@
-<table class="table table-striped">
+<table class="table table-striped" *ngIf="status==null">
   <tbody>
     <tr>
       <th><i [ngClass]="oMetadataService.getIcon('id')"></i> {{oMetadataService.getName('id')}}</th>
@@ -23,3 +23,13 @@
     </tr>
   </tbody>
 </table>
+<div *ngIf="status!=null">
+  <div class="row justify-content-center">
+      <div class="col-md text-center">
+          <h6 class="text-danger">{{oMetadataService.getName('Component ERROR: please contact administrator')}}</h6>
+          <h6 class="text-danger">{{oMetadataService.getName('Message: ')}} {{ status.status + "(" + status.statusText
+              + ") " +
+              status.message}}</h6>
+      </div>
+  </div>
+</div>

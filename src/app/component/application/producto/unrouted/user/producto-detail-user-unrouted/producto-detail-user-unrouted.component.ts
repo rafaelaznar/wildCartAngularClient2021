@@ -1,6 +1,5 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs';
-import { IResult } from 'src/app/model/model-interfaces';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { MetadataService } from 'src/app/service/metadata.service';
@@ -19,10 +18,10 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
   @Input() id: number = null;
   @Input() id_tipousuario_session: number = null;
   @Output() addCarritoEE = new EventEmitter<number>();
-
+  //
   API_URL: string = API_URL;
   oProducto: IProducto;
-
+  status: HttpErrorResponse = null;
 
   constructor(
     private oProductoService: ProductoService,
@@ -38,6 +37,9 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
     this.oProductoService.getOne(this.id).subscribe({
       next: (oData: IProducto) => {
         this.oProducto = oData;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
       }
     });
   };
@@ -47,6 +49,9 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
       next: (result: number) => {
         this.addCarritoEE.emit(id_producto);
         this.getOne();
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
       }
     })
   }
@@ -56,6 +61,9 @@ export class ProductoDetailUserUnroutedComponent implements OnInit {
       next: (result: number) => {
         this.addCarritoEE.emit(id_producto);
         this.getOne();
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
       }
     })
   }

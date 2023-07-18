@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Constants } from 'src/app/constant/constants';
 import { IProducto } from 'src/app/model/producto-interfaces';
@@ -19,6 +20,7 @@ export class ProductoDetailAdminUnroutedComponent implements OnInit {
   strOperation: string = Constants.OPERATIONS.view;
   //
   oProducto: IProducto;
+  status: HttpErrorResponse = null;
 
   constructor(
     private oProductoService: ProductoService,
@@ -33,6 +35,9 @@ export class ProductoDetailAdminUnroutedComponent implements OnInit {
     this.oProductoService.getOne(this.id).subscribe({
       next: (oData: IProducto) => {
         this.oProducto = oData;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;        
       }
     });
   };

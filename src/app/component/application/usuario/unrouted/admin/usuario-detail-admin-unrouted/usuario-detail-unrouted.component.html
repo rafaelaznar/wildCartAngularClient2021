@@ -1,46 +1,56 @@
+<table class="table table-striped" *ngIf="status==null">
+  <tbody>
+    <tr>
+      <th><i [ngClass]="oMetadataService.getIcon('id')"></i> {{oMetadataService.getName('id')}}</th>
+      <td>{{oUsuario?.id}}</td>
+    </tr>
+    <tr>
+      <th><i [ngClass]="oMetadataService.getIcon('dni')"></i> {{oMetadataService.getName('dni')}}</th>
+      <td>{{oUsuario?.dni}}</td>
+    </tr>
+    <tr>
+      <th><i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('name')}}</th>
+      <td>{{oUsuario?.nombre}}</td>
+    </tr>
+    <tr>
+      <th><i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('apellido1')}}</th>
+      <td>{{oUsuario?.apellido1}}</td>
+    </tr>
+    <tr>
+      <th><i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('apellido2')}}</th>
+      <td>{{oUsuario?.apellido2}}</td>
+    </tr>
+    <tr>
+      <th><i [ngClass]="oMetadataService.getIcon('login')"></i> {{oMetadataService.getName('login')}}</th>
+      <td>{{oUsuario?.login}}</td>
+    </tr>
+    <tr>
+      <th><i [ngClass]="oMetadataService.getIcon('email')"></i> {{oMetadataService.getName('email')}}</th>
+      <td>{{oUsuario?.email}}</td>
+    </tr>
+    <tr>
+      <th><i [ngClass]="oMetadataService.getIcon('validado')"></i> {{oMetadataService.getName('validado')}}</th>
+      <td [innerHTML]="oUsuario?.validado | showBoolean"></td>
+    </tr>
+    <tr>
+      <th><i [ngClass]="oMetadataService.getIcon('activado')"></i> {{oMetadataService.getName('activo')}}</th>
+      <td [innerHTML]="oUsuario?.activo | showBoolean"></td>
+    </tr>
 
-  <table class="table table-striped">
-    <tbody>
-      <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('id')"></i> {{oMetadataService.getName('id')}}</th>
-        <td>{{oUsuario?.id}}</td>
-      </tr>
-      <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('dni')"></i> {{oMetadataService.getName('dni')}}</th>
-        <td>{{oUsuario?.dni}}</td>
-      </tr>
-      <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('name')}}</th>
-        <td>{{oUsuario?.nombre}}</td>
-      </tr>
-      <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('apellido1')}}</th>
-        <td>{{oUsuario?.apellido1}}</td>
-      </tr>
-      <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('nombre')"></i> {{oMetadataService.getName('apellido2')}}</th>
-        <td>{{oUsuario?.apellido2}}</td>
-      </tr>
-      <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('login')"></i> {{oMetadataService.getName('login')}}</th>
-        <td>{{oUsuario?.login}}</td>
-      </tr>
-      <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('email')"></i> {{oMetadataService.getName('email')}}</th>
-        <td>{{oUsuario?.email}}</td>
-      </tr>
-      <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('validado')"></i> {{oMetadataService.getName('validado')}}</th>
-        <td [innerHTML]="oUsuario?.validado | showBoolean"></td>
-      </tr>
-      <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('activado')"></i> {{oMetadataService.getName('activo')}}</th>
-        <td [innerHTML]="oUsuario?.activo | showBoolean"></td>
-      </tr>
+    <tr>
+      <th><i [ngClass]="oMetadataService.getIcon('tipousuario')"></i> {{oMetadataService.getName('tipousuario')}}</th>
+      <td>({{oUsuario?.tipousuario.id}}) {{oUsuario?.tipousuario.nombre}}</td>
+    </tr>
+  </tbody>
+</table>
 
-      <tr>
-        <th><i [ngClass]="oMetadataService.getIcon('tipousuario')"></i> {{oMetadataService.getName('tipousuario')}}</th>
-        <td>({{oUsuario?.tipousuario.id}}) {{oUsuario?.tipousuario.nombre}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div *ngIf="status!=null">
+  <div class="row justify-content-center">
+    <div class="col-md text-center">
+      <h6 class="text-danger">{{oMetadataService.getName('Component ERROR: please contact administrator')}}</h6>
+      <h6 class="text-danger">{{oMetadataService.getName('Message: ')}} {{ status.status + "(" + status.statusText
+        + ") " +
+        status.message}}</h6>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Constants } from 'src/app/constant/constants';
 import { ITipousuario } from 'src/app/model/tipousuario-interfaces';
@@ -19,7 +20,8 @@ export class TipousuarioDetailAdminUnroutedComponent implements OnInit {
   strOperation: string = Constants.OPERATIONS.view
   //
   oTipousuario: ITipousuario;
-  
+  status: HttpErrorResponse = null;
+
   constructor(
     private oTipousuarioService: TipousuarioService,
     public oMetadataService: MetadataService
@@ -33,6 +35,9 @@ export class TipousuarioDetailAdminUnroutedComponent implements OnInit {
     this.oTipousuarioService.getOne(this.id).subscribe({
       next: (oData: ITipousuario) => {
         this.oTipousuario = oData;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
       }
     });
   };

@@ -30,7 +30,6 @@ export class CommentNewAdminRoutedComponent extends CheckSession implements OnIn
   ) {
     super(Constants.PROFILES.admin, oRouter, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id
-    //this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 
   ngOnInit(): void { }

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Constants } from 'src/app/constant/constants';
 import { ICarrito } from 'src/app/model/carrito-interfaces';
@@ -18,6 +19,7 @@ export class CarritoDetailAdminUnroutedComponent implements OnInit {
   strOperation: string = Constants.OPERATIONS.view;
   //
   oCarrito: ICarrito;
+  status: HttpErrorResponse = null;
 
   constructor(
     private oCarritoService: CarritoService,
@@ -32,6 +34,9 @@ export class CarritoDetailAdminUnroutedComponent implements OnInit {
     this.oCarritoService.getOne(this.id).subscribe({
       next: (oData: ICarrito) => {
         this.oCarrito = oData;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
       }
     });
   };

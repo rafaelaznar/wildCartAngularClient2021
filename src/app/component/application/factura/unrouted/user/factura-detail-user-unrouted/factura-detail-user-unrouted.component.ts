@@ -3,6 +3,7 @@ import { Constants } from 'src/app/constant/constants';
 import { IFactura } from 'src/app/model/factura-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { FacturaService } from 'src/app/service/factura.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-factura-detail-user-unrouted',
@@ -14,16 +15,12 @@ export class FacturaDetailUserUnroutedComponent implements OnInit {
 
   @Input() id: number = null;
 
-  public set value(val: string) {
-    console.log('FacturaDetailUserUnroutedComponent set value', val);
-    this.getOne();
-
-  }
-
-  oFactura: IFactura;
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.view
+  //
+  oFactura: IFactura;
+  status: HttpErrorResponse = null;
 
   constructor(
     private oFacturaService: FacturaService,
@@ -37,10 +34,19 @@ export class FacturaDetailUserUnroutedComponent implements OnInit {
     this.getOne();
   }
 
+  public set value(val: string) {
+    console.log('FacturaDetailUserUnroutedComponent set value', val);
+    this.getOne();
+
+  }
+
   getOne = () => {
     this.oFacturaService.getOne(this.id).subscribe({
       next: (oData: IFactura) => {
         this.oFactura = oData;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
       }
     });
   };

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Constants } from 'src/app/constant/constants';
 import { IComment } from 'src/app/model/comment-interfaces';
@@ -19,6 +20,7 @@ export class CommentDetailAdminUnroutedComponent implements OnInit {
   strOperation: string = Constants.OPERATIONS.view;
   //
   oComment: IComment;
+  status: HttpErrorResponse = null;
 
   constructor(
     private oCommentService: CommentService,
@@ -33,6 +35,9 @@ export class CommentDetailAdminUnroutedComponent implements OnInit {
     this.oCommentService.getOne(this.id).subscribe({
       next: (oData: IComment) => {
         this.oComment = oData;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;        
       }
     });
   };

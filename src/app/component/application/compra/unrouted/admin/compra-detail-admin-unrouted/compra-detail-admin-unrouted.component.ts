@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Constants } from 'src/app/constant/constants';
 import { ICompra } from 'src/app/model/compra-interfaces';
@@ -18,6 +19,7 @@ export class CompraDetailAdminUnroutedComponent implements OnInit {
   strOperation: string = Constants.OPERATIONS.view;
   //
   oCompra: ICompra;
+  status: HttpErrorResponse = null;
 
   constructor(
     private oCompraService: CompraService,
@@ -32,6 +34,9 @@ export class CompraDetailAdminUnroutedComponent implements OnInit {
     this.oCompraService.getOne(this.id).subscribe({
       next: (oData: ICompra) => {
         this.oCompra = oData;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
       }
     })
   }

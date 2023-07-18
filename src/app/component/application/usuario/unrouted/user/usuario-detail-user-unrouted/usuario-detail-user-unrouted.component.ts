@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Constants } from 'src/app/constant/constants';
 import { IUsuario } from 'src/app/model/usuario-interfaces';
@@ -12,11 +13,13 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 export class UsuarioDetailUserUnroutedComponent implements OnInit {
 
   @Input() id: number = null;
-
-  oUsuario: IUsuario;
+  //
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.user
   strOperation: string = Constants.OPERATIONS.view
+  //
+  oUsuario: IUsuario;
+  status: HttpErrorResponse = null;
 
   constructor(
     private oUsuarioService: UsuarioService,
@@ -31,6 +34,9 @@ export class UsuarioDetailUserUnroutedComponent implements OnInit {
     this.oUsuarioService.getOne(this.id).subscribe({
       next: (oData: IUsuario) => {
         this.oUsuario = oData;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
       }
     });
   };

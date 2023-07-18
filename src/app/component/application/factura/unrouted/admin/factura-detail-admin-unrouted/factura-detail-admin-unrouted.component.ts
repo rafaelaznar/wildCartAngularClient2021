@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Constants } from 'src/app/constant/constants';
 import { IFactura } from 'src/app/model/factura-interfaces';
@@ -19,6 +20,7 @@ export class FacturaDetailAdminUnroutedComponent implements OnInit {
   strOperation: string = Constants.OPERATIONS.view
   //
   oFactura: IFactura;
+  status: HttpErrorResponse = null;
 
   constructor(
     private oFacturaService: FacturaService,
@@ -33,6 +35,9 @@ export class FacturaDetailAdminUnroutedComponent implements OnInit {
     this.oFacturaService.getOne(this.id).subscribe({
       next: (oData: IFactura) => {
         this.oFactura = oData;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
       }
     });
   };
