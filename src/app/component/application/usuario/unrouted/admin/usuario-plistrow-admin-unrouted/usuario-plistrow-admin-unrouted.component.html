@@ -1,9 +1,7 @@
 <td class="text-end">{{oUsuario.id}}</td>
 <td>{{oUsuario.login}}</td>
 <td>{{oUsuario.dni}}</td>
-<td>{{oUsuario.nombre}}</td>
-<td>{{oUsuario.apellido1}}</td>
-<td>{{oUsuario.apellido2}}</td>
+<td>{{oUsuario.nombre}} {{oUsuario.apellido1}} {{oUsuario.apellido2}}</td>
 <td *ngIf="mode">{{oUsuario.email| trim:18}}</td>
 
 <td style="text-align: center" *ngIf="mode">
