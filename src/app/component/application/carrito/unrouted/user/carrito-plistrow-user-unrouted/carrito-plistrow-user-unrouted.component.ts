@@ -18,24 +18,20 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
 
   @Input() oCarrito: ICarrito = null;
   @Input() mode: boolean = true; //true=edición; false=selección
-  @Input() id_tipousuario_session: number = null;
   @Output() selection = new EventEmitter<number>();
   @Output() addCarritoEE = new EventEmitter<number>();
   //
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
-  //
-  oUsuarioSession: IUsuario;
+  //  
   strAPI_URL: string = API_URL;
   status: HttpErrorResponse = null;
 
   constructor(
     public oMetadataService: MetadataService,
     private oCarritoService: CarritoService
-  ) {
-    this.oUsuarioSession = JSON.parse(localStorage.getItem('user'));
-  }
+  ) { }
 
   ngOnInit() {
   }

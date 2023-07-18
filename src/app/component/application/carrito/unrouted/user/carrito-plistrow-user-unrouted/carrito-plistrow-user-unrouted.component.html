@@ -22,9 +22,9 @@
       <i [ngClass]="oMetadataService.getIcon('view')"></i>
     </button>
     <button type="button" class="btn btn-primary"
-      *ngIf="id_tipousuario_session==2&&oCarrito?.producto.existencias>0&&oCarrito?.cantidad<oCarrito?.producto.existencias"
+      *ngIf="oCarrito?.producto.existencias>0&&oCarrito?.cantidad<oCarrito?.producto.existencias"
       (click)="addCarrito(oCarrito.producto.id)"><i class="fas fa-cart-plus"></i></button>
-    <button type="button" class="btn btn-danger" *ngIf="id_tipousuario_session==2&&oCarrito?.cantidad>0"
+    <button type="button" class="btn btn-danger" *ngIf="oCarrito?.cantidad>0"
       (click)="removeCarrito(oCarrito.producto.id)"><i class="fas fa-cart-arrow-down"></i></button>
   </div>
 </td>

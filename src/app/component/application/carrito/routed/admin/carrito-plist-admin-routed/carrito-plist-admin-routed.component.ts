@@ -16,7 +16,7 @@ export class CarritoPlistAdminRoutedComponent extends CheckSession implements On
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
-  strUsuarioSession: string;
+  //
   id_producto: number = null;
   id_usuario: number = null;  
 

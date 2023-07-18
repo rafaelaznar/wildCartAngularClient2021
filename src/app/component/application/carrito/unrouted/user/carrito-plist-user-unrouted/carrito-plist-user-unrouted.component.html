@@ -1,7 +1,9 @@
 <div class="row justify-content-between my-3">
   <div class="col-md text-start">
-    <h5 *ngIf="!oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> {{oMetadataService.getName('No active filter')}}</span></h5>
-    <h5 *ngIf="oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> {{oMetadataService.getName('Filter: ')}} {{oPage.strFilteredMessage}}</span></h5>
+    <h5 *ngIf="!oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning">
+        {{oMetadataService.getName('No active filter')}}</span></h5>
+    <h5 *ngIf="oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning">
+        {{oMetadataService.getName('Filter: ')}} {{oPage.strFilteredMessage}}</span></h5>
   </div>
   <div class="col-md text-center">
     <app-shared-search-unrouted [strFilter]="oPage.strFilter"
@@ -15,14 +17,16 @@
 
 <div class="row justify-content-between">
   <div class="col-md text-start">
-    <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
+    <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages"
+      (eePage)="onSetPage($event)">
     </app-shared-pagination-unrouted>
   </div>
   <div class="col-md text-center">
 
   </div>
   <div class="col-md text-end">
-    <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-shared-rpp-unrouted>
+    <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error">
+    </app-shared-rpp-unrouted>
   </div>
 </div>
 
@@ -44,8 +48,7 @@
       <tbody>
 
         <tr *ngFor="let oCarrito of oPage.content" class="align-middle" app-carrito-plistrow-user-unrouted
-          [oCarrito]="oCarrito" [id_tipousuario_session]="id_tipousuario_session" [mode]="mode"
-          (selection)="onSelection($event)" (addCarritoEE)="onAddCarrito($event)">
+          [oCarrito]="oCarrito" [mode]="mode" (selection)="onSelection($event)" (addCarritoEE)="onAddCarrito($event)">
 
         </tr>
       </tbody>

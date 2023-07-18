@@ -19,10 +19,9 @@ export class CarritoPlistUserRoutedComponent extends CheckSession implements OnI
   strProfile: string = Constants.PROFILES.user;
   strEntity: string = Constants.ENTITIES.cart;
   strOperation: string = Constants.OPERATIONS.plist;
-  oUserSession: IUsuario;
+  //  
   id_producto: number = null;
   id_usuario: number = null;
-  tipousuarioSession_id: number = null;
 
   constructor(
     protected oRouter: Router,

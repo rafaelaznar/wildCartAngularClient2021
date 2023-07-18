@@ -16,7 +16,6 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
   @Input() id_producto: number = null;
   @Input() id_usuario: number = null;
   @Input() mode: boolean = true; //true=edición; false=selección
-  @Input() id_tipousuario_session: number = null;
   @Output() selection = new EventEmitter<number>();
   @Output() addCarritoEE = new EventEmitter<number>();
   //

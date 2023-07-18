@@ -12,6 +12,7 @@ import { SessionService } from 'src/app/service/session.service';
   templateUrl: './carrito-edit-admin-routed.component.html',
   styleUrls: ['./carrito-edit-admin-routed.component.css'],
 })
+
 export class CarritoEditAdminRoutedComponent extends CheckSession implements OnInit {
 
   strProfile: string = Constants.PROFILES.admin;
@@ -29,7 +30,6 @@ export class CarritoEditAdminRoutedComponent extends CheckSession implements OnI
   ) {
     super(Constants.PROFILES.admin, oRouter, oSessionService);
     this.id = this.oActivatedRoute.snapshot.params.id;
-    //this.strOperation = this.oActivatedRoute.snapshot.url[1].path;
   }
 
   ngOnInit(): void {
