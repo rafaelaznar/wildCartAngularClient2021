@@ -14,8 +14,7 @@ import { ProductoService } from 'src/app/service/producto.service';
 export class ProductoDetailGuestUnroutedComponent implements OnInit {
 
   @Input() id: number = null;
-  @Input() id_tipousuario_session: number = null;
-  @Output() addCarritoEE = new EventEmitter<number>();
+  @Output() cartChangeEE = new EventEmitter<number>();
   //
   oProducto: IProducto;
   status: HttpErrorResponse = null;
@@ -44,7 +43,7 @@ export class ProductoDetailGuestUnroutedComponent implements OnInit {
   addCarrito(id_producto: number) {
     this.oCarritoService.add(id_producto, 1).subscribe({
       next: (result: number) => {
-        this.addCarritoEE.emit(id_producto);
+        this.cartChangeEE.emit(id_producto);
         this.getOne();
       },
       error: (error: HttpErrorResponse) => {
@@ -56,7 +55,7 @@ export class ProductoDetailGuestUnroutedComponent implements OnInit {
   removeCarrito(id_producto: number) {
     this.oCarritoService.reduce(id_producto, 1).subscribe({
       next: (result: number) => {
-        this.addCarritoEE.emit(id_producto);
+        this.cartChangeEE.emit(id_producto);
         this.getOne();
       },
       error: (error: HttpErrorResponse) => {

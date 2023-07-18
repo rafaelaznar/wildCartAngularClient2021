@@ -16,7 +16,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ProductoGPlistGuestUnroutedComponent implements OnInit {
 
   @Input() id_tipoproducto: number = null;
-  @Output() addCarritoEE = new EventEmitter<number>();
+  @Output() cartChangeEE = new EventEmitter<number>();
   @ContentChild(TemplateRef) toolTemplate: TemplateRef<any>;
   //
   strProfile: string = Constants.PROFILES.guest;
@@ -83,7 +83,7 @@ export class ProductoGPlistGuestUnroutedComponent implements OnInit {
   addCarrito(id_producto: number) {
     this.oCarritoService.add(id_producto, 1).subscribe({
       next: (result: number) => {
-        this.addCarritoEE.emit(id_producto);
+        this.cartChangeEE.emit(id_producto);
         this.getPage();
       }
     })
@@ -92,7 +92,7 @@ export class ProductoGPlistGuestUnroutedComponent implements OnInit {
   removeCarrito(id_producto: number) {
     this.oCarritoService.reduce(id_producto, 1).subscribe({
       next: (result: number) => {
-        this.addCarritoEE.emit(id_producto);
+        this.cartChangeEE.emit(id_producto);
         this.getPage();
       }
     })

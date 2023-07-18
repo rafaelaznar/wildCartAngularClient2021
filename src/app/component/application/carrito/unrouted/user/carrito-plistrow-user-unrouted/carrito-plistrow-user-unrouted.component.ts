@@ -19,7 +19,7 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
   @Input() oCarrito: ICarrito = null;
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() selection = new EventEmitter<number>();
-  @Output() addCarritoEE = new EventEmitter<number>();
+  @Output() cartChangeEE = new EventEmitter<number>();
   //
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
@@ -43,11 +43,11 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
     this.oCarritoService.add(id_producto, 1).subscribe({
       next: (result: number) => {
         this.status = null;
-        this.addCarritoEE.emit(id_producto);
+        this.cartChangeEE.emit(id_producto);
       },
       error: (error: HttpErrorResponse) => {
         this.status = error;
-        this.addCarritoEE.emit(0);
+        this.cartChangeEE.emit(0);
       }
     })
   }
@@ -55,11 +55,11 @@ export class CarritoPlistrowUserUnroutedComponent implements OnInit {
   removeCarrito(id_producto: number) {
     this.oCarritoService.reduce(id_producto, 1).subscribe({
       next: (result: number) => {
-        this.addCarritoEE.emit(id_producto);
+        this.cartChangeEE.emit(id_producto);
       },
       error: (error: HttpErrorResponse) => {
         this.status = error;
-        this.addCarritoEE.emit(0);
+        this.cartChangeEE.emit(0);
       }
     })
   }

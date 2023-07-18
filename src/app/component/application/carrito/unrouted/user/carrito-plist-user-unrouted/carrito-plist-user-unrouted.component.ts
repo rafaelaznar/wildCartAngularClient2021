@@ -17,7 +17,7 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
   @Input() id_usuario: number = null;
   @Input() mode: boolean = true; //true=edición; false=selección
   @Output() selection = new EventEmitter<number>();
-  @Output() addCarritoEE = new EventEmitter<number>();
+  @Output() cartChangeEE = new EventEmitter<number>();
   //
   strProfile: string = Constants.PROFILES.admin;
   strEntity: string = Constants.ENTITIES.cart;
@@ -84,7 +84,7 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
 
   onAddCarrito(id_producto: number) {
     this.getPage();
-    this.addCarritoEE.emit(id_producto);
+    this.cartChangeEE.emit(id_producto);
   }
 
   getTotalCarrito4User() {

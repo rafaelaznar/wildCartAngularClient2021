@@ -27,10 +27,10 @@
       <h3 class="flex-grow-1 m-1" *ngIf="oProducto?.cantidad>1">{{oMetadataService.getName('you have')}}
         {{oProducto?.cantidad}} {{oMetadataService.getName('units')}} {{oMetadataService.getName('in the
         cart'.toLowerCase())}}</h3>
-      <button type="button" class="btn btn-danger m-1" *ngIf="id_tipousuario_session==2&&oProducto?.cantidad>0"
+      <button type="button" class="btn btn-danger m-1" *ngIf="oProducto?.cantidad>0"
         (click)="removeCarrito(oProducto.id)"><i class="fas fa-cart-arrow-down" style="font-size: 2rem"></i></button>
       <button type="button" class="btn btn-primary m-1"
-        *ngIf="id_tipousuario_session==2&&oProducto?.existencias>0&&oProducto?.cantidad<oProducto?.existencias"
+        *ngIf="oProducto?.existencias>0&&oProducto?.cantidad<oProducto?.existencias"
         (click)="addCarrito(oProducto.id)"><i class="fas fa-cart-plus" style="font-size: 2rem"></i></button>
     </div>
   </div>
