@@ -1,4 +1,4 @@
-<div class="row justify-content-between">
+<div class="row justify-content-between" *ngIf="!oPage.error">
   <div class="col-md text-center">
     <div class="alert alert-info" role="alert" *ngIf="id_usuario">
       <h6>{{oMetadataService.getName('Showing only items in cart of the user')}} "{{oPage.strFilteredTitle}}"</h6>
@@ -10,17 +10,22 @@
 </div>
 <div class="row justify-content-between my-3">
   <div class="row justify-content-between my-3">
-  <div class="col-md text-start">
-    <h5 *ngIf="!oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> {{oMetadataService.getName('No active filter')}}</span></h5>
-    <h5 *ngIf="oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> {{oMetadataService.getName('Filter: ')}} {{oPage.strFilteredMessage}}</span></h5>
-  </div>
+    <div class="col-md text-start">
+      <h5 *ngIf="!oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning">
+          {{oMetadataService.getName('No active filter')}}</span></h5>
+      <h5 *ngIf="oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning">
+          {{oMetadataService.getName('Filter: ')}} {{oPage.strFilteredMessage}}</span></h5>
+    </div>
     <div class="col-md text-center">
-      <app-shared-search-unrouted [strFilter]="oPage.strFilter" [strTitlePlural]="oMetadataService.getName('item cart filter')"
-        (eeFilter)="onSetFilter($event)"></app-shared-search-unrouted>
+      <app-shared-search-unrouted [strFilter]="oPage.strFilter"
+        [strTitlePlural]="oMetadataService.getName('item cart filter')" (eeFilter)="onSetFilter($event)">
+      </app-shared-search-unrouted>
     </div>
     <div class="col-md text-end">
-      <h5 class="text-muted" *ngIf="oPage.totalElements<oPage.nRecords">{{oMetadataService.getName('Showing')}} {{oPage.totalElements| number:'1.0-0'}}
-        {{oMetadataService.getName(strEntity+'s')}} {{oMetadataService.getName('of')}} {{oPage.nRecords| number:'1.0-0'}}</h5>
+      <h5 class="text-muted" *ngIf="oPage.totalElements<oPage.nRecords">{{oMetadataService.getName('Showing')}}
+        {{oPage.totalElements| number:'1.0-0'}}
+        {{oMetadataService.getName(strEntity+'s')}} {{oMetadataService.getName('of')}} {{oPage.nRecords|
+        number:'1.0-0'}}</h5>
       <h4 class="text-muted" *ngIf="oPage.totalElements==oPage.nRecords">{{oPage.totalElements| number:'1.0-0'}}
         {{oMetadataService.getName(strEntity+'s')}}</h4>
     </div>
@@ -28,14 +33,16 @@
 
   <div class="row justify-content-between">
     <div class="col-md text-start">
-      <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
+      <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages"
+        (eePage)="onSetPage($event)">
       </app-shared-pagination-unrouted>
     </div>
     <div class="col-md text-center">
       <ng-content select="header"></ng-content>
     </div>
     <div class="col-md text-end">
-      <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error"></app-shared-rpp-unrouted>
+      <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error">
+      </app-shared-rpp-unrouted>
     </div>
   </div>
 
@@ -66,3 +73,15 @@
       </table>
     </div>
   </div>
+</div>
+
+<div *ngIf="!oPage.error">
+  <div class="row justify-content-center">
+    <div class="col-md text-center">
+      <h6 class="text-danger">{{oMetadataService.getName('Component ERROR: please contact administrator')}}</h6>
+      <h6 class="text-danger">{{oMetadataService.getName('Message: ')}} {{ oPage.error.status + "(" +
+        oPage.error.statusText
+        + ") " + oPage.error.message}}</h6>
+    </div>
+  </div>
+</div>
