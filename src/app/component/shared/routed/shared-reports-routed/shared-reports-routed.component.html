@@ -7,10 +7,10 @@
       <label for="dni" class="col-sm-2 col-form-label">
         <i [ngClass]="oMetadataService.getIcon('amount')"></i> {{oMetadataService.getName('amount')}}</label>
       <div class="col-sm-2">
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" formControlName="cantidad">
           <option value="10" selected>10</option>
+          <option value="50">50</option>
           <option value="100">100</option>
-          <option value="1000">1000</option>
         </select>
       </div>
     </div>

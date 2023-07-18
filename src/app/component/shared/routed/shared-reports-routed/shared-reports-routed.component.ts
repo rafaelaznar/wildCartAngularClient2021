@@ -102,7 +102,7 @@ export class SharedReportsRoutedComponent extends CheckSession implements OnInit
   ngOnInit() {
     console.log(formatDate(this.currentDate, 'dd-MM-yyyy', 'es'));
     this.oForm = this.oFormBuilder.group({
-      cantidad: ['', [Validators.required]],
+      cantidad: [10, [Validators.required]],
       id_usuario: ['', [Validators.required, Validators.maxLength(1)]],
       id_producto: ['', [Validators.required, Validators.maxLength(1)]],
       fecha_inicio: ['', Validators.required],
@@ -113,7 +113,7 @@ export class SharedReportsRoutedComponent extends CheckSession implements OnInit
 
   print(codigo: string) {
     this.openPopup('Imprimiendo el informe ' + codigo);
-    this.oReportPrintService.printReport_i01(10);
+    this.oReportPrintService.printReport_i01(this.oForm.controls.cantidad.value);
   }
 
   //ajenas

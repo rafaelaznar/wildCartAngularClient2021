@@ -22,7 +22,10 @@ export class ReportPrintService {
     })
   }
 
-  sp = (n: number): string => n.toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  sp2DEC = (n: number): string => n.toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  sp0DEC = (n: number): string => n.toLocaleString('es', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  minX = 10;
+  maxX = 200;
 
   printReport_i01 = (quantity: number): void => {
     const reportName = 'I01';
@@ -37,35 +40,71 @@ export class ReportPrintService {
         this.loadImage(imgData).then((logo) => {
           // header
           doc = this.cabecera(doc, reportName, logo, pageNumber);
+          doc = this.cabeceraTablaI01(doc, 80);
           // end of header
           doc.setFontSize(12)
-          var linea = 80;
+          var linea = 90;
           let descuentoAVG = 0;
           let precioAVG = 0;
           let count = 0;
           doc.setFont('Courier');
           for (let i = 0; i < oProductos.length; i++) {
-            this.linea(doc, oProductos[i], linea);
+            this.lineaI01(doc, oProductos[i], linea);
             linea = linea + 7;
-            if (linea > 230 && i + 1 < oProductos.length) {
+            if (linea > 250 && i + 1 < oProductos.length) {
+              doc.line(this.minX, linea, this.maxX, linea);
               // Si la linea es mayor que 230, 
               // y quedan más líneas por imprimir,
               // añadimos una nueva página 
               doc.addPage();
               pageNumber++;
               doc = this.cabecera(doc, reportName, logo, pageNumber);
-              linea = 155;
+              doc = this.cabeceraTablaI01(doc, 80);
+              linea = 90;
               doc.setFontSize(12)
             }
             count++;
             descuentoAVG = descuentoAVG + oProductos[i].descuento;
             precioAVG = precioAVG + oProductos[i].precio;
           }
-          this.endReport(doc, linea, count, descuentoAVG / count, precioAVG / count);
+          this.endReportI01(doc, linea, count, descuentoAVG / count, precioAVG / count);
           doc.save('Informe_' + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
         });
       }
     })
+  }
+
+  private cabeceraTablaI01(doc: any, linea: number): any {
+    doc.setFontSize(10)
+    doc.setFontType('bold');
+    doc.text('Producto', this.minX, linea);
+    doc.text('Descuento ', 140, linea, 'right');
+    doc.text('Precio', 160, linea, 'right');
+    doc.text('Existencias', 194, linea, 'right');
+    doc.line(this.minX, linea + 2, this.maxX, linea + 2);
+    return doc;
+  }
+
+  private lineaI01(doc: any, oProducto: IProducto, linea: number): void {
+    doc.setFontSize(8)
+    doc.text(oProducto.codigo + ' - ' + oProducto.nombre, 10, linea)
+    doc.setFontSize(12);
+    doc.text(oProducto.descuento + '% ', 140, linea, 'right');
+    doc.text(this.sp2DEC(oProducto.precio), 160, linea, 'right');
+    doc.text(this.sp0DEC(oProducto.existencias), 194, linea, 'right');
+  }
+
+  endReportI01(doc: any, linea: number, count: number, descuentoAVG: number, precioAVG: number): void {
+    doc.setFontSize(12)
+    doc.line(this.minX, linea, this.maxX, linea);
+    let xtit = 150;
+    let xnum = 190;
+    doc.text('Número de productos:', xtit, linea + 7, 'right');
+    doc.text(this.sp0DEC(count), xnum, linea + 7, 'right')
+    doc.text('Media de descuento:', xtit, linea + 14, 'right')
+    doc.text(this.sp2DEC(descuentoAVG) + '%', xnum, linea + 14, 'right')
+    doc.text('Media de precios:', xtit, linea + 21, 'right')
+    doc.text(this.sp2DEC(precioAVG) + '€', xnum, linea + 21, 'right');
   }
 
   private cabecera(doc: any, reportName: string, logo: any, pageNumber: number): any {
@@ -100,28 +139,6 @@ export class ReportPrintService {
     doc.text(130, 64, 'Fecha: ' + formatDate(new Date(), 'dd/MM/yyyy HH:mm', 'en'));
     //
     return doc;
-  }
-
-  private linea(doc: any, oProducto: IProducto, linea: number): void {
-    doc.setFontSize(8)
-    doc.text(oProducto.codigo + ' - ' + oProducto.nombre, 10, linea)
-    doc.setFontSize(12);
-    doc.text(oProducto.descuento + '', 130, linea, 'right');
-    doc.text(this.sp(oProducto.precio), 160, linea, 'right');
-    doc.text(this.sp(oProducto.existencias), 194, linea, 'right');
-  }
-
-  endReport(doc: any, linea: number, count: number, descuentoAVG: number, precioAVG: number): void {
-    doc.setFontSize(12)
-    doc.line(15, linea, 195, linea);
-    let xtit = 150;
-    let xnum = 190;
-    doc.text('Número de productos:', xtit, linea + 7, 'right');
-    doc.text(count.toString(), xnum, linea + 7, 'right')
-    doc.text('Media de descuento:', xtit, linea + 14, 'right')
-    doc.text(descuentoAVG.toString() + '%', xnum, linea + 14, 'right')
-    doc.text('Media de precios:', xtit, linea + 21, 'right')
-    doc.text(precioAVG.toString() + ' €', xnum, linea + 21, 'right');
   }
 
 }
