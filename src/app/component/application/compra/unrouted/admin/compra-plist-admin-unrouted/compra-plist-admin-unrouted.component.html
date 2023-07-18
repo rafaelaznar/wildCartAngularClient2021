@@ -1,71 +1,86 @@
-<div class="row justify-content-between">
-  <div class="col-md text-center">
-    <div class="alert alert-info" role="alert" *ngIf="id_factura">
-      <h6>{{oMetadataService.getName('Showing only purchases in the invoice of')}} "{{oPage.strFilteredTitle}}"</h6>
+<div *ngIf="!oPage.error">
+  <div class="row justify-content-between">
+    <div class="col-md text-center">
+      <div class="alert alert-info" role="alert" *ngIf="id_factura">
+        <h6>{{oMetadataService.getName('Showing only purchases in the invoice of')}} "{{oPage.strFilteredTitle}}"</h6>
+      </div>
+      <div class="alert alert-info" role="alert" *ngIf="id_producto">
+        <h6>{{oMetadataService.getName('Showing only purchases of the product')}} "{{oPage.strFilteredTitle}}"</h6>
+      </div>
     </div>
-    <div class="alert alert-info" role="alert" *ngIf="id_producto">
-      <h6>{{oMetadataService.getName('Showing only purchases of the product')}} "{{oPage.strFilteredTitle}}"</h6>
+  </div>
+  <div class="row justify-content-between my-3">
+    <div class="col-md text-start">
+      <h5 *ngIf="!oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning">
+          {{oMetadataService.getName('No active filter')}}</span></h5>
+      <h5 *ngIf="oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning">
+          {{oMetadataService.getName('Filter: ')}}
+          {{oPage.strFilteredMessage}}</span></h5>
+    </div>
+    <div class="col-md text-center">
+      <app-shared-search-unrouted [strFilter]="oPage.strFilter"
+        [strTitlePlural]="'Filtro de ' + oMetadataService.getName(strEntity+'s').toLowerCase()"
+        (eeFilter)="onSetFilter($event)">
+      </app-shared-search-unrouted>
+    </div>
+    <div class="col-md text-end">
+      <h5 class="text-muted" *ngIf="oPage.totalElements<oPage.nRecords">{{oMetadataService.getName('Showing')}}
+        {{oPage.totalElements| number:'1.0-0'}}
+        {{oMetadataService.getName(strEntity+'s')}} {{oMetadataService.getName('of')}} {{oPage.nRecords|
+        number:'1.0-0'}}</h5>
+      <h4 class="text-muted" *ngIf="oPage.totalElements==oPage.nRecords">{{oPage.totalElements| number:'1.0-0'}}
+        {{oMetadataService.getName(strEntity+'s')}}</h4>
     </div>
   </div>
-</div>
-<div class="row justify-content-between my-3">
-  <div class="col-md text-start">
-    <h5 *ngIf="!oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> {{oMetadataService.getName('No active filter')}}</span></h5>
-    <h5 *ngIf="oPage.strFilteredMessage"><span class="badge rounded-pill text-bg-warning"> {{oMetadataService.getName('Filter: ')}}
-        {{oPage.strFilteredMessage}}</span></h5>
-  </div>
-  <div class="col-md text-center">
-    <app-shared-search-unrouted [strFilter]="oPage.strFilter"
-      [strTitlePlural]="'Filtro de ' + oMetadataService.getName(strEntity+'s').toLowerCase()"
-      (eeFilter)="onSetFilter($event)">
-    </app-shared-search-unrouted>
-  </div>
-  <div class="col-md text-end">
-    <h5 class="text-muted" *ngIf="oPage.totalElements<oPage.nRecords">{{oMetadataService.getName('Showing')}} {{oPage.totalElements| number:'1.0-0'}}
-      {{oMetadataService.getName(strEntity+'s')}} {{oMetadataService.getName('of')}} {{oPage.nRecords| number:'1.0-0'}}</h5>
-    <h4 class="text-muted" *ngIf="oPage.totalElements==oPage.nRecords">{{oPage.totalElements| number:'1.0-0'}}
-      {{oMetadataService.getName(strEntity+'s')}}</h4>
-  </div>
-</div>
 
-<div class="row justify-content-between">
-  <div class="col-md text-start">
-    <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages"
-      (eePage)="onSetPage($event)">
-    </app-shared-pagination-unrouted>
+  <div class="row justify-content-between">
+    <div class="col-md text-start">
+      <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages"
+        (eePage)="onSetPage($event)">
+      </app-shared-pagination-unrouted>
+    </div>
+    <div class="col-md text-center">
+      <ng-content select="header"></ng-content>
+    </div>
+    <div class="col-md text-end">
+      <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error">
+      </app-shared-rpp-unrouted>
+    </div>
   </div>
-  <div class="col-md text-center">
-    <ng-content select="header"></ng-content>
-  </div>
-  <div class="col-md text-end">
-    <app-shared-rpp-unrouted [nPageSize]="oPage.size" (eeRpp)="onSetRpp($event)" *ngIf="!oPage.error">
-    </app-shared-rpp-unrouted>
-  </div>
-</div>
 
-<div class="row justify-content-center">
-  <div class="col-md table-responsive-md">
-    <table class="table table-bordered table-striped table-hover">
-      <thead>
-        <tr class="text-center align-middle" app-compra-plistheader-admin-unrouted (sort)="onSetOrder($event)"
-          [mode]="true">
-          <div action_column_title>
-            <i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getName('actions')}}
-          </div>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let oCompraRow of oPage.content" class="align-middle" app-compra-plistrow-admin-unrouted
-          [oCompra]="oCompraRow" [mode]="true">
-
-          <div action_column>
-            <div class="btn-group btn-group-sm" role="group" app-shared-plistrowbuttons-unrouted [id]="oCompraRow.id"
-              [strEntity]="strEntity" [strProfile]="strProfile">
+  <div class="row justify-content-center">
+    <div class="col-md table-responsive-md">
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr class="text-center align-middle" app-compra-plistheader-admin-unrouted (sort)="onSetOrder($event)"
+            [mode]="true">
+            <div action_column_title>
+              <i [ngClass]="oMetadataService.getIcon('acciones')"></i> {{oMetadataService.getName('actions')}}
             </div>
-          </div>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let oCompraRow of oPage.content" class="align-middle" app-compra-plistrow-admin-unrouted
+            [oCompra]="oCompraRow" [mode]="true">
 
-        </tr>
-      </tbody>
-    </table>
+            <div action_column>
+              <div class="btn-group btn-group-sm" role="group" app-shared-plistrowbuttons-unrouted [id]="oCompraRow.id"
+                [strEntity]="strEntity" [strProfile]="strProfile">
+              </div>
+            </div>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div *ngIf="oPage.error">
+  <div class="row justify-content-center">
+    <div class="col-md text-center">
+      <h6 class="text-danger">{{oMetadataService.getName('Component ERROR: please contact administrator')}}</h6>
+      <h6 class="text-danger">{{oMetadataService.getName('Message: ')}} {{ oPage.error.status + "(" +
+        oPage.error.statusText + ") " + oPage.error.message}}</h6>
+    </div>
   </div>
 </div>

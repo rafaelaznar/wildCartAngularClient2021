@@ -4,6 +4,7 @@ import { CarritoService } from 'src/app/service/carrito.service';
 import { ICarritoPage } from 'src/app/model/carrito-interfaces';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { Constants } from 'src/app/constant/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-carrito-cplist-user-unrouted',
@@ -52,6 +53,10 @@ export class CarritoPlistUserUnroutedComponent implements OnInit {
             }
           }
           this.getTotalCarrito4User();
+        },
+        error: (error: HttpErrorResponse) => {
+          this.oPage.error = error;
+          console.error('ERROR: ' + this.strEntity + '-' + this.strOperation + ': ' + error.status + '(' + error.statusText + ') ' + error.message);
         }
       });
   };

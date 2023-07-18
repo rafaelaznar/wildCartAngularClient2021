@@ -17,12 +17,12 @@ export class CommentPlistUserUnroutedComponent implements OnInit, OnChanges {
 
   @Input() id_usuario: number = null;
   @Input() id_producto: number = null;
-
   @Input() reloadCommentsPlistSubject: Subject<boolean> = new Subject<boolean>();
-
+  //
   strProfile: string = Constants.PROFILES.user;
   strEntity: string = Constants.ENTITIES.comment
   strOperation: string = Constants.OPERATIONS.plist
+  //
   oPage: ICommentPage;
 
   constructor(
@@ -33,7 +33,6 @@ export class CommentPlistUserUnroutedComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log('id_p: ' + this.id_producto);
     this.reloadCommentsPlistSubject.subscribe({
       next: (response) => {
         if (response) {

@@ -1,26 +1,36 @@
-<div class="row justify-content-between my-3">
-  <div class="col-md text-end">
-    <h4 class="text-muted">{{oPage.totalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}</h4>
-  </div>
-</div>
-
-<div class="row justify-content-between">
-  <div class="col-md text-start">
-    <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages" (eePage)="onSetPage($event)">
-    </app-shared-pagination-unrouted>
-  </div>
-  <div class="col-md text-center">
-    <ng-content select="header"></ng-content>
-  </div>
-</div>
-
-<div class="row justify-content-center">
-  <div class="col-md">
-
-
-    <div class="card bg-light m-3 " *ngFor="let oRow of oPage.content"
-      app-comment-plistrow-user-unrouted [oComment]="oRow" [mode]="true">
+<div *ngIf="!oPage.error">
+  <div class="row justify-content-between my-3">
+    <div class="col-md text-end">
+      <h4 class="text-muted">{{oPage.totalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}</h4>
     </div>
+  </div>
 
+  <div class="row justify-content-between">
+    <div class="col-md text-start">
+      <app-shared-pagination-unrouted [nPage]="oPage.number + 1" [nTotalPages]="oPage.totalPages"
+        (eePage)="onSetPage($event)">
+      </app-shared-pagination-unrouted>
+    </div>
+    <div class="col-md text-center">
+      <ng-content select="header"></ng-content>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md">
+      <div class="card bg-light m-3 " *ngFor="let oRow of oPage.content" app-comment-plistrow-user-unrouted
+        [oComment]="oRow" [mode]="true">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="oPage.error">
+  <div class="row justify-content-center">
+    <div class="col-md text-center">
+      <h6 class="text-danger">{{oMetadataService.getName('Component ERROR: please contact administrator')}}</h6>
+      <h6 class="text-danger">{{oMetadataService.getName('Message: ')}} {{ oPage.error.status + "(" +
+        oPage.error.statusText + ") " + oPage.error.message}}</h6>
+    </div>
   </div>
 </div>

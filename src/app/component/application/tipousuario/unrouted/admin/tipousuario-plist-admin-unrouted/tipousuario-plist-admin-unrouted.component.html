@@ -1,31 +1,44 @@
-<div class="row justify-content-between my-3">
-    <div class="col-md text-end">
-        <h4 class="text-muted">{{oPage.totalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}
-        </h4>
+<div *ngIf="oPage.error==null">
+    <div class="row justify-content-between my-3">
+        <div class="col-md text-end">
+            <h4 class="text-muted">{{oPage.totalElements| number:'1.0-0'}} {{oMetadataService.getName(strEntity+'s')}}
+            </h4>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md table-responsive-md">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr class="text-center align-middle" app-tipousuario-plistheader-admin-unrouted
+                        (sort)="onSetOrder($event)" [mode]="true">
+                        <div action_column_title>
+                            <i [ngClass]="oMetadataService.getIcon('acciones')"></i>
+                            {{oMetadataService.getName('actions')}}
+                        </div>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let oTipousuarioRow of oPage.content" class="align-middle"
+                        app-tipousuario-plistrow-admin-unrouted [oTipousuario]="oTipousuarioRow" [mode]="true">
+                        <div action_column>
+                            <div class="btn-group btn-group-sm" role="group" app-shared-plistrowbuttons-unrouted
+                                [id]="oTipousuarioRow.id" [strEntity]="strEntity" [strProfile]="strProfile"
+                                [showRemove]="false">
+                            </div>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-<div class="row justify-content-center">
-    <div class="col-md table-responsive-md">
-        <table class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr class="text-center align-middle" app-tipousuario-plistheader-admin-unrouted
-                    (sort)="onSetOrder($event)" [mode]="true">
-                    <div action_column_title>
-                        <i [ngClass]="oMetadataService.getIcon('acciones')"></i>
-                        {{oMetadataService.getName('actions')}}
-                    </div>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let oTipousuarioRow of oPage.content" class="align-middle"
-                    app-tipousuario-plistrow-admin-unrouted [oTipousuario]="oTipousuarioRow" [mode]="true">
-                    <div action_column>
-                        <div class="btn-group btn-group-sm" role="group" app-shared-plistrowbuttons-unrouted
-                            [id]="oTipousuarioRow.id" [strEntity]="strEntity" [strProfile]="strProfile" [showRemove]="false">
-                        </div>
-                    </div>
-                </tr>
-            </tbody>
-        </table>
+
+<div *ngIf="oPage.error">
+    <div class="row justify-content-center">
+        <div class="col-md text-center">
+            <h6 class="text-danger">{{oMetadataService.getName('Component ERROR: please contact administrator')}}</h6>
+            <h6 class="text-danger">{{oMetadataService.getName('Message: ')}} {{ oPage.error.status + "(" +
+                oPage.error.statusText + ") " + oPage.error.message}}</h6>
+        </div>
     </div>
 </div>
