@@ -16,7 +16,6 @@ declare let jsPDF: any;
 export class ProductoDetailUserUnroutedComponent implements OnInit {
 
   @Input() id: number = null;
-  @Input() id_tipousuario_session: number = null;
   @Output() cartChangeEE = new EventEmitter<number>();
   //
   API_URL: string = API_URL;

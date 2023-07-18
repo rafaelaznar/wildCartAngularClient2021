@@ -16,7 +16,6 @@ export class FacturaPlistrowUserUnroutedComponent implements OnInit {
 
   @Input() oFactura: IFactura = null;
   @Input() mode: boolean = true; //true=edición; false=selección
-  @Input() id_tipousuario_session: number = null;
   @Output() selection = new EventEmitter<number>();  
 
   strProfile: string = Constants.PROFILES.admin;
