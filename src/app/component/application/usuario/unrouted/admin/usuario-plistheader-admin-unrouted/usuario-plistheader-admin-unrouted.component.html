@@ -13,7 +13,7 @@
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='dni'&&strSortDirection=='desc'"></i>
 </th>
 <th (click)="doSetOrder('apellido1')">
-  <i [ngClass]="oMetadataService.getIcon('apellido1')"></i> {{oMetadataService.getName('name')}}
+  <i [ngClass]="oMetadataService.getIcon('apellido1')"></i> {{oMetadataService.getName('Whole name')}}
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='apellido1'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('orderDown')" *ngIf="strSortField=='apellido1'&&strSortDirection=='desc'"></i>
 </th>
@@ -26,7 +26,7 @@
 <th *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('factura')"></i> {{oMetadataService.getName('facturas')}}</th>
 <th *ngIf="mode"><i [ngClass]="oMetadataService.getIcon('comment')"></i> {{oMetadataService.getName('comments')}}</th>
 <th (click)="doSetOrder('tipousuario')"><i [ngClass]="oMetadataService.getIcon('tipousuario')"></i>
-  {{oMetadataService.getName('tipousuario')}}
+  {{oMetadataService.getName('Type')}}
   <i [ngClass]="oMetadataService.getIcon('orderUp')" *ngIf="strSortField=='tipousuario'&&strSortDirection=='asc'"></i>
   <i [ngClass]="oMetadataService.getIcon('orderDown')"
     *ngIf="strSortField=='tipousuario'&&strSortDirection=='desc'"></i>

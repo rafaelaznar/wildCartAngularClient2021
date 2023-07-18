@@ -179,7 +179,7 @@ export class MetadataService {
       case str == 'product discount': return 'Descuento del producto';
       case str == 'client discount': return 'Descuento del cliente';
 
-      case str == 'cart products': return 'productos en carrito';
+      case str == 'cart products': return 'p en carrito';
 
       // GOTOS
       case str == 'go to carrito list': return 'Ir al listado de productos en carritos';
@@ -686,8 +686,8 @@ export class MetadataService {
       case str == 'Puchase products in cart': return 'Comprar los productos en el carrito';
       case str == 'Are you sure you want to purchase products in cart?': return '¿Está seguro de que desea realizar la compra de los productos en el carrito?';
 
-
-
+      case str == 'Type': return 'Tipo';
+      case str == 'Whole name': return 'Nombre completo';
       //
       case str == 'No active filter': return 'Sin filtro';
       case str == 'Filter: ': return 'Filtro: ';
