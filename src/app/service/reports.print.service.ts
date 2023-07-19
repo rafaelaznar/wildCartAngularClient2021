@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { IProducto } from '../model/producto-interfaces';
 import { ProductoService } from './producto.service';
+import { UsuarioService } from './usuario.service';
+import { IUsuario } from '../model/usuario-interfaces';
 
 declare let jsPDF: any;
 
@@ -11,7 +13,8 @@ declare let jsPDF: any;
 export class ReportPrintService {
 
   constructor(
-    private oProductoService: ProductoService
+    private oProductoService: ProductoService,
+    private oUsuarioService: UsuarioService,
   ) { }
 
   private loadImage(url: string) {
@@ -26,9 +29,13 @@ export class ReportPrintService {
   sp0DEC = (n: number): string => n.toLocaleString('es', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
   minX = 10;
   maxX = 200;
+  maxPage = 270;
+
+  capzFirst(str: string) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 
   printReport_i01 = (quantity: number): void => {
-    const reportName = 'I01';
     let pageNumber = 1;
     this.oProductoService.nByDescuentoDesc(quantity).subscribe({
       next: (oProductos: IProducto[]) => {
@@ -40,7 +47,7 @@ export class ReportPrintService {
         this.loadImage(imgData).then((logo) => {
           // header
           doc = this.cabecera(doc, reportName, logo, pageNumber);
-          doc = this.cabeceraTablaI01(doc, 80);
+          doc = this.cabeceraTabla_i012(doc, 80);
           // end of header
           doc.setFontSize(12)
           var linea = 90;
@@ -49,9 +56,9 @@ export class ReportPrintService {
           let count = 0;
           doc.setFont('Courier');
           for (let i = 0; i < oProductos.length; i++) {
-            this.lineaI01(doc, oProductos[i], linea);
+            this.linea_i012(doc, oProductos[i], linea);
             linea = linea + 7;
-            if (linea > 250 && i + 1 < oProductos.length) {
+            if (linea > this.maxPage && i + 1 < oProductos.length) {
               doc.line(this.minX, linea, this.maxX, linea);
               // Si la linea es mayor que 230, 
               // y quedan más líneas por imprimir,
@@ -59,7 +66,7 @@ export class ReportPrintService {
               doc.addPage();
               pageNumber++;
               doc = this.cabecera(doc, reportName, logo, pageNumber);
-              doc = this.cabeceraTablaI01(doc, 80);
+              doc = this.cabeceraTabla_i012(doc, 80);
               linea = 90;
               doc.setFontSize(12)
             }
@@ -67,14 +74,60 @@ export class ReportPrintService {
             descuentoAVG = descuentoAVG + oProductos[i].descuento;
             precioAVG = precioAVG + oProductos[i].precio;
           }
-          this.endReportI01(doc, linea, count, descuentoAVG / count, precioAVG / count);
+          this.endReport_i012(doc, linea, count, descuentoAVG / count, precioAVG / count);
           doc.save('Informe_' + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
         });
       }
     })
   }
 
-  private cabeceraTablaI01(doc: any, linea: number): any {
+  printReport_i02 = (quantity: number): void => {
+    let pageNumber = 1;
+    this.oProductoService.nByDescuentoAsc(quantity).subscribe({
+      next: (oProductos: IProducto[]) => {
+        const reportName = 'Productos con menor descuento';
+        var doc = new jsPDF()
+        doc.setFont('Courier');
+        // logo load
+        var imgData: string = '/assets/img/wildCart600.png'
+        this.loadImage(imgData).then((logo) => {
+          // header
+          doc = this.cabecera(doc, reportName, logo, pageNumber);
+          doc = this.cabeceraTabla_i012(doc, 80);
+          // end of header
+          doc.setFontSize(12)
+          var linea = 90;
+          let descuentoAVG = 0;
+          let precioAVG = 0;
+          let count = 0;
+          doc.setFont('Courier');
+          for (let i = 0; i < oProductos.length; i++) {
+            this.linea_i012(doc, oProductos[i], linea);
+            linea = linea + 7;
+            if (linea > this.maxPage && i + 1 < oProductos.length) {
+              doc.line(this.minX, linea, this.maxX, linea);
+              // Si la linea es mayor que 230, 
+              // y quedan más líneas por imprimir,
+              // añadimos una nueva página 
+              doc.addPage();
+              pageNumber++;
+              doc = this.cabecera(doc, reportName, logo, pageNumber);
+              doc = this.cabeceraTabla_i012(doc, 80);
+              linea = 90;
+              doc.setFontSize(12)
+            }
+            count++;
+            descuentoAVG = descuentoAVG + oProductos[i].descuento;
+            precioAVG = precioAVG + oProductos[i].precio;
+          }
+          this.endReport_i012(doc, linea, count, descuentoAVG / count, precioAVG / count);
+          doc.save('Informe_' + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
+        });
+      }
+    })
+  }
+
+  private cabeceraTabla_i012(doc: any, linea: number): any {
     doc.setFontSize(10)
     doc.setFontType('bold');
     doc.text('Producto', this.minX, linea);
@@ -85,7 +138,7 @@ export class ReportPrintService {
     return doc;
   }
 
-  private lineaI01(doc: any, oProducto: IProducto, linea: number): void {
+  private linea_i012(doc: any, oProducto: IProducto, linea: number): void {
     doc.setFontSize(8)
     doc.text(oProducto.codigo + ' - ' + oProducto.nombre, 10, linea)
     doc.setFontSize(12);
@@ -94,7 +147,7 @@ export class ReportPrintService {
     doc.text(this.sp0DEC(oProducto.existencias), 194, linea, 'right');
   }
 
-  endReportI01(doc: any, linea: number, count: number, descuentoAVG: number, precioAVG: number): void {
+  endReport_i012(doc: any, linea: number, count: number, descuentoAVG: number, precioAVG: number): void {
     doc.setFontSize(12)
     doc.line(this.minX, linea, this.maxX, linea);
     let xtit = 150;
@@ -105,6 +158,123 @@ export class ReportPrintService {
     doc.text(this.sp2DEC(descuentoAVG) + '%', xnum, linea + 14, 'right')
     doc.text('Media de precios:', xtit, linea + 21, 'right')
     doc.text(this.sp2DEC(precioAVG) + '€', xnum, linea + 21, 'right');
+  }
+
+
+
+  printReport_i03 = (quantity: number): void => {
+    let pageNumber = 1;
+    this.oUsuarioService.nByDescuentoDesc(quantity).subscribe({
+      next: (oUsuarios: IUsuario[]) => {
+        const reportName = 'Clientes con mayor descuento';
+        var doc = new jsPDF()
+        doc.setFont('Courier');
+        // logo load
+        var imgData: string = '/assets/img/wildCart600.png'
+        this.loadImage(imgData).then((logo) => {
+          // header
+          doc = this.cabecera(doc, reportName, logo, pageNumber);
+          doc = this.cabeceraTabla_i034(doc, 80);
+          // end of header
+          doc.setFontSize(12)
+          var linea = 90;
+          let descuentoAVG = 0;
+          let count = 0;
+          doc.setFont('Courier');
+          for (let i = 0; i < oUsuarios.length; i++) {
+            this.linea_i034(doc, oUsuarios[i], linea);
+            linea = linea + 7;
+            if (linea > this.maxPage && i + 1 < oUsuarios.length) {
+              doc.line(this.minX, linea, this.maxX, linea);
+              // Si la linea es mayor que 230, 
+              // y quedan más líneas por imprimir,
+              // añadimos una nueva página 
+              doc.addPage();
+              pageNumber++;
+              doc = this.cabecera(doc, reportName, logo, pageNumber);
+              doc = this.cabeceraTabla_i034(doc, 80);
+              linea = 90;
+              doc.setFontSize(12)
+            }
+            count++;
+            descuentoAVG = descuentoAVG + oUsuarios[i].descuento;
+          }
+          this.endReport_i034(doc, linea, count, descuentoAVG / count);
+          doc.save('Informe_' + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
+        });
+      }
+    })
+  }
+
+  printReport_i04 = (quantity: number): void => {
+    let pageNumber = 1;
+    this.oUsuarioService.nByDescuentoAsc(quantity).subscribe({
+      next: (oUsuarios: IUsuario[]) => {
+        const reportName = 'Clientes con menor descuento';
+        var doc = new jsPDF()
+        doc.setFont('Courier');
+        // logo load
+        var imgData: string = '/assets/img/wildCart600.png'
+        this.loadImage(imgData).then((logo) => {
+          // header
+          doc = this.cabecera(doc, reportName, logo, pageNumber);
+          doc = this.cabeceraTabla_i034(doc, 80);
+          // end of header
+          doc.setFontSize(12)
+          var linea = 90;
+          let descuentoAVG = 0;
+          let count = 0;
+          doc.setFont('Courier');
+          for (let i = 0; i < oUsuarios.length; i++) {
+            this.linea_i034(doc, oUsuarios[i], linea);
+            linea = linea + 7;
+            if (linea > this.maxPage && i + 1 < oUsuarios.length) {
+              doc.line(this.minX, linea, this.maxX, linea);
+              // Si la linea es mayor que 230, 
+              // y quedan más líneas por imprimir,
+              // añadimos una nueva página 
+              doc.addPage();
+              pageNumber++;
+              doc = this.cabecera(doc, reportName, logo, pageNumber);
+              doc = this.cabeceraTabla_i034(doc, 80);
+              linea = 90;
+              doc.setFontSize(12)
+            }
+            count++;
+            descuentoAVG = descuentoAVG + oUsuarios[i].descuento;
+          }
+          this.endReport_i034(doc, linea, count, descuentoAVG / count);
+          doc.save('Informe_' + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
+        });
+      }
+    })
+  }
+
+  private cabeceraTabla_i034(doc: any, linea: number): any {
+    doc.setFontSize(10)
+    doc.setFontType('bold');
+    doc.text('Cliente', this.minX, linea);
+    doc.text('Descuento ', 140, linea, 'right');
+    doc.line(this.minX, linea + 2, this.maxX, linea + 2);
+    return doc;
+  }
+
+  private linea_i034(doc: any, oUsuario: IUsuario, linea: number): void {
+    doc.setFontSize(8)
+    doc.text(oUsuario.dni + '   ' + this.capzFirst(oUsuario.nombre) + ' ' + this.capzFirst(oUsuario.apellido1) + ' ' + this.capzFirst(oUsuario.apellido2), 10, linea)
+    doc.setFontSize(12);
+    doc.text(oUsuario.descuento + '% ', 140, linea, 'right');
+  }
+
+  endReport_i034(doc: any, linea: number, count: number, descuentoAVG: number): void {
+    doc.setFontSize(12)
+    doc.line(this.minX, linea, this.maxX, linea);
+    let xtit = 150;
+    let xnum = 190;
+    doc.text('Número de productos:', xtit, linea + 7, 'right');
+    doc.text(this.sp0DEC(count), xnum, linea + 7, 'right')
+    doc.text('Media de descuento:', xtit, linea + 14, 'right')
+    doc.text(this.sp2DEC(descuentoAVG) + '%', xnum, linea + 14, 'right')
   }
 
   private cabecera(doc: any, reportName: string, logo: any, pageNumber: number): any {

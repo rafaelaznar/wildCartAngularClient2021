@@ -113,7 +113,13 @@ export class SharedReportsRoutedComponent extends CheckSession implements OnInit
 
   print(codigo: string) {
     this.openPopup('Imprimiendo el informe ' + codigo);
-    this.oReportPrintService.printReport_i01(this.oForm.controls.cantidad.value);
+    switch (true) {
+      case codigo == 'i01': this.oReportPrintService.printReport_i01(this.oForm.controls.cantidad.value); break;
+      case codigo == 'i02': this.oReportPrintService.printReport_i02(this.oForm.controls.cantidad.value); break;
+      case codigo == 'i03': this.oReportPrintService.printReport_i03(this.oForm.controls.cantidad.value); break;
+      case codigo == 'i04': this.oReportPrintService.printReport_i04(this.oForm.controls.cantidad.value); break;
+      default: alert(this.oMetadataService.getName('The report') + ' ' + codigo + ' ' + this.oMetadataService.getName('not found')); break;
+    }
   }
 
   //ajenas

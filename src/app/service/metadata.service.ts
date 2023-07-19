@@ -688,6 +688,8 @@ export class MetadataService {
 
       case str == 'Type': return 'Tipo';
       case str == 'Whole name': return 'Nombre completo';
+      case str == 'The report': return 'El informe';
+      case str == 'not found': return 'no existe';
       //
       case str == 'No active filter': return 'Sin filtro';
       case str == 'Filter: ': return 'Filtro: ';

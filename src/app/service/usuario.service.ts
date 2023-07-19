@@ -73,4 +73,12 @@ export class UsuarioService implements ICrud {
     return this.http.get<IUsuario>(this.sURL + '/flipactive/' + id, httpOptions).pipe(catchError(this.oErrorHandlerService.serviceHandleError));
   }
 
+  nByDescuentoAsc(quantity: number): Observable<IUsuario[]> {
+    return this.http.get<IUsuario[]>(this.sURL + '/nByDescuentoAsc/' + quantity, httpOptions);
+  }
+
+  nByDescuentoDesc(quantity: number): Observable<IUsuario[]> {
+    return this.http.get<IUsuario[]>(this.sURL + '/nByDescuentoDesc/' + quantity, httpOptions);
+  }
+
 }
