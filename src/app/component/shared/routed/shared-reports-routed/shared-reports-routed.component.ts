@@ -86,7 +86,6 @@ export class SharedReportsRoutedComponent extends CheckSession implements OnInit
 
   ];
 
-
   es: any = {
     firstDayOfWeek: 1,
     dayNames: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
@@ -111,8 +110,7 @@ export class SharedReportsRoutedComponent extends CheckSession implements OnInit
     this.onChanges();
   }
 
-  print(codigo: string) {
-    this.openPopup('Imprimiendo el informe ' + codigo);
+  print(codigo: string) {    
     switch (true) {
       case codigo == 'i01': this.oReportPrintService.printReport_i01(this.oForm.controls.cantidad.value); break;
       case codigo == 'i02': this.oReportPrintService.printReport_i02(this.oForm.controls.cantidad.value); break;
