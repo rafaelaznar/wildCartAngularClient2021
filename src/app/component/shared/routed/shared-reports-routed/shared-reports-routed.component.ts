@@ -13,6 +13,9 @@ import { ReportPrintService } from 'src/app/service/reports.print.service';
 import { Constants } from 'src/app/constant/constants';
 import { SessionService } from 'src/app/service/session.service';
 import { CheckSession } from 'src/app/class/check.session.class';
+import { ReportA12PrintService } from 'src/app/service/reports.a12.service';
+import { ReportA34PrintService } from 'src/app/service/reports.a34.service';
+import { ReportA56PrintService } from 'src/app/service/reports.a56.service';
 
 @Component({
   selector: 'app-shared-reports-routed',
@@ -40,7 +43,9 @@ export class SharedReportsRoutedComponent extends CheckSession implements OnInit
     private oFormBuilder: UntypedFormBuilder,
     private oProductoService: ProductoService,
     public oRouter: Router,
-    private oReportPrintService: ReportPrintService,
+    private oReportA12PrintService: ReportA12PrintService,
+    private oReportA34PrintService: ReportA34PrintService,
+    private oReportA56PrintService: ReportA56PrintService,
     public oSessionService: SessionService
   ) {
     super(Constants.PROFILES.admin, oRouter, oSessionService);
@@ -110,12 +115,14 @@ export class SharedReportsRoutedComponent extends CheckSession implements OnInit
     this.onChanges();
   }
 
-  print(codigo: string) {    
+  print(codigo: string) {
     switch (true) {
-      case codigo == 'i01': this.oReportPrintService.printReport_i01(this.oForm.controls.cantidad.value); break;
-      case codigo == 'i02': this.oReportPrintService.printReport_i02(this.oForm.controls.cantidad.value); break;
-      case codigo == 'i03': this.oReportPrintService.printReport_i03(this.oForm.controls.cantidad.value); break;
-      case codigo == 'i04': this.oReportPrintService.printReport_i04(this.oForm.controls.cantidad.value); break;
+      case codigo == 'i01': this.oReportA12PrintService.printReport_i01(this.oForm.controls.cantidad.value); break;
+      case codigo == 'i02': this.oReportA12PrintService.printReport_i02(this.oForm.controls.cantidad.value); break;
+      case codigo == 'i03': this.oReportA34PrintService.printReport_i03(this.oForm.controls.cantidad.value); break;
+      case codigo == 'i04': this.oReportA34PrintService.printReport_i04(this.oForm.controls.cantidad.value); break;
+      case codigo == 'i05': this.oReportA56PrintService.printReport_i05(this.oForm.controls.cantidad.value); break;
+      case codigo == 'i06': this.oReportA56PrintService.printReport_i06(this.oForm.controls.cantidad.value); break;
       default: alert(this.oMetadataService.getName('The report') + ' ' + codigo + ' ' + this.oMetadataService.getName('not found')); break;
     }
   }
