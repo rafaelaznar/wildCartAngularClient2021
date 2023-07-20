@@ -57,7 +57,7 @@ export class ReportA12PrintService {
             precioAVG = precioAVG + oProductos[i].precio;
           }
           this.endReport_i012(doc, linea, count, descuentoAVG / count, precioAVG / count);
-          doc.save('Informe_' + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
+          doc.save('Informe_' + reportName + '_' + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
         });
       }
     })
@@ -100,7 +100,7 @@ export class ReportA12PrintService {
             precioAVG = precioAVG + oProductos[i].precio;
           }
           this.endReport_i012(doc, linea, count, descuentoAVG / count, precioAVG / count);
-          doc.save('Informe_' + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
+          doc.save('Informe_' + reportName + '_' + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
         });
       }
     })

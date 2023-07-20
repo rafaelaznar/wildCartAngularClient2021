@@ -56,7 +56,7 @@ export class ReportA56PrintService {
             existenciasAVG = existenciasAVG + oProductos[i].existencias;
           }
           this.endReport_i056(doc, linea, count, descuentoAVG / count, precioAVG / count, existenciasAVG / count);
-          doc.save('Informe_' + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
+          doc.save('Informe_' + reportName + '_' + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
         });
       }
     })
@@ -101,7 +101,7 @@ export class ReportA56PrintService {
             existenciasAVG = precioAVG + oProductos[i].existencias;
           }
           this.endReport_i056(doc, linea, count, descuentoAVG / count, precioAVG / count, existenciasAVG / count);
-          doc.save('Informe_' + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
+          doc.save('Informe_' + reportName + '_' + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
         });
       }
     })

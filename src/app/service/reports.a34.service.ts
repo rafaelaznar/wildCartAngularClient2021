@@ -51,7 +51,7 @@ export class ReportA34PrintService {
             descuentoAVG = descuentoAVG + oUsuarios[i].descuento;
           }
           this.endReport_i034(doc, linea, count, descuentoAVG / count);
-          doc.save('Informe_' + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
+          doc.save('Informe_' + reportName + '_' + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
         });
       }
     })
@@ -92,7 +92,7 @@ export class ReportA34PrintService {
             descuentoAVG = descuentoAVG + oUsuarios[i].descuento;
           }
           this.endReport_i034(doc, linea, count, descuentoAVG / count);
-          doc.save('Informe_' + reportName + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
+          doc.save('Informe_' + reportName + '_' + formatDate(new Date(), 'yyyMMddHHmm', 'en') + '.pdf');
         });
       }
     })
