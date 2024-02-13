@@ -4,6 +4,7 @@ import { Constants } from 'src/app/constant/constants';
 import { IProducto } from 'src/app/model/producto-interfaces';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { ProductoService } from 'src/app/service/producto.service';
+import { API_URL } from 'src/environments/environment';
 
 @Component({
   selector: 'app-producto-detail-admin-unrouted',
@@ -21,6 +22,8 @@ export class ProductoDetailAdminUnroutedComponent implements OnInit {
   //
   oProducto: IProducto;
   status: HttpErrorResponse = null;
+  //
+  strAPI_URL: string = API_URL;
 
   constructor(
     private oProductoService: ProductoService,

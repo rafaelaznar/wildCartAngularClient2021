@@ -4,6 +4,7 @@ import { IProducto } from 'src/app/model/producto-interfaces';
 import { CarritoService } from 'src/app/service/carrito.service';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { ProductoService } from 'src/app/service/producto.service';
+import { API_URL } from 'src/environments/environment';
 
 @Component({
   selector: 'app-producto-detail-guest-unrouted',
@@ -18,6 +19,8 @@ export class ProductoDetailGuestUnroutedComponent implements OnInit {
   //
   oProducto: IProducto;
   status: HttpErrorResponse = null;
+  //
+  strAPI_URL: string = API_URL;
 
   constructor(
     private oProductoService: ProductoService,

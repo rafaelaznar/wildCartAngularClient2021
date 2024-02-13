@@ -1,7 +1,7 @@
 <div class="row justify-content-center" *ngIf="status==null">
   <div class="row g-0 p-5">
     <div class="col-md-5">
-      <img [src]="'http://localhost:8082/file/' + oProducto?.imagen" class="img-fluid border rounded-3 border-5" />
+      <img [src]="strAPI_URL + '/file/' + oProducto?.imagen" class="img-fluid border rounded-3 border-5" />
     </div>
     <div class="col-md-6 p-5">
       <h2>{{oProducto?.nombre}}</h2>

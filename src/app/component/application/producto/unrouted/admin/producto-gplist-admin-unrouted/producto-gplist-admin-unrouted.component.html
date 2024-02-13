@@ -43,7 +43,7 @@
   <div class="row justify-content-center">
 
     <div class="card m-1" *ngFor="let oProducto of oPage.content">
-      <img class="card-img-top" [src]="'http://localhost:8082/file/' + oProducto.imagen" height="180px" width="180px" />
+      <img class="card-img-top" [src]="strAPI_URL + '/file/' + oProducto.imagen" height="180px" width="180px" />
       <div class="card-body d-flex flex-column">
 
         <div>

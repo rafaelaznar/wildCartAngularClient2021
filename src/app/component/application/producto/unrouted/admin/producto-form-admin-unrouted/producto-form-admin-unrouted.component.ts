@@ -9,6 +9,7 @@ import { Constants } from 'src/app/constant/constants';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IResult } from 'src/app/model/model-interfaces';
 import { IProducto2Send, IProducto } from 'src/app/model/producto-interfaces';
+import { API_URL } from 'src/environments/environment';
 
 @Component({
   selector: 'app-producto-form-admin-unrouted',
@@ -34,6 +35,8 @@ export class ProductoFormAdminUnroutedComponent implements OnInit {
   selectedFile: string;
   imageSrc: string = null;
   file2Send: File = null;
+  //
+  strAPI_URL: string = API_URL;
 
   get f() {
     return this.oForm.controls;

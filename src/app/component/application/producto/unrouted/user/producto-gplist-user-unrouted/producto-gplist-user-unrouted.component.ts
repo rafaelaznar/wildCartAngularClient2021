@@ -6,6 +6,7 @@ import { ProductoCarritoViewService } from 'src/app/service/productocarritoview.
 import { Constants } from 'src/app/constant/constants';
 import { IOrder } from 'src/app/model/model-interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
+import { API_URL } from 'src/environments/environment';
 
 @Component({
   selector: 'app-producto-gplist-user-unrouted',
@@ -22,8 +23,10 @@ export class ProductoGPlistUserUnroutedComponent implements OnInit {
   strProfile: string = Constants.PROFILES.user;
   strEntity: string = Constants.ENTITIES.product
   strOperation: string = Constants.OPERATIONS.plist
-
+  //
   oPage: IProductoPage;
+  //
+  strAPI_URL: string = API_URL;
 
   constructor(
     private oProductoService: ProductoCarritoViewService,
